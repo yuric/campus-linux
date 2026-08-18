@@ -1,0 +1,58 @@
+# The stack for this client is not decided yet, and this repository may hold a
+# desktop client, headless-server documentation, or both (see PRD.md). This
+# file covers the likely candidates. Trim it once the shape is settled.
+
+# ------------------------------------------------------------ Rust / Tauri
+target/
+**/*.rs.bk
+src-tauri/target/
+src-tauri/gen/
+# Tauri's updater signing key. Never commit either half.
+*.key
+
+# ------------------------------------------------------- Node / web assets
+node_modules/
+dist/
+dist-island/
+build/
+*.tsbuildinfo
+.vite/
+
+# -------------------------------------------------------------- Packaging
+*.AppImage
+*.deb
+*.rpm
+*.snap
+*.flatpak
+*.tar.gz
+appimage-build/
+flatpak-build/
+.flatpak-builder/
+
+# ---------------------------------------------------------------- Coverage
+coverage/
+*.profraw
+*.profdata
+lcov.info
+
+# ------------------------------------------------------------ Environment
+.env
+.env.*
+!.env.example
+
+# ------------------------------------------------------------------- Logs
+*.log
+npm-debug.log*
+
+# ------------------------------------------------------------------ Local
+*.local
+.DS_Store
+*~
+\#*\#
+.\#*
+
+# --------------------------------------------------------------- Editor/IDE
+.idea/
+.vscode/
+!.vscode/extensions.json
+*.swp
