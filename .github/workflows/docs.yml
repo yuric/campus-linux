@@ -13,7 +13,7 @@ jobs:
     name: Internal links resolve
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       - name: Check every relative link in Markdown points at a file that exists
         run: |
@@ -38,7 +38,7 @@ jobs:
     name: OpenAPI spec parses
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - name: Parse docs/api/openapi.yaml
         run: |
           python3 - <<'PY'
