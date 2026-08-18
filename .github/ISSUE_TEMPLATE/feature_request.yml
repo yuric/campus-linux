@@ -1,0 +1,30 @@
+name: Feature request
+description: Suggest something this client should do
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This client renders decisions the Campus API makes. If a request needs the client to
+        decide something new about the product — a new provider, a new workflow rule, new
+        domain wording — it needs an API change first. That is not a rejection; it just
+        changes where the work starts.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do
+      description: The situation, not the solution. What is awkward or impossible today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you have in mind
+    validations:
+      required: false
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: What you tried or considered instead
+    validations:
+      required: false

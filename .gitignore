@@ -56,3 +56,39 @@ npm-debug.log*
 .vscode/
 !.vscode/extensions.json
 *.swp
+
+# ------------------------------------------------- macOS finder/system cruft
+# The full github/gitignore Global/macOS set. The developer machine is a Mac,
+# so these can appear in any of these repositories regardless of platform.
+.AppleDouble
+.LSOverride
+.localized
+__MACOSX/
+Icon[]
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# -------------------------------------------------------------- Node extras
+# Remaining entries from github/gitignore Node not already covered above.
+pids
+*.pid
+*.seed
+*.pid.lock
+*.lcov
+.eslintcache
+.stylelintcache
+.node_repl_history
+*.tgz
+.yarn-integrity
+lib-cov

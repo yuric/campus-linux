@@ -56,9 +56,21 @@ in a later export.
 Because this client has not been started, design discussion in issues is worth far more right
 now than code.
 
+## Project documents
+
+| File | What it covers |
+|---|---|
+| [ARCHITECTURE.md](ARCHITECTURE.md) | The system this client will sit in, and the boundary it must respect |
+| [PRD.md](PRD.md) | What is known, and every decision still open |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | What is actually useful to contribute right now |
+| [AGENTS.md](AGENTS.md) | Instructions for AI coding agents — read before writing any code here |
+| [SECURITY.md](SECURITY.md) | What to report, and how to report it privately |
+| [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Contributor Covenant 3.0 |
+
 ## License
 
-Apache-2.0.
+Apache-2.0 — see [LICENSE](LICENSE) and [NOTICE](NOTICE).
 
-The `LICENSE` file lands with the source. It needs the copyright holder's legal name, which
-is still an open item — see the extraction plan.
+Copyright is currently attributed to **The Campus Authors**, the convention used by Go,
+Kubernetes, and Chromium. If a personal name or a company should hold it instead, that is a
+one-line change in both files.

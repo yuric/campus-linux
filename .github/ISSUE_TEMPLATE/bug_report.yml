@@ -1,0 +1,62 @@
+name: Bug report
+description: Something behaves differently than it should
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before filing: if the client is showing something wrong that the API decides —
+        which providers exist, whether a credential works, what a failure means, what a
+        stage is called — the bug is probably in the API, not here. Say so if you suspect it.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you did, and what the client did in response.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected instead
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: input
+    id: client-version
+    attributes:
+      label: Client version
+    validations:
+      required: true
+  - type: input
+    id: api
+    attributes:
+      label: Which Campus API
+      description: Hosted, or self-hosted — and its version if you know it.
+    validations:
+      required: false
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS and version, and anything else that seems relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or output
+      description: |
+        Redact anything that looks like a token or an API key before pasting.
+      render: shell
+    validations:
+      required: false
