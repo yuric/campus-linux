@@ -2,7 +2,6 @@
 
 The Campus client repositories follow the **Contributor Covenant 3.0**.
 
-
 ## Our Pledge
 
 We pledge to make our community welcoming, safe, and equitable for all.
@@ -21,7 +20,6 @@ With these considerations in mind, we agree to behave mindfully toward each othe
 * Committing to repairing harm when it occurs.
 * Behaving in other ways that promote and sustain the well-being of our community.
 
-
 ## Restricted Behaviors
 
 We agree to restrict the following behaviors in our community. Instances, threats, and promotion of these behaviors are violations of this Code of Conduct.
@@ -34,15 +32,12 @@ We agree to restrict the following behaviors in our community. Instances, threat
 * Endangerment. Causing, encouraging, or threatening violence or other harm toward any person or group.
 * Behaving in other ways that threaten the well-being of our community.
 
-
 ## Other Restrictions
-
 
 * Misleading identity. Impersonating someone else for any reason, or pretending to be someone else to evade enforcement actions.
 * Failing to credit sources. Not properly crediting the sources of content you contribute.
 * Promotional materials. Sharing marketing or other commercial content in a way that is outside the norms of the community.
 * Irresponsible communication. Failing to responsibly present content which includes, links or describes any other restricted behaviors.
-
 
 ## Reporting an Issue
 
@@ -61,13 +56,11 @@ If an investigation by the Community Moderators finds that this Code of Conduct 
 * Consequence: A private, written warning from the Community Moderators.
 * Repair: Examples of repair include a private written apology, acknowledgement of responsibility, and seeking clarification on expectations.
 
-
 * Temporarily Limited Activities
 
 * Event: A repeated incidence of a violation that previously resulted in a warning, or the first incidence of a more serious violation.
 * Consequence: A private, written warning with a time-limited cooldown period designed to underscore the seriousness of the situation and give the community members involved time to process the incident. The cooldown period may be limited to particular communication channels or interactions with particular community members.
 * Repair: Examples of repair may include making an apology, using the cooldown period to reflect on actions and impact, and being thoughtful about re-entering community spaces after the period is over.
-
 
 * Temporary Suspension
 
@@ -75,14 +68,11 @@ If an investigation by the Community Moderators finds that this Code of Conduct 
 * Consequence: A private written warning with conditions for return from suspension. In general, temporary suspensions give the person being suspended time to reflect upon their behavior and possible corrective actions.
 * Repair: Examples of repair include respecting the spirit of the suspension, meeting the specified conditions for return, and being thoughtful about how to reintegrate with the community when the suspension is lifted.
 
-
 * Permanent Ban
 
 * Event: A pattern of repeated code of conduct violations that other steps on the ladder have failed to resolve, or a violation so serious that the Community Moderators determine there is no way to keep the community safe with this person as a member.
 * Consequence: Access to all community spaces, tools, and communication channels is removed. In general, permanent bans should be rarely used, should have strong reasoning behind them, and should only be resorted to if working through other remedies has failed to change the behavior.
 * Repair: There is no possible repair in cases of this severity.
-
-
 
 This enforcement ladder is intended as a guideline. It does not limit the ability of Community Managers to use their discretion and judgment, in keeping with the best interests of our community.
 

@@ -1,0 +1,18 @@
+# Every file, by default.
+*                       @yuric
+
+# Documents that define how this repository is governed or licensed. A change
+# here is a policy change, not a code change.
+/LICENSE                @yuric
+/NOTICE                 @yuric
+/SECURITY.md            @yuric
+/CODE_OF_CONDUCT.md     @yuric
+/CODEOWNERS             @yuric
+
+# The API contract. This client renders it; it does not define it. A change
+# here that did not come from the upstream monorepo is a mistake.
+/docs/api/              @yuric
+
+# The rule this repository exists to protect.
+/AGENTS.md              @yuric
+/ARCHITECTURE.md        @yuric

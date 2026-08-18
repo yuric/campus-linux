@@ -1,0 +1,35 @@
+name: Design input
+description: Answer or sharpen one of the open questions for this client
+labels: ["design"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This client has not been started. There is no code to file a bug against — the useful
+        contribution right now is evidence that closes one of the open questions in `PRD.md`.
+  - type: dropdown
+    id: question
+    attributes:
+      label: Which open question does this address
+      options:
+        - Stack choice
+        - Credential storage on this platform
+        - Push notifications / reachability
+        - Packaging and updates
+        - Renderer feasibility
+        - Something not listed
+    validations:
+      required: true
+  - type: textarea
+    id: input
+    attributes:
+      label: What you know
+      description: Measurements, a spike, platform documentation, or direct experience. Evidence beats opinion here.
+    validations:
+      required: true
+  - type: textarea
+    id: implication
+    attributes:
+      label: What it implies for the design
+    validations:
+      required: false

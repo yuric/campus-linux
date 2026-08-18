@@ -1,0 +1,58 @@
+name: Docs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    name: Internal links resolve
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Check every relative link in Markdown points at a file that exists
+        run: |
+          fail=0
+          while IFS= read -r f; do
+            base=$(dirname "$f")
+            grep -oE '\]\([^)#][^)]*\)' "$f" | sed 's/^](//;s/)$//' | while read -r t; do
+              case "$t" in
+                http*|mailto:*|"#"*) continue ;;
+              esac
+              target="${t%%#*}"
+              [ -z "$target" ] && continue
+              if [ ! -e "$base/$target" ]; then
+                echo "::error file=$f::broken link -> $target"
+                exit 1
+              fi
+            done || fail=1
+          done < <(find . -name '*.md' -not -path './.git/*')
+          exit $fail
+
+  spec:
+    name: OpenAPI spec parses
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Parse docs/api/openapi.yaml
+        run: |
+          python3 - <<'PY'
+          import sys, pathlib
+          try:
+              import yaml
+          except ImportError:
+              sys.exit("pyyaml missing")
+          p = pathlib.Path("docs/api/openapi.yaml")
+          if not p.exists():
+              sys.exit("docs/api/openapi.yaml is missing — every README promises it")
+          d = yaml.safe_load(p.read_text())
+          paths = d.get("paths") or {}
+          print(f"openapi {d.get('openapi')}, {len(paths)} paths")
+          if not paths:
+              sys.exit("spec has no paths")
+          PY

@@ -1,0 +1,11 @@
+version: 2
+updates:
+  # GitHub Actions pins. These are a supply-chain surface: a compromised action
+  # runs with whatever the workflow grants it.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "ci"
