@@ -8,8 +8,27 @@ on:
 permissions:
   contents: read
 
+# ---------------------------------------------------------------------------
+# Every job here is gated on the repository being public.
+#
+# GitHub-hosted runner minutes are metered on private repositories, and this
+# account runs a self-hosted fleet for the monorepo rather than paying for them.
+# On a private repo these jobs get no runner at all: they fail in ~3 seconds with
+# zero steps and runner_name empty, which reads as a broken workflow rather than
+# an unavailable one. Gating keeps them visibly skipped instead of falsely red.
+#
+# They begin running the moment the repository is made public, which is also when
+# hosted minutes become free and when CI starts to matter.
+#
+# Do NOT resolve this by attaching a self-hosted runner. These repositories are
+# intended to become public, and a fork's pull request can execute arbitrary code
+# on a self-hosted runner — which would put the machine that builds and deploys
+# Campus behind an anonymous contributor's diff.
+# ---------------------------------------------------------------------------
+
 jobs:
   links:
+    if: ${{ !github.event.repository.private }}
     name: Internal links resolve
     runs-on: ubuntu-latest
     steps:
@@ -35,6 +54,7 @@ jobs:
           exit $fail
 
   spec:
+    if: ${{ !github.event.repository.private }}
     name: OpenAPI spec parses
     runs-on: ubuntu-latest
     steps:
