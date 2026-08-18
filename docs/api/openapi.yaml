@@ -411,6 +411,44 @@ paths:
         "401": { $ref: "#/components/responses/Unauthorized" }
         "429": { $ref: "#/components/responses/RateLimited" }
 
+  /service_runtime/probe:
+    post:
+      tags: [Health]
+      summary: Prove the managed local runtime identity with a fresh nonce
+      description: |
+        Echoes a caller-generated nonce through Rails and identifies the serving process and
+        release. The managed Mac runtime accepts the response only when every port listener
+        exposes the kernel socket inherited from launchd's independently verified PID and
+        start-time record both before and after the request; the echoed fields cannot choose
+        the expected identity. It uses this endpoint instead of trusting the public API index.
+      operationId: probeServiceRuntime
+      security: []
+      parameters:
+        - in: header
+          name: X-Campus-Runtime-Probe
+          required: true
+          schema: { type: string, pattern: "^[0-9a-f]{32,128}$" }
+      responses:
+        "200":
+          description: Nonce-bound runtime identity and readiness.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [contract_version, nonce, process, service_runtime]
+                properties:
+                  contract_version: { type: integer, const: 1 }
+                  nonce: { type: string }
+                  process:
+                    type: object
+                    required: [pid, release]
+                    properties:
+                      pid: { type: integer }
+                      release: { type: [string, "null"] }
+                  service_runtime: { $ref: "#/components/schemas/ServiceRuntimeContract" }
+        "422": { $ref: "#/components/responses/UnprocessableEntity" }
+        "429": { $ref: "#/components/responses/RateLimited" }
+
   /session:
     get:
       tags: [Account]
@@ -2469,6 +2507,125 @@ paths:
             application/json:
               schema: { $ref: "#/components/schemas/Error" }
               example: { error: download request not found }
+        "503": { $ref: "#/components/responses/AdministratorBootstrapRequired" }
+
+  /admin/mac_releases:
+    get:
+      tags: [Administration]
+      operationId: listMacReleases
+      summary: Every published Campus build
+      description: |
+        What has been published, newest publication first — ordered by when the decision was
+        made rather than by version string, because version strings do not sort and a rollback
+        deliberately republishes an older build.
+
+        At most one release per platform, channel and product channel carries `current: true`,
+        and that is the one `POST /download_requests` serves a link to.
+      security:
+        - cookieAuth: []
+      x-required-scope: admin
+      responses:
+        "200":
+          description: Published releases, newest first.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/AdminMacReleases" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/AdminForbidden" }
+        "503": { $ref: "#/components/responses/AdministratorBootstrapRequired" }
+    post:
+      tags: [Administration]
+      operationId: publishMacRelease
+      summary: Publish a built Campus artifact
+      description: |
+        Registers a build so `POST /download_requests` has something to link to. The body is
+        the `dist/download-manifest.json` that `deploy/mac-app.sh` writes beside the artifact,
+        field for field, plus the `url` it was uploaded to — which the script cannot know,
+        because it builds and signs but does not upload. `bytes` from the manifest is the only
+        field that is stored under a different name (`size_bytes`).
+
+        IDEMPOTENT on platform, channel, product channel, version and build. A deploy script
+        retries; a retry returns `200` and the release already recorded, untouched, where the
+        first call returned `201`. If the same identity arrives describing DIFFERENT bytes —
+        a different checksum, size, URL or revision — it is refused with `409` rather than
+        overwriting, because a published build's bytes are immutable and people verify them.
+
+        RAILS DERIVES `distributable`; the caller does not supply it. It is true only for a
+        `developer-id` build that is both signed and notarized, which is exactly the rule
+        `deploy/mac-app.sh` applies when it writes the manifest, and false for every
+        `app-store` package. Sending `distributable` is allowed and is checked: a value that
+        disagrees with what Rails derives is refused with `422`, which is how a drifted copy
+        of the build script is caught rather than quietly publishing under a rule nobody
+        reviewed. A release that is not distributable is recorded and never becomes current.
+      security:
+        - cookieAuth: []
+      x-required-scope: admin
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [mac_release]
+              properties:
+                mac_release:
+                  type: object
+                  required: [channel, product_channel, version, build, revision, url, sha256, bytes]
+                  properties:
+                    platform: { type: string, enum: [macos], default: macos }
+                    channel: { type: string, enum: [developer-id, app-store] }
+                    product_channel:
+                      type: string
+                      enum: [dev, production]
+                      description: |
+                        `deploy/mac-app.sh --product`. Only `production` is ever served to the
+                        public; the Dev app is publishable so its releases are recorded, never
+                        so a stranger is sent one.
+                    version: { type: string }
+                    build: { type: string }
+                    revision: { type: string, pattern: "^[0-9a-f]{40}$" }
+                    url:
+                      type: string
+                      format: uri
+                      description: |
+                        Must be absolute and `https://`. The host is configuration, not a
+                        constant: set `CAMPUS_DOWNLOAD_HOSTS` to a comma-separated allowlist to
+                        have it enforced, and leave it unset for any https host.
+                    sha256: { type: string, pattern: "^[0-9a-f]{64}$" }
+                    bytes: { type: integer, minimum: 1, description: Stored as `size_bytes`. }
+                    minimum_macos: { type: string }
+                    architectures: { type: array, items: { type: string } }
+                    signed: { type: boolean }
+                    notarized: { type: boolean }
+                    signing_authority: { type: string }
+                    distributable:
+                      type: boolean
+                      description: |
+                        Optional and never authoritative. Rails derives the flag; a value that
+                        disagrees is refused with 422.
+                    built_at: { type: string, format: date-time }
+      responses:
+        "200":
+          description: The identical manifest was already published. Nothing changed.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/AdminMacReleaseEnvelope" }
+        "201":
+          description: The release was published.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/AdminMacReleaseEnvelope" }
+        "400": { $ref: "#/components/responses/ParameterMissing" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/AdminForbidden" }
+        "409":
+          description: |
+            A different artifact is already published under this version and build. Rebuild
+            with a new `--build` number rather than republishing.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+        "422": { $ref: "#/components/responses/UnprocessableEntity" }
         "503": { $ref: "#/components/responses/AdministratorBootstrapRequired" }
 
   /admin/profile:
@@ -4853,11 +5010,11 @@ paths:
 
         | From | To |
         |------|-----|
-        | `imaginarium` | `seashore`, `closed` |
-        | `seashore` | `in_progress`, `imaginarium`, `closed` |
-        | `in_progress` | `blocked`, `department`, `done` |
-        | `department` | `in_progress`, `blocked` |
-        | `blocked` | `in_progress`, `seashore` |
+        | `imaginarium` | `seashore`, `closed` (**human-only** — see below) |
+        | `seashore` | `in_progress`, `imaginarium`, `closed` (**human-only** — see below) |
+        | `in_progress` | `blocked`, `department`, `done`, `closed` (**human-only** — see below) |
+        | `department` | `in_progress`, `blocked`, `closed` (**human-only** — see below) |
+        | `blocked` | `in_progress`, `seashore`, `closed` (**human-only** — see below) |
         | `done`, `closed` | `imaginarium` (**human-only** — see below) |
 
         Anything else is `422 "<from> → <to> not allowed; from <from> you can go to: …"` —
@@ -4896,6 +5053,14 @@ paths:
         * `done` — `confidence` is required **from agents only**; a human defaults it to
           100. Also increments the project's `completed_count` and parks the assignee
           (`activity=complete, status=idle_park`).
+
+        ### Every move into `closed` is human-only
+
+        Closing records that work ended without completion. An agent token that sends any
+        legal `→ closed` move gets `403` — `Task::TransitionRefused`, not a claim-holder
+        refusal — and the server-authored error directs it to a human. A human close releases
+        the task's assignee, lease, and pending assignment state, then parks every agent whose
+        live pointer still names the task (`activity=idle`, `status=idle_park`).
 
         ### `done`, `closed` → `imaginarium` is a reopen, and it is human-only
 
@@ -4943,7 +5108,7 @@ paths:
                 to: { $ref: "#/components/schemas/Stage" }
                 priority: { $ref: "#/components/schemas/Priority" }
                 blocked_reason: { type: string }
-                blocked_kind: { type: string, enum: [needs_input, error] }
+                blocked_kind: { type: string, enum: [needs_input, error, waiting_reset] }
                 specialist_type: { type: string, example: security }
                 auto_specialist: { type: boolean, default: false }
                 confidence: { type: integer, minimum: 0, maximum: 100 }
@@ -4971,6 +5136,9 @@ paths:
               reopen:
                 summary: A human brings a done or closed task back (403 from an agent token)
                 value: { to: imaginarium }
+              close:
+                summary: A human closes work that ended without completion (403 from an agent token)
+                value: { to: closed }
       responses:
         "200":
           description: Transitioned.
@@ -4980,7 +5148,7 @@ paths:
         "400": { $ref: "#/components/responses/ParameterMissing" }
         "401": { $ref: "#/components/responses/Unauthorized" }
         "403":
-          description: Missing scope, or a human-only reopen attempted by an agent token.
+          description: Missing scope, or a human-only reopen or close attempted by an agent token.
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Error" }
@@ -5002,6 +5170,13 @@ paths:
                       an agent's — it undoes a closed verdict, and an agent does not get to
                       decide that verdict was wrong. Ask a human to send it, or POST /tasks
                       with follow_up_of_id to file a new task linked to this one instead.
+                closeHumanOnly:
+                  summary: An agent token tried to close a task
+                  value:
+                    error: >-
+                      closing a task is a human's call, not an agent's: it discards the work
+                      without recording completion. Ask a human to send POST
+                      /tasks/42/transition {"to":"closed"}.
         "404": { $ref: "#/components/responses/NotFound" }
         "422":
           description: Illegal transition, or a required field for that target is missing.
@@ -5506,6 +5681,15 @@ paths:
         before the agent, token, activity event, or workspace is created. Self-hosted and
         hosted-service agents choose execution context on their own host and do not require it.
 
+        A `campus_spawned` Office may name an active saved `credential_id` whose account will
+        pay for its runs. When it omits that id for a concrete provider, Campus assigns the
+        first active credential for that provider in the island's fallback order and binds it
+        explicitly before the Office runs; when the island holds none, the landing is refused
+        with `reason: no_credential` rather than substituting anything. Campus stopped binding
+        Offices to the machine's own provider CLI login (`~/.claude`, `~/.codex`) on
+        2026-08-16. Read `GET /agents/landing_options` for the server-authored choices. Self-hosted and hosted-service agents run outside
+        Campus and do not require either binding.
+
         This is also where an agent says **what it is and what it can do**: `runtime` (whether
         Campus may start it at all), `capabilities` (what work it may be handed),
         `token_scopes` (what its own token may do) and `protocol_version` (the dialect it
@@ -5550,7 +5734,7 @@ paths:
             examples:
               spawned:
                 summary: An agent Campus will run itself
-                value: { agent: { name: scout-7, provider: anthropic, model: claude-sonnet-5, home_project_id: 9 } }
+                value: { agent: { name: scout-7, provider: anthropic, credential_id: 12, model: claude-sonnet-5, home_project_id: 9 } }
               selfHosted:
                 summary: An agent that runs elsewhere and reports in
                 value:
@@ -5570,7 +5754,43 @@ paths:
         "400": { $ref: "#/components/responses/ParameterMissing" }
         "401": { $ref: "#/components/responses/Unauthorized" }
         "403": { $ref: "#/components/responses/ForbiddenScope" }
-        "422": { $ref: "#/components/responses/UnprocessableEntity" }
+        "422":
+          description: |
+            Validation failed, a Campus-spawned Office could not bind a runnable credential, or
+            Auto could not land.
+
+            Auto refuses in two different ways and they mean opposite things. `no_credential`
+            is "there is nothing here to land on": add one. `auto_all_over_threshold` is
+            "there is, and every one of them is over the Fallback usage threshold (%)": Auto
+            will not silently spend a capped credential, so it hands back the usage table it
+            judged from and the human chooses a specific credential or waits for the window
+            that resets soonest. `used_percent` and `window` report the window that actually
+            gated the credential, which is the session window when the provider reports one
+            and the weekly window when it does not. A credential whose usage could not be
+            read carries `state: unknown` and is never counted as over the threshold.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/AgentLandingError" }
+              examples:
+                validation:
+                  value: { error: "Validation failed: Name has already been taken" }
+                noCredential:
+                  value: { error: "Campus has no active auto credential, so it cannot run this. Add one in Settings → Credentials and sign it in.", reason: no_credential }
+                autoAllOverThreshold:
+                  value:
+                    error: "Every credential on this island is over the 80% usage threshold, so Auto will not choose one for you. Land on a specific credential, or wait for the window that resets soonest."
+                    reason: auto_all_over_threshold
+                    threshold: 80
+                    credentials:
+                      - credential_id: 12
+                        label: "Claude Max · work"
+                        provider: anthropic
+                        used_percent: 97
+                        rank_percent: 64
+                        window: session
+                        resets: "in 40 minutes"
+                        state: known
+                        over_threshold: true
         "429": { $ref: "#/components/responses/RateLimited" }
 
   /agents/landing_options:
@@ -5578,7 +5798,26 @@ paths:
       tags: [Agents]
       summary: Read the execution-context contract for landing an Office
       description: |
-        Rails' versioned, API-authoritative answer to where a Campus-spawned Office may run.
+        Rails' versioned, API-authoritative answer to where a Campus-spawned Office may run
+        and which credentials may be selected. `credential_selection.options` contains the
+        current island's saved credentials only; credentials from another island are never
+        disclosed. `ambient_credential` is the server-authored copy for the "no credential
+        selected" row: landing without one assigns the first active credential for the chosen
+        provider in the island's fallback order, and refuses with `reason: "no_credential"`
+        when that island has none. It no longer offers the machine's own provider CLI login —
+        Campus stopped binding Offices to `~/.claude`/`~/.codex` on 2026-08-16, and
+        `AgentLanding` is authoritative for the rule. An empty saved list therefore DOES block
+        landing, with a message naming the fix, rather than silently spending an account the
+        user never gave Campus.
+
+        Compatibility: the field keeps its name and its `kind: ambient` value for now, because
+        shipped Mac builds decode this object and render `label` verbatim into that row, so the
+        corrected sentence reaches them with no update to install. Renaming the key would not
+        break their decode — the client property is optional, so an absent key decodes to null
+        — it would silently fall back to the label those builds ship with, which still reads
+        "Use the provider CLI's current login". The rename waits until a build that reads the
+        new name is the oldest one running; until then `kind` here is a wire constant, not a
+        claim that an `ambient` credential exists or will be created.
         Every Project remains visible: `execution.selectable` says whether it may be chosen,
         while `reason`, `message`, and `remediation` carry the normalized server decision and
         copy. A configured `default_project_id` is returned only when that Project is currently
@@ -6102,6 +6341,35 @@ paths:
         "401": { $ref: "#/components/responses/Unauthorized" }
         "403": { $ref: "#/components/responses/ForbiddenScope" }
         "404": { $ref: "#/components/responses/NotFound" }
+
+  /agents/{id}/detach_and_start_fresh:
+    parameters:
+      - $ref: "#/components/parameters/Id"
+    post:
+      tags: [Agents]
+      summary: Detach an unresumable conversation and start a fresh session
+      description: |
+        The Office error card offers this action when Rails classifies the newest run as a
+        resume-class failure (`conversation_missing`, `cwd_missing`, or `dead_birth_binding`).
+        It detaches the attached conversation and any terminal native binding with an audit
+        event, then starts a new session. Humans only. A live conversation is refused.
+      operationId: agentsDetachAndStartFresh
+      x-required-scope: agents:write
+      responses:
+        "201":
+          description: The new session, plus the agent after detach.
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/AgentSession"
+                  - type: object
+                    properties:
+                      agent: { $ref: "#/components/schemas/Agent" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/ForbiddenScope" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "422": { $ref: "#/components/responses/UnprocessableEntity" }
 
   /agents/{id}/clear_conversation:
     parameters:
@@ -6670,10 +6938,13 @@ paths:
         or it does not.
 
         **Non-spawnable entries are deliberately listed.** "We know about `google` and we do
-        not run it" is a far more useful answer than silence, and `notes` is where the reason
-        lives — the operational facts about an engine that otherwise survive only in
-        somebody's memory of an afternoon, which is exactly how a dead CLI came to be spawned
-        for a year after its vendor stopped serving it.
+        not run it" is a far more useful answer than silence, and `spawn_note` is where the
+        reason lives, in one sentence written for whoever is reading the picker. The
+        operational facts behind it — the ones that otherwise survive only in somebody's
+        memory of an afternoon, which is exactly how a dead CLI came to be spawned for a year
+        after its vendor stopped serving it — are kept as operator documentation in
+        `EngineRegistry::DEFAULTS` and are deliberately not published here. They used to be,
+        as `notes`, and a brand-new island rendered them in red under the Provider picker.
 
         Built-ins merged **under** `settings.engines`, so teaching this installation about a
         new agent type — or stopping it spawning one the day a CLI starts charging — is a
@@ -7028,7 +7299,7 @@ paths:
       summary: Read provider-account usage for one credential
       description: |
         A read-only, per-account capability result. The response is always one honest
-        state: `available`, `unsupported`, `unavailable`, or `error`. Clients add their
+        state: `available`, `unsupported`, `unavailable`, `unknown`, or `error`. Clients add their
         own `loading` state while this request is in flight.
 
         `source` is always `provider_account`. Quota dimensions (`kind: quota`), provider
@@ -7046,7 +7317,9 @@ paths:
 
         Rails owns the provider capability matrix, 15-second timeout policy, normalized
         schema, states, severity, and every user-facing string in this response. The Mac
-        broker only collects read-only CLI data under the credential's config directory.
+        broker only collects read-only CLI data. It pins providers with relocatable state
+        to the credential's config directory; Antigravity has no relocatable config store,
+        so its read reflects the Mac's one machine-wide Keychain login.
         Presentation copy is intentionally compact: `heading` names the provider-specific
         account state once, `message` carries the provider-account-versus-Campus-session
         distinction once, and `detail` is reserved for a meaningful sparse-state qualifier
@@ -7061,7 +7334,8 @@ paths:
         noninteractive local `/usage` command, whose local handler reads account utilization
         and returns without querying a model; OpenAI CLI subscriptions use Codex app-server
         `account/rateLimits/read` plus `account/usage/read`; Google Antigravity and xAI
-        Grok are `unsupported` because their account quota is interactive-TUI-only. Direct
+        Grok run the literal `/usage` command inside a private tmux server and return only
+        the captured pane for Rails to normalize. Direct
         provider API keys (a bare vendor key on any provider) are marker-only and are not
         called against a billing API — no vendor exposes one Campus reads here.
 
@@ -7071,18 +7345,18 @@ paths:
         `quota` dimension plus daily/weekly/monthly/lifetime spend as `account_activity`
         dimensions; a `null` limit (an unmetered or free-tier key) reports spend without a
         quota dimension rather than a fabricated percentage. Its figures lag slightly
-        behind real-time spend, which `detail` says plainly. Every supported read is either
-        pinned to this credential's isolated config directory (the Mac-broker-collected
-        providers above) or made directly with this credential's own secret (OpenRouter),
-        has a bounded deadline, and performs no login or OAuth mutation.
+        behind real-time spend, which `detail` says plainly. Every supported read uses a
+        bounded deadline and performs no login or OAuth mutation. Providers with relocatable
+        CLI state are pinned to this credential's isolated config directory, OpenRouter is
+        read with this credential's own secret, and Antigravity is explicitly the one
+        machine-wide-login exception.
 
-        Antigravity deserves its own sentence, because it looks supportable and is not.
-        Its headless mode (`--print --output-format json`) does return a `usage` object,
-        but that object counts the tokens of that one invocation; account quota lives in
-        the interactive `/usage` TUI panel and in a status-line hook that a live TUI
-        session pushes to a script. Neither is pollable, and per-run tokens are not
-        account quota, so Campus reports `unsupported` and says where the number is
-        instead of deriving one that would be wrong.
+        Antigravity's headless mode (`--print --output-format json`) does return a `usage`
+        object, but that object counts the tokens of that one invocation. Campus never
+        treats it as quota. Instead the broker opens the real interactive `/usage` panel;
+        Rails marks its model-family windows with `scope: model`, so a spent family is
+        visible without benching the whole credential. Grok uses the same terminal-only
+        transport while preserving its credential-specific `GROK_HOME`.
 
         **Human-only.** A slow or unsupported provider affects only this member request.
       operationId: credentialsUsage
@@ -9221,17 +9495,141 @@ components:
     DownloadRequestAccepted:
       type: object
       additionalProperties: false
-      required: [message, download_url]
+      required: [message, download_url, release, email]
       properties:
-        message: { type: string, example: "Thanks — we'll email your download link." }
+        message:
+          type: string
+          description: |
+            Server-authored, and the only sentence a client shows. It is composed from what is
+            actually true — whether a build is published, and whether this deployment can send
+            mail — so a client must render it verbatim and must never compose its own from the
+            other fields. This endpoint used to answer "Thanks — we'll email your download
+            link" unconditionally, from an API with no mail transport; that string is gone.
+          example: "Your Campus download is ready — the link is below, and a copy is on its way to your inbox."
         download_url:
           type: [string, "null"]
           format: uri
           description: |
-            Null today, and named in the contract anyway. There is no published Mac build to
-            link to; the day there is, this field starts carrying a URL and every
-            already-shipped client follows it with no release of its own. A client must treat
-            null as "we will email you" and a string as "go here now" — never omit the check.
+            The current published build for the platform that was asked for, or null when
+            there is none that Campus may serve. Only a release whose manifest reports it as
+            really signed and really notarized is ever named here.
+
+            A client treats a string as "go here now" and null as "there is nothing to
+            download yet" — it must not infer that an email is coming, which is what `email`
+            below answers.
+        release:
+          oneOf:
+            - { $ref: "#/components/schemas/PublicMacRelease" }
+            - { type: "null" }
+          description: What is on the other end of `download_url`, or null when there is none.
+        email: { $ref: "#/components/schemas/DownloadEmailStatus" }
+
+    DownloadEmailStatus:
+      type: object
+      additionalProperties: false
+      required: [status, reason]
+      description: |
+        Whether Campus is sending a copy of the link by email, decided by the server and
+        never inferred by a client. Campus does not promise an email it cannot send: the copy
+        is delivered by a background job through a configured mail transport, and a
+        deployment with neither says so here rather than staying silent.
+      properties:
+        status:
+          type: string
+          enum: [queued, not_sent]
+        reason:
+          type: [string, "null"]
+          enum: [no_release, delivery_unavailable, null]
+          description: |
+            Null exactly when `status` is `queued`.
+
+            `no_release` — there is no published build for that platform, so there is nothing
+            to send. `delivery_unavailable` — there is a build and the link is in
+            `download_url`, but this deployment cannot deliver mail right now. The precise
+            server-side cause is deliberately not published here: a stranger submitting a
+            public form can act on none of them, and naming them would describe this
+            deployment's configuration to anybody who can reach the endpoint.
+
+    PublicMacRelease:
+      type: object
+      additionalProperties: false
+      required: [platform, channel, version, build, sha256, size_bytes, minimum_macos, architectures, published_at]
+      description: |
+        The published build a download link points at, as `deploy/mac-app.sh` measured it.
+        `sha256` is read back out of the signed artifact rather than asserted, so a client may
+        show it and a careful person may verify the bytes they received.
+      properties:
+        platform: { type: string, example: macos }
+        channel: { type: string, example: developer-id }
+        version: { type: string, example: "0.25.119.3" }
+        build: { type: string, example: "4211" }
+        sha256: { type: string, pattern: "^[0-9a-f]{64}$" }
+        size_bytes: { type: integer, minimum: 1 }
+        minimum_macos: { type: [string, "null"], example: "14.0" }
+        architectures:
+          type: array
+          items: { type: string }
+          example: [arm64, x86_64]
+        published_at: { type: string, format: date-time }
+
+    AdminMacRelease:
+      type: object
+      additionalProperties: false
+      required:
+        [id, platform, channel, product_channel, version, build, revision, url, sha256,
+         size_bytes, minimum_macos, architectures, signed, notarized, signing_authority,
+         distributable, current, built_at, published_at, published_by]
+      properties:
+        id: { type: integer }
+        platform: { type: string, enum: [macos] }
+        channel: { type: string, enum: [developer-id, app-store] }
+        product_channel: { type: string, enum: [dev, production] }
+        version: { type: string }
+        build: { type: string }
+        revision: { type: string, pattern: "^[0-9a-f]{40}$" }
+        url: { type: string, format: uri }
+        sha256: { type: string, pattern: "^[0-9a-f]{64}$" }
+        size_bytes: { type: integer }
+        minimum_macos: { type: [string, "null"] }
+        architectures: { type: array, items: { type: string } }
+        signed: { type: boolean }
+        notarized: { type: boolean }
+        signing_authority: { type: [string, "null"] }
+        distributable:
+          type: boolean
+          description: |
+            Server-derived, never taken from the request: true only for a `developer-id`
+            build that is both signed and notarized. An `app-store` package is always false —
+            it is uploaded for review, not downloaded, and notarytool rejects an Apple
+            Distribution signature outright.
+        current:
+          type: boolean
+          description: |
+            Whether this is the release the public download serves. At most one release per
+            platform, channel and product channel is current, and a release that is not
+            distributable can never be.
+        built_at: { type: [string, "null"], format: date-time }
+        published_at: { type: string, format: date-time }
+        published_by:
+          oneOf:
+            - { $ref: "#/components/schemas/User" }
+            - { type: "null" }
+
+    AdminMacReleases:
+      type: object
+      additionalProperties: false
+      required: [mac_releases]
+      properties:
+        mac_releases:
+          type: array
+          items: { $ref: "#/components/schemas/AdminMacRelease" }
+
+    AdminMacReleaseEnvelope:
+      type: object
+      additionalProperties: false
+      required: [mac_release]
+      properties:
+        mac_release: { $ref: "#/components/schemas/AdminMacRelease" }
 
     RequestLocationContract:
       type: object
@@ -9468,7 +9866,7 @@ components:
         config_dir:
           type: [string, "null"]
           maxLength: 4096
-          description: Required only for a CLI subscription; absent for an API key.
+          description: Required for a CLI subscription or ambient provider login; absent for an API key.
         account_identifier: { type: [string, "null"], maxLength: 320 }
         observed_at: { type: string, format: date-time }
 
@@ -9482,11 +9880,11 @@ components:
         login:
           type: object
           additionalProperties: true
-          description: CLI subscriptions carry a directly forwardable broker login request with an opaque credential_scope; the broker allocates its local directory.
+          description: CLI subscriptions carry a directly forwardable broker login request with an opaque credential_scope; the broker allocates its local directory. Ambient credentials instead describe the provider CLI's existing current login and never request a new broker login.
         verification:
           type: object
           additionalProperties: true
-          description: CLI subscriptions carry the matching broker verification request; Swift does not choose provider commands or paths.
+          description: CLI subscriptions and ambient credentials carry matching broker verification requests; Swift does not choose provider commands or paths. Ambient verification is marked explicitly so the broker can allow only the engine's exact default namespace.
 
     ExecutorCredentialBindingEnvelope:
       type: object
@@ -9587,7 +9985,12 @@ components:
             compatibility: { $ref: "#/components/schemas/ExecutionReadiness" }
             broker_request:
               type: object
-              description: Directly forwardable to the channel-scoped local broker; generic env contains only CAMPUS_* keys and never a provider secret.
+              description: |
+                Directly forwardable to the channel-scoped local broker; generic env contains
+                only CAMPUS_* keys and never a provider secret. Ambient credentials carry
+                `ambient_login: true` plus the verified provider-default `config_dir`; the
+                broker accepts that flag only for its own exact engine default and never as a
+                caller-selected path bypass.
               additionalProperties: true
             shutdown_result:
               type: object
@@ -9648,7 +10051,7 @@ components:
           type: object
           required: [kind, secret, injection]
           properties:
-            kind: { type: string, enum: [api_key, cli_subscription] }
+            kind: { type: string, enum: [api_key, cli_subscription, ambient] }
             secret: { type: [string, "null"], description: Returned only for an API key and never in a claim, log, argv, or generic env. }
             injection:
               type: object
@@ -10220,7 +10623,7 @@ components:
           properties:
             kind: { type: string, examples: [task, comment, agent, agent_message, board_message] }
             id: { type: integer }
-            blocked_kind: { type: [string, "null"], enum: [needs_input, error, null] }
+            blocked_kind: { type: [string, "null"], enum: [needs_input, error, waiting_reset, null] }
             council_verdict: { type: [string, "null"] }
         task_id: { type: [integer, "null"] }
         agent_id: { type: [integer, "null"] }
@@ -10517,7 +10920,16 @@ components:
             The task this one continues, if any. Must name a task that exists — one that does
             not is `422` and creates nothing. Human and agent callers may both send it.
         blocked_reason: { type: [string, "null"] }
-        blocked_kind: { type: [string, "null"], enum: [needs_input, error, null] }
+        blocked_kind:
+          type: [string, "null"]
+          enum: [needs_input, error, waiting_reset, null]
+          description: |
+            Why the card is in Blocked. `needs_input` waits on a person. `error` is a
+            failure that will not resume by itself. `waiting_reset` is a temporary
+            park: every usable credential is spent, Campus will resume when the
+            named credential resets, and a human is not required. Added 2026-08-17;
+            clients that do not know the token must treat it as an unknown
+            `blocked_kind` (fail closed on actions, never as `error`).
         resolution:
           oneOf:
             - $ref: "#/components/schemas/TaskResolution"
@@ -10955,7 +11367,7 @@ components:
         to: { $ref: "#/components/schemas/Stage" }
         priority: { $ref: "#/components/schemas/Priority" }
         blocked_reason: { type: string }
-        blocked_kind: { type: string, enum: [needs_input, error] }
+        blocked_kind: { type: string, enum: [needs_input, error, waiting_reset] }
         specialist_type: { type: string }
         confidence: { type: number, minimum: 0, maximum: 100 }
         assignee:
@@ -11215,11 +11627,13 @@ components:
               items: { $ref: "#/components/schemas/TaskFollowUpOf" }
 
     TaskDetail:
-      description: A task as `GET /tasks/{id}` returns it — every column plus its active Board request, assignee, follow-up links, and full comment thread.
+      description: A task as `GET /tasks/{id}` returns it — every column plus its run history, active Board request, assignee, follow-up links, and full comment thread.
       allOf:
         - $ref: "#/components/schemas/Task"
         - type: object
+          required: [runs]
           properties:
+            runs: { $ref: "#/components/schemas/TaskRuns" }
             attention:
               oneOf:
                 - $ref: "#/components/schemas/TaskAttention"
@@ -11519,7 +11933,7 @@ components:
             required: [task_id, blocked_kind, age_seconds, title]
             properties:
               task_id: { type: integer }
-              blocked_kind: { type: string, enum: [needs_input, error] }
+              blocked_kind: { type: string, enum: [needs_input, error, waiting_reset] }
               age_seconds: { type: integer, description: Seconds since the task's `blocked_at`. }
               title: { type: string }
         attention:
@@ -11786,7 +12200,8 @@ components:
       required:
         [id, name, character, provider, model, status, activity, tired, is_mascot, specialty,
          attention, current_task_id, credential_id, home_project_id, execution_context, created_at,
-         archived_at, runtime, capabilities, token_scopes, last_seen_at, live, conversation]
+         archived_at, runtime, capabilities, token_scopes, last_seen_at, live, conversation,
+         dismissal]
       properties:
         id: { type: integer }
         name: { type: string }
@@ -11812,6 +12227,14 @@ components:
         execution_context: { $ref: "#/components/schemas/AgentExecutionContext" }
         created_at: { type: string, format: date-time }
         archived_at: { type: [string, "null"], format: date-time, description: Set on dismissal; archived agents cannot authenticate. }
+        dismissal:
+          description: |
+            The Rails-authored destructive action shown by human clients. `null` after the
+            agent is dismissed. Clients withhold the action when this field is absent during
+            mixed-version rollout or when `version` is unknown.
+          oneOf:
+            - { $ref: "#/components/schemas/AgentDismissalAction" }
+            - { type: "null" }
         runtime: { $ref: "#/components/schemas/AgentRuntime" }
         capabilities:
           type: array
@@ -11854,6 +12277,32 @@ components:
             `AgentSession`.
           allOf:
             - $ref: "#/components/schemas/AgentConversation"
+        resume_recovery:
+          $ref: "#/components/schemas/ResumeRecovery"
+
+    ResumeRecovery:
+      type: object
+      description: |
+        Rails-authored resume-class diagnosis for this Office's newest run. Present on every
+        agent. `class` and `action` are null when the newest run is not a resume-class
+        failure. A client renders `last_error` and `action.label` verbatim and never
+        classifies the death from HTTP success or provider output.
+      required: [version, class, last_error, action]
+      properties:
+        version: { type: integer }
+        class:
+          type: [string, "null"]
+          enum: [conversation_missing, cwd_missing, dead_birth_binding, null]
+        last_error: { type: [string, "null"] }
+        action:
+          type: [object, "null"]
+          required: [version, id, label, description, intent]
+          properties:
+            version: { type: integer }
+            id: { type: string, enum: [detach_and_start_fresh] }
+            label: { type: string }
+            description: { type: string }
+            intent: { type: string, enum: [destructive] }
 
     AgentConversation:
       type: object
@@ -11897,7 +12346,17 @@ components:
       required: [name]
       properties:
         name: { type: string, example: scout-7 }
-        credential_id: { type: [integer, "null"] }
+        credential_id:
+          type: [integer, "null"]
+          description: |
+            An active saved credential from the current island. For a concrete provider,
+            omitting it asks Campus to assign one: the first active credential for that
+            provider in the island's fallback order, or `reason: no_credential` when there is
+            none. It never selects the machine's own CLI login. Ignored when `provider` is
+            `auto`, because Rails chooses the complete saved credential/provider/model tuple.
+            Agent-token callers may not name a saved credential id. An id outside the
+            authenticated island, or one that does not exist, is refused identically and is
+            never silently replaced.
         home_project_id:
           type: [integer, "null"]
           description: |
@@ -11951,11 +12410,43 @@ components:
             seed: { type: string }
             palette: { type: [string, "null"] }
 
+    AgentLandingError:
+      type: object
+      required: [error]
+      properties:
+        error: { type: string }
+        reason:
+          type: string
+          enum: [no_credential, auto_all_over_threshold]
+          description: Absent for ordinary validation failures.
+        threshold:
+          type: integer
+          minimum: 0
+          maximum: 100
+          description: Present with `auto_all_over_threshold`; the server setting Auto enforced.
+        credentials:
+          type: array
+          description: Present with `auto_all_over_threshold`; the same server-authored table Auto judged.
+          items:
+            type: object
+            required: [credential_id, label, provider, used_percent, rank_percent, window,
+                       resets, state, over_threshold]
+            properties:
+              credential_id: { type: integer }
+              label: { type: string }
+              provider: { type: string }
+              used_percent: { type: [integer, "null"], minimum: 0, maximum: 100 }
+              rank_percent: { type: [integer, "null"], minimum: 0, maximum: 100 }
+              window: { type: [string, "null"], enum: [session, weekly, null] }
+              resets: { type: [string, "null"] }
+              state: { type: string, enum: [known, unknown] }
+              over_threshold: { type: boolean }
+
     AgentWithToken:
       allOf:
         - $ref: "#/components/schemas/Agent"
         - type: object
-          required: [token, landing_prompt, protocol_version, start]
+          required: [token, landing_prompt, protocol_version, token_notice, start]
           properties:
             token:
               type: string
@@ -11969,6 +12460,11 @@ components:
                 The dialect **this server** speaks, not an echo of what the agent sent. An
                 agent that opened with `"0.9"` is told `"1"` rather than agreed with.
               example: "1"
+            token_notice:
+              type: [string, "null"]
+              description: |
+                Rails-authored token handling guidance. Null when the queued start will rotate
+                this token immediately; otherwise rendered verbatim beside the one-time token.
             start:
               $ref: "#/components/schemas/LandingStart"
 
@@ -12013,9 +12509,42 @@ components:
 
     AgentLandingOptions:
       type: object
-      required: [contract_version, project_selection, task_override, projects]
+      required: [contract_version, bulk_landing, project_selection, credential_selection, task_override, ambient_credential, projects]
       properties:
-        contract_version: { type: integer, enum: [1] }
+        contract_version: { type: integer, enum: [2] }
+        bulk_landing:
+          type: object
+          description: |
+            How many agents this host can take, and the sentence explaining why. Versioned on
+            its own so a client can adopt bulk landing without waiting for the rest of this
+            contract to move.
+
+            `maximum` is derived from the host's AVAILABLE memory, after reserving room for
+            Campus and ordinary desktop work, bounded by the processor count, and it falls
+            back to 11 exactly when the machine's counters cannot be read (`basis: fallback`).
+            `available` is `maximum` minus the Campus-spawned agents already running, which is
+            the number a quantity control should offer. Clients render these values and the
+            explanation verbatim; a client that computes capacity is inventing a claim about a
+            machine the server is the one running on.
+
+            No name preview is published here: a preview is only true for a chosen model and
+            credential, and this route has neither.
+          required: [contract_version, capacity, message]
+          properties:
+            contract_version: { type: integer, enum: [1] }
+            capacity:
+              type: object
+              required: [maximum, running, available, basis, explanation]
+              properties:
+                maximum: { type: integer, description: Agents this host can run at once. }
+                running: { type: integer, description: Campus-spawned agents with a live session. }
+                available: { type: integer, description: "`maximum` minus `running`, never below zero." }
+                basis:
+                  type: string
+                  enum: [measured, fallback]
+                  description: "`fallback` means the machine's counters could not be read and 11 is being offered."
+                explanation: { type: string }
+            message: { type: string }
         project_selection:
           type: object
           required: [required, default_project_id, message]
@@ -12023,12 +12552,50 @@ components:
             required: { type: boolean, enum: [true] }
             default_project_id: { type: [integer, "null"] }
             message: { type: string }
+        credential_selection:
+          type: [object, "null"]
+          description: Present for human principals; null for agent tokens so credential metadata is not disclosed.
+          required: [required, message, options, empty]
+          properties:
+            required:
+              type: boolean
+              enum: [false]
+              description: A saved credential is optional because `ambient_credential` is a runnable explicit choice.
+            message: { type: string }
+            options:
+              type: array
+              items: { $ref: "#/components/schemas/Credential" }
+            empty:
+              type: object
+              required: [message, action]
+              properties:
+                message: { type: string }
+                action:
+                  type: object
+                  required: [id, label, destination, presentation]
+                  properties:
+                    id: { type: string, enum: [add_credentials] }
+                    label: { type: string }
+                    destination: { type: string, enum: [credentials] }
+                    presentation: { type: string, enum: [add_credential] }
         task_override:
           type: object
           required: [rule, message]
           properties:
             rule: { type: string, enum: [task_project_for_next_session] }
             message: { type: string }
+        ambient_credential:
+          type: object
+          description: |
+            Copy for the "no credential selected" row. `label` describes what leaving the
+            selection empty does — Campus assigns an active credential for the chosen provider
+            in fallback order — and is rendered verbatim. `kind` is a retained wire constant,
+            not an offer to bind the machine's own CLI login; see the endpoint description for
+            the rename plan.
+          required: [kind, label]
+          properties:
+            kind: { type: string, enum: [ambient] }
+            label: { type: string }
         projects:
           type: array
           items: { $ref: "#/components/schemas/AgentLandingProject" }
@@ -12056,6 +12623,21 @@ components:
       properties:
         error: { type: string }
         execution_context: { $ref: "#/components/schemas/AgentExecutionContext" }
+
+    AgentDismissalAction:
+      type: object
+      required: [version, label, intent, confirmation]
+      properties:
+        version: { type: integer, enum: [1] }
+        label: { type: string }
+        intent: { type: string, enum: [destructive] }
+        confirmation:
+          type: object
+          required: [title, body, confirm_label]
+          properties:
+            title: { type: string }
+            body: { type: string }
+            confirm_label: { type: string }
 
     RotatedAgent:
       description: |
@@ -12091,6 +12673,40 @@ components:
         that does not exist, and the agent returns to the park. A session left in `running`
         goes on being believed until it has been silent for ten minutes (external) or its pid
         stops answering (spawned).
+
+    TaskRuns:
+      type: object
+      additionalProperties: false
+      required: [version, empty_message, entries]
+      properties:
+        version: { type: integer, enum: [1] }
+        empty_message: { type: string, description: Rails-authored copy used when entries is empty. }
+        entries:
+          type: array
+          description: Live runs first, then newest started run first; includes every prior holder.
+          items: { $ref: "#/components/schemas/TaskRun" }
+
+    TaskRun:
+      type: object
+      additionalProperties: false
+      required: [session_id, agent_id, agent_name, engine, started_at, ended_at,
+                 duration_seconds, outcome]
+      properties:
+        session_id: { type: integer }
+        agent_id: { type: integer }
+        agent_name: { type: string }
+        engine: { type: string }
+        started_at: { type: [string, "null"], format: date-time }
+        ended_at: { type: [string, "null"], format: date-time }
+        duration_seconds: { type: [number, "null"], minimum: 0 }
+        outcome:
+          type: object
+          additionalProperties: false
+          required: [state, exit_code, headline]
+          properties:
+            state: { $ref: "#/components/schemas/SessionState" }
+            exit_code: { type: [integer, "null"] }
+            headline: { type: string, description: Rails-authored outcome or failure summary. }
 
     AgentSession:
       type: object
@@ -12412,7 +13028,7 @@ components:
         One row of the engine registry — what this installation knows about a provider, and
         whether it will spawn it.
       required: [provider, display_name, engine, binary, spawnable, credential_kinds,
-                 model_catalog_supported, fallback, notes]
+                 model_catalog_supported, fallback, spawn_note, credential_kinds_note]
       properties:
         provider:
           type: string
@@ -12453,7 +13069,7 @@ components:
             afford to be told it worked when it did not.
         credential_kinds:
           type: array
-          items: { type: string, enum: [api_key, cli_subscription] }
+          items: { type: string, enum: [api_key, cli_subscription, ambient] }
           description: |
             Stored credential kinds the runner can actually apply for this provider. Clients
             use this list to prevent a credential picker from promising a pairing the server
@@ -12516,13 +13132,42 @@ components:
           examples:
             - "Campus has no active anthropic credential, so it cannot run this provider yet. Add one under Credentials, then pick a model here."
             - "Picks the least-used qualified credential across every provider at landing time, then behaves like an ordinary agent on whatever it picked — nothing ever persists provider \"auto\". A landing that finds no qualified credential at all refuses the same way any other provider with none does."
-        notes:
-          type: string
+        spawn_note:
+          type: [string, "null"]
           description: |
-            Not decoration. This is where the operational facts about an engine live — the ones
-            that otherwise survive only in somebody's memory of an afternoon, which is how a
-            CLI came to be spawned for a year after its vendor stopped serving it. Empty string
-            when there are none.
+            Why Campus will not start this provider, in words for the person looking at a
+            picker, and `null` when it will. Render it; never compose a sentence about this
+            from `spawnable` and a guess at the reason.
+
+            **Compatibility.** This field replaced `notes` on 2026-08-17 and `notes` is no
+            longer sent. `notes` carried the operational facts about an engine — how the CLI
+            is spawned, which exit code lies, what scrubs `XAI_API_KEY` — and clients rendered
+            it verbatim under the Provider picker, so a brand-new island on a hosted
+            deployment showed five to seven lines of internal documentation in red, with the
+            AWS Lambda explanation appended. Those facts still exist in
+            `EngineRegistry::DEFAULTS` as operator documentation; they are simply not part of
+            this contract, because they were never written for a reader. A client that still
+            decodes `notes` gets an absent field and must treat that as "nothing to say"
+            rather than as an error; every shipped client already defaults it to empty.
+
+            Four reasons, one sentence each, ordered by what a reader can act on:
+          examples:
+            - "This Campus runs in the cloud and cannot start Anthropic (Claude) here. Land a self-hosted agent instead, or run Campus on your own Mac."
+            - "Anthropic (Claude) is switched off for this Campus. Turn it back on in Settings, or choose another provider."
+            - "This Campus has no way to start Anthropic (Claude). Choose another provider, or run this agent outside Campus."
+            - "Campus picks the provider and credential for you when this agent lands."
+        credential_kinds_note:
+          type: [string, "null"]
+          description: |
+            Why a credential kind this provider normally accepts is unavailable right now, and
+            `null` when none is. Today the one case is a Google CLI login while the macOS
+            broker's `agy` path is unhealthy: `credential_kinds` loses `cli_subscription` and
+            `ambient`, and this says why, so a reader is not left wondering where the
+            credential they already added went. It used to be appended to `notes`, which is
+            how one genuinely user-facing sentence came to travel beside five lines that were
+            not.
+          examples:
+            - "The unlocked macOS broker's `agy` engine is not currently available, so Google CLI-login credentials are blocked until that broker path is healthy."
 
     EngineCredential:
       type: object
@@ -12536,7 +13181,7 @@ components:
         label:
           type: string
           description: Server-authored — the operator's label, else `provider · account email`.
-        kind: { type: string, enum: [api_key, cli_subscription] }
+        kind: { type: string, enum: [api_key, cli_subscription, ambient] }
 
     ModelCatalog:
       type: object
@@ -12803,7 +13448,7 @@ components:
 
     SessionEvent:
       type: object
-      required: [id, agent_session_id, kind, body, display_body, created_at]
+      required: [id, agent_session_id, kind, body, display_body, transcript, created_at]
       properties:
         id: { type: integer }
         agent_session_id: { type: integer }
@@ -12812,7 +13457,47 @@ components:
         display_body:
           type: string
           description: Rails-authored rendering form with ANSI terminal sequences, bidirectional overrides, and zero-width controls removed recursively from structured JSON. Clients render this field while retaining body only for audit.
+        transcript: { $ref: "#/components/schemas/TranscriptEntry" }
         created_at: { type: string, format: date-time }
+
+    TranscriptEntry:
+      type: object
+      description: |
+        Rails' own reading of one engine line, so a client never classifies provider events
+        itself. Additive beside `body` and `display_body`, which are unchanged.
+
+        A provider record shape Campus has not measured is answered honestly rather than
+        dropped or dressed up: `role: out`, the record's own type as the label, and
+        `secondary: true`.
+
+        Clients accept contract version 1 and its documented enums. A present unknown version
+        or enum fails closed; it must not revive client-side parsing of the provider `body`.
+      required: [contract_version, role, text, text_format, secondary, is_error]
+      properties:
+        contract_version: { type: integer, examples: [1] }
+        role:
+          type: string
+          enum: [agent, human, tool, status, error, out]
+          description: |
+            `agent` is the model's own prose and is the only role a client should draw as the
+            agent speaking. `human` is a native transcript's user prompt, `tool` is work it
+            did, `status` is bookkeeping, `error` is a wall it hit, `out` is a line Campus
+            could not classify.
+        label:
+          type: [string, "null"]
+          maxLength: 200
+          description: Server-authored headline or activity label for the line, e.g. "Ran a command", "Edited 2 files", or "Used Read" beside agent prose. Null when `text` is the whole story.
+        text:
+          type: string
+          description: The readable body, display-safe and truncated to 2000 characters. The full record remains in `body`.
+        text_format:
+          type: string
+          enum: [plain, command, command_output, file_list]
+          description: How to render `text`. Anything but `plain` is monospace machine output, which is what keeps a page of SQL out of a speech bubble.
+        secondary:
+          type: boolean
+          description: Bookkeeping and routine tool activity. Clients collapse or de-emphasize these; a failure is never secondary.
+        is_error: { type: boolean }
 
     AgentMessage:
       type: object
@@ -12844,20 +13529,26 @@ components:
       properties:
         id: { type: integer }
         provider: { type: string, enum: [anthropic, openai, google, xai, openrouter, custom] }
-        kind: { type: string, enum: [api_key, cli_subscription] }
+        kind: { type: string, enum: [api_key, cli_subscription, ambient] }
         label: { type: string, description: "Falls back to `\"<provider> · <account_email or 'unverified'>\"`." }
         account_email: { type: [string, "null"] }
         status:
           type: string
           enum: [unverified, active, expired]
           description: |
-            `unverified` — created, never confirmed to work. `active` — a login check
-            passed. `expired` — it used to work and no longer does, so the user must sign
-            in to this credential again (`POST /credentials/{id}/login_command`, then
-            `POST /credentials/{id}/verify`). Only a previously `active` credential can
-            expire, and only on a check that proves the login is broken rather than one
-            that merely could not reach the provider.
-        config_dir: { type: [string, "null"], description: Private CLI config dir owned by this credential. }
+            `unverified` — created, never confirmed to work. `active` — a login check passed
+            or an API key has stored secret material; a registered executor still requires its
+            own verified binding before it may run. `expired` — a previously active login was
+            proven broken, so an isolated subscription must sign in and verify again
+            (`POST /credentials/{id}/login_command`, then `POST /credentials/{id}/verify`).
+            An inconclusive provider check never expires a credential.
+
+            A legacy `ambient` row reports its stored status like any other, but Campus no
+            longer provisions or restores one: the kind was retired on 2026-08-16 and is never
+            selected for a run, only honoured through an explicit existing binding.
+        config_dir:
+          type: [string, "null"]
+          description: Private Campus-owned config directory for an isolated CLI subscription, the broker-observed provider-default directory for an ambient login, or null for an API key.
         created_at: { type: string, format: date-time }
         availability:
           $ref: "#/components/schemas/CredentialAvailability"
@@ -12887,9 +13578,10 @@ components:
       required: [state, message]
       description: |
         Whether THIS deployment target can actually put this credential to work right now —
-        distinct from `status`, which is about the login itself. A `cli_subscription`'s OAuth
-        tokens live on one registered Mac, so an `active` subscription can still be unusable
-        from the AWS request process while remaining usable through its verified executor;
+        distinct from `status`, which is about the login itself. A provider CLI login's OAuth
+        tokens live on one registered Mac, so an active `cli_subscription` or `ambient`
+        credential can still be unusable from the AWS request process while remaining usable
+        through its verified executor;
         a client must never infer that from HTTP status alone, so Rails authors both the
         verdict and the explanation.
       properties:
@@ -12900,8 +13592,9 @@ components:
             `usable` — this deployment can use it: local execution (any kind), or a
             serverless `api_key` with a stored secret. `needs_secret` — a serverless
             `api_key` with no stored secret; it must be re-entered on this deployment.
-            `machine_bound` — a `cli_subscription` on a serverless deployment; its tokens
-            live on a registered Mac and Lambda delegates rather than reading them.
+            `machine_bound` — a `cli_subscription` or `ambient` credential on a serverless
+            deployment; its tokens live on a registered Mac and Lambda delegates rather than
+            reading them.
         message:
           type: [string, "null"]
           description: API-authored explanation, present for every non-`usable` state and null for `usable`.
@@ -12916,7 +13609,7 @@ components:
           description: Explicit response-contract version; clients never infer schema generations.
         credential_id: { type: integer }
         provider: { type: string, enum: [anthropic, openai, google, xai, openrouter, custom] }
-        state: { type: string, enum: [available, unsupported, unavailable, error] }
+        state: { type: string, enum: [available, unsupported, unavailable, unknown, error] }
         severity: { type: string, enum: [neutral, good, attention, failure] }
         severity_label:
           type: [string, "null"]
@@ -12924,7 +13617,12 @@ components:
         source: { type: string, const: provider_account }
         heading: { type: string, description: API-authored card heading. }
         message: { type: string, description: API-authored domain explanation. }
-        detail: { type: [string, "null"], description: Optional API-authored supporting detail. }
+        detail:
+          type: [string, "null"]
+          description: |
+            Optional API-authored supporting detail. For `unknown`, this is the bounded raw
+            terminal tail that could not be recognized, so layout drift is diagnosable without
+            Campus fabricating a quota value.
         resting_message:
           type: [string, "null"]
           description: |
@@ -12952,7 +13650,10 @@ components:
         fetched_at: { type: [string, "null"], format: date-time }
         code:
           type: [string, "null"]
-          description: Stable concise failure category such as `timeout` or `broker_unavailable`.
+          description: |
+            Stable concise failure category such as `timeout`, `broker_unavailable`,
+            `tmux_missing`, or `collector_error`. Collector transport failures remain
+            distinct from a provider refusing the read.
         dimensions:
           type: array
           items: { $ref: "#/components/schemas/AccountUsageDimension" }
@@ -12976,6 +13677,38 @@ components:
             clients must render rather than treat as absent. Additive: a client that does
             not recognize the value renders `label` and `value` like any other non-quota
             dimension, so this did not bump the contract version.
+        scope:
+          type: string
+          enum: [account, model]
+          default: account
+          description: |
+            How wide this window's claim is, and therefore whether Campus may act on it as
+            a fact about the credential.
+
+            `account` is the whole subscription — Claude's `Current session` and
+            `Current week (all models)`, plus providers such as Codex and Grok whose
+            reported windows cover the credential. `model` caps one model or model family
+            inside the account, such as Claude's `Current week (Fable)` or Antigravity's
+            `Gemini models · Weekly Limit`: it can read 0% remaining while the account's own
+            windows still have room, so it is rendered like any other dimension but never
+            benches the credential and never counts toward the fallback usage threshold.
+            Campus has no model-scoped fallback yet; until it does, a spent per-model cap
+            is reported and not acted on.
+
+            Additive and optional: an absent value means `account`, which is how every
+            snapshot written before this field existed behaves, so this did not bump the
+            contract version.
+        window:
+          type: [string, "null"]
+          enum: [session, weekly, null]
+          description: |
+            Which account quota window this dimension measures. `session` is a provider's
+            short rolling window; `weekly` is its account week. Auto landing ranks by the
+            account-scoped weekly window and gates by the account-scoped session window when
+            present, otherwise by the account-scoped weekly window. Model-scoped windows are
+            rendered but never rank or gate a whole credential. An absent value means the
+            provider evidence did not classify the window, never that a client should infer it
+            from `label`.
         used_percent: { type: [integer, "null"], minimum: 0, maximum: 100 }
         remaining_percent: { type: [integer, "null"], minimum: 0, maximum: 100 }
         used_label:
@@ -12987,7 +13720,11 @@ components:
         resets_at: { type: [string, "null"], format: date-time }
         reset_description:
           type: [string, "null"]
-          description: Provider-supplied reset text when no structured timestamp is exposed.
+          description: |
+            Provider-supplied reset text. Claude still emits this prose (no year, a named
+            zone in parentheses). When the prose parses, `resets_at` is also filled as
+            ISO8601 in that zone; unparseable or already-past prose leaves `resets_at`
+            null and keeps this field so the card can still render it.
         amount:
           type: [string, "null"]
           description: API-normalized counter whose provider-documented denomination is known.
