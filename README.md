@@ -71,6 +71,6 @@ now than code.
 
 Apache-2.0 — see [LICENSE](LICENSE) and [NOTICE](NOTICE).
 
-Copyright is currently attributed to **The Campus Authors**, the convention used by Go,
-Kubernetes, and Chromium. If a personal name or a company should hold it instead, that is a
-one-line change in both files.
+Copyright is held by **Yuri Costa (YCStudios Inc)**. The company name is provisional
+pending final incorporation; if it changes, it is a one-line update in `LICENSE` and
+`NOTICE`.
