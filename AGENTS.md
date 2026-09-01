@@ -86,10 +86,16 @@ export. Do not expect a commit here to survive. See `CONTRIBUTING.md`.
 
 This repository is not renamed. The upstream monorepo referenced elsewhere in this file (for
 example in Wire-shape changes) becomes `yuric/campus-server`; this repository's own `origin`
-is unaffected and needs no change here. If you separately hold a checkout of that monorepo,
-repoint it with `git remote set-url origin https://github.com/yuric/campus-server.git`, run
-once in any of its worktrees since they share the parent checkout's `origin`; see its
-`.claude/skills/repo-cutover-continue/SKILL.md` for the full detect/heal procedure.
+is unaffected and needs no change here. If you separately hold a checkout of that monorepo, identify it by its stable GitHub repository
+id, never by name: `gh api repos/yuric/campus --jq '.id, .full_name'` printing `1311891398` and
+`yuric/campus-server` means renamed, so repoint; `1311891398` still at `yuric/campus` means not yet,
+do nothing; any other id, a 404, or an auth or API error means the name may have been reused or
+the state is unknown, so stop before any fetch or push and escalate. When repointing, preserve the
+transport the checkout already uses: `git remote set-url origin git@github.com:yuric/campus-server.git`
+for SSH, `git remote set-url origin https://github.com/yuric/campus-server.git` for HTTPS, and never
+print a URL that carries credentials. Run it once in any of its worktrees, since they share the
+parent checkout's `origin`; the monorepo's `.claude/skills/repo-cutover-continue/SKILL.md` has the
+full procedure.
 
 ## Linux-specific notes for whoever starts this
 
