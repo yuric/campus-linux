@@ -23,9 +23,8 @@ started". Those are the decisions, not preliminaries to them.
 - Improve `PRD.md` itself as answers arrive.
 - Point out where the plan contradicts what the shipped clients actually do.
 
-## The shipped clients are the specification
+## The shipped client is the specification
 
-- [`campus-cli`](https://github.com/yuric/campus-cli) — smallest and most readable; start here.
 - [`campus-macos`](https://github.com/yuric/campus-macos) — native Swift; the reference for
   local agent execution, and home of the island renderer.
 

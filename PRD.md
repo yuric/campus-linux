@@ -48,14 +48,10 @@ task for this repository.**
 
 ## Reference
 
-The existing clients are the specification in practice:
+The existing client is the specification in practice:
 
-- [`campus-cli`](https://github.com/yuric/campus-cli) — smallest and most readable; the best
-  starting point for understanding the API.
-- [`campus-macos`](https://github.com/yuric/campus-macos) — native Swift, and the reference
-  for local agent execution.
-- [`campus-web`](https://github.com/yuric/campus-web) — React and Three.js; home of the
-  island renderer.
+- [`campus-macos`](https://github.com/yuric/campus-macos), native Swift: the reference for
+  local agent execution, and home of the island renderer.
 
 `docs/api/openapi.yaml` is the contract itself.
 
