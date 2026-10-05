@@ -22,6 +22,6 @@
       or anywhere outside the platform credential store.
 - [ ] Documentation updated if behaviour or setup changed.
 
-> **Heads up:** this repository is a mirror of a private monorepo. A pull request here
-> cannot be merged directly — changes are back-ported upstream and return in a later export.
-> That is not a reflection on the contribution; see [CONTRIBUTING.md](../CONTRIBUTING.md).
+> **Heads up:** pull requests here are merged into `main`, but this client has not been
+> started, so open an issue first for anything substantial. API changes start in
+> `yuric/campus-server`, not here; see [CONTRIBUTING.md](../CONTRIBUTING.md).

@@ -48,10 +48,9 @@ Different users, different products. The second may well matter more, and it is 
 
 ## Contributing
 
-Campus is developed in a private monorepo and mirrored here, which has one consequence worth
-stating plainly: **a pull request opened against this repository cannot be merged here**,
-because the next export would overwrite it. Contributions are back-ported by hand and arrive
-in a later export.
+This repository is the source of truth for Campus on Linux. When work on it starts, it will be
+developed here, through pull requests to `main`. Nothing is exported into this repository
+except its snapshot of the API spec, which comes from `yuric/campus-server`.
 
 Because this client has not been started, design discussion in issues is worth far more right
 now than code.

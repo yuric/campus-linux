@@ -68,7 +68,7 @@ the cost.
 ## Wire-shape changes
 
 Any change to how this client decodes or encodes an API response requires the corresponding
-change to `api/docs/openapi.yaml` in the upstream monorepo, in the same focused change. The
+change to `api/docs/openapi.yaml` in `yuric/campus-server`, merged there first. The
 contract comes first, then the client.
 
 ## Secrets
@@ -77,10 +77,12 @@ Provider keys, session tokens, and executor tokens must never reach logs, transc
 process arguments, crash reports, analytics, or any file outside the platform's credential
 store. This is not a guideline.
 
-## This repository is a mirror
+## Source of truth
 
-Development happens in a private monorepo; this repository is produced by an automated
-export. Do not expect a commit here to survive. See `CONTRIBUTING.md`.
+This repository is the source of truth for Campus on Linux. Work on it has not started; when it
+does, development happens here, through pull requests to `main`. Nothing is exported into this
+repository except its snapshot of the API spec, which comes from `yuric/campus-server` and is
+never edited here by hand. See `CONTRIBUTING.md`.
 
 ## Repository name cutover
 

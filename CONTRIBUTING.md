@@ -3,23 +3,17 @@
 Thank you for looking. Before you spend time on a change, there are two things about this
 repository that are unusual and worth knowing up front.
 
-## 1. Pull requests cannot be merged here
+## 1. Pull requests merge here, but start with an issue
 
-Campus is developed in a private monorepo and published to this repository by an automated
-export. A commit pushed here would be overwritten by the next export.
+This repository is the source of truth for Campus on Linux, and pull requests are merged here,
+into `main`. Nothing is exported into it except its snapshot of the API spec, which comes from
+`yuric/campus-server`: a change to the API starts there, not here.
 
-That does **not** mean contributions are unwelcome — it means the mechanics are different:
+Work on it has not started. When it does, it will be developed here the same way. Until then
+there is no code to change, so issues and design discussion are the useful contribution.
 
-1. Open an issue or a pull request here. Either is fine; a PR is often the clearest way to
-   show what you mean.
-2. The change is reviewed here, in the open.
-3. If accepted, it is applied upstream in the monorepo with your authorship preserved.
-4. It arrives back in this repository in the next export, and the PR is closed with a link
-   to the commit that carries it.
-
-Round trips are slower than a normal merge. Issues are cheap; large unsolicited pull requests
-are the thing most likely to be wasted effort, so open an issue first for anything
-substantial.
+Issues are cheap; large unsolicited pull requests are the thing most likely to be wasted
+effort, so open an issue first for anything substantial.
 
 ## 2. This client does not decide anything
 

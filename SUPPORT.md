@@ -24,8 +24,8 @@ change first. That is not a rejection, but it changes where the work starts.
 
 ## You want to contribute
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) — and read it before writing code, because this
-repository is a mirror and pull requests cannot be merged here directly.
+See [CONTRIBUTING.md](CONTRIBUTING.md), and read it before writing code: this client has not
+been started, so an issue is the place to begin.
 
 ## Response times
 
