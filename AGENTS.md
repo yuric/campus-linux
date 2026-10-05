@@ -27,8 +27,7 @@ started". Those are the decisions, not preliminaries to them.
 
 - [`campus-cli`](https://github.com/yuric/campus-cli) — smallest and most readable; start here.
 - [`campus-macos`](https://github.com/yuric/campus-macos) — native Swift; the reference for
-  local agent execution.
-- [`campus-web`](https://github.com/yuric/campus-web) — React and Three.js; the island renderer.
+  local agent execution, and home of the island renderer.
 
 `docs/api/openapi.yaml` is the contract itself.
 
