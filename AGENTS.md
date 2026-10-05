@@ -16,6 +16,36 @@ decisions made elsewhere.
 **Do not** scaffold a project structure, pick a framework, or add dependencies to "get
 started". Those are the decisions, not preliminaries to them.
 
+## Repository routing
+
+Campus spans several repositories. A change lands in the repository that owns the files it
+edits, whatever building the card sits on and whatever folder your shell started in.
+
+| Repository | Owns | Never goes here |
+|---|---|---|
+| `yuric/campus-server` | Rails API (`api/`), the OpenAPI spec and `contracts/`, deploy and release (`deploy/`, `changes/`, `VERSION`), AWS (`infrastructure/`), CI and policy (`.github/`, `scripts/`, `config/`), Campus skills (`.agents/skills`, `api/app/skills`) | Swift, the Mac app, the island renderer, any client UI |
+| `yuric/campus-macos` | The Mac app (`CampusApp/`, `Sources/`, `Package.swift`), the island renderer (`island/`), the contract snapshot (`contract/`, moved only by a snapshot PR) | Rails, migrations, OpenAPI edits, deploy and release, client pins |
+| `yuric/campus-ios`, `campus-android`, `campus-linux`, `campus-windows` | Scaffolds: `PRD.md` and docs, until the owner starts the client | Product code, frameworks, dependencies |
+| `yuric/campus-cli`, `yuric/campus-web` | Retired on 2026-10-05 (`campus-web` is archived) | Any new work |
+| `yuric/campus` | The umbrella: submodule pointers and its own scaffold docs | Product code of any kind |
+| `yuric/campus-marketing-page` | The public marketing site | API or client code |
+
+- **Business rules go to Rails even when the card is about a client.** If the Mac change needs
+  a new rule, message, or field, that part is a campus-server PR first; the client PR only
+  renders it. The order is the contract order in campus-server's `AGENTS.md`.
+- **A change that spans repositories is one PR per repository**, and one card per repository,
+  each card on the building bound to that repository.
+- **Check before you open a PR.** `git diff --name-only origin/main...HEAD` must list only
+  paths this repository owns. Anything else moves to its own PR in the owning repository.
+- **CI enforces it.** campus-server's Architecture policy rule `repository-boundary` fails on
+  client files in campus-server and, at the client pin gate, on server files in the pinned
+  campus-macos commit; campus-macos CI runs the same check on its own pull requests.
+
+### In this repository
+
+- You are in a scaffold. Nothing but `PRD.md` and docs changes here until the owner starts
+  this client; product or API work goes to the repository the table names.
+
 ## What you can usefully do
 
 - Answer the open questions in `PRD.md` with evidence — measurements, spikes in a scratch
