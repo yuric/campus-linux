@@ -12,7 +12,7 @@ authorize implementation, production task import, deployment, credentials or pai
 A Linux-only user can onboard, connect provider accounts, bind local repositories,
 run coding agents on Linux, and manage their island and authorized remote agents.
 Rails decides product behavior. The desktop is a thin presentation client; the execution
-service is a separate privileged component, not an API wrapper.
+service is a separate trusted, unprivileged per-user component, not an API wrapper.
 
 Parity means equivalent user outcomes, authorization, confirmations, recovery and data
 integrity. **Visual fidelity is also an owner requirement:** the Linux app should look
@@ -27,7 +27,8 @@ or a universal guarantee for every Linux system. Connecting to hosted and user-c
 APIs is included. Closing the app window must not terminate execution.
 
 **Owner decision:** match the current Mac lifecycle. Execution is independent of the UI
-but tied to the logged-in user session; it can restart on login after reboot. Unattended
+but tied to the graphical login session; it restarts on graphical login after reboot
+when installed and authorized. Unattended
 execution after logout or before login is outside release 1. Mac evidence:
 `ExecutorLaunchAgent.swift` uses `gui/<uid>`, a user LaunchAgent and `RunAtLoad`.
 
@@ -67,7 +68,7 @@ groups into every offered action; this table is not permission to omit unnamed b
 | P10 | Assistant/coordinator history/sessions, questions/references/steering, continue/stop, proposals/confirmations, monitors/private interactions | `AssistantStore.swift`, `CoordinatorSessions.swift`, `CoordinatorTurnActions.swift`, `PrivateManagerInteraction.swift` |
 | P11 | Delegated authorization scope, grant/refuse consent, expiry/revocation; rendered content cannot grant consent | `DelegatedAuthorization.swift`, `DelegatedAuthorizationConsentSheet.swift` |
 | P12 | Shared Island, project/agent selection and offered mutations, navigation, zoom/pan, visibility pause and Reduce Motion | `IslandScreen.swift`, `IslandApprovalStore.swift`, `island/` |
-| P13 | Activity/search, shortcuts, deep/task links, external browser/file opening, keyboard focus, screen reader and appearance | `ActivityScreen.swift`, `SearchPalette.swift`, `Navigation.swift`, `DeepLink.swift`, `TaskLinkBridge.swift` |
+| P13 | Activity/search, shortcuts, deep/task links, external browser/file opening, keyboard focus, screen reader, appearance, application menus and reply notifications; tray/status equivalents where Mac provides them | `ActivityScreen.swift`, `SearchPalette.swift`, `Navigation.swift`, `DeepLink.swift`, `TaskLinkBridge.swift`, `AssistantReplyNotification.swift`, `main.swift` |
 | P14 | Settings/rules, assistant authority/prompts, GitHub connection, feedback, telemetry preference and profile | `SettingsScreen.swift`, `SettingsStore.swift`, `GithubConnectionStore.swift`, `Telemetry.swift` |
 | P15 | Executor register/rename/revoke, project/account binding, readiness, workspace setup/recovery and resource/model observations | `ExecutorRegistrationStore.swift`, `ExecutorSetupStore.swift`, `ExecutorWorkspaceProvisioner.swift` |
 | P16 | Local claims/leases, CLI launch, worktree lifecycle, transcripts/tool events, cancellation, result/outbox and crash/reconnect recovery | `ExecutorExecutionStore.swift`, `ExecutorOutbox.swift`, `BrokerExecutionClient.swift`, `Sources/CampusBrokerCore` |
@@ -92,7 +93,8 @@ Apple-specific frameworks are replaced, not assumed portable.
   may differ. Accessibility and readable scaling take precedence over matching pixels.
 - L0 captures reference Mac screenshots at recorded viewports, scale, appearance and
   seeded data for Home, Board, task detail/chat, agents/landing, credentials, settings,
-  onboarding and Island. Compare matching Linux screenshots and review overlays during
+  onboarding, Island, projects, Activity/search, assistant/coordinator, executor setup and
+  delegated consent. Compare matching Linux screenshots and review overlays during
   L3–L5; track deliberate platform differences separately from visual regressions.
 - Aim for pixel accuracy on reusable artwork and app-controlled geometry where inexpensive.
   Font rasterization and desktop chrome are not universal exact-image gates. Record
@@ -101,7 +103,7 @@ Apple-specific frameworks are replaced, not assumed portable.
 
 ## 4. Proposed architecture and decisions
 
-A web-based desktop UI hosts the shared React/Three.js renderer. A narrow privileged host
+A web-based desktop UI hosts the shared React/Three.js renderer. A narrow trusted host
 owns session storage, HTTP and OS integration. An independent per-user Linux executor
 supervises CLIs. See [ARCHITECTURE.md](../ARCHITECTURE.md) for boundaries.
 
@@ -109,8 +111,8 @@ supervises CLIs. See [ARCHITECTURE.md](../ARCHITECTURE.md) for boundaries.
 |---|---|
 | Desktop shell | Compare Electron/Tauri on Ubuntu, Fedora and KDE for GPU/Island rendering, accessibility, secrets, startup/size and updates. Electron is the initial portability candidate; Tauri remains an option after WebKitGTK checks. Record an ADR before scaffolding. |
 | Executor language | Compare portable Mac Swift components with a Linux implementation using identical protocol/recovery fixtures. Select on correctness/maintainability, not copied line count; no execution in renderer JavaScript. |
-| Supervision | systemd user service where available and an explicit non-systemd per-user supervisor path, bound to login/logout to match Mac. No root service or automatic lingering changes. Test logout stops supervision; login restores it. |
-| Secrets | Proven platform credential-store backend; test missing/locked/revoked stores. No plaintext fallback. Withhold persistent local credentials when secure storage is absent; preserve safe remote/session-only use where possible. |
+| Supervision | systemd user service bound to the graphical session (such as `graphical-session.target`) and equivalent non-systemd supervision. The last graphical logout ends execution even if SSH/TTY sessions remain; graphical login restores authorized supervision. No root service or automatic lingering changes. Test this lifecycle explicitly. |
+| Secrets | Proven platform credential-store backend; test missing/locked/revoked stores. No plaintext fallback. Persistent local execution is withheld without secure storage; safe remote/session-only use may remain but does not promise restart persistence. |
 | Packages | Standalone executor plus desktop artifacts; validate AppImage and native deb/rpm. Choose portable artifacts after GPU/runtime tests. Flatpak is optional and cannot gain unrestricted host access merely to execute CLIs. |
 | Updates | Authenticated immutable app/helper artifacts, verified before install, compatible protocol negotiation and interrupted-install recovery. Establish signing/key custody/distribution owner before release; no new release secrets in this planning PR. |
 
@@ -131,7 +133,10 @@ change or production execution authorization is implied by this specification.
 - Keep account/executor/provider secrets out of renderer code, URLs, arguments, logs,
   telemetry and crash reports. Restrict host IPC by method, origin, schema and principal;
   serve only pinned bundled assets and open external links in the browser.
-- Bind caches/deep links/IPC to account and island. Sign-out clears consent/account data
+- Bind credentials, caches and IPC to the exact API origin, product channel, account and
+  island. An endpoint switch never reuses existing credentials; redirects cannot forward
+  secrets across origins. Deep links cannot change the endpoint or its trust policy.
+  Sign-out clears consent/account data
   and explicitly reconciles active execution without accidental reassignment/termination.
 - Executor IPC is authenticated. Use direct argv spawning, executable allowlists, bounded
   workspaces, credential isolation, output redaction and process-group cancellation.
@@ -154,7 +159,7 @@ not a claim of existing support:
 
 | Tier | Targets and release rule |
 |---|---|
-| First verified | Ubuntu 24.04 LTS x86_64, GNOME, Wayland and X11. Confirm the friend's actual Ubuntu/hardware in L0 and add that combination if different. |
+| First verified | Ubuntu 24.04 LTS x86_64, GNOME, Wayland and X11. Confirm the first user's actual Ubuntu/hardware in L0 and add that combination if different. |
 | Broad desktop | Ubuntu 22.04 compatibility where dependencies allow, Debian stable, current stable Fedora GNOME/KDE and Arch/KDE at a recorded snapshot. Version support is earned by installed-package tests. |
 | Architectures | arm64 built/tested separately; release coverage selected after toolchain/provider checks. Untested architectures are never advertised supported. |
 | Additional systems | Non-systemd desktops via the supervisor path; musl/Alpine, NixOS and immutable/custom systems require explicit packaging/runtime evidence. |
@@ -191,9 +196,13 @@ snapshot/consumer order. Dependencies clear on verified merged outcomes, not ope
 1. Expand and complete every P01–P18 case against the pinned source. Record expected API
    behavior, observed Linux behavior, test/receipt and exceptions. No missing row is hidden
    by a percentage; exceptions need a recorded owner decision.
-2. A new Linux-only user onboards, connects an account, binds a repository, lands an agent,
+2. With an installed authorized helper and secure credential store, a new Linux-only user
+   onboards, connects an account, binds a repository, lands an agent,
    creates/approves work, observes actual local edits/result, cancels the process tree,
-   closes/reopens the UI and recovers an executor restart without a Mac.
+   closes/reopens the UI and recovers an executor restart without a Mac. Also dispatch work
+   from another authorized client to this Linux executor with its UI closed; verify claims,
+   real repository edits, event delivery and remote cancellation. Graphical logout ends
+   supervision even with an SSH session open, and graphical login restores it safely.
 3. Authorized remote control works with local execution unavailable. Offline/queued state
    is truthful, and remote failure cannot cause unauthorized local fallback.
 4. Contract fixtures cover unknown versions/withheld actions, confirmations, tenant isolation,

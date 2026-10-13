@@ -12,7 +12,8 @@ is a design goal with an explicit tested support matrix.
 - [Feature PRD directory](TODO/README.md)
 - [Proposed architecture](ARCHITECTURE.md)
 - [Contributing](CONTRIBUTING.md)
-- [API snapshot](docs/api/openapi.yaml), imported from `yuric/campus-server`
+- [API snapshot](docs/api/openapi.yaml), imported from `yuric/campus-server`;
+  current provenance must be verified before implementation
 
 The API decides product behavior; this client renders it. The reference implementation
 and Island renderer live in [campus-macos](https://github.com/yuric/campus-macos).

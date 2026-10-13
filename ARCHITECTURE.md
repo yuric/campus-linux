@@ -22,7 +22,8 @@ per-user Linux execution service ----------------------------------------+
 Remote agents are controlled through authorized API operations, not arbitrary
 host-to-host RPC. The Linux service registers with Rails and implements its execution
 protocol; it does not host Rails. Local execution continues with the UI closed, within
-the user's login session. Logout ends supervision; login can restore it after reboot.
+the user's graphical login session. The last graphical logout ends supervision even
+if SSH/TTY sessions remain; graphical login restores installed authorized supervision.
 No root service, automatic lingering or unattended pre-login execution is included.
 
 Rails owns capabilities, catalogs, credential domain state, workflow, ordering,
@@ -43,10 +44,12 @@ changes land at the producer first; no second renderer or hand-maintained API sc
 
 ## Boundaries and recovery
 
-Session storage and HTTP belong to the privileged host, not renderer JavaScript.
+Session storage and HTTP belong to the trusted unprivileged per-user host, not renderer JavaScript.
 IPC has narrow authenticated methods and schema/origin/principal validation. Bundled
 content cannot invoke arbitrary programs or approve delegated authorization. External
-links use the browser. Cache/deep-link data retain account/island identity; unknown
+links use the browser. Credentials and caches are scoped to exact API origin, channel,
+account and island. Endpoint changes never reuse credentials; redirects cannot forward
+secrets across origins and deep links cannot switch the endpoint/trust policy. Unknown
 server contract versions withhold affected actions.
 
 The executor uses distinct identity, bounded workspaces, direct argv spawning,

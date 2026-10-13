@@ -58,7 +58,9 @@ edits, whatever building the card sits on and whatever folder your shell started
 - [`campus-macos`](https://github.com/yuric/campus-macos) — native Swift; the reference for
   local agent execution, and home of the island renderer.
 
-`docs/api/openapi.yaml` is the contract itself.
+`docs/api/openapi.yaml` is an imported snapshot, not proof of the current server contract.
+Its current provenance has not been verified. Re-import from a recorded merged server
+SHA and verify it before generating product bindings or claiming API compatibility.
 
 ## The rule that overrides everything else
 
