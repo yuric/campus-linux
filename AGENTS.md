@@ -6,10 +6,10 @@ Instructions for AI coding agents working in this repository. Humans want `READM
 ## Read this first: there is no code here
 
 This client **has not been started**. There is no source, no build, and no test command. The
-stack is not decided.
+stack is not decided. The proposed requirements are in [TODO/PRD.md](TODO/PRD.md).
 
 If you have been asked to implement something here, the correct first move is to stop and
-establish the decisions listed in `PRD.md`. Writing an implementation now means inventing
+establish the decisions listed in `TODO/PRD.md`. Writing an implementation now means inventing
 architecture that has not been agreed, in a repository whose whole purpose is to render
 decisions made elsewhere.
 
@@ -25,7 +25,7 @@ edits, whatever building the card sits on and whatever folder your shell started
 |---|---|---|
 | `yuric/campus-server` | Rails API (`api/`), the OpenAPI spec and `contracts/`, deploy and release (`deploy/`, `changes/`, `VERSION`), AWS (`infrastructure/`), CI and policy (`.github/`, `scripts/`, `config/`), Campus skills (`.agents/skills`, `api/app/skills`) | Swift, the Mac app, the island renderer, any client UI |
 | `yuric/campus-macos` | The Mac app (`CampusApp/`, `Sources/`, `Package.swift`), the island renderer (`island/`), the contract snapshot (`contract/`, moved only by a snapshot PR) | Rails, migrations, OpenAPI edits, deploy and release, client pins |
-| `yuric/campus-ios`, `campus-android`, `campus-linux`, `campus-windows` | Scaffolds: `PRD.md` and docs, until the owner starts the client | Product code, frameworks, dependencies |
+| `yuric/campus-ios`, `campus-android`, `campus-linux`, `campus-windows` | Scaffolds: PRDs and docs, until the owner starts the client | Product code, frameworks, dependencies |
 | `yuric/campus-cli`, `yuric/campus-web` | Retired on 2026-10-05 (`campus-web` is archived) | Any new work |
 | `yuric/campus` | The umbrella: submodule pointers and its own scaffold docs | Product code of any kind |
 | `yuric/campus-marketing-page` | The public marketing site | API or client code |
@@ -43,14 +43,14 @@ edits, whatever building the card sits on and whatever folder your shell started
 
 ### In this repository
 
-- You are in a scaffold. Nothing but `PRD.md` and docs changes here until the owner starts
+- You are in a scaffold. Nothing but PRDs and docs changes here until the owner starts
   this client; product or API work goes to the repository the table names.
 
 ## What you can usefully do
 
-- Answer the open questions in `PRD.md` with evidence — measurements, spikes in a scratch
+- Answer the open questions in `TODO/PRD.md` with evidence — measurements, spikes in a scratch
   directory, links to documentation.
-- Improve `PRD.md` itself as answers arrive.
+- Improve `TODO/PRD.md` itself as answers arrive.
 - Point out where the plan contradicts what the shipped clients actually do.
 
 ## The shipped client is the specification
@@ -87,17 +87,18 @@ decision.
 
 The macOS and web clients each compiled their own copy of which providers support CLI login.
 They drifted. Campus answered "can I sign in with xAI?" differently depending on which client
-you opened. The stage list is currently duplicated across three clients, and two of those
-copies do not agree with each other.
+you opened. Historical duplication also caused stage lists to disagree. The retired clients are
+not dependencies of this implementation.
 
 A rule in two clients is a rule that will disagree with itself. There is no exception worth
 the cost.
 
 ## Wire-shape changes
 
-Any change to how this client decodes or encodes an API response requires the corresponding
-change to `api/docs/openapi.yaml` in `yuric/campus-server`, merged there first. The
-contract comes first, then the client.
+Consume existing responses from a verified pinned OpenAPI snapshot. New or changed wire
+shapes require the corresponding change to `api/docs/openapi.yaml` in
+`yuric/campus-server`, merged there first. A Linux implementation of an existing contract
+does not itself require an API change. The contract comes first, then the client.
 
 ## Secrets
 
@@ -108,9 +109,9 @@ store. This is not a guideline.
 ## Source of truth
 
 This repository is the source of truth for Campus on Linux. Work on it has not started; when it
-does, development happens here, through pull requests to `main`. Nothing is exported into this
-repository except its snapshot of the API spec, which comes from `yuric/campus-server` and is
-never edited here by hand. See `CONTRIBUTING.md`.
+does, development happens here, through pull requests to `main`. API snapshots come from `yuric/campus-server` and are never edited here by hand.
+The planned renderer artifact comes from a pinned merged `campus-macos` producer;
+its implementation remains producer-owned. See `CONTRIBUTING.md`.
 
 ## Repository name cutover
 
@@ -129,13 +130,18 @@ full procedure.
 
 ## Linux-specific notes for whoever starts this
 
-**This may be two products, not one.** A Linux desktop client and a headless Campus server
-are different things with different users, and the second may matter more. `PRD.md` treats
-them separately. Establish which one you are building before writing anything.
+**Scope is specified.** The owner requested desktop macOS feature parity, local execution
+and remote control. Hosting Rails is outside scope. Match the Mac login-session lifecycle:
+execution can continue with the window closed, but unattended pre-login/after-logout work
+is not release 1. See `TODO/PRD.md`; framework choices still require L0 evidence.
+
+**PRD location.** Overall requirements live at `TODO/PRD.md`. Future feature PRDs belong
+at `TODO/<feature-name>/PRD.md`, following `TODO/README.md`. Do not restore a root PRD.
 
 **Credential storage is the hard part and nothing transfers.** Not the macOS Keychain
 rationale, not the Windows DPAPI question. Secret Service, gnome-keyring, and kwallet all
-exist; a headless server has none of them, and that is probably the important case.
+exist; a headless server may have none of them. Do not add a plaintext fallback or expand
+the approved logged-in desktop scope to solve headless deployment.
 
 **Packaging choice carries an update story with it.** AppImage, deb, flatpak — each implies a
 different answer to how a user gets a fix, and that answer is part of the security boundary,

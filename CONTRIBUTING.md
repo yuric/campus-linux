@@ -6,14 +6,15 @@ repository that are unusual and worth knowing up front.
 ## 1. Pull requests merge here, but start with an issue
 
 This repository is the source of truth for Campus on Linux, and pull requests are merged here,
-into `main`. Nothing is exported into it except its snapshot of the API spec, which comes from
-`yuric/campus-server`: a change to the API starts there, not here.
+into `main`. API snapshots come from `yuric/campus-server`; a change to the API starts
+there. Planned Island renderer artifacts come from pinned merged `campus-macos` source;
+renderer changes remain producer-owned rather than maintained as a Linux fork.
 
-Work on it has not started. When it does, it will be developed here the same way. Until then
-there is no code to change, so issues and design discussion are the useful contribution.
+The proposed product specification is [TODO/PRD.md](TODO/PRD.md). Implementation has not
+started; design review must distinguish proposed choices from accepted decisions.
 
-Issues are cheap; large unsolicited pull requests are the thing most likely to be wasted
-effort, so open an issue first for anything substantial.
+Open an issue first for substantial unsolicited work. An explicit owner-requested
+planning PR can proceed directly; it does not authorize implementation or task import.
 
 ## 2. This client does not decide anything
 
@@ -37,17 +38,18 @@ so in the issue and it can be routed properly.
 
 ## Getting set up
 
-This client has not been started, and it may turn out to be two
-different things — a Linux desktop client, and Campus running headless on a server. See
-[PRD.md](PRD.md).
+There is no application build or runtime test suite yet. This planning repository defines
+a desktop client and local execution service, with macOS feature parity and remote control.
+It does not host Rails. Read [TODO/PRD.md](TODO/PRD.md) for the parity baseline and L0
+portability gates before adding frameworks or dependencies.
 
-**The most useful contribution right now is not code.** The open questions are:
+Feature PRDs belong at `TODO/<feature-name>/PRD.md`; follow [TODO/README.md](TODO/README.md).
+The root placeholder PRD has been replaced. Shared renderer changes belong in
+`campus-macos`; API changes belong in `campus-server`, merged before Linux consumers.
 
-- Which of those two products this repository is for.
-- Credential storage. Neither the macOS Keychain design nor the Windows DPAPI question
-  transfers. Secret Service, gnome-keyring, kwallet, and headless machines with none of them
-  are all real cases, and headless is probably the important one.
-- Packaging: AppImage, deb, flatpak, or some subset — each with its own update story.
+Documentation changes are checked for internal links and OpenAPI snapshot parsing by
+`.github/workflows/docs.yml` where its repository-visibility condition permits. Those
+checks do not prove runtime parity. Do not bootstrap a product test framework for a docs PR.
 
 ## Making a change
 
