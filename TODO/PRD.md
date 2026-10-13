@@ -94,7 +94,8 @@ Apple-specific frameworks are replaced, not assumed portable.
 - L0 captures reference Mac screenshots at recorded viewports, scale, appearance and
   seeded data for Home, Board, task detail/chat, agents/landing, credentials, settings,
   onboarding, Island, projects, Activity/search, assistant/coordinator, executor setup and
-  delegated consent. Compare matching Linux screenshots and review overlays during
+  delegated consent, application menus and reply notification states. Record native
+  notification/chrome differences as platform exceptions. Compare matching Linux screenshots and review overlays during
   L3–L5; track deliberate platform differences separately from visual regressions.
 - Aim for pixel accuracy on reusable artwork and app-controlled geometry where inexpensive.
   Font rasterization and desktop chrome are not universal exact-image gates. Record
