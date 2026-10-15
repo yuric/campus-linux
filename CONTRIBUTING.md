@@ -10,8 +10,8 @@ into `main`. API snapshots come from `yuric/campus-server`; a change to the API 
 there. Planned Island renderer artifacts come from pinned merged `campus-macos` source;
 renderer changes remain producer-owned rather than maintained as a Linux fork.
 
-The proposed product specification is [TODO/PRD.md](TODO/PRD.md). Implementation has not
-started; design review must distinguish proposed choices from accepted decisions.
+The product specification is [PRD.md](PRD.md). Its section 4 holds the owner's decisions;
+implementation has not started and begins only on the owner's explicit request.
 
 Open an issue first for substantial unsolicited work. An explicit owner-requested
 planning PR can proceed directly; it does not authorize implementation or task import.
@@ -40,16 +40,18 @@ so in the issue and it can be routed properly.
 
 There is no application build or runtime test suite yet. This planning repository defines
 a desktop client and local execution service, with macOS feature parity and remote control.
-It does not host Rails. Read [TODO/PRD.md](TODO/PRD.md) for the parity baseline and L0
-portability gates before adding frameworks or dependencies.
+It does not host Rails. Read [PRD.md](PRD.md) for the parity baseline, the decided stack
+and the L0 gates before adding a dependency.
 
 Feature PRDs belong at `TODO/<feature-name>/PRD.md`; follow [TODO/README.md](TODO/README.md).
 The root placeholder PRD has been replaced. Shared renderer changes belong in
 `campus-macos`; API changes belong in `campus-server`, merged before Linux consumers.
 
 Documentation changes are checked for internal links and OpenAPI snapshot parsing by
-`.github/workflows/docs.yml` where its repository-visibility condition permits. Those
-checks do not prove runtime parity. Do not bootstrap a product test framework for a docs PR.
+`.github/workflows/docs.yml` where its repository-visibility condition permits. The same
+workflow runs `scripts/check-client-boundary.sh`, which fails a pull request whose client
+source carries a domain literal or matches on an error string. Those checks do not prove
+runtime parity. Do not bootstrap a product test framework for a docs PR.
 
 ## Making a change
 

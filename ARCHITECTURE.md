@@ -1,20 +1,21 @@
 # Architecture: Campus for Linux
 
-**Status: proposed design; no product code exists.** Requirements, parity inventory,
-compatibility and delivery gates are in [TODO/PRD.md](TODO/PRD.md).
+**Status: decided design; no product code exists.** Requirements, parity inventory,
+compatibility, delivery gates and the seven decisions behind this page are in
+[PRD.md](PRD.md).
 
 ## Components and authority
 
 ```text
-Linux desktop UI / pinned Island renderer
+React board + pinned Island renderer, in WebKitGTK
                  |
-        restricted host bridge
+        restricted Tauri IPC bridge
                  |
-Linux application host -------- HTTPS / invalidation events -------- Campus Rails API
+Rust Tauri host ---------------- HTTPS / invalidation events -------- Campus Rails API
                  |                                                       |
        authenticated local IPC                                 claims / leases / events
                  |                                                       |
-per-user Linux execution service ----------------------------------------+
+campus-linux-executor (Rust, systemd user unit) -------------------------+
                  |
       provider CLIs / authorized repository workspaces
 ```
@@ -26,16 +27,45 @@ the user's graphical login session. The last graphical logout ends supervision e
 if SSH/TTY sessions remain; graphical login restores installed authorized supervision.
 No root service, automatic lingering or unattended pre-login execution is included.
 
-Rails owns capabilities, catalogs, credential domain state, workflow, ordering,
-validation, diagnostics, confirmations and wording. Linux owns presentation,
-accessibility, drafts and OS adapters. The executor observes/supervises processes;
-Rails decides authorized work and interprets normalized results.
+### Where the authority line sits
+
+| The API decides | A client decides |
+|---|---|
+| Which providers, engines, models, and credential kinds exist | Layout, navigation order, focus, selection |
+| Which combinations can work | How a `destructive` intent looks as a button |
+| Credential state — unverified, active, expired, exhausted — and why | Which native colour renders `error` vs `warning` |
+| Allowed workflow transitions and their labels | Local draft and interaction state |
+| Board lane identity, ordering, membership | Accessibility behaviour |
+| Diagnostic severity, reason, detail, safe message | Transport failures where no response arrived |
+| Path and filesystem validation | Terminal, window, or view composition |
+| Domain vocabulary — what a stage is *called* | — |
+
+A client that infers domain meaning from an error substring, a message prefix, or HTTP status
+alone is broken, even when it happens to produce the right answer. This table is the same one
+the Mac and Windows documents carry, and `scripts/check-client-boundary.sh` fails a pull
+request that crosses it (PRD D7).
+
+The executor observes and supervises processes; Rails decides authorized work and interprets
+normalized results.
+
+### Freshness: events are hints, not patches
+
+Real-time updates say *that* something changed. The client re-reads the snapshot it already
+knows how to render. There is no patch application and no reconciliation, so a dropped socket
+costs one extra fetch rather than corrupt state.
+
+### Versioning and failing closed
+
+Server contracts are versioned. A client that receives a version it does not understand
+**withholds the action** rather than falling back to an older client-side decision. Silent
+degradation is how two clients start disagreeing.
 
 ## Reuse and repository ownership
 
 - `campus-server`: API/OpenAPI and contract corrections, production deploy.
 - `campus-macos`: reference semantics and shared Three.js Island producer.
-- `campus-linux`: desktop, native host, per-user service, packaging and tests.
+- `campus-linux`: the Tauri shell, the React board, the Rust host and executor, packaging
+  and tests.
 - Retired `campus-web` and `campus-cli` are not product dependencies.
 
 Generate API bindings from a verified server snapshot. Import renderer artifacts from
@@ -61,10 +91,12 @@ reconcile active work. Plaintext credential fallback is excluded.
 Events signal re-fetches, not client-authored patches. Writes reconcile ambiguous
 delivery instead of replaying blindly. Queued, running and completed remain distinct.
 
-## Choices requiring evidence
+## Decisions
 
-Desktop shell, executor language, secret-store backend, non-systemd supervision,
-package baselines and authenticated update design remain proposals. The
-[decision register](TODO/PRD.md#4-proposed-architecture-and-decisions) specifies the
-L0 evidence required before implementation. Broad Linux support is verified per
-runtime/architecture/desktop combination, not inferred from one Ubuntu build.
+Tauri with a React board (D1); Rust for the host and the executor (D2); Secret Service for
+Campus-owned tokens and provider files isolated but plaintext (D3); deb and AppImage with
+Tauri's signed updater and one production channel (D4); Docker, public hosted CI and a Lima
+VM for verification (D5); five named campus-server prerequisites (D6); the boundary gate
+(D7). Each is recorded with its trade-offs in [PRD.md section 4](PRD.md#4-architecture-and-decisions).
+Broad Linux support is verified per runtime, architecture and desktop combination, not
+inferred from one Ubuntu build.

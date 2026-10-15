@@ -6,15 +6,14 @@ Instructions for AI coding agents working in this repository. Humans want `READM
 ## Read this first: there is no code here
 
 This client **has not been started**. There is no source, no build, and no test command. The
-stack is not decided. The proposed requirements are in [TODO/PRD.md](TODO/PRD.md).
+stack **is decided**: Tauri with a React board, Rust for the host and the executor, Secret
+Service for secrets, deb and AppImage with Tauri's updater, one production channel. The
+decisions and their trade-offs are in [PRD.md section 4](PRD.md#4-architecture-and-decisions).
 
-If you have been asked to implement something here, the correct first move is to stop and
-establish the decisions listed in `TODO/PRD.md`. Writing an implementation now means inventing
-architecture that has not been agreed, in a repository whose whole purpose is to render
-decisions made elsewhere.
-
-**Do not** scaffold a project structure, pick a framework, or add dependencies to "get
-started". Those are the decisions, not preliminaries to them.
+If you have been asked to implement something here, check that the owner has explicitly
+started implementation. Until then, nothing but documentation changes. When implementation
+starts, build what section 4 says; do not reopen a decision, substitute a framework, or add a
+dependency section 4 does not imply.
 
 ## Repository routing
 
@@ -48,9 +47,9 @@ edits, whatever building the card sits on and whatever folder your shell started
 
 ## What you can usefully do
 
-- Answer the open questions in `TODO/PRD.md` with evidence — measurements, spikes in a scratch
+- Answer the open evidence in `PRD.md` section 9 — measurements, spikes in a scratch
   directory, links to documentation.
-- Improve `TODO/PRD.md` itself as answers arrive.
+- Improve `PRD.md` itself as answers arrive.
 - Point out where the plan contradicts what the shipped clients actually do.
 
 ## The shipped client is the specification
@@ -135,16 +134,21 @@ full procedure.
 **Scope is specified.** The owner requested desktop macOS feature parity, local execution
 and remote control. Hosting Rails is outside scope. Match the Mac login-session lifecycle:
 execution can continue with the window closed, but unattended pre-login/after-logout work
-is not release 1. See `TODO/PRD.md`; framework choices still require L0 evidence.
+is not release 1. See `PRD.md`.
 
-**PRD location.** Overall requirements live at `TODO/PRD.md`. Future feature PRDs belong
-at `TODO/<feature-name>/PRD.md`, following `TODO/README.md`. Do not restore a root PRD.
+**PRD location.** Overall requirements live at `PRD.md`, at the root like every other Campus
+client. Feature PRDs belong at `TODO/<feature-name>/PRD.md`, following `TODO/README.md`.
 
-**Credential storage is the hard part and nothing transfers.** Not the macOS Keychain
-rationale, not the Windows DPAPI question. Secret Service, gnome-keyring, and kwallet all
-exist; a headless server may have none of them. Do not add a plaintext fallback or expand
-the approved logged-in desktop scope to solve headless deployment.
+**Secrets follow the Mac split, with Secret Service in the Keychain's place.** Campus-owned
+tokens go to Secret Service and nowhere else. Provider OAuth files are the provider's,
+isolated under the credentials root exactly as the Mac broker does it, plaintext because the
+provider writes them so. Do not add a file fallback for Campus-owned tokens and do not try to
+encrypt the provider's files (PRD D3).
 
-**Packaging choice carries an update story with it.** AppImage, deb, flatpak — each implies a
-different answer to how a user gets a fix, and that answer is part of the security boundary,
-not packaging trivia.
+**Packaging and updates are decided.** deb and AppImage from one Tauri build, Tauri's signed
+updater, one production channel, the executor inside the app package (PRD D4). There is no
+Campus Dev product on Linux; a local build reaches `localhost:3001` through a build-time
+flag only.
+
+**The boundary is a failing build.** `scripts/check-client-boundary.sh` runs on every pull
+request once source exists. A domain literal in client code fails CI (PRD D7).

@@ -6,11 +6,14 @@ as closely as practical with Linux integration. It will control local and remote
 the Campus API. Ubuntu is the first verification target; broad Linux compatibility
 is a design goal with an explicit tested support matrix.
 
-**Status: specification proposed; application and execution service not implemented.**
+**Status: specification decided; application and execution service not implemented.**
+Tauri with a React board, Rust for the host and executor, Secret Service for secrets, deb
+and AppImage with signed in-app updates, one production channel. The decisions and their
+trade-offs are in [PRD.md section 4](PRD.md#4-architecture-and-decisions).
 
-- [Product requirements and delivery gates](TODO/PRD.md)
+- [Product requirements and delivery gates](PRD.md)
 - [Feature PRD directory](TODO/README.md)
-- [Proposed architecture](ARCHITECTURE.md)
+- [Architecture](ARCHITECTURE.md)
 - [Contributing](CONTRIBUTING.md)
 - [API snapshot](docs/api/openapi.yaml), imported from `yuric/campus-server`;
   current provenance must be verified before implementation
