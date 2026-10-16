@@ -155,5 +155,76 @@ class ReceiptTests(unittest.TestCase):
         file.write_text(json.dumps(original))
 
 
+class InventorySemanticsTests(unittest.TestCase):
+    def setUp(self):
+        self.data = json.loads((ROOT / "docs/acceptance/actions.json").read_text())
+        self.rows = {r["test_case"]: r for r in self.data["actions"]}
+
+    def operations(self, case):
+        return {(op["method"], op["path"]) for op in self.rows[case]["operations"]}
+
+    def test_restore_is_start_not_archive(self):
+        self.assertEqual(self.operations("P08.restore-archived"), {("POST", "/agents/{id}/start")})
+        self.assertIn("CampusApp/Sources/CampusKit/AppModel.swift#L2621", self.rows["P08.restore-archived"]["sources"])
+
+    def test_staged_files_never_require_saved_identifiers(self):
+        for case in ["P06.choose-attachment", "P06.preview-attachment", "P06.remove-staged-attachment"]:
+            self.assertEqual(self.operations(case), set(), case)
+        for case in ["P06.preview-saved-attachment", "P06.retry-saved-attachment-preview"]:
+            self.assertEqual(self.operations(case), {
+                ("GET", "/tasks/{id}/attachments/{attachment_id}"),
+                ("GET", "/tasks/{id}/attachments/{attachment_id}/download")})
+        self.assertEqual(self.operations("P06.download-saved-attachment"), {
+            ("GET", "/tasks/{id}/attachments/{attachment_id}/download")})
+
+    def test_create_variants_are_independent_obligations(self):
+        required = {"P05.create-ready-toggle": "ready", "P05.create-review-choice": "review_on_create",
+                    "P05.create-send-to-ready": "ready", "P05.create-assign-agent": "agent_id"}
+        for case, field in required.items():
+            row = self.rows[case]
+            self.assertEqual(self.operations(case), {("POST", "/tasks")})
+            self.assertIn(field, row["test_spec"]["scenario"])
+            self.assertIn("Idempotency-Key", row["test_spec"]["scenario"])
+            self.assertIn("refusal", row["test_spec"]["scenario"])
+            self.assertEqual(row["receipt"], case + ".json")
+        self.assertIn("omitted", self.rows["P05.create-review-choice"]["test_spec"]["scenario"])
+        self.assertIn("false", self.rows["P05.create-review-choice"]["test_spec"]["scenario"])
+
+    def test_other_traced_boundaries(self):
+        self.assertEqual(self.operations("P04.board-hide-load-done"), {("GET", "/tasks")})
+        self.assertEqual(self.operations("P09.credential-copy-error"), set())
+        self.assertEqual(self.operations("P08.select-native-session"), set())
+        self.assertEqual(self.operations("P11.refuse-consent"), {("POST", "/delegated_authorizations")})
+
+    def test_census_has_complete_noninvented_dispositions(self):
+        acceptance.check_control_audit(ROOT, self.data)
+
+    def test_audit_rejects_missing_duplicate_and_foreign_case(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            destination = root / "docs/acceptance"
+            destination.mkdir(parents=True)
+            shutil.copy2(ROOT / "docs/acceptance/mac-control-census.json", destination)
+            original = json.loads((ROOT / "docs/acceptance/control-reconciliation.json").read_text())
+            for kind in ["missing", "duplicate", "unknown-case"]:
+                audit = copy.deepcopy(original)
+                if kind == "missing":
+                    audit["entries"].pop()
+                elif kind == "duplicate":
+                    audit["entries"].append(copy.deepcopy(audit["entries"][0]))
+                else:
+                    audit["entries"][0]["cases"] = ["P00.invented"]
+                (destination / "control-reconciliation.json").write_text(json.dumps(audit))
+                with self.subTest(kind=kind), self.assertRaises(ValueError):
+                    acceptance.check_control_audit(root, self.data)
+
+    def test_local_classification_cannot_hide_a_server_request(self):
+        changed = copy.deepcopy(self.data)
+        row = next(r for r in changed["actions"] if r["test_case"] == "P11.refuse-consent")
+        row["execution_kind"] = "local"
+        with self.assertRaisesRegex(ValueError, "contradicts trace"):
+            acceptance.check_control_audit(ROOT, changed)
+
+
 if __name__ == "__main__":
     unittest.main()

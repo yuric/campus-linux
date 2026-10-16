@@ -1,19 +1,27 @@
 # Linux action acceptance inventory
 
-Task #981, next owner **LINUX-20261016**. All **491** product action cases are **unimplemented**;
-385 have concrete API operation/delegate mappings. The rest are explicit local steps or
+Task #981, next owner **LINUX-20261016**. All **519** product action cases are **unimplemented**;
+390 have concrete API operation/delegate mappings. The rest are explicit local steps or
 producer-blocked bridge cases, not uncounted omissions.
 [actions.json](actions.json) is the action ledger: one independently named test case and
 receipt per action, owning card, expected behavior, source location and exact API path /
 method / operationId / schema JSON pointer where the source maps to a concrete operation.
 A row is an acceptance obligation, not a product test or a passing receipt. No percentage
-summarizes missing actions. The [Mac control census](mac-control-census.json) records every
-Swift Button/Menu/Toggle/Picker/TextField/submit/tap location found in non-test source,
-with file hashes, as a cross-check against omitted local controls.
+summarizes missing actions. The [Mac control census](mac-control-census.json) records 588 Swift control locations found by the original text scan,
+with 56 file hashes. It is not a complete Swift/renderer parser: multiline buttons, native
+menus, bindings and adapter entry points require separate inspection.
+[control-reconciliation.json](control-reconciliation.json) dispositions every census
+location as a named case, duplicate entry point, local step or Mac-specific mechanism,
+with the actual control text and a trace-specific obligation. These obligations are required
+subcases of the linked receipt; a transport call alone cannot satisfy them.
 Each row declares `provenance_kind`: `mac-transport-source` is a concrete transport
 method; `mac-observed-control` cites its actual control/adapter file and line;
 `linux-derived-acceptance` cites the Linux PRD requirement rather than pretending a
-Mac control was observed. Its additional HTTP citations identify delegates only.
+Mac control was observed. Every observed row now has `source_trace` and `execution_kind`. `operations` names the
+request(s) caused by the action or by its explicitly described submit/variant; a local picker,
+clipboard operation or draft edit has none. `related_cases` links later submission or
+destination-loading obligations. Generic transport rows remain transport obligations and
+do not establish UI completeness. Additional HTTP citations identify delegates only.
 No generic screen citation is evidence of a picker, notification, menu or OS mechanism. It is not a semantic
 parser or a replacement for reviewing server-offered action arrays.
 
@@ -107,11 +115,33 @@ The source-control audit separately records authority enable, disable, revoke an
 with distinct stale-revision/refusal receipts and each offered form field. The verdict
 carrier requires separate create, cancel, resend and saved-direction retry receipts; saved
 retry additionally requires original-sender, unchanged-binding and uncertain-execution
-cases. The actual attachment picker/preview are NewTaskSheet controls; notifications use
-CoordinatorReplyNotificationCenter, menus use main.swift, appearance uses SettingsScreen.
+cases. The staged attachment picker/preview/removal are local NewTaskSheet controls; saved
+attachment preview, download and retry have separate TaskDetailStore/TaskAttachmentTile
+cases. The four create variants (Ready choice, review choice, explicit send-to-ready and
+atomic create/assignment) have independent payload/refusal/uncertainty receipts. Draft
+question and dictation recovery controls are individually named. Restore follows
+AgentsArchiveActions.restore to startAgent, not fleet archive. Consent denial POSTs the
+exact denial decision rather than pretending it is only a local dismissal.
+
+The wider trace corrected Done loading to GET /tasks, credential error copy to clipboard,
+landing model/effort and native-session row selection to local state, and executor-specific
+catalog/usage/verification branches to their real delegates. Diagnostic remedy lookup,
+history and repair-task creation are distinct operations; onboarding prompt Copy includes
+a completion request. Camera/uninstall requirements without an established adapter remain
+honestly Linux-derived. The reconciliation records local form fields and duplicate/shared
+controls explicitly, including their identity/draft preservation obligations.
+
+Notifications use CoordinatorReplyNotificationCenter, menus use main.swift, appearance uses SettingsScreen.
 The census reconciliation also adds individual menu commands, credential verify-all/usage
 refresh/undo-order/copy-error, board remaining-page/visibility/assignment controls and
 landing mode/reasoning/model-retry controls. Linux tray requirements remain conditional: no
 Mac NSStatusBar/MenuBarExtra surface was found at this pin, so no observed tray parity is
 claimed. Derived security/lifecycle/recovery cases remain obligations even when no Mac
 button exists. The freeze audit must repeat this reconciliation against then-current source.
+
+The bootstrap checker enforces pin/case references, exact census membership and local/request
+classification. Focused regression tests lock the independently traced restore, staged/saved
+attachment, create-variant, Done-read, clipboard and consent boundaries. These checks cannot
+prove semantic truth of arbitrary source text; human source review and the owning cards’
+real request/state receipts remain mandatory. Every one of the 519 action rows is still
+`unimplemented`. No app, desktop, runtime or parity pass is granted here.

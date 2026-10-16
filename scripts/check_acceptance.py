@@ -33,12 +33,47 @@ def check_inventory(root=ROOT):
                 raise ValueError(f"{case}: incomplete operation/schema")
     if groups != {f"P{n:02}" for n in range(1, 19)}:
         raise ValueError("missing parity group")
+    check_control_audit(root, data)
     protocol = json.loads((root / "docs/acceptance/visual-protocol.json").read_text())
     if protocol["p95_frame_ms_max"] != 33.3 or protocol["duration_seconds"] != 60:
         raise ValueError("premeasurement gate changed; requires explicit criteria review")
     if sum(x["duration_seconds"] for x in protocol["sequence"]) != 60:
         raise ValueError("sequence does not cover 60 seconds")
     print(f"Inventory: {len(ids)} explicit unimplemented action cases; no product passes")
+
+
+def check_control_audit(root, data):
+    """Require an inspectable disposition, not an inferred semantic pass from row counts."""
+    census = json.loads((root / "docs/acceptance/mac-control-census.json").read_text())
+    audit = json.loads((root / "docs/acceptance/control-reconciliation.json").read_text())
+    if audit.get("mac_sha") != data["mac_sha"] or census["mac_sha"] != data["mac_sha"]:
+        raise ValueError("control audit/source pin mismatch")
+    cases = {row["test_case"]: row for row in data["actions"]}
+    expected = {(file["path"], line) for file in census["files"] for line in file["control_lines"]}
+    seen = set()
+    for entry in audit["entries"]:
+        if entry.get("disposition") not in {"case", "duplicate", "local", "platform"}:
+            raise ValueError("control audit requires an explicit disposition")
+        if not entry.get("trace") or not entry.get("cases"):
+            raise ValueError("control audit requires trace and acceptance cases")
+        if any(case not in cases for case in entry["cases"]):
+            raise ValueError("control audit references an unknown acceptance case")
+        for line in entry["lines"]:
+            location = (entry["path"], line)
+            if location in seen or location not in expected:
+                raise ValueError("duplicate or non-census control disposition")
+            seen.add(location)
+    if seen != expected:
+        raise ValueError("undispositioned census control")
+    for row in cases.values():
+        if row["provenance_kind"] == "mac-observed-control":
+            if not row.get("source_trace") or row.get("execution_kind") not in {"local", "request"}:
+                raise ValueError(f"{row['test_case']}: observed control needs a traced execution kind")
+            if bool(row["operations"]) != (row["execution_kind"] == "request"):
+                raise ValueError(f"{row['test_case']}: local/request mapping contradicts trace")
+        if any(case not in cases for case in row.get("related_cases", [])):
+            raise ValueError("unknown related acceptance case")
+    print(f"Control audit: {len(seen)} census locations dispositioned; semantic review still required")
 
 
 def check_receipts(directory, head, results, source_root=ROOT):

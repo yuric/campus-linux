@@ -87,12 +87,17 @@ The first reads live GitHub visibility/head/check conclusions and rejects skippe
 cancelled, failed, pending or absent checks. The second verifies downloaded bytes; its
 results argument must come from the observed run, never invented. The workflow supplies
 that argument directly from `needs`. Neither command approves review/Council or merges.
-The coordinator must configure/verify all six required names and prevent bypass under the
-repository's review policy. This worker does not mutate branch protection. On 2026-10-16, `GET /repos/yuric/campus-linux/branches/main/protection` returned
-404 “Branch not protected”, and `GET /repos/yuric/campus-linux/rules/branches/main`
-returned `[]`. Enforcement is therefore an observed coordinator blocker, not assumed active.
-An earlier REST rate-limit failure cleared on retry. Settings or GitHub availability
-failures are explicit coordinator blockers, not reasons to bypass CI.
+At 2026-10-16 10:01 UTC, LINUX-20261016 configured and read back the D5 branch
+protection. The [sanitized receipt](receipts/branch-protection.json) records all six exact
+check names bound to GitHub Actions app `15368`, strict status checks, enforced admins,
+required pull requests and conversation resolution, with force pushes and deletions disabled.
+The GitHub approval count is zero; independent different-family review and Council remain
+mandatory coordinator gates. The earlier 404/unprotected observation is superseded by this
+readback. This worker only records the coordinator's evidence and does not change settings.
+
+Protection must be reverified at merge. A point-in-time configuration receipt does not
+replace either exact-head live-check or downloaded-byte admission above. Settings or GitHub
+availability failures remain coordinator blockers, never reasons to bypass CI.
 See [GitHub runner documentation](https://docs.github.com/en/actions/reference/runners/github-hosted-runners).
 
 ## Release-build baseline and ABI inventory
@@ -142,4 +147,4 @@ this bootstrap does not create another VM. [Visual criteria](visual-protocol.md)
 premeasurement bar and arrange every reference screen. First-user Ubuntu/CPU/GPU, paired
 captures, producer/contract merges, ABI compatibility, product test commands and desktop
 behavior remain explicitly unresolved. Public visibility is currently satisfied; required
-branch-protection enforcement must be verified by LINUX-20261016 at merge.
+branch-protection enforcement was observed active and must be reverified by LINUX-20261016 at merge.
