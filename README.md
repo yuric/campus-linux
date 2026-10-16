@@ -1,12 +1,25 @@
 # Campus for Linux
 
-Campus on Linux could be two different things, and neither is built yet:
+The planned Linux desktop client for Campus, with macOS feature parity and a local
+execution service for coding agents and the same visual identity as the Mac app,
+as closely as practical with Linux integration. It will control local and remote agents through
+the Campus API. Ubuntu is the first verification target; broad Linux compatibility
+is a design goal with an explicit tested support matrix.
 
-- a desktop client with the board and the island, and
-- Campus running headless on a Linux server, with agents working on code checked out there.
+**Status: specification decided; application and execution service not implemented.**
+Tauri with a React board, Rust for the host and executor, Secret Service for secrets, deb
+and AppImage with signed in-app updates, one production channel. The decisions and their
+trade-offs are in [PRD.md section 4](PRD.md#4-architecture-and-decisions).
 
-They serve different people, and the second may matter more. [PRD.md](PRD.md) treats them separately.
+- [Product requirements and delivery gates](PRD.md)
+- [Feature PRD directory](TODO/README.md)
+- [Architecture](ARCHITECTURE.md)
+- [Contributing](CONTRIBUTING.md)
+- [API snapshot](docs/api/openapi.yaml), imported from `yuric/campus-server`;
+  current provenance must be verified before implementation
 
-Like every Campus client, it will only show what the Campus API decides. The API contract is in [docs/api/openapi.yaml](docs/api/openapi.yaml), and the Mac app, [campus-macos](https://github.com/yuric/campus-macos), shows how it works in practice.
+The API decides product behavior; this client renders it. The reference implementation
+and Island renderer live in [campus-macos](https://github.com/yuric/campus-macos).
+The retired web and CLI clients are not implementation dependencies.
 
-Ideas and design discussion are welcome as issues. Licensed under Apache-2.0, see [LICENSE](LICENSE).
+Licensed under Apache-2.0. See [LICENSE](LICENSE).

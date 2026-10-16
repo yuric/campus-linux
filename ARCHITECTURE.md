@@ -1,41 +1,31 @@
-# Architecture — Campus for Linux
+# Architecture: Campus for Linux
 
-**This client has not been built, so it has no internal architecture yet.** What follows is
-the part that is already settled: the system this client will sit in, and the boundary it
-must respect. The decisions still open are in `PRD.md`.
+**Status: decided design; no product code exists.** Requirements, parity inventory,
+compatibility, delivery gates and the seven decisions behind this page are in
+[PRD.md](PRD.md).
 
-## The system this client sits in
+## Components and authority
 
-Campus is a Rails API with several clients. The API is authoritative for every product
-decision; a client renders those decisions and adds platform-native interaction.
-
+```text
+React board + pinned Island renderer, in WebKitGTK
+                 |
+        restricted Tauri IPC bridge
+                 |
+Rust Tauri host ---------------- HTTPS / invalidation events -------- Campus Rails API
+                 |                                                       |
+       authenticated local IPC                                 claims / leases / events
+                 |                                                       |
+campus-linux-executor (Rust, systemd user unit) -------------------------+
+                 |
+      provider CLIs / authorized repository workspaces
 ```
-                    ┌──────────────────────────────┐
-                    │        Campus API            │
-                    │  Rails + PostgreSQL/Aurora   │
-                    │                              │
-                    │  · workflow and capability   │
-                    │    decisions                 │
-                    │  · normalized state          │
-                    │  · diagnostic severity       │
-                    │  · domain vocabulary         │
-                    └──────┬────────────────┬──────┘
-                           │                │
-                    HTTPS  │                │  Action Cable
-                    REST   │                │  (change hints)
-                           │                │
-        ┌──────────────────┴────────────────┴──────────────────┐
-        │                  │                │                  │
-   ┌────┴────┐      ┌──────┴─────┐    ┌─────┴────┐      ┌──────┴─────┐
-   │ campus- │      │  campus-   │    │ campus-  │      │  future    │
-   │  macos  │      │    web     │    │   cli    │      │  clients   │
-   └────┬────┘      └────────────┘    └──────────┘      └────────────┘
-        │
-        │ localhost, authenticated
-   ┌────┴──────────────────┐
-   │  campus-mac-broker    │  provider CLIs, local repository access
-   └───────────────────────┘
-```
+
+Remote agents are controlled through authorized API operations, not arbitrary
+host-to-host RPC. The Linux service registers with Rails and implements its execution
+protocol; it does not host Rails. Local execution continues with the UI closed, within
+the user's graphical login session. The last graphical logout ends supervision even
+if SSH/TTY sessions remain; graphical login restores installed authorized supervision.
+No root service, automatic lingering or unattended pre-login execution is included.
 
 ### Where the authority line sits
 
@@ -51,7 +41,12 @@ decision; a client renders those decisions and adds platform-native interaction.
 | Domain vocabulary — what a stage is *called* | — |
 
 A client that infers domain meaning from an error substring, a message prefix, or HTTP status
-alone is broken, even when it happens to produce the right answer.
+alone is broken, even when it happens to produce the right answer. This table is the same one
+the Mac and Windows documents carry, and `scripts/check-client-boundary.sh` fails a pull
+request that crosses it (PRD D7).
+
+The executor observes and supervises processes; Rails decides authorized work and interprets
+normalized results.
 
 ### Freshness: events are hints, not patches
 
@@ -65,25 +60,43 @@ Server contracts are versioned. A client that receives a version it does not und
 **withholds the action** rather than falling back to an older client-side decision. Silent
 degradation is how two clients start disagreeing.
 
-## What is undecided
+## Reuse and repository ownership
 
-Whether this repository is even a client. See `PRD.md`.
+- `campus-server`: API/OpenAPI and contract corrections, production deploy.
+- `campus-macos`: reference semantics and shared Three.js Island producer.
+- `campus-linux`: the Tauri shell, the React board, the Rust host and executor, packaging
+  and tests.
+- Retired `campus-web` and `campus-cli` are not product dependencies.
 
-## The fork that has to be resolved first
+Generate API bindings from a verified server snapshot. Import renderer artifacts from
+an exact merged producer commit with manifest/byte verification. Shared renderer
+changes land at the producer first; no second renderer or hand-maintained API schema.
 
-An early stub quietly contained two products:
+## Boundaries and recovery
 
-1. **A Linux desktop client** — the board and the island, fitting the diagram above exactly.
-2. **Campus running headless on a Linux server** — no GUI, agents executing against checkouts
-   on that machine. This does not fit the diagram above at all: it is closer to the *broker*
-   box than to a client box, or possibly to the API box itself.
+Session storage and HTTP belong to the trusted unprivileged per-user host, not renderer JavaScript.
+IPC has narrow authenticated methods and schema/origin/principal validation. Bundled
+content cannot invoke arbitrary programs or approve delegated authorization. External
+links use the browser. Credentials and caches are scoped to exact API origin, channel,
+account and island. Endpoint changes never reuse credentials; redirects cannot forward
+secrets across origins and deep links cannot switch the endpoint/trust policy. Unknown
+server contract versions withhold affected actions.
 
-These have different users, different threat models, and different update stories. The second
-may well matter more.
+The executor uses distinct identity, bounded workspaces, direct argv spawning,
+executable allowlists, credential isolation, redacted events and process-group
+cancellation. Durable delivery, lease reconciliation and restart recovery preserve
+attempt ownership and prevent duplicate work. Sign-out and updates explicitly
+reconcile active work. Plaintext credential fallback is excluded.
 
-## Credential storage transfers from nowhere
+Events signal re-fetches, not client-authored patches. Writes reconcile ambiguous
+delivery instead of replaying blindly. Queued, running and completed remain distinct.
 
-Not the macOS Keychain rationale, not the Windows DPAPI question. Secret Service,
-gnome-keyring, and kwallet all exist on desktops; a headless server has none of them. If the
-headless product is the real one, credential storage is an open design problem rather than a
-platform API call.
+## Decisions
+
+Tauri with a React board (D1); Rust for the host and the executor (D2); Secret Service for
+Campus-owned tokens and provider files isolated but plaintext (D3); deb and AppImage with
+Tauri's signed updater and one production channel (D4); Docker, public hosted CI and a Lima
+VM for verification (D5); five named campus-server prerequisites (D6); the boundary gate
+(D7). Each is recorded with its trade-offs in [PRD.md section 4](PRD.md#4-architecture-and-decisions).
+Broad Linux support is verified per runtime, architecture and desktop combination, not
+inferred from one Ubuntu build.

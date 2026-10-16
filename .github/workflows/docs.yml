@@ -76,3 +76,12 @@ jobs:
           if not paths:
               sys.exit("spec has no paths")
           PY
+
+  boundary:
+    if: ${{ !github.event.repository.private }}
+    name: Client renders, API decides
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: No domain literal or error-substring match in client source (PRD D7)
+        run: scripts/check-client-boundary.sh

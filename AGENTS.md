@@ -6,15 +6,14 @@ Instructions for AI coding agents working in this repository. Humans want `READM
 ## Read this first: there is no code here
 
 This client **has not been started**. There is no source, no build, and no test command. The
-stack is not decided.
+stack **is decided**: Tauri with a React board, Rust for the host and the executor, Secret
+Service for secrets, deb and AppImage with Tauri's updater, one production channel. The
+decisions and their trade-offs are in [PRD.md section 4](PRD.md#4-architecture-and-decisions).
 
-If you have been asked to implement something here, the correct first move is to stop and
-establish the decisions listed in `PRD.md`. Writing an implementation now means inventing
-architecture that has not been agreed, in a repository whose whole purpose is to render
-decisions made elsewhere.
-
-**Do not** scaffold a project structure, pick a framework, or add dependencies to "get
-started". Those are the decisions, not preliminaries to them.
+If you have been asked to implement something here, check that the owner has explicitly
+started implementation. Until then, nothing but documentation changes. When implementation
+starts, build what section 4 says; do not reopen a decision, substitute a framework, or add a
+dependency section 4 does not imply.
 
 ## Repository routing
 
@@ -25,7 +24,7 @@ edits, whatever building the card sits on and whatever folder your shell started
 |---|---|---|
 | `yuric/campus-server` | Rails API (`api/`), the OpenAPI spec and `contracts/`, deploy and release (`deploy/`, `changes/`, `VERSION`), AWS (`infrastructure/`), CI and policy (`.github/`, `scripts/`, `config/`), Campus skills (`.agents/skills`, `api/app/skills`) | Swift, the Mac app, the island renderer, any client UI |
 | `yuric/campus-macos` | The Mac app (`CampusApp/`, `Sources/`, `Package.swift`), the island renderer (`island/`), the contract snapshot (`contract/`, moved only by a snapshot PR) | Rails, migrations, OpenAPI edits, deploy and release, client pins |
-| `yuric/campus-ios`, `campus-android`, `campus-linux`, `campus-windows` | Scaffolds: `PRD.md` and docs, until the owner starts the client | Product code, frameworks, dependencies |
+| `yuric/campus-ios`, `campus-android`, `campus-linux`, `campus-windows` | Scaffolds: PRDs and docs, until the owner starts the client | Product code, frameworks, dependencies |
 | `yuric/campus-cli`, `yuric/campus-web` | Retired on 2026-10-05 (`campus-web` is archived) | Any new work |
 | `yuric/campus` | The umbrella: submodule pointers and its own scaffold docs | Product code of any kind |
 | `yuric/campus-marketing-page` | The public marketing site | API or client code |
@@ -43,12 +42,12 @@ edits, whatever building the card sits on and whatever folder your shell started
 
 ### In this repository
 
-- You are in a scaffold. Nothing but `PRD.md` and docs changes here until the owner starts
+- You are in a scaffold. Nothing but PRDs and docs changes here until the owner starts
   this client; product or API work goes to the repository the table names.
 
 ## What you can usefully do
 
-- Answer the open questions in `PRD.md` with evidence — measurements, spikes in a scratch
+- Answer the open evidence in `PRD.md` section 9 — measurements, spikes in a scratch
   directory, links to documentation.
 - Improve `PRD.md` itself as answers arrive.
 - Point out where the plan contradicts what the shipped clients actually do.
@@ -58,7 +57,9 @@ edits, whatever building the card sits on and whatever folder your shell started
 - [`campus-macos`](https://github.com/yuric/campus-macos) — native Swift; the reference for
   local agent execution, and home of the island renderer.
 
-`docs/api/openapi.yaml` is the contract itself.
+`docs/api/openapi.yaml` is an imported snapshot, not proof of the current server contract.
+Its current provenance has not been verified. Re-import from a recorded merged server
+SHA and verify it before generating product bindings or claiming API compatibility.
 
 ## The rule that overrides everything else
 
@@ -87,17 +88,18 @@ decision.
 
 The macOS and web clients each compiled their own copy of which providers support CLI login.
 They drifted. Campus answered "can I sign in with xAI?" differently depending on which client
-you opened. The stage list is currently duplicated across three clients, and two of those
-copies do not agree with each other.
+you opened. Historical duplication also caused stage lists to disagree. The retired clients are
+not dependencies of this implementation.
 
 A rule in two clients is a rule that will disagree with itself. There is no exception worth
 the cost.
 
 ## Wire-shape changes
 
-Any change to how this client decodes or encodes an API response requires the corresponding
-change to `api/docs/openapi.yaml` in `yuric/campus-server`, merged there first. The
-contract comes first, then the client.
+Consume existing responses from a verified pinned OpenAPI snapshot. New or changed wire
+shapes require the corresponding change to `api/docs/openapi.yaml` in
+`yuric/campus-server`, merged there first. A Linux implementation of an existing contract
+does not itself require an API change. The contract comes first, then the client.
 
 ## Secrets
 
@@ -108,9 +110,9 @@ store. This is not a guideline.
 ## Source of truth
 
 This repository is the source of truth for Campus on Linux. Work on it has not started; when it
-does, development happens here, through pull requests to `main`. Nothing is exported into this
-repository except its snapshot of the API spec, which comes from `yuric/campus-server` and is
-never edited here by hand. See `CONTRIBUTING.md`.
+does, development happens here, through pull requests to `main`. API snapshots come from `yuric/campus-server` and are never edited here by hand.
+The planned renderer artifact comes from a pinned merged `campus-macos` producer;
+its implementation remains producer-owned. See `CONTRIBUTING.md`.
 
 ## Repository name cutover
 
@@ -129,14 +131,24 @@ full procedure.
 
 ## Linux-specific notes for whoever starts this
 
-**This may be two products, not one.** A Linux desktop client and a headless Campus server
-are different things with different users, and the second may matter more. `PRD.md` treats
-them separately. Establish which one you are building before writing anything.
+**Scope is specified.** The owner requested desktop macOS feature parity, local execution
+and remote control. Hosting Rails is outside scope. Match the Mac login-session lifecycle:
+execution can continue with the window closed, but unattended pre-login/after-logout work
+is not release 1. See `PRD.md`.
 
-**Credential storage is the hard part and nothing transfers.** Not the macOS Keychain
-rationale, not the Windows DPAPI question. Secret Service, gnome-keyring, and kwallet all
-exist; a headless server has none of them, and that is probably the important case.
+**PRD location.** Overall requirements live at `PRD.md`, at the root like every other Campus
+client. Feature PRDs belong at `TODO/<feature-name>/PRD.md`, following `TODO/README.md`.
 
-**Packaging choice carries an update story with it.** AppImage, deb, flatpak — each implies a
-different answer to how a user gets a fix, and that answer is part of the security boundary,
-not packaging trivia.
+**Secrets follow the Mac split, with Secret Service in the Keychain's place.** Campus-owned
+tokens go to Secret Service and nowhere else. Provider OAuth files are the provider's,
+isolated under the credentials root exactly as the Mac broker does it, plaintext because the
+provider writes them so. Do not add a file fallback for Campus-owned tokens and do not try to
+encrypt the provider's files (PRD D3).
+
+**Packaging and updates are decided.** deb and AppImage from one Tauri build, Tauri's signed
+updater, one production channel, the executor inside the app package (PRD D4). There is no
+Campus Dev product on Linux; a local build reaches `localhost:3001` through a build-time
+flag only.
+
+**The boundary is a failing build.** `scripts/check-client-boundary.sh` runs on every pull
+request once source exists. A domain literal in client code fails CI (PRD D7).
