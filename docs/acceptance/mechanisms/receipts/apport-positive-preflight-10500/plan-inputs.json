@@ -1,0 +1,30 @@
+{
+  "source_scope": "coordinator-held primary-source snapshots; hashes are not runtime proof",
+  "files": [
+    {
+      "coordinator_relative_path": "positive-control-plan.md",
+      "bytes": 17411,
+      "sha256": "be879bdccf2ac83fe88283aca187b5ce6f8333cff251e5551d0f366f03c265af"
+    },
+    {
+      "coordinator_relative_path": "sources/apport-2.28.3",
+      "bytes": 44730,
+      "sha256": "1b8b5e2c53e8970dd2f47c9a0892030d1ebad57cae1f7242c43a6252f1f6dff2"
+    },
+    {
+      "coordinator_relative_path": "sources/apport-2.28.3-report.py",
+      "bytes": 76153,
+      "sha256": "8b8aefab8abf44254542e63381de7fc517ab91ad3caa9e1febe89d172c6b56c4"
+    },
+    {
+      "coordinator_relative_path": "sources/apport-2.28.3-problem_report.py",
+      "bytes": 34689,
+      "sha256": "560649a7bf377fa671199aa86e7164b2710f6f80224cf4b63ff44e3a4911b3ad"
+    },
+    {
+      "coordinator_relative_path": "sources/sources.json",
+      "bytes": 3830,
+      "sha256": "cb29b51110facfd264b8b5cdd04a23e0058adb10f93867e574e8cb4b651c7a08"
+    }
+  ]
+}

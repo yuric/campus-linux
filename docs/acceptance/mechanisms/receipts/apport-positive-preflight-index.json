@@ -1,0 +1,45 @@
+{
+  "scope": "Direction10500 preflight only; no crash experiment or runtime acceptance",
+  "files": [
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-positive-preflight-10500/host-after.json",
+      "bytes": 263,
+      "sha256": "e6aea0a554fc7a64346278766b950ebe9a3a93c977648271107a8d6563f658d0"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-positive-preflight-10500/host-before.json",
+      "bytes": 300,
+      "sha256": "a6c53a5c1645544bc137e2bd847b71ec33c44e685237545ab2ef596e343d70fc"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-positive-preflight-10500/identity.json",
+      "bytes": 4059,
+      "sha256": "b50d4e04ef70a0ca5cc1c4c81a2e718898cd1fea7fd0a66036472693514442fa"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-positive-preflight-10500/plan-inputs.json",
+      "bytes": 1032,
+      "sha256": "c102f2361584d51d98c8743254c1ee19b19c0ed101843e42823231e812da933c"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-positive-preflight-10500/sleep-preflight.json",
+      "bytes": 3147,
+      "sha256": "3a275b45122021f1e668e44c2dc9cad417a9d36a2300f6d77dbc94dcd613f427"
+    },
+    {
+      "path": "spikes/982/security/apport-positive-preflight.py",
+      "bytes": 4189,
+      "sha256": "98d600ae98bb4501edba643b62094b94570aa2659f85a91ec8bb6439813a53fb"
+    },
+    {
+      "path": "spikes/982/security/apport-sleep-preflight.py",
+      "bytes": 7233,
+      "sha256": "74bca535ebef3b4cfe7852456fb8e573c5666a606619de70dc7c2bdc13fa4920"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/apport-positive-preflight.md",
+      "bytes": 6019,
+      "sha256": "533caa69b9803f78760ee302d8bb3df68b1a2fcfa0b96f829a70cd0b59b0195f"
+    }
+  ]
+}
