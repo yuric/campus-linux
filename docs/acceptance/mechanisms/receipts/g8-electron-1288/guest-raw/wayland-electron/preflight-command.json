@@ -1,0 +1,31 @@
+{
+  "argv": [
+    "/home/campusqa/spike982/g8-electron-1288/electron/electron",
+    "/home/campusqa/spike982/g8-timing-1268/repo/spikes/982/renderer/electron/main.cjs",
+    "--preflight",
+    "/home/campusqa/spike982/g8-timing-1268/desktop-first",
+    "ignored",
+    "/home/campusqa/spike982/g8-electron-1288/wayland-electron/preflight.json"
+  ],
+  "utc": "2026-10-16T17:29:32.051523+00:00",
+  "timeout_seconds": 125,
+  "launch": {
+    "pid": 3054,
+    "stat": "3054 (electron) R 3036 3054 3054 0 -1 4456448 27 0 0 0 0 0 0 0 20 0 1 0 35385 227381248 160 18446744073709551615 219973902532608 219974062627248 281474565166304 0 0 0 0 0 0 0 0 0 17 0 0 0 0 0 0 219974069125120 219974070370305 219974662631424 281474565167266 281474565167553 281474565167553 281474565169085 0\n",
+    "starttime": 35385,
+    "ppid": 3036,
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-python3-3036.scope\n",
+    "uid": 1000,
+    "comm": "electron",
+    "sd_pid_get_session": {
+      "returncode": -61,
+      "session": null
+    }
+  },
+  "returncode": -5,
+  "after": {
+    "pid": 3054,
+    "error": "[Errno 2] No such file or directory: '/proc/3054/stat'"
+  },
+  "finished_utc": "2026-10-16T17:29:32.167327+00:00"
+}

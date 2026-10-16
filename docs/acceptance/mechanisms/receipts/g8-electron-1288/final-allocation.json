@@ -1,0 +1,38 @@
+{
+  "utc": "2026-10-16T17:58:19.992339+00:00",
+  "scope": "source-only continuation1318; not a runtime lease or continuous floor assertion",
+  "prior_1288_stopped_disk_bytes": 7857307648,
+  "prior_1288_baseline_disk_bytes": 7424835584,
+  "prior_1288_disk_growth_bytes": 432472064,
+  "prior_conservative_charge_bytes": 480526336,
+  "prior_cumulative_g8_charge_bytes": 1192828928,
+  "source_1318_additional_allowance_bytes": 8388608,
+  "maximum_cumulative_including_full_source_allowance_bytes": 1201217536,
+  "source_workspace_allocated_at_sample_bytes": 6463488,
+  "host_free_at_sample_bytes": 23936667648,
+  "source_host_floor_bytes": 17179869184,
+  "targeted_test_floor_bytes": 19327352832,
+  "runtime_host_floor_after_reservation_bytes": 21474836480,
+  "historical_publication_failure": "17:41:45 host free21222273024 minus remaining324780032 =20897492992, below20GiB; no retroactive waiver",
+  "allocation_limit_note": "Current source allowance is separate and includes new worktree/source/index/Git writes. Sparse checkout avoids copying25.57MB historical receipts. Saved17:31 stopped highwater retained; later guest disk changes are not assigned to1288.",
+  "not_run": [
+    "guest access",
+    "fresh extraction",
+    "install or rollback",
+    "full repository verifier",
+    "Docker/architecture wrappers"
+  ],
+  "publication": "Historical1318 sample above retained. Human10916 expands source/materialization/receipt/Git cap to64MiB at fresh18GiB host floor; permits existing historical receipt materialization and one draft push, preserving any verification failure. No guest lease. Current exact-head check results belong to the task handoff.",
+  "source_10916_continuation": {
+    "utc": "2026-10-16T18:05:35.977929+00:00",
+    "additional_allowance_bytes": 67108864,
+    "host_floor_bytes": 19327352832,
+    "host_free_before_materialization_bytes": 29072498688,
+    "materialized_missing_tracked_files": 772,
+    "materialized_logical_bytes": 25394073,
+    "host_free_before_record_bytes": 28960104448,
+    "workspace_allocated_after_materialization_bytes": 33878016,
+    "no_guest_access": true,
+    "no_installer_execution": true
+  }
+}

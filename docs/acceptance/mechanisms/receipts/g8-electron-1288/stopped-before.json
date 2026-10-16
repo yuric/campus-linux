@@ -1,0 +1,9 @@
+{
+  "utc": "2026-10-16T17:23:17.190647+00:00",
+  "disk_allocated": 7424835584,
+  "disk_inode": 944391844,
+  "host_free": 32925061120,
+  "allowance": 805306368,
+  "prior": 712302592,
+  "host_after_reservation": 32119754752
+}

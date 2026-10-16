@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "curl",
+    "-fL",
+    "--max-time",
+    "180",
+    "--max-filesize",
+    "124393671",
+    "--output",
+    "/home/campusqa/spike982/g8-electron-1288/electron-v44.8.0-linux-arm64.zip",
+    "https://github.com/electron/electron/releases/download/v44.8.0/electron-v44.8.0-linux-arm64.zip"
+  ],
+  "start_utc": "2026-10-16T17:24:37.456983+00:00",
+  "guest_free_before": 19890688000,
+  "returncode": 0,
+  "finished_utc": "2026-10-16T17:24:48.741312+00:00"
+}

@@ -227,7 +227,11 @@ scope. All28 captured probe PIDs were already absent. The additive
 [attribution-aware observer](cleanup-attribution.py) retains each parent/cgroup relationship:
 [baseline](wayland-final-base/cleanup-attribution.json) confirms29 PIDs including holder absent;
 [candidate](wayland-final-always/cleanup-attribution.json) confirms4 including holder absent.
-Owned application scopes are absent and the scoped renderer/old updater driver scan is empty.
+Observed application scopes are absent and the scoped renderer/old updater driver scan is empty.
+The baseline command scopes `app-gnome-python3-3784`, `app-gnome-python3-3954` and
+`app-gnome-python3-4069` were not individually resampled by that collector. All29 observed
+PIDs were absent and later Stopped is verified; those facts do not establish individual
+scope readback. The original raw collector output is preserved.
 The shared GNOME cgroup was never stopped. User-manager session attribution remains limited.
 An initial final-snapshot command referenced a guest file that had only been run over stdin;
 it failed before observation. The subsequent exact host script over stdin succeeded.
@@ -241,7 +245,8 @@ APT jobs and unchanged measured WebKit/Mesa/GNOME packages. Normal graphical log
 observed in [sessions](sessions-after-logout.txt) and [greeter](greeter-after-logout.png).
 [Shutdown](resume-shutdown.txt) and [stopped readback](resume-stopped-after.json),17:06:46,
 record actual disk7,405,699,072bytes, inode944391844, revised-baseline growth16,842,752bytes.
-Host free25,448,300,544bytes; final guest sample19,910,086,656bytes. UTM, other Offices,
+Host free25,448,300,544bytes; final guest sample at17:06:17 after logout was19,910,283,264bytes.
+The earlier19,910,086,656byte sample was at17:05:32 before logout. UTM, other Offices,
 shared caches, release keys and updater protected content were not operated.
 
 X11 timing was **not run**, per the newer coordinator boundary; historical X11 functional
@@ -259,6 +264,8 @@ same-card temporary files, plus16,842,752 stopped-disk growth and16,777,216 expl
 receipt reserve:59,985,920 new charged bytes and712,302,592 cumulative. These are below the
 revised1GiB/2GiB limits. The reserve is not represented as measured allocation. Guest files
 are not double-counted outside the disk increase. The first allowance failure remains intact.
+The raw snapshot `remaining_bytes` field is a superseded guest-internal accounting metric;
+the revised whole-disk plus host-growth allowance above governs this lease.
 Root10798 independently verified Stopped and took back the guest lease at17:07:36; this worker
 performed no guest access after that handoff. Remaining work in this submission is source-only.
 

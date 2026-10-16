@@ -206,8 +206,27 @@ no candidate timing was attempted and no numeric miss is inferred from that fail
 
 Exact accepted source9d7743a and merged Mac3e3d4bcd export stayed unchanged. Newer
 human10789/10795 paused X11 and Electron before the D1 decision. Both inhibitors were
-released; all captured owned PIDs/scopes are absent, with shared GNOME attribution limits
-explicit. The resumed boot's32 protected entries match exactly through graphical logout.
+released; all captured owned PIDs and individually observed scopes are absent, with shared
+GNOME attribution limits explicit. Baseline command scopes3784/3954/4069 were not individually
+resampled; later Stopped does not replace that missing scope observation. The resumed boot's32
+protected entries match exactly through graphical logout.
 Lima returned Stopped at17:06:46 observation, actual disk7,405,699,072bytes. Root
 LINUX-20261016 owns review, CI/Council, D1 decision and the next observed lease. This is
 one consolidated evidence push to draft PR12, not readiness or task completion.
+
+## Direction1288 Electron boundary and10834 source proposal
+
+The [failure/custody/resource report](receipts/g8-electron-1288/REPORT.md) records one exact
+official Electron44.8.0 acquisition/extraction and normal Wayland launch. The vendor
+sandbox helper prerequisite aborted the process before native GPU/preflight/scene evidence.
+No motion, freeze, timing, X11 or numeric performance result followed. All23 accepted
+renderer sources remain unchanged; all62 protected entries match through normal logout.
+The inhibitor was released, owned PIDs/application scopes were absent, and Lima returned
+Stopped. The failed shared-parent cleanup assertion remains beside its precise attribution.
+
+Human10834's [fresh-inode extraction/rollback proposal](electron-sandbox-proposal.md) is
+source only, never executed. The old10832 move/chown proposal is rejected and retained
+as history; its four historical tests do not validate the revision. Separate current
+source-only validators do not prove installation, rollback or runtime behavior. Root LINUX-20261016 owns independent review and a separate
+future lease, plus exact-head CI/admission/Council. No worker watcher or automatic wakeup
+is assumed. Historical1268 raw bytes are preserved, with10810 prose precision applied.

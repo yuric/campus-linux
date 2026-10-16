@@ -1,0 +1,55 @@
+{
+  "utc": "2026-10-16T17:23:33.943852+00:00",
+  "free_bytes": 32296202240,
+  "commands": [
+    {
+      "argv": [
+        "uptime"
+      ],
+      "returncode": 0,
+      "stdout": "10:23  up 6 days,  2:18, 1 user, load averages: 7.86 6.78 11.40\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "vm_stat"
+      ],
+      "returncode": 0,
+      "stdout": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                    57139.\nPages active:                                2071061.\nPages inactive:                              2046840.\nPages speculative:                             21013.\nPages throttled:                                   0.\nPages wired down:                             586090.\nPages purgeable:                               12622.\n\"Translation faults\":                    39115619041.\nPages copy-on-write:                      3563828036.\nPages zero filled:                       12354464325.\nPages reactivated:                         889264154.\nPages purged:                              118033693.\nFile-backed pages:                           1282480.\nAnonymous pages:                             2856434.\nPages stored in compressor:                  3125692.\nPages occupied by compressor:                1452350.\nDecompressions:                            802437876.\nCompressions:                              885696363.\nPageins:                                   476086953.\nPageouts:                                    2717498.\nSwapins:                                    59255252.\nSwapouts:                                   62086597.\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "sysctl",
+        "vm.swapusage"
+      ],
+      "returncode": 0,
+      "stdout": "vm.swapusage: total = 5120.00M  used = 3527.44M  free = 1592.56M  (encrypted)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "df",
+        "-k",
+        "/Users/yuri"
+      ],
+      "returncode": 0,
+      "stdout": "Filesystem   1024-blocks      Used Available Capacity  iused     ifree %iused  Mounted on\n/dev/disk3s5   971350180 905893112  31539260    97% 10788451 315392600    3%   /System/Volumes/Data\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "top",
+        "-l",
+        "2",
+        "-n",
+        "0",
+        "-s",
+        "1"
+      ],
+      "returncode": 0,
+      "stdout": "Processes: 1040 total, 15 running, 1025 sleeping, 7740 threads \n2026/10/16 10:23:35\nLoad Avg: 9.72, 7.18, 11.52 \nCPU usage: 65.13% user, 17.37% sys, 17.48% idle \nSharedLibs: 911M resident, 162M data, 188M linkedit.\nMemRegions: 978211 total, 13G resident, 653M private, 28G shared.\nPhysMem: 92G used (8425M wired, 22G compressor), 2960M unused.\nVM: 491T vsize, 6144M framework vsize, 59255252(0) swapins, 62086597(0) swapouts.\nNetworks: packets: 2894217802/1962G in, 2456418038/1336G out.\nDisks: 951202136/11T read, 351194986/9081G written.\n\n\nProcesses: 1039 total, 9 running, 1030 sleeping, 7707 threads \n2026/10/16 10:23:36\nLoad Avg: 9.72, 7.18, 11.52 \nCPU usage: 39.8% user, 8.14% sys, 52.77% idle \nSharedLibs: 911M resident, 162M data, 188M linkedit.\nMemRegions: 215 total, 16M resident, 653M private, 28G shared.\nPhysMem: 92G used (9189M wired, 22G compressor), 3197M unused.\nVM: 491T vsize, 6144M framework vsize, 59255252(0) swapins, 62086597(0) swapouts.\nNetworks: packets: 2894218605/1962G in, 2456418351/1336G out.\nDisks: 951202478/11T read, 351195059/9081G written.\n\n\n",
+      "stderr": ""
+    }
+  ]
+}

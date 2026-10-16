@@ -1,0 +1,12 @@
+{
+  "utc": "2026-10-16T17:29:08.324537+00:00",
+  "disk_allocated": 7857242112,
+  "disk_growth": 432406528,
+  "new_host_scopes_conservative": 32518144,
+  "publication_reserve": 16777216,
+  "consumed": 481701888,
+  "remaining": 323604480,
+  "cumulative": 1194004480,
+  "host_free": 27168002048,
+  "host_after_remaining_reserved": 26844397568
+}

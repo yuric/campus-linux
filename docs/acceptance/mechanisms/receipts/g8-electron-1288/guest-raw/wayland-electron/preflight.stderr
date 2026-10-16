@@ -1,0 +1,1 @@
+[3054:1016/102932.092554:FATAL:sandbox/linux/suid/client/setuid_sandbox_host.cc:166] The SUID sandbox helper binary was found, but is not configured correctly. Rather than run without sandboxing I'm aborting now. You need to make sure that /home/campusqa/spike982/g8-electron-1288/electron/chrome-sandbox is owned by root and has mode 4755.

@@ -1,0 +1,303 @@
+#!/usr/bin/env python3
+"""UNEXECUTED proposal for 10832. Requires review and a NEW explicit guest lease.
+
+Fixed disposable guest/paths only. No download, extraction, launch or policy edit.
+Run before graphical login, with no fixture-user processes or open runtime handles.
+"""
+import argparse
+import datetime
+import hashlib
+import io
+import json
+import os
+from pathlib import Path, PurePosixPath
+import shutil
+import socket
+import stat
+import sys
+import zipfile
+
+ARCHIVE_SHA = '502296281cab3c333bd5193e2eaed11c3bb28eabd7a451a49776a3e5a9468f8c'
+EXECUTABLE_SHA = '730d44d5aefb6a969b209cf8ee3e843bd873a06c297bf2c409fbb1cebcb3e6bc'
+HELPER_SHA = '243acfa0e6bab02b34580c2f426704dcd256c4072f494192c02b2256ea7740bb'
+RECEIPT_SHA = '4ef68016c936b498759ccec94cd77d276c6ff486a3b594300e40acb88a3dba06'
+ARCHIVE_BYTES = 124393671
+PAYLOAD_BYTES = 302048805
+SOURCE = Path('/home/campusqa/spike982/g8-electron-1288')
+ARCHIVE_NAME = 'electron-v44.8.0-linux-arm64.zip'
+PARENT = Path('/opt/campus-linux-spike982')
+NAME = 'electron-44.8.0-' + EXECUTABLE_SHA
+TARGET = PARENT / NAME
+LEDGER = PARENT / ('.' + NAME + '-1288.json')
+
+
+def require(condition, message):
+    if not condition:
+        raise RuntimeError(message)
+
+
+def sha(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def regular(path, maximum):
+    """Read one bounded, non-linked regular inode through a no-follow descriptor."""
+    fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
+    with os.fdopen(fd, 'rb') as stream:
+        before = os.fstat(stream.fileno())
+        require(stat.S_ISREG(before.st_mode) and before.st_nlink == 1,
+                'Not a unique regular file: ' + str(path))
+        require(before.st_size <= maximum, 'Oversized file: ' + str(path))
+        data = stream.read(maximum + 1)
+        after = os.fstat(stream.fileno())
+        stable = ('st_dev', 'st_ino', 'st_mode', 'st_uid', 'st_gid', 'st_nlink',
+                  'st_size', 'st_mtime_ns', 'st_ctime_ns')
+        require(len(data) == before.st_size
+                and all(getattr(before, k) == getattr(after, k) for k in stable),
+                'File changed while reading: ' + str(path))
+    return data, before
+
+
+def directory_chain(path, root_owned=False):
+    for p in [*reversed(path.parents), path]:
+        s = p.lstat()
+        require(stat.S_ISDIR(s.st_mode), 'Non-directory/symlink ancestor: ' + str(p))
+        if root_owned:
+            require(s.st_uid == s.st_gid == 0 and not s.st_mode & 0o022,
+                    'Writable or non-root ancestor: ' + str(p))
+
+
+def archive_manifest(data):
+    """Authenticated in-memory archive, not a caller-supplied checksum manifest."""
+    require(len(data) == ARCHIVE_BYTES and sha(data) == ARCHIVE_SHA, 'Archive pin mismatch')
+    files, directories, names = {}, set(), set()
+    with zipfile.ZipFile(io.BytesIO(data)) as archive:
+        entries = archive.infolist()
+        require(sum(x.file_size for x in entries) == PAYLOAD_BYTES, 'Payload size mismatch')
+        for item in entries:
+            name = item.filename.rstrip('/')
+            p = PurePosixPath(name)
+            require(name and not p.is_absolute() and '..' not in p.parts
+                    and str(p) == name and name not in names, 'Unsafe/duplicate archive name')
+            names.add(name)
+            mode = item.external_attr >> 16
+            require(not mode & 0o7000, 'Privileged archive mode')
+            if item.is_dir():
+                require(stat.S_IFMT(mode) in (0, stat.S_IFDIR), 'Unexpected archive type')
+                directories.add(name)
+            else:
+                require(stat.S_IFMT(mode) in (0, stat.S_IFREG), 'Unexpected archive type')
+                h = hashlib.sha256()
+                with archive.open(item) as stream:
+                    for chunk in iter(lambda: stream.read(1024 * 1024), b''):
+                        h.update(chunk)
+                files[name] = dict(bytes=item.file_size, sha256=h.hexdigest(), mode=(mode & 0o777) or 0o644)
+            directories.update(str(parent) for parent in p.parents if str(parent) != '.')
+    require(not directories.intersection(files), 'File/directory archive collision')
+    require(files['electron']['sha256'] == EXECUTABLE_SHA, 'Executable pin mismatch')
+    require(files['chrome-sandbox']['sha256'] == HELPER_SHA
+            and files['chrome-sandbox']['bytes'] == 17048, 'Sandbox helper pin mismatch')
+    require({'LICENSE', 'LICENSES.chromium.html'} <= files.keys(), 'Missing licenses')
+    # prepare.py's one known generated receipt is separate from vendor membership.
+    files['spike-extraction.json'] = dict(bytes=65536, sha256=RECEIPT_SHA, mode=None)
+    return files, directories
+
+
+def verify_tree(root, manifest, root_owned=False, privileged=False):
+    files, directories = manifest
+    directory_chain(root, root_owned=root_owned)
+    seen_files, seen_dirs, identities = set(), set(), set()
+    for base, dirs, names in os.walk(root, followlinks=False):
+        for name in dirs + names:
+            p = Path(base) / name
+            rel = str(p.relative_to(root))
+            s = p.lstat()
+            identities.add((s.st_dev, s.st_ino))
+            require(s.st_dev == root.stat().st_dev, 'Unexpected mount boundary')
+            require(s.st_uid == (0 if root_owned else 1000), 'Unexpected owner')
+            require(s.st_gid == (0 if root_owned else 1001), 'Unexpected group')
+            if stat.S_ISDIR(s.st_mode):
+                require(rel in directories, 'Unexpected directory: ' + rel)
+                require(stat.S_IMODE(s.st_mode) in ((0o755,) if root_owned else (0o755, 0o775)),
+                        'Unexpected directory mode')
+                seen_dirs.add(rel)
+                continue
+            require(stat.S_ISREG(s.st_mode) and s.st_nlink == 1 and rel in files,
+                    'Unexpected type/link/file: ' + rel)
+            expected = files[rel]
+            data, observed = regular(p, expected['bytes'])
+            require(sha(data) == expected['sha256'], 'Content mismatch: ' + rel)
+            mode = expected['mode']
+            if mode is None:
+                require(stat.S_IMODE(observed.st_mode) in ((0o644,) if root_owned else (0o644, 0o664)),
+                        'Generated receipt mode mismatch')
+            else:
+                if privileged and rel == 'chrome-sandbox':
+                    mode = 0o4755
+                require(stat.S_IMODE(observed.st_mode) == mode, 'Mode mismatch: ' + rel)
+                require(len(data) == expected['bytes'], 'Size mismatch: ' + rel)
+            seen_files.add(rel)
+    require(seen_files == files.keys() and seen_dirs == directories, 'Incomplete tree membership')
+    identities.add((root.stat().st_dev, root.stat().st_ino))
+    return identities
+
+
+def quiescent(identities):
+    """Fail closed on an active fixture UID or an outstanding inode FD/mapping.
+
+    No signals or service edits. A separate normal logout and sole guest lease are
+    prerequisites: chown alone does not revoke an already-open writable descriptor.
+    """
+    for p in Path('/proc').iterdir():
+        if not p.name.isdigit() or int(p.name) == os.getpid():
+            continue
+        try:
+            status = (p / 'status').read_text()
+            uids = next(line.split()[1:] for line in status.splitlines() if line.startswith('Uid:'))
+            require('1000' not in uids, 'Fixture user still has process ' + p.name)
+            for fd in (p / 'fd').iterdir():
+                try:
+                    s = fd.stat()
+                except FileNotFoundError:
+                    continue
+                require((s.st_dev, s.st_ino) not in identities, 'Runtime descriptor held by ' + p.name)
+            for line in (p / 'maps').read_text().splitlines():
+                fields = line.split()
+                major, minor = (int(x, 16) for x in fields[3].split(':'))
+                require((os.makedev(major, minor), int(fields[4])) not in identities,
+                        'Runtime mapping held by ' + p.name)
+        except FileNotFoundError:
+            # Disappearing process/descriptor is normal; all other read errors refuse.
+            continue
+
+
+def write_ledger(record, exclusive=False):
+    flags = os.O_WRONLY | os.O_NOFOLLOW | (os.O_CREAT | os.O_EXCL if exclusive else os.O_TRUNC)
+    fd = os.open(LEDGER, flags, 0o600)
+    with os.fdopen(fd, 'w') as stream:
+        s = os.fstat(stream.fileno())
+        require(s.st_uid == s.st_gid == 0 and s.st_nlink == 1 and stat.S_IMODE(s.st_mode) == 0o600,
+                'Unsafe ledger')
+        json.dump(record, stream, indent=2)
+        stream.write('\n')
+        stream.flush()
+        os.fsync(stream.fileno())
+
+
+def install():
+    directory_chain(SOURCE)
+    require(stat.S_IMODE(SOURCE.stat().st_mode) == 0o700 and SOURCE.stat().st_uid == 1000,
+            'Source must remain private to fixture user')
+    directory_chain(Path('/opt'), root_owned=True)
+    require(not TARGET.exists() and not LEDGER.exists(), 'Never overwrite a prior installation/receipt')
+    archive, a_stat = regular(SOURCE / ARCHIVE_NAME, ARCHIVE_BYTES)
+    manifest = archive_manifest(archive)
+    identities = verify_tree(SOURCE / 'electron', manifest)
+    identities.add((a_stat.st_dev, a_stat.st_ino))
+    require(a_stat.st_dev == Path('/opt').stat().st_dev, 'Same-filesystem move required')
+    quiescent(identities)
+    if not PARENT.exists():
+        PARENT.mkdir(mode=0o755)
+        PARENT.chmod(0o755)
+    directory_chain(PARENT, root_owned=True)
+    # Reserve the unique target and leave an external root-only receipt for rollback.
+    TARGET.mkdir(mode=0o700)
+    t = TARGET.stat()
+    record = dict(version=1, target=str(TARGET), device=t.st_dev, inode=t.st_ino,
+                  archive_sha256=ARCHIVE_SHA, helper_sha256=HELPER_SHA,
+                  source_sha256=sha(Path(__file__).read_bytes()), state='reserved',
+                  utc=datetime.datetime.now(datetime.timezone.utc).isoformat())
+    write_ledger(record, exclusive=True)
+    helper = TARGET / 'runtime/chrome-sandbox'
+    try:
+        # No copy/download/extraction. The inaccessible root destination ends path writes.
+        os.rename(SOURCE / 'electron', TARGET / 'runtime')
+        record.update(state='runtime-moved-unprivileged', helper_inode=helper.stat().st_ino)
+        write_ledger(record)
+        os.rename(SOURCE / ARCHIVE_NAME, TARGET / ARCHIVE_NAME)
+        record['state'] = 'moved-unprivileged'
+        write_ledger(record)
+        quiescent(identities)
+        verify_tree(TARGET / 'runtime', manifest)
+        for base, dirs, files in os.walk(TARGET / 'runtime', followlinks=False):
+            for name in dirs + files:
+                p = Path(base) / name
+                os.chown(p, 0, 0, follow_symlinks=False)
+                mode = 0o755 if p.is_dir() else manifest[0][str(p.relative_to(TARGET / 'runtime'))]['mode']
+                os.chmod(p, 0o644 if mode is None else mode, follow_symlinks=False)
+        os.chown(TARGET / 'runtime', 0, 0)
+        os.chmod(TARGET / 'runtime', 0o755)
+        os.chown(TARGET / ARCHIVE_NAME, 0, 0)
+        os.chmod(TARGET / ARCHIVE_NAME, 0o600)
+        verify_tree(TARGET / 'runtime', manifest, root_owned=True)
+        moved, _ = regular(TARGET / ARCHIVE_NAME, ARCHIVE_BYTES)
+        require(moved == archive, 'Archive changed during promotion')
+        quiescent(identities)
+        record.update(state='verified-root-owned', helper_inode=helper.stat().st_ino)
+        write_ledger(record)
+        # The only privilege-bearing change; all ancestors and every runtime byte checked.
+        os.chmod(helper, 0o4755, follow_symlinks=False)
+        verify_tree(TARGET / 'runtime', manifest, root_owned=True, privileged=True)
+        os.chmod(TARGET, 0o755)
+        record['state'] = 'installed-not-launched'
+        write_ledger(record)
+        print(json.dumps(record, indent=2))
+    except BaseException:
+        # Do not delete evidence or retry. Revoke only our exact helper if it exists.
+        if helper.exists() and not helper.is_symlink():
+            data, s = regular(helper, 17048)
+            if sha(data) == HELPER_SHA:
+                os.chmod(helper, stat.S_IMODE(s.st_mode) & ~0o6000, follow_symlinks=False)
+        record['state'] = 'failed; privilege-clearing attempted; retain for reviewed recovery'
+        write_ledger(record)
+        raise
+
+
+def rollback():
+    directory_chain(PARENT, root_owned=True)
+    raw, ls = regular(LEDGER, 65536)
+    require(ls.st_uid == ls.st_gid == 0 and stat.S_IMODE(ls.st_mode) == 0o600, 'Unsafe ledger')
+    record = json.loads(raw)
+    require(record['target'] == str(TARGET) and record['archive_sha256'] == ARCHIVE_SHA,
+            'Wrong ownership receipt')
+    s = TARGET.lstat()
+    require(stat.S_ISDIR(s.st_mode) and s.st_uid == s.st_gid == 0
+            and (s.st_dev, s.st_ino) == (record['device'], record['inode']), 'Target replaced')
+    directory_chain(TARGET, root_owned=True)
+    helper = TARGET / 'runtime/chrome-sandbox'
+    data, hs = regular(helper, 17048)
+    require(sha(data) == HELPER_SHA and hs.st_ino == record.get('helper_inode'),
+            'Helper identity unconfirmed; manual reviewed recovery required')
+    # Revoke privileged bit BEFORE validation/removal. Failure retains this root tree.
+    os.chmod(helper, 0o755, follow_symlinks=False)
+    record['state'] = 'rollback-privilege-cleared'
+    write_ledger(record)
+    archive, a_stat = regular(TARGET / ARCHIVE_NAME, ARCHIVE_BYTES)
+    manifest = archive_manifest(archive)
+    identities = verify_tree(TARGET / 'runtime', manifest, root_owned=True)
+    identities.add((a_stat.st_dev, a_stat.st_ino))
+    quiescent(identities)
+    require({p.name for p in TARGET.iterdir()} == {'runtime', ARCHIVE_NAME}, 'Unexpected target entries')
+    require(shutil.rmtree.avoids_symlink_attacks, 'Descriptor-safe removal unavailable')
+    shutil.rmtree(TARGET)
+    record['state'] = 'removed; external ownership receipt retained'
+    write_ledger(record)
+    print(json.dumps(record, indent=2))
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('action', choices=['install', 'rollback'])
+    parser.add_argument('--approved-source-sha256', required=True)
+    parser.add_argument('--execute-under-new-lease', action='store_true', required=True)
+    args = parser.parse_args()
+    require(socket.gethostname() == 'lima-campus-linux-d5-noble-arm64' and os.geteuid() == 0,
+            'Only root in the explicitly leased disposable Lima guest')
+    require(sha(Path(__file__).read_bytes()) == args.approved_source_sha256, 'Unreviewed source bytes')
+    os.umask(0o077)
+    # Set only explicit per-file modes; no authentication, kernel or service operations.
+    (install if args.action == 'install' else rollback)()
+
+
+if __name__ == '__main__':
+    main()

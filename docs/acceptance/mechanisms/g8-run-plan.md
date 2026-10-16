@@ -1,5 +1,12 @@
 # G8 source preparation and next authorized run
 
+Current boundary: [direction1288](receipts/g8-electron-1288/REPORT.md) acquired and verified
+the official Electron44.8.0 archive once under the explicit768MiB exception. Its sole normal
+Wayland launch refused the sandbox helper prerequisite before native diagnostics, scene or
+timing. No X11 run followed; Lima is Stopped. Human10834 supersedes10832 and authorizes only the
+[unexecuted setup/rollback proposal](electron-sandbox-proposal.md), pending independent
+review and a new explicit lease. It grants no privileged operation or runtime retry.
+
 LINUX-20261016 / #982. The [1268 evidence](receipts/g8-timing-1268/REPORT.md) now records
 one complete valid Wayland baseline on exact source `9d7743a`: p95 **143/187/142/140/174 ms**,
 all above33.3ms. Requested `on-demand` was effective `ALWAYS`. Increased shared-host
@@ -168,11 +175,13 @@ Both requests otherwise resolve to effective `ALWAYS`, so an unchanged `always` 
 be called a distinct optimization. The option failed native admission; no further steps ran.
 Do not weaken the native check or treat this unsupported result as a numeric miss.
 
-Root now owns assessment of D1's
+At the1268 handback, root owned assessment of D1's
 [Electron fallback sequence](../../../spikes/982/renderer/electron/README.md). Its44.8.0
-archive/extraction is absent; the pinned426,442,476 logical bytes, plus separately bounded
-allocation overhead/receipts, require explicit scheduling/allocation. No Electron acquisition
-or launch is authorized by these directions. X11 timing is also paused pending that decision.
+archive/extraction was absent then. Direction1288 subsequently authorized and completed the
+single pinned426,442,476-byte acquisition/extraction; the sandbox prerequisite blocked launch.
+Those bytes remain in the stopped guest. Do not redownload, repeat the failed launch, apply
+the proposed setup or start X11 under the expired runtime lease. Source-only10834 review
+and future explicit activation are distinct from the reproduction commands above.
 
 Remaining next owner: explicit human handoff to LINUX-20261016 for returned-evidence review,
 exact-head hosted checks/admission/Council and separately observed guest/timing scheduling.

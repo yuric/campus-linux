@@ -1,0 +1,8 @@
+{
+  "utc": "2026-10-16T17:25:22.466835+00:00",
+  "disk_allocated": 7857242112,
+  "disk_growth": 432406528,
+  "host_free": 27626139648,
+  "remaining_before_host_charge": 372899840,
+  "host_after_remaining_reserve": 27253239808
+}

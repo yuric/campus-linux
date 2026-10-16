@@ -23,6 +23,8 @@ and source receipts are retained. Mac draft PR114 is not merged dependency evide
 | [Renderer and speech](renderer-speech.md) | Provisional producer provenance, native software-renderer identity, G8 protocol and speech API availability |
 | [Offline speech candidate](speech-offline.md) | Actual network-disabled synthetic transcription, resource/cancel/edit evidence; product choice pending |
 | [Task-link mechanism](task-links.md) | Disposable packages, desktop association, singleton activation, malformed/principal rejection |
+| [Electron fallback attempt1288](receipts/g8-electron-1288/REPORT.md) | Pinned acquisition succeeded; normal sandbox startup refused before native preflight or timing; Lima Stopped |
+| [Unexecuted sandbox setup proposal](electron-sandbox-proposal.md) | Source-only fresh root-owned extraction and scoped rollback for independent review; no activation |
 
 All Python, GTK, JavaScript and extracted Rust under `spikes/982/` are disposable
 instruments. They are not the decided Rust executor, Tauri application, business rules,
