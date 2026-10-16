@@ -116,12 +116,58 @@ an8MiB publication reserve. The original measured host-plus-guest file allocatio
 Office400/system-update growth is not assigned to this task.
 
 The [evidence index](receipts/installed-updater-1057/activation-1285/run.json) binds all
-new raw exports and operation inputs. Original209 receipt files and the reviewed
-helper/app/adapter/verifier sources are unchanged. The read-only preflight transport
+new raw exports and operation inputs. Original209 receipt files remain unchanged.
+The reviewed helper/app/adapter/verifier bytes were used unchanged during activation;
+the later source-only diagnostic is separate below. The read-only preflight transport
 failure (`Message too long`) and initial local shell-check wrapper error are retained
 separately; neither is an authority case result. No authority retry or source repair
 followed the failed denial. LINUX-20261016 is the explicit next owner and sole watcher
 for missing-authority assessment, denial disposition, exact-head review and landing.
+
+## Source-only callback diagnostics under human10809
+
+After root independently checked the stopped guest and returned the lease, human10809
+(direction1290) authorized diagnostic preparation only, before this consolidated push.
+The missing direct-session hypothesis remains an explanation to test, not an observed
+cause: the prior daemon authentication log does not reveal JavaScript `subject.session`.
+No session-scope repair, changed guard, product/bootstrap/adapter edit or guest replay
+is part of this change. All activation1285 originals retain their execution-source hashes
+and raw failed/incomplete classifications.
+
+The owned deny rule adds one distinct `campus1057-deny-candidate` event only after the
+exact action ID, fixed adapter program, target user root and configured fixture user match.
+It records only those fields, subject PID/user/local/active/session, and expected
+session/PID scope. Each value retains its type and own-property presence so missing,
+explicit undefined, null, empty string and false remain distinguishable. String/PID
+bounds and unsupported types produce explicit `diagnostic-invalid` evidence; unsupported
+objects are never coerced or serialized. ASCII JSON escaping bounds the complete logger
+message to2,048 bytes, including event/lease/nonce; oversize serialization yields an
+explicit invalid diagnostic rather than a truncated value that could appear valid.
+
+The fixed logger argv receives exactly one message operand. Diagnostic construction
+or spawn errors are contained, then the original strict local/active/session/optional-PID
+predicate runs unchanged. A matching scope still returns `NO`, including its original
+invalid-PID/rejecting-logger failure path; a nonmatching scope still returns undefined.
+Candidate events cannot satisfy loaded readiness or rejecting evidence. No diagnostic
+parser or acceptance rule was added: `desktop.py` and the trusted marker validator are
+unchanged. Unknown current-nonce rows can keep correlation incomplete and must remain
+in complete future exports; removing them to obtain a pass is prohibited.
+
+Actual Node execution tests exercise the generated JavaScript against the predicate
+matrix and logging failures, alongside the existing authority, probe and adapter tests.
+They prove mocked semantics only. They neither show actual callback values in polkit124
+nor certify a new runtime attempt. The45/20/10-second limits, row sentinel, evidence caps,
+nonce generation and exact owned-state cleanup are unchanged. LINUX-20261016 owns
+independent source review, actual different-family review and any later separate lease.
+
+Fresh diagnostic helper hashes and source-only allocation are recorded in the
+[preparation receipt](receipts/installed-updater-1057/diagnostic-preparation/run.json).
+The new authority helper SHA256 is
+`3631d41b52eb72099edf3c0e3a8878968ba1620f3593f3088e9efc7756918331`;
+unchanged desktop/validator SHA256 remains
+`b42d4f199efce7c24f956d8bc464b46db655306dd7ee736650d2466c66938b12`.
+The runtime receipts above continue to bind the older actually executed970a helper;
+no new helper byte has been staged or executed in either guest.
 
 ## Historical source-only marker correction under direction 1269
 
@@ -157,7 +203,7 @@ to 32 MiB with an 18 GiB host floor; no package, build, download, dependency, pr
 paid operation is authorized. LINUX-20261016 owns fresh independent review and the next
 execution lease, with no worker CI/Council watcher or readiness/merge action.
 
-Fresh source hashes for independent review:
+Historical reviewed helper hashes used by activation1285:
 
 | Helper | SHA-256 |
 |---|---|

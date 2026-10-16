@@ -207,6 +207,15 @@ class LoadedMarkerTests(unittest.TestCase):
         self.assertEqual(window.record["commands"][0]["stderr"], "journal unavailable")
         self.assertNotIn("loaded_marker", window.record)
 
+    def test_candidate_current_nonce_cannot_supply_loaded_readiness(self):
+        window, row = self.window(), self.marker()
+        row["MESSAGE"] = row["MESSAGE"].replace("deny-loaded", "deny-candidate") + ' {"status":"observed"}'
+        with self.environment(), patch.object(window, "run", return_value=SimpleNamespace(stdout=json.dumps(row))):
+            with self.assertRaisesRegex(RuntimeError, "contradictory current-nonce loaded marker candidate"):
+                window.wait_loaded_marker()
+        self.assertNotIn("loaded_marker", window.record)
+        self.assertEqual(window.record["loaded_marker_evidence"]["anomalies"][0]["row"], row)
+
     def test_journal_timeout_is_bounded_and_visible(self):
         window = self.window(deadline=0.25)
         with self.environment(), patch.object(authority.subprocess, "run", side_effect=
@@ -268,7 +277,7 @@ class LoadedMarkerTests(unittest.TestCase):
                     window.begin()
                     self.assertEqual(persisted[0][0]["marker_nonce"], nonce)
                     self.assertFalse(persisted[0][1])
-                    self.assertEqual(rule.read_text().count("nonce=" + nonce), 2)
+                    self.assertEqual(rule.read_text().count("nonce=" + nonce), 3)
                     window.restore()
             self.assertEqual(random.call_args_list, [unittest.mock.call(16), unittest.mock.call(16)])
 
@@ -345,6 +354,16 @@ class MarkerProvenanceTests(unittest.TestCase):
                 self.assertFalse(evidence["anomalies"])
                 self.assertEqual(evidence["missing_optional_fields"][0]["fields"],
                                  [key for key in ("_EXE", "_SYSTEMD_UNIT") if key not in optional])
+
+    def test_candidate_is_not_a_loaded_or_rejecting_marker(self):
+        candidate = {**self.marker(), "MESSAGE": self.marker()["MESSAGE"].replace("deny-loaded", "deny-candidate")
+                     + ' {"status":"observed"}'}
+        for expected in (self.marker()["MESSAGE"], self.marker()["MESSAGE"].replace("deny-loaded", "deny")
+                         + " pid=123 user=fixture-user session=c3 active=true"):
+            evidence = authority.validate_marker_rows([candidate], expected, NONCE, "lease1", BINDING,
+                                                      BOOT, 1_000_000_000, 3_000_000_000)
+            self.assertFalse(evidence["accepted"])
+            self.assertEqual(evidence["anomalies"][0]["row"], candidate)
 
     def test_missing_malformed_or_wrong_reliable_fields_cannot_be_forged(self):
         bad = {"_UID": ["0", "1000", "988"], "_GID": ["0", "1000", "985"],

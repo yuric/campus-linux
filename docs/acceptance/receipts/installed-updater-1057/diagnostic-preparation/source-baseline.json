@@ -1,0 +1,15 @@
+{
+  "observed_unix_ns": 1792171594568333000,
+  "task": 1057,
+  "human_comment": 10809,
+  "queued_direction": 1290,
+  "evidence_parent_commit": "9baaaa8e4df6f208679c0571b6e9482e0ae8f755",
+  "runtime_lease_returned": true,
+  "guest_access_authorized": false,
+  "source_limit_bytes": 33554432,
+  "host_floor_bytes": 19327352832,
+  "host_free_bytes": 27268653056,
+  "existing_node": "/opt/homebrew/bin/node",
+  "node_version": "v22.23.1",
+  "note": "Source-only extension after1285 returned. The earlier guest allocation stays separately accounted in activation-1285."
+}

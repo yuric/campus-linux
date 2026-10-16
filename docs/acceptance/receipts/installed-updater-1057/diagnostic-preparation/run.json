@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "task": 1057,
+  "human_comment": 10809,
+  "direction": 1290,
+  "scope": "Source-only bounded callback diagnostics; no guest access or authority replay.",
+  "evidence_parent_commit": "9baaaa8e4df6f208679c0571b6e9482e0ae8f755",
+  "runtime_source_commit": "1666bd8ea3ded8aa47fd9d30eac42be10f28073c",
+  "observed_unix_ns": 1792171860507529000,
+  "helper_hashes": {
+    "authority-window.py": "3631d41b52eb72099edf3c0e3a8878968ba1620f3593f3088e9efc7756918331",
+    "desktop.py": "b42d4f199efce7c24f956d8bc464b46db655306dd7ee736650d2466c66938b12",
+    "test_authority_window.py": "36fd7020b1f3892b806505d93b3c70a80575b3e150d1ba37b2299bbd1a95cef1",
+    "test_marker_bridge.py": "79a9e36b581a59df51fc83852a7e6e6951d1fb81bafe2a7c6d243e6e350b12c0"
+  },
+  "source_changes": [
+    "One bounded candidate event after exact action/program/root/configured-user gate; original strict deny predicate and return paths preserved.",
+    "Typed approved fields with own-property presence; explicit invalid values; complete ASCII message <=2048 bytes; diagnostic construction/spawn failures contained.",
+    "Eight native Node tests plus two readiness/provenance tests; all prior tests retained with extra event expectations."
+  ],
+  "unchanged": [
+    "desktop.py strict validator",
+    "loaded/rejecting marker predicate",
+    "nonce generation and exact owned cleanup",
+    "45/20/10 timing, row sentinel and receipt caps",
+    "product/Rust app/bootstrap/privileged adapter/verifier"
+  ],
+  "source_validation": {
+    "node_path": "/opt/homebrew/bin/node",
+    "node_version": "v22.23.1",
+    "probe_total": 70,
+    "native_marker_tests": 17,
+    "new_native_tests": 8,
+    "new_marker_provenance_readiness_tests": 2,
+    "note": "Actual generated JavaScript is executed by existing Node; this is mocked source behavior, not actual polkit callback evidence. Exact committed-head tests recorded on card after commit."
+  },
+  "diagnostic_limitations": [
+    "Actual callback fields remain unknown; no guard-failure cause claimed.",
+    "Unknown current-nonce candidate rows remain in complete exports and cannot confer readiness or denial acceptance.",
+    "All1285 raw statuses remain unchanged; source review cannot promote incomplete/not_certified."
+  ],
+  "prepublication_diagnostics": [
+    {
+      "operation": "Initial source repository verifier while docs were being written",
+      "result": "30 policy tests and boundary passed, overall exit1 for link to not-yet-created diagnostic-preparation/run.json",
+      "resolution": "This receipt now supplies the referenced destination; final exact-head verifier required."
+    },
+    {
+      "operation": "One apply_patch context attempt",
+      "result": "Patch context mismatch, no partial edit",
+      "resolution": "Revised exact patch applied; source tests passed."
+    }
+  ],
+  "next_owner": "LINUX-20261016, actual active coordinator and sole watcher; independent source/different-family review required before any new guest lease.",
+  "same_family_peer_source_check": "independent-same-family-source-check.json; does not replace coordinator different-family review",
+  "records": {
+    "allocation.json": {
+      "bytes": 485,
+      "sha256": "f32ccec5966f65b79065229fe6434bad5b20007b58ef6fef25658831868d7d32"
+    },
+    "campus-1057-1290-adapter.log": {
+      "bytes": 109,
+      "sha256": "2d407504d003cfe404f23be48347e686ae1f67393860d4067d9a0bf06b1ddd60"
+    },
+    "campus-1057-1290-verify.log": {
+      "bytes": 5583,
+      "sha256": "704a2f5039cca1cf27cdf8e6a1942f89b6a08914769f5f9ba8c591b14434b425"
+    },
+    "independent-same-family-source-check.json": {
+      "bytes": 483,
+      "sha256": "a3f1a47fa1f55996465d03b1df5c8e3dae8c034208329b51736f0ab5df817cdd"
+    },
+    "source-baseline.json": {
+      "bytes": 566,
+      "sha256": "8aefedde7b4a2d3d7c4e42094d363fd924d5d44da57a4eee8dcd0e292f6f5161"
+    }
+  }
+}

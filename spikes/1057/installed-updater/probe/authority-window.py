@@ -230,7 +230,83 @@ def deny_rule(user, lease, pid=None, session=None, *, nonce):
     marker = json.dumps("campus1057-deny lease=" + lease + " nonce=" + nonce)
     loaded = json.dumps("campus1057-deny-loaded lease=" + lease + " nonce=" + nonce)
     prefix = json.dumps(LOGGER_ARGV)
+    # Diagnostic-only callback snapshot: its narrower outer gate grants nothing.
+    # Keep the original predicate/return paths below intact, including NO for an
+    # otherwise matching subject whose PID fails the existing marker validation.
+    candidate = json.dumps("campus1057-deny-candidate lease=" + lease + " nonce=" + nonce)
+    diagnostic = r"""  try {
+    if (__SCOPE__) {
+      var diagnosticValid = true;
+      var typed = function(value, present, kind, limit) {
+        var type = value === null ? 'null' : typeof value;
+        var field = {present: present, type: type};
+        function invalid(reason) {
+          diagnosticValid = false;
+          field.status = 'diagnostic-invalid';
+          field.reason = reason;
+          return field;
+        }
+        if (type === 'undefined' || type === 'null') return field;
+        if (type === 'string') {
+          if (value.length > limit) return invalid('string-too-long');
+          field.value = value;
+          return kind === 'string' ? field : invalid('unexpected-type');
+        }
+        if (type === 'boolean') {
+          field.value = value;
+          return kind === 'boolean' ? field : invalid('unexpected-type');
+        }
+        if (type === 'number') {
+          if (kind !== 'pid' || !isFinite(value) || value < 2 ||
+              value > 2147483647 || Math.floor(value) !== value)
+            return invalid('invalid-number');
+          field.value = value;
+          return field;
+        }
+        // Do not coerce, inspect or serialize unsupported objects/functions.
+        return invalid('unsupported-type');
+      };
+      var subjectField = function(key, kind, limit) {
+        return typed(subject[key], Object.prototype.hasOwnProperty.call(subject, key), kind, limit);
+      };
+      var payload = {
+        action_id: typed(action.id, true, 'string', 128),
+        program: typed(action.lookup('program'), true, 'string', 128),
+        target_user: typed(action.lookup('user'), true, 'string', 64),
+        subject_pid: subjectField('pid', 'pid', 64),
+        subject_user: subjectField('user', 'string', 64),
+        subject_local: subjectField('local', 'boolean', 64),
+        subject_active: subjectField('active', 'boolean', 64),
+        subject_session: subjectField('session', 'string', 64),
+        expected_session: typed(__SESSION__, true, 'string', 64),
+        expected_pid: typed(__PID__, __PID_PRESENT__, 'pid', 64)
+      };
+      payload.status = diagnosticValid ? 'observed' : 'diagnostic-invalid';
+      // ASCII-escape non-ASCII UTF-16 units so length bounds the actual UTF-8
+      // bytes, including JSON escaping and the complete lease/nonce prefix.
+      var encoded = JSON.stringify(payload).replace(/[\u007f-\uffff]/g, function(character) {
+        return '\\u' + ('0000' + character.charCodeAt(0).toString(16)).slice(-4);
+      });
+      var candidatePrefix = __CANDIDATE__;
+      var message = candidatePrefix + ' ' + encoded;
+      if (message.length > 2048)
+        message = candidatePrefix + ' {"status":"diagnostic-invalid","reason":"message-size-exceeded"}';
+      polkit.spawn(__PREFIX__.concat([message]));
+    }
+  } catch (diagnosticError) {
+    // Unavailable diagnostics never alter the original authorization result.
+  }
+"""
+    substitutions = {"__SCOPE__": " && ".join(checks[:4]), "__SESSION__": json.dumps(session),
+                     "__PID__": "undefined" if pid is None else str(pid),
+                     "__PID_PRESENT__": "false" if pid is None else "true",
+                     "__CANDIDATE__": candidate, "__PREFIX__": prefix}
+    # Replace template tokens once; permitted literal scope values may themselves
+    # contain these strings and must never be reinterpreted as template syntax.
+    diagnostic = re.sub("|".join(map(re.escape, substitutions)),
+                        lambda match: substitutions[match.group()], diagnostic)
     return ("polkit.addRule(function(action, subject) {\n"
+            + diagnostic +
             "  if (" + " && ".join(checks) + ") {\n"
             "    try {\n"
             "      if (typeof subject.pid !== 'number' || subject.pid < 2 ||\n"

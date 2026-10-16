@@ -1,0 +1,11 @@
+{
+  "observed_unix_ns": 1792171881051238000,
+  "whole_current_worktree_allocated_bytes_counted_as_new": 11755520,
+  "all_matching_task_temp_files_allocated_bytes_conservatively_counted": 1355776,
+  "publication_git_receipt_reserve_bytes": 8388608,
+  "total_bytes": 21499904,
+  "source_only_limit_bytes": 33554432,
+  "host_free_bytes": 27136475136,
+  "host_floor_bytes": 19327352832,
+  "note": "Prior1285 guest growth19,136,512bytes stays separate; source-only work has no VM access."
+}

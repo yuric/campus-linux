@@ -1,6 +1,30 @@
 # Arm64 GDM lease handoff — #1057
 
-Current direction1269 / human10741 authorizes source and mocked tests only, from
+Human10809 / direction1290 is a **source-only diagnostic preparation** after the
+activation1285 VM lease was returned. No further guest access, authority replay,
+session-scope fix or changed deny guard is authorized. The actual missing-authority
+receipt stays `not_certified`; denial timed out after the signed-v2 download and stays
+`incomplete`. Both loaded markers preceded readiness; no rejecting marker was recorded.
+The complete [activation record](../../../../docs/acceptance/installed-updater-1057.md#activated-runtime-attempt-under-direction-1285)
+retains the original source hashes, raw results, full journal query and restored state.
+
+The diagnostic adds only a bounded `campus1057-deny-candidate` event after the exact
+action, fixed adapter program, root target and configured fixture user match. It records
+typed callback values before the unchanged local/active/session/optional-PID checks.
+Diagnostic construction or logger failure must leave the original authorization result
+unchanged. Candidate events cannot establish readiness or denial; the strict validator
+is unchanged and may reject these unknown current-nonce rows. Never filter them away.
+Only existing Node mocks run during preparation. New helper bytes require independent
+coordinator/different-family review and a separate runtime lease before staging or use.
+
+Current diagnostic helper SHA256: `3631d41b52eb72099edf3c0e3a8878968ba1620f3593f3088e9efc7756918331`.
+The unchanged desktop/validator SHA256 is
+`b42d4f199efce7c24f956d8bc464b46db655306dd7ee736650d2466c66938b12`.
+These are source-review inputs, not authorization to execute them.
+
+## Historical source-only direction1269
+
+Historical direction1269 / human10741 authorized source and mocked tests only, from
 `333d59b`, with at most 32 MiB new allocation and 18 GiB host reserve. Office400 owns
 Lima; neither VM may be accessed for this source task. The actual333 attempt remains
 failed before readiness: two daemon rows carried UID/GID 989, kernel sender PIDs 3263
