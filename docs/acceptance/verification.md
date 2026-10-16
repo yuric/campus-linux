@@ -86,8 +86,11 @@ cancelled, failed, pending or absent checks. The second verifies downloaded byte
 results argument must come from the observed run, never invented. The workflow supplies
 that argument directly from `needs`. Neither command approves review/Council or merges.
 The coordinator must configure/verify all six required names and prevent bypass under the
-repository's review policy. This worker does not mutate branch protection. Settings or
-GitHub availability failures are explicit coordinator blockers, not reasons to bypass CI.
+repository's review policy. This worker does not mutate branch protection. On 2026-10-16, `GET /repos/yuric/campus-linux/branches/main/protection` returned
+404 “Branch not protected”, and `GET /repos/yuric/campus-linux/rules/branches/main`
+returned `[]`. Enforcement is therefore an observed coordinator blocker, not assumed active.
+An earlier REST rate-limit failure cleared on retry. Settings or GitHub availability
+failures are explicit coordinator blockers, not reasons to bypass CI.
 See [GitHub runner documentation](https://docs.github.com/en/actions/reference/runners/github-hosted-runners).
 
 ## Release-build baseline and ABI inventory

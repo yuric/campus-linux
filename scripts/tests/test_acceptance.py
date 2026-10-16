@@ -59,7 +59,7 @@ class ReceiptTests(unittest.TestCase):
         self.results = {"verify_amd64": "success", "verify_arm64": "success"}
         lock = json.loads((ROOT / "ci/toolchain-lock.json").read_text())
         for arch in ["amd64", "arm64"]:
-            r = {"repository": "yuric/campus-linux", "head": self.head, "arch": arch,
+            r = {"version": 1, "product_runtime": "not-run", "desktop": "not-run", "repository": "yuric/campus-linux", "head": self.head, "arch": arch,
                  "base": lock["verification_base"], "result": "success", "scope": "repository-policy",
                  "image_id": "sha256:" + "b" * 64, "archive_sha256": "c" * 64,
                  "container_command": "python3 -B scripts/verify_repository.py",
@@ -99,7 +99,7 @@ class ReceiptTests(unittest.TestCase):
     def test_reject_wrong_head_arch_base_image_source_and_command(self):
         file = self.path / "receipt-arm64.json"
         original = json.loads(file.read_text())
-        for field, value in [("head", "b" * 40), ("arch", "amd64"), ("base", "ubuntu:latest"),
+        for field, value in [("version", 2), ("product_runtime", "success"), ("desktop", "success"), ("head", "b" * 40), ("arch", "amd64"), ("base", "ubuntu:latest"),
                              ("image_id", "unknown"), ("archive_sha256", "e" * 64),
                              ("dockerfile_sha256", "f" * 64), ("container_command", "true")]:
             with self.subTest(field=field):

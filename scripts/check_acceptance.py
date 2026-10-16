@@ -49,9 +49,10 @@ def check_receipts(directory, head, results):
     for arch in ["amd64", "arm64"]:
         receipt = json.loads((directory / f"receipt-{arch}.json").read_text())
         lock = json.loads((ROOT / "ci/toolchain-lock.json").read_text())
-        if (receipt.get("head") != head or receipt.get("arch") != arch
+        if (receipt.get("version") != 1 or receipt.get("head") != head or receipt.get("arch") != arch
                 or receipt.get("repository") != "yuric/campus-linux"
                 or receipt.get("result") != "success" or receipt.get("scope") != "repository-policy"
+                or receipt.get("product_runtime") != "not-run" or receipt.get("desktop") != "not-run"
                 or receipt.get("base") != lock["verification_base"]):
             raise ValueError(f"{arch}: mismatched receipt")
         for key in ["image_id"]:

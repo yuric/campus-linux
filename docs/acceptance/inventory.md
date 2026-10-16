@@ -52,13 +52,14 @@ operation; their exact OS adapter, observed request (if any) and implementation 
 filled by the owning card. The ledger deliberately names missing implementations rather
 than installing `true` tests or fake passing packages.
 
-**Mapping gaps:** `performExecutionAction` and `performAgentMessageVerdictAction` are dynamic
-request carriers. #990/#992 must enumerate the supported request union from #985's verified
-fixtures, including every offered recovery/verdict action. Local action cases currently
-name the source seam and acceptance behavior, but still require the implementation's exact
-OS binding or matching server operation/schema before they can pass. #984 owns genuinely
-missing server schemas. These are explicit unresolved mappings, not blanket “N/A” passes.
-
+**Remaining contract gates:** the existing execution/verdict replay union is explicitly
+mapped from `HTTP.swift`: create/cancel execution, resend message and retry saved direction.
+#990/#992 must revalidate every offered variant against #985's merged fixtures at freeze.
+#987 still owes the exact desktop bridge schema; P12 is explicitly blocked on that producer.
+Existing native-session routes are mapped, but their hosted Linux transport/readiness
+contracts remain S1/G1 work, not proof that MacBroker calls work remotely. Local-only
+navigation/OS/process steps explicitly have no API operation; their resulting mutations
+use separately mapped API delegates. #984 owns genuinely missing server schemas.
 Receipt filename is the ledger's `receipt`, stored in a review-linked artifact set, with
 repo/head, server/snapshot/renderer SHA, artifact/hash, test-case ID, exact command,
 expected/observed result and gaps. Desktop receipts add architecture/package/OS/session/

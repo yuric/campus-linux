@@ -4,6 +4,8 @@ import argparse
 import hashlib
 import json
 import os
+import shutil
+import sys
 from pathlib import Path
 import subprocess
 import tempfile
@@ -25,6 +27,8 @@ def main():
     parser.add_argument("--arch", choices=["amd64", "arm64"], required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
+    if sys.platform == "darwin" and shutil.disk_usage(ROOT).free < 35 * 1024**3:
+        raise RuntimeError("coordinator free-space floor: need at least 35 GiB before Docker work")
     head = output(["git", "rev-parse", "HEAD"])
     # No host credentials, Docker socket or home directory enter the test container.
     # A tar export keeps ignored/private host files out and tests the committed head.
