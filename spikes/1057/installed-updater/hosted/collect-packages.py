@@ -2,7 +2,6 @@ import hashlib
 import json
 from pathlib import Path
 import shutil
-import subprocess
 import sys
 
 version = sys.argv[1]
@@ -12,11 +11,9 @@ for extension in ('deb', 'AppImage'):
     matches = [p for p in bundle.rglob('*.' + extension) if version in p.name]
     assert len(matches) == 1, (extension, matches)
     package = matches[0]
-    # Explicit trusted-version signing also covers deb on CLI variants that only
-    # automatically emit an AppImage signature. It does not change package bytes.
-    subprocess.run(['cargo', 'tauri', 'signer', 'sign', '--private-key-path', '/private/signing.key',
-                    '--password', '', '--app-version', version, str(package)],
-                   check=True, stdout=subprocess.DEVNULL)
+    # Pinned CLI 2.12.3 signs both requested formats with the configured version.
+    # Missing automatic signatures are a build failure, never a different signer.
+    assert Path(str(package) + '.sig').is_file(), 'Pinned bundler signature missing'
     shutil.copy2(package, output / package.name)
     shutil.copy2(str(package) + '.sig', output / (package.name + '.sig'))
     print(json.dumps({'artifact': package.name, 'bytes': package.stat().st_size,

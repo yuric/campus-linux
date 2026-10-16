@@ -1,0 +1,11 @@
+{
+  "source_head": "164d7d0dd92fd76dae9abb73a2a34b11af898d5f",
+  "run": "https://github.com/yuric/campus-linux/actions/runs/38909633029",
+  "result": "success",
+  "scope": "lock preparation only; no compiled packages or installed evidence",
+  "jobs": {
+    "amd64": 117001900958,
+    "arm64": 117001901367
+  },
+  "lock_sha256": "36ce58e103553e14de36c041d245922935d5c59528f325cff2f83cda331d3b34"
+}

@@ -107,6 +107,23 @@ class AdapterTests(unittest.TestCase):
                 adapter.verify_staged(package, Path(temporary) / "package.sig", admission,
                     lambda cmd: subprocess.CompletedProcess(cmd, 1, "", "signature rejected"))
 
+    def test_mutated_root_staged_package_cannot_reuse_admission(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            package = Path(temporary) / "package.deb"
+            original = deb()
+            record = adapter.package_record(original)
+            package.write_bytes(original[:-1] + bytes([original[-1] ^ 1]))
+            admission = {"packages": [record], "max_package_bytes": record["size"]}
+            with self.assertRaisesRegex(adapter.Refused, "not_in_exact_fixture_admission"):
+                adapter.verify_staged(package, Path(temporary) / "package.sig", admission,
+                    lambda cmd: self.fail("unexpected verifier call for unadmitted fixture bytes"))
+
+    def test_archive_traversal_and_setuid_refused(self):
+        for name, mode in (("usr/../../etc/profile", 0o644),
+                           ("usr/share/applications/campus-updater-1057.desktop", 0o4755)):
+            with self.subTest(name=name), self.assertRaises(adapter.Refused):
+                adapter.package_record(deb(extra=(name, b"payload", mode, tarfile.REGTYPE)))
+
     def test_replay_comparison_is_at_installer_seam_and_forward_rollback_passes(self):
         calls = []
         def compare(command):

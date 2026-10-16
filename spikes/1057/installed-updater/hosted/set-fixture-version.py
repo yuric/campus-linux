@@ -1,4 +1,6 @@
 import json
+import os
+import hashlib
 from pathlib import Path
 import re
 import sys
@@ -14,5 +16,11 @@ lock.write_text(re.sub(r'(\[\[package\]\]\nname = "campus-updater-1057"\nversion
 config = crate / 'tauri.conf.json'
 value = json.loads(config.read_text())
 value['version'] = version
+value['plugins']['updater']['pubkey'] = os.environ['SPIKE_UPDATER_PUBLIC_KEY']
 config.write_text(json.dumps(value, indent=2) + '\n')
 (crate / 'resources/inert-helper.txt').write_text(f'Fixture 1057 inert identity\nversion={version}\nbehavior={behavior}\n')
+receipt = {'version': version, 'behavior': behavior, 'source_head': os.environ['EXACT_HEAD'],
+           'command': 'cargo tauri build --ci --bundles deb,appimage -- --locked',
+           'inputs': {str(p): hashlib.sha256(p.read_bytes()).hexdigest()
+                      for p in (manifest, lock, config, crate / 'resources/inert-helper.txt')}}
+Path(f'/output/receipts/build-inputs-{version}.json').write_text(json.dumps(receipt, indent=2)+'\n')

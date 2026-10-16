@@ -6,6 +6,15 @@ dependency is bootstrap #981 at `37ef5d622da09cd7ba113dc0d1119e62e7378f84`.
 
 ## Evidence status
 
+Public native runners actually executed the initial lock-preparation
+[run 38909633029](https://github.com/yuric/campus-linux/actions/runs/38909633029)
+at source `164d7d0dd92fd76dae9abb73a2a34b11af898d5f`. Both jobs completed successfully,
+with identical application Cargo locks (`36ce58e103553e14de36c041d245922935d5c59528f325cff2f83cda331d3b34`).
+The [run receipt](receipts/installed-updater-1057/lock-preparation/run.json) and architecture
+receipts record the real runner, image ID, build dependencies and source archive. This phase
+did not compile or install packages. Only the small source/receipt archives (38,769 bytes
+amd64; 38,729 bytes arm64) were retrieved locally; no package artifact was downloaded.
+
 This document initially records the implementation and execution contract. Pending rows
 must be replaced with observed commands, exact source head and linked receipts before a
 pass is claimed. Repository-policy checks, unit tests and extracted-source tests do not
@@ -78,6 +87,32 @@ select a trust anchor, installed destination or executable. The review must insp
 real Tauri package's contents; an old tiny-package limit is not evidence for this package.
 
 ## Installed execution sequence
+
+The implemented app accepts these diagnostic commands at `/usr/bin/campus-updater-1057`
+for deb or at the genuine outer `.AppImage` path:
+
+```sh
+campus-updater-1057 --diagnose
+campus-updater-1057 --check http://127.0.0.1:17857/stable/linux.json
+campus-updater-1057 --download http://127.0.0.1:17857/stable/linux.json
+campus-updater-1057 --update http://127.0.0.1:17857/stable/linux.json
+```
+
+The [hosted smoke probe](../../spikes/1057/installed-updater/probe/smoke.py) consumes the
+build's `receipts/package-index.json`, `packages/` and public-only `bootstrap/` outputs.
+The [smoke image](../../spikes/1057/installed-updater/hosted/Dockerfile.smoke) provisions
+the fixed fixture as container root, then runs every update as unprivileged `fixture1057`
+under Xvfb, a real system D-Bus and real polkit. Its temporary allow rule matches only the
+fixture action and user. No terminal sudo is used. The container has no network other
+than its internal loopback server and uses bounded resources; FUSE receives the scoped
+hosted-runner capability/device required for the actual outer AppImage runtime.
+
+The probe extracts payloads solely to derive independent expected hashes; it never
+executes those extracted files. Runtime diagnostics require an actual read-only FUSE
+mount for AppImage or a matching installed dpkg record for deb. Each native smoke manifest
+contains two real native entries and two deliberately unavailable other-architecture
+trap entries. These test selection only; they do not certify a combined four-artifact
+publication manifest. A later combined manifest uses both native builds' real receipts.
 
 Run the sequence separately for each architecture and format. Archive each actual command,
 exit status, standard output/error and the relevant manifest/server request log. Stop on a

@@ -141,7 +141,6 @@ def allowed_data_path(name, directory):
     fixed = {"usr/bin/campus-updater-1057", "usr/lib/campus-updater-1057/inert-helper.txt",
              "usr/share/applications/campus-updater-1057.desktop"}
     icon = re.fullmatch(r"usr/share/icons/hicolor/[1-9][0-9]*x[1-9][0-9]*/apps/campus-updater-1057\.png", name)
-    # Some versions of the bundler use the binary's product spelling in icon paths.
     directories = {"", "usr", "usr/bin", "usr/lib", "usr/lib/campus-updater-1057",
                    "usr/share", "usr/share/applications", "usr/share/icons", "usr/share/icons/hicolor"}
     icon_directory = re.fullmatch(r"usr/share/icons/hicolor/[1-9][0-9]*x[1-9][0-9]*(/apps)?", name)
@@ -307,7 +306,9 @@ def main(argv):
         require(stat.S_IMODE(STATE.stat().st_mode) == 0o700, "state_must_be_private")
         admission = validate_admission(json.loads(read_limited(TRUST / "admission.json", ADMISSION_LIMIT)))
         lock_fd = os.open(STATE / "install.lock", os.O_RDWR | os.O_CREAT | os.O_NOFOLLOW | os.O_CLOEXEC, 0o600)
-        require(os.fstat(lock_fd).st_uid == 0 and stat.S_ISREG(os.fstat(lock_fd).st_mode), "invalid_installer_lock")
+        lock_info = os.fstat(lock_fd)
+        require(lock_info.st_uid == 0 and stat.S_ISREG(lock_info.st_mode)
+                and not lock_info.st_mode & 0o077, "invalid_installer_lock")
         fcntl.flock(lock_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
         # dpkg's frontend lock serializes authenticated version comparison with install.
         # The child is told the frontend already holds it and acquires dpkg's backend lock.

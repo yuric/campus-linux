@@ -1,6 +1,6 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "Campus Updater 1057",
+  "productName": "campus-updater-1057",
   "version": "1.0.0",
   "identifier": "dev.projectcampus.disposable-updater-1057",
   "build": { "frontendDist": "../ui" },

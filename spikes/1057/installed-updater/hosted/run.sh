@@ -5,7 +5,8 @@ test "$(git rev-parse HEAD)" = "$EXACT_HEAD"
 spike=spikes/1057/installed-updater
 mkdir -p updater-output/receipts
 work=$(mktemp -d "$RUNNER_TEMP/updater1057.XXXXXX")
-trap 'rm -rf "$work"' EXIT
+container="campus-1057-build-${FIXTURE_ARCH}"
+trap 'docker rm -f "$container" >/dev/null 2>&1 || true; rm -rf "$work"' EXIT
 git archive HEAD > "$work/source.tar"
 tar xf "$work/source.tar" -C "$work"
 export SOURCE_ARCHIVE_SHA256
@@ -27,7 +28,7 @@ PY
 docker build --progress=plain -f ci/Dockerfile.release-baseline -t campus-1057-release-baseline .
 docker build --progress=plain -f "$spike/hosted/Dockerfile.build" -t campus-1057-builder .
 docker image inspect campus-1057-builder --format '{{.Id}}' > updater-output/receipts/build-image-id.txt
-timeout 2400 docker run --rm --cpus 2 --memory 6g --pids-limit 1024 \
+timeout 2400 docker run --rm --name "$container" --cpus 2 --memory 6g --pids-limit 1024 \
   --tmpfs /private:rw,noexec,nosuid,size=4m,mode=0700 \
   -e GITHUB_ACTIONS=true -e FIXTURE_ARCH -e EXACT_HEAD \
   -v "$work:/work" -v "$PWD/updater-output:/output" \
