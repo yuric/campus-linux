@@ -50,6 +50,10 @@ and the L0 gates before adding a dependency.
 Feature PRDs belong at `TODO/<feature-name>/PRD.md`; follow [TODO/README.md](TODO/README.md).
 The root placeholder PRD has been replaced. Shared renderer changes belong in
 `campus-macos`; API changes belong in `campus-server`, merged before Linux consumers.
+The [implementation gates](docs/implementation-gates.md) record the remaining evidence
+required after implementation is authorized. S2 owns the post-S1 contract import and
+the exporter's path migration, including updates to documentation and CI in the same PR;
+the existing snapshot is not refreshed by this planning work.
 
 Documentation changes are checked for internal links and OpenAPI snapshot parsing by
 `.github/workflows/docs.yml` where its repository-visibility condition permits. The same

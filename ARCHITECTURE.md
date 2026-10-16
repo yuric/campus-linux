@@ -2,12 +2,13 @@
 
 **Status: decided design; no product code exists.** Requirements, parity inventory,
 compatibility, delivery gates and the seven decisions behind this page are in
-[PRD.md](PRD.md).
+[PRD.md](PRD.md). Detailed contract handoffs and required future receipts are in
+[the implementation gates](docs/implementation-gates.md).
 
 ## Components and authority
 
 ```text
-React board + pinned Island renderer, in WebKitGTK
+React board + verified Island export, in WebKitGTK
                  |
         restricted Tauri IPC bridge
                  |
@@ -40,7 +41,7 @@ ownership, staged promotion, active-attempt/outbox recovery and uninstall behavi
 | Allowed workflow transitions and their labels | Local draft and interaction state |
 | Board lane identity, ordering, membership | Accessibility behaviour |
 | Diagnostic severity, reason, detail, safe message | Transport failures where no response arrived |
-| Path and filesystem validation | Terminal, window, or view composition |
+| Workspace eligibility and authorized opaque credential scopes | Trusted executor derives local paths and enforces filesystem confinement |
 | Domain vocabulary — what a stage is *called* | — |
 
 A client that infers domain meaning from an error substring, a message prefix, or HTTP status
@@ -79,6 +80,10 @@ degradation is how two clients start disagreeing.
 Generate API bindings from a verified server snapshot. Import renderer artifacts from
 an exact merged producer commit with manifest/byte verification. Shared renderer
 changes land at the producer first; no second renderer or hand-maintained API schema.
+S2 imports a merged post-S1 contract bundle with the server exporter and migrates all
+snapshot references/checks together. L1 consumes that verified import. M1 defines a
+desktop renderer export and the presentation/mutation/lifecycle bridge; the existing
+iOS recipe's read-only mobile surface is not desktop parity.
 
 ## Boundaries and recovery
 
@@ -96,6 +101,16 @@ cancellation. Durable delivery, lease reconciliation and restart recovery preser
 attempt ownership and prevent duplicate work. Sign-out and updates explicitly
 reconcile active work. Campus-owned token file fallback is excluded; D3's provider-owned
 OAuth files and local IPC token retain their explicit isolation/permissions rules.
+The local executor maps an opaque scope to `<root>/scopes/<base64url(scope)>`; Rails
+does not choose its credential directory. Antigravity's Linux isolation remains evidence
+for Rails readiness, not an assumed config-directory feature.
+
+G3 ties updates and lifecycle to the existing helper-update handback and authorization
+generation contracts. G4 requires evidence for IPC peer identity, per-attempt token
+scope, child context, process termination and crash capture. Secret Service does not
+establish isolation from hostile code running as the same user. G5 requires verification
+at the privileged deb installation boundary; this introduces no root execution service.
+G6/G7 cover PTY login, link/speech adapters, CSP and whole-webview recovery.
 
 Events signal re-fetches, not client-authored patches. Writes reconcile ambiguous
 delivery instead of replaying blindly. Queued, running and completed remain distinct.
