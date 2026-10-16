@@ -34,7 +34,9 @@ parser or a replacement for reviewing server-offered action arrays.
   never a dirty reference worktree. [Compare the pins](https://github.com/yuric/campus-macos/compare/3cc71216e3ca05090e90c5f09a56350b065acdcd...8e39806c5b1fb2ffeda6e55718a4fd2a4d2890da).
 - PRD server: `yuric/campus-server@d35361542b895a4fd73c838b1be3531ceea5d5fd`.
 - Reconciled Mac contract provenance: `yuric/campus-server@d93b841762183af5ba0d357f3f1c42351aeed9ff`.
-  This remains the historical source used for the Mac reconciliation.
+  Historical spec SHA-256: `ac2b1ce2b2ca76c1744bfe348ae1a26d103fbcb915ad8442da557db8cc685cf9`,
+  recovered from `docs/acceptance/actions.json` at Linux base `37ef5d622da09cd7ba113dc0d1119e62e7378f84`.
+  This remains the historical source/hash used for the Mac reconciliation.
 - Linux snapshot: `yuric/campus-server@a7e0abceb23f874e5a8c01ba043679a844e6d287`.
   S2 rebound the JSON ledger's contract source/hash to
   `contract/api/docs/openapi.yaml`; every existing operation ID and schema pointer resolves

@@ -30,7 +30,12 @@ behavior, server client-pin admission or release publication.
 - Tree SHA-256: `a2702b2e3ccba9e78fc77b6ce7fa51bc7d48b91dadfa648f2cb41f2162360aec`.
   [The verifier](../../scripts/check_contract.py) hashes compact ASCII JSON of sorted
   `[relative_path, git_mode, content_sha256]` records, including `.source`. It rejects
-  non-regular entries and compares the complete leaf set, Git executable modes and bytes.
+  non-regular entries. The ordinary offline check compares this complete-tree digest with
+  the reviewed [external pin](contract-tree.sha256). Explicit `--server` and `--reexport`
+  modes additionally compare the complete leaf set, Git executable modes and bytes against
+  upstream Git objects and a fresh export, respectively. The editable pin detects local
+  drift; agreement alone does not authenticate upstream or prove main ancestry. A pin
+  refresh requires reviewed merged-source equality and clean re-export evidence.
   This digest is distinct from a Git tree OID.
 
 The Linux snapshot commit and draft PR are recorded on card #985 and its PR handoff;
@@ -95,32 +100,18 @@ git diff --name-only origin/main...HEAD
 Observed source comparison: every exported leaf path/type/mode/byte equals the pinned
 server Git object; independent parsed-YAML traversal resolves every externalValue; all
 JSON fixtures parse; provenance matches; fresh re-export, including `.source`, is identical.
-Repository suite: **42 tests pass** (12 contract regression cases plus existing policy and
+Original import head `142a3751c9cfba4dcf0c5066e1b330d42ae8e24e` repository suite: **42 tests pass** (12 contract regression cases plus existing policy and
 admission tests). D7 policy passes with no product source or exceptions added. Acceptance
 inventory retains 523 unimplemented cases and 590 dispositioned census locations.
 Markdown link and spec checks pass. Diff ownership is Linux contract/docs/repository tooling.
 
-The acceptance ledger's source/hash now identify this imported spec. Structural revalidation
-of **431 operation mappings and 1,275 JSON pointers** passed using:
-
-```sh
-python3 - <<'PY'
-import json, pathlib, yaml
-spec = yaml.safe_load(pathlib.Path('contract/api/docs/openapi.yaml').read_text())
-ledger = json.loads(pathlib.Path('docs/acceptance/actions.json').read_text())
-operations = pointers = 0
-for row in ledger['actions']:
-    for op in row['operations']:
-        for pointer in [op['schema_pointer'], *op['schema_refs']]:
-            node = spec
-            for key in pointer[2:].split('/'):
-                node = node[key.replace('~1', '/').replace('~0', '~')]
-            pointers += 1
-        assert spec['paths'][op['path']][op['method'].lower()]['operationId'] == op['operation_id']
-        operations += 1
-print(operations, pointers)
-PY
-```
+The acceptance ledger's source/hash identify this imported spec. The original receipt's
+one-off walk resolved **431 operation mappings and 1,275 JSON pointers**. That walk now runs
+in ordinary `python3 -B scripts/check_acceptance.py` verification: it checks source/hash
+equality, operationId presence/equality, exact operation-pointer/path/method agreement and
+resolution of every schema reference. The in-memory mutation regressions in
+[test_contract_offline.py](../../scripts/tests/test_contract_offline.py) exercise stale
+bindings and fixture add/delete/edit/mode changes without copying the bundle.
 
 This does not upgrade any action to runtime acceptance or erase the historical Mac
 reconciliation source recorded in [the inventory](inventory.md).
@@ -144,3 +135,31 @@ checks and exact-head admission remain for that owner; the worker does not start
 watcher or run the Docker commands under the source-only budget. Required CI is not claimed
 green here. The coordinator obtains different-family review, observes Council and records
 merged snapshot evidence before unblocking consumers. All L0/product/release gates remain.
+
+## Offline-verification repair validation
+
+The #10869 repair keeps all 166 imported leaves and the action/census/reconciliation JSON
+unchanged. Direction #1317 permits at most 8 MiB additional source/receipt/Git writes with
+a freshly measured 16 GiB host floor. It permits Python `-B` read-only/mocked validators;
+the 18 GiB targeted-test and higher build/guest floors still apply. No dependencies were
+installed and no full-tree copies, builds, guests, database or coverage allocations ran.
+
+Repair checks (source revision is recorded on card #985):
+
+- `python3 -B -m unittest discover -s scripts/tests -p test_contract_offline.py -v`:
+  **7 passed**, including in-memory fixture add/delete/edit/mode and stale ledger mutations.
+- `python3 -B scripts/check_acceptance.py`: **PASS**, 431 operation mappings, 1,275
+  pointers, 523 unimplemented cases and 590 dispositioned census locations.
+- `python3 -B -c "import sys; sys.path.insert(0, 'scripts'); import verify_repository; verify_repository.documents()"`:
+  **PASS**, Markdown links plus default offline contract checks.
+- `python3 -B scripts/check_client_boundary.py --root .`: **PASS**, no product source.
+- `python3 -B scripts/check_contract.py --server /tmp/campus-985-8684049b/server --reexport /tmp/campus-985-8684049b/reexport/.stage-campus-linux/contract`:
+  **PASS**, using the already-preserved server objects and fresh-export output; no new export
+  or server Git network operation was run in this repair.
+- `git diff --check`: **PASS**. The original 42-test full suite, full
+  `verify_repository.py`, exporter tests and hosted checks were **not rerun for this repair**
+  under the below-18-GiB resource condition. Their old-head results do not certify this head.
+
+A first D7 invocation mistakenly used the nonexistent hyphenated Python filename and exited
+2; the corrected underscored command above passed. LINUX-20261016 owns the remaining full
+suite/CI, fresh different-family delta review, Council and merge. The draft is not completion.

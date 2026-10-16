@@ -20,7 +20,19 @@ python3 scripts/verify-linux.py --arch amd64 --output /tmp/campus-linux-receipts
 
 `verify_repository.py` also checks Markdown relative links and invokes
 `check_contract.py` to parse the imported OpenAPI, validate provenance and resolve every
-external fixture. The [S2 receipt](contract-import.md) records source and re-export comparisons.
+external fixture. The default offline check also requires the complete sorted leaf paths,
+Git executable modes and content hashes to match the reviewed
+[tree digest pin](contract-tree.sha256) outside the imported bundle. Acceptance verification
+binds the ledger source/hash to the actual provenance/spec and resolves every operation ID,
+path/method, operation pointer and schema reference. Fixture additions, deletions and edits
+(including unreferenced fixtures) fail the pin check.
+
+These local checks detect drift against an editable reviewed pin; they do not authenticate
+upstream source or prove merged-main ancestry. For every refresh, run
+`python3 -B scripts/check_contract.py --server ISOLATED_SERVER --reexport FRESH_CONTRACT`
+to compare all leaves against the merged server Git objects and a fresh server-owned export.
+Update the pin only with those independently reviewed source/re-export receipts, never merely
+to silence a mismatch. The [S2 receipt](contract-import.md) records the explicit comparisons.
 The Docker wrapper builds [Dockerfile.verify](../../ci/Dockerfile.verify), exports only
 committed files, and mounts that export read-only with no credentials, network or Docker
 socket in the test container. Limits: build timeout 900s, run timeout 600s, 2 CPU/2 GiB,

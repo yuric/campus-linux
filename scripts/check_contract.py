@@ -14,6 +14,7 @@ import yaml
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SPEC = "api/docs/openapi.yaml"
+PIN = ROOT / "docs/acceptance/contract-tree.sha256"
 
 
 def leaves(root):
@@ -51,8 +52,10 @@ def external_targets(value):
     return targets
 
 
-def check(root, server=None, reexport=None):
+def check(root, server=None, reexport=None, pin_path=PIN):
     files = leaves(root)
+    if ".source" not in files or SPEC not in files:
+        raise ValueError("missing contract/.source or OpenAPI snapshot")
     source = files[".source"][1].decode("ascii")
     match = re.fullmatch(r"yuric/campus-server@([0-9a-f]{40})\n", source)
     if not match:
@@ -93,6 +96,9 @@ def check(root, server=None, reexport=None):
     records = [[name, mode, hashlib.sha256(data).hexdigest()]
                for name, (mode, data) in sorted(files.items())]
     digest = hashlib.sha256(json.dumps(records, separators=(",", ":"), ensure_ascii=True).encode()).hexdigest()
+    expected_digest = pin_path.read_text().strip()
+    if not re.fullmatch(r"[0-9a-f]{64}", expected_digest) or digest != expected_digest:
+        raise ValueError("contract tree differs from reviewed digest pin")
     return {"source": source.strip(), "files": len(files), "paths": len(spec["paths"]),
             "external_targets": len(targets), "tree_sha256": digest,
             "server_comparison": server is not None, "reexport_comparison": reexport is not None}

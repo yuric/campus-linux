@@ -435,7 +435,8 @@ contract tests and future language-aware enforcement. The authority table remain
   validation and normalized failures. Unknown contract/action versions withhold actions;
   do not port Mac's remaining client-rule drift.
 - Generate bindings from a verified pinned OpenAPI snapshot. The existing Linux snapshot
-  is not assumed current. Missing schemas/operations merge in `campus-server` first.
+  is current only as of `contract/.source`, not later server revisions. Missing schemas/operations
+  merge in `campus-server` first.
   S2 records the merged post-S1 SHA and exporter layout; G1 requires regeneration checks,
   scoped unknown-value handling, sensitive-field redaction and the host-owned Cable contract.
 - Events invalidate authorized snapshots. Reconnect/foreground refresh preserves drafts
