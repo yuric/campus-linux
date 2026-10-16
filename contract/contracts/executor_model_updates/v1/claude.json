@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "providers": [{
+    "id": "anthropic", "name": "Claude Code",
+    "models": [{ "id": "claude-opus-5-5", "family": "claude-opus-5-5", "display_name": "Claude Opus 5.5", "published_at": null, "state": "update_recommended" }],
+    "credential_ids": [23], "instruction": "Update Claude Code on this computer, then read the models again.", "action": {
+      "version": 1, "operation_id": "cli_update.claude", "label": "Update Claude Code",
+      "confirmation": "Updates the Claude Code CLI on this computer, which your terminal also uses.",
+      "progress": "Updating Claude Code on this computer…", "authorization": "fixture-authorization"
+    }
+  }],
+  "update_providers": ["anthropic"], "label": "New models available", "button_label": "Update", "dismiss_label": "Dismiss",
+  "detail": "Claude Code: Claude Opus 5.5", "fingerprint": "fixture-fingerprint",
+  "checked_at": "2026-10-09T20:00:00Z", "next_check_at": "2026-10-10T20:00:00Z"
+}

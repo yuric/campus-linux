@@ -1,0 +1,11 @@
+{
+  "agent_id": 35,
+  "waiting_count": 0,
+  "oldest_waiting_message_id": null,
+  "listener": {
+    "state": "listening",
+    "checked_at": "2026-10-16T07:00:00.000Z",
+    "interval_seconds": 60,
+    "not_listening_after": "2026-10-16T07:03:00.000Z"
+  }
+}

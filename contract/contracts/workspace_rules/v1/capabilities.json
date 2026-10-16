@@ -1,0 +1,2008 @@
+{
+  "version": 1,
+  "execution_profile_id": "hardened_exact_pr",
+  "execution_profile_version": 1,
+  "capability_categories": [
+    "read_only_exact_target",
+    "no_network",
+    "no_host_tools",
+    "no_repository_write"
+  ],
+  "deadlines": {
+    "parent_minutes": 30,
+    "child_minutes": 22,
+    "aggregator_minutes": 8
+  },
+  "provider_adapters": [
+    {
+      "provider_id": "anthropic",
+      "credential_kind": "api_key",
+      "transport_id": "anthropic:api_key",
+      "engine": "claude"
+    },
+    {
+      "provider_id": "anthropic",
+      "credential_kind": "cli_subscription",
+      "transport_id": "anthropic:cli_subscription",
+      "engine": "claude"
+    },
+    {
+      "provider_id": "openai",
+      "credential_kind": "api_key",
+      "transport_id": "openai:api_key",
+      "engine": "codex"
+    },
+    {
+      "provider_id": "openai",
+      "credential_kind": "cli_subscription",
+      "transport_id": "openai:cli_subscription",
+      "engine": "codex"
+    },
+    {
+      "provider_id": "xai",
+      "credential_kind": "api_key",
+      "transport_id": "xai:api_key",
+      "engine": "grok"
+    }
+  ],
+  "disclosure_version": 5,
+  "phase_deadlines": {
+    "parent_minutes": 30,
+    "child_minutes": 22,
+    "aggregator_minutes": 8
+  },
+  "parent_deadline_minutes": 30,
+  "upload_limits": {
+    "max_entry_bytes": 65536,
+    "max_aggregate_bytes": 262144
+  },
+  "child_envelope_version": 1,
+  "execution_limits": {
+    "codex_subscription_output_ceilings": {
+      "gpt-5.6-sol": 128000
+    },
+    "max_matching_rules": 4,
+    "max_team_reviewers": 4,
+    "max_enabled_rules": 16,
+    "max_ingresses_per_island_hour": 24,
+    "max_ingresses_per_agent_hour": 6,
+    "max_active_reviews_per_agent": 1,
+    "max_provider_cost_per_agent_hour_usd": "6.0",
+    "max_active_invocations_per_island": 4,
+    "max_provider_requests_per_invocation": 8,
+    "max_provider_requests_per_island_hour": 12,
+    "recovery": {
+      "id": "workspace_rule_spend_limit",
+      "label": "Review Workspace Rule capacity",
+      "message": "Wait for active reviews or the hourly window to clear, then attach a new exact PR target."
+    }
+  },
+  "review": {
+    "modes": [
+      "single",
+      "team"
+    ],
+    "team_authorable": true,
+    "team": {
+      "supported": true,
+      "authorable": true,
+      "state": "available",
+      "explanation": null,
+      "max_reviewers": 4
+    },
+    "child_result_schema_version": 1,
+    "instruction_sources": [
+      "prompt",
+      "skill_snapshot"
+    ],
+    "max_entry_bytes": 65536,
+    "max_aggregate_bytes": 262144
+  },
+  "projection": {
+    "mechanism": "gh_cli",
+    "operation": "ordinary_pr_conversation_comment",
+    "credential_kind": "github_cli"
+  },
+  "kinds": [
+    {
+      "id": "review",
+      "label": "Review",
+      "description": "Review an immutable work artifact.",
+      "order": 1,
+      "authorable": true,
+      "supported": true,
+      "triggers": [
+        {
+          "id": "pr_attached",
+          "label": "When a pull request is attached",
+          "supported": true,
+          "authorable": true,
+          "state": "available",
+          "explanation": null
+        },
+        {
+          "id": "worktree_before_pr_create",
+          "label": "In the worktree, right before a PR is created",
+          "supported": false,
+          "authorable": false,
+          "state": "Coming later",
+          "explanation": "Worktree review is not available in v1."
+        }
+      ],
+      "fields": [
+        "name",
+        "trigger",
+        "project_scope",
+        "execution_principal",
+        "review_plan"
+      ],
+      "allowed_values": {
+        "trigger": [
+          "pr_attached"
+        ],
+        "project_scope": [
+          "all",
+          "selected"
+        ],
+        "execution_profile": [
+          "hardened_exact_pr"
+        ],
+        "review_plan": [
+          "single",
+          "team"
+        ]
+      }
+    },
+    {
+      "id": "transition",
+      "label": "Board transition",
+      "description": "Check a legal board move before it lands.",
+      "order": 2,
+      "authorable": true,
+      "supported": true,
+      "triggers": [
+        {
+          "id": "task_transition_requested",
+          "label": "When a task transition is requested",
+          "supported": true,
+          "authorable": true,
+          "state": "available",
+          "explanation": null
+        }
+      ],
+      "fields": [
+        "name",
+        "trigger",
+        "project_scope",
+        "transition_edge",
+        "instruction",
+        "failure_action"
+      ],
+      "allowed_values": {
+        "trigger": [
+          "task_transition_requested"
+        ],
+        "project_scope": [
+          "all",
+          "selected"
+        ],
+        "transition_edge": [
+          "imaginarium:seashore",
+          "imaginarium:closed",
+          "seashore:blocked",
+          "seashore:imaginarium",
+          "seashore:closed",
+          "in_progress:blocked",
+          "in_progress:department",
+          "in_progress:done",
+          "in_progress:closed",
+          "department:in_progress",
+          "department:blocked",
+          "department:closed",
+          "blocked:in_progress",
+          "blocked:seashore",
+          "blocked:imaginarium",
+          "blocked:closed",
+          "done:imaginarium",
+          "closed:imaginarium"
+        ],
+        "failure_action": [
+          "keep_in_place"
+        ]
+      },
+      "failure_actions": [
+        {
+          "id": "keep_in_place",
+          "label": "Keep the card in place",
+          "description": "Findings or a failed check keep the card in its current lane. A timeout lets the move proceed."
+        }
+      ],
+      "transition": {
+        "transition_edges": [
+          {
+            "id": "imaginarium:seashore",
+            "label": "Imaginarium → Ready",
+            "from": {
+              "id": "imaginarium",
+              "label": "Imaginarium"
+            },
+            "to": {
+              "id": "seashore",
+              "label": "Ready"
+            }
+          },
+          {
+            "id": "imaginarium:closed",
+            "label": "Imaginarium → Closed",
+            "from": {
+              "id": "imaginarium",
+              "label": "Imaginarium"
+            },
+            "to": {
+              "id": "closed",
+              "label": "Closed"
+            }
+          },
+          {
+            "id": "seashore:blocked",
+            "label": "Ready → Blocked",
+            "from": {
+              "id": "seashore",
+              "label": "Ready"
+            },
+            "to": {
+              "id": "blocked",
+              "label": "Blocked"
+            }
+          },
+          {
+            "id": "seashore:imaginarium",
+            "label": "Ready → Imaginarium",
+            "from": {
+              "id": "seashore",
+              "label": "Ready"
+            },
+            "to": {
+              "id": "imaginarium",
+              "label": "Imaginarium"
+            }
+          },
+          {
+            "id": "seashore:closed",
+            "label": "Ready → Closed",
+            "from": {
+              "id": "seashore",
+              "label": "Ready"
+            },
+            "to": {
+              "id": "closed",
+              "label": "Closed"
+            }
+          },
+          {
+            "id": "in_progress:blocked",
+            "label": "In progress → Blocked",
+            "from": {
+              "id": "in_progress",
+              "label": "In progress"
+            },
+            "to": {
+              "id": "blocked",
+              "label": "Blocked"
+            }
+          },
+          {
+            "id": "in_progress:department",
+            "label": "In progress → Department",
+            "from": {
+              "id": "in_progress",
+              "label": "In progress"
+            },
+            "to": {
+              "id": "department",
+              "label": "Department"
+            }
+          },
+          {
+            "id": "in_progress:done",
+            "label": "In progress → Done",
+            "from": {
+              "id": "in_progress",
+              "label": "In progress"
+            },
+            "to": {
+              "id": "done",
+              "label": "Done"
+            }
+          },
+          {
+            "id": "in_progress:closed",
+            "label": "In progress → Closed",
+            "from": {
+              "id": "in_progress",
+              "label": "In progress"
+            },
+            "to": {
+              "id": "closed",
+              "label": "Closed"
+            }
+          },
+          {
+            "id": "department:in_progress",
+            "label": "Department → In progress",
+            "from": {
+              "id": "department",
+              "label": "Department"
+            },
+            "to": {
+              "id": "in_progress",
+              "label": "In progress"
+            }
+          },
+          {
+            "id": "department:blocked",
+            "label": "Department → Blocked",
+            "from": {
+              "id": "department",
+              "label": "Department"
+            },
+            "to": {
+              "id": "blocked",
+              "label": "Blocked"
+            }
+          },
+          {
+            "id": "department:closed",
+            "label": "Department → Closed",
+            "from": {
+              "id": "department",
+              "label": "Department"
+            },
+            "to": {
+              "id": "closed",
+              "label": "Closed"
+            }
+          },
+          {
+            "id": "blocked:in_progress",
+            "label": "Blocked → In progress",
+            "from": {
+              "id": "blocked",
+              "label": "Blocked"
+            },
+            "to": {
+              "id": "in_progress",
+              "label": "In progress"
+            }
+          },
+          {
+            "id": "blocked:seashore",
+            "label": "Blocked → Ready",
+            "from": {
+              "id": "blocked",
+              "label": "Blocked"
+            },
+            "to": {
+              "id": "seashore",
+              "label": "Ready"
+            }
+          },
+          {
+            "id": "blocked:imaginarium",
+            "label": "Blocked → Imaginarium",
+            "from": {
+              "id": "blocked",
+              "label": "Blocked"
+            },
+            "to": {
+              "id": "imaginarium",
+              "label": "Imaginarium"
+            }
+          },
+          {
+            "id": "blocked:closed",
+            "label": "Blocked → Closed",
+            "from": {
+              "id": "blocked",
+              "label": "Blocked"
+            },
+            "to": {
+              "id": "closed",
+              "label": "Closed"
+            }
+          },
+          {
+            "id": "done:imaginarium",
+            "label": "Done → Imaginarium",
+            "from": {
+              "id": "done",
+              "label": "Done"
+            },
+            "to": {
+              "id": "imaginarium",
+              "label": "Imaginarium"
+            }
+          },
+          {
+            "id": "closed:imaginarium",
+            "label": "Closed → Imaginarium",
+            "from": {
+              "id": "closed",
+              "label": "Closed"
+            },
+            "to": {
+              "id": "imaginarium",
+              "label": "Imaginarium"
+            }
+          }
+        ],
+        "failure_actions": [
+          {
+            "id": "keep_in_place",
+            "label": "Keep the card in place",
+            "description": "Findings or a failed check keep the card in its current lane. A timeout lets the move proceed."
+          }
+        ],
+        "checks": [
+          {
+            "id": "agent_check",
+            "label": "Ask the task assistant",
+            "instruction_required": true,
+            "description": "Holds the card while the task assistant checks it against the instructions below. Findings or a failed check keep the card in place; a timeout lets the move proceed."
+          },
+          {
+            "id": "conditions",
+            "label": "The If conditions decide",
+            "instruction_required": false,
+            "description": "When this Rule's If conditions match the card, Campus keeps it in place at once with the message below. No model request is made and nothing is held; a card the conditions do not match moves as usual."
+          }
+        ],
+        "instruction": {
+          "label": "Check instructions",
+          "required": true,
+          "sources": [
+            "prompt"
+          ],
+          "max_bytes": 65536,
+          "help": "Describe what must be true of the card before this move may happen.",
+          "check_ids": [
+            "agent_check"
+          ]
+        },
+        "message": {
+          "label": "Message",
+          "max_bytes": 1000,
+          "check_ids": [
+            "conditions"
+          ],
+          "help": "Optional. Shown on the card when the If conditions keep it in place."
+        },
+        "check": {
+          "mode": "agent_check",
+          "deadline_minutes": 10,
+          "timeout_action": "apply_transition",
+          "applies_to_actor_kinds": [
+            "human",
+            "agent"
+          ],
+          "description": "When a person or an agent requests this move, Campus first confirms the move is allowed, then holds the card in place while the task assistant checks it against these instructions. A pass applies the move; findings or failure keep the card where it is. A timeout lets the move proceed with a note on the card; late answers are ignored. Moves Campus makes on its own are not held (see exemptions). The check reads text the requester can edit, so it is a review aid, not a security boundary.",
+          "exemptions": [
+            {
+              "id": "auto_assigner_staffing",
+              "label": "Staffing by the auto-assigner",
+              "description": "Campus starting a Ready card for the agent it chose, and parking a Department card in Blocked when nobody can staff it."
+            },
+            {
+              "id": "pr_attachment_parking",
+              "label": "Parking a card when its pull request is attached",
+              "description": "Attaching a pull request moves the card from In progress to Blocked to await review. The pull request's Review Rules are its check."
+            },
+            {
+              "id": "comment_auto_unblock",
+              "label": "A person answering a Blocked card",
+              "description": "A person's comment on a Blocked card returns it to Ready."
+            },
+            {
+              "id": "reassignment_hand_back",
+              "label": "The hand-back inside a reassignment",
+              "description": "Reassigning a card returns it to Ready and starts it for the new agent in one step."
+            },
+            {
+              "id": "project_archive",
+              "label": "Archiving or deleting a project",
+              "description": "Archiving or deleting a project closes its open cards."
+            },
+            {
+              "id": "claim_hand_back",
+              "label": "A release or an expired claim",
+              "description": "A release, an expired lease, or a refused run hands an In progress card back to Ready without a transition request, which is why Campus offers no In progress → Ready edge."
+            },
+            {
+              "id": "escalation_rule_action",
+              "label": "An Escalation Rule's action",
+              "description": "An enabled Escalation Rule moving a card to Blocked for a person, or returning a Blocked card to Ready."
+            }
+          ]
+        }
+      },
+      "enable_disclosure": "Enabling this Rule holds each matching board move while the task assistant checks it against this Rule's instructions. Each check is one task-assistant chat turn on this Island's assistant provider, sent the task's title, description, recent comments and chat, and the Rule instructions. Findings or failure keep the card in place. After 10 minutes, a timeout lets the move proceed with a note on the card; late answers are ignored. A Rule whose check is its If conditions keeps a matching card in place at once, in the same request, and makes no model request."
+    },
+    {
+      "id": "task_creation",
+      "label": "Task creation",
+      "description": "Fill in defaults or require fields when a task is created.",
+      "order": 3,
+      "authorable": true,
+      "supported": true,
+      "triggers": [
+        {
+          "id": "task_created",
+          "label": "When a task is created",
+          "supported": true,
+          "authorable": true,
+          "state": "available",
+          "explanation": null
+        }
+      ],
+      "fields": [
+        "name",
+        "trigger",
+        "project_scope",
+        "task_creation_defaults",
+        "task_creation_validations"
+      ],
+      "allowed_values": {
+        "trigger": [
+          "task_created"
+        ],
+        "project_scope": [
+          "all",
+          "selected"
+        ],
+        "task_creation_defaults": [
+          "priority",
+          "review_on_create"
+        ],
+        "task_creation_validations": [
+          "description",
+          "project"
+        ],
+        "task_creation_operators": [
+          "present"
+        ]
+      },
+      "task_creation": {
+        "defaults": [
+          {
+            "field": "priority",
+            "label": "Priority",
+            "input": "choice",
+            "options": [
+              {
+                "value": "P0",
+                "label": "P0"
+              },
+              {
+                "value": "P1",
+                "label": "P1"
+              },
+              {
+                "value": "P2",
+                "label": "P2"
+              },
+              {
+                "value": "P3",
+                "label": "P3"
+              }
+            ],
+            "applies_to_actor_kinds": [
+              "human"
+            ],
+            "description": "Used when a person creates a task without choosing a priority. Agent-created tasks keep Campus's protected P3 default."
+          },
+          {
+            "field": "review_on_create",
+            "label": "Review on create",
+            "input": "boolean",
+            "options": [
+              {
+                "value": true,
+                "label": "On"
+              },
+              {
+                "value": false,
+                "label": "Off"
+              }
+            ],
+            "applies_to_actor_kinds": [
+              "human",
+              "agent"
+            ],
+            "description": "Used when a person or an agent creates a task without saying whether the task assistant should review it."
+          }
+        ],
+        "validations": [
+          {
+            "field": "description",
+            "label": "Description",
+            "operators": [
+              {
+                "id": "present",
+                "label": "is present"
+              }
+            ],
+            "applies_to_actor_kinds": [
+              "human",
+              "agent"
+            ],
+            "message": "Add a description before creating this task."
+          },
+          {
+            "field": "project",
+            "label": "Project",
+            "operators": [
+              {
+                "id": "present",
+                "label": "is present"
+              }
+            ],
+            "applies_to_actor_kinds": [
+              "human",
+              "agent"
+            ],
+            "message": "Choose a project before creating this task."
+          }
+        ],
+        "description": "Applies when a person or an agent creates a task. Defaults fill only fields the author left unset; validations refuse the create with a message and never discard or rewrite what the author wrote."
+      },
+      "enable_disclosure": "Enabling this Rule applies its defaults and validations to every task a person or an agent creates in its projects. It makes no model requests."
+    },
+    {
+      "id": "assignment",
+      "label": "Assignment & routing",
+      "description": "Narrow who Campus may hand a task to.",
+      "order": 4,
+      "authorable": true,
+      "supported": true,
+      "triggers": [
+        {
+          "id": "task_assignment_requested",
+          "label": "When Campus chooses who picks a task up",
+          "supported": true,
+          "authorable": true,
+          "state": "available",
+          "explanation": null
+        }
+      ],
+      "fields": [
+        "name",
+        "trigger",
+        "project_scope",
+        "assignment_destinations",
+        "assignment_conditions"
+      ],
+      "allowed_values": {
+        "trigger": [
+          "task_assignment_requested"
+        ],
+        "project_scope": [
+          "all",
+          "selected"
+        ],
+        "assignment_destination_kinds": [
+          "agent",
+          "department"
+        ],
+        "assignment_conditions": [
+          "priority"
+        ],
+        "assignment_priorities": [
+          "P0",
+          "P1",
+          "P2",
+          "P3"
+        ]
+      },
+      "assignment": {
+        "destination_kinds": [
+          {
+            "id": "agent",
+            "label": "Office",
+            "description": "One Office on this Island. Archived Offices, mascots and visitors cannot be destinations."
+          },
+          {
+            "id": "department",
+            "label": "Department",
+            "description": "Every Office on this Island whose specialty names this department."
+          }
+        ],
+        "conditions": [
+          {
+            "id": "priority",
+            "label": "Priority",
+            "input": "multi_choice",
+            "options": [
+              {
+                "value": "P0",
+                "label": "P0"
+              },
+              {
+                "value": "P1",
+                "label": "P1"
+              },
+              {
+                "value": "P2",
+                "label": "P2"
+              },
+              {
+                "value": "P3",
+                "label": "P3"
+              }
+            ],
+            "description": "Route only tasks with one of these priorities. Leave it empty to route every priority."
+          }
+        ],
+        "precedence": {
+          "mode": "narrow",
+          "label": "The Rule narrows; Campus still chooses",
+          "description": "Campus's own eligibility (capability, provider, credential, rate limits, recent failed starts and staffing) stays authoritative. The Rule keeps only its destinations among the eligible Offices. One left is assigned directly; several go to the reviewer to choose among; none leaves the Rule skipped, recorded in run history, and Campus chooses from every eligible Office. An Office pulling work itself is offered only tasks whose routing Rules include it."
+        },
+        "max_destinations": 20,
+        "destinations_source": "authoring_options.assignment_destinations",
+        "description": "Applies when Campus chooses who picks a task up: a Ready card started with “Assign to the next best available agent”, a Department card being staffed, and an Office asking for its next task. The Rule narrows the eligible Offices to its destinations; it never assigns an Office Campus would not."
+      },
+      "enable_disclosure": "Enabling this Rule narrows who Campus may hand its tasks to: when Campus chooses who picks a task up, and when an Office asks for its next task, only this Rule's destinations that Campus's own eligibility allows are offered. One eligible destination is assigned directly; several go to the reviewer to choose among; none lets Campus choose from every eligible Office. It makes no model requests of its own."
+    },
+    {
+      "id": "escalation",
+      "label": "Escalation",
+      "description": "Respond to stuck, risky or late work with one Campus action.",
+      "order": 5,
+      "authorable": true,
+      "supported": true,
+      "triggers": [
+        {
+          "id": "escalation_sweep",
+          "label": "When Campus sweeps for stuck work",
+          "supported": true,
+          "authorable": true,
+          "state": "available",
+          "explanation": null
+        }
+      ],
+      "fields": [
+        "name",
+        "trigger",
+        "project_scope",
+        "escalation_condition",
+        "escalation_action"
+      ],
+      "allowed_values": {
+        "trigger": [
+          "escalation_sweep"
+        ],
+        "project_scope": [
+          "all",
+          "selected"
+        ],
+        "escalation_conditions": [
+          "blocked_duration",
+          "review_timeout",
+          "repeated_run_start_failure",
+          "expired_claim",
+          "unstaffed_department"
+        ],
+        "escalation_actions": [
+          "comment",
+          "move_to_blocked",
+          "return_to_ready"
+        ]
+      },
+      "escalation": {
+        "conditions": [
+          {
+            "id": "blocked_duration",
+            "label": "Blocked for too long",
+            "threshold": {
+              "unit": "minutes",
+              "min": 5,
+              "max": 43200,
+              "label": "Minutes in Blocked",
+              "default": 240
+            },
+            "actions": [
+              "comment",
+              "return_to_ready"
+            ],
+            "description": "A card that has sat in Blocked longer than the threshold."
+          },
+          {
+            "id": "review_timeout",
+            "label": "Waiting on review for too long",
+            "threshold": {
+              "unit": "minutes",
+              "min": 5,
+              "max": 43200,
+              "label": "Minutes waiting for review",
+              "default": 60
+            },
+            "actions": [
+              "comment"
+            ],
+            "description": "An Imaginarium idea still waiting on Campus's auto-review after the threshold."
+          },
+          {
+            "id": "repeated_run_start_failure",
+            "label": "Runs keep failing to start",
+            "threshold": {
+              "unit": "count",
+              "label": "Failed starts in 7 days",
+              "min": 1,
+              "max": 20,
+              "default": 3
+            },
+            "actions": [
+              "comment"
+            ],
+            "description": "A card whose runs refused to start at least the threshold number of times in the last 7 days and that is not being worked on."
+          },
+          {
+            "id": "expired_claim",
+            "label": "A claim expired",
+            "threshold": null,
+            "actions": [
+              "comment"
+            ],
+            "description": "The lease sweep reclaimed a card whose holder went silent, and nobody has picked it up since."
+          },
+          {
+            "id": "unstaffed_department",
+            "label": "Department work nobody can staff",
+            "threshold": {
+              "unit": "minutes",
+              "min": 5,
+              "max": 43200,
+              "label": "Minutes without a holder",
+              "default": 60
+            },
+            "actions": [
+              "comment",
+              "move_to_blocked"
+            ],
+            "description": "A Department card with no holder past the threshold, or one Campus parked in Blocked because it could not staff the specialty."
+          }
+        ],
+        "actions": [
+          {
+            "id": "comment",
+            "label": "Comment on the card",
+            "description": "Posts a status comment from Workspace Rules with the Rule's note. It does not count as a person answering a Blocked card."
+          },
+          {
+            "id": "move_to_blocked",
+            "label": "Move to Blocked for a person",
+            "description": "Moves the card to Blocked as needs_input with a Rails-written reason; the Rule's note becomes the recommended direction. A card already in Blocked is left where it is. Offered only for conditions whose cards Campus may move itself: moving a Ready card to Blocked is a person's review decision, so those conditions comment instead."
+          },
+          {
+            "id": "return_to_ready",
+            "label": "Return to Ready",
+            "description": "Moves a Blocked card back to Ready so it can be picked up again."
+          }
+        ],
+        "sweep": {
+          "interval_minutes": 1,
+          "max_candidates_per_rule": 100,
+          "max_escalations_per_sweep": 25,
+          "description": "Campus checks every enabled Escalation Rule once a minute, opens one escalation per condition occurrence, applies the action once, and resolves it when the condition clears. A new escalation opens only if the condition recurs."
+        },
+        "note": {
+          "label": "Note",
+          "max_bytes": 1000,
+          "help": "Optional. Added to the comment, or offered as the recommended direction on a Blocked card."
+        },
+        "description": "Responds to stuck, risky or late work with one Campus action, once per occurrence."
+      },
+      "enable_disclosure": "Enabling this Rule has Campus check its condition once a minute and apply its action once per occurrence: a comment from Workspace Rules, a move to Blocked for a person, or a return to Ready. It makes no model requests."
+    }
+  ],
+  "builder": {
+    "version": 1,
+    "labels": {
+      "templates": "Start from a template",
+      "when": "When",
+      "if": "If",
+      "then": "Then",
+      "event": "Event",
+      "scope": "Projects",
+      "choose_event": "Choose an event",
+      "actions": "Also do this",
+      "add_action": "Add an action",
+      "remove_action": "Remove",
+      "choose_option": "Choose…",
+      "combine": "Chosen values within one condition are alternatives; every condition must hold."
+    },
+    "when": [
+      {
+        "id": "task_creation",
+        "kind": "task_creation",
+        "trigger_id": "task_created",
+        "label": "A card is created",
+        "summary": "a card is created",
+        "help": "Apply defaults or require fields before a new card is saved.",
+        "if_ids": [
+          "project_scope",
+          "priority",
+          "created_by",
+          "tag"
+        ],
+        "then_id": "task_creation",
+        "draft": {
+          "name": "",
+          "kind": "task_creation",
+          "trigger_id": "task_created",
+          "project_scope": {
+            "mode": "all",
+            "project_ids": []
+          },
+          "conditions": {
+            "version": 1,
+            "items": []
+          },
+          "task_creation": {
+            "defaults": {},
+            "validations": [],
+            "actions": []
+          }
+        }
+      },
+      {
+        "id": "transition",
+        "kind": "transition",
+        "trigger_id": "task_transition_requested",
+        "label": "A card is about to move",
+        "summary": "a card is about to move",
+        "help": "Choose a board move to check before it lands.",
+        "if_ids": [
+          "project_scope",
+          "priority",
+          "created_by",
+          "tag",
+          "pull_request"
+        ],
+        "then_id": "transition",
+        "draft": {
+          "name": "",
+          "kind": "transition",
+          "trigger_id": "task_transition_requested",
+          "project_scope": {
+            "mode": "all",
+            "project_ids": []
+          },
+          "conditions": {
+            "version": 1,
+            "items": []
+          },
+          "transition": {
+            "edge_id": null,
+            "failure_action_id": "keep_in_place",
+            "check_id": "agent_check",
+            "instruction": {
+              "source": "prompt",
+              "body": ""
+            },
+            "message": null,
+            "actions": []
+          }
+        }
+      },
+      {
+        "id": "assignment",
+        "kind": "assignment",
+        "trigger_id": "task_assignment_requested",
+        "label": "A card is ready to be assigned",
+        "summary": "a card is ready to be assigned",
+        "help": "Narrow who can pick up matching work.",
+        "if_ids": [
+          "project_scope",
+          "priority",
+          "created_by",
+          "tag",
+          "pull_request"
+        ],
+        "then_id": "assignment",
+        "draft": {
+          "name": "",
+          "kind": "assignment",
+          "trigger_id": "task_assignment_requested",
+          "project_scope": {
+            "mode": "all",
+            "project_ids": []
+          },
+          "conditions": {
+            "version": 1,
+            "items": []
+          },
+          "assignment": {
+            "destinations": [],
+            "conditions": {
+              "priorities": []
+            }
+          }
+        }
+      },
+      {
+        "id": "escalation",
+        "kind": "escalation",
+        "trigger_id": "escalation_sweep",
+        "label": "Work is stuck or late",
+        "summary": "work is stuck or late",
+        "help": "Choose a condition and how long to wait before responding.",
+        "if_ids": [
+          "project_scope",
+          "priority",
+          "created_by",
+          "tag",
+          "pull_request"
+        ],
+        "then_id": "escalation",
+        "draft": {
+          "name": "",
+          "kind": "escalation",
+          "trigger_id": "escalation_sweep",
+          "project_scope": {
+            "mode": "all",
+            "project_ids": []
+          },
+          "conditions": {
+            "version": 1,
+            "items": []
+          },
+          "escalation": {
+            "condition": {
+              "id": null,
+              "threshold": null
+            },
+            "action": {
+              "id": null,
+              "note": null
+            },
+            "actions": []
+          }
+        }
+      },
+      {
+        "id": "review",
+        "kind": "review",
+        "trigger_id": "pr_attached",
+        "label": "A pull request is attached",
+        "summary": "a pull request is attached",
+        "help": "Review the attached pull request at its exact head.",
+        "if_ids": [
+          "project_scope"
+        ],
+        "then_id": "review",
+        "draft": {
+          "name": "",
+          "kind": "review",
+          "trigger_id": "pr_attached",
+          "project_scope": {
+            "mode": "all",
+            "project_ids": []
+          },
+          "execution_principal": {
+            "agent_id": null,
+            "prefer_adversarial_provider": false
+          },
+          "review_plan": {
+            "mode": "single",
+            "instruction": {
+              "source": "prompt",
+              "body": ""
+            }
+          }
+        }
+      }
+    ],
+    "if": [
+      {
+        "id": "project_scope",
+        "label": "Project scope",
+        "input": "project_scope",
+        "help": "Which projects this rule applies to",
+        "event_ids": [
+          "task_creation",
+          "transition",
+          "assignment",
+          "escalation",
+          "review"
+        ],
+        "options": [
+          {
+            "id": "all",
+            "label": "All projects",
+            "summary": "in all projects",
+            "supported": true,
+            "authorable": true
+          },
+          {
+            "id": "selected",
+            "label": "Chosen projects",
+            "summary": "in chosen projects",
+            "supported": true,
+            "authorable": true
+          }
+        ]
+      },
+      {
+        "id": "priority",
+        "label": "Priority",
+        "input": "multi_choice",
+        "help": "Apply only to cards at one of the chosen priorities.",
+        "event_ids": [
+          "task_creation",
+          "transition",
+          "assignment",
+          "escalation"
+        ],
+        "options": [
+          {
+            "id": "P0",
+            "label": "P0",
+            "summary": "at P0",
+            "supported": true,
+            "authorable": true
+          },
+          {
+            "id": "P1",
+            "label": "P1",
+            "summary": "at P1",
+            "supported": true,
+            "authorable": true
+          },
+          {
+            "id": "P2",
+            "label": "P2",
+            "summary": "at P2",
+            "supported": true,
+            "authorable": true
+          },
+          {
+            "id": "P3",
+            "label": "P3",
+            "summary": "at P3",
+            "supported": true,
+            "authorable": true
+          }
+        ]
+      },
+      {
+        "id": "created_by",
+        "label": "Created by",
+        "input": "multi_choice",
+        "help": "Apply only to cards created by an agent or by a person.",
+        "event_ids": [
+          "task_creation",
+          "transition",
+          "assignment",
+          "escalation"
+        ],
+        "options": [
+          {
+            "id": "agent",
+            "label": "An agent",
+            "summary": "created by an agent",
+            "supported": true,
+            "authorable": true
+          },
+          {
+            "id": "human",
+            "label": "A person",
+            "summary": "created by a person",
+            "supported": true,
+            "authorable": true
+          }
+        ]
+      },
+      {
+        "id": "tag",
+        "label": "Tag",
+        "input": "multi_choice",
+        "help": "Apply only to cards carrying one of the chosen tags.",
+        "event_ids": [
+          "task_creation",
+          "transition",
+          "assignment",
+          "escalation"
+        ],
+        "options": [
+          {
+            "id": "CloudWatch",
+            "label": "CloudWatch",
+            "summary": "tagged CloudWatch",
+            "supported": true,
+            "authorable": true
+          }
+        ]
+      },
+      {
+        "id": "pull_request",
+        "label": "Pull request",
+        "input": "multi_choice",
+        "help": "Apply only to cards whose recorded pull request is in one of the chosen states. Campus reads the card's own record and never asks GitHub during a check.",
+        "event_ids": [
+          "transition",
+          "assignment",
+          "escalation"
+        ],
+        "options": [
+          {
+            "id": "attached",
+            "label": "Has a pull request",
+            "summary": "with a pull request",
+            "supported": true,
+            "authorable": true
+          },
+          {
+            "id": "none",
+            "label": "Has no pull request",
+            "summary": "with no pull request",
+            "supported": true,
+            "authorable": true
+          },
+          {
+            "id": "merged",
+            "label": "Its pull request is merged",
+            "summary": "with a merged pull request",
+            "supported": true,
+            "authorable": true
+          },
+          {
+            "id": "unmerged",
+            "label": "Its pull request has not merged",
+            "summary": "with an unmerged pull request",
+            "supported": true,
+            "authorable": true
+          }
+        ]
+      }
+    ],
+    "then": [
+      {
+        "id": "task_creation",
+        "label": "Set defaults or require fields",
+        "kind_id": "task_creation",
+        "action_ids": [
+          "set_fields",
+          "assign_to",
+          "notify_owner"
+        ]
+      },
+      {
+        "id": "transition",
+        "label": "Run a check and keep the card in place if it returns findings",
+        "kind_id": "transition",
+        "action_ids": [
+          "set_fields",
+          "notify_owner",
+          "request_review"
+        ]
+      },
+      {
+        "id": "assignment",
+        "label": "Limit who may take it",
+        "kind_id": "assignment",
+        "action_ids": []
+      },
+      {
+        "id": "escalation",
+        "label": "Respond to stuck or late work",
+        "kind_id": "escalation",
+        "action_ids": [
+          "assign_to",
+          "notify_owner",
+          "request_review"
+        ]
+      },
+      {
+        "id": "review",
+        "label": "Review with an agent",
+        "kind_id": "review",
+        "action_ids": []
+      }
+    ],
+    "actions": [
+      {
+        "id": "set_fields",
+        "label": "Set fields",
+        "help": "Sets the card's priority, adds tags, or moves it to a project. Leave a field empty to leave it as it is.",
+        "event_ids": [
+          "task_creation",
+          "transition"
+        ],
+        "fields": [
+          {
+            "id": "priority",
+            "label": "Priority",
+            "input": "choice",
+            "required": false,
+            "options": [
+              {
+                "id": "P0",
+                "label": "P0",
+                "value": "P0"
+              },
+              {
+                "id": "P1",
+                "label": "P1",
+                "value": "P1"
+              },
+              {
+                "id": "P2",
+                "label": "P2",
+                "value": "P2"
+              },
+              {
+                "id": "P3",
+                "label": "P3",
+                "value": "P3"
+              }
+            ]
+          },
+          {
+            "id": "add_tags",
+            "label": "Add tags",
+            "input": "multi_choice",
+            "required": false,
+            "allows_custom": true,
+            "max_items": 8,
+            "max_length": 32,
+            "options": []
+          },
+          {
+            "id": "project_id",
+            "label": "Project",
+            "input": "choice",
+            "required": false,
+            "options": []
+          }
+        ]
+      },
+      {
+        "id": "assign_to",
+        "label": "Assign to",
+        "help": "Hands a Ready card to a chosen Office or department. Campus's own eligibility and claim rules still apply: if no named Office can take the card now, it stays where it is and the reason is recorded.",
+        "event_ids": [
+          "task_creation",
+          "escalation"
+        ],
+        "fields": [
+          {
+            "id": "destination",
+            "label": "Office or department",
+            "input": "choice",
+            "required": true,
+            "options": []
+          }
+        ]
+      },
+      {
+        "id": "notify_owner",
+        "label": "Notify the owner",
+        "help": "Posts a comment on the card that mentions this Island's owner. Nothing is emailed or sent outside Campus.",
+        "event_ids": [
+          "task_creation",
+          "transition",
+          "escalation"
+        ],
+        "fields": [
+          {
+            "id": "note",
+            "label": "Note",
+            "input": "text",
+            "required": false,
+            "max_bytes": 1000,
+            "options": []
+          }
+        ]
+      },
+      {
+        "id": "request_review",
+        "label": "Request a review",
+        "help": "Asks the chosen Review Rule's agent to review the card's attached pull request with that Rule's instructions. If Campus cannot start the review, the reason is recorded on the card.",
+        "event_ids": [
+          "transition",
+          "escalation"
+        ],
+        "fields": [
+          {
+            "id": "review_rule_id",
+            "label": "Review Rule",
+            "input": "choice",
+            "required": true,
+            "options": []
+          }
+        ]
+      }
+    ],
+    "templates": [
+      {
+        "id": "require-project",
+        "label": "Every new card must have a project",
+        "event_id": "task_creation",
+        "draft": {
+          "name": "Every new card must have a project",
+          "kind": "task_creation",
+          "trigger_id": "task_created",
+          "project_scope": {
+            "mode": "all",
+            "project_ids": []
+          },
+          "conditions": {
+            "version": 1,
+            "items": []
+          },
+          "task_creation": {
+            "defaults": {},
+            "validations": [
+              {
+                "field": "project",
+                "operator": "present"
+              }
+            ],
+            "actions": []
+          }
+        }
+      },
+      {
+        "id": "require-description",
+        "label": "Every new card needs a description",
+        "event_id": "task_creation",
+        "draft": {
+          "name": "Every new card needs a description",
+          "kind": "task_creation",
+          "trigger_id": "task_created",
+          "project_scope": {
+            "mode": "all",
+            "project_ids": []
+          },
+          "conditions": {
+            "version": 1,
+            "items": []
+          },
+          "task_creation": {
+            "defaults": {},
+            "validations": [
+              {
+                "field": "description",
+                "operator": "present"
+              }
+            ],
+            "actions": []
+          }
+        }
+      },
+      {
+        "id": "agent-cards-need-description",
+        "label": "Cards created by agents need a description",
+        "event_id": "task_creation",
+        "draft": {
+          "name": "Cards created by agents need a description",
+          "kind": "task_creation",
+          "trigger_id": "task_created",
+          "project_scope": {
+            "mode": "all",
+            "project_ids": []
+          },
+          "conditions": {
+            "version": 1,
+            "items": [
+              {
+                "id": "created_by",
+                "values": [
+                  "agent"
+                ]
+              }
+            ]
+          },
+          "task_creation": {
+            "defaults": {},
+            "validations": [
+              {
+                "field": "description",
+                "operator": "present"
+              }
+            ],
+            "actions": []
+          }
+        }
+      },
+      {
+        "id": "pr-merged-before-done",
+        "label": "A card with a pull request cannot move to Done until the PR is merged",
+        "event_id": "transition",
+        "draft": {
+          "name": "A card with a pull request cannot move to Done until the PR is merged",
+          "kind": "transition",
+          "trigger_id": "task_transition_requested",
+          "project_scope": {
+            "mode": "all",
+            "project_ids": []
+          },
+          "conditions": {
+            "version": 1,
+            "items": [
+              {
+                "id": "pull_request",
+                "values": [
+                  "unmerged"
+                ]
+              }
+            ]
+          },
+          "transition": {
+            "edge_id": "in_progress:done",
+            "failure_action_id": "keep_in_place",
+            "check_id": "conditions",
+            "instruction": null,
+            "message": "Merge the pull request before moving this card to Done.",
+            "actions": []
+          }
+        }
+      },
+      {
+        "id": "blocked-comment",
+        "label": "Comment when a card is blocked for more than 24 hours",
+        "event_id": "escalation",
+        "draft": {
+          "name": "Comment when a card is blocked for more than 24 hours",
+          "kind": "escalation",
+          "trigger_id": "escalation_sweep",
+          "project_scope": {
+            "mode": "all",
+            "project_ids": []
+          },
+          "conditions": {
+            "version": 1,
+            "items": []
+          },
+          "escalation": {
+            "condition": {
+              "id": "blocked_duration",
+              "threshold": 1440
+            },
+            "action": {
+              "id": "comment",
+              "note": null
+            },
+            "actions": []
+          }
+        }
+      },
+      {
+        "id": "p0-blocked-comment",
+        "label": "Comment when a P0 card is blocked for more than an hour",
+        "event_id": "escalation",
+        "draft": {
+          "name": "Comment when a P0 card is blocked for more than an hour",
+          "kind": "escalation",
+          "trigger_id": "escalation_sweep",
+          "project_scope": {
+            "mode": "all",
+            "project_ids": []
+          },
+          "conditions": {
+            "version": 1,
+            "items": [
+              {
+                "id": "priority",
+                "values": [
+                  "P0"
+                ]
+              }
+            ]
+          },
+          "escalation": {
+            "condition": {
+              "id": "blocked_duration",
+              "threshold": 60
+            },
+            "action": {
+              "id": "comment",
+              "note": null
+            },
+            "actions": []
+          }
+        }
+      },
+      {
+        "id": "review-comment",
+        "label": "Comment when a card waits for review for more than an hour",
+        "event_id": "escalation",
+        "draft": {
+          "name": "Comment when a card waits for review for more than an hour",
+          "kind": "escalation",
+          "trigger_id": "escalation_sweep",
+          "project_scope": {
+            "mode": "all",
+            "project_ids": []
+          },
+          "conditions": {
+            "version": 1,
+            "items": []
+          },
+          "escalation": {
+            "condition": {
+              "id": "review_timeout",
+              "threshold": 60
+            },
+            "action": {
+              "id": "comment",
+              "note": null
+            },
+            "actions": []
+          }
+        }
+      },
+      {
+        "id": "blocked-ready",
+        "label": "Return a card to Ready after 24 hours in Blocked",
+        "event_id": "escalation",
+        "draft": {
+          "name": "Return a card to Ready after 24 hours in Blocked",
+          "kind": "escalation",
+          "trigger_id": "escalation_sweep",
+          "project_scope": {
+            "mode": "all",
+            "project_ids": []
+          },
+          "conditions": {
+            "version": 1,
+            "items": []
+          },
+          "escalation": {
+            "condition": {
+              "id": "blocked_duration",
+              "threshold": 1440
+            },
+            "action": {
+              "id": "return_to_ready",
+              "note": null
+            },
+            "actions": []
+          }
+        }
+      },
+      {
+        "id": "default-p2",
+        "label": "New cards start at P2",
+        "event_id": "task_creation",
+        "draft": {
+          "name": "New cards start at P2",
+          "kind": "task_creation",
+          "trigger_id": "task_created",
+          "project_scope": {
+            "mode": "all",
+            "project_ids": []
+          },
+          "conditions": {
+            "version": 1,
+            "items": []
+          },
+          "task_creation": {
+            "defaults": {
+              "priority": "P2"
+            },
+            "validations": [],
+            "actions": []
+          }
+        }
+      },
+      {
+        "id": "blocked-notify-owner",
+        "label": "When a card is blocked for 24 hours, notify the owner",
+        "event_id": "escalation",
+        "draft": {
+          "name": "When a card is blocked for 24 hours, notify the owner",
+          "kind": "escalation",
+          "trigger_id": "escalation_sweep",
+          "project_scope": {
+            "mode": "all",
+            "project_ids": []
+          },
+          "conditions": {
+            "version": 1,
+            "items": []
+          },
+          "escalation": {
+            "condition": {
+              "id": "blocked_duration",
+              "threshold": 1440
+            },
+            "action": {
+              "id": null,
+              "note": null
+            },
+            "actions": [
+              {
+                "id": "notify_owner",
+                "values": {}
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "p1-ready-assign",
+        "label": "When a P1 card is ready, assign it to a chosen Office",
+        "event_id": "assignment",
+        "choose_hint": "Choose the Office or department to assign P1 cards to, then save.",
+        "draft": {
+          "name": "When a P1 card is ready, assign it to a chosen Office",
+          "kind": "assignment",
+          "trigger_id": "task_assignment_requested",
+          "project_scope": {
+            "mode": "all",
+            "project_ids": []
+          },
+          "conditions": {
+            "version": 1,
+            "items": []
+          },
+          "assignment": {
+            "destinations": [],
+            "conditions": {
+              "priorities": [
+                "P1"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "agent-idea-tag",
+        "label": "When a card is created by an agent, add the tag agent-idea",
+        "event_id": "task_creation",
+        "draft": {
+          "name": "When a card is created by an agent, add the tag agent-idea",
+          "kind": "task_creation",
+          "trigger_id": "task_created",
+          "project_scope": {
+            "mode": "all",
+            "project_ids": []
+          },
+          "conditions": {
+            "version": 1,
+            "items": [
+              {
+                "id": "created_by",
+                "values": [
+                  "agent"
+                ]
+              }
+            ]
+          },
+          "task_creation": {
+            "defaults": {},
+            "validations": [],
+            "actions": [
+              {
+                "id": "set_fields",
+                "values": {
+                  "add_tags": [
+                    "agent-idea"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "filters": [
+    {
+      "id": "all",
+      "label": "All rules",
+      "order": 0,
+      "query": {}
+    },
+    {
+      "id": "review",
+      "label": "Review",
+      "order": 1,
+      "query": {
+        "kind": "review"
+      }
+    },
+    {
+      "id": "transition",
+      "label": "Board transition",
+      "order": 2,
+      "query": {
+        "kind": "transition"
+      }
+    },
+    {
+      "id": "task_creation",
+      "label": "Task creation",
+      "order": 3,
+      "query": {
+        "kind": "task_creation"
+      }
+    },
+    {
+      "id": "assignment",
+      "label": "Assignment & routing",
+      "order": 4,
+      "query": {
+        "kind": "assignment"
+      }
+    },
+    {
+      "id": "escalation",
+      "label": "Escalation",
+      "order": 5,
+      "query": {
+        "kind": "escalation"
+      }
+    },
+    {
+      "id": "archived",
+      "label": "Archived",
+      "order": 6,
+      "query": {
+        "status": "archived"
+      }
+    }
+  ],
+  "project_scope": {
+    "supported": true,
+    "modes": [
+      "all",
+      "selected"
+    ]
+  },
+  "capability_digest": "sha256:0d35fb53638ae727edefb2afb9dccf40f272a2f9d44852fc5ccf0cf1903d36ec",
+  "live_readiness": {
+    "state": "unavailable",
+    "facts": {
+      "current_login": {
+        "state": "not_evaluated",
+        "reason": "The Rules capabilities request does not perform an interactive provider login check.",
+        "recovery": {
+          "id": "retry_readiness",
+          "label": "Retry readiness checks",
+          "message": "Campus will check this readiness fact again when the Rules view is refreshed."
+        }
+      },
+      "credential_presence": {
+        "state": "unavailable",
+        "reason": "No active credential is present on this Island.",
+        "recovery": {
+          "id": "retry_readiness",
+          "label": "Retry readiness checks",
+          "message": "Campus will check this readiness fact again when the Rules view is refreshed."
+        }
+      },
+      "provider_quota": {
+        "state": "not_evaluated",
+        "reason": "Provider quota is checked only when a review target is evaluated.",
+        "recovery": {
+          "id": "retry_readiness",
+          "label": "Retry readiness checks",
+          "message": "Campus will check this readiness fact again when the Rules view is refreshed."
+        }
+      },
+      "worker_capacity": {
+        "state": "not_evaluated",
+        "reason": "Worker capacity is checked only when a review target is evaluated.",
+        "recovery": {
+          "id": "retry_readiness",
+          "label": "Retry readiness checks",
+          "message": "Campus will check this readiness fact again when the Rules view is refreshed."
+        }
+      },
+      "agent_availability": {
+        "state": "not_evaluated",
+        "reason": "Agent availability is checked only when a review target is evaluated.",
+        "recovery": {
+          "id": "retry_readiness",
+          "label": "Retry readiness checks",
+          "message": "Campus will check this readiness fact again when the Rules view is refreshed."
+        }
+      },
+      "repository_access": {
+        "state": "not_evaluated",
+        "reason": "Repository access requires a selected review target.",
+        "recovery": {
+          "id": "retry_readiness",
+          "label": "Retry readiness checks",
+          "message": "Campus will check this readiness fact again when the Rules view is refreshed."
+        }
+      },
+      "github_projection_access": {
+        "state": "available",
+        "reason": "The runtime gh CLI has an active authenticated account for trusted Rule projection.",
+        "recovery": {
+          "id": "retry_readiness",
+          "label": "Retry readiness checks",
+          "message": "Campus will check this readiness fact again when the Rules view is refreshed."
+        }
+      },
+      "hardened_review_host": {
+        "state": "unavailable",
+        "reason": "No registered computer is currently available to run hardened Workspace Rule reviews for this Island.",
+        "recovery": {
+          "id": "register_hardened_review_host",
+          "label": "Connect a computer for Rule reviews",
+          "message": "Open Campus on a computer signed in to this account and let it register, then try the review again."
+        }
+      }
+    },
+    "provider_adapters": [
+      {
+        "provider_id": "anthropic",
+        "credential_kind": "api_key",
+        "transport_id": "anthropic:api_key",
+        "engine": "claude",
+        "state": "unavailable"
+      },
+      {
+        "provider_id": "anthropic",
+        "credential_kind": "cli_subscription",
+        "transport_id": "anthropic:cli_subscription",
+        "engine": "claude",
+        "state": "unavailable"
+      },
+      {
+        "provider_id": "openai",
+        "credential_kind": "api_key",
+        "transport_id": "openai:api_key",
+        "engine": "codex",
+        "state": "unavailable"
+      },
+      {
+        "provider_id": "openai",
+        "credential_kind": "cli_subscription",
+        "transport_id": "openai:cli_subscription",
+        "engine": "codex",
+        "state": "unavailable"
+      },
+      {
+        "provider_id": "xai",
+        "credential_kind": "api_key",
+        "transport_id": "xai:api_key",
+        "engine": "grok",
+        "state": "unavailable"
+      }
+    ],
+    "unavailable_reason": "No active Anthropic, OpenAI, or xAI credential is ready for hardened review.",
+    "recovery": {
+      "id": "retry_readiness",
+      "label": "Retry readiness checks",
+      "message": "Campus will check this readiness fact again when the Rules view is refreshed."
+    }
+  },
+  "workspace_rules": {
+    "execution_enabled": true,
+    "kill_switch_setting": "workspace_rules_execution_enabled"
+  },
+  "execution": {
+    "profile_id": "hardened_exact_pr",
+    "capability_categories": [
+      "read_only_exact_target",
+      "no_network",
+      "no_host_tools",
+      "no_repository_write"
+    ],
+    "deadlines": {
+      "parent_minutes": 30,
+      "child_minutes": 22,
+      "aggregator_minutes": 8
+    }
+  },
+  "disclosure": {
+    "version": 5,
+    "text": "Enabling this Rule starts paid vendor model requests owned by this Island. Campus sends the Rule instructions, exact pull request identifiers, and only the verified bounded pull request diff to the configured Anthropic, OpenAI, or xAI model provider. In a review team, the aggregator also receives the child review results. The sandbox cannot read the repository checkout or operator files. The provider processes and may retain this content under the operator's provider account terms. A single review starts one logical reviewer; a team starts one per reviewer plus one aggregator. Each reviewer can make multiple metered provider requests. All Rules share the Island's active-reviewer and 12-request hourly limits. A non-visitor Agent may initiate at most six admissions per rolling hour, reserve or settle at most $6 of provider cost per rolling hour, and keep one exact-target review active at a time; all team children count against that initiating Agent. Work refused by a limit is recorded as failed and requires a new exact-head review after capacity clears. Campus runs every call in a bounded, read-only review environment. Codex subscription reviews reserve the full supported model output maximum because the subscription service does not accept a smaller output cap. This can exhaust review capacity even when the eventual answer is short. Current limits prevent Agent-initiated Codex subscription reviews even after shared capacity clears. Human-initiated reviews remain subject to Island limits."
+  }
+}

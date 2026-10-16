@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "state": "fallback",
+  "reason": "selected",
+  "message": "Campus continued this question on another eligible account.",
+  "preferred": { "provider": "openai", "model": null },
+  "attempts": [
+    { "provider": "openai", "model": null, "reason": "quota_exhaustion" },
+    { "provider": "openai", "model": "gpt-6-astra", "reason": "selected" }
+  ]
+}

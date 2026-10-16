@@ -1,0 +1,8 @@
+{
+  "input": {
+    "state": "failed",
+    "reason": "broker_transport_failed",
+    "detail": "The Mac execution helper stream ended without a terminal result."
+  },
+  "normalized_reason": "provider_stream_ended"
+}

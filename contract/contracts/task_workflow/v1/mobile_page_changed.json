@@ -1,0 +1,8 @@
+{
+  "error": "This Kanban lane changed while its pages were loading. Reload the lane from the first page.",
+  "pagination_recovery": {
+    "version": 1,
+    "reason": "page_changed",
+    "action": "restart_without_cursor"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "location": "offline_park",
+  "outdoors": true,
+  "tone": "offline",
+  "label": "Offline",
+  "line": "Offline."
+}

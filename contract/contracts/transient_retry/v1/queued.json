@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "state": "queued",
+  "category": "provider_unavailable",
+  "message": "Campus will retry this temporary provider or network failure automatically after 1 minute, when the computer is ready. Retry 1 of 2 continues the kept work. Stop cancels the retry.",
+  "retry_at": "2026-10-16T01:01:00.000000Z",
+  "number": 1,
+  "max_retries": 2,
+  "successor_id": "11111111-2222-4333-8444-555555555555",
+  "paused_until": null
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "message": null,
+  "items": [
+    { "id": "needs_you", "label": "1 card needs you", "prompt": "What needs my input right now?" },
+    { "id": "blocked", "label": "3 cards blocked", "prompt": "What's blocked right now, and why?" },
+    { "id": "in_progress", "label": "0 cards in progress", "prompt": "What's in progress right now?" }
+  ]
+}

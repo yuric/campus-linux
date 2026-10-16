@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "operation": "native_session",
+  "credential_provider": "anthropic",
+  "credential_kind": "cli_subscription",
+  "credential_scope": "fixture-credential-scope",
+  "native_session_id": "session-one",
+  "query": "",
+  "max_report_bytes": 2000000
+}

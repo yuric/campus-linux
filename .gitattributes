@@ -28,5 +28,5 @@
 *.ttf        binary
 
 # Generated: collapse in review, and keep out of language statistics.
-docs/api/openapi.yaml   linguist-generated=true -diff
+contract/api/docs/openapi.yaml   linguist-generated=true -diff
 package-lock.json       linguist-generated=true -diff

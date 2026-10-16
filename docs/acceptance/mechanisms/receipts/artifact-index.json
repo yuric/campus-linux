@@ -367,8 +367,8 @@
     },
     {
       "path": "docs/acceptance/mechanisms/receipts/g8-electron-1337/REPORT.md",
-      "bytes": 7309,
-      "sha256": "8ae99699bd57bab7db3d1c2641f773070cd1a26f59b3a780e79c80079cd6aba3"
+      "bytes": 7665,
+      "sha256": "e1494507a98fcdd2ed9aa37ab005922758bd8d8ae893e3000b8d088d39caac30"
     },
     {
       "path": "docs/acceptance/mechanisms/receipts/g8-electron-1337/additional-protected-after-install.json",

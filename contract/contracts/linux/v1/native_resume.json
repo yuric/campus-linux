@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "session_id": "session-one",
+  "project_path": "/home/test/code/project",
+  "credential_scope": "fixture-credential-scope",
+  "failure_policy": "refuse"
+}

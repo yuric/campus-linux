@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "state": "waiting_reset",
+  "office_reserved": true,
+  "message": "Blocked due to a usage limit on test, reset in 30 minutes, will auto resume this work back on test. This Office is reserved while waiting. Stop cancels the automatic resume.",
+  "deadline_at": "2026-10-15T23:31:00.000000Z",
+  "cancel": {
+    "method": "POST",
+    "path": "/execution_requests/00000000-0000-4000-8000-000000000921/cancel"
+  }
+}

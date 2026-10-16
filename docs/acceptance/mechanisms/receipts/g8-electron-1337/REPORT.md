@@ -52,9 +52,14 @@ would have failed. No threshold was lowered or retry attempted; the worker stopp
 and returned the lease for coordinator disposition.
 
 No campusqa login or holder/renderer process started, so no graphical logout or
-inhibitor release was applicable. [Cleanup](cleanup-observation.stdout) confirms
-no UID1000 process, no logged-in/lingering user1000, target absence and active polkit.
-[Rollback](rollback.stdout) returned0 with `removed; external ownership receipt retained`.
+inhibitor release was applicable. [Cleanup](cleanup-observation.stdout) records
+loginctl output supporting no logged-in/lingering user1000 and active polkit.
+Its semicolon-separated shell tests retain no individual test statuses; the final
+polkit exit0 does not independently prove prior predicates or the no-UID1000-process
+assertion. [Rollback](rollback.stdout) returned0 with
+`removed; external ownership receipt retained`, supporting target removal through
+the reviewed normal operator path. The later actual LimaStopped observation is
+separate evidence. Raw commands and outputs remain unchanged (human10987).
 The normal path clears the helper's privilege before complete verification/removal;
 earlier identity/link/content refusal remains an untested recovery limitation.
 No generic chmod/rm sweep or security-policy workaround ran.

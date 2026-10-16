@@ -1,0 +1,93 @@
+{
+  "id": "2",
+  "current_revision_id": "2",
+  "revision": 1,
+  "name": "Blocked too long",
+  "kind": "escalation",
+  "origin": "workspace",
+  "protected": false,
+  "enabled": false,
+  "trigger": {
+    "id": "escalation_sweep",
+    "label": "When Campus sweeps for stuck work",
+    "supported": true,
+    "authorable": true,
+    "state": "available",
+    "explanation": null
+  },
+  "project_scope": {
+    "mode": "all",
+    "project_ids": [],
+    "projects": []
+  },
+  "conditions": {
+    "version": 1,
+    "items": []
+  },
+  "execution_principal": null,
+  "execution_profile": null,
+  "review_plan": null,
+  "activation_required": true,
+  "allowed_actions": [
+    "edit",
+    "enable",
+    "archive"
+  ],
+  "actions": [
+    {
+      "id": "edit",
+      "label": "Edit",
+      "intent": "default",
+      "confirmation": null
+    },
+    {
+      "id": "enable",
+      "label": "Enable",
+      "intent": "primary",
+      "confirmation": {
+        "title": "Enable this Rule?",
+        "body": "Enabling this Rule has Campus check its condition once a minute and apply its action once per occurrence: a comment from Workspace Rules, a move to Blocked for a person, or a return to Ready. It makes no model requests.",
+        "confirm_label": "Acknowledge and Enable"
+      }
+    },
+    {
+      "id": "archive",
+      "label": "Archive",
+      "intent": "destructive",
+      "confirmation": {
+        "title": "Archive this Rule?",
+        "body": "Archiving disables this Rule and keeps its revisions and run history.",
+        "confirm_label": "Archive Rule"
+      }
+    }
+  ],
+  "summary": "When blocked for too long (240 minutes), comment on the card.",
+  "source_label": "Workspace Rule",
+  "details": {},
+  "status": {
+    "id": "disabled",
+    "label": "Disabled",
+    "severity": "message"
+  },
+  "lock": {
+    "locked": false,
+    "label": "Editable workspace rule",
+    "explanation": "This Rule belongs to this Island."
+  },
+  "archived": false,
+  "escalation": {
+    "condition": {
+      "id": "blocked_duration",
+      "label": "Blocked for too long",
+      "threshold": 240,
+      "threshold_label": "240 minutes",
+      "unit": "minutes"
+    },
+    "action": {
+      "id": "comment",
+      "label": "Comment on the card",
+      "note": "Ping the owner if this is still stuck tomorrow."
+    },
+    "actions": []
+  }
+}

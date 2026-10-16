@@ -1,0 +1,27 @@
+{
+  "auth_recovery": {
+    "version": 1,
+    "state": "waiting",
+    "message": "Anthropic Claude needs you to sign in again on MacBook Pro",
+    "retry_at": "2026-10-15T20:04:00.000000Z",
+    "action": {
+      "method": "PUT",
+      "path": "/executors/00000000-0000-4000-8000-000000000001/credential_bindings/23",
+      "body": {
+        "recheck": true
+      }
+    }
+  },
+  "request": {
+    "version": 1,
+    "operation": "verify",
+    "engine": "claude",
+    "credential_scope": "fixture-scope"
+  },
+  "verification_attempt": null,
+  "identity_context": {
+    "version": 1,
+    "credential_scope": "fixture-scope",
+    "revision": 1
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "contract_version": 1,
+  "maximum": 10,
+  "running": 3,
+  "available": 7,
+  "basis": "measured",
+  "explanation": "This computer can run about 10 agents at once, capped at 10 by your Settings. 3 are already running, so 7 more can land now.",
+  "governing_bound": "setting"
+}

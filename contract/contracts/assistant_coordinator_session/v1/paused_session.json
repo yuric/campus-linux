@@ -1,0 +1,168 @@
+{
+  "version": 1,
+  "session": {
+    "version": 1,
+    "id": "3b0c7e1a-1d2f-4c3b-9a8e-5f6d7c8b9a01",
+    "state": "paused",
+    "execution_request_id": "9d8c7b6a-5f4e-4d3c-8b2a-1f0e9d8c7b6a",
+    "executor_id": "0f1e2d3c-4b5a-4968-8776-655443322110",
+    "executor_name": "Studio Mac",
+    "run_state": "completed",
+    "opened_at": "2026-09-22T09:00:00.000000Z",
+    "ended_at": null,
+    "reason": "coordinator_no_progress",
+    "message": "Campus Coordinator paused after 200 consecutive turns without answering a question or completing a new successful Campus write. Choose Continue to resume, or Stop to end the session.",
+    "error_detail": null,
+    "model_output": {
+      "text": "{\"campus_coordinator\":2,\"calls\":[{\"id\":\"read\",\"question_id\":\"1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d\",\"tool\":{\"kind\":\"learning_search\",\"arguments\":{}}}]}",
+      "source": "coordinator_model_output",
+      "message": "The first 2 KB of what the model said on this session's last turn, as Campus read it.",
+      "version": 1,
+      "byte_size": 150,
+      "truncated": false
+    },
+    "operations": {
+      "version": 1,
+      "state": "ready",
+      "message": "Campus operations use your current access. An ordinary reversible change you ask for is applied as you asked it; anything else waits for your confirmation.",
+      "calls": [
+        {
+          "id": "read",
+          "question_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+          "result": {
+            "state": "found",
+            "version": 1,
+            "learnings": []
+          },
+          "finished": true,
+          "started_at": "2026-09-22T09:00:05.120000Z",
+          "finished_at": "2026-09-22T09:00:05.180000Z"
+        }
+      ],
+      "reviews": [],
+      "handoffs": [],
+      "unsupported_message": "Update Campus to use these coordinator operations."
+    },
+    "budget": {
+      "version": 2,
+      "max_rounds": 16,
+      "time_limit_seconds": 900,
+      "max_prompt_bytes": 262144,
+      "max_output_bytes": 65536,
+      "enforcement": {
+        "version": 1,
+        "enforced_limits": [
+          "concurrent_turns"
+        ],
+        "max_concurrent_turns": 1,
+        "monetary_limit": "not_enforced",
+        "message": "No turn, time or spending limit ends this session. One turn runs at a time. Use Stop or Steer to control the work."
+      }
+    },
+    "usage": {
+      "version": 1,
+      "rounds_used": 3,
+      "wall_seconds": 214,
+      "spend_estimate_cents": 0
+    },
+    "waiting_for": [
+      "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
+    ],
+    "wakeups": {
+      "version": 1,
+      "waiting_for": {
+        "version": 1,
+        "subjects": [
+          {
+            "kind": "card_blocked",
+            "subject_id": "42"
+          }
+        ]
+      },
+      "message": "Events matching this session's subscriptions can wake the coordinator while it is open.",
+      "events": [
+        {
+          "version": 1,
+          "id": 71,
+          "kind": "card_blocked",
+          "payload": {
+            "task_id": 42,
+            "reason": "Choose a deploy target"
+          },
+          "subject_id": "42",
+          "state": "consumed",
+          "message": "Task #42 is blocked: Choose a deploy target",
+          "created_at": "2026-09-22T09:01:00.000000Z",
+          "delivered_at": "2026-09-22T09:01:02.000000Z",
+          "consumed_at": "2026-09-22T09:01:40.000000Z"
+        }
+      ]
+    },
+    "questions": [
+      {
+        "id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+        "state": "queued",
+        "body": "What is blocked right now?",
+        "asked_at": "2026-09-22T09:00:05.000000Z",
+        "answered_at": null,
+        "reply": null,
+        "error": null,
+        "answer_source": null,
+        "body_withheld": false,
+        "references": [],
+        "references_withheld": false,
+        "actions": [
+          {
+            "id": "copy",
+            "label": "Copy",
+            "intent": "default",
+            "request": null
+          }
+        ]
+      }
+    ],
+    "ask": {
+      "version": 1,
+      "accepting": false,
+      "message": "Campus Coordinator paused after 200 consecutive turns without answering a question or completing a new successful Campus write. Choose Continue to resume, or Stop to end the session.",
+      "action": null
+    },
+    "actions": [
+      {
+        "id": "stop_session",
+        "label": "Stop session",
+        "intent": "destructive"
+      }
+    ],
+    "steering": {
+      "version": 1,
+      "supported": true,
+      "native": false,
+      "delivery": "next_turn",
+      "message": "A running coordinator turn cannot take new input. Campus gives your guidance to the session's next turn and shows whether the coordinator confirmed it used it.",
+      "unsupported_message": "Update Campus to steer this coordinator session.",
+      "action": null,
+      "steers": []
+    },
+    "pause": {
+      "version": 1,
+      "state": "paused",
+      "message": "Campus Coordinator paused after 200 consecutive turns without answering a question or completing a new successful Campus write. Choose Continue to resume, or Stop to end the session.",
+      "action": {
+        "id": "continue_session",
+        "label": "Continue",
+        "request": {
+          "method": "POST",
+          "path": "/assistant/sessions/3b0c7e1a-1d2f-4c3b-9a8e-5f6d7c8b9a01/continue"
+        }
+      }
+    },
+    "composer": {
+      "version": 1,
+      "primary": null,
+      "return_target": null,
+      "secondary": [],
+      "message": "Campus Coordinator paused after 200 consecutive turns without answering a question or completing a new successful Campus write. Choose Continue to resume, or Stop to end the session."
+    }
+  }
+}

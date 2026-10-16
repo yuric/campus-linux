@@ -1,0 +1,115 @@
+{
+  "id": "1",
+  "current_revision_id": "1",
+  "revision": 1,
+  "name": "Security routing",
+  "kind": "assignment",
+  "origin": "workspace",
+  "protected": false,
+  "enabled": false,
+  "trigger": {
+    "id": "task_assignment_requested",
+    "label": "When Campus chooses who picks a task up",
+    "supported": true,
+    "authorable": true,
+    "state": "available",
+    "explanation": null
+  },
+  "project_scope": {
+    "mode": "all",
+    "project_ids": [],
+    "projects": []
+  },
+  "conditions": {
+    "version": 1,
+    "items": []
+  },
+  "execution_principal": null,
+  "execution_profile": null,
+  "review_plan": null,
+  "activation_required": true,
+  "allowed_actions": [
+    "edit",
+    "enable",
+    "archive"
+  ],
+  "actions": [
+    {
+      "id": "edit",
+      "label": "Edit",
+      "intent": "default",
+      "confirmation": null
+    },
+    {
+      "id": "enable",
+      "label": "Enable",
+      "intent": "primary",
+      "confirmation": {
+        "title": "Enable this Rule?",
+        "body": "Enabling this Rule narrows who Campus may hand its tasks to: when Campus chooses who picks a task up, and when an Office asks for its next task, only this Rule's destinations that Campus's own eligibility allows are offered. One eligible destination is assigned directly; several go to the reviewer to choose among; none lets Campus choose from every eligible Office. It makes no model requests of its own.",
+        "confirm_label": "Acknowledge and Enable"
+      }
+    },
+    {
+      "id": "archive",
+      "label": "Archive",
+      "intent": "destructive",
+      "confirmation": {
+        "title": "Archive this Rule?",
+        "body": "Archiving disables this Rule and keeps its revisions and run history.",
+        "confirm_label": "Archive Rule"
+      }
+    }
+  ],
+  "summary": "Routes P0, P1 tasks to Scout and security department.",
+  "source_label": "Workspace Rule",
+  "details": {},
+  "status": {
+    "id": "disabled",
+    "label": "Disabled",
+    "severity": "message"
+  },
+  "lock": {
+    "locked": false,
+    "label": "Editable workspace rule",
+    "explanation": "This Rule belongs to this Island."
+  },
+  "archived": false,
+  "assignment": {
+    "destinations": [
+      {
+        "kind": "agent",
+        "agent_id": 1,
+        "specialty": null,
+        "label": "Scout",
+        "state": "available",
+        "explanation": null
+      },
+      {
+        "kind": "department",
+        "agent_id": null,
+        "specialty": "security",
+        "label": "security department",
+        "state": "available",
+        "explanation": null
+      }
+    ],
+    "conditions": {
+      "priorities": [
+        {
+          "value": "P0",
+          "label": "P0"
+        },
+        {
+          "value": "P1",
+          "label": "P1"
+        }
+      ]
+    },
+    "precedence": {
+      "mode": "narrow",
+      "label": "The Rule narrows; Campus still chooses",
+      "description": "Campus's own eligibility (capability, provider, credential, rate limits, recent failed starts and staffing) stays authoritative. The Rule keeps only its destinations among the eligible Offices. One left is assigned directly; several go to the reviewer to choose among; none leaves the Rule skipped, recorded in run history, and Campus chooses from every eligible Office. An Office pulling work itself is offered only tasks whose routing Rules include it."
+    }
+  }
+}

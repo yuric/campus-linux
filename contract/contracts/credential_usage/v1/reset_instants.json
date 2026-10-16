@@ -1,0 +1,153 @@
+{
+  "served_at": "2026-10-31T18:00:00Z",
+  "accounts": [
+    {
+      "label": "codex-phoenix",
+      "provider": "openai",
+      "observed_at": "2026-10-31T17:59:00.000Z",
+      "dimensions": [
+        {
+          "id": "codex:primary",
+          "kind": "quota",
+          "label": "Primary · 5h",
+          "scope": "account",
+          "value": "88% used · 12% remaining",
+          "detail": "Resets Nov 1, 5:00 AM",
+          "window": "session",
+          "resets_at": "2026-11-01T05:00:00Z",
+          "used_label": "88% used",
+          "usage_style": {
+            "tone": "caution",
+            "version": 1,
+            "emphasis": "none"
+          },
+          "used_percent": 88,
+          "remaining_label": "12% left",
+          "remaining_percent": 12
+        }
+      ]
+    },
+    {
+      "label": "claude-dst",
+      "provider": "anthropic",
+      "observed_at": "2026-10-31T17:58:00.000Z",
+      "dimensions": [
+        {
+          "id": "current-week-all-models",
+          "kind": "quota",
+          "label": "Current week (all models)",
+          "scope": "account",
+          "value": "62% used · 38% remaining",
+          "detail": "Resets Nov 2 at 9am (America/New_York)",
+          "window": "weekly",
+          "resets_at": "2026-11-02T09:00:00-05:00",
+          "used_label": "62% used",
+          "usage_style": {
+            "tone": "caution",
+            "version": 1,
+            "emphasis": "none"
+          },
+          "used_percent": 62,
+          "remaining_label": "38% left",
+          "remaining_percent": 38,
+          "reset_description": "Nov 2 at 9am (America/New_York)"
+        },
+        {
+          "id": "current-session",
+          "kind": "quota",
+          "label": "Current provider session",
+          "scope": "account",
+          "value": "84% used · 16% remaining",
+          "detail": "Resets Oct 31 at 11pm (America/New_York)",
+          "window": "session",
+          "resets_at": "2026-10-31T23:00:00-04:00",
+          "used_label": "84% used",
+          "usage_style": {
+            "tone": "caution",
+            "version": 1,
+            "emphasis": "none"
+          },
+          "used_percent": 84,
+          "remaining_label": "16% left",
+          "remaining_percent": 16,
+          "reset_description": "Oct 31 at 11pm (America/New_York)"
+        }
+      ]
+    },
+    {
+      "label": "claude-expired",
+      "provider": "anthropic",
+      "observed_at": "2026-10-29T18:00:00.000Z",
+      "dimensions": [
+        {
+          "id": "current-week-all-models",
+          "kind": "quota",
+          "label": "Current week (all models)",
+          "scope": "account",
+          "value": "72% used · 28% remaining",
+          "detail": "Reset time unavailable until usage refreshes.",
+          "window": "weekly",
+          "used_label": "72% used",
+          "usage_style": {
+            "tone": "caution",
+            "version": 1,
+            "emphasis": "none"
+          },
+          "used_percent": 72,
+          "remaining_label": "28% left",
+          "remaining_percent": 28
+        }
+      ]
+    },
+    {
+      "label": "grok-relative",
+      "provider": "xai",
+      "observed_at": "2026-10-31T17:57:00.000Z",
+      "dimensions": [
+        {
+          "id": "grok-quota",
+          "kind": "quota",
+          "label": "Grok quota",
+          "scope": "account",
+          "value": "55% used · 45% remaining",
+          "detail": "Resets in 2 hours",
+          "used_label": "55% used",
+          "usage_style": {
+            "tone": "caution",
+            "version": 1,
+            "emphasis": "none"
+          },
+          "used_percent": 55,
+          "remaining_label": "45% left",
+          "remaining_percent": 45,
+          "reset_description": "in 2 hours"
+        }
+      ]
+    },
+    {
+      "label": "codex-corrupt",
+      "provider": "openai",
+      "observed_at": "2026-10-31T17:56:00.000Z",
+      "dimensions": [
+        {
+          "id": "weekly-limit",
+          "kind": "quota",
+          "label": "Weekly limit",
+          "scope": "account",
+          "value": "30% used · 70% remaining",
+          "detail": "Reset time unavailable until usage refreshes.",
+          "window": "weekly",
+          "used_label": "30% used",
+          "usage_style": {
+            "tone": "good",
+            "version": 1,
+            "emphasis": "none"
+          },
+          "used_percent": 30,
+          "remaining_label": "70% left",
+          "remaining_percent": 70
+        }
+      ]
+    }
+  ]
+}

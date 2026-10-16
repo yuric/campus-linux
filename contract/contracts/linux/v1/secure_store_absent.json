@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "state": "absent",
+  "reason": "secure_store_absent",
+  "severity": "warning",
+  "message": "There is no secure credential store on this desktop. You can use the board in memory-only mode; local execution stays unavailable until a secure store is available."
+}

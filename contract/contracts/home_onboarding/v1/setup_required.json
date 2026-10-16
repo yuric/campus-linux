@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "cards": [
+    {
+      "key": "setup_on_mac",
+      "title": "Set up Campus on your Mac",
+      "body": "Open Campus on your Mac to create or connect your first Project. Then return here to follow your work.",
+      "action": {
+        "kind": "open_url",
+        "label": "Get Campus for Mac",
+        "url": "https://projectcampus.dev"
+      },
+      "shown_request": {
+        "method": "POST",
+        "path": "/islands/current/onboarding_cards/setup_on_mac/shown",
+        "body": { "contract_version": 1 }
+      },
+      "dismiss_action": {
+        "label": "Dismiss",
+        "request": {
+          "method": "POST",
+          "path": "/islands/current/onboarding_cards/setup_on_mac/dismiss",
+          "body": { "contract_version": 1 }
+        }
+      }
+    }
+  ]
+}

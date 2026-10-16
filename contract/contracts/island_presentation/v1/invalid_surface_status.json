@@ -1,0 +1,8 @@
+{
+  "state": "invalid_surface",
+  "severity": "error",
+  "heading": "Unsupported Island surface",
+  "message": "surface must be mobile when supplied.",
+  "retryable": false,
+  "actions": []
+}

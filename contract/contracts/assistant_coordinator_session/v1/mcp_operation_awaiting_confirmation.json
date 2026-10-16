@@ -1,0 +1,355 @@
+{
+  "version": 1,
+  "session": {
+    "version": 1,
+    "id": "5e2d8c1a-7b3f-4a6e-9c0d-2f1e3a4b5c6d",
+    "state": "open",
+    "execution_request_id": "9d8c7b6a-5f4e-4d3c-8b2a-1f0e9d8c7b6a",
+    "executor_id": "0f1e2d3c-4b5a-4968-8776-655443322110",
+    "executor_name": "Studio Mac",
+    "run_state": "completed",
+    "opened_at": "2026-10-03T09:00:00.000000Z",
+    "ended_at": null,
+    "reason": null,
+    "message": null,
+    "display": {
+      "version": 1,
+      "placement": "details"
+    },
+    "status": {
+      "version": 1,
+      "display": {
+        "version": 1,
+        "placement": "status"
+      },
+      "label": "Waiting",
+      "message": "Waiting on you: confirm or cancel the saved change.",
+      "actions": [
+        {
+          "id": "stop_session",
+          "label": "Stop session",
+          "intent": "destructive",
+          "request": {
+            "method": "POST",
+            "path": "/assistant/sessions/5e2d8c1a-7b3f-4a6e-9c0d-2f1e3a4b5c6d/stop"
+          }
+        },
+        {
+          "id": "steer_session",
+          "label": "Send guidance",
+          "request": {
+            "method": "POST",
+            "path": "/assistant/sessions/5e2d8c1a-7b3f-4a6e-9c0d-2f1e3a4b5c6d/steer"
+          }
+        }
+      ]
+    },
+    "details": [
+      {
+        "id": "session",
+        "message": null,
+        "display": {
+          "version": 1,
+          "placement": "details"
+        }
+      },
+      {
+        "id": "ask",
+        "message": "This coordinator session is open. A question you send here is answered by its next turn.",
+        "display": {
+          "version": 1,
+          "placement": "details"
+        }
+      },
+      {
+        "id": "continuation",
+        "message": "An idle session closes after an hour. Your next question starts a new session with its transcript as context.",
+        "display": {
+          "version": 1,
+          "placement": "details"
+        }
+      },
+      {
+        "id": "limits",
+        "message": "One turn runs at a time. Use Stop or Steer to control the work.",
+        "display": {
+          "version": 1,
+          "placement": "details"
+        }
+      },
+      {
+        "id": "wakeups",
+        "message": "Events matching this session's subscriptions can wake the coordinator while it is open.",
+        "display": {
+          "version": 1,
+          "placement": "details"
+        }
+      },
+      {
+        "id": "steering",
+        "message": "A running coordinator turn cannot take new input. Campus gives your guidance to the session's next turn and shows whether the coordinator confirmed it used it.",
+        "display": {
+          "version": 1,
+          "placement": "details"
+        }
+      }
+    ],
+    "error_detail": null,
+    "model_output": null,
+    "operations": {
+      "version": 1,
+      "state": "waiting_confirmation",
+      "message": "Review the saved operation before confirming. No change has been applied.",
+      "calls": [
+        {
+          "id": "create-follow-up",
+          "question_id": "6a1b2c3d-4e5f-4a7b-8c9d-0e1f2a3b4c5d",
+          "started_at": "2026-10-03T09:00:01.000000Z",
+          "finished": false,
+          "result": {
+            "version": 1,
+            "state": "confirmation_required",
+            "request_id": "c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e5f"
+          }
+        }
+      ],
+      "reviews": [
+        {
+          "version": 2,
+          "request_id": "c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e5f",
+          "title": "Create a task",
+          "body": "Campus will create this task in Harbor.",
+          "effects": [
+            "Adds task “Write the release note” to the Seashore column."
+          ],
+          "arguments_json": "{\n  \"task\": {\n    \"title\": \"Write the release note\"\n  }\n}",
+          "actions": [
+            {
+              "id": "confirm",
+              "label": "Create task",
+              "intent": "default",
+              "request": {
+                "method": "POST",
+                "path": "/api_operations/requests/c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e5f/confirm",
+                "body": {
+                  "version": 1,
+                  "payload_digest": "sha256:5f1d0c",
+                  "confirm": true
+                }
+              }
+            },
+            {
+              "id": "cancel",
+              "label": "Cancel",
+              "intent": "destructive",
+              "request": {
+                "method": "POST",
+                "path": "/api_operations/requests/c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e5f/cancel",
+                "body": {
+                  "version": 1
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "handoffs": [],
+      "unsupported_message": "Update Campus to use these coordinator operations.",
+      "display": {
+        "version": 1,
+        "placement": "details"
+      }
+    },
+    "pause": null,
+    "budget": {
+      "version": 2,
+      "max_rounds": 16,
+      "max_output_bytes": 65536,
+      "max_prompt_bytes": 98304,
+      "time_limit_seconds": 900,
+      "enforcement": {
+        "version": 1,
+        "enforced_limits": [
+          "concurrent_turns"
+        ],
+        "max_concurrent_turns": 1,
+        "monetary_limit": "not_enforced",
+        "message": "No turn, time or spending limit ends this session. One turn runs at a time. Use Stop or Steer to control the work."
+      }
+    },
+    "usage": {
+      "version": 1,
+      "rounds_used": 1,
+      "wall_seconds": 4,
+      "spend_estimate_cents": 0
+    },
+    "waiting_for": [],
+    "wakeups": {
+      "version": 1,
+      "subscription_mode": "own_work",
+      "waiting_for": null,
+      "message": "Events matching this session's subscriptions can wake the coordinator while it is open.",
+      "events": [],
+      "display": {
+        "version": 1,
+        "placement": "details"
+      }
+    },
+    "steering": {
+      "version": 1,
+      "supported": true,
+      "native": false,
+      "delivery": "next_turn",
+      "message": "A running coordinator turn cannot take new input. Campus gives your guidance to the session's next turn and shows whether the coordinator confirmed it used it.",
+      "unsupported_message": "Update Campus to steer this coordinator session.",
+      "action": {
+        "id": "steer_session",
+        "label": "Send guidance",
+        "request": {
+          "method": "POST",
+          "path": "/assistant/sessions/5e2d8c1a-7b3f-4a6e-9c0d-2f1e3a4b5c6d/steer"
+        }
+      },
+      "steers": [],
+      "display": {
+        "version": 1,
+        "placement": "details"
+      }
+    },
+    "questions": [
+      {
+        "id": "6a1b2c3d-4e5f-4a7b-8c9d-0e1f2a3b4c5d",
+        "state": "answered",
+        "body": "Create a follow-up card for the release note.",
+        "asked_at": "2026-10-03T09:00:00.000000Z",
+        "answered_at": "2026-10-03T09:00:04.000000Z",
+        "reply": "Please confirm the follow-up card.",
+        "display": {
+          "version": 1,
+          "placement": "chat"
+        },
+        "error": null,
+        "answer_source": {
+          "engine": "claude",
+          "message": null,
+          "version": 1,
+          "credential_id": 1,
+          "display": {
+            "version": 1,
+            "placement": "details"
+          }
+        },
+        "answer_note": {
+          "reason": "operation_awaiting_confirmation",
+          "message": "An operation for this answer is waiting on you. Confirm or cancel the saved change, or continue in the offered Campus screen.",
+          "version": 1,
+          "display": {
+            "version": 1,
+            "placement": "details"
+          }
+        },
+        "body_withheld": false,
+        "references": [],
+        "references_withheld": false,
+        "actions": [
+          {
+            "id": "copy",
+            "label": "Copy",
+            "intent": "default",
+            "request": null
+          },
+          {
+            "id": "retry",
+            "label": "Retry",
+            "intent": "default",
+            "presentation": "send",
+            "client_token": {
+              "field": "client_token",
+              "fresh": true
+            },
+            "request": {
+              "method": "POST",
+              "path": "/assistant/sessions",
+              "body": {
+                "tool_protocol_version": 1,
+                "question": "Create a follow-up card for the release note.",
+                "references": []
+              }
+            }
+          },
+          {
+            "id": "edit_resend",
+            "label": "Edit and resend",
+            "intent": "default",
+            "presentation": "edit",
+            "client_token": {
+              "field": "client_token",
+              "fresh": true
+            },
+            "request": {
+              "method": "POST",
+              "path": "/assistant/sessions",
+              "body": {
+                "tool_protocol_version": 1,
+                "question": "Create a follow-up card for the release note.",
+                "references": []
+              }
+            }
+          }
+        ],
+        "queue": null
+      }
+    ],
+    "ask": {
+      "version": 1,
+      "accepting": true,
+      "message": "This coordinator session is open. A question you send here is answered by its next turn.",
+      "action": {
+        "id": "ask_question",
+        "label": "Ask the coordinator",
+        "request": {
+          "method": "POST",
+          "path": "/assistant/sessions/5e2d8c1a-7b3f-4a6e-9c0d-2f1e3a4b5c6d/questions"
+        }
+      },
+      "display": {
+        "version": 1,
+        "placement": "details"
+      }
+    },
+    "composer": {
+      "version": 1,
+      "primary": {
+        "id": "ask",
+        "label": "Ask the coordinator",
+        "request": {
+          "method": "POST",
+          "path": "/assistant/sessions/5e2d8c1a-7b3f-4a6e-9c0d-2f1e3a4b5c6d/questions"
+        },
+        "intent": "default"
+      },
+      "return_target": {
+        "id": "ask",
+        "label": "Ask the coordinator",
+        "request": {
+          "method": "POST",
+          "path": "/assistant/sessions/5e2d8c1a-7b3f-4a6e-9c0d-2f1e3a4b5c6d/questions"
+        }
+      },
+      "secondary": [],
+      "message": "This coordinator session is open. A question you send here is answered by its next turn.",
+      "display": {
+        "version": 1,
+        "placement": "details"
+      }
+    },
+    "blocked_by_live_run": null,
+    "actions": [
+      {
+        "id": "stop_session",
+        "label": "Stop session",
+        "intent": "destructive"
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "error": "This request key already belongs to a different question. Send the new question with a new request key.",
+  "code": "coordinator_question_token_conflict",
+  "readiness": {
+    "version": 1,
+    "state": "unavailable",
+    "reason": "coordinator_question_token_conflict",
+    "severity": "warning",
+    "title": "Question changed",
+    "message": "This request key already belongs to a different question. Send the new question with a new request key.",
+    "actions": []
+  }
+}

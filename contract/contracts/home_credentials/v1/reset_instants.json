@@ -1,0 +1,114 @@
+{
+  "version": 1,
+  "title": "Credentials",
+  "snapshot_at": "2026-10-31T17:59:00.000Z",
+  "snapshot_label": "Readings from Oct 31, 5:59 PM UTC",
+  "empty_message": "No active credentials.",
+  "rows": [
+    {
+      "credential_id": 1,
+      "label": "codex-phoenix",
+      "provider_label": "OpenAI",
+      "primary": {
+        "label": "Primary · 5h",
+        "percent_used": 88,
+        "tone": "attention",
+        "usage_style": {
+          "version": 1,
+          "tone": "caution",
+          "emphasis": "none"
+        },
+        "value": "88% used · 12% remaining",
+        "reset": "Resets Nov 1, 5:00 AM",
+        "resets_at": "2026-11-01T05:00:00Z"
+      },
+      "secondary": null,
+      "resting_message": null,
+      "summary_label": "88% used"
+    },
+    {
+      "credential_id": 2,
+      "label": "claude-dst",
+      "provider_label": "Anthropic",
+      "primary": {
+        "label": "Current provider session",
+        "percent_used": 84,
+        "tone": "attention",
+        "usage_style": {
+          "version": 1,
+          "tone": "caution",
+          "emphasis": "none"
+        },
+        "value": "84% used · 16% remaining",
+        "reset": "Resets Oct 31 at 11pm (America/New_York)",
+        "resets_at": "2026-10-31T23:00:00-04:00"
+      },
+      "secondary": null,
+      "resting_message": null,
+      "summary_label": "62% used"
+    },
+    {
+      "credential_id": 3,
+      "label": "claude-expired",
+      "provider_label": "Anthropic",
+      "primary": {
+        "label": "Current week (all models)",
+        "percent_used": 72,
+        "tone": "good",
+        "usage_style": {
+          "version": 1,
+          "tone": "caution",
+          "emphasis": "none"
+        },
+        "value": "72% used · 28% remaining",
+        "reset": "Reset time unavailable until usage refreshes.",
+        "resets_at": null
+      },
+      "secondary": null,
+      "resting_message": null,
+      "summary_label": "72% used"
+    },
+    {
+      "credential_id": 4,
+      "label": "grok-relative",
+      "provider_label": "xAI",
+      "primary": {
+        "label": "Grok quota",
+        "percent_used": 55,
+        "tone": "good",
+        "usage_style": {
+          "version": 1,
+          "tone": "caution",
+          "emphasis": "none"
+        },
+        "value": "55% used · 45% remaining",
+        "reset": "Resets in 2 hours",
+        "resets_at": null
+      },
+      "secondary": null,
+      "resting_message": null,
+      "summary_label": "55% used"
+    },
+    {
+      "credential_id": 5,
+      "label": "codex-corrupt",
+      "provider_label": "OpenAI",
+      "primary": {
+        "label": "Weekly limit",
+        "percent_used": 30,
+        "tone": "good",
+        "usage_style": {
+          "version": 1,
+          "tone": "good",
+          "emphasis": "none"
+        },
+        "value": "30% used · 70% remaining",
+        "reset": "Reset time unavailable until usage refreshes.",
+        "resets_at": null
+      },
+      "secondary": null,
+      "resting_message": null,
+      "summary_label": "30% used"
+    }
+  ]
+}

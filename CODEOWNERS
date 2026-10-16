@@ -11,7 +11,7 @@
 
 # The API contract. This client renders it; it does not define it. A change
 # here that did not come from the upstream monorepo is a mistake.
-/docs/api/              @yuric
+/contract/              @yuric
 
 # The rule this repository exists to protect.
 /AGENTS.md              @yuric

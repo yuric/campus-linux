@@ -1,0 +1,5 @@
+{
+  "error": "Stopping a local process isn't available on hosted Campus. This server keeps your projects and tasks; work that touches files on a computer runs on that computer instead. Use a runtime: \"self_hosted\" agent that polls the Campus API and reports sessions/events over HTTPS.",
+  "reason": "local_execution_unavailable",
+  "message": "Stopping a local process isn't available on hosted Campus. This server keeps your projects and tasks; work that touches files on a computer runs on that computer instead. Use a runtime: \"self_hosted\" agent that polls the Campus API and reports sessions/events over HTTPS."
+}

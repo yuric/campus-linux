@@ -1,0 +1,5 @@
+{
+  "state": "lost",
+  "reason": "heartbeat_expired_after_start",
+  "detail": "Campus lost contact with the computer after the provider process started. Campus can resume this run once when the computer reports kept work and can check that its workspace is no longer in use."
+}

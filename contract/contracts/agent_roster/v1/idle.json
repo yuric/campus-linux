@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "id": 1,
+  "name": "Roster scout",
+  "identity": {
+    "version": 1,
+    "name": "Roster scout",
+    "ambiguous": false,
+    "qualifier": null,
+    "label": "Roster scout",
+    "accessibility_label": "Roster scout",
+    "source": "none"
+  },
+  "character": {
+    "version": 1,
+    "archetype": "claude_starburst",
+    "seed": "7",
+    "palette": "warm",
+    "gaze": { "state": "resting" }
+  },
+  "provider": "anthropic",
+  "model": "test-model",
+  "current_task_id": null,
+  "last_seen_at": "2026-10-15T12:00:00.000Z",
+  "presence": {
+    "version": 1,
+    "location": "park",
+    "outdoors": true,
+    "tone": "idle",
+    "label": "Idle",
+    "line": "Idle in the park."
+  }
+}

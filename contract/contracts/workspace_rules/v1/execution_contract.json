@@ -1,0 +1,636 @@
+{
+  "api_version": 1,
+  "event": {
+    "island_id": 1,
+    "source_event_key": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "task_id": 501,
+    "project_id": 301,
+    "repository_identity": "yuric/campus-server",
+    "canonical_pr_url": "https://github.com/yuric/campus-server/pull/42",
+    "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "evidence_digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "target_digest": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "target": {
+      "url": "https://github.com/yuric/campus-server/pull/42",
+      "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "repository_identity": "yuric/campus-server",
+      "evidence_digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "base_ref": "main",
+      "material_source": "github_pr",
+      "changed_files": 2,
+      "additions": 18,
+      "deletions": 3
+    },
+    "match_set": [
+      {
+        "rule_id": 101,
+        "revision_id": 201,
+        "activation_id": 401,
+        "disposition": "enabled"
+      }
+    ]
+  },
+  "target": {
+    "url": "https://github.com/yuric/campus-server/pull/42",
+    "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "repository_identity": "yuric/campus-server",
+    "evidence_digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "base_ref": "main",
+    "material_source": "github_pr",
+    "changed_files": 2,
+    "additions": 18,
+    "deletions": 3
+  },
+  "children": {
+    "mode": "single",
+    "items": [],
+    "aggregator": null
+  },
+  "results": {
+    "pass": {
+      "schema_version": 1,
+      "verdict": "pass",
+      "summary": "No blocking issues were found.",
+      "findings": [],
+      "reviewed_pr_url": "https://github.com/yuric/campus-server/pull/42",
+      "reviewed_head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "reviewed_base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "stale": false,
+      "stale_reason": null
+    },
+    "findings": {
+      "schema_version": 1,
+      "verdict": "findings",
+      "summary": "One warning should be addressed.",
+      "findings": [
+        {
+          "severity": "warning",
+          "title": "Retry remains unbounded",
+          "detail": "Cap the retry loop before enabling this Rule."
+        }
+      ],
+      "reviewed_pr_url": "https://github.com/yuric/campus-server/pull/42",
+      "reviewed_head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "reviewed_base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "stale": false,
+      "stale_reason": null
+    },
+    "system_failure": {
+      "schema_version": 1,
+      "verdict": "failed",
+      "reason": "provider_unavailable",
+      "detail": "The frozen review provider is temporarily unavailable."
+    }
+  },
+  "projection": {
+    "kind": "result",
+    "state": "published",
+    "marker": "<!-- campus-workspace-rule:601:result -->",
+    "payload": {
+      "schema_version": 1,
+      "rule": {
+        "id": 101,
+        "name": "Review attached pull requests"
+      },
+      "target": {
+        "repository_identity": "yuric/campus-server",
+        "url": "https://github.com/yuric/campus-server/pull/42",
+        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "evidence_digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+      },
+      "result": {
+        "schema_version": 1,
+        "verdict": "pass",
+        "summary": "No blocking issues were found.",
+        "findings": [],
+        "reviewed_pr_url": "https://github.com/yuric/campus-server/pull/42",
+        "reviewed_head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "reviewed_base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "stale": false,
+        "stale_reason": null
+      }
+    },
+    "failure_detail": null,
+    "published_at": "2026-08-29T12:00:04Z"
+  },
+  "runs": {
+    "active": {
+      "id": 600,
+      "state": "running",
+      "target": {
+        "url": "https://github.com/yuric/campus-server/pull/42",
+        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "repository_identity": "yuric/campus-server",
+        "evidence_digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "base_ref": "main",
+        "material_source": "github_pr",
+        "changed_files": 2,
+        "additions": 18,
+        "deletions": 3
+      },
+      "result": null,
+      "projection": null,
+      "duplicate_count": 0,
+      "created_at": "2026-08-29T12:00:00Z",
+      "started_at": "2026-08-29T12:00:01Z",
+      "finished_at": null
+    },
+    "completed": {
+      "id": 601,
+      "state": "completed",
+      "target": {
+        "url": "https://github.com/yuric/campus-server/pull/42",
+        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "repository_identity": "yuric/campus-server",
+        "evidence_digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "base_ref": "main",
+        "material_source": "github_pr",
+        "changed_files": 2,
+        "additions": 18,
+        "deletions": 3
+      },
+      "result": {
+        "schema_version": 1,
+        "verdict": "pass",
+        "summary": "No blocking issues were found.",
+        "findings": [],
+        "reviewed_pr_url": "https://github.com/yuric/campus-server/pull/42",
+        "reviewed_head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "reviewed_base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "stale": false,
+        "stale_reason": null
+      },
+      "projection": {
+        "kind": "result",
+        "state": "published",
+        "marker": "<!-- campus-workspace-rule:601:result -->",
+        "payload": {
+          "schema_version": 1,
+          "rule": {
+            "id": 101,
+            "name": "Review attached pull requests"
+          },
+          "target": {
+            "repository_identity": "yuric/campus-server",
+            "url": "https://github.com/yuric/campus-server/pull/42",
+            "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "evidence_digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+          },
+          "result": {
+            "schema_version": 1,
+            "verdict": "pass",
+            "summary": "No blocking issues were found.",
+            "findings": [],
+            "reviewed_pr_url": "https://github.com/yuric/campus-server/pull/42",
+            "reviewed_head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "reviewed_base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "stale": false,
+            "stale_reason": null
+          }
+        },
+        "failure_detail": null,
+        "published_at": "2026-08-29T12:00:04Z"
+      },
+      "duplicate_count": 1,
+      "created_at": "2026-08-29T12:00:00Z",
+      "started_at": "2026-08-29T12:00:01Z",
+      "finished_at": "2026-08-29T12:00:03Z"
+    }
+  },
+  "duplicate_response": {
+    "version": 1,
+    "state": "existing_reviewed",
+    "target": {
+      "url": "https://github.com/yuric/campus-server/pull/42",
+      "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "repository_identity": "yuric/campus-server",
+      "evidence_digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "base_ref": "main",
+      "material_source": "github_pr",
+      "changed_files": 2,
+      "additions": 18,
+      "deletions": 3
+    },
+    "items": [
+      {
+        "version": 1,
+        "state": "existing_reviewed",
+        "run": {
+          "id": 601,
+          "state": "completed",
+          "target": {
+            "url": "https://github.com/yuric/campus-server/pull/42",
+            "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "repository_identity": "yuric/campus-server",
+            "evidence_digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+            "base_ref": "main",
+            "material_source": "github_pr",
+            "changed_files": 2,
+            "additions": 18,
+            "deletions": 3
+          },
+          "result": {
+            "schema_version": 1,
+            "verdict": "pass",
+            "summary": "No blocking issues were found.",
+            "findings": [],
+            "reviewed_pr_url": "https://github.com/yuric/campus-server/pull/42",
+            "reviewed_head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "reviewed_base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "stale": false,
+            "stale_reason": null
+          },
+          "projection": {
+            "kind": "result",
+            "state": "published",
+            "marker": "<!-- campus-workspace-rule:601:result -->",
+            "payload": {
+              "schema_version": 1,
+              "rule": {
+                "id": 101,
+                "name": "Review attached pull requests"
+              },
+              "target": {
+                "repository_identity": "yuric/campus-server",
+                "url": "https://github.com/yuric/campus-server/pull/42",
+                "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+                "evidence_digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+              },
+              "result": {
+                "schema_version": 1,
+                "verdict": "pass",
+                "summary": "No blocking issues were found.",
+                "findings": [],
+                "reviewed_pr_url": "https://github.com/yuric/campus-server/pull/42",
+                "reviewed_head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "reviewed_base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+                "stale": false,
+                "stale_reason": null
+              }
+            },
+            "failure_detail": null,
+            "published_at": "2026-08-29T12:00:04Z"
+          },
+          "duplicate_count": 1,
+          "created_at": "2026-08-29T12:00:00Z",
+          "started_at": "2026-08-29T12:00:01Z",
+          "finished_at": "2026-08-29T12:00:03Z"
+        },
+        "target": {
+          "url": "https://github.com/yuric/campus-server/pull/42",
+          "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "repository_identity": "yuric/campus-server",
+          "evidence_digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "base_ref": "main",
+          "material_source": "github_pr",
+          "changed_files": 2,
+          "additions": 18,
+          "deletions": 3
+        },
+        "execution_work_created": false,
+        "notice": "SHA aaaaaaa already reviewed by Review attached pull requests; no new review was started."
+      }
+    ]
+  },
+  "history": {
+    "version": 1,
+    "items": [
+      {
+        "id": 600,
+        "state": "running",
+        "target": {
+          "url": "https://github.com/yuric/campus-server/pull/42",
+          "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "repository_identity": "yuric/campus-server",
+          "evidence_digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "base_ref": "main",
+          "material_source": "github_pr",
+          "changed_files": 2,
+          "additions": 18,
+          "deletions": 3
+        },
+        "result": null,
+        "projection": null,
+        "duplicate_count": 0,
+        "created_at": "2026-08-29T12:00:00Z",
+        "started_at": "2026-08-29T12:00:01Z",
+        "finished_at": null,
+        "occurred_at": "2026-08-29T12:00:01Z",
+        "rule_id": 101,
+        "active": true,
+        "current": false,
+        "target_current": true,
+        "stale": false,
+        "failure": null,
+        "duplicate_notice": null,
+        "projection_state": null,
+        "reconciliation": null,
+        "retained_history": true,
+        "history_pruned": false,
+        "review_session_id": 801,
+        "review_session_availability": "retained",
+        "producer_session_id": null
+      },
+      {
+        "id": 599,
+        "state": "stale",
+        "target": {
+          "url": "https://github.com/yuric/campus-server/pull/41",
+          "head_sha": "cccccccccccccccccccccccccccccccccccccccc",
+          "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "repository_identity": "yuric/campus-server",
+          "evidence_digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "base_ref": "main",
+          "material_source": "github_pr",
+          "changed_files": 1,
+          "additions": 4,
+          "deletions": 1
+        },
+        "result": {
+          "schema_version": 1,
+          "verdict": "findings",
+          "summary": "One warning should be addressed.",
+          "findings": [
+            {
+              "severity": "warning",
+              "title": "Retry remains unbounded",
+              "detail": "Cap the retry loop before enabling this Rule."
+            }
+          ],
+          "reviewed_pr_url": "https://github.com/yuric/campus-server/pull/41",
+          "reviewed_head_sha": "cccccccccccccccccccccccccccccccccccccccc",
+          "reviewed_base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "stale": true,
+          "stale_reason": "captured_target_is_no_longer_current"
+        },
+        "projection": {
+          "kind": "result",
+          "state": "failed",
+          "marker": "<!-- campus-workspace-rule:599:result -->",
+          "payload": {
+            "schema_version": 1,
+            "rule": {
+              "id": 101,
+              "name": "Review attached pull requests"
+            },
+            "target": {
+              "repository_identity": "yuric/campus-server",
+              "url": "https://github.com/yuric/campus-server/pull/41",
+              "head_sha": "cccccccccccccccccccccccccccccccccccccccc",
+              "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "evidence_digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+            },
+            "result": {
+              "schema_version": 1,
+              "verdict": "findings",
+              "summary": "One warning should be addressed.",
+              "findings": [
+                {
+                  "severity": "warning",
+                  "title": "Retry remains unbounded",
+                  "detail": "Cap the retry loop before enabling this Rule."
+                }
+              ],
+              "reviewed_pr_url": "https://github.com/yuric/campus-server/pull/41",
+              "reviewed_head_sha": "cccccccccccccccccccccccccccccccccccccccc",
+              "reviewed_base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "stale": true,
+              "stale_reason": "captured_target_is_no_longer_current"
+            }
+          },
+          "failure_detail": "The captured pull request is no longer current.",
+          "published_at": null
+        },
+        "duplicate_count": 0,
+        "created_at": "2026-08-29T11:00:00Z",
+        "started_at": "2026-08-29T11:00:01Z",
+        "finished_at": "2026-08-29T11:00:03Z",
+        "occurred_at": "2026-08-29T11:00:03Z",
+        "rule_id": 101,
+        "active": false,
+        "current": false,
+        "target_current": false,
+        "stale": true,
+        "failure": null,
+        "duplicate_notice": null,
+        "projection_state": "failed",
+        "reconciliation": null,
+        "retained_history": false,
+        "history_pruned": true,
+        "review_session_id": 799,
+        "review_session_availability": "pruned",
+        "producer_session_id": null
+      }
+    ],
+    "next_cursor": "eyJ2ZXJzaW9uIjoxLCJpZCI6NTk5fQ",
+    "retained_history": {
+      "state": "pruned",
+      "message": "Some run transcript details were pruned by the Island retention policy."
+    }
+  },
+  "detail": {
+    "version": 1,
+    "id": 601,
+    "state": "completed",
+    "target": {
+      "url": "https://github.com/yuric/campus-server/pull/42",
+      "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "repository_identity": "yuric/campus-server",
+      "evidence_digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "base_ref": "main",
+      "material_source": "github_pr",
+      "changed_files": 2,
+      "additions": 18,
+      "deletions": 3
+    },
+    "result": {
+      "schema_version": 1,
+      "verdict": "pass",
+      "summary": "No blocking issues were found.",
+      "findings": [],
+      "reviewed_pr_url": "https://github.com/yuric/campus-server/pull/42",
+      "reviewed_head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "reviewed_base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "stale": false,
+      "stale_reason": null
+    },
+    "projection": {
+      "kind": "result",
+      "state": "published",
+      "marker": "<!-- campus-workspace-rule:601:result -->",
+      "payload": {
+        "schema_version": 1,
+        "rule": {
+          "id": 101,
+          "name": "Review attached pull requests"
+        },
+        "target": {
+          "repository_identity": "yuric/campus-server",
+          "url": "https://github.com/yuric/campus-server/pull/42",
+          "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "evidence_digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+        },
+        "result": {
+          "schema_version": 1,
+          "verdict": "pass",
+          "summary": "No blocking issues were found.",
+          "findings": [],
+          "reviewed_pr_url": "https://github.com/yuric/campus-server/pull/42",
+          "reviewed_head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "reviewed_base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "stale": false,
+          "stale_reason": null
+        }
+      },
+      "failure_detail": null,
+      "published_at": "2026-08-29T12:00:04Z"
+    },
+    "duplicate_count": 1,
+    "created_at": "2026-08-29T12:00:00Z",
+    "started_at": "2026-08-29T12:00:01Z",
+    "finished_at": "2026-08-29T12:00:03Z",
+    "occurred_at": "2026-08-29T12:00:03Z",
+    "rule_id": 101,
+    "active": false,
+    "current": true,
+    "target_current": true,
+    "stale": false,
+    "failure": null,
+    "duplicate_notice": {
+      "state": "existing_reviewed",
+      "notice": "SHA aaaaaaa already reviewed by Review attached pull requests; no new review was started.",
+      "reviewed_head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "projection_state": "published",
+    "reconciliation": null,
+    "retained_history": true,
+    "history_pruned": false,
+    "review_session_id": 801,
+    "review_session_availability": "retained",
+    "producer_session_id": null,
+    "current_target": true,
+    "execution": {
+      "agent_id": 701,
+      "credential_id": 901,
+      "provider": "anthropic",
+      "model": "claude-sonnet-5",
+      "provider_resolution": "ordinary",
+      "provider_resolution_reason": "configured_provider",
+      "deadline_at": "2026-08-29T12:30:00Z"
+    },
+    "producer": {
+      "agent_id": null,
+      "provider": null,
+      "session_id": null
+    },
+    "review_session": {
+      "id": 801,
+      "kind": "workspace_rule_review",
+      "availability": "retained",
+      "attempt_id": 1001,
+      "transcript_url": "/agents/701/sessions/801/transcript"
+    },
+    "outbox": {
+      "id": 1101,
+      "kind": "review",
+      "state": "published",
+      "delivery_attempts": 1,
+      "claimed_at": "2026-08-29T12:00:01Z",
+      "published_at": "2026-08-29T12:00:04Z"
+    },
+    "attempt": {
+      "id": 1001,
+      "kind": "review",
+      "state": "completed",
+      "reconciliation": null,
+      "invocation_id": "11111111-1111-4111-8111-111111111111",
+      "claim_token": "22222222-2222-4222-8222-222222222222",
+      "invoked_at": "2026-08-29T12:00:01Z",
+      "started_at": "2026-08-29T12:00:01Z",
+      "finished_at": "2026-08-29T12:00:03Z",
+      "lease_expires_at": "2026-08-29T12:30:00Z",
+      "audit": {
+        "status": "ok",
+        "schema_version": 1,
+        "provider": "anthropic",
+        "attested_head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "audit_digest": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "normalized_digest": "9999999999999999999999999999999999999999999999999999999999999999"
+      },
+      "normalized_result": {
+        "schema_version": 1,
+        "verdict": "pass",
+        "summary": "No blocking issues were found.",
+        "findings": [],
+        "reviewed_pr_url": "https://github.com/yuric/campus-server/pull/42",
+        "reviewed_head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "reviewed_base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "stale": false,
+        "stale_reason": null
+      }
+    },
+    "projections": [
+      {
+        "kind": "result",
+        "state": "published",
+        "marker": "<!-- campus-workspace-rule:601:result -->",
+        "payload": {
+          "schema_version": 1,
+          "rule": {
+            "id": 101,
+            "name": "Review attached pull requests"
+          },
+          "target": {
+            "repository_identity": "yuric/campus-server",
+            "url": "https://github.com/yuric/campus-server/pull/42",
+            "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "evidence_digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+          },
+          "result": {
+            "schema_version": 1,
+            "verdict": "pass",
+            "summary": "No blocking issues were found.",
+            "findings": [],
+            "reviewed_pr_url": "https://github.com/yuric/campus-server/pull/42",
+            "reviewed_head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "reviewed_base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "stale": false,
+            "stale_reason": null
+          }
+        },
+        "failure_detail": null,
+        "published_at": "2026-08-29T12:00:04Z"
+      }
+    ],
+    "team": null
+  },
+  "errors": {
+    "invalid_cursor": {
+      "error": "This Rule run history cursor is invalid or unsupported.",
+      "reason": "invalid_cursor"
+    },
+    "target_unavailable": {
+      "error": "current pull request head is unavailable",
+      "reason": "target_unavailable"
+    },
+    "invalid_request": {
+      "error": "rule_review must be an object",
+      "reason": "invalid_request"
+    }
+  }
+}
