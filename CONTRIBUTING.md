@@ -24,6 +24,10 @@ The client holds no provider catalog, no credential compatibility table, no work
 transition table, no ordering rule, no validation rule, and no interpretation of what a
 failure means. It asks the server and renders the answer.
 
+Verified generated wire enums and trusted executor/OS safety bindings follow the narrow
+reviewed exceptions in [the boundary policy](docs/client-boundary.md). They do not authorize
+presentation code to own catalogs or rules.
+
 This is the single rule most likely to get a change sent back. If your patch adds a line like
 `if provider == "anthropic"`, or hardcodes a list of stages, or turns an error string into a
 user-facing explanation, that logic belongs in the API instead.
@@ -49,9 +53,12 @@ The root placeholder PRD has been replaced. Shared renderer changes belong in
 
 Documentation changes are checked for internal links and OpenAPI snapshot parsing by
 `.github/workflows/docs.yml` where its repository-visibility condition permits. The same
-workflow runs `scripts/check-client-boundary.sh`, which fails a pull request whose client
-source carries a domain literal or matches on an error string. Those checks do not prove
-runtime parity. Do not bootstrap a product test framework for a docs PR.
+workflow runs `scripts/check-client-boundary.sh` and its standard-library regression suite:
+`python3 -B -m unittest discover -s scripts/tests -v`. The gate checks the syntax and
+reviewed exceptions described in [the boundary policy](docs/client-boundary.md); it is not
+a semantic proof. These are repository checks, not Docker/app builds or runtime parity
+tests. Owner-requested policy maintenance does not start app implementation. Do not
+bootstrap a product test framework for a docs PR.
 
 ## Making a change
 
@@ -60,8 +67,9 @@ runtime parity. Do not bootstrap a product test framework for a docs PR.
 - **Tests are not optional** for behaviour changes. A new test that does not run is worse than
   no test — check that the total count actually went up.
 - **Never log a secret.** Provider keys, session tokens, and executor tokens must not reach
-  logs, transcripts, process arguments, crash reports, or any file outside the platform
-  credential store.
+  logs, transcripts, process arguments or crash reports. Persistent Campus-owned tokens
+  use Secret Service; D3 separately defines provider-owned OAuth files and the local IPC
+  token. Per-attempt API keys never go on disk.
 - **Comments should say why, not what.** The code already says what.
 
 ## Commit messages

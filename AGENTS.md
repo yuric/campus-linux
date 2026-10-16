@@ -5,15 +5,18 @@ Instructions for AI coding agents working in this repository. Humans want `READM
 
 ## Read this first: there is no code here
 
-This client **has not been started**. There is no source, no build, and no test command. The
+This client **has not been started**. There is no app source, build or runtime test suite.
+Repository policy tooling and its regression command are documented in
+[docs/client-boundary.md](docs/client-boundary.md). The
 stack **is decided**: Tauri with a React board, Rust for the host and the executor, Secret
 Service for secrets, deb and AppImage with Tauri's updater, one production channel. The
 decisions and their trade-offs are in [PRD.md section 4](PRD.md#4-architecture-and-decisions).
 
 If you have been asked to implement something here, check that the owner has explicitly
-started implementation. Until then, nothing but documentation changes. When implementation
-starts, build what section 4 says; do not reopen a decision, substitute a framework, or add a
-dependency section 4 does not imply.
+started implementation. Until then, changes are documentation and explicitly owner-requested
+maintenance of existing repository policy tooling; neither authorizes app scaffolding.
+When implementation starts, build what section 4 says; do not reopen a decision, substitute
+a framework, or add a dependency section 4 does not imply.
 
 ## Repository routing
 
@@ -42,8 +45,9 @@ edits, whatever building the card sits on and whatever folder your shell started
 
 ### In this repository
 
-- You are in a scaffold. Nothing but PRDs and docs changes here until the owner starts
-  this client; product or API work goes to the repository the table names.
+- You are in a scaffold. PRDs, docs and explicitly requested repository policy maintenance
+  are useful here until the owner starts this client; product or API work goes to the
+  repository the table names.
 
 ## What you can usefully do
 
@@ -78,6 +82,13 @@ Do not add to this repository:
 
 All of that comes from the API. Ask it, render the answer verbatim.
 
+This prohibits client-owned domain rules, not the narrow transport and safety bindings
+required by PRD D7. Generated API types may retain verified wire enums. Reviewed trusted
+executor/OS adapters may map engine identifiers to local allowed executables and enforce
+credential/workspace bounds; they never accept arbitrary server-supplied binaries or paths.
+Presentation code has no such exception. Follow [the boundary policy](docs/client-boundary.md)
+for exact file/hash receipts and required provenance; no blanket generated-directory bypass.
+
 **Unknown versioned server fields fail closed.** If the API sends a contract version this
 client does not understand, withhold the action — never substitute an older client-side
 decision.
@@ -104,8 +115,10 @@ does not itself require an API change. The contract comes first, then the client
 ## Secrets
 
 Provider keys, session tokens, and executor tokens must never reach logs, transcripts,
-process arguments, crash reports, analytics, or any file outside the platform's credential
-store. This is not a guideline.
+process arguments, crash reports or analytics. Persistent Campus-owned session/executor
+tokens use Secret Service with no file fallback. Provider-owned OAuth files and the local
+IPC token follow D3's explicit isolation/permissions rules; per-attempt API keys stay in
+memory/environment and never go on disk.
 
 ## Source of truth
 
@@ -150,5 +163,8 @@ updater, one production channel, the executor inside the app package (PRD D4). T
 Campus Dev product on Linux; a local build reaches `localhost:3001` through a build-time
 flag only.
 
-**The boundary is a failing build.** `scripts/check-client-boundary.sh` runs on every pull
-request once source exists. A domain literal in client code fails CI (PRD D7).
+**The boundary is a failing build.** `scripts/check-client-boundary.sh` and its regression
+suite run on every eligible pull request, even before app source exists. D7 and
+[the policy](docs/client-boundary.md) define syntax coverage, fixture-only comments and
+reviewed transport/adapter exceptions. Semantic authority still requires review and
+contract tests; a lexical pass is not proof of the entire boundary.

@@ -83,5 +83,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: No domain literal or error-substring match in client source (PRD D7)
+      - name: Test boundary policy tooling
+        run: python3 -B -m unittest discover -s scripts/tests -v
+      - name: Check reviewed client authority boundary (PRD D7)
         run: scripts/check-client-boundary.sh

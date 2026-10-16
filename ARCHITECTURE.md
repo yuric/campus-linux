@@ -26,6 +26,9 @@ protocol; it does not host Rails. Local execution continues with the UI closed, 
 the user's graphical login session. The last graphical logout ends supervision even
 if SSH/TTY sessions remain; graphical login restores installed authorized supervision.
 No root service, automatic lingering or unattended pre-login execution is included.
+Both package formats install a verified, versioned helper copy in a stable per-user
+location; the unit never targets an AppImage's temporary mount. D4 specifies singleton
+ownership, staged promotion, active-attempt/outbox recovery and uninstall behavior.
 
 ### Where the authority line sits
 
@@ -41,12 +44,17 @@ No root service, automatic lingering or unattended pre-login execution is includ
 | Domain vocabulary — what a stage is *called* | — |
 
 A client that infers domain meaning from an error substring, a message prefix, or HTTP status
-alone is broken, even when it happens to produce the right answer. This table is the same one
-the Mac and Windows documents carry, and `scripts/check-client-boundary.sh` fails a pull
-request that crosses it (PRD D7).
+alone is broken, even when it happens to produce the right answer. The D7
+[boundary policy](docs/client-boundary.md) checks known syntax and reviewed exceptions;
+semantic review and contract tests establish the full authority boundary.
 
 The executor observes and supervises processes; Rails decides authorized work and interprets
 normalized results.
+Generated transport enums reproduce a verified pinned server contract. Trusted adapters
+map engine identifiers to locally allowed binaries and enforce workspace/credential bounds;
+they cannot accept arbitrary server-supplied binaries or paths. Those narrow files require
+content-bound review receipts and provenance. Presentation code still has no catalogs,
+compatibility logic or workflow tables.
 
 ### Freshness: events are hints, not patches
 
@@ -86,7 +94,8 @@ The executor uses distinct identity, bounded workspaces, direct argv spawning,
 executable allowlists, credential isolation, redacted events and process-group
 cancellation. Durable delivery, lease reconciliation and restart recovery preserve
 attempt ownership and prevent duplicate work. Sign-out and updates explicitly
-reconcile active work. Plaintext credential fallback is excluded.
+reconcile active work. Campus-owned token file fallback is excluded; D3's provider-owned
+OAuth files and local IPC token retain their explicit isolation/permissions rules.
 
 Events signal re-fetches, not client-authored patches. Writes reconcile ambiguous
 delivery instead of replaying blindly. Queued, running and completed remain distinct.
@@ -100,3 +109,7 @@ VM for verification (D5); five named campus-server prerequisites (D6); the bound
 (D7). Each is recorded with its trade-offs in [PRD.md section 4](PRD.md#4-architecture-and-decisions).
 Broad Linux support is verified per runtime, architecture and desktop combination, not
 inferred from one Ubuntu build.
+The existing workflow checks docs and boundary tooling only. D5's Docker/product CI and
+Lima verification are L0 work after implementation is authorized. Section 8 labels
+x86_64 headless-tested previews separately from desktop-verified combinations, without
+adding a product channel or weakening the P01–P18 parity target.
