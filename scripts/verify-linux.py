@@ -22,6 +22,15 @@ def output(args):
     return run(args, capture_output=True, text=True).stdout.strip()
 
 
+def export_source(head, staging, source_root=ROOT):
+    """Export only the expected commit with traversal for cap-dropped container readers."""
+    staging.chmod(0o755)
+    archive = subprocess.check_output(["git", "archive", head], cwd=source_root, timeout=60)
+    subprocess.run(["tar", "-xf", "-", "-C", str(staging)], input=archive,
+                   cwd=source_root, check=True, timeout=60)
+    return archive
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--arch", choices=["amd64", "arm64"], required=True)
@@ -43,9 +52,7 @@ def main():
         staging = Path(tmp)
         # Only public committed source lives here. Container root has no DAC override
         # after cap-drop=ALL and must be able to traverse the host-owned export.
-        staging.chmod(0o755)
-        archive = run(["git", "archive", "HEAD"], capture_output=True).stdout
-        run(["tar", "-xf", "-", "-C", str(staging)], input=archive)
+        archive = export_source(head, staging)
         tag = f"campus-linux-verify:{head[:12]}-{args.arch}"
         run(["docker", "build", "--platform", "linux/" + args.arch, "-f",
              str(staging / "ci/Dockerfile.verify"), "-t", tag, str(staging)], timeout=900)

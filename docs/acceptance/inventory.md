@@ -1,7 +1,7 @@
 # Linux action acceptance inventory
 
-Task #981, next owner **LINUX-20261016**. All **450** product action cases are **unimplemented**;
-356 have concrete API operation/delegate mappings. The rest are explicit local steps or
+Task #981, next owner **LINUX-20261016**. All **491** product action cases are **unimplemented**;
+385 have concrete API operation/delegate mappings. The rest are explicit local steps or
 producer-blocked bridge cases, not uncounted omissions.
 [actions.json](actions.json) is the action ledger: one independently named test case and
 receipt per action, owning card, expected behavior, source location and exact API path /
@@ -9,7 +9,12 @@ method / operationId / schema JSON pointer where the source maps to a concrete o
 A row is an acceptance obligation, not a product test or a passing receipt. No percentage
 summarizes missing actions. The [Mac control census](mac-control-census.json) records every
 Swift Button/Menu/Toggle/Picker/TextField/submit/tap location found in non-test source,
-with file hashes, as a cross-check against omitted local controls. It is not a semantic
+with file hashes, as a cross-check against omitted local controls.
+Each row declares `provenance_kind`: `mac-transport-source` is a concrete transport
+method; `mac-observed-control` cites its actual control/adapter file and line;
+`linux-derived-acceptance` cites the Linux PRD requirement rather than pretending a
+Mac control was observed. Its additional HTTP citations identify delegates only.
+No generic screen citation is evidence of a picker, notification, menu or OS mechanism. It is not a semantic
 parser or a replacement for reviewing server-offered action arrays.
 
 ## Pins and reconciliation
@@ -95,3 +100,18 @@ release acceptance. Planned test IDs do not imply commands already exist.
 runs the final matrix, #998 hands off UTM, and #999 owns authorized publication. None of
 those cards is fulfilled by the inventory. [Visual capture obligations](visual-protocol.md)
 cover every PRD §3 screen. [Verification](verification.md) covers bootstrap CI and its limits.
+
+## Review reconciliation
+
+The source-control audit separately records authority enable, disable, revoke and record,
+with distinct stale-revision/refusal receipts and each offered form field. The verdict
+carrier requires separate create, cancel, resend and saved-direction retry receipts; saved
+retry additionally requires original-sender, unchanged-binding and uncertain-execution
+cases. The actual attachment picker/preview are NewTaskSheet controls; notifications use
+CoordinatorReplyNotificationCenter, menus use main.swift, appearance uses SettingsScreen.
+The census reconciliation also adds individual menu commands, credential verify-all/usage
+refresh/undo-order/copy-error, board remaining-page/visibility/assignment controls and
+landing mode/reasoning/model-retry controls. Linux tray requirements remain conditional: no
+Mac NSStatusBar/MenuBarExtra surface was found at this pin, so no observed tray parity is
+claimed. Derived security/lifecycle/recovery cases remain obligations even when no Mac
+button exists. The freeze audit must repeat this reconciliation against then-current source.

@@ -5,6 +5,7 @@ import hashlib
 import json
 from pathlib import Path
 import re
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED_JOBS = {"verify_amd64", "verify_arm64"}
@@ -40,15 +41,19 @@ def check_inventory(root=ROOT):
     print(f"Inventory: {len(ids)} explicit unimplemented action cases; no product passes")
 
 
-def check_receipts(directory, head, results):
+def check_receipts(directory, head, results, source_root=ROOT):
     if set(results) != REQUIRED_JOBS or any(value != "success" for value in results.values()):
         raise ValueError("required architecture job missing/skipped/cancelled/failed")
     if not re.fullmatch(r"[a-f0-9]{40}", head):
         raise ValueError("invalid exact head")
-    archive_hash = None
+    actual_head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=source_root, text=True, timeout=30).strip()
+    if actual_head != head:
+        raise ValueError("admission checkout does not match expected head")
+    archive_hash = hashlib.sha256(subprocess.check_output(
+        ["git", "archive", head], cwd=source_root, timeout=60)).hexdigest()
     for arch in ["amd64", "arm64"]:
         receipt = json.loads((directory / f"receipt-{arch}.json").read_text())
-        lock = json.loads((ROOT / "ci/toolchain-lock.json").read_text())
+        lock = json.loads((source_root / "ci/toolchain-lock.json").read_text())
         if (receipt.get("version") != 1 or receipt.get("head") != head or receipt.get("arch") != arch
                 or receipt.get("repository") != "yuric/campus-linux"
                 or receipt.get("result") != "success" or receipt.get("scope") != "repository-policy"
@@ -58,12 +63,11 @@ def check_receipts(directory, head, results):
         for key in ["image_id"]:
             if not re.fullmatch(r"sha256:[a-f0-9]{64}", receipt.get(key, "")):
                 raise ValueError(f"{arch}: missing image identity")
-        if receipt.get("dockerfile_sha256") != hashlib.sha256((ROOT / "ci/Dockerfile.verify").read_bytes()).hexdigest():
+        if receipt.get("dockerfile_sha256") != hashlib.sha256((source_root / "ci/Dockerfile.verify").read_bytes()).hexdigest():
             raise ValueError("receipt used different Dockerfile")
         digest = receipt.get("archive_sha256", "")
-        if not re.fullmatch(r"[a-f0-9]{64}", digest) or archive_hash not in (None, digest):
-            raise ValueError("architecture receipts used different source archives")
-        archive_hash = digest
+        if not re.fullmatch(r"[a-f0-9]{64}", digest) or archive_hash != digest:
+            raise ValueError("receipt source archive does not match expected commit")
         if receipt.get("container_command") != "python3 -B scripts/verify_repository.py":
             raise ValueError("wrong verification command")
         for key in ["log", "packages"]:

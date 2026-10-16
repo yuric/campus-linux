@@ -23,7 +23,7 @@ The Docker wrapper builds [Dockerfile.verify](../../ci/Dockerfile.verify), expor
 committed files, and mounts that export read-only with no credentials, network or Docker
 socket in the test container. Limits: build timeout 900s, run timeout 600s, 2 CPU/2 GiB,
 128 PIDs, 256 MiB temporary filesystem, dropped capabilities/no-new-privileges. Builds only
-install repository-check dependencies; they do not compile a nonexistent product. Run
+install repository-check dependencies (Python, PyYAML and Git); they do not compile a nonexistent product. Run
 one local architecture at a time, keep the coordinator's 35 GiB free disk floor, and never
 resize/prune/stop unrelated Docker workloads. A timeout/failure yields no success receipt.
 
@@ -66,7 +66,9 @@ The new jobs use standard public `ubuntu-24.04` and `ubuntu-24.04-arm` runners, 
 job timeouts, read-only contents permission, full-SHA actions and no path filters. They
 check out the PR's exact head, not just an incidental merge commit. Admission runs with
 `always()` when public, requires both job results to be `success`, downloads both receipts,
-and checks their head/arch/base/image/recipe/source and artifact hashes. Missing downloads
+and checks their head/arch/base/image/recipe/source and artifact hashes. It computes
+`git archive EXPECTED_HEAD` from the exact checked-out head and compares both receipt
+hashes against those bytes; matching each other is insufficient. Missing downloads
 fail too. Existing Docs jobs remain required; policy regressions still run on every
 eligible PR, with the unchanged exact-file/hash D7 manifest.
 
