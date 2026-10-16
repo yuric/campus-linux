@@ -1,0 +1,15 @@
+{
+  "observed_unix_ns": 1792163320014754000,
+  "vm": {
+    "name": "campus-linux-d5-noble-arm64",
+    "status": "Stopped",
+    "cpus": 4,
+    "memory": 6442450944,
+    "disk": 30064771072,
+    "arch": "aarch64"
+  },
+  "disk_allocated_bytes": 6819020800,
+  "disk_logical_bytes": 6976241664,
+  "host_available_bytes": 26903429120,
+  "zip_bytes": 257873625
+}

@@ -1,0 +1,1 @@
+{"pid": 3064, "server_pid": 3065, "boot_id": "fa3b7740-a3be-49b5-8b6a-2e47e9d3b1b0", "root_preflight_sha256": "50e378acb8ba1f3e0192d0c4992c6046097566e2f8a33f20fcd44c80f6a417ef", "environment": {"XDG_SESSION_ID": null, "XDG_RUNTIME_DIR": "/run/user/1000", "DISPLAY": ":0", "WAYLAND_DISPLAY": "wayland-0", "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/1000/bus"}}

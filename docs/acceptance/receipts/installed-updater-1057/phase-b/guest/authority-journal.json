@@ -1,0 +1,222 @@
+[
+  {
+    "__REALTIME_TIMESTAMP": "1792163676774367",
+    "__MONOTONIC_TIMESTAMP": "343907866",
+    "MESSAGE": "Operator of unix-session:6 FAILED to authenticate to gain authorization for action dev.campus.updater1057.install for unix-process:unknown [<unknown>] (owned by unix-user:campusqa)",
+    "_PID": "712",
+    "_COMM": "polkitd",
+    "_EXE": "/usr/lib/polkit-1/polkitd",
+    "_SYSTEMD_UNIT": "polkit.service",
+    "_BOOT_ID": "fa3b7740a3be49b58b6a2e47e9d3b1b0"
+  },
+  {
+    "__REALTIME_TIMESTAMP": "1792163710677460",
+    "__MONOTONIC_TIMESTAMP": "377810960",
+    "MESSAGE": "Operator of unix-session:6 FAILED to authenticate to gain authorization for action dev.campus.updater1057.install for unix-process:3159:37557 [/usr/bin/campus-updater-1057 --update http://127.0.0.1:17857/stable/linux.json] (owned by unix-user:campusqa)",
+    "_PID": "712",
+    "_COMM": "polkitd",
+    "_EXE": "/usr/lib/polkit-1/polkitd",
+    "_SYSTEMD_UNIT": "polkit.service",
+    "_BOOT_ID": "fa3b7740a3be49b58b6a2e47e9d3b1b0"
+  },
+  {
+    "__REALTIME_TIMESTAMP": "1792163764500022",
+    "__MONOTONIC_TIMESTAMP": "431633521",
+    "MESSAGE": "Reloading rules",
+    "_PID": "712",
+    "_COMM": "polkitd",
+    "_EXE": "/usr/lib/polkit-1/polkitd",
+    "_SYSTEMD_UNIT": "polkit.service",
+    "_BOOT_ID": "fa3b7740a3be49b58b6a2e47e9d3b1b0"
+  },
+  {
+    "__REALTIME_TIMESTAMP": "1792163764500241",
+    "__MONOTONIC_TIMESTAMP": "431633741",
+    "MESSAGE": "Collecting garbage unconditionally...",
+    "_PID": "712",
+    "_COMM": "polkitd",
+    "_EXE": "/usr/lib/polkit-1/polkitd",
+    "_SYSTEMD_UNIT": "polkit.service",
+    "_BOOT_ID": "fa3b7740a3be49b58b6a2e47e9d3b1b0"
+  },
+  {
+    "__REALTIME_TIMESTAMP": "1792163764500259",
+    "__MONOTONIC_TIMESTAMP": "431633758",
+    "MESSAGE": "Loading rules from directory /etc/polkit-1/rules.d",
+    "_PID": "712",
+    "_COMM": "polkitd",
+    "_EXE": "/usr/lib/polkit-1/polkitd",
+    "_SYSTEMD_UNIT": "polkit.service",
+    "_BOOT_ID": "fa3b7740a3be49b58b6a2e47e9d3b1b0"
+  },
+  {
+    "__REALTIME_TIMESTAMP": "1792163764500270",
+    "__MONOTONIC_TIMESTAMP": "431633769",
+    "MESSAGE": "Loading rules from directory /usr/share/polkit-1/rules.d",
+    "_PID": "712",
+    "_COMM": "polkitd",
+    "_EXE": "/usr/lib/polkit-1/polkitd",
+    "_SYSTEMD_UNIT": "polkit.service",
+    "_BOOT_ID": "fa3b7740a3be49b58b6a2e47e9d3b1b0"
+  },
+  {
+    "__REALTIME_TIMESTAMP": "1792163764502615",
+    "__MONOTONIC_TIMESTAMP": "431636114",
+    "MESSAGE": "Finished loading, compiling and executing 9 rules",
+    "_PID": "712",
+    "_COMM": "polkitd",
+    "_EXE": "/usr/lib/polkit-1/polkitd",
+    "_SYSTEMD_UNIT": "polkit.service",
+    "_BOOT_ID": "fa3b7740a3be49b58b6a2e47e9d3b1b0"
+  },
+  {
+    "__REALTIME_TIMESTAMP": "1792163764502751",
+    "__MONOTONIC_TIMESTAMP": "431636250",
+    "MESSAGE": "Reloading rules",
+    "_PID": "712",
+    "_COMM": "polkitd",
+    "_EXE": "/usr/lib/polkit-1/polkitd",
+    "_SYSTEMD_UNIT": "polkit.service",
+    "_BOOT_ID": "fa3b7740a3be49b58b6a2e47e9d3b1b0"
+  },
+  {
+    "__REALTIME_TIMESTAMP": "1792163764502797",
+    "__MONOTONIC_TIMESTAMP": "431636296",
+    "MESSAGE": "Collecting garbage unconditionally...",
+    "_PID": "712",
+    "_COMM": "polkitd",
+    "_EXE": "/usr/lib/polkit-1/polkitd",
+    "_SYSTEMD_UNIT": "polkit.service",
+    "_BOOT_ID": "fa3b7740a3be49b58b6a2e47e9d3b1b0"
+  },
+  {
+    "__REALTIME_TIMESTAMP": "1792163764502829",
+    "__MONOTONIC_TIMESTAMP": "431636328",
+    "MESSAGE": "Loading rules from directory /etc/polkit-1/rules.d",
+    "_PID": "712",
+    "_COMM": "polkitd",
+    "_EXE": "/usr/lib/polkit-1/polkitd",
+    "_SYSTEMD_UNIT": "polkit.service",
+    "_BOOT_ID": "fa3b7740a3be49b58b6a2e47e9d3b1b0"
+  },
+  {
+    "__REALTIME_TIMESTAMP": "1792163764502851",
+    "__MONOTONIC_TIMESTAMP": "431636350",
+    "MESSAGE": "Loading rules from directory /usr/share/polkit-1/rules.d",
+    "_PID": "712",
+    "_COMM": "polkitd",
+    "_EXE": "/usr/lib/polkit-1/polkitd",
+    "_SYSTEMD_UNIT": "polkit.service",
+    "_BOOT_ID": "fa3b7740a3be49b58b6a2e47e9d3b1b0"
+  },
+  {
+    "__REALTIME_TIMESTAMP": "1792163764504238",
+    "__MONOTONIC_TIMESTAMP": "431637737",
+    "MESSAGE": "Finished loading, compiling and executing 9 rules",
+    "_PID": "712",
+    "_COMM": "polkitd",
+    "_EXE": "/usr/lib/polkit-1/polkitd",
+    "_SYSTEMD_UNIT": "polkit.service",
+    "_BOOT_ID": "fa3b7740a3be49b58b6a2e47e9d3b1b0"
+  },
+  {
+    "__REALTIME_TIMESTAMP": "1792163764504366",
+    "__MONOTONIC_TIMESTAMP": "431637865",
+    "MESSAGE": "Reloading rules",
+    "_PID": "712",
+    "_COMM": "polkitd",
+    "_EXE": "/usr/lib/polkit-1/polkitd",
+    "_SYSTEMD_UNIT": "polkit.service",
+    "_BOOT_ID": "fa3b7740a3be49b58b6a2e47e9d3b1b0"
+  },
+  {
+    "__REALTIME_TIMESTAMP": "1792163764504393",
+    "__MONOTONIC_TIMESTAMP": "431637892",
+    "MESSAGE": "Collecting garbage unconditionally...",
+    "_PID": "712",
+    "_COMM": "polkitd",
+    "_EXE": "/usr/lib/polkit-1/polkitd",
+    "_SYSTEMD_UNIT": "polkit.service",
+    "_BOOT_ID": "fa3b7740a3be49b58b6a2e47e9d3b1b0"
+  },
+  {
+    "__REALTIME_TIMESTAMP": "1792163764504428",
+    "__MONOTONIC_TIMESTAMP": "431637927",
+    "MESSAGE": "Loading rules from directory /etc/polkit-1/rules.d",
+    "_PID": "712",
+    "_COMM": "polkitd",
+    "_EXE": "/usr/lib/polkit-1/polkitd",
+    "_SYSTEMD_UNIT": "polkit.service",
+    "_BOOT_ID": "fa3b7740a3be49b58b6a2e47e9d3b1b0"
+  },
+  {
+    "__REALTIME_TIMESTAMP": "1792163764504465",
+    "__MONOTONIC_TIMESTAMP": "431637964",
+    "MESSAGE": "Loading rules from directory /usr/share/polkit-1/rules.d",
+    "_PID": "712",
+    "_COMM": "polkitd",
+    "_EXE": "/usr/lib/polkit-1/polkitd",
+    "_SYSTEMD_UNIT": "polkit.service",
+    "_BOOT_ID": "fa3b7740a3be49b58b6a2e47e9d3b1b0"
+  },
+  {
+    "__REALTIME_TIMESTAMP": "1792163764506829",
+    "__MONOTONIC_TIMESTAMP": "431640328",
+    "MESSAGE": "Finished loading, compiling and executing 9 rules",
+    "_PID": "712",
+    "_COMM": "polkitd",
+    "_EXE": "/usr/lib/polkit-1/polkitd",
+    "_SYSTEMD_UNIT": "polkit.service",
+    "_BOOT_ID": "fa3b7740a3be49b58b6a2e47e9d3b1b0"
+  },
+  {
+    "__REALTIME_TIMESTAMP": "1792163799502949",
+    "__MONOTONIC_TIMESTAMP": "466636449",
+    "MESSAGE": "Reloading rules",
+    "_PID": "712",
+    "_COMM": "polkitd",
+    "_EXE": "/usr/lib/polkit-1/polkitd",
+    "_SYSTEMD_UNIT": "polkit.service",
+    "_BOOT_ID": "fa3b7740a3be49b58b6a2e47e9d3b1b0"
+  },
+  {
+    "__REALTIME_TIMESTAMP": "1792163799503256",
+    "__MONOTONIC_TIMESTAMP": "466636755",
+    "MESSAGE": "Collecting garbage unconditionally...",
+    "_PID": "712",
+    "_COMM": "polkitd",
+    "_EXE": "/usr/lib/polkit-1/polkitd",
+    "_SYSTEMD_UNIT": "polkit.service",
+    "_BOOT_ID": "fa3b7740a3be49b58b6a2e47e9d3b1b0"
+  },
+  {
+    "__REALTIME_TIMESTAMP": "1792163799503281",
+    "__MONOTONIC_TIMESTAMP": "466636780",
+    "MESSAGE": "Loading rules from directory /etc/polkit-1/rules.d",
+    "_PID": "712",
+    "_COMM": "polkitd",
+    "_EXE": "/usr/lib/polkit-1/polkitd",
+    "_SYSTEMD_UNIT": "polkit.service",
+    "_BOOT_ID": "fa3b7740a3be49b58b6a2e47e9d3b1b0"
+  },
+  {
+    "__REALTIME_TIMESTAMP": "1792163799503293",
+    "__MONOTONIC_TIMESTAMP": "466636793",
+    "MESSAGE": "Loading rules from directory /usr/share/polkit-1/rules.d",
+    "_PID": "712",
+    "_COMM": "polkitd",
+    "_EXE": "/usr/lib/polkit-1/polkitd",
+    "_SYSTEMD_UNIT": "polkit.service",
+    "_BOOT_ID": "fa3b7740a3be49b58b6a2e47e9d3b1b0"
+  },
+  {
+    "__REALTIME_TIMESTAMP": "1792163799504697",
+    "__MONOTONIC_TIMESTAMP": "466638196",
+    "MESSAGE": "Finished loading, compiling and executing 8 rules",
+    "_PID": "712",
+    "_COMM": "polkitd",
+    "_EXE": "/usr/lib/polkit-1/polkitd",
+    "_SYSTEMD_UNIT": "polkit.service",
+    "_BOOT_ID": "fa3b7740a3be49b58b6a2e47e9d3b1b0"
+  }
+]

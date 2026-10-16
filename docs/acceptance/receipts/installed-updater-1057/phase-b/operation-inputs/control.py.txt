@@ -1,0 +1,11 @@
+import json,pathlib,subprocess,sys
+BASE=pathlib.Path('/Users/yuri/.campus/coordinate/linux-20261016/environment/1057-gdm-lease/phase-b'); GUEST='/home/campusqa/campus1057-10643-5176b9d7/evidence/'
+def write(name,data):
+ assert '/' not in name
+ code='import os,sys; p='+repr(GUEST+name)+'; f=os.open(p,os.O_CREAT|os.O_EXCL|os.O_WRONLY|os.O_NOFOLLOW,0o600);os.write(f,sys.stdin.buffer.read());os.close(f);os.chown(p,1000,1000)'
+ subprocess.run(['/opt/homebrew/bin/limactl','shell','campus-linux-d5-noble-arm64','--','sudo','-n','python3','-I','-B','-c',code],input=data,check=True)
+if __name__=='__main__':
+ if sys.argv[1]=='case':
+  case=sys.argv[2];name=sys.argv[3] if len(sys.argv)>3 else case
+  write('command.json',json.dumps({'case':case,'name':name,'authority':'ordinary restored polkit; no temporary fixture rule' if case=='cancel' else '/root/campus1057-10643-5176b9d7/evidence/'+case+'-window.json','planned':'Observe real '+case+' through installed fixed pkexec adapter; no administrator authentication'}).encode())
+ elif sys.argv[1]=='png':write(sys.argv[2],(BASE/sys.argv[2]).read_bytes())

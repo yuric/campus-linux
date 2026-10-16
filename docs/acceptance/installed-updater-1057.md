@@ -60,9 +60,9 @@ workflow. The original canonical file-map SHA-256 is
 `f775791c6e1080b60297b859e2f029109f5b10965eb928770ba78dadc05585ee`.
 This binds the tested implementation while keeping build source and later evidence head
 distinct. The later desktop recorder, authority-window helper and runbook are new source
-preparation requested by the coordinator; they have not run in a guest and are outside
-that fingerprint. No claim is made that new receipts or harnesses existed during their
-own earlier build.
+preparation requested by the coordinator and are outside that fingerprint. Phase B below
+records their later actual guest execution separately. No claim is made that new receipts
+or harnesses existed during their own earlier build.
 
 | Evidence | arm64 | x86_64 | Acceptance scope |
 |---|---|---|---|
@@ -73,7 +73,7 @@ own earlier build.
 | Signed v1 → v2 and higher v3 with reverted fixture behavior | Pass | Pass | AppImage replacement/relaunch and privileged deb verification |
 | Lower/same signed deb replay refused at privileged seam | Pass | Pass | App/helper hashes unchanged; live caller substitution also passed |
 | Privileged bad signature and signed wrong-architecture AppImage | Pass | Pass | Intended rejecting boundaries; no installation/replacement |
-| GDM polkit prompt, cancellation, denial and missing authority | Awaiting execution lease after phase A | Downstream desktop gap | Hosted allow rules cannot satisfy graphical acceptance |
+| GDM polkit prompt, cancellation, denial and missing authority | Phase B incomplete; cancellation observed, denial prerequisite blocked, missing not run | Downstream desktop gap | Raw session certification remains for coordinator review |
 
 | Final artifact budget | arm64 | x86_64 |
 |---|---:|---:|
@@ -135,9 +135,78 @@ records exact artifacts and extraction/install/storage bounds, graphical PID/ses
 binding, genuine prompt observation and bounded authority restoration. Returned source
 requires reviewed root-owned staging with isolated Python, explicit protected-rule
 evidence, post-invocation observer statements and actual authority-window timestamps.
-LINUX-20261016 must independently clear these bytes/source and grant the later privileged
-execution lease, including existing private graphical login, before those commands run.
+Those phase A prerequisites were subsequently cleared by coordinator comment10643,
+which granted the bounded Phase B execution recorded below.
 No second VM or x86_64 graphical prerequisite is introduced.
+
+## Phase B: actual desktop attempt and restored blocker
+
+Human comment10643 / direction1233 cleared exact source368809e and downloaded bytes,
+then granted the existing Lima guest exclusively. The [Phase B index](receipts/installed-updater-1057/phase-b/run.json)
+retains actual operations, failed attempts, raw receipts and their SHA-256s. No new build,
+artifact, dependency, AppImage extraction, provider account or administrator authentication
+was used. The initial artifact/source transfer streamed 15,391,158 verified bytes; later
+driver/preflight/screenshot writes are included in measured allocation. The serving index is
+a separately derived copy retaining the three unchanged deb entries; the recorder uses
+the original approved index. Root staging was fresh, nonsymlinked, root-owned `0500`
+with `0400` files; all seven helper/bootstrap digests were externally checked before
+isolated Python. Public fixture trust and exact v1 deb were provisioned initially.
+Every actual update used the installed fixed pkexec adapter.
+
+Private ordinary login through the existing QEMU VNC channel produced GDM session `6`,
+UID1000, Wayland, `gdm-password`, local `seat0`, leader2367, boot
+`fa3b7740-a3be-49b5-8b6a-2e47e9d3b1b0`, DISPLAY `:0` and `wayland-0`.
+The driver was launched through a visible GNOME Terminal. The refreshed
+[root preflight](receipts/installed-updater-1057/phase-b/root-preflight.json), SHA-256
+`50e378acb8ba1f3e0192d0c4992c6046097566e2f8a33f20fcd44c80f6a417ef`,
+binds the lease/UID and both effective rule directories: `/etc` explicitly empty and
+`/usr/share` with eight distro rules, owners/modes, no hosted allow rule, active GDM/polkit.
+The digest was supplied by the worker from the authorized root observation and is now
+reported for independent coordinator verification; the recorder's generic
+“coordinator-supplied” provenance wording is not evidence of that later review. The keyring
+remained locked.
+
+| Attempt | Actual outcome |
+|---|---|
+| [First cancel](receipts/installed-updater-1057/phase-b/guest/cancel.json) | Genuine prompt captured; 20-second timeout before cancellation completed. Retained **incomplete**; v1 bytes unchanged. |
+| [Cancel retry](receipts/installed-updater-1057/phase-b/guest/cancel-retry.json) | [Actual prompt PNG](receipts/installed-updater-1057/phase-b/guest/cancel-retry.png), Cancel clicked before authentication, exact signed v2 download, pkexec126 `Request dismissed`, no adapter entry, unchanged v1 app/helper; update lasted2.283s. |
+| [Deny window](receipts/installed-updater-1057/phase-b/deny-window.json) | Helper ready; polkit reloads nine rules, but required `deny-loaded` marker absent. **Update not invoked.** Exact owned rule restored after35.004s within45s total, retaining10s restoration reserve. |
+| Missing authority | **Not run** after the unexpected marker state, obeying the stop instruction. No runtime mask created. |
+
+The cancellation recorder honestly retains `not_certified`: native GNOME Terminal uses
+an actual user-manager scope without direct `sd_pid_get_session` association. No SSH
+process or environment variable was relabeled. The [polkit journal](receipts/installed-updater-1057/phase-b/guest/authority-journal.json)
+independently maps the actual updater PID3159 to `unix-session:6`; screenshots and the
+recorded UID/runtime/compositor/leader/boot support review. LINUX-20261016 must assess
+that binding; this worker does not convert it to a graphical pass.
+
+The [authority diagnosis](receipts/installed-updater-1057/phase-b/guest/authority-diagnostic.json)
+records real polkit124 Duktape linkage, `--no-debug`, and stdout/stderr pointing to
+`/dev/null`. Upstream124's [Duktape logger](https://github.com/polkit-org/polkit/blob/124/src/polkitbackend/polkitbackendduktapeauthority.c#L953)
+writes `polkit.log()` to stderr; [no-debug startup](https://github.com/polkit-org/polkit/blob/124/src/polkitbackend/polkitd.c#L181)
+redirects it away. Reload messages use [syslog separately](https://github.com/polkit-org/polkit/blob/124/src/polkitbackend/polkitbackendauthority.c#L1412).
+This explains the missing marker; a count of loaded rules does not prove the exact rule
+or rejecting subject. No service/logging configuration was changed and no marker check
+was weakened. A narrowly scoped observable-marker remedy needs coordinator disposition
+before another lease; changing timeouts would not address this failure.
+
+[Cleanup](receipts/installed-updater-1057/phase-b/root-cleanup.json) verifies identical rule
+inventories, unchanged GDM config/public trust/v1 payload hashes, active original polkit
+and bus owner, no fixture rule/allowrule/mask. Owned driver/server exited and no pkexec
+remained. Packages, staged public inputs and bounded receipts are retained. Lima is
+[Stopped](receipts/installed-updater-1057/phase-b/capacity-stopped.json), unchanged4CPU/6GiB/28GiB:
+sparse allocation6,878,593,024bytes, growth59,572,224bytes from the approved stopped baseline;
+host free27,593,158,656bytes, guest free before stop20,241,424,384bytes. ZIP staging remains
+257,873,625bytes; private Phase B host files total1,093,263bytes at stopped sampling;
+guest evidence export428,227bytes. All specified floors/budgets held. UTM was untouched;
+CLI status failed with VM-not-found/-1743, so no successful UTM CLI verification is claimed.
+Host-wide free-space changes are not attributed to this task.
+
+Next owner/watcher is explicitly LINUX-20261016 under10643. Remaining work is marker
+observability disposition, a subsequent lease for denial/missing authority, independent
+cancellation/session assessment, and final exact-head checks/Council/merge. D5 x86 desktop
+and the downstream production/lifecycle matrix remain open. This attempt is **incomplete**,
+with clean restoration and an explicit human/coordinator handoff.
 
 ## Fixture and trust boundaries
 
@@ -344,7 +413,8 @@ and `git diff --check`. At source113a53e, the live `check-linux-admission.py --p
 --head 113a53e4eea44b6d80a8ee3edb55d186d11f3ba6` accepted all six required checks.
 The coordinator takes sole CI/Council observation for the later handoff head, as directed
 in card comment10584; its outcomes must be read independently rather than inherited.
-The new desktop helpers have source/mocked validation only, never a graphical pass.
+The desktop helpers also have the actual, incomplete Phase B execution above; source tests
+and successful restoration do not establish graphical acceptance.
 
 Deliver one draft PR with `Campus Linux: ` title prefix and `LINUX-20261016`, #1057,
 source/build/package hashes, exact-head checks, self-review, failures and remaining evidence

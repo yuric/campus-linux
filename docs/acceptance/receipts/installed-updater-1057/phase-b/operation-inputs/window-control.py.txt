@@ -1,0 +1,30 @@
+import json,os,pathlib,select,subprocess,sys,time
+from control import write
+P=pathlib.Path(__file__).parent; ROOT='/root/campus1057-10643-5176b9d7'; GUEST='/home/campusqa/campus1057-10643-5176b9d7'; LEASE='1057-10643-5176b9d7'; VM=['/opt/homebrew/bin/limactl','shell','campus-linux-d5-noble-arm64','--','sudo','-n']; case=sys.argv[1];assert case in ['deny','missing-authority'];mode='deny' if case=='deny' else 'missing'
+def rootpy(code):
+ r=subprocess.run(VM+['/usr/bin/python3','-I','-B','-c',code],capture_output=True,text=True,timeout=8);assert r.returncode==0,r.stderr;return r.stdout
+# Independent root channel checks, immediately before each window.
+state=json.loads(rootpy("import subprocess,json,pathlib; print(json.dumps({'state':subprocess.check_output(['systemctl','show','polkit.service','--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths']).decode(),'owner':subprocess.check_output(['busctl','--system','call','org.freedesktop.DBus','/org/freedesktop/DBus','org.freedesktop.DBus','NameHasOwner','s','org.freedesktop.PolicyKit1']).decode(),'rule':pathlib.Path('/etc/polkit-1/rules.d/00-campus-updater-1057-deny.rules').exists(),'mask':pathlib.Path('/run/systemd/system/polkit.service').is_symlink()}))"));assert 'ActiveState=active' in state['state'] and state['owner']=='b true\n' and not state['rule'] and not state['mask'];(P/(case+'-state-before.json')).write_text(json.dumps(state,indent=2))
+args=VM+['/usr/bin/python3','-I','-B',ROOT+'/authority-window.py',mode,'--lease',LEASE,'--uid','1000','--session-id','6','--duration-seconds','45','--source-sha256','77cf7bf5b94df6d829a58542a333b9f7143e4ca35922cf284626d3dab8b3b839','--receipt',ROOT+'/evidence/'+case+'-window.json']
+if mode=='missing':args+=['--allow-shared-authority-window']
+proc=subprocess.Popen(args,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True);started=time.time_ns();lines=[]
+try:
+ ready=select.select([proc.stdout],[],[],12)[0];assert ready,'no readiness in12seconds';line=proc.stdout.readline();lines.append(line);r=json.loads(line);assert r['event']=='authority_window_ready',r
+ if case=='deny':
+  marker='campus1057-deny-loaded lease='+LEASE;until=time.monotonic()+4
+  while True:
+   logs=rootpy("import subprocess,json; s=subprocess.check_output(['journalctl','-b','-u','polkit.service','--since','2 minutes ago','--no-pager','-o','short-unix']).decode(); print(json.dumps([x for x in s.splitlines() if 'campus1057-deny' in x and "+repr('lease='+LEASE)+" in x]))")
+   values=json.loads(logs)
+   if any(marker in x for x in values):break
+   assert time.monotonic()<until,'deny-loaded marker absent';time.sleep(.1)
+  (P/'deny-loaded-before-invocation.json').write_text(json.dumps({'observed_unix_ns':time.time_ns(),'lines':values},indent=2))
+ write('command.json',json.dumps({'case':case,'name':case,'authority':ROOT+'/evidence/'+case+'-window.json','planned':'Observe actual '+case+' in reviewed bounded authority window'}).encode());print('Actual '+case+' invocation queued after ready'+(' and loaded marker' if case=='deny' else ''),flush=True)
+ rest,err=proc.communicate(timeout=45);lines.append(rest)
+ (P/(case+'-window.stdout')).write_text(''.join(lines));(P/(case+'-window.stderr')).write_text(err)
+ receipt=rootpy("import pathlib;print(pathlib.Path("+repr(ROOT+'/evidence/'+case+'-window.json')+").read_text())");(P/(case+'-window.json')).write_text(receipt);w=json.loads(receipt);print(json.dumps({k:w.get(k) for k in ['status','cleanup','error','cleanup_error','ready_unix_ns','restore_started_unix_ns','elapsed_seconds_including_cleanup','deadline_exceeded']}),flush=True)
+ assert w['cleanup']=='restored','MANUAL RECOVERY REQUIRED'
+ assert proc.returncode==0,'Window failed; preserve failure'
+finally:
+ if proc.poll() is None:
+  # Do not kill control: helper's own bounded deadline/restoration must finish.
+  rest,err=proc.communicate(timeout=50);(P/(case+'-window-aborted-control.stdout')).write_text(''.join(lines)+rest);(P/(case+'-window-aborted-control.stderr')).write_text(err)

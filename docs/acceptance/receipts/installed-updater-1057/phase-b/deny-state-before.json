@@ -1,0 +1,6 @@
+{
+  "state": "Id=polkit.service\nLoadState=loaded\nActiveState=active\nSubState=running\nFragmentPath=/usr/lib/systemd/system/polkit.service\nDropInPaths=\nUnitFileState=static\n",
+  "owner": "b true\n",
+  "rule": false,
+  "mask": false
+}

@@ -1,0 +1,50 @@
+import hashlib,io,json,os,pathlib,subprocess,tarfile,zipfile,time
+BASE=pathlib.Path('/Users/yuri/.campus/coordinate/linux-20261016/environment/1057-gdm-lease'); OUT=BASE/'phase-b'; SOURCE=pathlib.Path.cwd()/'spikes/1057/installed-updater'; ROOT='/root/campus1057-10643-5176b9d7'; USER='/home/campusqa/campus1057-10643-5176b9d7'
+anchors=json.loads((BASE.parent.parent/'reviews/linux-pr13-root-evidence/head368809e/root-artifact-verification.json').read_text())['public_bootstrap_anchors']
+files={}
+with zipfile.ZipFile(BASE/'arm64-packages.zip') as z:
+ for n in z.namelist():
+  if n.startswith('bootstrap/') or n.endswith('.deb') or n.endswith('.deb.sig'): files[n]=z.read(n)
+with zipfile.ZipFile(BASE/'arm64-source-receipts.zip') as z:
+ for n in ['package-index.json','payload-inventory.json','fixture-inputs.json','installed-smoke.json']:files['receipts/'+n]=z.read('receipts/'+n)
+for n,h in anchors.items():assert hashlib.sha256(files['bootstrap/'+n]).hexdigest()==h
+for n,h in [('authority-window.py','77cf7bf5b94df6d829a58542a333b9f7143e4ca35922cf284626d3dab8b3b839'),('desktop.py','5efe47170775ff9074768010ddfd6c3b105a5f09dc4a4709eeac23c37c333d32')]:
+ files['probe/'+n]=(SOURCE/'probe'/n).read_bytes();assert hashlib.sha256(files['probe/'+n]).hexdigest()==h
+files['probe/serve.py']=(SOURCE/'probe/serve.py').read_bytes()
+index=json.loads(files['receipts/package-index.json']); index['artifacts']=[x for x in index['artifacts'] if x['format']=='deb'];files['receipts/serving-index.json']=(json.dumps(index,indent=2)+'\n').encode()
+for a in index['artifacts']:assert hashlib.sha256(files['packages/'+a['filename']]).hexdigest()==a['sha256'];assert len(files['packages/'+a['filename']])==a['bytes']
+manifest={n:{'sha256':hashlib.sha256(b).hexdigest(),'bytes':len(b)} for n,b in files.items()};(OUT/'transfer-manifest.json').write_text(json.dumps(manifest,indent=2))
+remote='''import hashlib,json,os,pathlib,stat,sys,tarfile,subprocess,time
+ROOT=pathlib.Path(ROOT_VALUE); USER=pathlib.Path(USER_VALUE); expected=MANIFEST_VALUE
+assert os.getuid()==0
+for p in [ROOT,USER,pathlib.Path('/etc/campus-updater-1057'),pathlib.Path('/usr/lib/campus-updater-1057'),pathlib.Path('/usr/share/polkit-1/actions/dev.projectcampus.updater1057.policy'),pathlib.Path('/etc/polkit-1/rules.d/49-campus-updater-1057-headless.rules'),pathlib.Path('/etc/polkit-1/rules.d/00-campus-updater-1057-deny.rules')]:assert not p.exists() and not p.is_symlink(),str(p)
+r=subprocess.run(['dpkg-query','-W','-f=${db:Status-Status}','campus-updater-1057'],capture_output=True);assert r.returncode!=0
+assert os.statvfs('/').f_bavail*os.statvfs('/').f_frsize>2*1024**3
+for p in [pathlib.Path('/'),pathlib.Path('/root')]:assert p.resolve()==p and p.stat().st_uid==0 and not p.stat().st_mode&0o022
+ROOT.mkdir(mode=0o700);(ROOT/'bootstrap').mkdir(mode=0o700);(ROOT/'evidence').mkdir(mode=0o700)
+USER.mkdir(mode=0o700);os.chown(USER,1000,1000)
+for n in ['probe','packages','receipts','evidence']:(USER/n).mkdir(mode=0o700);os.chown(USER/n,1000,1000)
+seen=set();records=[]
+with tarfile.open(fileobj=sys.stdin.buffer,mode='r|') as t:
+ for member in t:
+  assert member.name in expected and member.name not in seen and member.isfile();seen.add(member.name)
+  b=t.extractfile(member).read();e=expected[member.name];assert len(b)==e['bytes'] and hashlib.sha256(b).hexdigest()==e['sha256']
+  if member.name.startswith('bootstrap/'):dest=ROOT/member.name
+  elif member.name=='probe/authority-window.py':dest=ROOT/'authority-window.py'
+  else:dest=USER/member.name
+  fd=os.open(dest,os.O_CREAT|os.O_EXCL|os.O_WRONLY|os.O_NOFOLLOW,0o400 if dest.is_relative_to(ROOT) else 0o600)
+  with os.fdopen(fd,'wb') as s:s.write(b)
+  if dest.is_relative_to(USER):os.chown(dest,1000,1000)
+  info=dest.lstat();records.append({'path':str(dest),'uid':info.st_uid,'gid':info.st_gid,'mode':oct(stat.S_IMODE(info.st_mode)),**e})
+assert seen==set(expected)
+os.chmod(ROOT/'bootstrap',0o500)
+# Separate writable evidence path is not an executable import directory.
+os.chmod(ROOT,0o500)
+for r in records:
+ p=pathlib.Path(r['path']);assert not p.is_symlink() and hashlib.sha256(p.read_bytes()).hexdigest()==r['sha256']
+print(json.dumps({'observed_unix_ns':time.time_ns(),'stage_root':str(ROOT),'user_root':str(USER),'files':records}),flush=True)
+'''.replace('ROOT_VALUE',repr(ROOT)).replace('USER_VALUE',repr(USER)).replace('MANIFEST_VALUE',repr(manifest))
+p=subprocess.Popen(['/opt/homebrew/bin/limactl','shell','campus-linux-d5-noble-arm64','--','sudo','-n','/usr/bin/python3','-I','-B','-c',remote],stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+with tarfile.open(fileobj=p.stdin,mode='w|') as t:
+ for n,b in files.items():a=tarfile.TarInfo(n);a.size=len(b);a.mode=0o600;t.addfile(a,io.BytesIO(b))
+p.stdin.close();stdout=p.stdout.read();stderr=p.stderr.read();code=p.wait();(OUT/'root-staging.json').write_bytes(stdout);(OUT/'staging.stderr').write_bytes(stderr);assert code==0,(code,stderr.decode());print('Staged verified bytes',sum(map(len,files.values())),'files',len(files))

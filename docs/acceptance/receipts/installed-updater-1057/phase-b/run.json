@@ -1,0 +1,140 @@
+{
+  "schema": 1,
+  "scope": "Actual arm64 GDM Phase B attempt; incomplete overall, coordinator acceptance pending",
+  "lease_reference": "Campus task1057 comment10643 Phase B direction1233 attempt5176b9d7-6e03-410a-99d8-eecc74880fb7",
+  "prepared_source": "368809e8ad0cdde047de44c8c2657fc7ca4893bc",
+  "built_package_source": "113a53e4eea44b6d80a8ee3edb55d186d11f3ba6",
+  "hosted_cases_unchanged": 54,
+  "authority_helper_sha256": "77cf7bf5b94df6d829a58542a333b9f7143e4ca35922cf284626d3dab8b3b839",
+  "desktop_recorder_sha256": "5efe47170775ff9074768010ddfd6c3b105a5f09dc4a4709eeac23c37c333d32",
+  "postprovision_root_preflight_sha256": "50e378acb8ba1f3e0192d0c4992c6046097566e2f8a33f20fcd44c80f6a417ef",
+  "graphical_tuple": {
+    "architecture": "aarch64",
+    "uid": 1000,
+    "user": "campusqa",
+    "session": "6",
+    "service": "gdm-password",
+    "type": "wayland",
+    "seat": "seat0",
+    "leader": 2367,
+    "boot_id": "fa3b7740-a3be-49b5-8b6a-2e47e9d3b1b0",
+    "display": ":0",
+    "wayland_display": "wayland-0"
+  },
+  "session_certification": "Native GNOME Terminal user-manager scope has no direct sd_pid_get_session association. Raw not_certified retained; actual VNC launch, user/runtime/compositor/leader/boot facts and polkit journal app3159 -> unix-session6 require independent coordinator assessment. No environment relabeling.",
+  "cases": [
+    {
+      "case": "cancel",
+      "receipt": "guest/cancel.json",
+      "result": "failed",
+      "reason": "20-second recorder timeout before cancellation completed; genuine prompt screenshot retained; unchanged v1 after incomplete attempt"
+    },
+    {
+      "case": "cancel-retry",
+      "receipt": "guest/cancel-retry.json",
+      "result": "technical_observation_pending_coordinator_review",
+      "raw_status": "not_certified",
+      "elapsed_update_seconds": 2.282780309,
+      "reason": "actual prompt captured and Cancel clicked before authentication; signed exact v2 download, pkexec126 Request dismissed, no adapter entry, unchanged v1 app/helper; actual subject/session journal correlation retained"
+    },
+    {
+      "case": "deny",
+      "receipt": "deny-window.json",
+      "result": "not_invoked",
+      "reason": "required deny-loaded marker absent; polkit reload count is insufficient; no app invocation under this window",
+      "window_cleanup": "restored",
+      "window_elapsed_seconds": 35.004407689,
+      "total_limit_seconds": 45,
+      "restoration_reserve_seconds": 10
+    },
+    {
+      "case": "missing-authority",
+      "result": "not_run",
+      "reason": "stopped authority experiments on unexpected missing marker, as required by10643"
+    }
+  ],
+  "diagnosis": {
+    "receipt": "guest/authority-diagnostic.json",
+    "observed": "Actual polkit124 links libduktape207, runs --no-debug, stdout/stderr both /dev/null. No fixture marker in filtered polkit journal.",
+    "inference": "Pinned upstream124 Duktape polkit.log writes stderr, which --no-debug redirects away; syslog reload summaries survive. This explains absent markers without proving denial.",
+    "sources": [
+      "https://github.com/polkit-org/polkit/blob/124/src/polkitbackend/polkitbackendduktapeauthority.c#L953",
+      "https://github.com/polkit-org/polkit/blob/124/src/polkitbackend/polkitd.c#L181",
+      "https://github.com/polkit-org/polkit/blob/124/src/polkitbackend/polkitbackendauthority.c#L1412"
+    ]
+  },
+  "cleanup": {
+    "authority": "owned exact deny inode/content removed by reviewed helper; original effective rules, active service/bus owner and absence of masks/allowrule verified",
+    "public_trust_and_v1": "unchanged hashes",
+    "keyring": "Locked=true; not reset or unlocked",
+    "processes": "owned driver/server exited; no pkexec remained",
+    "vm": "Stopped",
+    "packages_and_receipts": "retained inside budgets for coordinator review; no package/trust removal authorized"
+  },
+  "limits_and_actuals": "capacity-stopped.json",
+  "additional_failed_operations": [
+    {
+      "operation": "utmctl status/list",
+      "result": "VM-not-found / OSStatus -1743; no successful CLI status claim, no UTM guest operation performed"
+    },
+    {
+      "operation": "ps -C pkexec check_output",
+      "result": "exit1 meant no matching process; diagnostic wrapper raised and skipped first outcome append; outcomes subsequently appended after readback"
+    }
+  ],
+  "next_owner": "LINUX-20261016",
+  "remaining": [
+    "Independent graphical session and cancellation assessment",
+    "Coordinator chooses narrowly scoped marker-observation remedy and any subsequent guest lease",
+    "Deny loaded/rejecting subject marker and missing-authority actual invocation evidence",
+    "Final exact-head review/CI/Council/merge owned by coordinator"
+  ],
+  "receipt_sha256": {
+    "bootstrap.json": "6f5b2c75af718b7e4489f519aee6a71a9ca5d0ee4b64f56f7a9acbf9b09de45c",
+    "cancel-after.png": "d769783cef89866da7112bee28255d1921b237e7d7caef061b0705217162a930",
+    "capacity-before-stop.json": "389f4d0a8093689498c3aa0b38b2dee23c701784bf6a90f20c4fb3e579652073",
+    "capacity-before.json": "32f81f15f32ce012122f7879a714d57d791179807ac78a0677aa06d5a970c87d",
+    "capacity-stopped.json": "e283939d336ec2755c9d8d1909e4b65741a8dad8b979e4242d91bc5e22525925",
+    "deny-state-before.json": "e9e367622ab58324454096870d9d921a41e530d3139f16244db6aa23214ab885",
+    "deny-window-aborted-control.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "deny-window-aborted-control.stdout": "746b57cbe288aa1bf876e6bbf47c4926792dde1b2328131577b7aeb5da4d970d",
+    "deny-window.json": "87deaa1600fdbd7fc50c28d446e2a038df20f6040c9a22bb1291cd3c77747b4d",
+    "desktop-driver-launch-settled.png": "55d25d60665bd962bfd0dc4d04c36c9fa1b6d43989edce557de55408ba9e03f0",
+    "gdm-after-login.png": "d548ccd31a36f851a5175fe1df621d2449276fdb60ac776687dfc9fc88555fcc",
+    "gdm-before-login.png": "029bd10f13f3b44be513eab5e2e9f6c314bc7d7de9fcaeb5cce3bd4e8708d815",
+    "guest/authority-diagnostic.json": "071cedaf6f429da20256dc5c5e08e4bd17d5ce7e43ddb0262cb5e23659781606",
+    "guest/authority-journal.json": "3231fe9667e316e3a13b828cc8ef71088b6215e8b0e582083f38cae77b8fcf04",
+    "guest/cancel-finished.json": "c99a4cd341b14da8c7082ae4b23e3011b6a8fb2f268afdcf9b80eac6606ac882",
+    "guest/cancel-retry-finished.json": "8e08dc9a420cf5b38a0f1ae6be555ee9d4b2010bcb319dc2eadcd71f667fc53c",
+    "guest/cancel-retry.json": "460512e1d542798e3723a1c802c4cf460018666bdc0f354b31158fbeb3935e4e",
+    "guest/cancel-retry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "guest/cancel-retry.png": "23ee646bb7354529720e59a2224d8ec54b98e3396685949a7a635fcc03347f02",
+    "guest/cancel.json": "9cf0e4884d990fde24ffb1a5b1e2755e5d2772c268a252e3473c473c94c30725",
+    "guest/cancel.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "guest/cancel.png": "b4c8745ca2084b6652d9508ec71c669c01c72e6bcecf9fbf994313545e1d77c8",
+    "guest/driver-ready.json": "18e4d5ac7aa39c9b047a525a6141e1879df2a6f8506eee9b9d0f1fdfb0b7883a",
+    "guest/driver-stopped.json": "63eabc0ee7aa99618c941deafc535b3fce9dd002783a329e6ea97064866f7cc4",
+    "guest/requests.jsonl": "035a577a1f798a8941ffe4e11514b41ccbf075e5196ba00c48de02c23f8fe973",
+    "guest/root-preflight.json": "50e378acb8ba1f3e0192d0c4992c6046097566e2f8a33f20fcd44c80f6a417ef",
+    "guest/server.log": "035a577a1f798a8941ffe4e11514b41ccbf075e5196ba00c48de02c23f8fe973",
+    "guest-cleanup-capacity.json": "442f2d6219bffd1035c19031905299b045bbd8a255d78d0b487c688d6517ac9c",
+    "initial-install.log": "12a35e6a2407f0e2167dc16283e0ca4be99ae20d6e65f99190684f9b0e7fc7f6",
+    "lima-start.log": "7dd124fac7d91e9c16240c7d3487accf13e1e34622b99ac3eea40718b5265ed2",
+    "lima-stop.log": "98251ef9b653432787f6cc03b92ebfb700da53c5b244fafc6fb9fda56e533f58",
+    "operation-inputs/control.py.txt": "ae84f75600de8c9fc068dc0ec261a8899470505afc6ca51a2e09292dc2134a78",
+    "operation-inputs/desktop-driver.py.txt": "4e66da00929e9450e7b2fd5babd0c74be24f72de5b89604a0f577edff4a2f1a1",
+    "operation-inputs/provision.py.txt": "2ddba311bfa032ce8caf04e8e1e2c7947030aac0c314762e98fdb37c89d664d6",
+    "operation-inputs/root-preflight.py.txt": "9d7c7e8e19eedd355ba22250022edc4317fb8bb72ce94166864990c789799c7a",
+    "operation-inputs/vnc_control.py.txt": "7dac04af9fa8b2b7b57473429856f8580615ae5010e28abf2f2b0cca7a1eff54",
+    "operation-inputs/window-control.py.txt": "ce0ea1f1e8172262cd09d053c57171c04ea2fc4a1c15de1f9ba4c908d1324ead",
+    "root-cleanup.json": "2e506182c2d76b7ba11ca0b9455649e0b048c43a7b903904e5f21faca671050c",
+    "root-postprovision-before-login.json": "3346c48252fbb8ef859d0cb579c12a102f9801c69870e494f6c490d828798cbf",
+    "root-preflight.json": "50e378acb8ba1f3e0192d0c4992c6046097566e2f8a33f20fcd44c80f6a417ef",
+    "root-staging.json": "876c608d4e75ced77b19d8f7b5da6841343451ed521130cd1c55d962cc6c3bb9",
+    "source-budget.json": "56ca45b245d5a933b817ba197dfd2f78a398c7cae18b6d3dae7bc58a507f56b0",
+    "transfer-manifest.json": "4a3b5f21f0b94969b2d51b6f35bc2a0d817ded8b5346711bdd6e00a39169cec8"
+  },
+  "root_preflight_provenance": "Worker refreshed/exported root observation after provisioning and supplied its computed digest to recorder; independent coordinator verification remains pending. Generic recorder provenance text does not claim completed coordinator review.",
+  "source_budget": "source-budget.json",
+  "initial_artifact_source_transfer_bytes": 15391158
+}

@@ -1,0 +1,29 @@
+{
+  "observed_unix_ns": 1792164039255954000,
+  "vm": {
+    "name": "campus-linux-d5-noble-arm64",
+    "status": "Stopped",
+    "cpus": 4,
+    "memory": 6442450944,
+    "disk": 30064771072,
+    "arch": "aarch64"
+  },
+  "baseline_allocated_bytes": 6819020800,
+  "disk_allocated_bytes": 6878593024,
+  "disk_logical_bytes": 7017725952,
+  "allocation_growth_bytes": 59572224,
+  "host_available_bytes": 27593158656,
+  "mac_zip_bytes": 257873625,
+  "private_phase_b_file_bytes": 1093263,
+  "guest_free_bytes_before_stop": 20241424384,
+  "limits": {
+    "mac_zip_bytes": 272629760,
+    "guest_additional_bytes": 1342177280,
+    "source_work_bytes": 134217728,
+    "receipt_bytes": 67108864,
+    "host_floor_bytes": 21474836480,
+    "guest_floor_bytes": 2147483648
+  },
+  "host_delta_attribution": "Host-wide free-space changes include unrelated workloads; not attributed to this lease.",
+  "utm_observation": "No UTM guest operation performed. utmctl status returned VM-not-found then list -1743 permission error; process inventory showed only named Lima qemu, UTM app process present. No claim of successful UTM CLI status verification."
+}

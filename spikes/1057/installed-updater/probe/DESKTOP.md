@@ -1,11 +1,19 @@
 # Arm64 GDM lease handoff — #1057
 
-No desktop case has run. Direction10619 authorizes phase A: the exact archive
-download/verification and read-only guest preflight. Root staging, bootstrap/helper
-execution, package installation and authority windows below remain prepared source
-for a later execution lease. LINUX-20261016 owns that lease after Office400's
-stopped/cleanup handoff, private existing guest authentication, independent review,
-CI/Council and merge. A read-only preflight does not authorize the later commands.
+Phase B direction1233 / human10643 authorized exact368809e execution with approved113a
+packages. The [actual attempt](../../../../docs/acceptance/receipts/installed-updater-1057/phase-b/run.json)
+is incomplete and Lima was returned stopped. Prompt/cancellation was observed, with
+native user-manager session certification retained for coordinator review. The deny
+window restored successfully but its required loaded marker was absent, so no denial
+update was invoked and missing authority was not run. Actual Duktape polkit124 runs
+`--no-debug` with stderr at `/dev/null`; `polkit.log()` writes there. Do not repeat the
+window, weaken marker evidence or change service logging without coordinator disposition.
+LINUX-20261016 owns the next guest lease, independent review, CI/Council and merge.
+
+The historical procedure below describes source preparation. Newest10643 scoped execution
+to three refusal scenarios only, with20-second recorder timeout,45-second total windows
+and10-second restoration reserve. Its private ordinary-login permission did not authorize
+administrator authentication or the fourth successful-prompt case described below.
 
 ## Exact inputs and bounded allocation
 
