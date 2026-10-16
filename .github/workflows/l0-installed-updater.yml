@@ -1,0 +1,59 @@
+name: L0 installed updater 1057
+on:
+  pull_request:
+    paths:
+      - 'spikes/1057/installed-updater/**'
+      - 'docs/acceptance/installed-updater-1057.md'
+      - 'docs/acceptance/receipts/installed-updater-1057/**'
+      - '.github/workflows/l0-installed-updater.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: l0-installed-updater-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  prototype:
+    name: Disposable updater ${{ matrix.arch }}
+    if: ${{ !github.event.repository.private }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: amd64
+            runner: ubuntu-24.04
+          - arch: arm64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Build with pinned release baseline
+        env:
+          EXACT_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          FIXTURE_ARCH: ${{ matrix.arch }}
+        run: bash spikes/1057/installed-updater/hosted/run.sh
+      - name: Retain small lock preparation and receipts separately
+        if: ${{ always() && !github.event.repository.private }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: updater-source-receipts-${{ matrix.arch }}
+          path: |
+            updater-output/locks/
+            updater-output/receipts/
+          if-no-files-found: error
+          retention-days: 7
+      - name: Retain disposable packages and public bootstrap only
+        if: ${{ always() && !github.event.repository.private && hashFiles('updater-output/packages/*') != '' }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: updater-packages-${{ matrix.arch }}
+          path: |
+            updater-output/packages/
+            updater-output/bootstrap/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 0
