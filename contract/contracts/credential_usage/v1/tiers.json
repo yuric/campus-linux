@@ -1,0 +1,126 @@
+{
+  "state": "available",
+  "source": "provider_account",
+  "heading": "Subscription quota",
+  "message": "",
+  "version": 1,
+  "provider": "anthropic",
+  "severity": "good",
+  "dimensions": [
+    {
+      "id": "current-week-all-models",
+      "kind": "quota",
+      "label": "Current week (all models)",
+      "scope": "account",
+      "value": "49.9% used \u00b7 50.1% remaining",
+      "window": "weekly",
+      "used_label": "49.9% used",
+      "usage_style": {
+        "tone": "good",
+        "version": 1,
+        "emphasis": "none"
+      },
+      "used_percent": 50,
+      "remaining_label": "50.1% left",
+      "remaining_percent": 51
+    },
+    {
+      "id": "current-session",
+      "kind": "quota",
+      "label": "Current provider session",
+      "scope": "account",
+      "value": "50% used \u00b7 50% remaining",
+      "window": "session",
+      "used_label": "50% used",
+      "usage_style": {
+        "tone": "caution",
+        "version": 1,
+        "emphasis": "none"
+      },
+      "used_percent": 50,
+      "remaining_label": "50% left",
+      "remaining_percent": 50
+    },
+    {
+      "id": "current-week-sonnet",
+      "kind": "quota",
+      "label": "Current week (Sonnet)",
+      "scope": "model",
+      "value": "90% used \u00b7 10% remaining",
+      "window": "weekly",
+      "used_label": "90% used",
+      "usage_style": {
+        "tone": "warning",
+        "version": 1,
+        "emphasis": "none"
+      },
+      "used_percent": 90,
+      "remaining_label": "10% left",
+      "remaining_percent": 10
+    },
+    {
+      "id": "current-week-fable",
+      "kind": "quota",
+      "label": "Current week (Fable)",
+      "scope": "model",
+      "value": "98% used \u00b7 2% remaining",
+      "window": "weekly",
+      "used_label": "98% used",
+      "usage_style": {
+        "tone": "critical",
+        "version": 1,
+        "emphasis": "pulse"
+      },
+      "used_percent": 98,
+      "remaining_label": "2% left",
+      "remaining_percent": 2
+    },
+    {
+      "id": "current-week-haiku",
+      "kind": "quota",
+      "label": "Current week (Haiku)",
+      "scope": "model",
+      "value": "100% used \u00b7 0% remaining",
+      "window": "weekly",
+      "used_label": "100% used",
+      "usage_style": {
+        "tone": "failure",
+        "version": 1,
+        "emphasis": "none"
+      },
+      "used_percent": 100,
+      "remaining_label": "0% left",
+      "remaining_percent": 0
+    }
+  ],
+  "fetched_at": "2026-10-14T12:00:00Z",
+  "credential_id": 1,
+  "summary_label": "49.9% used",
+  "severity_label": "Available",
+  "snapshot_at": "2026-10-14T11:59:00.000Z",
+  "refresh_in_flight": false,
+  "failure": null,
+  "refresh_state": {
+    "version": 1,
+    "freshness": "fresh",
+    "observed_at": "2026-10-14T11:59:00.000Z",
+    "fresh_until": "2026-10-14T12:03:00.000Z",
+    "last_attempt": null,
+    "action": {
+      "eligible": true,
+      "reason": "available",
+      "retry_at": null,
+      "message": null
+    }
+  },
+  "summary_style": {
+    "tone": "good",
+    "version": 1,
+    "emphasis": "none"
+  },
+  "attribution": {
+    "version": 1,
+    "state": "partial",
+    "message": "Saved usage has no confirmed account attribution."
+  }
+}

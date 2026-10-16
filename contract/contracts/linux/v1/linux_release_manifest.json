@@ -1,0 +1,50 @@
+{
+  "platform": "linux",
+  "channel": "stable",
+  "version": "1.0.0",
+  "build": "1",
+  "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "signing_key_id": "owner-release-key",
+  "artifacts": {
+    "linux-x86_64-deb": {
+      "url": "https://downloads.projectcampus.dev/linux-x86_64.deb",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "signature": "Zml4dHVyZSBzaWduYXR1cmU=",
+      "size_bytes": 100,
+      "evidence_label": "headless-tested preview",
+      "gaps": [
+        "Desktop acceptance pending"
+      ]
+    },
+    "linux-x86_64-appimage": {
+      "url": "https://downloads.projectcampus.dev/linux-x86_64.appimage",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "signature": "Zml4dHVyZSBzaWduYXR1cmU=",
+      "size_bytes": 100,
+      "evidence_label": "headless-tested preview",
+      "gaps": [
+        "Desktop acceptance pending"
+      ]
+    },
+    "linux-aarch64-deb": {
+      "url": "https://downloads.projectcampus.dev/linux-aarch64.deb",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "signature": "Zml4dHVyZSBzaWduYXR1cmU=",
+      "size_bytes": 100,
+      "evidence_label": "headless-tested preview",
+      "gaps": [
+        "Desktop acceptance pending"
+      ]
+    },
+    "linux-aarch64-appimage": {
+      "url": "https://downloads.projectcampus.dev/linux-aarch64.appimage",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "signature": "Zml4dHVyZSBzaWduYXR1cmU=",
+      "size_bytes": 100,
+      "evidence_label": "headless-tested preview",
+      "gaps": [
+        "Desktop acceptance pending"
+      ]
+    }
+  }
+}

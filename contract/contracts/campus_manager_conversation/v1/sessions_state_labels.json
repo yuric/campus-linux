@@ -1,0 +1,8 @@
+[
+  { "state": "open", "state_label": "Idle", "state_tone": "message" },
+  { "state": "paused", "state_label": "Idle", "state_tone": "message" },
+  { "state": "stopped", "state_label": "Ended", "state_tone": "message" },
+  { "state": "expired", "state_label": "Ended", "state_tone": "message" },
+  { "state": "failed", "state_label": "Failed", "state_tone": "error" },
+  { "state": "open", "state_label": "Waiting", "state_tone": "warning" }
+]

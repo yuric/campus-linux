@@ -1,0 +1,18 @@
+{
+  "handoff": {
+    "version": 1,
+    "state": "queued",
+    "resume_cause": "completed_unhanded",
+    "message": "Campus queued one automatic continuation because this run left unfinished work without finishing or handing off its card. The computer must check that the kept workspace is no longer in use before starting it."
+  },
+  "notice": {
+    "version": 1,
+    "reason": "completed_unhanded",
+    "severity": "info",
+    "attempt": 1,
+    "max_attempts": 1,
+    "title": "Continuing unfinished work",
+    "message": "Campus queued one automatic continuation because this run left unfinished work without finishing or handing off its card. The computer must check that the kept workspace is no longer in use before starting it."
+  },
+  "direction": "Your run ended before the card was finished or handed off. Continue from where you stopped; if you are waiting on CI or Council, check it now."
+}

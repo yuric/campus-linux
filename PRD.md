@@ -56,10 +56,13 @@ Paths below are relative to the pinned Mac tree. Before implementation freeze, r
 with then-current merged Mac source and record additions explicitly rather than silently
 chasing later features. The retired web and CLI clients are not dependencies.
 
-The local `docs/api/.source` records `campus@ab114c50b2cc881c9b3b65315355e2d469751dd0`;
-its snapshot has 132 paths, versus 292 in the pinned server above. These counts establish
+At the original documentation revision, the legacy snapshot provenance recorded `campus@ab114c50b2cc881c9b3b65315355e2d469751dd0`;
+its snapshot had 132 paths, versus 292 in the pinned server above. These counts establish
 drift, not compatibility. S2 in section 7 owns the verified post-S1 import and its path
-migration before L1 generates bindings. This documentation revision does not refresh it.
+migration before L1 generates bindings. That documentation revision did not refresh it.
+S2 now imports the bundle under `contract/`, with provenance in `contract/.source`;
+the [import receipt](docs/acceptance/contract-import.md) records the new source and checks.
+This snapshot refresh does not change the historical parity baseline or close runtime gates.
 
 ## 3. Feature parity inventory
 

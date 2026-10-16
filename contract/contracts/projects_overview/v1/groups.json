@@ -1,0 +1,25 @@
+{
+  "active_unbound": {
+    "version": 1,
+    "group": "active",
+    "group_label": "Projects",
+    "actions": [
+      { "id": "choose_folder", "label": "Choose folder" }
+    ]
+  },
+  "active_bound": {
+    "version": 1,
+    "group": "active",
+    "group_label": "Projects",
+    "actions": []
+  },
+  "not_set_up": {
+    "version": 1,
+    "group": "not_set_up",
+    "group_label": "Not set up yet",
+    "actions": [
+      { "id": "choose_folder", "label": "Choose folder" },
+      { "id": "file_first_task", "label": "File the first task" }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "source": "provider_error",
+  "provider": "openai",
+  "capture": "complete",
+  "process_stopped": true,
+  "message": "Internal error",
+  "http_status": 503
+}

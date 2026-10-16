@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "state": "unavailable",
+  "reason": "unsafe_replay",
+  "message": "Campus did not repeat this question because the started run may have used tools. Review its result before sending it again.",
+  "preferred": { "provider": "openai", "model": null },
+  "attempts": [
+    { "provider": "openai", "model": null, "reason": "selected", "terminal_reason": "provider_rate_limited" }
+  ]
+}

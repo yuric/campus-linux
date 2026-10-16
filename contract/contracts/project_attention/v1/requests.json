@@ -1,0 +1,8 @@
+{
+  "question": {"version":1,"kind":"question","label":"Question","preview":"Which date should we use?","preview_truncated":false,"action":{"kind":"task","label":"Read question","task_id":42}},
+  "review": {"version":1,"kind":"review","label":"Review requested","preview":"Review https://github.com/example/project/pull/7","preview_truncated":false,"action":{"kind":"task","label":"Review task","task_id":42}},
+  "blocked": {"version":1,"kind":"blocked","label":"Input needed","preview":"Choose a release date.","preview_truncated":false,"action":{"kind":"task","label":"View blocker","task_id":42}},
+  "error": {"version":1,"kind":"error","label":"Error","preview":"The build failed.","preview_truncated":false,"action":{"kind":"task","label":"View error","task_id":42}},
+  "unknown": {"version":1,"kind":"unknown","label":"Attention","preview":"Open the task to read its current status.","preview_truncated":false,"action":null},
+  "empty": []
+}

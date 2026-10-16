@@ -1,0 +1,14 @@
+{
+  "error": "Your message was not sent. Send it again in a moment.",
+  "code": "assistant_coordinator_busy",
+  "retry_after_seconds": 2,
+  "readiness": {
+    "version": 1,
+    "state": "unavailable",
+    "reason": "assistant_coordinator_busy",
+    "severity": "info",
+    "title": "Your message was not sent",
+    "message": "Your message was not sent. Send it again in a moment.",
+    "actions": []
+  }
+}

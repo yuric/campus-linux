@@ -1,0 +1,21 @@
+{
+  "workspace_rule": {
+    "name": "Blocked too long",
+    "kind": "escalation",
+    "trigger_id": "escalation_sweep",
+    "project_scope": {
+      "mode": "all",
+      "project_ids": []
+    },
+    "escalation": {
+      "condition": {
+        "id": "blocked_duration",
+        "threshold": 240
+      },
+      "action": {
+        "id": "comment",
+        "note": "Ping the owner if this is still stuck tomorrow."
+      }
+    }
+  }
+}

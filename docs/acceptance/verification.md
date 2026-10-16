@@ -18,7 +18,9 @@ python3 scripts/verify-linux.py --arch arm64 --output /tmp/campus-linux-receipts
 python3 scripts/verify-linux.py --arch amd64 --output /tmp/campus-linux-receipts
 ```
 
-`verify_repository.py` also checks Markdown relative links and parses the legacy OpenAPI.
+`verify_repository.py` also checks Markdown relative links and invokes
+`check_contract.py` to parse the imported OpenAPI, validate provenance and resolve every
+external fixture. The [S2 receipt](contract-import.md) records source and re-export comparisons.
 The Docker wrapper builds [Dockerfile.verify](../../ci/Dockerfile.verify), exports only
 committed files, and mounts that export read-only with no credentials, network or Docker
 socket in the test container. Limits: build timeout 900s, run timeout 600s, 2 CPU/2 GiB,

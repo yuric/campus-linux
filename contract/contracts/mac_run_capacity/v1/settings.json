@@ -1,0 +1,5 @@
+{
+  "max_concurrent_runs_per_mac": 76,
+  "max_concurrent_runs_per_mac_label": "Maximum concurrent Office runs per computer",
+  "max_concurrent_runs_per_mac_help": "Most Office runs one computer may run at once. Campus also limits each computer by its free memory and processors."
+}

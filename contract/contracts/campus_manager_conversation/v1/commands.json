@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "items": [
+    { "id": "summarize_island", "label": "Summarize this island", "prompt": "Summarize what's happening on this island right now.", "when": "always" },
+    { "id": "whats_blocked", "label": "What's blocked?", "prompt": "What's blocked right now, and why?", "when": "always" },
+    { "id": "whats_next", "label": "What should I do next?", "prompt": "What should I do next on this island?", "when": "always" }
+  ],
+  "reference": {
+    "version": 1,
+    "available": true,
+    "kinds": ["task", "pr"],
+    "max_references": 5,
+    "message": "Attach a card or pull request so the coordinator does not have to search for it.",
+    "autocomplete": { "request": { "method": "GET", "path": "/assistant/sessions/references" } }
+  }
+}

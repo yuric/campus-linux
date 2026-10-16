@@ -1,0 +1,22 @@
+{
+  "workspace_rule": {
+    "name": "OpenAPI Fixture Rule",
+    "kind": "review",
+    "trigger_id": "pr_attached",
+    "project_scope": {
+      "mode": "all",
+      "project_ids": []
+    },
+    "execution_principal": {
+      "agent_id": 1,
+      "prefer_adversarial_provider": false
+    },
+    "review_plan": {
+      "mode": "single",
+      "instruction": {
+        "source": "prompt",
+        "body": "Fixture review"
+      }
+    }
+  }
+}

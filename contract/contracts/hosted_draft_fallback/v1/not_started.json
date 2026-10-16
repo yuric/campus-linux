@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "state": "unavailable",
+  "reason": "not_started",
+  "message": "This question did not run. Your question is saved and can be sent again once an eligible computer and account are available.",
+  "preferred": {
+    "provider": "openai",
+    "model": null
+  },
+  "attempts": [
+    {
+      "provider": "openai",
+      "model": null,
+      "reason": "selected",
+      "terminal_reason": "executor_revoked"
+    }
+  ]
+}

@@ -59,23 +59,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Parse docs/api/openapi.yaml
-        run: |
-          python3 - <<'PY'
-          import sys, pathlib
-          try:
-              import yaml
-          except ImportError:
-              sys.exit("pyyaml missing")
-          p = pathlib.Path("docs/api/openapi.yaml")
-          if not p.exists():
-              sys.exit("docs/api/openapi.yaml is missing — every README promises it")
-          d = yaml.safe_load(p.read_text())
-          paths = d.get("paths") or {}
-          print(f"openapi {d.get('openapi')}, {len(paths)} paths")
-          if not paths:
-              sys.exit("spec has no paths")
-          PY
+      - name: Verify contract spec, provenance and fixture closure
+        run: python3 -B scripts/check_contract.py
 
   boundary:
     if: ${{ !github.event.repository.private }}

@@ -34,10 +34,13 @@ parser or a replacement for reviewing server-offered action arrays.
   never a dirty reference worktree. [Compare the pins](https://github.com/yuric/campus-macos/compare/3cc71216e3ca05090e90c5f09a56350b065acdcd...8e39806c5b1fb2ffeda6e55718a4fd2a4d2890da).
 - PRD server: `yuric/campus-server@d35361542b895a4fd73c838b1be3531ceea5d5fd`.
 - Reconciled Mac contract provenance: `yuric/campus-server@d93b841762183af5ba0d357f3f1c42351aeed9ff`.
-  Exact bytes/hash are recorded in the JSON ledger; references point into
-  `api/docs/openapi.yaml` at that server SHA. This is source evidence, **not** a Linux
-  snapshot import. #985 must verify/export the merged post-S1 contract and rebind these
-  pointers before product generation. The existing 132-path snapshot stays untouched.
+  This remains the historical source used for the Mac reconciliation.
+- Linux snapshot: `yuric/campus-server@a7e0abceb23f874e5a8c01ba043679a844e6d287`.
+  S2 rebound the JSON ledger's contract source/hash to
+  `contract/api/docs/openapi.yaml`; every existing operation ID and schema pointer resolves
+  against that imported spec. The [import receipt](contract-import.md) records the checks.
+  This is structural revalidation; action semantics, Linux behavior and every product
+  acceptance case remain unimplemented and require their owning cards' evidence.
 
 Explicit additions since the PRD pin: endpoint enrollment verification and account-session
 retirement; Home waiting/credential grid and usage tiers; credential-auth recheck reservations

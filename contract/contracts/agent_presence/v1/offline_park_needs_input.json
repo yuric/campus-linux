@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "location": "offline_park",
+  "outdoors": true,
+  "tone": "needs_input",
+  "label": "Needs you",
+  "line": "Needs you — offline."
+}

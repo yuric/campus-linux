@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "state": "unavailable",
+  "reason": "none_qualified",
+  "message": "Your question is saved. Restore an eligible account in Settings, then send the question again.",
+  "preferred": { "provider": "openai", "model": null },
+  "attempts": [
+    { "provider": "openai", "model": null, "reason": "quota_exhaustion" },
+    { "provider": "openai", "model": null, "reason": "credential_not_bound" }
+  ]
+}

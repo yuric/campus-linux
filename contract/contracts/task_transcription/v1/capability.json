@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "state": "available",
+  "reason": "ready",
+  "message": "Record up to 5 minutes using Apple's speech service; its privacy terms apply. Campus receives only the final text, which you can edit.",
+  "text": null,
+  "retryable": false,
+  "transport": "platform_speech",
+  "max_seconds": 300,
+  "live_partials": true,
+  "max_bytes": 32000,
+  "content_type": "text/plain"
+}

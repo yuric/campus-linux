@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "surface": "mobile",
+  "primary_action_id": null,
+  "actions": [
+    {
+      "id": "block_for_review",
+      "label": "Block",
+      "intent": "review",
+      "transition": {
+        "to": "blocked",
+        "workflow_action_id": "block_for_review",
+        "expected_stage": "seashore",
+        "blocked_reason": "Human review requested before work started",
+        "blocked_kind": "needs_input"
+      }
+    },
+    {
+      "id": "return_to_ideas",
+      "label": "Back to Imaginarium",
+      "intent": "default",
+      "transition": {
+        "to": "imaginarium",
+        "agent_approved": false
+      }
+    },
+    {
+      "id": "request_approval",
+      "label": "Send to Awaiting your approval",
+      "intent": "review",
+      "transition": {
+        "to": "imaginarium",
+        "agent_approved": true,
+        "expected_stage": "seashore"
+      }
+    },
+    {
+      "id": "close",
+      "label": "Close task",
+      "intent": "destructive",
+      "confirm": {
+        "title": "Close this task?",
+        "body": "It leaves Ready for history. A human can reopen it later; nothing else can.",
+        "confirm_label": "Close task"
+      },
+      "transition": {
+        "to": "closed"
+      }
+    }
+  ]
+}

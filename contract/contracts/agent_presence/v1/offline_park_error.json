@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "location": "offline_park",
+  "outdoors": true,
+  "tone": "error",
+  "label": "Error",
+  "line": "Error — offline."
+}

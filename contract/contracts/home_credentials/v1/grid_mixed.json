@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "title": "Credentials",
+  "snapshot_at": "2026-10-08T19:57:00.000Z",
+  "snapshot_label": "Readings from Oct 8, 7:57 PM UTC",
+  "empty_message": "No active credentials.",
+  "rows": [
+    {
+      "credential_id": 1,
+      "label": "grok-cox",
+      "provider_label": "xAI",
+      "primary": {
+        "label": "Grok quota",
+        "percent_used": 100,
+        "tone": "failure",
+        "usage_style": {
+          "version": 1,
+          "tone": "failure",
+          "emphasis": "none"
+        },
+        "value": "100% used · 0% remaining",
+        "reset": null,
+        "resets_at": null
+      },
+      "secondary": null,
+      "resting_message": null,
+      "summary_label": "100% used"
+    },
+    {
+      "credential_id": 2,
+      "label": "codex-ts",
+      "provider_label": "OpenAI",
+      "primary": {
+        "label": "Weekly limit",
+        "percent_used": 80,
+        "tone": "attention",
+        "usage_style": {
+          "version": 1,
+          "tone": "caution",
+          "emphasis": "none"
+        },
+        "value": "80% used · 20% remaining",
+        "reset": null,
+        "resets_at": null
+      },
+      "secondary": null,
+      "resting_message": null,
+      "summary_label": "80% used"
+    },
+    {
+      "credential_id": 3,
+      "label": "claude-cox",
+      "provider_label": "Anthropic",
+      "primary": {
+        "label": "Current week (all models)",
+        "percent_used": 76,
+        "tone": "good",
+        "usage_style": {
+          "version": 1,
+          "tone": "caution",
+          "emphasis": "none"
+        },
+        "value": "76% used · 24% remaining",
+        "reset": "Reset time unavailable until usage refreshes.",
+        "resets_at": null
+      },
+      "secondary": "Fable 100% used",
+      "resting_message": null,
+      "summary_label": "76% used"
+    },
+    {
+      "credential_id": 4,
+      "label": "Gemini",
+      "provider_label": "Google",
+      "primary": {
+        "label": "Account usage error",
+        "percent_used": null,
+        "tone": "failure",
+        "value": "Gemini returned nothing Campus could read.",
+        "reset": null
+      },
+      "secondary": null,
+      "resting_message": null,
+      "summary_label": null
+    }
+  ]
+}

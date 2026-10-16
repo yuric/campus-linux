@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "kind": "executor_local",
+  "operations": [
+    "login",
+    "login_status",
+    "login_input",
+    "login_cancel",
+    "verify"
+  ],
+  "input": {
+    "write_only": true,
+    "max_bytes": 8192
+  },
+  "message": "The authenticated local helper owns this login. Keep its id bound to this credential scope; relay input without storing or echoing it, and cancel that same login."
+}

@@ -1,0 +1,232 @@
+{
+  "api_version": 1,
+  "resource": "WorkspaceRule",
+  "route_sets": [
+    "rails",
+    "campus_api_gateway"
+  ],
+  "paths": [
+    "GET /settings/rules/capabilities",
+    "GET /settings/rules/authoring-options",
+    "GET /settings/rules",
+    "POST /settings/rules",
+    "GET /settings/rules/{id}",
+    "PATCH /settings/rules/{id}",
+    "DELETE /settings/rules/{id}",
+    "GET /settings/rules/{rule_id}/runs",
+    "POST /settings/rules/{id}/enable",
+    "POST /settings/rules/{id}/disable",
+    "POST /settings/rules/{id}/restore",
+    "POST /settings/rule-reviews",
+    "POST /settings/rule-review-ingresses/{id}/retry",
+    "GET /settings/rule-review-ingresses/{id}",
+    "GET /settings/rule-runs",
+    "GET /settings/rule-runs/{id}"
+  ],
+  "execution_fixture": "execution_contract.json",
+  "execution_contract": {
+    "version": 1,
+    "mode": "single",
+    "result_verdicts": ["pass", "findings", "needs_human", "failed"],
+    "history_page_size": 25,
+    "unknown_versions": "fail_closed",
+    "children": "none"
+  },
+  "enums": {
+    "authorable_kinds": [
+      "review",
+      "transition",
+      "task_creation",
+      "assignment",
+      "escalation"
+    ],
+    "authorable_triggers": [
+      "pr_attached",
+      "task_transition_requested",
+      "task_created",
+      "task_assignment_requested",
+      "escalation_sweep"
+    ],
+    "filter_ids": [
+      "all",
+      "review",
+      "transition",
+      "task_creation",
+      "assignment",
+      "escalation",
+      "archived"
+    ],
+    "review_plan_modes": [
+      "single"
+    ],
+    "instruction_sources": [
+      "prompt",
+      "skill_snapshot"
+    ],
+    "project_scope_modes": [
+      "all",
+      "selected"
+    ],
+    "execution_profiles": [
+      "hardened_exact_pr"
+    ],
+    "resource_origins": [
+      "campus",
+      "workspace"
+    ],
+    "rule_statuses": [
+      "always_on",
+      "disabled",
+      "enabled",
+      "needs_reactivation",
+      "archived"
+    ],
+    "allowed_actions": [
+      "edit",
+      "enable",
+      "disable",
+      "archive",
+      "restore"
+    ],
+    "action_intents": [
+      "default",
+      "primary",
+      "destructive"
+    ],
+    "semantic_severities": [
+      "message",
+      "warning"
+    ],
+    "recovery_actions": [
+      "open_agent_settings",
+      "reload"
+    ]
+  },
+  "concurrency_token": "current_revision_id",
+  "error_envelopes": [
+    "error",
+    "error+reason",
+    "error+details",
+    "error+reason+recovery",
+    "error+reason+current+recovery"
+  ],
+  "server_authored_copy": [
+    "label",
+    "description",
+    "state",
+    "explanation",
+    "summary",
+    "source_label",
+    "status.label",
+    "lock.label",
+    "lock.explanation",
+    "recovery.label",
+    "recovery.message",
+    "filter.query",
+    "project_scope.options.label",
+    "projects.label",
+    "adversarial_preference.label",
+    "adversarial_preference.explanation",
+    "adversarial_preference.disclosure",
+    "actions.label",
+    "actions.confirmation.title",
+    "actions.confirmation.body",
+    "actions.confirmation.confirm_label",
+    "skill_import.select_label",
+    "skill_import.errors",
+    "transition.edge.label",
+    "transition.failure_action.label",
+    "task_creation.defaults.label",
+    "task_creation.defaults.value_label",
+    "task_creation.validations.label",
+    "task_creation.validations.operator_label",
+    "task_creation.validations.message",
+    "workspace_rule_hold.message",
+    "assignment.destinations.label",
+    "assignment.destinations.explanation",
+    "assignment.conditions.priorities.label",
+    "assignment.precedence.label",
+    "assignment.precedence.description",
+    "assignment_destinations.label",
+    "escalation.condition.label",
+    "escalation.condition.threshold_label",
+    "escalation.action.label",
+    "history.state_label",
+    "history.resolution_label",
+    "history.message",
+    "history.assignment.destinations.label",
+    "history.assignment.destinations.reason",
+    "history.escalation.condition.label",
+    "history.escalation.action.label"
+  ],
+  "kind_contracts": {
+    "transition": {
+      "request_fixture": "create_transition_request.json",
+      "resource_fixture": "transition_rule.json",
+      "hold_fixture": "transition_hold.json",
+      "history_fixture": "transition_history.json",
+      "failure_actions": [
+        "keep_in_place"
+      ],
+      "check_mode": "agent_check",
+      "hold_status": 202
+    },
+    "task_creation": {
+      "request_fixture": "create_task_creation_request.json",
+      "resource_fixture": "task_creation_rule.json",
+      "history_fixture": "task_creation_history.json",
+      "rejection_fixture": "task_creation_rejected.json",
+      "default_fields": [
+        "priority",
+        "review_on_create"
+      ],
+      "validation_fields": [
+        "description",
+        "project"
+      ],
+      "operators": [
+        "present"
+      ]
+    },
+    "assignment": {
+      "request_fixture": "create_assignment_request.json",
+      "resource_fixture": "assignment_rule.json",
+      "history_fixture": "assignment_history.json",
+      "destination_kinds": [
+        "agent",
+        "department"
+      ],
+      "conditions": [
+        "priority"
+      ],
+      "precedence_mode": "narrow",
+      "history_states": [
+        "applied",
+        "skipped"
+      ]
+    },
+    "escalation": {
+      "request_fixture": "create_escalation_request.json",
+      "resource_fixture": "escalation_rule.json",
+      "history_fixture": "escalation_history.json",
+      "conditions": [
+        "blocked_duration",
+        "review_timeout",
+        "repeated_run_start_failure",
+        "expired_claim",
+        "unstaffed_department"
+      ],
+      "actions": [
+        "comment",
+        "move_to_blocked",
+        "return_to_ready"
+      ],
+      "note_max_bytes": 1000,
+      "history_states": [
+        "open",
+        "resolved",
+        "failed"
+      ]
+    }
+  }
+}

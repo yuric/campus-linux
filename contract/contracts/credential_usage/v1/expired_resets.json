@@ -1,0 +1,46 @@
+{
+  "provider": "anthropic",
+  "observed_at": "2026-10-11T12:00:00Z",
+  "served_at": "2026-10-14T12:00:00Z",
+  "dimensions": [
+    {
+      "id": "past",
+      "kind": "quota",
+      "used_percent": 67,
+      "detail": "Reset time unavailable until usage refreshes.",
+      "usage_style": {
+        "version": 1,
+        "tone": "caution",
+        "emphasis": "none"
+      }
+    },
+    {
+      "id": "prose",
+      "kind": "quota",
+      "used_percent": 45,
+      "detail": "Reset time unavailable until usage refreshes.",
+      "usage_style": {
+        "version": 1,
+        "tone": "good",
+        "emphasis": "none"
+      }
+    },
+    {
+      "id": "future",
+      "kind": "quota",
+      "resets_at": "2026-10-15T12:00:00Z",
+      "detail": "Resets tomorrow",
+      "usage_style": {
+        "version": 1,
+        "tone": "neutral",
+        "emphasis": "none"
+      }
+    },
+    {
+      "id": "allowance",
+      "kind": "account_allowance",
+      "amount": "0",
+      "detail": "0 resets"
+    }
+  ]
+}

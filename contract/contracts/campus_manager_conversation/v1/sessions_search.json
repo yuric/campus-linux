@@ -1,0 +1,4 @@
+{
+  "parameter": "search",
+  "request": { "method": "GET", "path": "/assistant/sessions" }
+}

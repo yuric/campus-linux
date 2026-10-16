@@ -1,0 +1,216 @@
+{
+  "version": 1,
+  "session": {
+    "version": 1,
+    "id": "3b0c7e1a-1d2f-4c3b-9a8e-5f6d7c8b9a01",
+    "state": "open",
+    "execution_request_id": "9d8c7b6a-5f4e-4d3c-8b2a-1f0e9d8c7b6a",
+    "executor_id": "0f1e2d3c-4b5a-4968-8776-655443322110",
+    "executor_name": "Studio Mac",
+    "run_state": "completed",
+    "opened_at": "2026-09-22T09:00:00.000000Z",
+    "ended_at": null,
+    "reason": null,
+    "message": null,
+    "error_detail": null,
+    "model_output": null,
+    "operations": {
+      "version": 1,
+      "state": "ready",
+      "message": "Campus operations use your current access. An ordinary reversible change you ask for is applied as you asked it; anything else waits for your confirmation.",
+      "calls": [],
+      "reviews": [],
+      "handoffs": [],
+      "unsupported_message": "Update Campus to use these coordinator operations."
+    },
+    "budget": {
+      "version": 2,
+      "max_rounds": 16,
+      "time_limit_seconds": 900,
+      "max_prompt_bytes": 262144,
+      "max_output_bytes": 65536,
+      "enforcement": {
+        "version": 1,
+        "enforced_limits": [
+          "concurrent_turns"
+        ],
+        "max_concurrent_turns": 1,
+        "monetary_limit": "not_enforced",
+        "message": "No turn, time or spending limit ends this session. One turn runs at a time. Use Stop or Steer to control the work."
+      }
+    },
+    "usage": {
+      "version": 1,
+      "rounds_used": 3,
+      "wall_seconds": 214,
+      "spend_estimate_cents": 0
+    },
+    "waiting_for": [
+      "2b3c4d5e-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
+    ],
+    "wakeups": {
+      "version": 1,
+      "waiting_for": {
+        "version": 1,
+        "subjects": [
+          {
+            "kind": "card_blocked",
+            "subject_id": "42"
+          }
+        ]
+      },
+      "message": "Events matching this session's subscriptions can wake the coordinator while it is open.",
+      "events": []
+    },
+    "questions": [
+      {
+        "id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+        "state": "answered",
+        "body": "What is blocked right now?",
+        "asked_at": "2026-09-22T09:00:05.000000Z",
+        "answered_at": "2026-09-22T09:01:40.000000Z",
+        "reply": "Task #42 is blocked waiting for a deploy target.",
+        "references": [],
+        "actions": [
+          {
+            "id": "copy",
+            "label": "Copy",
+            "intent": "default",
+            "request": null
+          },
+          {
+            "id": "retry",
+            "label": "Retry",
+            "intent": "default",
+            "presentation": "send",
+            "client_token": {
+              "field": "client_token",
+              "fresh": true
+            },
+            "request": {
+              "method": "POST",
+              "path": "/assistant/sessions",
+              "body": {
+                "tool_protocol_version": 1,
+                "question": "What is blocked right now?",
+                "references": []
+              }
+            }
+          },
+          {
+            "id": "edit_resend",
+            "label": "Edit and resend",
+            "intent": "default",
+            "presentation": "edit",
+            "client_token": {
+              "field": "client_token",
+              "fresh": true
+            },
+            "request": {
+              "method": "POST",
+              "path": "/assistant/sessions",
+              "body": {
+                "tool_protocol_version": 1,
+                "question": "What is blocked right now?",
+                "references": []
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "2b3c4d5e-6f7a-4b8c-9d0e-1f2a3b4c5d6e",
+        "state": "queued",
+        "body": "Create a follow-up to write the release note.",
+        "asked_at": "2026-09-22T09:02:00.000000Z",
+        "answered_at": null,
+        "reply": null,
+        "references": [],
+        "actions": [
+          {
+            "id": "copy",
+            "label": "Copy",
+            "intent": "default",
+            "request": null
+          }
+        ]
+      }
+    ],
+    "ask": {
+      "version": 1,
+      "accepting": true,
+      "message": "This coordinator session is open. A question you send here is answered by its next turn.",
+      "action": {
+        "id": "ask_question",
+        "label": "Ask the coordinator",
+        "request": {
+          "method": "POST",
+          "path": "/assistant/sessions/3b0c7e1a-1d2f-4c3b-9a8e-5f6d7c8b9a01/questions"
+        }
+      }
+    },
+    "actions": [
+      {
+        "id": "stop_session",
+        "label": "Stop session",
+        "intent": "destructive"
+      }
+    ],
+    "steering": {
+      "version": 1,
+      "supported": true,
+      "native": false,
+      "delivery": "next_turn",
+      "message": "A running coordinator turn cannot take new input. Campus gives your guidance to the session's next turn and shows whether the coordinator confirmed it used it.",
+      "unsupported_message": "Update Campus to steer this coordinator session.",
+      "action": {
+        "id": "steer_session",
+        "label": "Send guidance",
+        "request": {
+          "method": "POST",
+          "path": "/assistant/sessions/3b0c7e1a-1d2f-4c3b-9a8e-5f6d7c8b9a01/steer"
+        }
+      },
+      "steers": []
+    },
+    "composer": {
+      "version": 1,
+      "primary": {
+        "id": "stop",
+        "label": "Stop session",
+        "intent": "destructive",
+        "request": {
+          "method": "POST",
+          "path": "/assistant/sessions/3b0c7e1a-1d2f-4c3b-9a8e-5f6d7c8b9a01/stop"
+        }
+      },
+      "return_target": {
+        "id": "steer",
+        "label": "Steer this run",
+        "request": {
+          "method": "POST",
+          "path": "/assistant/sessions/3b0c7e1a-1d2f-4c3b-9a8e-5f6d7c8b9a01/steer"
+        }
+      },
+      "secondary": [
+        {
+          "id": "steer",
+          "label": "Steer this run",
+          "request": {
+            "method": "POST",
+            "path": "/assistant/sessions/3b0c7e1a-1d2f-4c3b-9a8e-5f6d7c8b9a01/steer"
+          }
+        },
+        {
+          "id": "ask",
+          "label": "New message",
+          "request": {
+            "method": "POST",
+            "path": "/assistant/sessions/3b0c7e1a-1d2f-4c3b-9a8e-5f6d7c8b9a01/questions"
+          }
+        }
+      ],
+      "message": "A turn is running. Return sends guidance for it; Stop ends this session, or send a new message for Campus to answer separately."
+    }
+  }
+}

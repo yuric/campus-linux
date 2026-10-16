@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "kind": "ended_session",
+  "session": {
+    "id": "00000000-0000-4000-8000-000000000891",
+    "state": "stopped",
+    "ended_at": "2026-10-14T08:07:26.558000Z",
+    "reason": "coordinator_stopped",
+    "message": "You stopped this coordinator session. Answers it already gave are kept."
+  }
+}

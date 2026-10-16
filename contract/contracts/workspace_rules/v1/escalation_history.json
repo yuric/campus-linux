@@ -1,0 +1,106 @@
+{
+  "version": 1,
+  "item_kind": "workspace_rule_evaluations",
+  "items": [
+    {
+      "id": 12,
+      "kind": "escalation",
+      "rule_id": 6,
+      "revision_id": 6,
+      "state": "failed",
+      "state_label": "Did not apply",
+      "severity": "warning",
+      "resolution": null,
+      "resolution_label": null,
+      "active": false,
+      "occurred_at": "2026-09-28T03:54:11.126Z",
+      "created_at": "2026-09-28T03:54:11.127Z",
+      "finished_at": "2026-09-28T03:54:11.126Z",
+      "deadline_at": null,
+      "task": {
+        "id": 12,
+        "title": "Publish the release"
+      },
+      "actor": {
+        "kind": "system",
+        "name": "Workspace Rules"
+      },
+      "transition": null,
+      "assignment": null,
+      "escalation": {
+        "condition": {
+          "id": "blocked_duration",
+          "label": "Blocked for too long"
+        },
+        "action": {
+          "id": "comment",
+          "label": "Comment on the card"
+        },
+        "occurrence_key": "blocked:2026-09-27T21:54:11.123999Z"
+      },
+      "rule_action": null,
+      "result": {
+        "reason": "action_failed",
+        "message": "Workspace Rule “Blocked too long”: this card has been Blocked since 2026-09-27T21:54:11Z, longer than 240 minutes. Campus could not apply the action: Validation failed: Body can't be blank",
+        "condition_message": "has been Blocked since 2026-09-27T21:54:11Z, longer than 240 minutes."
+      },
+      "message": "Workspace Rule “Blocked too long”: this card has been Blocked since 2026-09-27T21:54:11Z, longer than 240 minutes. Campus could not apply the action: Validation failed: Body can't be blank",
+      "failure": {
+        "reason": "action_failed",
+        "detail": "Workspace Rule “Blocked too long”: this card has been Blocked since 2026-09-27T21:54:11Z, longer than 240 minutes. Campus could not apply the action: Validation failed: Body can't be blank"
+      }
+    },
+    {
+      "id": 11,
+      "kind": "escalation",
+      "rule_id": 6,
+      "revision_id": 6,
+      "state": "resolved",
+      "state_label": "Resolved",
+      "severity": "message",
+      "resolution": null,
+      "resolution_label": null,
+      "active": false,
+      "occurred_at": "2026-09-28T03:55:11.108Z",
+      "created_at": "2026-09-28T03:54:11.054Z",
+      "finished_at": "2026-09-28T03:55:11.108Z",
+      "deadline_at": null,
+      "task": {
+        "id": 11,
+        "title": "Write the migration"
+      },
+      "actor": {
+        "kind": "system",
+        "name": "Workspace Rules"
+      },
+      "transition": null,
+      "assignment": null,
+      "escalation": {
+        "condition": {
+          "id": "blocked_duration",
+          "label": "Blocked for too long"
+        },
+        "action": {
+          "id": "comment",
+          "label": "Comment on the card"
+        },
+        "occurrence_key": "blocked:2026-09-27T22:54:11.043165Z"
+      },
+      "rule_action": null,
+      "result": {
+        "reason": "escalated",
+        "message": "Workspace Rule “Blocked too long”: this card has been Blocked since 2026-09-27T22:54:11Z, longer than 240 minutes. Commented on the card.",
+        "action_message": "Commented on the card.",
+        "condition_message": "has been Blocked since 2026-09-27T22:54:11Z, longer than 240 minutes.",
+        "resolution_message": "The condition cleared."
+      },
+      "message": "Workspace Rule “Blocked too long”: this card has been Blocked since 2026-09-27T22:54:11Z, longer than 240 minutes. Commented on the card.",
+      "failure": null
+    }
+  ],
+  "next_cursor": null,
+  "retained_history": {
+    "state": "retained",
+    "message": "Rule check history is kept with this Rule's revisions."
+  }
+}
