@@ -1,0 +1,2 @@
+{"phase": "awaiting-desktop-create-disposable-collection-prompt"}
+{"phase": "collection-create", "pass": false, "reason": "new unaliased collection identity not established", "prompt": {"needed": true, "timeout": true}, "script_sha256": "4e0eb5d7723d070a367f0c815a0fcdff37e5f350fb0ad8095f04ede6cef62f04"}

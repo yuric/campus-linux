@@ -1,0 +1,27 @@
+{
+  "engine": "claude",
+  "version": "2.1.301",
+  "architecture": "aarch64",
+  "metadata_url": "https://registry.npmjs.org/@anthropic-ai/claude-code-linux-arm64/2.1.301",
+  "metadata_sha256": "696c7df4ca9425f515cb32f6541dfc660e439c5b0fca16ce046a5896bbee3964",
+  "url": "https://registry.npmjs.org/@anthropic-ai/claude-code-linux-arm64/-/claude-code-linux-arm64-2.1.301.tgz",
+  "integrity": "sha512-vMA8QVkLBqO8fZLaCecONZhatIRtoieIwCZ8npn8b0UvinZz40i5PhBIQ52fvhnZYdX16wFdTzhij3iL1RRL7w==",
+  "registry_signatures": [
+    {
+      "sig": "MEYCIQChKlb0rkOSBOH+4gmu95FuF4OyA4gJlBL5sQpUeZtKsgIhAODYmnEe6wjpYtOgfWnfvk8MzRXvXs2P0mbKJopKkey1",
+      "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+    },
+    {
+      "sig": "MEUCIQDHleVJcs8ahZoaOrdRNazkFbvo0i51Y8ZcDDoMctA3bQIgamqZf9FQENHvHSvgAwCJYDzdRWm+S8iFZcTG5mfcRPA=",
+      "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+    }
+  ],
+  "kind": "tar",
+  "member_basename": "claude",
+  "verification": "npm SRI plus binary SHA256 from independently verified Anthropic signed manifest; see claude-signature-receipt.json",
+  "signed_manifest_binary_sha256": "1e119036a802d359ba5f9886428e031586e8796f7a858d5a8ee179ac7b8604f0",
+  "artifact_sha256": "b85a88e296a63ee407f7755eb9a1b071b2529f2adc39894148c127827a58e7d0",
+  "binary_sha256": "1e119036a802d359ba5f9886428e031586e8796f7a858d5a8ee179ac7b8604f0",
+  "member": "package/claude",
+  "binary_size": 267247608
+}

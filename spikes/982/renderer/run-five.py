@@ -11,6 +11,7 @@ a=p.parse_args()
 a.output.mkdir(exist_ok=False,parents=True)
 base=Path(__file__).resolve().parent
 freeze=json.loads(a.frozen.read_text())
+if freeze.get('purpose')!='timing-candidate-with-motion-evidence' or not freeze.get('motion_proof_sha256'): raise SystemExit('Successful corrected motion proof must precede timing freeze')
 for filename,key in [('run-five.py','run_five_sha256'),('summarize.py','summarizer_sha256')]:
     if hashlib.sha256((base/filename).read_bytes()).hexdigest()!=freeze[key]: raise SystemExit('Automation differs from frozen bytes')
 env=dict(os.environ,LIBGL_ALWAYS_SOFTWARE='1')

@@ -1,0 +1,8 @@
+{
+  "scope": "UNSIGNED disposable URI activation fixtures; GTK/Python host runtime, not Tauri product",
+  "arch": "arm64",
+  "deb_sha256": "ca58d96d5e8c92febc418298b1881c5c2d25854fab4fc0e33eb67e254264035b",
+  "appimage_sha256": "01f458c21ee961e8c2ab989211ddbd33b5e369751136948511d15c7c57199644",
+  "runtime_sha256": "b4ff0030242d0c3bb12ce40541828303cf167493f4793456f0436edd6255c39d",
+  "handler_sha256": "2e6a7c664c278af271ec90ce12315ead673e71afb7c728c8d5cd14a17054b20e"
+}

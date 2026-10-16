@@ -1,0 +1,36 @@
+{
+  "kind": "preflight_failure",
+  "renderer": null,
+  "unmasked_vendor": null,
+  "masked_renderer": null,
+  "vendor": null,
+  "version": null,
+  "debug_extension": false,
+  "extensions": null,
+  "context_lost": null,
+  "context_attempts": [],
+  "canvas_count": 0,
+  "synthetic_page_text": "",
+  "viewport": [
+    1440,
+    900
+  ],
+  "scale": 1,
+  "visibility": "visible",
+  "focus": true,
+  "island_state": null,
+  "lifecycle": null,
+  "errors": [
+    "Error: Actual WebGL llvmpipe proof missing"
+  ],
+  "freeze": {},
+  "resources": [
+    "Island/island.html",
+    "Island/assets/island-1R8T8TpV.js",
+    "Island/assets/island-BKmEIAej.css"
+  ],
+  "compositing_policy": "on-demand",
+  "webgl_enabled": true,
+  "hardware_acceleration_policy": "<enum WEBKIT_HARDWARE_ACCELERATION_POLICY_ALWAYS of type WebKit2.HardwareAccelerationPolicy>",
+  "webkit_runtime": "2.52.6"
+}

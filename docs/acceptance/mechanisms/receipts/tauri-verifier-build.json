@@ -1,0 +1,85 @@
+{
+  "scope": "exact source-extracted updater2.14.0 verification functions; not full installed updater",
+  "crates": [
+    {
+      "crate": "tauri-plugin-updater",
+      "version": "2.14.0",
+      "url": "https://static.crates.io/crates/tauri-plugin-updater/tauri-plugin-updater-2.14.0.crate",
+      "sha256": "7259989d4fe11b2bf51f7d671642249b1837c4ae2da1430dc713ae38f98ceeec"
+    },
+    {
+      "crate": "minisign-verify",
+      "version": "0.3.0",
+      "url": "https://static.crates.io/crates/minisign-verify/minisign-verify-0.3.0.crate",
+      "sha256": "871285dc19d8d0ebe0eef3d0e99a205f2a71363b122632cbbfa4a6c370a960ce"
+    },
+    {
+      "crate": "base64",
+      "version": "0.22.1",
+      "url": "https://static.crates.io/crates/base64/base64-0.22.1.crate",
+      "sha256": "72b3254f16251a8381aa12e40e3c4d2f0199f8c6508fbecb9d91f575e0fbb8c6"
+    },
+    {
+      "crate": "semver",
+      "version": "1.0.28",
+      "url": "https://static.crates.io/crates/semver/semver-1.0.28.crate",
+      "sha256": "8a7852d02fc848982e0c167ef163aaff9cd91dc640ba85e263cb1ce46fae51cd"
+    }
+  ],
+  "source_functions_sha256": "116d93fcf08a6a3d8cb6d9a70e8f3dd9d9ff860d8de219de79d34e8e58db572b",
+  "wrapper_sha256": "26964842c71163d983817832f2af2cd22661d9eef841c813ec8c0e17623d8980",
+  "binary_sha256": "203431af56bea2b4624c2f17f6179fbb0a95978c8012c80a870f4bc46f838471",
+  "rustc": "rustc 1.75.0 (82e1608df 2023-12-21) (built from a source tarball)",
+  "commands": [
+    [
+      "rustc",
+      "--crate-name",
+      "minisign_verify",
+      "--crate-type=rlib",
+      "--edition=2018",
+      "/home/campusqa/spike982/tauri-verifier/minisign-verify-0.3.0/src/lib.rs",
+      "-o",
+      "/home/campusqa/spike982/tauri-verifier/libminisign_verify.rlib"
+    ],
+    [
+      "rustc",
+      "--crate-name",
+      "base64",
+      "--crate-type=rlib",
+      "--edition=2018",
+      "/home/campusqa/spike982/tauri-verifier/base64-0.22.1/src/lib.rs",
+      "-o",
+      "/home/campusqa/spike982/tauri-verifier/libbase64.rlib",
+      "--cfg",
+      "feature=\"std\"",
+      "--cfg",
+      "feature=\"alloc\""
+    ],
+    [
+      "rustc",
+      "--crate-name",
+      "semver",
+      "--crate-type=rlib",
+      "--edition=2021",
+      "/home/campusqa/spike982/tauri-verifier/semver-1.0.28/src/lib.rs",
+      "-o",
+      "/home/campusqa/spike982/tauri-verifier/libsemver.rlib",
+      "--cfg",
+      "feature=\"std\""
+    ],
+    [
+      "rustc",
+      "--edition=2021",
+      "/home/campusqa/spike982/tauri-verifier/verify.rs",
+      "-o",
+      "/home/campusqa/spike982/tauri-verifier/tauri-signature-verify",
+      "--extern",
+      "minisign_verify=/home/campusqa/spike982/tauri-verifier/libminisign_verify.rlib",
+      "--extern",
+      "base64=/home/campusqa/spike982/tauri-verifier/libbase64.rlib",
+      "--extern",
+      "semver=/home/campusqa/spike982/tauri-verifier/libsemver.rlib"
+    ]
+  ],
+  "require_signed_version": true
+}

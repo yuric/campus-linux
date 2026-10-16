@@ -1,0 +1,173 @@
+{
+  "scope": "disposable package/helper filesystem and process mechanism model; no production protocol, systemd or graphical acceptance",
+  "cases": [
+    {
+      "format": "deb",
+      "case": "stable-copy-singleton-move-delete-busy-fence-promote",
+      "result": "PASS",
+      "old_identity": {
+        "pid": 3784,
+        "version": "0.982.1",
+        "image": "/tmp/campus-982-lifecycle-c5co2p75/deb/versions/0.982.1/helper"
+      },
+      "new_identity": {
+        "pid": 3797,
+        "version": "0.982.2",
+        "image": "/tmp/campus-982-lifecycle-c5co2p75/deb/versions/0.982.2/helper"
+      },
+      "termination_seconds": 0.017461909000019205,
+      "synthetic_outbox_sha256": "84675baaef649c0071c43b2e25038aaf96004e38dfe2e8198a9a4314408dc602",
+      "appimage_execution": "dpkg-deb extracted helper"
+    },
+    {
+      "format": "deb",
+      "case": "crash-after-stage",
+      "result": "PASS",
+      "recovered_identity": {
+        "pid": 3799,
+        "version": "0.982.1",
+        "image": "/tmp/campus-982-lifecycle-c5co2p75/deb/versions/0.982.1/helper"
+      },
+      "claims": "not implemented; any recovery fence remains until reconciliation"
+    },
+    {
+      "format": "deb",
+      "case": "crash-after-fence",
+      "result": "PASS",
+      "recovered_identity": {
+        "pid": 3801,
+        "version": "0.982.1",
+        "image": "/tmp/campus-982-lifecycle-c5co2p75/deb/versions/0.982.1/helper"
+      },
+      "claims": "not implemented; any recovery fence remains until reconciliation"
+    },
+    {
+      "format": "deb",
+      "case": "crash-before-promote",
+      "result": "PASS",
+      "recovered_identity": {
+        "pid": 3803,
+        "version": "0.982.1",
+        "image": "/tmp/campus-982-lifecycle-c5co2p75/deb/versions/0.982.1/helper"
+      },
+      "claims": "not implemented; any recovery fence remains until reconciliation"
+    },
+    {
+      "format": "deb",
+      "case": "crash-after-promote",
+      "result": "PASS",
+      "recovered_identity": {
+        "pid": 3805,
+        "version": "0.982.1",
+        "image": "/tmp/campus-982-lifecycle-c5co2p75/deb/versions/0.982.1/helper"
+      },
+      "claims": "not implemented; any recovery fence remains until reconciliation"
+    },
+    {
+      "format": "deb",
+      "case": "crash-after-accept",
+      "result": "PASS",
+      "recovered_identity": {
+        "pid": 3807,
+        "version": "0.982.2",
+        "image": "/tmp/campus-982-lifecycle-c5co2p75/deb/versions/0.982.2/helper"
+      },
+      "claims": "not implemented; any recovery fence remains until reconciliation"
+    },
+    {
+      "format": "deb",
+      "case": "incompatible-synthetic-state-rejected",
+      "result": "PASS"
+    },
+    {
+      "format": "deb",
+      "case": "fixture-uninstall-preserves-sibling-user-data",
+      "result": "PASS",
+      "limits": "no registration credentials or systemd unit created by this model"
+    },
+    {
+      "format": "appimage",
+      "case": "stable-copy-singleton-move-delete-busy-fence-promote",
+      "result": "PASS",
+      "old_identity": {
+        "pid": 3810,
+        "version": "0.982.1",
+        "image": "/tmp/campus-982-lifecycle-c5co2p75/appimage/versions/0.982.1/helper"
+      },
+      "new_identity": {
+        "pid": 3813,
+        "version": "0.982.2",
+        "image": "/tmp/campus-982-lifecycle-c5co2p75/appimage/versions/0.982.2/helper"
+      },
+      "termination_seconds": 0.014035220000039317,
+      "synthetic_outbox_sha256": "84675baaef649c0071c43b2e25038aaf96004e38dfe2e8198a9a4314408dc602",
+      "appimage_execution": "extract-only; FUSE mount and graphical UI not exercised"
+    },
+    {
+      "format": "appimage",
+      "case": "crash-after-stage",
+      "result": "PASS",
+      "recovered_identity": {
+        "pid": 3815,
+        "version": "0.982.1",
+        "image": "/tmp/campus-982-lifecycle-c5co2p75/appimage/versions/0.982.1/helper"
+      },
+      "claims": "not implemented; any recovery fence remains until reconciliation"
+    },
+    {
+      "format": "appimage",
+      "case": "crash-after-fence",
+      "result": "PASS",
+      "recovered_identity": {
+        "pid": 3817,
+        "version": "0.982.1",
+        "image": "/tmp/campus-982-lifecycle-c5co2p75/appimage/versions/0.982.1/helper"
+      },
+      "claims": "not implemented; any recovery fence remains until reconciliation"
+    },
+    {
+      "format": "appimage",
+      "case": "crash-before-promote",
+      "result": "PASS",
+      "recovered_identity": {
+        "pid": 3819,
+        "version": "0.982.1",
+        "image": "/tmp/campus-982-lifecycle-c5co2p75/appimage/versions/0.982.1/helper"
+      },
+      "claims": "not implemented; any recovery fence remains until reconciliation"
+    },
+    {
+      "format": "appimage",
+      "case": "crash-after-promote",
+      "result": "PASS",
+      "recovered_identity": {
+        "pid": 3821,
+        "version": "0.982.1",
+        "image": "/tmp/campus-982-lifecycle-c5co2p75/appimage/versions/0.982.1/helper"
+      },
+      "claims": "not implemented; any recovery fence remains until reconciliation"
+    },
+    {
+      "format": "appimage",
+      "case": "crash-after-accept",
+      "result": "PASS",
+      "recovered_identity": {
+        "pid": 3823,
+        "version": "0.982.2",
+        "image": "/tmp/campus-982-lifecycle-c5co2p75/appimage/versions/0.982.2/helper"
+      },
+      "claims": "not implemented; any recovery fence remains until reconciliation"
+    },
+    {
+      "format": "appimage",
+      "case": "incompatible-synthetic-state-rejected",
+      "result": "PASS"
+    },
+    {
+      "format": "appimage",
+      "case": "fixture-uninstall-preserves-sibling-user-data",
+      "result": "PASS",
+      "limits": "no registration credentials or systemd unit created by this model"
+    }
+  ]
+}

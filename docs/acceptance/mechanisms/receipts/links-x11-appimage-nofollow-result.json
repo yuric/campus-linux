@@ -1,0 +1,179 @@
+{
+  "script_sha256": "a59d69833f46b76106d67036ab5ffc30bdf04b80a3ab336098d6bfa8024f6cd1",
+  "focus_result": "PASS",
+  "scope": "actual disposable desktop package activation; synthetic principal/navigation only; no localhost HTTP bridge or API fetch",
+  "format": "appimage",
+  "session": "x11",
+  "display": ":1",
+  "wayland_display": null,
+  "architecture": "aarch64",
+  "handler_default": "campus-982-links-appimage.desktop",
+  "executable_sha256": "01f458c21ee961e8c2ab989211ddbd33b5e369751136948511d15c7c57199644",
+  "singleton_window": {
+    "kind": "window_created",
+    "pid": 5870,
+    "monotonic": 467.32084016,
+    "format": "appimage",
+    "mountinfo": [
+      "96 33 0:53 / /tmp/.mount_campuscNKApm ro,nosuid,nodev,relatime shared:343 - fuse.campus-982-links-disposable.AppImage campus-982-links-disposable.AppImage ro,user_id=1000,group_id=1001"
+    ],
+    "script_path": "/tmp/.mount_campuscNKApm/handler.py",
+    "appimage": "/home/campusqa/spike982/link-fixtures/campus-982-links-disposable.AppImage",
+    "architecture": "aarch64",
+    "session": "x11",
+    "principal": "https://fixture.example.invalid"
+  },
+  "window_observations": [
+    {
+      "kind": "window_observation",
+      "pid": 5870,
+      "monotonic": 467.63504396,
+      "format": "appimage",
+      "active": true,
+      "visible": true
+    },
+    {
+      "kind": "window_observation",
+      "pid": 5870,
+      "monotonic": 468.290330768,
+      "format": "appimage",
+      "active": true,
+      "visible": true
+    }
+  ],
+  "cases": [
+    {
+      "case": "cold-start",
+      "result": "PASS",
+      "event": {
+        "kind": "accepted",
+        "pid": 5870,
+        "monotonic": 467.31658565,
+        "format": "appimage",
+        "task": 982
+      }
+    },
+    {
+      "case": "existing-window",
+      "result": "PASS",
+      "event": {
+        "kind": "accepted",
+        "pid": 5870,
+        "monotonic": 467.981397151,
+        "format": "appimage",
+        "task": 983
+      }
+    },
+    {
+      "case": "empty-id",
+      "result": "PASS",
+      "event": {
+        "kind": "rejected",
+        "pid": 5870,
+        "monotonic": 468.587151138,
+        "format": "appimage",
+        "reason": "invalid-navigation-or-instance"
+      }
+    },
+    {
+      "case": "unicode-id",
+      "result": "PASS",
+      "event": {
+        "kind": "rejected",
+        "pid": 5870,
+        "monotonic": 468.68105238,
+        "format": "appimage",
+        "reason": "invalid-navigation-or-instance"
+      }
+    },
+    {
+      "case": "overflow-id",
+      "result": "PASS",
+      "event": {
+        "kind": "rejected",
+        "pid": 5870,
+        "monotonic": 468.78212687,
+        "format": "appimage",
+        "reason": "invalid-navigation-or-instance"
+      }
+    },
+    {
+      "case": "encoded-separator",
+      "result": "PASS",
+      "event": {
+        "kind": "rejected",
+        "pid": 5870,
+        "monotonic": 468.882137398,
+        "format": "appimage",
+        "reason": "invalid-navigation-or-instance"
+      }
+    },
+    {
+      "case": "foreign-principal",
+      "result": "PASS",
+      "event": {
+        "kind": "rejected",
+        "pid": 5870,
+        "monotonic": 468.988446656,
+        "format": "appimage",
+        "reason": "invalid-navigation-or-instance"
+      }
+    },
+    {
+      "case": "userinfo-principal",
+      "result": "PASS",
+      "event": {
+        "kind": "rejected",
+        "pid": 5870,
+        "monotonic": 469.090423868,
+        "format": "appimage",
+        "reason": "invalid-navigation-or-instance"
+      }
+    },
+    {
+      "case": "fragment",
+      "result": "PASS",
+      "event": {
+        "kind": "rejected",
+        "pid": 5870,
+        "monotonic": 469.188956884,
+        "format": "appimage",
+        "reason": "invalid-navigation-or-instance"
+      }
+    },
+    {
+      "case": "duplicate-query",
+      "result": "PASS",
+      "event": {
+        "kind": "rejected",
+        "pid": 5870,
+        "monotonic": 469.292524558,
+        "format": "appimage",
+        "reason": "invalid-navigation-or-instance"
+      }
+    },
+    {
+      "case": "unknown-query",
+      "result": "PASS",
+      "event": {
+        "kind": "rejected",
+        "pid": 5870,
+        "monotonic": 469.391657153,
+        "format": "appimage",
+        "reason": "invalid-navigation-or-instance"
+      }
+    },
+    {
+      "case": "missing-principal",
+      "result": "PASS",
+      "event": {
+        "kind": "rejected",
+        "pid": 5870,
+        "monotonic": 469.492561697,
+        "format": "appimage",
+        "reason": "invalid-navigation-or-instance"
+      }
+    }
+  ],
+  "cleanup": "REQUIRED after screenshot: rerun --root SAME --cleanup"
+}

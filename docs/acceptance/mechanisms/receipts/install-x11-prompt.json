@@ -1,0 +1,14 @@
+{
+  "scope": "disposable root-owned staging and polkit routing; not Tauri signature or interactive prompt acceptance",
+  "cases": [
+    {
+      "case": "real-polkit-prompt-valid-native-v2",
+      "result": "PASS",
+      "exit": 0,
+      "before_helper_sha256": "9dbb4f543be0e07f5292e7262de69cd8db64b0283502edf196ea74482ca129c0",
+      "after_helper_sha256": "9dbb4f543be0e07f5292e7262de69cd8db64b0283502edf196ea74482ca129c0",
+      "stdout": "{\"phase\": \"verified-root-owned-bytes\", \"sha256\": \"7dda546a3dd1cda6c5cc72434f57c8205c62c4b709a2720e41809b53f39bea11\"}\n{\"phase\": \"installed\", \"sha256\": \"7dda546a3dd1cda6c5cc72434f57c8205c62c4b709a2720e41809b53f39bea11\", \"version\": \"0.982.2\"}\n",
+      "stderr": ""
+    }
+  ]
+}

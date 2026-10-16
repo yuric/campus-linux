@@ -1,0 +1,92 @@
+{
+  "scope": "Campus #982 disposable session mechanism only",
+  "operation": "cleanup",
+  "time_ns": 1792153395248572357,
+  "uid": 1000,
+  "unit": "campus-982-session-spike.service",
+  "base": "/home/campusqa/.local/share/campus-982-spike/session",
+  "state": null,
+  "events": [],
+  "commands": [
+    {
+      "argv": [
+        "systemctl",
+        "--user",
+        "disable",
+        "--now",
+        "campus-982-session-spike.service"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "Removed \"/home/campusqa/.config/systemd/user/graphical-session.target.wants/campus-982-session-spike.service\".\n"
+    },
+    {
+      "argv": [
+        "systemctl",
+        "--user",
+        "daemon-reload"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "systemctl",
+        "--user",
+        "reset-failed",
+        "campus-982-session-spike.service"
+      ],
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Failed to reset failed state of unit campus-982-session-spike.service: Unit campus-982-session-spike.service not loaded.\n"
+    },
+    {
+      "argv": [
+        "systemctl",
+        "--user",
+        "show",
+        "graphical-session.target",
+        "--property=ActiveState",
+        "--property=SubState"
+      ],
+      "returncode": 0,
+      "stdout": "ActiveState=active\nSubState=active\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "systemctl",
+        "--user",
+        "show",
+        "campus-982-session-spike.service",
+        "--property=ActiveState",
+        "--property=SubState",
+        "--property=MainPID",
+        "--property=ControlGroup",
+        "--property=NRestarts",
+        "--property=Result",
+        "--property=RestartUSec",
+        "--property=RestartSteps",
+        "--property=RestartMaxDelayUSec",
+        "--property=ExecMainStatus",
+        "--property=ExecMainCode",
+        "--property=FragmentPath"
+      ],
+      "returncode": 0,
+      "stdout": "RestartUSec=100ms\nRestartSteps=0\nRestartMaxDelayUSec=infinity\nMainPID=0\nResult=success\nNRestarts=0\nExecMainCode=0\nExecMainStatus=0\nControlGroup=\nActiveState=inactive\nSubState=dead\nFragmentPath=\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "loginctl",
+        "list-sessions",
+        "--no-legend"
+      ],
+      "returncode": 0,
+      "stdout": "12 1000 campusqa seat0 tty2 active no -\n 4  501 yuri     -     -    active no -\n",
+      "stderr": ""
+    }
+  ],
+  "limitations": "Synthetic epoch only. Parent must record real GDM logout/login, SSH survival, absent target refusal and no-window restart. Not a product package receipt."
+}

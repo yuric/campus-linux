@@ -1,0 +1,242 @@
+{
+  "schema": 1,
+  "scope": "OS spike only; no product/contract acceptance",
+  "platform": "Linux-6.8.0-142-generic-aarch64-with-glibc2.39",
+  "architecture": "aarch64",
+  "uid": 1000,
+  "cases": [
+    {
+      "case": "scope-vector",
+      "result": "pass",
+      "observed": {
+        "input_utf8_hex": "61",
+        "expected": "YQ",
+        "actual": "YQ"
+      }
+    },
+    {
+      "case": "scope-vector",
+      "result": "pass",
+      "observed": {
+        "input_utf8_hex": "6162",
+        "expected": "YWI",
+        "actual": "YWI"
+      }
+    },
+    {
+      "case": "scope-vector",
+      "result": "pass",
+      "observed": {
+        "input_utf8_hex": "616263",
+        "expected": "YWJj",
+        "actual": "YWJj"
+      }
+    },
+    {
+      "case": "scope-vector",
+      "result": "pass",
+      "observed": {
+        "input_utf8_hex": "c3a9",
+        "expected": "w6k",
+        "actual": "w6k"
+      }
+    },
+    {
+      "case": "scope-vector",
+      "result": "pass",
+      "observed": {
+        "input_utf8_hex": "e697a5e69cace8aa9e",
+        "expected": "5pel5pys6Kqe",
+        "actual": "5pel5pys6Kqe"
+      }
+    },
+    {
+      "case": "scope-vector",
+      "result": "pass",
+      "observed": {
+        "input_utf8_hex": "2e2e2f",
+        "expected": "Li4v",
+        "actual": "Li4v"
+      }
+    },
+    {
+      "case": "scope-reject",
+      "result": "pass",
+      "observed": {
+        "bytes": 0,
+        "nul": false
+      }
+    },
+    {
+      "case": "scope-reject",
+      "result": "pass",
+      "observed": {
+        "bytes": 1,
+        "nul": true
+      }
+    },
+    {
+      "case": "scope-reject",
+      "result": "pass",
+      "observed": {
+        "bytes": 3,
+        "nul": true
+      }
+    },
+    {
+      "case": "scope-reject",
+      "result": "pass",
+      "observed": {
+        "bytes": 161,
+        "nul": false
+      }
+    },
+    {
+      "case": "scope-reject",
+      "result": "pass",
+      "observed": {
+        "bytes": 162,
+        "nul": false
+      }
+    },
+    {
+      "case": "scope-160-byte-boundary",
+      "result": "pass",
+      "observed": {}
+    },
+    {
+      "case": "openat2-escape-rejected",
+      "result": "pass",
+      "observed": {
+        "path_kind": "escape/KEEP"
+      }
+    },
+    {
+      "case": "openat2-escape-rejected",
+      "result": "pass",
+      "observed": {
+        "path_kind": "scope/link/KEEP"
+      }
+    },
+    {
+      "case": "openat2-escape-rejected",
+      "result": "pass",
+      "observed": {
+        "path_kind": "../user-repository/KEEP"
+      }
+    },
+    {
+      "case": "openat2-escape-rejected",
+      "result": "pass",
+      "observed": {
+        "path_kind": "absolute"
+      }
+    },
+    {
+      "case": "held-descriptor-rename",
+      "result": "pass",
+      "observed": {
+        "caveat": "FD pins inode, not continued lexical ancestry; no claim of same-UID containment"
+      }
+    },
+    {
+      "case": "symlink-rename-race",
+      "result": "pass",
+      "observed": {
+        "iterations": 3000,
+        "opened": 361,
+        "rejected": 2639,
+        "escaped": 0,
+        "thread_errors": []
+      }
+    },
+    {
+      "case": "separate-filesystem-repository",
+      "result": "pass",
+      "observed": {
+        "root_device": 64769,
+        "repository_device": 30,
+        "method": "Independent authorized repository descriptor; no global NO_XDEV restriction"
+      }
+    },
+    {
+      "case": "ipc-mutual-peer",
+      "result": "pass",
+      "observed": {
+        "client_peer": [
+          3435,
+          1000,
+          1001
+        ],
+        "server_peer": [
+          3435,
+          1000,
+          1001
+        ]
+      }
+    },
+    {
+      "case": "ipc-wrong-principal",
+      "result": "pass",
+      "observed": {}
+    },
+    {
+      "case": "ipc-wrong-token",
+      "result": "pass",
+      "observed": {}
+    },
+    {
+      "case": "ipc-other-uid-predicate",
+      "result": "pass",
+      "observed": {
+        "limitation": "Actual different-UID connect requires separate privileged test"
+      }
+    },
+    {
+      "case": "ipc-cross-attempt",
+      "result": "pass",
+      "observed": {}
+    },
+    {
+      "case": "ipc-stale-endpoint",
+      "result": "pass",
+      "observed": {}
+    },
+    {
+      "case": "ipc-same-uid-limit-observed",
+      "result": "pass",
+      "observed": {
+        "limitation": "Token readable to same UID; no application identity or sandbox claim"
+      }
+    },
+    {
+      "case": "child-environment-and-fds",
+      "result": "pass",
+      "observed": {
+        "inherited_keys": [
+          "CAMPUS_API_TOKEN",
+          "CAMPUS_MCP_TOKEN",
+          "HOME",
+          "LANG",
+          "PATH"
+        ],
+        "inherited_fds": [],
+        "no_values_logged": true
+      }
+    },
+    {
+      "case": "user-data-preserved",
+      "result": "pass",
+      "observed": {
+        "before_sha256": "cf37db3ed33efc90b7e27cddf79fc12108dda6e6999a6c74b495a4a5dfcf589d",
+        "after_sha256": "cf37db3ed33efc90b7e27cddf79fc12108dda6e6999a6c74b495a4a5dfcf589d"
+      }
+    }
+  ],
+  "remaining": [
+    "real separate-UID IPC and socket owner/starttime authentication",
+    "real token authority/expiry/revoke requires merged Rails contracts",
+    "same-UID malicious processes are outside containment guarantee",
+    "credential-root rename outside ancestry must fence future CLI launches"
+  ]
+}

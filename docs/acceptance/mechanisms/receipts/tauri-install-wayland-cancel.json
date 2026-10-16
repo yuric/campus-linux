@@ -1,0 +1,19 @@
+{
+  "pass": true,
+  "script_sha256": "3c220e73d12fff6375ca9c04b0787c5d055cc5e127e9f810148f3d875bce2538",
+  "scope": "disposable polkit/root exact-byte installer using exact upstream Tauri2.14.0 verification functions and signed-version requirement; NOT full installed Tauri updater or release acceptance",
+  "signature_scheme": "Tauri base64-wrapped minisign",
+  "require_signed_version": true,
+  "cases": [
+    {
+      "case": "tauri-polkit-denied-intact",
+      "result": "PASS",
+      "exit": 126,
+      "before_helper_sha256": "9dbb4f543be0e07f5292e7262de69cd8db64b0283502edf196ea74482ca129c0",
+      "expected_helper_sha256": "9dbb4f543be0e07f5292e7262de69cd8db64b0283502edf196ea74482ca129c0",
+      "after_helper_sha256": "9dbb4f543be0e07f5292e7262de69cd8db64b0283502edf196ea74482ca129c0",
+      "stdout": "",
+      "stderr": "Error executing command as another user: Request dismissed\n"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "kind": "preflight_failure",
+  "errors": [
+    "WebKitJavascriptError: user-script:1:6552:112: Error: Actual WebGL llvmpipe proof missing (699)"
+  ],
+  "freeze": {},
+  "resources": [
+    "Island/island.html",
+    "Island/assets/island-1R8T8TpV.js",
+    "Island/assets/island-BKmEIAej.css"
+  ],
+  "compositing_policy": "on-demand",
+  "webkit_runtime": "2.52.6"
+}

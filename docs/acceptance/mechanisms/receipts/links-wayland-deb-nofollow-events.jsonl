@@ -1,0 +1,15 @@
+{"kind": "accepted", "pid": 8240, "monotonic": 757.714688526, "format": "deb", "task": 982}
+{"kind": "window_created", "pid": 8240, "monotonic": 757.721994513, "format": "deb", "mountinfo": [], "script_path": "/usr/lib/campus-982-links-disposable/handler.py", "appimage": null, "architecture": "aarch64", "session": "wayland", "principal": "https://fixture.example.invalid"}
+{"kind": "window_observation", "pid": 8240, "monotonic": 758.048462134, "format": "deb", "active": true, "visible": true}
+{"kind": "accepted", "pid": 8240, "monotonic": 758.379768805, "format": "deb", "task": 983}
+{"kind": "window_observation", "pid": 8240, "monotonic": 758.684204391, "format": "deb", "active": true, "visible": true}
+{"kind": "rejected", "pid": 8240, "monotonic": 758.994160017, "format": "deb", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 8240, "monotonic": 759.08268246, "format": "deb", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 8240, "monotonic": 759.184547473, "format": "deb", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 8240, "monotonic": 759.287725179, "format": "deb", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 8240, "monotonic": 759.388216796, "format": "deb", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 8240, "monotonic": 759.489016891, "format": "deb", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 8240, "monotonic": 759.588472045, "format": "deb", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 8240, "monotonic": 759.690865227, "format": "deb", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 8240, "monotonic": 759.791697735, "format": "deb", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 8240, "monotonic": 759.897379167, "format": "deb", "reason": "invalid-navigation-or-instance"}

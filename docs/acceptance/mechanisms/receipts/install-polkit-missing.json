@@ -1,0 +1,14 @@
+{
+  "scope": "disposable root-owned staging and polkit routing; not Tauri signature or interactive prompt acceptance",
+  "cases": [
+    {
+      "case": "polkit-denied-intact-install",
+      "result": "PASS",
+      "exit": 127,
+      "before_helper_sha256": "9dbb4f543be0e07f5292e7262de69cd8db64b0283502edf196ea74482ca129c0",
+      "after_helper_sha256": "9dbb4f543be0e07f5292e7262de69cd8db64b0283502edf196ea74482ca129c0",
+      "stdout": "",
+      "stderr": "Error getting authority: Error initializing authority: Error calling StartServiceByName for org.freedesktop.PolicyKit1: Unit polkit.service is masked.\n"
+    }
+  ]
+}

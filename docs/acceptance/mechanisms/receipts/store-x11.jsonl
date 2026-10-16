@@ -1,0 +1,6 @@
+{"phase": "store-unlocked", "initial_locked": false, "item_created": true}
+{"same_uid_separate_process_read": true}
+{"phase": "store-locked", "locked": true, "read_refused": true}
+{"phase": "awaiting-desktop-unlock-prompt"}
+{"phase": "store-unlock", "unlocked": true, "prompt": {"needed": true, "timeout": false, "dismissed": false}}
+{"phase": "cleanup", "synthetic_item_deleted": true}

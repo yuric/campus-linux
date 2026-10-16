@@ -1,0 +1,7 @@
+dpkg-deb: building package 'campus-982-disposable-spike' in '/home/campusqa/spike982/fixtures-v2/oversized-expanded-payload.deb'.
+{
+  "oversized-expanded-payload": {
+    "sha256": "33962c77723c6abc41262e5f4811ca0d5708bea1fe97b395bf0b60264701adee",
+    "purpose": "signed archive-shape rejection; must never install"
+  }
+}

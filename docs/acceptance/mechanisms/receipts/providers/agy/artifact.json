@@ -1,0 +1,16 @@
+{
+  "engine": "agy",
+  "version": "1.4.0",
+  "architecture": "aarch64",
+  "metadata_url": "https://antigravity-cli-auto-updater-974169037036.us-central1.run.app/manifests/linux_arm64.json",
+  "metadata_sha256": "de5c920919325e2bcc0a9faa447502eb65e34ee6c84ec8fab0efcb1292d71e39",
+  "url": "https://storage.googleapis.com/antigravity-public/antigravity-cli/1.4.0-5281842794987520/linux-arm/cli_linux_arm64.tar.gz",
+  "sha512": "64dfb2a9665ebd19b6e9d687c094673b61ca9f5ffdebc81391cea8e3858773e1c88154f088e8a8691208561d946a7aea9acbec7a3bdca9e5d8a48fa197b0a308",
+  "kind": "tar",
+  "member_basename": "antigravity",
+  "verification": "vendor HTTPS manifest checksum only; independent signature unavailable in observed installer",
+  "artifact_sha256": "cf953adcc69f87d00d71f97c3f35dc723a8669a350accf9a199df781f0523f56",
+  "binary_sha256": "51a1839c1055a9c80bbab0494e3adad38d4b83af9762166443438742e90651ca",
+  "member": "antigravity",
+  "binary_size": 209932520
+}

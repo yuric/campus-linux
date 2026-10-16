@@ -1,0 +1,133 @@
+{
+  "scope": "Campus #982 disposable session mechanism only",
+  "operation": "setup",
+  "time_ns": 1792148790238751476,
+  "uid": 1000,
+  "unit": "campus-982-session-spike.service",
+  "base": "/home/campusqa/.local/share/campus-982-spike/session",
+  "state": {
+    "epoch": 1,
+    "revoked": false,
+    "starts": 1,
+    "failures_remaining": 0
+  },
+  "events": [
+    {
+      "boot_id": "38cdc922-802f-43cb-9b5b-35dc98164ad5",
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/campus-982-session-spike.service",
+      "epoch": 1,
+      "event": "start",
+      "executable": "/usr/bin/python3.12",
+      "helper": "/home/campusqa/.local/share/campus-982-spike/session/versions/68ab823de137dc5e422f826378a62b7091f3e42459d19926941eb5cd6649eab6/helper.py",
+      "inherited_environment_names": [
+        "LANG",
+        "PATH"
+      ],
+      "monotonic_ns": 830861676526,
+      "pid": 5569,
+      "remaining_failures_before_start": 0,
+      "start_ticks": 83083,
+      "time_ns": 1792148789964100570,
+      "uid": 1000
+    },
+    {
+      "epoch": 1,
+      "event": "admitted",
+      "monotonic_ns": 830864046385,
+      "pid": 5569,
+      "time_ns": 1792148789966470887
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "systemd-analyze",
+        "--user",
+        "verify",
+        "/home/campusqa/.config/systemd/user/campus-982-session-spike.service"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "systemctl",
+        "--user",
+        "daemon-reload"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "systemctl",
+        "--user",
+        "enable",
+        "campus-982-session-spike.service"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "Created symlink /home/campusqa/.config/systemd/user/graphical-session.target.wants/campus-982-session-spike.service \u2192 /home/campusqa/.config/systemd/user/campus-982-session-spike.service.\n"
+    },
+    {
+      "argv": [
+        "systemctl",
+        "--user",
+        "start",
+        "campus-982-session-spike.service"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "systemctl",
+        "--user",
+        "show",
+        "graphical-session.target",
+        "--property=ActiveState",
+        "--property=SubState"
+      ],
+      "returncode": 0,
+      "stdout": "ActiveState=active\nSubState=active\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "systemctl",
+        "--user",
+        "show",
+        "campus-982-session-spike.service",
+        "--property=ActiveState",
+        "--property=SubState",
+        "--property=MainPID",
+        "--property=ControlGroup",
+        "--property=NRestarts",
+        "--property=Result",
+        "--property=RestartUSec",
+        "--property=RestartSteps",
+        "--property=RestartMaxDelayUSec",
+        "--property=ExecMainStatus",
+        "--property=ExecMainCode",
+        "--property=FragmentPath"
+      ],
+      "returncode": 0,
+      "stdout": "RestartUSec=250ms\nRestartSteps=3\nRestartMaxDelayUSec=2s\nMainPID=5569\nResult=success\nNRestarts=0\nExecMainCode=0\nExecMainStatus=0\nControlGroup=/user.slice/user-1000.slice/user@1000.service/app.slice/campus-982-session-spike.service\nActiveState=active\nSubState=running\nFragmentPath=/home/campusqa/.config/systemd/user/campus-982-session-spike.service\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "loginctl",
+        "list-sessions",
+        "--no-legend"
+      ],
+      "returncode": 0,
+      "stdout": "10  501 yuri     -     -    active no -\n14 1000 campusqa -     -    active no -\n 3 1000 campusqa seat0 tty2 active no -\n",
+      "stderr": ""
+    }
+  ],
+  "limitations": "Synthetic epoch only. Parent must record real GDM logout/login, SSH survival, absent target refusal and no-window restart. Not a product package receipt."
+}

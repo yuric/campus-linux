@@ -1,0 +1,74 @@
+{
+  "scope": "actual vendor install command with synthetic guest-only home; no account or model request",
+  "uname": [
+    "Linux",
+    "lima-campus-linux-d5-noble-arm64",
+    "6.8.0-142-generic",
+    "#142-Ubuntu SMP PREEMPT_DYNAMIC Wed Sep  2 14:30:29 UTC 2026",
+    "aarch64"
+  ],
+  "uid": 1000,
+  "source_root": "/home/campusqa/spike982/provider-binaries",
+  "shared_verified_bytes": "2.1.301 reused by hardlink to stay within incremental budget; not downloaded again",
+  "disk_policy": "450 MB observed allocation cutoff with 50 MB budget margin; 500 MB authorized incremental maximum; 300 MB per-file kernel limit",
+  "host_disk_floor": "Parent must separately confirm host free space >=35 GiB; guest cannot measure host APFS",
+  "signatures": [
+    {
+      "version": "2.1.300",
+      "fingerprint": "31DDDE24DDFAB679F42D7BD2BAA929FF1A7ECACE",
+      "stdout": "[GNUPG:] NEWSIG\n[GNUPG:] KEY_CONSIDERED 31DDDE24DDFAB679F42D7BD2BAA929FF1A7ECACE 0\n[GNUPG:] SIG_ID 4HzVdkjOQyq0bBiAZt7pW58ThLo 2026-10-14 1791984684\n[GNUPG:] GOODSIG BAA929FF1A7ECACE Anthropic Claude Code Release Signing <security@anthropic.com>\n[GNUPG:] VALIDSIG 31DDDE24DDFAB679F42D7BD2BAA929FF1A7ECACE 2026-10-14 1791984684 0 4 0 1 10 00 31DDDE24DDFAB679F42D7BD2BAA929FF1A7ECACE\n[GNUPG:] TRUST_UNDEFINED 0 pgp\n",
+      "stderr": "gpg: Signature made Wed Oct 14 06:31:24 2026 MST\ngpg:                using RSA key 31DDDE24DDFAB679F42D7BD2BAA929FF1A7ECACE\ngpg: Good signature from \"Anthropic Claude Code Release Signing <security@anthropic.com>\" [unknown]\ngpg: WARNING: This key is not certified with a trusted signature!\ngpg:          There is no indication that the signature belongs to the owner.\nPrimary key fingerprint: 31DD DE24 DDFA B679 F42D  7BD2 BAA9 29FF 1A7E CACE\n",
+      "manifest_url": "https://downloads.claude.ai/claude-code-releases/2.1.300/manifest.json",
+      "signature_url": "https://downloads.claude.ai/claude-code-releases/2.1.300/manifest.json.sig",
+      "manifest_sha256": "fb62dae2893ff954bbf8caa9f4b9345737b98a210e3a6085bf9feec9ddf5d9ca",
+      "signature_sha256": "a6ab3967d23a57edc237c2ff9ba9619366fe76f5f3c72b408a89b90026957b85",
+      "binary_sha256": "ae2295ae2da156936bf5831ab01971ce924d0c9a0af174e28d96fffa8d5fa0a6",
+      "binary_size": 266264568
+    },
+    {
+      "version": "2.1.301",
+      "fingerprint": "31DDDE24DDFAB679F42D7BD2BAA929FF1A7ECACE",
+      "stdout": "[GNUPG:] NEWSIG\n[GNUPG:] KEY_CONSIDERED 31DDDE24DDFAB679F42D7BD2BAA929FF1A7ECACE 0\n[GNUPG:] SIG_ID ifl2vEyb5oCEeo3GQEztfv5lqjo 2026-10-15 1792072975\n[GNUPG:] GOODSIG BAA929FF1A7ECACE Anthropic Claude Code Release Signing <security@anthropic.com>\n[GNUPG:] VALIDSIG 31DDDE24DDFAB679F42D7BD2BAA929FF1A7ECACE 2026-10-15 1792072975 0 4 0 1 10 00 31DDDE24DDFAB679F42D7BD2BAA929FF1A7ECACE\n[GNUPG:] TRUST_UNDEFINED 0 pgp\n",
+      "stderr": "gpg: Signature made Thu Oct 15 07:02:55 2026 MST\ngpg:                using RSA key 31DDDE24DDFAB679F42D7BD2BAA929FF1A7ECACE\ngpg: Good signature from \"Anthropic Claude Code Release Signing <security@anthropic.com>\" [unknown]\ngpg: WARNING: This key is not certified with a trusted signature!\ngpg:          There is no indication that the signature belongs to the owner.\nPrimary key fingerprint: 31DD DE24 DDFA B679 F42D  7BD2 BAA9 29FF 1A7E CACE\n",
+      "manifest_url": "https://downloads.claude.ai/claude-code-releases/2.1.301/manifest.json",
+      "signature_url": "https://downloads.claude.ai/claude-code-releases/2.1.301/manifest.json.sig",
+      "manifest_sha256": "8517444f8515ccb572272d6dd666999aa7115fd14ae4207631edaa25d4dfce40",
+      "signature_sha256": "d98450e26c5b134e869d6b0aefc1db3418085bffbb85f3736ef4b30c88dc6d5f",
+      "binary_sha256": "1e119036a802d359ba5f9886428e031586e8796f7a858d5a8ee179ac7b8604f0",
+      "binary_size": 267247608
+    }
+  ],
+  "transitions": [
+    {
+      "stage": "install-2.1.300",
+      "commands": [
+        {
+          "argv": [
+            "/home/campusqa/spike982/provider-binaries/claude/claude",
+            "install",
+            "2.1.300"
+          ],
+          "returncode": -9,
+          "seconds": 5.245,
+          "capture": "install-2.1.300-0.txt",
+          "abort": "incremental allocation cutoff"
+        }
+      ]
+    }
+  ],
+  "peak_incremental_allocated_bytes": 461590528,
+  "completed": false,
+  "failure": {
+    "type": "RuntimeError",
+    "message": "install-2.1.300 did not complete; preserve raw failure capture"
+  },
+  "incremental_allocated_bytes_final": 461590528,
+  "limits": [
+    "No model/account execution",
+    "No active provider run during install",
+    "No credential refresh or account-isolation proof",
+    "No Campus product update action delivered",
+    "Reuses verified 2.1.301 cache bytes",
+    "No claim for other providers or install layouts"
+  ]
+}

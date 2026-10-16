@@ -1,0 +1,4 @@
+The Blue Notebook is beside the window. This is a synthetic speech test.
+Please edit the words before saving.
+
+User-edit mechanism demonstration.

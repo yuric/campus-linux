@@ -1,0 +1,17 @@
+{"kind": "accepted", "pid": 11980, "monotonic": 2182.963261855, "format": "deb", "task": 982}
+{"kind": "window_created", "pid": 11980, "monotonic": 2183.007935443, "format": "deb", "mountinfo": [], "script_path": "/usr/lib/campus-982-links-disposable/handler.py", "appimage": null, "architecture": "aarch64", "session": "x11", "principal": "https://fixture.example.invalid"}
+{"kind": "window_observation", "pid": 11980, "monotonic": 2183.590897963, "format": "deb", "active": false, "visible": true}
+{"kind": "accepted", "pid": 11980, "monotonic": 2183.607542574, "format": "deb", "task": 983}
+{"kind": "window_observation", "pid": 11980, "monotonic": 2183.910404232, "format": "deb", "active": false, "visible": true}
+{"kind": "rejected", "pid": 11980, "monotonic": 2184.420698998, "format": "deb", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 11980, "monotonic": 2184.6515144, "format": "deb", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 11980, "monotonic": 2184.836152469, "format": "deb", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 11980, "monotonic": 2185.069389988, "format": "deb", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 11980, "monotonic": 2185.203406715, "format": "deb", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 11980, "monotonic": 2185.46110691, "format": "deb", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 11980, "monotonic": 2185.59310685, "format": "deb", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 11980, "monotonic": 2185.699670453, "format": "deb", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 11980, "monotonic": 2185.81521327, "format": "deb", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 11980, "monotonic": 2186.007671028, "format": "deb", "reason": "invalid-navigation-or-instance"}
+{"kind": "quit", "pid": 11980, "monotonic": 2214.318359056, "format": "deb"}
+{"kind": "window_destroyed", "pid": 11980, "monotonic": 2214.358508745, "format": "deb"}

@@ -1,0 +1,15 @@
+{"kind": "accepted", "pid": 5870, "monotonic": 467.31658565, "format": "appimage", "task": 982}
+{"kind": "window_created", "pid": 5870, "monotonic": 467.32084016, "format": "appimage", "mountinfo": ["96 33 0:53 / /tmp/.mount_campuscNKApm ro,nosuid,nodev,relatime shared:343 - fuse.campus-982-links-disposable.AppImage campus-982-links-disposable.AppImage ro,user_id=1000,group_id=1001"], "script_path": "/tmp/.mount_campuscNKApm/handler.py", "appimage": "/home/campusqa/spike982/link-fixtures/campus-982-links-disposable.AppImage", "architecture": "aarch64", "session": "x11", "principal": "https://fixture.example.invalid"}
+{"kind": "window_observation", "pid": 5870, "monotonic": 467.63504396, "format": "appimage", "active": true, "visible": true}
+{"kind": "accepted", "pid": 5870, "monotonic": 467.981397151, "format": "appimage", "task": 983}
+{"kind": "window_observation", "pid": 5870, "monotonic": 468.290330768, "format": "appimage", "active": true, "visible": true}
+{"kind": "rejected", "pid": 5870, "monotonic": 468.587151138, "format": "appimage", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 5870, "monotonic": 468.68105238, "format": "appimage", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 5870, "monotonic": 468.78212687, "format": "appimage", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 5870, "monotonic": 468.882137398, "format": "appimage", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 5870, "monotonic": 468.988446656, "format": "appimage", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 5870, "monotonic": 469.090423868, "format": "appimage", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 5870, "monotonic": 469.188956884, "format": "appimage", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 5870, "monotonic": 469.292524558, "format": "appimage", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 5870, "monotonic": 469.391657153, "format": "appimage", "reason": "invalid-navigation-or-instance"}
+{"kind": "rejected", "pid": 5870, "monotonic": 469.492561697, "format": "appimage", "reason": "invalid-navigation-or-instance"}

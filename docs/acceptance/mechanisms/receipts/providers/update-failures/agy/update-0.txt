@@ -1,0 +1,3 @@
+⟳ Checking for updates... (current version 1.4.0)
+ERROR: logging before google.Init: E1016 04:10:48.338568       1 auto_updater.go:491] Failed to check for updates: failed to fetch manifest: Get "https://antigravity-cli-auto-updater-974169037036.us-central1.run.app/manifests/linux_arm64.json": dial tcp: lookup antigravity-cli-auto-updater-974169037036.us-central1.run.app on 127.0.0.53:53: dial udp 127.0.0.53:53: connect: network is unreachable
+Error: failed to check for updates: failed to fetch manifest: Get "https://antigravity-cli-auto-updater-974169037036.us-central1.run.app/manifests/linux_arm64.json": dial tcp: lookup antigravity-cli-auto-updater-974169037036.us-central1.run.app on 127.0.0.53:53: dial udp 127.0.0.53:53: connect: network is unreachable

@@ -1,0 +1,45 @@
+{
+  "probe_sha256": "fe3de4052094b03491e54b375d14445dd88f9b664d7dcda00ac6c6961783d8a0",
+  "uname": [
+    "Linux",
+    "lima-campus-linux-d5-noble-arm64",
+    "6.8.0-142-generic",
+    "#142-Ubuntu SMP PREEMPT_DYNAMIC Wed Sep  2 14:30:29 UTC 2026",
+    "aarch64"
+  ],
+  "uid": 1000,
+  "operation": "offline",
+  "commands": [
+    {
+      "argv": [
+        "/home/campusqa/spike982/gemini-api-key/node-v24.22.0-linux-arm64/bin/node",
+        "--version"
+      ],
+      "returncode": 0,
+      "seconds": 0.15665202600001749,
+      "capture": "node-version"
+    },
+    {
+      "argv": [
+        "/home/campusqa/spike982/gemini-api-key/node-v24.22.0-linux-arm64/bin/node",
+        "/home/campusqa/spike982/gemini-api-key/node-v24.22.0-linux-arm64/lib/node_modules/npm/bin/npm-cli.js",
+        "--version"
+      ],
+      "returncode": 1,
+      "seconds": 0.30191517200000817,
+      "capture": "npm-version"
+    }
+  ],
+  "budget_bytes": 600000000,
+  "scope": "Disposable Gemini0.64.0 availability only, no login/API call, optional native addons omitted",
+  "interfaces": [
+    "lo"
+  ],
+  "peak_file_size_sum": 250220680,
+  "completed": false,
+  "failure": {
+    "type": "RuntimeError",
+    "message": "npm-version failed; inspect captures"
+  },
+  "final_file_size_sum": 250220680
+}

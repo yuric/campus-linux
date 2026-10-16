@@ -1,0 +1,145 @@
+{
+  "schema": 1,
+  "scope": "disposable OS mechanism only; no product acceptance",
+  "started_at": "2026-10-16T11:44:06.618762+00:00",
+  "uname": [
+    "Linux",
+    "lima-campus-linux-d5-noble-arm64",
+    "6.8.0-142-generic",
+    "#142-Ubuntu SMP PREEMPT_DYNAMIC Wed Sep  2 14:30:29 UTC 2026",
+    "aarch64"
+  ],
+  "uid": 1000,
+  "unit": "campus982-attempt-e0074d60ede5",
+  "scratch": "/var/tmp/campus982-process-4_mjw3hg",
+  "script_sha256": "1a7edac20f39131aefbcf8764d447be7fbd713f994c07ab28c844f5b2d4b5578",
+  "cgroup_stop": {
+    "pass": false,
+    "blocked": "user systemd unit launch failed"
+  },
+  "dumpability": {
+    "returncode": 0,
+    "observation": {
+      "after_exec": 1,
+      "set_result": 0,
+      "after_child_set": 0
+    },
+    "stderr": ""
+  },
+  "ipc_peers": [
+    {
+      "requested_uid": 65534,
+      "peer_pid": 2369,
+      "peer_uid": 65534,
+      "peer_gid": 65534,
+      "token_read": false,
+      "token_match": null,
+      "expected_server_authentication": true,
+      "client_observation": {
+        "server_peer_authenticated": true,
+        "token_sent": true,
+        "server_pid": 2353,
+        "server_uid": 0,
+        "server_start_ticks": 5124
+      },
+      "client_exit": 0,
+      "pass": true
+    },
+    {
+      "requested_uid": 1000,
+      "peer_pid": 2370,
+      "peer_uid": 1000,
+      "peer_gid": 1001,
+      "token_read": true,
+      "token_match": true,
+      "expected_server_authentication": true,
+      "client_observation": {
+        "server_peer_authenticated": true,
+        "token_sent": true,
+        "server_pid": 2353,
+        "server_uid": 0,
+        "server_start_ticks": 5124
+      },
+      "client_exit": 0,
+      "pass": true
+    },
+    {
+      "requested_uid": 1000,
+      "peer_pid": 2373,
+      "peer_uid": 1000,
+      "peer_gid": 1001,
+      "token_read": true,
+      "token_match": false,
+      "expected_server_authentication": false,
+      "client_observation": {
+        "server_peer_authenticated": false,
+        "token_sent": false,
+        "server_pid": 2353,
+        "server_uid": 0
+      },
+      "client_exit": 2,
+      "pass": true
+    }
+  ],
+  "crash_collector": {
+    "core_pattern": "|/usr/share/apport/apport -p%p -s%s -c%c -d%d -P%P -u%u -g%g -F%F -- %E",
+    "returncode": -6,
+    "core_limit": 0,
+    "child_dumpable": 0,
+    "new_var_crash_paths": [],
+    "new_local_core_paths": [],
+    "new_systemd_coredump_paths": [],
+    "marker_in_child_output": false,
+    "pass": true,
+    "limits": "Observed 3-second window under recorded collector only. No claim for enabled dumpability or all collectors; no unrelated crash contents read."
+  },
+  "process_identity_limits": "boot_id + pid + /proc start_ticks + attempt cgroup recorded; PID reuse was not forced. Production must use pidfd/cgroup handles, never PID alone.",
+  "commands": [
+    {
+      "argv": [
+        "systemd-run",
+        "--user",
+        "--unit=campus982-attempt-e0074d60ede5",
+        "--property=KillMode=control-group",
+        "--property=TimeoutStopSec=2s",
+        "--property=SendSIGKILL=yes",
+        "--property=Restart=no",
+        "--property=RuntimeMaxSec=30s",
+        "/usr/bin/env",
+        "-i",
+        "PATH=/usr/bin:/bin",
+        "LANG=C.UTF-8",
+        "/usr/bin/python3",
+        "/var/tmp/campus982-process-4_mjw3hg/probe.py",
+        "--service-child",
+        "/var/tmp/campus982-process-4_mjw3hg/children"
+      ],
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Failed to connect to bus: No such file or directory\n"
+    },
+    {
+      "argv": [
+        "systemctl",
+        "--user",
+        "stop",
+        "campus982-attempt-e0074d60ede5"
+      ],
+      "returncode": 5,
+      "stdout": "",
+      "stderr": "Failed to stop campus982-attempt-e0074d60ede5.service: Unit campus982-attempt-e0074d60ede5.service not loaded.\n"
+    },
+    {
+      "argv": [
+        "systemctl",
+        "--user",
+        "reset-failed",
+        "campus982-attempt-e0074d60ede5"
+      ],
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Failed to reset failed state of unit campus982-attempt-e0074d60ede5.service: Unit campus982-attempt-e0074d60ede5.service not loaded.\n"
+    }
+  ],
+  "pass": false
+}

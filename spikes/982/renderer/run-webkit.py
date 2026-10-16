@@ -23,6 +23,7 @@ parser.add_argument('export',type=Path)
 parser.add_argument('frozen',type=Path)
 parser.add_argument('output',type=Path)
 a=parser.parse_args()
+timeout_seconds=180 if a.motion_proof or a.lifecycle_proof else 115
 base=Path(__file__).resolve().parent
 native=native_receipt(a.native_gpu_receipt)
 runtime_version='.'.join(str(v) for v in (WebKit2.get_major_version(),WebKit2.get_minor_version(),WebKit2.get_micro_version()))
@@ -30,6 +31,7 @@ if runtime_version!=native['webkit_runtime']: raise SystemExit('Actual WebKit ve
 display_type='Wayland' if 'Wayland' in Gdk.Display.get_default().__gtype__.name else 'X11' if 'X11' in Gdk.Display.get_default().__gtype__.name else 'unknown'
 if display_type!=native['display_type']: raise SystemExit('Native receipt and actual GTK backend differ')
 frozen={} if a.preflight else json.loads(a.frozen.read_text())
+if not(a.preflight or a.motion_proof or a.lifecycle_proof) and (frozen.get('purpose')!='timing-candidate-with-motion-evidence' or not frozen.get('motion_proof_sha256')): raise SystemExit('Corrected untimed motion proof must be frozen before timing')
 rendering_env={key:os.environ.get(key) for key in ('LIBGL_ALWAYS_SOFTWARE','GDK_BACKEND','WEBKIT_DISABLE_COMPOSITING_MODE','WEBKIT_DISABLE_DMABUF_RENDERER','WEBKIT_SKIA_ENABLE_CPU_RENDERING','GSK_RENDERER','MESA_LOADER_DRIVER_OVERRIDE','GALLIUM_DRIVER','EGL_PLATFORM')}
 if not a.preflight and frozen.get('rendering_env')!=rendering_env: raise SystemExit('Rendering environment differs from freeze')
 required=('producer_sha','manifest_sha256','fixture_sha256','measure_sha256','runner_sha256','webkit','mesa','llvm','kernel','architecture','os','session','graphics','webgl_api_renderer','native_evidence','compositing_policy','frozen_at')
@@ -39,7 +41,7 @@ if os.environ.get('LIBGL_ALWAYS_SOFTWARE')!='1': raise SystemExit('Software rend
 if a.output.exists(): raise SystemExit('Preserve existing raw capture; choose fresh output')
 a.output.parent.mkdir(parents=True,exist_ok=True)
 def digest(path): return hashlib.sha256(path.read_bytes()).hexdigest()
-for path,key in [(a.export/'manifest.json','manifest_sha256'),(base/'fixture.json','fixture_sha256'),(base/'measure.js','measure_sha256'),(base/'run-webkit.py','runner_sha256'),(base/'native_evidence.py','native_evidence_code_sha256')]:
+for path,key in [(a.export/'manifest.json','manifest_sha256'),(base/'fixture.json','fixture_sha256'),(base/'measure.js','measure_sha256'),(base/'run-webkit.py','runner_sha256'),(base/'native_evidence.py','native_evidence_code_sha256'),(base/'motion_evidence.py','motion_evidence_code_sha256')]:
     expected=digest(base/'producer-manifest.json') if a.preflight and key=='manifest_sha256' else digest(path) if a.preflight else frozen[key]
     if digest(path)!=expected: raise SystemExit('Frozen bytes changed: '+key)
 manifest=json.loads((a.export/'manifest.json').read_text())
@@ -113,6 +115,7 @@ window.set_default_size(1440,900)
 window.add(view)
 view.get_settings().set_enable_write_console_messages_to_stdout(True)
 completed=False
+exit_status=1
 def process_graphics():
     pending=[os.getpid()]
     found=[]
@@ -135,7 +138,7 @@ def process_graphics():
         found.append(record)
     return found
 def finish(payload):
-    global completed
+    global completed,exit_status
     if completed: return
     completed=True
     payload['freeze']=frozen
@@ -152,6 +155,9 @@ def finish(payload):
     payload['hardware_acceleration_policy']=str(view.get_settings().get_hardware_acceleration_policy())
     payload['webkit_runtime']='.'.join(str(v) for v in (WebKit2.get_major_version(),WebKit2.get_minor_version(),WebKit2.get_micro_version()))
     a.output.write_text(json.dumps(payload,indent=2)+'\n')
+    valid_kind=payload.get('kind') in ('preflight','motion_proof','measurement','lifecycle_proof')
+    valid_checks=payload.get('kind')!='lifecycle_proof' or bool(payload.get('checks')) and all(payload['checks'].values())
+    exit_status=0 if valid_kind and valid_checks and not payload.get('errors') and not payload.get('invalid') else 1
     Gtk.main_quit()
 def received(_manager,result):
     value=json.loads(result.get_js_value().to_string())
@@ -166,7 +172,7 @@ def evaluated(web,result,*_):
     except GLib.Error as error: finish(dict(kind='preflight_failure',errors=[str(error)]))
 def start():
     native_process_ok=bool(candidate_software_processes(process_graphics()))
-    view.evaluate_javascript('window.spikePreflight()' if a.preflight or not native_process_ok else 'void window.spikeLifecycleProof()' if a.lifecycle_proof else 'window.spikeStart(true)' if a.motion_proof else 'window.spikeStart()',-1,None,None,None,evaluated,None)
+    view.evaluate_javascript('window.spikePreflight()' if a.preflight or not native_process_ok else 'void window.spikeLifecycleProof()' if a.lifecycle_proof else 'void window.spikeStart(true)' if a.motion_proof else 'void window.spikeStart()',-1,None,None,None,evaluated,None)
     return False
 def loaded(web,event):
     if event==WebKit2.LoadEvent.FINISHED: GLib.timeout_add_seconds(5,start)
@@ -178,5 +184,6 @@ window.show_all()
 window.present()
 view.grab_focus()
 view.load_uri(entry_uri)
-GLib.timeout_add_seconds(115,lambda:(finish(dict(kind='timeout',errors=['No complete capture in 115 seconds'])),False)[1])
+GLib.timeout_add_seconds(timeout_seconds,lambda:(finish(dict(kind='timeout',errors=[f'No complete capture in {timeout_seconds} seconds'])),False)[1])
 Gtk.main()
+raise SystemExit(exit_status)

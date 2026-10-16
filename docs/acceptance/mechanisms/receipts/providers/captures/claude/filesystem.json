@@ -1,0 +1,56 @@
+[
+  {
+    "path": "command-00.txt",
+    "mode": "0o600",
+    "bytes": 22,
+    "symlink": false
+  },
+  {
+    "path": "command-01.txt",
+    "mode": "0o600",
+    "bytes": 22110,
+    "symlink": false
+  },
+  {
+    "path": "command-02.txt",
+    "mode": "0o600",
+    "bytes": 296,
+    "symlink": false
+  },
+  {
+    "path": "command-03.txt",
+    "mode": "0o600",
+    "bytes": 132,
+    "symlink": false
+  },
+  {
+    "path": "scope",
+    "mode": "0o700",
+    "bytes": 4096,
+    "symlink": false
+  },
+  {
+    "path": "scope/.claude.json",
+    "mode": "0o600",
+    "bytes": 343,
+    "symlink": false
+  },
+  {
+    "path": "scope/.claude.json.lock",
+    "mode": "0o700",
+    "bytes": 4096,
+    "symlink": false
+  },
+  {
+    "path": "scope/backups",
+    "mode": "0o700",
+    "bytes": 4096,
+    "symlink": false
+  },
+  {
+    "path": "scope/backups/.claude.json.backup.1792148525305",
+    "mode": "0o600",
+    "bytes": 84,
+    "symlink": false
+  }
+]

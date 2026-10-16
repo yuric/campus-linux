@@ -19,8 +19,62 @@
   let started = false;
   let gl;
   const contextAttempts=[];
+  const contextIDs=new WeakMap();
+  let nextContextID=0;
   const drawState={drawCalls:0,matrices:new Map()};
   window.spikeDrawState=()=>({drawCalls:drawState.drawCalls,matrices:[...drawState.matrices.values()]});
+  // Observe only the pinned scene's main orthographic projection, not shadow cameras.
+  // This temporary observer is removed before either performance clock starts.
+  const projectionCapture={active:false,context:null,last:null,restore:null,debug:null};
+  const initialization={reset:0,phase:'bootstrap',wheel:null};
+  const isMainProjection=value=>value.length>=16&&Math.abs(value[10]-(-.001818181830458343))<1e-9&&Math.abs(value[14]-(-.6363636255264282))<1e-7&&value[15]===1;
+  function observeProjection(context) {
+    if(projectionCapture.active&&projectionCapture.context===context) return;
+    // The producer first creates and loses a feature-probe context. Observe the
+    // actual renderer context as it arrives, never latch the disposed probe.
+    if(projectionCapture.active) projectionCapture.restore();
+    projectionCapture.context=context;
+    projectionCapture.active=true;
+    projectionCapture.last=null;
+    projectionCapture.debug={context_id:contextIDs.get(context),draw_calls:0,program_queries:0,location_hits:0,uniform_values:0,candidates:[]};
+    const locations=new Map();
+    const originals=new Map();
+    const wrappers=new Map();
+    for(const name of ['drawArrays','drawElements','drawArraysInstanced','drawElementsInstanced']) {
+      const original=context[name];
+      originals.set(name,original);
+      const wrapper=function(...args) {
+        const result=original.apply(this,args);
+        projectionCapture.debug.draw_calls++;
+        const now=performance.now();
+        if(projectionCapture.last&&now-projectionCapture.last.at<16) return result;
+        projectionCapture.debug.program_queries++;
+        const program=context.getParameter(context.CURRENT_PROGRAM);
+        if(!program) return result;
+        if(!locations.has(program)) locations.set(program,context.getUniformLocation(program,'projectionMatrix'));
+        const location=locations.get(program);
+        if(!location) return result;
+        projectionCapture.debug.location_hits++;
+        const value=context.getUniform(program,location);
+        if(value){
+          projectionCapture.debug.uniform_values++;
+          const candidate={length:value.length??null,m0:value[0]??null,m5:value[5]??null,m10:value[10]??null,m14:value[14]??null,m15:value[15]??null};
+          if(projectionCapture.debug.candidates.length<8&&!projectionCapture.debug.candidates.some(item=>JSON.stringify(item)===JSON.stringify(candidate))) projectionCapture.debug.candidates.push(candidate);
+        }
+        if(value&&isMainProjection(value)) projectionCapture.last={at:now,m0:value[0],m5:value[5],m10:value[10],m14:value[14],absolute_zoom:value[5]*46};
+        return result;
+      };
+      wrappers.set(name,wrapper);
+      context[name]=wrapper;
+    }
+    projectionCapture.restore=()=>{
+      for(const [name,original] of originals) {
+        if(context[name]!==wrappers.get(name)) throw Error('Projection observer changed unexpectedly');
+        context[name]=original;
+      }
+      projectionCapture.active=false;
+    };
+  }
   function instrument(context) {
     if(!SPIKE_DIAGNOSTICS||context.__spikeInstrumented) return;
     context.__spikeInstrumented=true;
@@ -46,8 +100,9 @@
     try {
       const context=originalContext.call(this,kind,...rest);
       if (kind === 'webgl2' || kind === 'webgl') {
-        contextAttempts.push({kind,attributes:rest,created:!!context});
-        if (context) {gl=context;instrument(context);}
+        if(context&&!contextIDs.has(context)) contextIDs.set(context,++nextContextID);
+        contextAttempts.push({kind,attributes:rest,created:!!context,context_id:context?contextIDs.get(context):null,canvas_connected:this.isConnected,canvas_size:[this.width,this.height]});
+        if (context) {gl=context;instrument(context);observeProjection(context);}
       }
       return context;
     } catch(error) {
@@ -97,6 +152,8 @@
       debug_extension:!!debug,extensions:gl?.getSupportedExtensions() ?? null,
       context_lost:gl?.isContextLost() ?? null,context_attempts:contextAttempts,
       canvas_count:document.querySelectorAll('canvas').length,live_fixture:liveFixture(),
+      main_projection:projectionCapture.last,projection_observer_active:projectionCapture.active,
+      projection_observer_debug:projectionCapture.debug,observer_matches_current_context:projectionCapture.context===gl,initialization,
       synthetic_page_text:document.body?.innerText.slice(0,4000),
       resources:performance.getEntriesByType('resource').map(entry=>({name:entry.name,duration:entry.duration,transferSize:entry.transferSize})),
       scripts:[...document.scripts].map(script=>({src:script.src,type:script.type})),
@@ -122,7 +179,7 @@
     try {report({kind:'preflight',...inspect(),errors:traces.errors});}
     catch(error) {report({kind:'preflight_failure',...identity(),errors:[...traces.errors,String(error)]});}
   };
-  window.spikeStart = (motionProof = false) => {
+  window.spikeStart = async (motionProof = false) => {
     let facts;
     try {facts=inspect();}
     catch(error) {report({kind:'preflight_failure',...identity(),errors:[...traces.errors,String(error)]});return;}
@@ -156,7 +213,7 @@
       if (zoomChanged) {
         endDrag();
         const deltaY = -Math.log(current[2]/previous[2]) / (-Math.log(.95)*.015);
-        canvas.dispatchEvent(new WheelEvent('wheel', {deltaY, deltaMode: 0, clientX:720, clientY:450, bubbles:true, cancelable:true}));
+        canvas.dispatchEvent(new WheelEvent('wheel', {deltaY, deltaMode: 0, ctrlKey:false, clientX:720, clientY:450, bubbles:true, cancelable:true}));
       }
       if (panChanged) {
         if (!dragging) {pointer('pointerdown',previous[0],previous[1],true);dragging=true;}
@@ -165,30 +222,101 @@
       traces.inputs.push({at:performance.now(),phase,seconds,requested:current});
       previous=current;
     };
-    const reset = () => {
+    const waitProjection = (predicate,deadline,after,settled=false) => new Promise((resolve,reject)=>{
+      let consecutive=0;
+      let prior;
+      const poll=()=>{
+        const now=performance.now();
+        const sample=projectionCapture.last;
+        if(now>deadline) {reject(Error('Fresh settled main-camera projection timed out'));return;}
+        if(sample&&sample.at>=after&&sample!==prior) {
+          consecutive=predicate(sample)?consecutive+1:0;
+          prior=sample;
+          if(consecutive>=(settled?3:1)) {resolve(sample);return;}
+        }
+        requestAnimationFrame(poll);
+      };
+      requestAnimationFrame(poll);
+    });
+    const setAbsoluteZoom = async (target,before,deadline) => {
       endDrag();
-      // Public lifecycle clears pending control damping, then canonical overview.
+      const deltaY=Math.log(target/before.absolute_zoom)/(.015*Math.log(.95));
+      const sent=performance.now();
+      projectionCapture.last=null;
+      initialization.phase='wheel-sent-awaiting-settled-main-projection';
+      initialization.wheel={target,before,deltaY,sent};
+      canvas.dispatchEvent(new WheelEvent('wheel',{deltaY,deltaMode:0,ctrlKey:false,clientX:720,clientY:450,bubbles:true,cancelable:true}));
+      const settled=await waitProjection(sample=>Math.abs(sample.absolute_zoom-target)<=1e-5,deadline,sent,true);
+      initialization.phase='absolute-zoom-settled';
+      return {target,before,deltaY,deltaMode:0,ctrlKey:false,active_drag:false,sent,settled};
+    };
+    const reset = async () => {
+      endDrag();
+      observeProjection(gl);
+      const began=performance.now();
+      initialization.reset++;
+      initialization.phase='focus-reset-awaiting-main-projection';
+      initialization.wheel=null;
+      const deadline=began+8000;
+      projectionCapture.last=null;
+      // Public lifecycle clears damping; public focus gives an overview, NOT zoom1.
       const hidden=window.campusIsland.setVisible(false);
       const visible=window.campusIsland.setVisible(true);
       const focus=window.campusIsland.focus(null,{instant:true});
       if(hidden!=='applied'||visible!=='applied'||focus!=='focused') throw Error('Camera reset was not acknowledged');
+      const overview=await waitProjection(sample=>sample.absolute_zoom>0,deadline,began);
+      const absoluteZoom=await setAbsoluteZoom(1,overview,deadline);
+      projectionCapture.restore();
       previous=[0,0,1];
-      return {at:performance.now(),hidden,visible,focus,state:window.campusIsland.state()};
+      return {at:performance.now(),hidden,visible,focus,absoluteZoom,projection_observer_active:projectionCapture.active,state:window.campusIsland.state()};
     };
-    const initialReset=reset();
+    let initialReset;
+    const absoluteZoomChecks=[];
+    try {
+      initialReset=await reset();
+      if(motionProof) {
+        observeProjection(gl);
+        for(const target of [1.5,.75,1]) {
+          const began=performance.now();
+          const before=await waitProjection(sample=>sample.absolute_zoom>0,began+8000,began);
+          absoluteZoomChecks.push(await setAbsoluteZoom(target,before,began+8000));
+        }
+        projectionCapture.restore();
+      }
+    } catch(error) {
+      report({kind:'preflight_failure',...identity(),errors:[...traces.errors,String(error)]});return;
+    }
+    if(projectionCapture.active) throw Error('Projection observer must be removed before warmup');
     started=true;
     const start=performance.now();
+    apply(0,'warmup');
     let measurementStart;
     let measurementReset;
+    let resetting=false;
+    let failed=false;
+    let warmupElapsed;
     let lastFrame;
     let checkpoint=-1;
+    const fail=error=>{
+      failed=true;clearInterval(timer);
+      report({kind:'preflight_failure',...identity(),...traces,errors:[...traces.errors,String(error)]});
+    };
     const timer=setInterval(()=>{
+      if(resetting||failed) return;
       const now=performance.now();
       if(measurementStart===undefined) {
         if(now-start<30000) {apply((now-start)/500,'warmup');return;}
         apply(60,'warmup');
-        measurementReset=reset();
-        measurementStart=performance.now();
+        warmupElapsed=performance.now()-start;
+        resetting=true;
+        reset().then(receipt=>{
+          measurementReset=receipt;
+          if(projectionCapture.active) throw Error('Projection observer must be removed before measurement');
+          measurementStart=performance.now();
+          apply(0,'measurement');
+          resetting=false;
+        }).catch(fail);
+        return;
       }
       const seconds=(performance.now()-measurementStart)/1000;
       apply(seconds,'measurement');
@@ -201,6 +329,7 @@
       }
     },16);
     const frame=now=>{
+      if(failed) return;
       if(measurementStart!==undefined&&now>=measurementStart) {
         if(!motionProof) {
           if(!traces.frames.length&&lastFrame!==undefined) traces.frames.push(lastFrame);
@@ -213,8 +342,9 @@
         endDrag();
         clearInterval(timer);
         report({kind:motionProof?'motion_proof':'measurement',renderer,
-          viewport:[innerWidth,innerHeight],scale:devicePixelRatio,initialReset,measurementReset,
-          warmup_ms:measurementStart-start,duration_ms:now-measurementStart,
+          viewport:[innerWidth,innerHeight],scale:devicePixelRatio,initialReset,measurementReset,absoluteZoomChecks,
+          zoom_units:"absolute producer camera zoom",projection_observer_active:projectionCapture.active,
+          warmup_ms:warmupElapsed,reset_between_clocks_ms:measurementStart-start-warmupElapsed,duration_ms:now-measurementStart,
           measurement_start_ms:measurementStart,measurement_end_ms:measurementStart+60000,...traces});
         return;
       }

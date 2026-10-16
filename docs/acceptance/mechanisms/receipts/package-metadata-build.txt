@@ -1,0 +1,12 @@
+dpkg-deb: building package 'campus-982-disposable-spike' in '/home/campusqa/spike982/fixtures-v2/wrong-owner.deb'.
+dpkg-deb: building package 'campus-982-disposable-spike' in '/home/campusqa/spike982/fixtures-v2/writable-helper.deb'.
+{
+  "wrong-owner": {
+    "sha256": "231ba14609b55d00910ee7c72ebd16f3f1e34349790d9b747f4a614ca91b75c6",
+    "purpose": "signed archive-shape rejection; must never install"
+  },
+  "writable-helper": {
+    "sha256": "c57a6059d9a74d55300be84649ded5a25c6f2c6d613a946e21511f3ae28d9b16",
+    "purpose": "signed archive-shape rejection; must never install"
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "schema": 1,
+  "purpose": "Disposable #982 arm64 mechanism spike only; not a product catalog or release acceptance",
+  "observed_at": "2026-10-16T10:53:31.139551+00:00",
+  "mac_source_sha": "3cc71216e3ca05090e90c5f09a56350b065acdcd",
+  "artifacts": [
+    {
+      "engine": "claude",
+      "version": "2.1.301",
+      "architecture": "aarch64",
+      "metadata_url": "https://registry.npmjs.org/@anthropic-ai/claude-code-linux-arm64/2.1.301",
+      "metadata_sha256": "696c7df4ca9425f515cb32f6541dfc660e439c5b0fca16ce046a5896bbee3964",
+      "url": "https://registry.npmjs.org/@anthropic-ai/claude-code-linux-arm64/-/claude-code-linux-arm64-2.1.301.tgz",
+      "integrity": "sha512-vMA8QVkLBqO8fZLaCecONZhatIRtoieIwCZ8npn8b0UvinZz40i5PhBIQ52fvhnZYdX16wFdTzhij3iL1RRL7w==",
+      "registry_signatures": [
+        {
+          "sig": "MEYCIQChKlb0rkOSBOH+4gmu95FuF4OyA4gJlBL5sQpUeZtKsgIhAODYmnEe6wjpYtOgfWnfvk8MzRXvXs2P0mbKJopKkey1",
+          "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+        },
+        {
+          "sig": "MEUCIQDHleVJcs8ahZoaOrdRNazkFbvo0i51Y8ZcDDoMctA3bQIgamqZf9FQENHvHSvgAwCJYDzdRWm+S8iFZcTG5mfcRPA=",
+          "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+        }
+      ],
+      "kind": "tar",
+      "member_basename": "claude",
+      "verification": "npm SRI plus binary SHA256 from independently verified Anthropic signed manifest; see claude-signature-receipt.json",
+      "signed_manifest_binary_sha256": "1e119036a802d359ba5f9886428e031586e8796f7a858d5a8ee179ac7b8604f0"
+    },
+    {
+      "engine": "codex",
+      "version": "0.163.0-linux-arm64",
+      "architecture": "aarch64",
+      "metadata_url": "https://registry.npmjs.org/@openai/codex/0.163.0-linux-arm64",
+      "metadata_sha256": "42249423488f237063adc564bd2e6017b1b17fba08015aa4bb4bb920f72c1df2",
+      "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.163.0-linux-arm64.tgz",
+      "integrity": "sha512-IH2/R+4OarjGvsAf1ll3fdyLwrPgYLl3uzp6u9CyD9sj2Lw+ViDSe3QBZVHdcHJs0eIiZFg6Wprcuy4CRZaUGw==",
+      "registry_signatures": [
+        {
+          "sig": "MEYCIQDEJ4Uc/MQpyl0L8fEvR8dgSXU5/1eZqQbl3ZgiLlNHnQIhAL2/egnRRUae4YvhmTbDZasV6LRlD75lGpww89ejNa0D",
+          "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+        },
+        {
+          "sig": "MEYCIQCcUBU7Icgdz8+DvhTsNcuqpK/foeC40U8WrzTA0vPd3gIhAIN5Hsa+yisQoa31LsUZFDVj4W3DYTx2DqAknn2TFpD7",
+          "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+        }
+      ],
+      "kind": "tar",
+      "member_basename": "codex",
+      "verification": "npm SRI digest; registry signatures recorded but not verified; no publisher identity claim"
+    },
+    {
+      "engine": "grok",
+      "version": "1.0.60",
+      "architecture": "aarch64",
+      "metadata_url": "https://registry.npmjs.org/@xai-official/grok-linux-arm64/1.0.60",
+      "metadata_sha256": "824fe2a0c31d5eca5736b8558cd963d405352d89456da6f9957fdd33a57497ad",
+      "url": "https://registry.npmjs.org/@xai-official/grok-linux-arm64/-/grok-linux-arm64-1.0.60.tgz",
+      "integrity": "sha512-x2VUxBHL3/J5uym+/qY1yvPPNFFvdxfnRKaRWZS1NTHH0Jr1KOjmRjeo0IUawPE1PCK7pn4MDtHBauXpMwslIw==",
+      "registry_signatures": [
+        {
+          "sig": "MEYCIQCv6sNqyZ4GgTRJmIdp9bl6UtqJXfiglL5uKQ94uj/ADwIhAKsdZWBVJ74uXoneONnL0TlY47mUfQIjrYAB0Z4x+8H2",
+          "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+        },
+        {
+          "sig": "MEYCIQCf33YtiMT9OC0aPepzQ8NFz/qjRLb/jARpc4AEqg/kcwIhAIKqGg2pbe+7tWPZi12bZMcLIle1A2hINIHm29Z9Sjbb",
+          "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+        }
+      ],
+      "kind": "tar-brotli",
+      "member_basename": "grok.br",
+      "verification": "npm SRI digest; registry signatures recorded but not verified; no publisher identity claim"
+    },
+    {
+      "engine": "agy",
+      "version": "1.4.0",
+      "architecture": "aarch64",
+      "metadata_url": "https://antigravity-cli-auto-updater-974169037036.us-central1.run.app/manifests/linux_arm64.json",
+      "metadata_sha256": "de5c920919325e2bcc0a9faa447502eb65e34ee6c84ec8fab0efcb1292d71e39",
+      "url": "https://storage.googleapis.com/antigravity-public/antigravity-cli/1.4.0-5281842794987520/linux-arm/cli_linux_arm64.tar.gz",
+      "sha512": "64dfb2a9665ebd19b6e9d687c094673b61ca9f5ffdebc81391cea8e3858773e1c88154f088e8a8691208561d946a7aea9acbec7a3bdca9e5d8a48fa197b0a308",
+      "kind": "tar",
+      "member_basename": "antigravity",
+      "verification": "vendor HTTPS manifest checksum only; independent signature unavailable in observed installer"
+    }
+  ],
+  "gemini": {
+    "version": "0.64.0",
+    "metadata_url": "https://registry.npmjs.org/@google/gemini-cli/0.64.0",
+    "engines": {
+      "node": ">=20"
+    },
+    "integrity": "sha512-FHrZ1NPf9QszyVMaa/BP3SsPy40ogBLnbZNWkv/PMi1Uz2zoDNMLGiBzBGmx4Bl7iLRq01K9PY/5kmloXFTpsA==",
+    "status": "not installed; Node and dependency closure require a separate pinned disposable install; API-key path is separate from agy subscription"
+  }
+}

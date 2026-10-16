@@ -1,0 +1,7 @@
+Name=campusqa
+Seat=seat0
+Remote=no
+Service=gdm-password
+Type=x11
+Class=user
+Active=yes

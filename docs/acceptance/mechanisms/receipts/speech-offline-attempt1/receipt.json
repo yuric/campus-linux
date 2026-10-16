@@ -1,0 +1,109 @@
+{
+  "scope": "Human direction10361: bounded offline candidate only; no product adoption",
+  "uname": [
+    "Linux",
+    "lima-campus-linux-d5-noble-arm64",
+    "6.8.0-142-generic",
+    "#142-Ubuntu SMP PREEMPT_DYNAMIC Wed Sep  2 14:30:29 UTC 2026",
+    "aarch64"
+  ],
+  "uid": 1000,
+  "interfaces": [
+    "lo"
+  ],
+  "pins": {
+    "whisper_cpp": {
+      "release": "v1.9.5",
+      "commit": "d1be6fde11ac6e0407606b4e42fe72d34add8037",
+      "url": "https://codeload.github.com/ggml-org/whisper.cpp/tar.gz/d1be6fde11ac6e0407606b4e42fe72d34add8037",
+      "sha256": "645445da884df6dbd52b30f82d7be7c01d1767c938714e477e786b88d529e9f4",
+      "download_bytes": 9631456,
+      "license": "MIT"
+    },
+    "model": {
+      "name": "tiny.en",
+      "repository": "ggerganov/whisper.cpp",
+      "revision": "5359861c739e955e79d9a303bcbc70fb988958b1",
+      "url": "https://huggingface.co/ggerganov/whisper.cpp/resolve/5359861c739e955e79d9a303bcbc70fb988958b1/ggml-tiny.en.bin",
+      "sha256": "921e4cf8686fdd993dcd081a5da5b6c365bfde1162e72b08d75ac75289920b1f",
+      "download_bytes": 77704715,
+      "license": "MIT (OpenAI Whisper model weights)"
+    },
+    "fixture": {
+      "text": "The blue notebook is beside the window. This is a synthetic speech test. Please edit the words before saving.",
+      "license": "CC0-1.0 dedication for this generated test sentence",
+      "synthesizer": "Ubuntu espeak-ng; exact package version/binary digest recorded by setup",
+      "private_audio": false
+    }
+  },
+  "commands": [
+    {
+      "argv": [
+        "dpkg-query",
+        "-W",
+        "-f=${binary:Package}\t${Version}\t${Architecture}\n",
+        "libespeak-ng1",
+        "cmake",
+        "g++"
+      ],
+      "returncode": 0,
+      "capture": "toolchain-packages"
+    },
+    {
+      "argv": [
+        "cmake",
+        "--version"
+      ],
+      "returncode": 0,
+      "capture": "cmake-version"
+    },
+    {
+      "argv": [
+        "g++",
+        "--version"
+      ],
+      "returncode": 0,
+      "capture": "compiler-version"
+    },
+    {
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/campusqa/spike982/speech-offline/source",
+        "-B",
+        "/home/campusqa/spike982/speech-offline/build",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DBUILD_SHARED_LIBS=OFF",
+        "-DGGML_NATIVE=OFF",
+        "-DGGML_OPENMP=OFF",
+        "-DGGML_CPU_KLEIDIAI=OFF",
+        "-DGGML_CCACHE=OFF",
+        "-DWHISPER_BUILD_TESTS=OFF",
+        "-DWHISPER_BUILD_SERVER=OFF",
+        "-DWHISPER_CURL=OFF",
+        "-DWHISPER_SDL2=OFF",
+        "-DFETCHCONTENT_FULLY_DISCONNECTED=ON"
+      ],
+      "returncode": 1,
+      "capture": "configure"
+    }
+  ],
+  "measurements": [],
+  "microphone_used": false,
+  "runtime_data_destination": "local disposable guest files only; no network interface except loopback",
+  "cost": "No API/cloud fees; local CPU/RAM/storage and initial public download bandwidth",
+  "limits": {
+    "probe_max_seconds": 60,
+    "probe_max_bytes": 10485760,
+    "languages_tested": [
+      "English synthetic sentence only"
+    ],
+    "product_limits": "not selected"
+  },
+  "completed": false,
+  "failure": {
+    "type": "RuntimeError",
+    "message": "configure failed; inspect capture"
+  },
+  "disk_bytes": 127317309
+}
