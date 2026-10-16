@@ -27,6 +27,14 @@ First-run package ZIP sizes are 257,737,151 bytes arm64 and 262,889,749 bytes am
 Only text/source receipt archives were retrieved locally. These sizes inform the later
 coordinator download budget, not a VM lease or download authorization.
 
+Review found that the original negative-case validator could accept an unrelated early
+failure. The real first-run receipts show the intended requests and rejecting boundaries;
+the validator is being strengthened independently of those preserved observations.
+Negative checks now require the expected request sequence, pinned diagnostic events and
+specific rejecting boundary, no downstream installation, and unchanged installed bytes.
+Small regression tests reject unrelated GTK/startup failures and zero-request results.
+They do not substitute for the subsequent real installed hosted run.
+
 This document initially records the implementation and execution contract. Pending rows
 must be replaced with observed commands, exact source head and linked receipts before a
 pass is claimed. Repository-policy checks, unit tests and extracted-source tests do not
@@ -97,6 +105,11 @@ lock while comparing the installed version, verifying staging and invoking fixed
 on those same root-owned bytes. Caller paths, environment and manifest claims cannot
 select a trust anchor, installed destination or executable. The review must inspect the
 real Tauri package's contents; an old tiny-package limit is not evidence for this package.
+The hosted source receipts retain byte-for-byte copies of `admission.json` and
+`public-key.txt` from the public bootstrap bundle. This permits independent review of the
+actual control/data members, ownership, permissions and measured bounds without
+downloading the package archive. The admission digest must match the root bootstrap and
+installed-smoke receipt.
 
 ## Installed execution sequence
 
@@ -163,6 +176,8 @@ failure and record it; do not relabel a rejected or unavailable operation as suc
    integrated path. Record the rejecting boundary, no successful installer invocation,
    and unchanged app/helper bytes. A manifest claiming a higher version for signed older
    bytes must fail authenticated-version verification.
+   Also submit the admitted v2 deb with the genuine v1 signature directly through pkexec;
+   require the privileged verifier's signature rejection and unchanged installed bytes.
 5. Apply signed v1 → v2 through the installed app. For deb, retain polkit/adapter output,
    root-staged hash, verified version, installed version and installed files. For AppImage,
    retain replacement hash, terminate the old process, execute the same outer path again,

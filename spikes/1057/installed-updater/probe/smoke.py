@@ -21,6 +21,7 @@ import subprocess
 import threading
 import time
 import traceback
+from urllib.parse import urlsplit
 
 
 APP = "/usr/bin/campus-updater-1057"
@@ -30,6 +31,84 @@ ACTION = "dev.campus.updater1057.install"
 USER = "fixture1057"
 VERSIONS = ("1.0.0", "2.0.0", "3.0.0")
 BEHAVIORS = {"1.0.0": "v1-baseline", "2.0.0": "v2-changed", "3.0.0": "v1-baseline"}
+
+
+def require_negative_evidence(kind, fmt, target, events, requests, *, selected_url=None,
+                              package_sha256=None, package_bytes=None, max_deb_bytes=None):
+    """Assert this fixture's precise rejection boundary, never just nonzero exit.
+
+    Error strings here are exact observations of the pinned test implementation, not
+    product error interpretation. A changed upstream diagnostic requires review.
+    """
+    names = [event.get("event") for event in events]
+    expected_names = ["installed_identity"]
+    expected_requests = ["/stable/linux.json"]
+    if kind != "missing-exact-target":
+        expected_names.append("selected")
+        expected_requests.append(urlsplit(selected_url).path)
+    if kind in ("wrong-format", "wrong-architecture"):
+        expected_names.append("verified_download")
+    if kind == "wrong-format" and fmt == "deb":
+        expected_names.extend(["polkit_adapter_result", "refusal_bytes"])
+    expected_names.append("refused")
+    if names != expected_names or [row.get("path") for row in requests] != expected_requests:
+        raise RuntimeError("negative did not traverse its exact request/event sequence")
+    identity = events[0]
+    if identity.get("exact_target") != target or identity.get("format") != fmt or identity.get("version") != "1.0.0":
+        raise RuntimeError("negative ran from a different installed fixture identity")
+    if kind != "missing-exact-target":
+        selected = events[1]
+        if any(selected.get(key) != wanted for key, wanted in
+               {"exact_target": target, "version": "2.0.0", "url": selected_url}.items()):
+            raise RuntimeError("negative selected the wrong target/version/artifact")
+    errors = {
+        "missing-exact-target": f"the platform `{target}` was not found in the response `platforms` object",
+        "bad-signature": "Invalid encoding in minisign data",
+        "signed-version-mismatch": "The update was signed for version 1.0.0 but the update endpoint announced version 2.0.0. The endpoint response may have been tampered with to force installing a different release.",
+        "wrong-format": "signed payload is not a native type-2 AppImage",
+        "wrong-architecture": "signed payload is not a native type-2 AppImage",
+    }
+    if kind in ("wrong-format", "wrong-architecture"):
+        verified = events[2]
+        if any(verified.get(key) != wanted for key, wanted in
+               {"sha256": package_sha256, "bytes": package_bytes, "version": "2.0.0"}.items()):
+            raise RuntimeError("negative did not authenticate the intended bytes")
+    if kind == "wrong-format" and fmt == "deb":
+        outer = events[3]
+        if outer.get("success") is not False or outer.get("exit_status") != 1:
+            raise RuntimeError("wrong-format negative did not reach a refusing privileged adapter")
+        adapter = json.loads(outer["stdout"])
+        boundary = (adapter.get("phase"), adapter.get("reason"))
+        if package_bytes > max_deb_bytes:
+            expected_boundary = ("root_staging", "source_size_outside_measured_bound")
+            if "package_sha256" in adapter or "package_bytes" in adapter:
+                raise RuntimeError("oversized negative unexpectedly passed root staging")
+        else:
+            expected_boundary = ("signature_and_schema", "package_not_in_exact_fixture_admission")
+            if adapter.get("package_sha256") != package_sha256 or adapter.get("package_bytes") != package_bytes:
+                raise RuntimeError("adapter staged different wrong-format bytes")
+        if boundary != expected_boundary or adapter.get("status") != "refused" or "dpkg_exit" in adapter or "authenticated_version" in adapter:
+            raise RuntimeError("wrong-format package was not refused at its bounded fixture seam")
+        if adapter.get("installed_version") != "1.0.0" or adapter.get("app_helper_unchanged") is not True:
+            raise RuntimeError("adapter did not preserve the installed fixture")
+        if set(adapter.get("before", {})) != {"app", "helper"} or adapter.get("before") != adapter.get("after"):
+            raise RuntimeError("adapter hashes changed on wrong-format refusal")
+        if events[4].get("app_unchanged") is not True or events[4].get("helper_unchanged") is not True:
+            raise RuntimeError("app observed changed bytes after adapter refusal")
+        errors[kind] = "polkit adapter did not install the fixture; inspect its receipt"
+    if events[-1].get("error") != errors[kind]:
+        raise RuntimeError("negative failed for an unrelated reason")
+
+
+def require_privileged_signature_refusal(response, package_sha256):
+    for key, wanted in {"status": "refused", "phase": "signature_and_schema",
+                        "reason": "signature_verification_failed", "installed_version": "1.0.0",
+                        "package_sha256": package_sha256, "app_helper_unchanged": True}.items():
+        if response.get(key) != wanted:
+            raise RuntimeError("privileged signature negative failed at a different boundary: " + key)
+    if ("dpkg_exit" in response or "authenticated_version" in response
+            or set(response.get("before", {})) != {"app", "helper"} or response.get("before") != response.get("after")):
+        raise RuntimeError("privileged signature refusal installed/authenticated bytes or changed installed hashes")
 
 
 def digest(path):
@@ -152,6 +231,7 @@ class Smoke:
         self.command(["python3", "-B", "/opt/fixture/adapter/bootstrap.py", "--bundle", self.source / "bootstrap"])
         # Initial installation is explicit root provisioning; updates below use only pkexec.
         admission = json.loads(Path("/etc/campus-updater-1057/admission.json").read_text())
+        self.max_deb_bytes = admission["max_package_bytes"]
         self.receipt["admission_sha256"] = digest("/etc/campus-updater-1057/admission.json")
         if not admission:
             raise RuntimeError("missing fixture admission")
@@ -309,9 +389,8 @@ class Smoke:
         del self.manifest["platforms"][target]
         self.manifest["platforms"]["linux-" + self.target_arch] = self.manifest["platforms"][alternate]
         offset = len(self.receipt["requests"])
-        self.invoke(executable, "--update", success=False)
-        if any(row["path"] != "/stable/linux.json" for row in self.receipt["requests"][offset:]):
-            raise RuntimeError("missing exact target downloaded another artifact")
+        events = self.invoke(executable, "--update", success=False)
+        require_negative_evidence("missing-exact-target", fmt, target, events, self.receipt["requests"][offset:])
         return dict(self.unchanged(before, executable, "1.0.0", fmt), manifest=self.manifest)
 
     def tampered(self, executable, fmt, kind):
@@ -319,6 +398,7 @@ class Smoke:
         self.release("2.0.0")
         target = "linux-" + self.target_arch + "-" + fmt
         selected = self.manifest["platforms"][target]
+        payload = self.packages["2.0.0", fmt]
         if kind == "bad-signature":
             selected["signature"] = base64.b64encode(b"invalid disposable fixture signature").decode()
         elif kind == "signed-version-mismatch":
@@ -327,18 +407,39 @@ class Smoke:
         elif kind == "wrong-format":
             wrong = self.packages["2.0.0", "appimage" if fmt == "deb" else "deb"]
             selected.update(url=self.url + "/packages/" + wrong["filename"], signature=self.signature(wrong))
+            payload = wrong
         elif kind == "wrong-architecture":
             if fmt != "appimage":
                 raise RuntimeError("signed ELF negative applies only to AppImage")
             selected.update(url=self.url + "/negative/wrong-architecture", signature=self.negative["signature"])
+            payload = self.negative
+        offset = len(self.receipt["requests"])
         events = self.invoke(executable, "--update", success=False)
-        if kind == "wrong-architecture":
-            verified = next(event for event in events if event.get("event") == "verified_download")
-            if verified.get("sha256") != self.negative["sha256"] or verified.get("version") != "2.0.0":
-                raise RuntimeError("wrong-architecture negative did not traverse authenticated download")
-            if any(event.get("event") in ("appimage_replaced", "appimage_relaunched") for event in events):
-                raise RuntimeError("wrong-architecture negative reached replacement")
+        require_negative_evidence(kind, fmt, target, events, self.receipt["requests"][offset:],
+                                  selected_url=selected["url"], package_sha256=payload["sha256"],
+                                  package_bytes=payload["bytes"], max_deb_bytes=self.max_deb_bytes)
         return self.unchanged(before, executable, "1.0.0", fmt)
+
+    def privileged_bad_signature(self):
+        before = self.identity(APP, "1.0.0", "deb")
+        artifact = self.packages["2.0.0", "deb"]
+        package = self.work / "signature-negative.deb"
+        signature = self.work / "signature-negative.sig"
+        shutil.copyfile(artifact["path"], package)
+        signature.write_text(self.signature(self.packages["1.0.0", "deb"]))
+        for path in (package, signature):
+            os.chown(path, self.user.pw_uid, self.user.pw_gid)
+            path.chmod(0o600)
+        try:
+            result = self.command(["pkexec", "--disable-internal-agent", ADAPTER, package, signature], user=True, check=False)
+            if result.returncode != 1:
+                raise RuntimeError("signature negative did not reach adapter refusal")
+            response = json.loads(result.stdout.strip())
+            require_privileged_signature_refusal(response, artifact["sha256"])
+            return dict(self.unchanged(before, APP, "1.0.0", "deb"), adapter=response)
+        finally:
+            package.unlink(missing_ok=True)
+            signature.unlink(missing_ok=True)
 
     def update(self, executable, old, new, fmt):
         self.identity(executable, old, fmt)
@@ -458,6 +559,8 @@ class Smoke:
             self.case(fmt + "/" + kind, lambda kind=kind: self.tampered(executable, fmt, kind))
         if fmt == "appimage":
             self.case("appimage/wrong-architecture", lambda: self.tampered(executable, fmt, "wrong-architecture"))
+        else:
+            self.case("deb/privileged-bad-signature", self.privileged_bad_signature)
         if not self.case(fmt + "/v1-to-v2", lambda: self.update(executable, "1.0.0", "2.0.0", fmt)):
             return
         if fmt == "deb":

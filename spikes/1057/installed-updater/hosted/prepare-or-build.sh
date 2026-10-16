@@ -41,6 +41,9 @@ python3 hosted/sign-negative.py
 cp src-tauri/target/release/verify-signature /output/bootstrap/
 python3 adapter/make-admission.py --output /output/bootstrap/admission.json \
   --architecture "$FIXTURE_ARCH" /output/packages/*.deb
+# Keep the exact measured schema and public trust anchor reviewable without a
+# package download. These are byte-for-byte copies of the bootstrap inputs.
+cp /output/bootstrap/admission.json /output/bootstrap/public-key.txt /output/receipts/
 cp adapter/install-deb.py adapter/bootstrap.py adapter/dev.projectcampus.updater1057.policy /output/bootstrap/
 python3 hosted/inventory.py
 printf '%s\n' '{"phase":"packages-built","installed_smoke":"pending"}' > /output/receipts/phase.json
