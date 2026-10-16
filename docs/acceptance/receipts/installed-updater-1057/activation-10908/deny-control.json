@@ -1,0 +1,22 @@
+{
+  "returncode": 0,
+  "queued": true,
+  "control_error": null,
+  "finished_unix_ns": 1792174089453331000,
+  "authority_receipt_sha256": "794447a6afeed8a1f2f555465540c4d0984c7d1e905ed94849649cc2a692bef6",
+  "authority_summary": {
+    "status": "window_elapsed",
+    "cleanup": "restored",
+    "error": null,
+    "cleanup_error": null,
+    "ready_unix_ns": 1792174055088526927,
+    "restore_started_unix_ns": 1792174089422410545,
+    "window_finished_unix_ns": 1792174089468110303,
+    "elapsed_seconds_including_cleanup": 35.04614234200001,
+    "deadline_exceeded": false
+  },
+  "independently_restored": true,
+  "guest_floor_after": true,
+  "host_floor_after": true,
+  "allocation_after_within_limit": true
+}

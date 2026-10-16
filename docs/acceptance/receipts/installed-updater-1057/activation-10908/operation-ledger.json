@@ -1,0 +1,33 @@
+{
+  "recorded_unix_ns": 1792174371359851000,
+  "scope": "Assembled after execution from retained tool operations; no invented per-command timestamps",
+  "lease": "1057-10908-office391",
+  "source_head": "5c1cf8c479b39599a9b1af58728f21223611d2f7",
+  "authority_sha256": "3631d41b52eb72099edf3c0e3a8878968ba1620f3593f3088e9efc7756918331",
+  "desktop_sha256": "b42d4f199efce7c24f956d8bc464b46db655306dd7ee736650d2466c66938b12",
+  "root_channel": "Existing limactl shell campus-linux-d5-noble-arm64 -- sudo -n /usr/bin/python3 -I -B, noninteractive management channel; no terminal sudo/password stdin",
+  "source_operations": "operation-inputs contains parameterized historical1285 controllers and exact private UI helper; unchanged reviewed authority/desktop bytes were read from Git and externally hash-checked before staged execution",
+  "gui_sequence": [
+    "screenshot gdm-prelogin.png",
+    "Enter",
+    "screenshot gdm-password-empty.png",
+    "private existing ordinary-login file through in-memory RFB helper; Enter",
+    "screenshot gdm-after-login.png",
+    "Ctrl+Alt+t",
+    "screenshot terminal-empty.png (desktop still visible while Terminal was starting)",
+    "type /usr/bin/python3 -I -B /home/campusqa/campus1057-10908-office391/desktop-driver.py; Enter",
+    "screenshot graphical-driver-launch.png",
+    "single window-control.py.txt deny 6",
+    "screenshot deny-observation.png during invocation: actual empty-password fixture prompt; no interaction",
+    "root process snapshot live-process-observation.json",
+    "wait for exact helper restoration; export complete journal; unchanged validator",
+    "queue stop to owned driver; capture protected equality and owned-process absence",
+    "screenshot deny-after.png",
+    "type gnome-session-quit --logout --no-prompt; Enter",
+    "logout-observation and gdm-after-logout.png",
+    "limactl stop; fresh list Stopped"
+  ],
+  "utM": "Not accessed; coordinator10908 owns stopped verification",
+  "clock_qualification": "Recorder monotonic elapsed20.023557044s versus wall19.804820004s. Both raw clocks preserved; no synchronization cause inferred. Authority own monotonic total35.046142342s; raw wall endpoints retained.",
+  "prior_allocation": "Original1057 retained host+guest specified files290938880bytes per activation1285 accounting; new10908 growth measured against fresh stopped7851278336, not historical7405699072 or conservative1288 highwater7857307648. No attribution invented for6029312-byte difference."
+}

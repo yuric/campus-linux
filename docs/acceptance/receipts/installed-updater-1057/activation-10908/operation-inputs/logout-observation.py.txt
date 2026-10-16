@@ -1,0 +1,7 @@
+import pathlib,json,subprocess,time,os
+scope='/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-46b0a965-44e1-4e3a-b346-9d2078538b14.scope'
+r={'observed_unix_ns':time.time_ns(),'owned_processes_absent':{str(p):not pathlib.Path('/proc/'+str(p)).exists() for p in [2941,2942,3067,3072,3087,2925,2918]},'owned_terminal_scope_absent':not pathlib.Path(scope).exists(),'commands':[]}
+for argv in [['loginctl','list-sessions','--no-pager'],['loginctl','show-user','1000'],['systemctl','show','polkit.service','--property=LoadState,ActiveState,SubState,MainPID'],['busctl','--system','--timeout=3','call','org.freedesktop.DBus','/org/freedesktop/DBus','org.freedesktop.DBus','NameHasOwner','s','org.freedesktop.PolicyKit1']]:
+ p=subprocess.run(argv,capture_output=True,text=True,timeout=5);r['commands'].append({'argv':argv,'returncode':p.returncode,'stdout':p.stdout,'stderr':p.stderr})
+r['rule_exists']=os.path.lexists('/etc/polkit-1/rules.d/00-campus-updater-1057-deny.rules');r['runtime_mask_exists']=os.path.lexists('/run/systemd/system/polkit.service');r['guest_free_bytes']=os.statvfs('/').f_bavail*os.statvfs('/').f_frsize
+print(json.dumps(r,indent=2))

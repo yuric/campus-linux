@@ -1,0 +1,40 @@
+{
+  "scope": "Host orchestration failures reconstructed from tool transcript; raw guest/authority failures remain in their original receipts",
+  "failures": [
+    {
+      "operation": "Initial DIAGNOSTIC.md lookup in committed receipts",
+      "result": "path absent",
+      "resolution": "Found coordinator read-only report at reviews/linux-pr13-evidence/activation1285-diagnostic/DIAGNOSTIC.md before guest access"
+    },
+    {
+      "operation": "GET /tasks/1057/activity",
+      "result": "HTTP404",
+      "resolution": "Read singular /log route"
+    },
+    {
+      "operation": "Homebrew Python UI import check",
+      "result": "ModuleNotFoundError: PIL",
+      "resolution": "Existing pyenv python3 already had PIL and cryptography; no installation"
+    },
+    {
+      "operation": "command -v -a python3 python3.11",
+      "result": "zsh command not found: -v",
+      "resolution": "which -a used"
+    },
+    {
+      "operation": "Initial detached limactl-start Popen",
+      "result": "Child did not survive host tool lifetime; empty log and fresh LimaStopped observation",
+      "resolution": "Only actual start used attached subprocess; boot log retained"
+    },
+    {
+      "operation": "First root-preflight immediately after login input",
+      "result": "GDM greeter only; no user bus yet",
+      "resolution": "Preserved root-preflight.json; separately captured root-preflight-after-login.json after actual desktop appeared and used that digest for recorder"
+    },
+    {
+      "operation": "Local export helper inspection",
+      "result": "KeyError: service_context before any journal query",
+      "resolution": "Used actual service_binding key; one complete journal query retained"
+    }
+  ]
+}

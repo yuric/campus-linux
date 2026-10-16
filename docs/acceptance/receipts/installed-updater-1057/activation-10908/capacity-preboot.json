@@ -1,0 +1,15 @@
+{
+  "observed_unix_ns": 1792173895769498000,
+  "host_free_bytes": 29147910144,
+  "remaining_reserved_bytes": 67108864,
+  "guest_allocation_limit_bytes": 67108864,
+  "disk_inode": 944391844,
+  "disk_allocated_bytes": 7851278336,
+  "prior_1288_conservative_highwater_bytes": 7857307648,
+  "later_actual_and_fresh_baseline_bytes": 7851278336,
+  "difference_bytes": 6029312,
+  "difference_attribution": "unattributed; conservative highwater and fresh physical allocation are different observations",
+  "source_head": "5c1cf8c479b39599a9b1af58728f21223611d2f7",
+  "scope": "10908 denial diagnostic only",
+  "guest_free_before_boot": "No stopped-filesystem measurement; fresh online check required before staging or authority. Historical activation1285 last observation19890356224 bytes."
+}

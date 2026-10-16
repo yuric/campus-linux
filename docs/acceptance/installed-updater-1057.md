@@ -4,6 +4,85 @@ LINUX-20261016 owns acceptance, independent review, Council and merge. This is d
 D4/G5 evidence for L0, not L0 completion or a production package. The only merged build
 dependency is bootstrap #981 at `37ef5d622da09cd7ba113dc0d1119e62e7378f84`.
 
+## Denial diagnostic under human10908
+
+LINUX-20261016 activated one exclusive Office391 denial diagnostic on 2026-10-16.
+It ran from unchanged source `5c1cf8c479b39599a9b1af58728f21223611d2f7`, using the
+reviewed diagnostic helper `3631d41b52eb72099edf3c0e3a8878968ba1620f3593f3088e9efc7756918331`
+and unchanged recorder `b42d4f199efce7c24f956d8bc464b46db655306dd7ee736650d2466c66938b12`.
+The installed v1, signed v2 and public trust from build113a were reused and rehashed;
+no package installation, dependency/build/download, missing-authority or cancellation replay
+occurred. The [new index](receipts/installed-updater-1057/activation-10908/run.json)
+binds raw evidence and operation inputs. All earlier receipts remain unchanged.
+
+**The actual callback was observed; explicit denial remains incomplete.** After exact
+trusted loaded readiness, the complete [journal export](receipts/installed-updater-1057/activation-10908/deny-journal.jsonl)
+contains one current-nonce `campus1057-deny-candidate` for app3072:start12145. Its typed
+fields report the expected action, fixed adapter program, root target and campusqa user,
+`local=true`, `active=true`, and **`subject.session=null`**, while the required session is
+string `"6"`; the optional expected PID is absent/undefined. These are actual callback
+values for this invocation, not the earlier source-only hypothesis. Null does not match
+the unchanged strict session predicate. No authorization guard was changed or retried.
+The [derived diagnostic observation](receipts/installed-updater-1057/activation-10908/diagnostic-observation.json)
+records this distinction without granting readiness, rejection or acceptance from a candidate.
+
+The candidate carries daemon UID/GID 989, syslog transport, current boot/nonce, kernel
+sender PID 3092 and reception time inside the app invocation. `_SYSTEMD_UNIT=polkit.service`
+and its cgroup are present; `_EXE` is absent. Attribution retains the dedicated-account
+and owned-rule trust assumption, not direct proof of the logger executable or protection
+against malicious root/same-account compromise. Its actual message is 777 UTF-8 bytes;
+arbitrary extended-Duktape-string bounds remain unproven beyond the earlier source/Node tests.
+The [literal union query](receipts/installed-updater-1057/activation-10908/deny-journal-query.json)
+retains all 24 rows through restoration, below the 65-row sentinel, including both loaded
+rows and the candidate. No message/nonce/app-PID filter or contradictory-row removal occurred.
+
+Actual GDM Wayland session 6, UID 1000, leader 2281, boot
+`5d86c41f-8f02-4710-8749-adce58297cbb` and Terminal-launched driver2941/server2942 are
+bound by the [graphical observation](receipts/installed-updater-1057/activation-10908/graphical-observation.json).
+The [during-invocation screenshot](receipts/installed-updater-1057/activation-10908/deny-observation.png)
+shows the real fixture authentication prompt with an empty password field. No administrator
+input or Cancel action was supplied. Separate [root process sampling](receipts/installed-updater-1057/activation-10908/live-process-observation.json)
+observed app3072 and its child3087 at `/usr/bin/pkexec`, including starttimes, credentials
+and cgroups. The unprivileged recorder's name-only child classification and direct
+`session=null` / API-61 remain untouched; root corroboration is a separate observation.
+
+The [raw app receipt](receipts/installed-updater-1057/activation-10908/guest/deny.json)
+selected `linux-aarch64-deb` and verified signed v2, 4,706,052 bytes,
+SHA256 `3563aa9bb97785e0b8b0c4a57d7fd502fd0ef087bafa894c804e33c842cfd872`.
+It timed out after 20.023557044 monotonic seconds and returned -15; its wall-clock elapsed
+was 19.804820004 seconds. Both clocks are preserved without attributing the difference.
+No completed refusal, rejecting marker or adapter result was emitted. Post-timeout v1
+app/helper identity is identical. The unchanged [validator](receipts/installed-updater-1057/activation-10908/guest/denial-correlation.json)
+exited 1 with `incomplete`: only a completed exact-session deny observation can be correlated.
+The whole invocation preceded restoration; that timing does not turn the timeout into denial.
+
+The [authority window](receipts/installed-updater-1057/activation-10908/deny-window.json)
+restored its exact owned rule in 35.046142342 monotonic seconds, within the 45-second total;
+recorder 20 / restore 10 / loaded-wait 5 limits stayed unchanged. Independent
+[full baseline comparison](receipts/installed-updater-1057/activation-10908/restoration-equality.json)
+found protected paths, both complete rules directories, package inventory, service configuration,
+daemon709/start501, bus ownership and locked keyring unchanged; only free-space command
+output differed. The first preflight raced login and retains its greeter/no-user-bus result;
+the separate post-login baseline was verified and supplied to the recorder.
+
+Normal GDM logout left campusqa not logged in or lingering, seven observed owned PIDs and
+the Terminal scope absent, original active authority/bus intact and no fixture rule/mask.
+[Lima returned Stopped at 18:10:24 UTC](receipts/installed-updater-1057/activation-10908/capacity-stopped.json),
+before the 18:20 deadline. New disk allocation is 20,054,016 bytes, from fresh stopped
+7,851,278,336 to 7,871,332,352 bytes, same inode 944391844. The earlier conservative1288
+high-water mark 7,857,307,648 differs from the fresh baseline by 6,029,312 bytes; no attribution
+is invented. [Allocation accounting](receipts/installed-updater-1057/activation-10908/allocation-budget.json)
+keeps prior budgets separate and includes current source/receipts plus publication reserve
+within the 64 MiB grant. Final host free was 27,546,705,920 bytes; final guest free 19,435,663,360.
+UTM was untouched. Host orchestration failures are retained separately from runtime evidence.
+
+Source, helper, validator and production bytes are unchanged. Existing 110 tests at4001
+remain historical source evidence; this continuation checks new receipt hashes, narrative
+bindings, scope, links and whitespace without claiming a source-test rerun. LINUX-20261016
+is the explicit next owner for independent evidence review, any separately authorized scope
+proposal/runtime lease, exact-head CI/Council and landing. No denial acceptance, L0 completion,
+ready toggle or merge follows this diagnostic.
+
 ## Activated runtime attempt under direction 1285
 
 Human 10799 activated the existing disposable Lima lease on 2026-10-16 at 17:10 UTC.
@@ -187,8 +266,9 @@ in complete future exports; removing them to obtain a pass is prohibited.
 
 Actual Node execution tests exercise the generated JavaScript against the predicate
 matrix and logging failures, alongside the existing authority, probe and adapter tests.
-They prove mocked semantics only. They neither show actual callback values in polkit124
-nor certify a new runtime attempt. The45/20/10-second limits, row sentinel, evidence caps,
+They prove mocked semantics only. They did not demonstrate actual callback values in
+polkit124 or certify a runtime attempt at that source-only handoff. The45/20/10-second
+limits, row sentinel, evidence caps,
 nonce generation and exact owned-state cleanup are unchanged. LINUX-20261016 owns
 independent source review, actual different-family review and any later separate lease.
 
@@ -198,8 +278,9 @@ The new authority helper SHA256 is
 `3631d41b52eb72099edf3c0e3a8878968ba1620f3593f3088e9efc7756918331`;
 unchanged desktop/validator SHA256 remains
 `b42d4f199efce7c24f956d8bc464b46db655306dd7ee736650d2466c66938b12`.
-The runtime receipts above continue to bind the older actually executed970a helper;
-no new helper byte has been staged or executed in either guest.
+The activation1285 receipts continue to bind the older actually executed970a helper;
+no new helper byte had been staged or executed at that source-only handoff.
+The later human10908 diagnostic above records its first actual guest execution.
 
 ## Historical source-only marker correction under direction 1269
 
@@ -430,7 +511,7 @@ by the 7383449 run.
 | Signed v1 → v2 and higher v3 with reverted fixture behavior | Pass | Pass | AppImage replacement/relaunch and privileged deb verification |
 | Lower/same signed deb replay refused at privileged seam | Pass | Pass | App/helper hashes unchanged; live caller substitution also passed |
 | Privileged bad signature and signed wrong-architecture AppImage | Pass | Pass | Intended rejecting boundaries; no installation/replacement |
-| GDM polkit prompt, cancellation, denial and missing authority | Cancellation tuple manually accepted under10670; activation1285 missing-authority arm64 deb/GDM Wayland tuple separately accepted under10841; denial timed out after20 seconds, `incomplete`, with no rejecting marker | Downstream desktop gap | Partial desktop evidence only; missing-authority raw `not_certified` / `pending_coordinator_review` retained, no direct app/logind mapping or sampled pkexec child; denial remains failed |
+| GDM polkit prompt, cancellation, denial and missing authority | Cancellation tuple manually accepted under10670; activation1285 missing-authority arm64 deb/GDM Wayland tuple separately accepted under10841; denial1285 and10908 timed out after20 seconds, `incomplete`, with no rejecting marker;10908 observed actual null-session callback and prompt | Downstream desktop gap | Partial desktop evidence only; missing-authority raw `not_certified` / `pending_coordinator_review` retained, no direct app/logind mapping or sampled pkexec child; denial remains failed |
 
 | Final artifact budget | arm64 | x86_64 |
 |---|---:|---:|

@@ -1,0 +1,116 @@
+{
+  "observed_unix_ns": 1792174039357205331,
+  "ready": {
+    "observed_unix_ns": 1792174034096654615,
+    "pid": 2941,
+    "proc_stat": "2941 (python3) R 2925 2941 2925 34816 2941 4194304 1802 0 0 0 2 2 0 0 20 0 1 0 9987 25038848 3808 18446744073709551615 4194304 10541512 281474552252800 0 0 0 0 16781312 2 0 0 0 17 0 0 0 0 0 0 10616216 12102016 365273088 281474552255015 281474552255098 281474552255098 281474552258535 0\n",
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-46b0a965-44e1-4e3a-b346-9d2078538b14.scope\n",
+    "server_pid": 2942,
+    "server_stat": "2942 (python3) R 2941 2942 2942 0 -1 4194304 305 0 0 0 0 0 0 0 20 0 1 0 9991 16183296 1152 18446744073709551615 4194304 10541512 281473926750576 0 0 0 0 0 0 0 0 0 17 1 0 0 0 0 0 10616216 12102016 799100928 281473926754688 281473926754938 281473926754938 281473926758375 0\n",
+    "server_cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-46b0a965-44e1-4e3a-b346-9d2078538b14.scope\n",
+    "boot_id": "5d86c41f-8f02-4710-8749-adce58297cbb",
+    "root_preflight_sha256": "cb2703236761af7f111e5f5ad37320b9af6c4576f0ccbc80dfebecc0c70d4162",
+    "environment": {
+      "XDG_SESSION_ID": null,
+      "XDG_RUNTIME_DIR": "/run/user/1000",
+      "DISPLAY": ":0",
+      "WAYLAND_DISPLAY": "wayland-0",
+      "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/1000/bus"
+    }
+  },
+  "processes": [
+    {
+      "pid": 2281,
+      "name": "gdm-session-wor",
+      "uid": 0,
+      "stat": "2281 (gdm-session-wor) S 957 957 957 0 -1 4194560 8968 410 1 0 2 1 0 0 20 0 4 0 3841 248737792 2140 18446744073709551615 221046668197888 221046668429236 281474663838704 0 0 0 0 4096 16897 0 0 0 17 3 0 0 0 0 0 221046668509520 221046668525688 221047212785664 281474663841342 281474663841380 281474663841380 281474663841752 0\n",
+      "cgroup": "0::/user.slice/user-1000.slice/session-6.scope\n",
+      "exe": "/usr/libexec/gdm-session-worker"
+    },
+    {
+      "pid": 2371,
+      "name": "gdm-wayland-ses",
+      "uid": 1000,
+      "stat": "2371 (gdm-wayland-ses) S 2281 2371 2371 1026 2371 4194560 678 0 0 0 0 0 0 0 20 0 4 0 5355 239640576 1344 18446744073709551615 191155966181376 191155966220276 281474873542448 0 0 0 0 4096 16384 0 0 0 17 1 0 0 0 0 0 191155966309792 191155966312672 191156982190080 281474873544056 281474873544165 281474873544165 281474873544663 0\n",
+      "cgroup": "0::/user.slice/user-1000.slice/session-6.scope\n",
+      "exe": "/usr/libexec/gdm-wayland-session"
+    },
+    {
+      "pid": 2456,
+      "name": "gnome-shell",
+      "uid": 1000,
+      "stat": "2456 (gnome-shell) S 2319 2456 2456 0 -1 4194304 377156 127 42 0 244 101 0 0 20 0 22 0 5373 4885348352 85924 18446744073709551615 208452560551936 208452560570428 281474954887536 0 0 0 0 16781312 17656 0 0 0 17 2 0 0 0 0 0 208452560681408 208452560683360 208453606502400 281474954889866 281474954889887 281474954889887 281474954891235 0\n",
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service\n",
+      "exe": "/usr/bin/gnome-shell"
+    },
+    {
+      "pid": 2918,
+      "name": "gnome-terminal-",
+      "uid": 1000,
+      "stat": "2918 (gnome-terminal-) S 2319 2918 2918 0 -1 4194304 6558 0 14 0 26 6 0 0 20 0 6 0 8687 564498432 11491 18446744073709551615 215882118135808 215882118441298 281474595129760 0 0 0 0 4096 0 0 0 0 17 3 0 0 0 0 0 215882118517360 215882118533488 215882471477248 281474595133969 281474595134004 281474595134004 281474595135445 0\n",
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/gnome-terminal-server.service\n",
+      "exe": "/usr/libexec/gnome-terminal-server"
+    },
+    {
+      "pid": 2925,
+      "name": "bash",
+      "uid": 1000,
+      "stat": "2925 (bash) S 2918 2925 2925 34816 2941 4194304 682 641 2 1 1 0 0 0 20 0 1 0 8706 8990720 1216 18446744073709551615 220764177104896 220764178559544 281474549071248 0 0 0 65536 3686404 1266761467 1 0 0 17 1 0 0 0 0 0 220764178658976 220764178711440 220764433829888 281474549074393 281474549074398 281474549074398 281474549075950 0\n",
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-46b0a965-44e1-4e3a-b346-9d2078538b14.scope\n",
+      "exe": "/usr/bin/bash"
+    },
+    {
+      "pid": 2941,
+      "name": "python3",
+      "uid": 1000,
+      "stat": "2941 (python3) S 2925 2941 2925 34816 2941 4194304 1802 0 0 0 3 2 0 0 20 0 1 0 9987 25038848 3808 18446744073709551615 4194304 10541512 281474552252800 0 0 0 0 16781312 2 1 0 0 17 0 0 0 0 0 0 10616216 12102016 365273088 281474552255015 281474552255098 281474552255098 281474552258535 0\n",
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-46b0a965-44e1-4e3a-b346-9d2078538b14.scope\n",
+      "exe": "/usr/bin/python3.12"
+    },
+    {
+      "pid": 2942,
+      "name": "python3",
+      "uid": 1000,
+      "stat": "2942 (python3) S 2941 2942 2942 0 -1 4194304 4672 0 0 0 9 27 0 0 20 0 1 0 9991 32313344 4943 18446744073709551615 4194304 10541512 281473926750576 0 0 0 0 16781312 2 1 0 0 17 1 0 0 0 0 0 10616216 12102016 799100928 281473926754688 281473926754938 281473926754938 281473926758375 0\n",
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-46b0a965-44e1-4e3a-b346-9d2078538b14.scope\n",
+      "exe": "/usr/bin/python3.12"
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "loginctl",
+        "show-session",
+        "6"
+      ],
+      "returncode": 0,
+      "stdout": "Id=6\nUser=1000\nName=campusqa\nTimestamp=Fri 2026-10-16 11:06:27 MST\nTimestampMonotonic=53394618\nVTNr=2\nSeat=seat0\nTTY=tty2\nRemote=no\nService=gdm-password\nScope=session-6.scope\nLeader=2281\nAudit=6\nType=wayland\nClass=user\nActive=yes\nState=active\nIdleHint=no\nIdleSinceHint=0\nIdleSinceHintMonotonic=0\nLockedHint=no\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/sbin/runuser",
+        "-u",
+        "campusqa",
+        "--",
+        "busctl",
+        "--address=unix:path=/run/user/1000/bus",
+        "call",
+        "org.freedesktop.DBus",
+        "/org/freedesktop/DBus",
+        "org.freedesktop.DBus",
+        "GetConnectionUnixProcessID",
+        "s",
+        "org.gnome.Mutter.DisplayConfig"
+      ],
+      "returncode": 0,
+      "stdout": "u 2456\n",
+      "stderr": ""
+    }
+  ],
+  "mutter_socket_peer": {
+    "pid": 2456,
+    "uid": 1000,
+    "gid": 1001
+  }
+}

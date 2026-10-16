@@ -1,0 +1,36 @@
+{
+  "session": {
+    "Id": "6",
+    "User": "1000",
+    "Name": "campusqa",
+    "Timestamp": "Fri 2026-10-16 11:06:27 MST",
+    "TimestampMonotonic": "53394618",
+    "VTNr": "2",
+    "Seat": "seat0",
+    "TTY": "tty2",
+    "Remote": "no",
+    "Service": "gdm-password",
+    "Scope": "session-6.scope",
+    "Leader": "2281",
+    "Audit": "6",
+    "Type": "wayland",
+    "Class": "user",
+    "Active": "yes",
+    "State": "active",
+    "IdleHint": "no",
+    "IdleSinceHint": "0",
+    "IdleSinceHintMonotonic": "0",
+    "LockedHint": "no"
+  },
+  "source_reference": "5c1cf8c",
+  "root_preflight_sha256": "cb2703236761af7f111e5f5ad37320b9af6c4576f0ccbc80dfebecc0c70d4162",
+  "unchanged_installed_paths": [
+    "/usr/bin/campus-updater-1057",
+    "/usr/lib/campus-updater-1057/inert-helper.txt",
+    "/usr/lib/campus-updater-1057/install-deb.py",
+    "/usr/lib/campus-updater-1057/verify-signature",
+    "/etc/campus-updater-1057/admission.json",
+    "/etc/campus-updater-1057/public-key.txt",
+    "/usr/share/polkit-1/actions/dev.projectcampus.updater1057.policy"
+  ]
+}

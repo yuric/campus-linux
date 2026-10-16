@@ -1,0 +1,9 @@
+{
+  "observed_unix_ns": 1792174213851079000,
+  "host_free_bytes": 27730939904,
+  "disk_inode": 944391844,
+  "disk_allocated_bytes": 7870939136,
+  "new_guest_allocated_bytes": 19660800,
+  "local_receipt_bytes": 2150400,
+  "with_reserve_bytes": 30199808
+}

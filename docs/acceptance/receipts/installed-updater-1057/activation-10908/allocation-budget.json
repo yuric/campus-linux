@@ -1,0 +1,15 @@
+{
+  "observed_unix_ns": 1792174371371894000,
+  "new_guest_allocated_bytes": 20054016,
+  "entire_current_worktree_allocated_bytes": 2289664,
+  "owned_tmp_allocated_bytes": 8192,
+  "remaining_git_publication_reserve_bytes": 8388608,
+  "conservative_new_total_bytes": 30740480,
+  "limit_bytes": 67108864,
+  "host_free_bytes": 26027429888,
+  "fresh_stopped_baseline_bytes": 7851278336,
+  "final_stopped_disk_allocated_bytes": 7871332352,
+  "prior_1288_conservative_highwater_bytes": 7857307648,
+  "unattributed_highwater_to_fresh_difference_bytes": 6029312,
+  "original_1057_retained_host_guest_files_bytes_separate": 290938880
+}

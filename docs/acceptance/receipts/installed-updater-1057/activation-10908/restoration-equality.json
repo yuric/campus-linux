@@ -1,0 +1,97 @@
+{
+  "paths": true,
+  "rules": true,
+  "rules_directories": true,
+  "hosted_allow_rule": true,
+  "keyring": true,
+  "commands": [
+    {
+      "argv": [
+        "systemctl",
+        "show",
+        "polkit.service",
+        "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths"
+      ],
+      "equal": true
+    },
+    {
+      "argv": [
+        "systemctl",
+        "show",
+        "gdm3.service",
+        "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths"
+      ],
+      "equal": true
+    },
+    {
+      "argv": [
+        "busctl",
+        "--system",
+        "--timeout=3",
+        "call",
+        "org.freedesktop.DBus",
+        "/org/freedesktop/DBus",
+        "org.freedesktop.DBus",
+        "NameHasOwner",
+        "s",
+        "org.freedesktop.PolicyKit1"
+      ],
+      "equal": true
+    },
+    {
+      "argv": [
+        "dpkg-query",
+        "-W",
+        "-f=${binary:Package}\t${Version}\t${db:Status-Status}\n",
+        "campus-updater-1057",
+        "polkitd",
+        "pkexec",
+        "gdm3"
+      ],
+      "equal": true
+    },
+    {
+      "argv": [
+        "df",
+        "-B1",
+        "/"
+      ],
+      "equal": false
+    },
+    {
+      "argv": [
+        "uname",
+        "-a"
+      ],
+      "equal": true
+    },
+    {
+      "argv": [
+        "dpkg-query",
+        "-W",
+        "-f=${binary:Package}\t${Version}\t${db:Status-Status}\n"
+      ],
+      "equal": true
+    },
+    {
+      "argv": [
+        "systemctl",
+        "show",
+        "polkit.service",
+        "--property=MainPID,ExecMainStartTimestamp,ExecMainStartTimestampMonotonic,User,Group"
+      ],
+      "equal": true
+    },
+    {
+      "argv": [
+        "busctl",
+        "--system",
+        "status",
+        "org.freedesktop.PolicyKit1"
+      ],
+      "equal": true
+    }
+  ],
+  "before_sha256": "cb2703236761af7f111e5f5ad37320b9af6c4576f0ccbc80dfebecc0c70d4162",
+  "after_sha256": "0ce08fdf96916ae54442d234355ca82d7332337769a09a8ef1208bdbf23966ff"
+}

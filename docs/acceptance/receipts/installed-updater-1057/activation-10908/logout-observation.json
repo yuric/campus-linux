@@ -1,0 +1,66 @@
+{
+  "observed_unix_ns": 1792174213928569005,
+  "owned_processes_absent": {
+    "2941": true,
+    "2942": true,
+    "3067": true,
+    "3072": true,
+    "3087": true,
+    "2925": true,
+    "2918": true
+  },
+  "owned_terminal_scope_absent": true,
+  "commands": [
+    {
+      "argv": [
+        "loginctl",
+        "list-sessions",
+        "--no-pager"
+      ],
+      "returncode": 0,
+      "stdout": "SESSION UID USER SEAT  TTY  STATE  IDLE SINCE\n      4 501 yuri -     -    active no   -\n     c2 110 gdm  seat0 tty1 active no   -\n\n2 sessions listed.\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "loginctl",
+        "show-user",
+        "1000"
+      ],
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Failed to get user: User ID 1000 is not logged in or lingering\n"
+    },
+    {
+      "argv": [
+        "systemctl",
+        "show",
+        "polkit.service",
+        "--property=LoadState,ActiveState,SubState,MainPID"
+      ],
+      "returncode": 0,
+      "stdout": "MainPID=709\nLoadState=loaded\nActiveState=active\nSubState=running\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "busctl",
+        "--system",
+        "--timeout=3",
+        "call",
+        "org.freedesktop.DBus",
+        "/org/freedesktop/DBus",
+        "org.freedesktop.DBus",
+        "NameHasOwner",
+        "s",
+        "org.freedesktop.PolicyKit1"
+      ],
+      "returncode": 0,
+      "stdout": "b true\n",
+      "stderr": ""
+    }
+  ],
+  "rule_exists": false,
+  "runtime_mask_exists": false,
+  "guest_free_bytes": 19435663360
+}
