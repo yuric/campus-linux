@@ -4,7 +4,126 @@ LINUX-20261016 owns acceptance, independent review, Council and merge. This is d
 D4/G5 evidence for L0, not L0 completion or a production package. The only merged build
 dependency is bootstrap #981 at `37ef5d622da09cd7ba113dc0d1119e62e7378f84`.
 
-## Source-only marker correction under direction 1269
+## Activated runtime attempt under direction 1285
+
+Human 10799 activated the existing disposable Lima lease on 2026-10-16 at 17:10 UTC.
+The unchanged reviewed helpers from `1666bd8ea3ded8aa47fd9d30eac42be10f28073c`
+ran with lease `1057-1285-60dc337b`: missing authority first, then denial after complete
+restoration and a fresh preflight. Source review and its 100 tests remain source evidence.
+The installed v1 and approved signed v2 from build source `113a53e` were reused; no
+bootstrap, reinstall, hosted artifact download, dependency/build operation or cancellation repeat
+occurred. D1–D7 and every downstream production/package gate remain in force.
+
+[Fresh source staging](receipts/installed-updater-1057/activation-1285/source-staging.json)
+records the exact helper hashes below, root-owned 0400 files in a fresh 0500 directory,
+canonical nonsymlink paths and owners/modes before isolated `/usr/bin/python3 -I -B`.
+[Retained input verification](receipts/installed-updater-1057/activation-1285/verified-inputs.json)
+binds the existing packages, signatures and public trust. The
+[post-login baseline](receipts/installed-updater-1057/activation-1285/root-preflight-after-login.json)
+at 17:12:48.641496 UTC has SHA256
+`278932cb3aac695b100370ddd5b4c3346318658a4a6e5847f30d957fcaae84b5`.
+It includes complete protected paths, both rules-directory inventories, service/mask/bus
+and session state, keyring observation, and all 1,208 `dpkg-query` rows. Actual kernel is
+`6.8.0-147-generic`, systemd `255.4-1ubuntu8.18`, polkit/pkexec
+`124-2ubuntu1.24.04.4`, GDM `46.2-1ubuntu1~24.04.9` and util-linux `2.39.3-9ubuntu6.6`.
+These are fresh observations after the intervening unattended updates, not equality
+claims against an earlier boot.
+
+Actual private GDM login produced campusqa UID1000, Wayland session6, leader2283,
+boot `8438a956-305b-4cd0-ad36-77801d0c7d83`. The
+[graphical observation](receipts/installed-updater-1057/activation-1285/graphical-driver.json)
+binds the real Terminal launch, driver2973:start14873, server2974:start14875, cgroups,
+display/runtime sockets and Mutter peer2434/UID1000. Both updater processes retain
+`sd_pid_get_session=-61` and `session=null` in the GNOME user-manager scope.
+This is corroborating graphical evidence for separate coordinator assessment, not
+direct PID/session certification or an environment-based relabeling.
+
+The [missing-authority window](receipts/installed-updater-1057/activation-1285/missing-authority-window.json)
+used the explicit shared-window acknowledgment, found no pre-existing mask, recorded
+its owned runtime mask, stopped polkit and observed activation refusal with no bus owner
+before readiness. The [actual updater receipt](receipts/installed-updater-1057/activation-1285/guest/missing-authority.json)
+records app3126:start18940 from 17:13:57.919472 to 17:13:58.082226 UTC, entirely inside
+the effective ready-to-restoration interval. It selected `linux-aarch64-deb`, verified
+the intended 4,706,052-byte signed v2 digest
+`3563aa9bb97785e0b8b0c4a57d7fd502fd0ef087bafa894c804e33c842cfd872`, and received
+pkexec127 with `Unit polkit.service is masked` in the full preserved authority error.
+No adapter entry was emitted; installed v1 app/helper hashes stayed unchanged.
+This is an observed technical refusal; raw status remains **not_certified**, with
+`pending_coordinator_review`. The helper restored only its owned mask and original
+active configuration/bus ownership; its whole window including cleanup lasted
+35.215079122 seconds, without a deadline overrun.
+
+After [independent restoration comparison](receipts/installed-updater-1057/activation-1285/missing-restoration-equality.json),
+the [fresh denial baseline](receipts/installed-updater-1057/activation-1285/root-preflight-after-missing.json)
+at 17:14:55.453161 UTC has SHA256
+`f79231c70f41f929d1e4aefa09a7b42c4e75cb4e70c1ddf6ec0cb5e79eff75a1`.
+The [logger preflight](receipts/installed-updater-1057/activation-1285/logger-preflight.json)
+verified canonical root-controlled `/usr/bin/logger`, its version/hash/options and a
+unique actual root-context message; this alone proves no daemon-context delivery.
+The [denial helper](receipts/installed-updater-1057/activation-1285/deny-window.json)
+separately bound the dedicated daemon account/process context, generated its nonce,
+observed two valid loaded rows and announced readiness. Both rows preceded its
+`loaded_marker_observed_unix_ns`; this run does not exhibit a late-loaded-marker failure.
+
+**Denial failed to complete.** The [raw recorder](receipts/installed-updater-1057/activation-1285/guest/deny.json)
+records app3397:start26519 from 17:15:13.715645 to 17:15:33.734875 UTC, the intended
+signed-v2 verified download, and a name-only pkexec3412 observation. The 20-second
+recorder deadline terminated the app after a measured 20.019231627 seconds with
+returncode -15; that timeout remains a failure. No completed pkexec refusal,
+adapter entry receipt or exact rejecting marker was obtained. Its status is **incomplete**;
+the after-timeout observation still reports unchanged v1 app/helper. The helper's
+`window_elapsed`/`restored` status describes authority-window operation only: exact
+owned-rule cleanup completed within 35.052979530 seconds total, without overrun.
+The whole app invocation preceded restoration, but that timing does not establish denial.
+
+The [literal journal query](receipts/installed-updater-1057/activation-1285/deny-journal-query.json)
+preserves the executed argv, boot and bounds `--since=@1792170913 --until=@1792170949`,
+covering the complete window through restoration. Its two arms retain daemon
+UID/GID989/syslog/current-boot rows **or** `SYSLOG_IDENTIFIER=campus-updater-1057`,
+without message/nonce/app-PID filtering. The complete
+[export](receipts/installed-updater-1057/activation-1285/deny-journal.jsonl) contains
+23 rows, below the 65-row sentinel, including both exact loaded rows and every later
+matching row; no rejecting event is present. Export, authority and recorder SHA256s
+are bound in the [actual validation invocation](receipts/installed-updater-1057/activation-1285/validation-invocation.json).
+The unchanged unprivileged validator exited1 and wrote
+[incomplete](receipts/installed-updater-1057/activation-1285/denial-correlation.json):
+`only a completed exact-session deny observation can be correlated`.
+It did not reach a successful marker correlation; no failure cause is inferred and
+no input was edited to obtain a pass.
+
+[Final equality](receipts/installed-updater-1057/activation-1285/restoration-equality.json)
+preserves full protected-path, rule and directory equality. Recorded command differences
+are free space and the legitimate missing-authority restart: daemon710 became3264,
+with a new starttime and bus unique name. That is not a denial-context equality claim.
+Original active authority/bus ownership, absent owned rule/mask, v1/public trust/GDM
+configuration and locked keyring were verified. The
+[final guest observation](receipts/installed-updater-1057/activation-1285/guest-final.json)
+records owned driver/server/recorder/app process absence and no remaining fixture process.
+Missing-authority manual assessment and the failed denial remain for LINUX-20261016;
+no worker acceptance, readiness, merge or CI/Council watcher is implied.
+
+[Lima was returned Stopped](receipts/installed-updater-1057/activation-1285/capacity-stopped.json)
+with disk inode944391844 and allocated bytes7,424,835,584, versus the fresh stopped
+baseline7,405,699,072: **19,136,512 bytes new guest allocation**. Host free was
+32,449,904,640 bytes; final online guest free was19,890,356,224 bytes. Before boot,
+the last retained guest-free observation was used, followed by a fresh online check;
+no stopped-filesystem free-space measurement is claimed. UTM was not accessed.
+The [allocation account](receipts/installed-updater-1057/activation-1285/allocation-budget.json)
+separates the new128MiB grant from the original1057 retained allocation. Its conservative
+new total includes the entire current worktree, own temporary files, guest growth and
+an8MiB publication reserve. The original measured host-plus-guest file allocation is
+290,938,880 bytes (including257,873,625 file bytes of retained ZIPs); intervening
+Office400/system-update growth is not assigned to this task.
+
+The [evidence index](receipts/installed-updater-1057/activation-1285/run.json) binds all
+new raw exports and operation inputs. Original209 receipt files and the reviewed
+helper/app/adapter/verifier sources are unchanged. The read-only preflight transport
+failure (`Message too long`) and initial local shell-check wrapper error are retained
+separately; neither is an authority case result. No authority retry or source repair
+followed the failed denial. LINUX-20261016 is the explicit next owner and sole watcher
+for missing-authority assessment, denial disposition, exact-head review and landing.
+
+## Historical source-only marker correction under direction 1269
 
 Direction 1269 authorizes source and mocked tests from evidence head 333d59b only. The
 VM lease is returned to Office 400; this correction authorizes no guest access or runtime.
@@ -77,7 +196,13 @@ All 19 retained public/package/probe inputs were verified in place. The
 [fresh post-login root inventory](receipts/installed-updater-1057/authority-continuation/root-preflight-after-login.json)
 has SHA256 `ac407e18e6967eb2f1ec9ea81a48d8a42d3ae07158d61de4b820d5a7d8d83767`;
 it records full effective rules, protected paths and active authority. The earlier
-preflight taken while login was pending is preserved separately. Actual private GDM
+preflight taken while login was pending is preserved separately: its observation is
+16:11:57.153793 UTC, whereas the post-login inventory is 16:12:42.592883 UTC.
+The guest file named `root-preflight.json` used by the driver maps by SHA256 `ac407e18…`
+to the repository's `root-preflight-after-login.json`, not its earlier namesake.
+That same digest appears in the preserved driver-ready data and the
+[graphical observation](receipts/installed-updater-1057/authority-continuation/graphical-driver.json)
+at 16:14:20.342679 UTC. Actual private GDM
 login produced campusqa UID 1000, X11 session 6, leader 2291, boot
 `b59b3d1f-8914-4758-8d6b-b5d334859490`. The driver/server were launched from the
 [actual graphical Terminal](receipts/installed-updater-1057/authority-continuation/graphical-driver-launch.png).
@@ -91,8 +216,9 @@ logging/registration prerequisite failed`. The
 contains two exact loaded-message records with current boot/time and UID/GID 989, but
 both lack `_EXE` and `_SYSTEMD_UNIT`. Consequently no record satisfies the unchanged
 trusted-daemon predicate. This proves missing required metadata, not its cause.
-The helper restored its exact owned rule in **5.018467989 seconds**, inside the 45-second
-bound; no timeout or provenance requirement was relaxed.
+The helper's **5.018467989 seconds** is the whole window, including the failed loaded
+wait and exact owned-rule cleanup, not the restoration duration alone. It remained
+inside the 45-second bound; no timeout or provenance requirement was relaxed.
 
 No readiness was emitted, so **no updater invocation, download, adapter entry or
 rejecting subject marker exists for this attempt**. The recorder was not run; no exit,
@@ -105,8 +231,13 @@ manual cancellation acceptance and raw `not_certified` remain unchanged.
 matched the fresh baseline's complete rules and protected path owner/mode/inode/content
 inventory. Original polkit remained active/running with its bus name owned; deny rule
 and masks were absent, installed v1/public trust/GDM configuration unchanged. Owned
-driver 3228 and server 3229 exited; no fixture renderer was launched. Keyring remained
-locked. [Lima was returned Stopped](receipts/installed-updater-1057/authority-continuation/capacity-stopped.json),
+driver 3228 and server 3229 exited; no fixture renderer was launched. The retained
+[keyring-before observation](receipts/installed-updater-1057/authority-continuation/keyring-before.json)
+reports `Locked=true` but has no embedded timestamp; its filename alone cannot place
+it before login or the invocation. The separately timestamped
+[final guest observation](receipts/installed-updater-1057/authority-continuation/guest-final.json)
+also reports locked, without retroactively timestamping that earlier record.
+[Lima was returned Stopped](receipts/installed-updater-1057/authority-continuation/capacity-stopped.json),
 with actual allocated disk 6,905,659,392 bytes versus 6,890,979,328 before boot: **14 MiB growth**.
 Host free was 28,570,193,920 bytes at stopped readback; guest free before stop was
 20,208,312,320 bytes. Before boot, guest free used the last retained observation;

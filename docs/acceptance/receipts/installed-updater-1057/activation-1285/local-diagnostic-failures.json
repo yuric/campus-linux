@@ -1,0 +1,25 @@
+{
+  "scope": "Local evidence/check diagnostics; no authority mutation or source repair",
+  "failures": [
+    {
+      "operation": "Task activity discovery GET /tasks/1057/activity",
+      "result": "404",
+      "resolution": "GET /tasks/1057/log succeeded; all121 rows read."
+    },
+    {
+      "operation": "Historical/pre-publication exact-secret scan after Lima stop",
+      "result": "FileNotFoundError reading ephemeral ~/.lima/campus-linux-d5-noble-arm64/vncpassword",
+      "resolution": "Lima already stopped. No credential reconstruction/read elsewhere. Scan passed for actual Campus bearer and existing ordinary-login credential plus private-key markers; no actual-VNC-value scan claimed. Private VNC helper never emitted credential bytes."
+    },
+    {
+      "operation": "Read-only package inventory summarizer",
+      "result": "StopIteration selecting wrong argv length",
+      "resolution": "Corrected read-only selection confirmed full1208-row inventory unchanged."
+    },
+    {
+      "operation": "Initial Git receipt staging and whitespace check",
+      "result": "Default text normalization would change raw SSH CRLF stderr; exact preservation then reported CR as trailing whitespace.",
+      "resolution": "Scoped receipt-directory attribute marks only root-preflight.stderr as binary to preserve exact raw error bytes. Readable error is retained in operation-ledger.json. No raw receipt bytes changed. The first staged blob still carried the earlier normalization despite changed attributes; byte-integrity assertion detected it. Explicit renormalize re-staged original raw working bytes; unpublished local commit was amended only after all staged hashes matched."
+    }
+  ]
+}

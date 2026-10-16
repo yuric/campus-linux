@@ -1,0 +1,2 @@
+mm_send_fd: sendmsg(2): Message too long
+mux_client_request_session: send fds failed

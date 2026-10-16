@@ -1,0 +1,13 @@
+{
+  "observed_unix_ns": 1792170837230548000,
+  "host_free_bytes": 29344043008,
+  "disk_inode": 944391844,
+  "disk_allocated_bytes": 7419265024,
+  "stopped_baseline_allocated_bytes": 7405699072,
+  "new_disk_allocated_bytes": 13565952,
+  "worktree_allocated_bytes": 10498048,
+  "unallocated_receipt_reserve_bytes": 8388608,
+  "new_allocation_with_reserve_bytes": 32452608,
+  "new_allocation_limit_bytes": 134217728,
+  "method": "new allocated guest disk plus entire current worktree allocation plus 8 MiB reserve; original 1057 aggregate reported separately"
+}

@@ -1,0 +1,27 @@
+{
+  "observed_unix_ns": 1792171287668050000,
+  "new_activation": {
+    "stopped_baseline_disk_allocated_bytes": 7405699072,
+    "stopped_final_disk_allocated_bytes": 7424835584,
+    "new_guest_disk_allocated_bytes": 19136512,
+    "whole_current_worktree_allocated_bytes_counted_as_new": 11689984,
+    "own_host_temp_allocated_bytes": 864256,
+    "remaining_receipt_publication_and_git_reserve_bytes": 8388608,
+    "new_conservative_total_bytes": 40079360,
+    "limit_bytes": 134217728,
+    "fresh_new_guest_files_allocated_bytes_already_in_disk_growth": 831488
+  },
+  "original1057_separate": {
+    "retained_zip_file_bytes": 257873625,
+    "retained_zip_allocated_bytes": 257880064,
+    "original1057_host_directory_allocated_bytes_including_zips_and_phase_b": 259121152,
+    "prior_phase_b_disk_growth_bytes": 59572224,
+    "prior_continuation_disk_growth_bytes": 14680064,
+    "prior_continuation_conservative_total_bytes": 29966336,
+    "attribution": "Original1057 retained allocation is separate. Intervening Office400/system-upgrade disk growth is not attributed to1057.",
+    "fresh_retained_original_guest_files_allocated_bytes": 31817728,
+    "fresh_original_host_plus_guest_files_allocated_bytes": 290938880
+  },
+  "host_free_bytes": 32449904640,
+  "guest_free_last_observation_bytes": 19890356224
+}

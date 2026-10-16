@@ -1,0 +1,19 @@
+{
+  "observed_unix_ns": 1792171041794481941,
+  "driver_stopped": {
+    "time_ns": 1792171041635897664,
+    "server_returncode": -15
+  },
+  "process_absence": {
+    "2973": true,
+    "2974": true,
+    "3121": true,
+    "3126": true,
+    "3392": true,
+    "3397": true
+  },
+  "fixture_processes": [],
+  "guest_free_bytes": 19890356224,
+  "keyring": "b true\n",
+  "allocation_1057_owned": "15220736\t/home/campusqa/campus1057-10643-5176b9d7\n716800\t/root/campus1057-10643-5176b9d7\n45056\t/home/campusqa/campus1057-1263-ea7d6086\n57344\t/root/campus1057-1263-ea7d6086\n630784\t/home/campusqa/campus1057-1285-60dc337b\n200704\t/root/campus1057-1285-60dc337b\n20480\t/etc/campus-updater-1057\n663552\t/usr/lib/campus-updater-1057\n4096\t/var/lib/campus-updater-1057\n15089664\t/usr/bin/campus-updater-1057\n"
+}

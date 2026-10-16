@@ -1,0 +1,138 @@
+{
+  "schema": 1,
+  "lease": "1057-1285-60dc337b",
+  "scope": "root management logger preflight only; no authority change",
+  "observed_unix_ns": 1792170895628912193,
+  "uid": 0,
+  "gid": 0,
+  "pid": 3328,
+  "boot_id": "8438a956-305b-4cd0-ad36-77801d0c7d83",
+  "cgroup": "0::/user.slice/user-501.slice/session-4.scope\n",
+  "proc_stat": "3328 (python3) R 3324 3324 3324 0 -1 4194560 1844 0 0 0 1 0 0 0 20 0 1 0 24709 26198016 3840 18446744073709551615 4194304 10541512 281474163780928 0 0 0 0 16781312 2 0 0 0 17 2 0 0 0 0 0 10616216 12102016 387182592 281474163785426 281474163785451 281474163785451 281474163785703 0\n",
+  "guest_free_bytes": 19895431168,
+  "paths": [
+    {
+      "path": "/usr/bin/logger",
+      "canonical": "/usr/bin/logger",
+      "symlink": false,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o755",
+      "regular": true,
+      "directory": false,
+      "executable": true
+    },
+    {
+      "path": "/usr/bin",
+      "canonical": "/usr/bin",
+      "symlink": false,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o755",
+      "regular": false,
+      "directory": true,
+      "executable": true
+    },
+    {
+      "path": "/usr",
+      "canonical": "/usr",
+      "symlink": false,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o755",
+      "regular": false,
+      "directory": true,
+      "executable": true
+    },
+    {
+      "path": "/",
+      "canonical": "/",
+      "symlink": false,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o755",
+      "regular": false,
+      "directory": true,
+      "executable": true
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/logger",
+        "--version"
+      ],
+      "returncode": 0,
+      "stdout": "logger from util-linux 2.39.3\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/logger",
+        "--help"
+      ],
+      "returncode": 0,
+      "stdout": "\nUsage:\n logger [options] [<message>]\n\nEnter messages into the system log.\n\nOptions:\n -i                       log the logger command's PID\n     --id[=<id>]          log the given <id>, or otherwise the PID\n -f, --file <file>        log the contents of this file\n -e, --skip-empty         do not log empty lines when processing files\n     --no-act             do everything except the write the log\n -p, --priority <prio>    mark given message with this priority\n     --octet-count        use rfc6587 octet counting\n     --prio-prefix        look for a prefix on every line read from stdin\n -s, --stderr             output message to standard error as well\n -S, --size <size>        maximum size for a single message\n -t, --tag <tag>          mark every line with this tag\n -n, --server <name>      write to this remote syslog server\n -P, --port <port>        use this port for UDP or TCP connection\n -T, --tcp                use TCP only\n -d, --udp                use UDP only\n     --rfc3164            use the obsolete BSD syslog protocol\n     --rfc5424[=<snip>]   use the syslog protocol (the default for remote);\n                            <snip> can be notime, or notq, and/or nohost\n     --sd-id <id>         rfc5424 structured data ID\n     --sd-param <data>    rfc5424 structured data name=value\n     --msgid <msgid>      set rfc5424 message id field\n -u, --socket <socket>    write to this Unix socket\n     --socket-errors[=<on|off|auto>]\n                          print connection errors when using Unix sockets\n     --journald[=<file>]  write journald entry\n\n -h, --help               display this help\n -V, --version            display version\n\nFor more details see logger(1).\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/logger",
+        "--socket-errors=on",
+        "--priority",
+        "user.notice",
+        "--tag",
+        "campus-updater-1057",
+        "--",
+        "campus1057-preflight lease=1057-1285-60dc337b nonce=91971026e25342c9b0f78cd8f15e7e6e"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=32",
+        "--since=@1792170895",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_BOOT_ID=8438a956305b4cd0ad3677801d0c7d83"
+      ],
+      "returncode": 0,
+      "stdout": "{\"_UID\":\"0\",\"PRIORITY\":\"5\",\"SYSLOG_IDENTIFIER\":\"campus-updater-1057\",\"SYSLOG_TIMESTAMP\":\"Oct 16 10:14:55 \",\"__REALTIME_TIMESTAMP\":\"1792170895631282\",\"__CURSOR\":\"s=9413a1d036bf4f3ba2d1440474a2007f;i=dd77;b=8438a956305b4cd0ad3677801d0c7d83;m=eba9dc0;t=65df84d9c63b2;x=2b521beeb57fe8aa\",\"_MACHINE_ID\":\"107ca6093f7f4313ae45e0b20c4d493f\",\"SYSLOG_FACILITY\":\"1\",\"_RUNTIME_SCOPE\":\"system\",\"__MONOTONIC_TIMESTAMP\":\"247111104\",\"_COMM\":\"logger\",\"_SOURCE_REALTIME_TIMESTAMP\":\"1792170895631249\",\"_TRANSPORT\":\"syslog\",\"_PID\":\"3331\",\"_HOSTNAME\":\"lima-campus-linux-d5-noble-arm64\",\"MESSAGE\":\"campus1057-preflight lease=1057-1285-60dc337b nonce=91971026e25342c9b0f78cd8f15e7e6e\",\"_GID\":\"0\",\"__SEQNUM\":\"56695\",\"_BOOT_ID\":\"8438a956305b4cd0ad3677801d0c7d83\",\"__SEQNUM_ID\":\"9413a1d036bf4f3ba2d1440474a2007f\"}\n",
+      "stderr": ""
+    }
+  ],
+  "logger_sha256": "613c4c47d05aee29ad4e3879377ca44bb1144308aec0cdf828dc39580eeae1f6",
+  "marker": "campus1057-preflight lease=1057-1285-60dc337b nonce=91971026e25342c9b0f78cd8f15e7e6e",
+  "logger_invoked_unix_ns": 1792170895630735055,
+  "logger_finished_unix_ns": 1792170895631339735,
+  "matching_records": [
+    {
+      "_UID": "0",
+      "PRIORITY": "5",
+      "SYSLOG_IDENTIFIER": "campus-updater-1057",
+      "SYSLOG_TIMESTAMP": "Oct 16 10:14:55 ",
+      "__REALTIME_TIMESTAMP": "1792170895631282",
+      "__CURSOR": "s=9413a1d036bf4f3ba2d1440474a2007f;i=dd77;b=8438a956305b4cd0ad3677801d0c7d83;m=eba9dc0;t=65df84d9c63b2;x=2b521beeb57fe8aa",
+      "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+      "SYSLOG_FACILITY": "1",
+      "_RUNTIME_SCOPE": "system",
+      "__MONOTONIC_TIMESTAMP": "247111104",
+      "_COMM": "logger",
+      "_SOURCE_REALTIME_TIMESTAMP": "1792170895631249",
+      "_TRANSPORT": "syslog",
+      "_PID": "3331",
+      "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+      "MESSAGE": "campus1057-preflight lease=1057-1285-60dc337b nonce=91971026e25342c9b0f78cd8f15e7e6e",
+      "_GID": "0",
+      "__SEQNUM": "56695",
+      "_BOOT_ID": "8438a956305b4cd0ad3677801d0c7d83",
+      "__SEQNUM_ID": "9413a1d036bf4f3ba2d1440474a2007f"
+    }
+  ],
+  "status": "observed",
+  "caveat": "Root management context only; daemon logger provenance is separately mandatory before readiness"
+}

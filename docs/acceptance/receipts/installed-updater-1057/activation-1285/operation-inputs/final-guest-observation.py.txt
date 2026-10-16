@@ -1,0 +1,11 @@
+import pathlib,json,os,time,subprocess
+p=pathlib.Path('/home/campusqa/campus1057-1285-60dc337b/evidence');r={'observed_unix_ns':time.time_ns(),'driver_stopped':json.loads((p/'driver-stopped.json').read_text()),'process_absence':{str(x):not pathlib.Path('/proc/'+str(x)).exists() for x in [2973,2974,3121,3126,3392,3397]},'fixture_processes':[],'guest_free_bytes':os.statvfs('/').f_bavail*os.statvfs('/').f_frsize}
+for f in pathlib.Path('/proc').iterdir():
+ if not f.name.isdigit():continue
+ try:
+  n=(f/'comm').read_text().strip()
+  if n in ['pkexec','campus-updater-','WebKitWebProces','WebKitNetworkPr']:r['fixture_processes'].append({'pid':int(f.name),'comm':n,'stat':(f/'stat').read_text(),'cgroup':(f/'cgroup').read_text(),'uid':f.stat().st_uid})
+ except FileNotFoundError:pass
+r['keyring']=subprocess.run(['/usr/sbin/runuser','-u','campusqa','--','/usr/bin/busctl','--address=unix:path=/run/user/1000/bus','get-property','org.freedesktop.secrets','/org/freedesktop/secrets/collection/login','org.freedesktop.Secret.Collection','Locked'],capture_output=True,text=True,timeout=2).stdout
+r['allocation_1057_owned']=subprocess.run(['/usr/bin/du','-s','-B1','/home/campusqa/campus1057-10643-5176b9d7','/root/campus1057-10643-5176b9d7','/home/campusqa/campus1057-1263-ea7d6086','/root/campus1057-1263-ea7d6086','/home/campusqa/campus1057-1285-60dc337b','/root/campus1057-1285-60dc337b','/etc/campus-updater-1057','/usr/lib/campus-updater-1057','/var/lib/campus-updater-1057','/usr/bin/campus-updater-1057'],capture_output=True,text=True,timeout=3).stdout
+print(json.dumps(r,indent=2))

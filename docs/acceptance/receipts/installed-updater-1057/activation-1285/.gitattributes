@@ -1,0 +1,2 @@
+# Preserve raw SSH CRLF error bytes; readable text is in operation-ledger.json.
+root-preflight.stderr binary
