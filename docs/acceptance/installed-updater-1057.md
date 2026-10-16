@@ -73,7 +73,7 @@ or harnesses existed during their own earlier build.
 | Signed v1 → v2 and higher v3 with reverted fixture behavior | Pass | Pass | AppImage replacement/relaunch and privileged deb verification |
 | Lower/same signed deb replay refused at privileged seam | Pass | Pass | App/helper hashes unchanged; live caller substitution also passed |
 | Privileged bad signature and signed wrong-architecture AppImage | Pass | Pass | Intended rejecting boundaries; no installation/replacement |
-| GDM polkit prompt, cancellation, denial and missing authority | Phase B incomplete; cancellation observed, denial prerequisite blocked, missing not run | Downstream desktop gap | Raw session certification remains for coordinator review |
+| GDM polkit prompt, cancellation, denial and missing authority | Recorded cancellation tuple manually accepted under10670; first timeout incomplete, denial prerequisite failed, missing not run | Downstream desktop gap | Partial Phase B evidence only; raw `not_certified` retained, no direct PID-session proof |
 
 | Final artifact budget | arm64 | x86_64 |
 |---|---:|---:|
@@ -168,17 +168,24 @@ remained locked.
 
 | Attempt | Actual outcome |
 |---|---|
-| [First cancel](receipts/installed-updater-1057/phase-b/guest/cancel.json) | Genuine prompt captured; 20-second timeout before cancellation completed. Retained **incomplete**; v1 bytes unchanged. |
-| [Cancel retry](receipts/installed-updater-1057/phase-b/guest/cancel-retry.json) | [Actual prompt PNG](receipts/installed-updater-1057/phase-b/guest/cancel-retry.png), Cancel clicked before authentication, exact signed v2 download, pkexec126 `Request dismissed`, no adapter entry, unchanged v1 app/helper; update lasted2.283s. |
+| [First cancel](receipts/installed-updater-1057/phase-b/guest/cancel.json) | Genuine prompt captured; 20-second timeout before cancellation completed. Retained **incomplete**; v1 bytes unchanged. `cancel-after.png` belongs to this first attempt. |
+| [Cancel retry](receipts/installed-updater-1057/phase-b/guest/cancel-retry.json) | [Actual prompt PNG](receipts/installed-updater-1057/phase-b/guest/cancel-retry.png), Cancel clicked before authentication, exact signed v2 download, pkexec126 `Request dismissed`, no adapter entry, unchanged v1 app/helper; update lasted2.283s. Recorded tuple manually accepted under10670 with the session limitations below. |
 | [Deny window](receipts/installed-updater-1057/phase-b/deny-window.json) | Helper ready; polkit reloads nine rules, but required `deny-loaded` marker absent. **Update not invoked.** Exact owned rule restored after35.004s within45s total, retaining10s restoration reserve. |
 | Missing authority | **Not run** after the unexpected marker state, obeying the stop instruction. No runtime mask created. |
 
 The cancellation recorder honestly retains `not_certified`: native GNOME Terminal uses
 an actual user-manager scope without direct `sd_pid_get_session` association. No SSH
 process or environment variable was relabeled. The [polkit journal](receipts/installed-updater-1057/phase-b/guest/authority-journal.json)
-independently maps the actual updater PID3159 to `unix-session:6`; screenshots and the
-recorded UID/runtime/compositor/leader/boot support review. LINUX-20261016 must assess
-that binding; this worker does not convert it to a graphical pass.
+independently identifies exact app `3159:start37557`; its session `6` association may be
+polkit's UID-display fallback, so it does **not** prove direct PID-session membership.
+Human10670 records root and fresh independent Opus5.5 acceptance of exact3697b28 as
+partial Phase B evidence, including manual acceptance of genuine GDM cancellation for
+this recorded tuple. The combined actual Terminal/session/VNC/empty-password prompt,
+signed v2 download, pkexec126 and unchanged v1 app/helper support that bounded finding.
+Raw `not_certified` and all receipts remain unchanged. Root retained independent Opus
+session `54c2700a-e5b0-4616-9a27-a04ae0b40125` and reported 43 hashes, 125 old raw files,
+cleanup checks and
+30 repository tests passing; this worker does not extend that review to new helper bytes.
 
 The [authority diagnosis](receipts/installed-updater-1057/phase-b/guest/authority-diagnostic.json)
 records real polkit124 Duktape linkage, `--no-debug`, and stdout/stderr pointing to
@@ -187,8 +194,8 @@ writes `polkit.log()` to stderr; [no-debug startup](https://github.com/polkit-or
 redirects it away. Reload messages use [syslog separately](https://github.com/polkit-org/polkit/blob/124/src/polkitbackend/polkitbackendauthority.c#L1412).
 This explains the missing marker; a count of loaded rules does not prove the exact rule
 or rejecting subject. No service/logging configuration was changed and no marker check
-was weakened. A narrowly scoped observable-marker remedy needs coordinator disposition
-before another lease; changing timeouts would not address this failure.
+was weakened. Human10665 / direction1242 subsequently authorized the source-only fixture
+marker bridge described below; changing timeouts would not address this failure.
 
 [Cleanup](receipts/installed-updater-1057/phase-b/root-cleanup.json) verifies identical rule
 inventories, unchanged GDM config/public trust/v1 payload hashes, active original polkit
@@ -202,11 +209,64 @@ guest evidence export428,227bytes. All specified floors/budgets held. UTM was un
 CLI status failed with VM-not-found/-1743, so no successful UTM CLI verification is claimed.
 Host-wide free-space changes are not attributed to this task.
 
-Next owner/watcher is explicitly LINUX-20261016 under10643. Remaining work is marker
-observability disposition, a subsequent lease for denial/missing authority, independent
-cancellation/session assessment, and final exact-head checks/Council/merge. D5 x86 desktop
-and the downstream production/lifecycle matrix remain open. This attempt is **incomplete**,
-with clean restoration and an explicit human/coordinator handoff.
+Next owner is explicitly LINUX-20261016. Under10665 the coordinator viewed the genuine
+empty-password prompt and independently verified restored policy/inode absence and
+stopped owned processes/Lima. Newer10670 manually accepts the recorded cancellation
+tuple with the raw/session limitations above; the first timeout remains incomplete.
+Denial's marker prerequisite failed and missing authority remains `not_run`. Remaining
+work is review of the new helper bytes, a separately granted execution
+lease with the logger preflight below, actual denial/missing-authority cases and final
+exact-head checks/Council/merge. D5 x86 desktop and the downstream production/lifecycle
+matrix remain open. This attempt is **incomplete**, with clean restoration and an
+explicit human/coordinator handoff.
+
+## Source-only marker bridge handoff
+
+Human10665 / direction1242 permits a narrow change to the fixture authority helper on
+draft PR13. The bridge invokes fixed `/usr/bin/logger --socket-errors=on --priority
+user.notice --tag campus-updater-1057 -- MESSAGE` through `polkit.spawn` as an argument
+vector. Lease and subject values are bounded/validated; no shell or server-selected
+executable/path is accepted. It preserves the fixture's
+action/program, root target, actual user and local/active session scope. The loaded
+marker follows successful rule registration; the rejecting marker retains actual
+subject PID/user/session diagnostics. The exact loaded and rejecting markers remain
+required, and missing/failing logging cannot qualify a case. Rule counts, successful
+file creation and source mocks are insufficient. There is no app-authority fallback
+or global service/logging/authentication change. Exact owned rule/device/inode/content
+cleanup and 45-second total/20-second recorder/10-second restoration reserve remain.
+If the rejecting logger invocation throws, the scoped rule still returns `Result.NO`
+without an authentication fallback. An absent exact rejecting marker makes the case
+failed/incomplete even when pkexec refused; helper `window_elapsed` or restored cleanup
+does not qualify the case. The expected argument-vector/throw behavior comes from the
+[polkit124 interface](https://github.com/polkit-org/polkit/blob/124/docs/man/polkit.xml),
+and explicit local socket-error reporting from the
+[util-linux logger interface](https://github.com/util-linux/util-linux/blob/v2.39.3/misc-utils/logger.1.adoc).
+Neither source reference proves guest availability or real logging.
+
+The [next-lease logger preflight](../../spikes/1057/installed-updater/probe/DESKTOP.md#required-logger-preflight-for-the-next-lease)
+requires actual guest executable availability, canonical path and ancestor inspection,
+root ownership/nonwritable modes, no symlink/setid executable, SHA-256, the expected
+fixed interface, and a real unique journal message with the execution UID/context
+recorded **before any authority window**. It proves only that preflight context. The
+later denial window must observe its exact post-registration loaded marker within five
+seconds before readiness, inside the unchanged total deadline. Loaded and rejecting
+messages require trusted journal provenance: `_SYSTEMD_UNIT=polkit.service`, the actual
+`polkitd` `_UID`, `_EXE=/usr/bin/logger`, current `_BOOT_ID` and timestamps within the
+recorded window; a tag alone is insufficient. An absent
+loaded marker visibly fails the helper and restores its exact owned rule. Source-only
+permission does not assert that this executable or interface is present or usable in
+the guest, and preflight exit-zero alone cannot establish real delivery or daemon context.
+
+Office400 currently owns Lima exclusively; this source work permits no guest reads,
+access or boot and UTM stays stopped. The 128 MiB source budget and 20 GiB host floor hold;
+no dependency, build, download, provider or paid operations are authorized. The approved
+source113a packages and all old receipt/screenshot bytes, including the failed marker
+window, remain unchanged. Focused marker invocation, escaping and failure regressions
+extend the prior 59-test coverage; they prove only source behavior. LINUX-20261016 is
+the explicit next owner for independent helper/evidence review and a separate bounded
+lease after Office400 returns the machine. This consolidated source/docs/test handoff
+neither certifies runtime acceptance nor starts a CI/Council watcher, marks ready,
+enables auto-merge or completes the card.
 
 ## Fixture and trust boundaries
 

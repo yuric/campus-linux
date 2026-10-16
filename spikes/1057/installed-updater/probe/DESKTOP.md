@@ -2,15 +2,33 @@
 
 Phase B direction1233 / human10643 authorized exact368809e execution with approved113a
 packages. The [actual attempt](../../../../docs/acceptance/receipts/installed-updater-1057/phase-b/run.json)
-is incomplete and Lima was returned stopped. Prompt/cancellation was observed, with
-native user-manager session certification retained for coordinator review. The deny
-window restored successfully but its required loaded marker was absent, so no denial
-update was invoked and missing authority was not run. Actual Duktape polkit124 runs
-`--no-debug` with stderr at `/dev/null`; `polkit.log()` writes there. Do not repeat the
-window, weaken marker evidence or change service logging without coordinator disposition.
-LINUX-20261016 owns the next guest lease, independent review, CI/Council and merge.
+is incomplete and Lima was returned stopped. Human10665 / direction1242 records that
+LINUX-20261016 viewed the genuine empty-password prompt and independently verified
+restored policy/inode absence and stopped owned processes. The first cancellation
+timeout remains incomplete; `cancel-after.png` belongs to that first attempt.
+Human10670 records root and fresh independent Opus5.5 acceptance of exact3697b28 as
+partial Phase B evidence: genuine GDM cancellation for the recorded tuple is manually
+accepted while raw `not_certified` remains unchanged. The journal identifies exact
+app `3159:start37557`, but session `6` may be polkit's UID-display fallback and is not direct
+PID-session proof. Combined Terminal/session/VNC/empty-password prompt evidence,
+signed v2 download, pkexec126 and unchanged v1 bytes support only that bounded finding.
+The deny loaded-marker prerequisite failed, no denial update
+was invoked, and missing authority remains `not_run`. None becomes a pass through a
+source correction.
 
-The historical procedure below describes source preparation. Newest10643 scoped execution
+Direction1242 authorizes only the narrow fixture marker bridge and source regressions
+on draft PR13. Actual Duktape polkit124 runs `--no-debug` with stderr at `/dev/null`,
+where `polkit.log()` writes; the bridge instead uses a fixed `/usr/bin/logger` argv
+through `polkit.spawn`. Its real guest availability and logging are **unverified**.
+No guest read, access or boot is permitted now: Office400 exclusively holds Lima;
+UTM stays stopped. Source work remains within 128 MiB and the 20 GiB host floor, with
+no dependency, build, download, provider or paid operations. Preserve the exact
+approved 113a artifacts and every prior receipt/screenshot, including the failed
+marker window. LINUX-20261016 reviews the new helper bytes and remaining evidence,
+then separately grants any bounded execution lease after Office400 returns the
+machine. The coordinator owns CI/Council and merge; this source handoff starts no watcher.
+
+The historical procedure below describes source preparation. Lease10643 scoped execution
 to three refusal scenarios only, with20-second recorder timeout,45-second total windows
 and10-second restoration reserve. Its private ordinary-login permission did not authorize
 administrator authentication or the fourth successful-prompt case described below.
@@ -88,6 +106,50 @@ observed directory restrictions; do not relax them to make an unprivileged read 
 After later provisioning, refresh that root inventory before running desktop cases:
 the phase A baseline cannot certify subsequently changed authority state.
 
+### Required logger preflight for the next lease
+
+The next explicit execution lease must satisfy all of these before **any** denial or
+missing-authority window. Source tests and current host inspection cannot satisfy them.
+
+1. From the separately authorized root observation, inspect the actual guest
+   `/usr/bin/logger`: record its literal and resolved canonical paths, symlink status,
+   regular-file/executable status, UID/GID, mode and SHA-256. Inspect every ancestor's
+   owner/mode and resolution. Require the fixed executable and resolved ancestors to
+   be root-controlled and nonwritable by group/other; reject a symlink, setuid/setgid
+   executable, writable path, missing executable or identity mismatch. Bind the
+   accepted path and digest to the reviewed helper and current lease, then recheck before use. Do not
+   install a logger, choose a substitute path or alter permissions to pass preflight.
+2. Record the installed logger implementation/version and its `--help` interface;
+   verify support for the exact fixed argv:
+   `[/usr/bin/logger, --socket-errors=on, --priority, user.notice, --tag,
+   campus-updater-1057, --, MESSAGE]`. Keep the message a single argument after the
+   option terminator; no shell, interpolated command string, server-selected
+   executable/path or broadened logging configuration is permitted.
+3. Verify **real journal delivery** of a unique bounded preflight marker using those
+   same executable/options from the authorized preflight context. Record argv,
+   execution UID/context, timestamp, exit status and the actual exact journal message
+   with trusted metadata. Exit zero without the observed message is insufficient.
+   This preflight changes no service, logging, authentication or policy configuration
+   and grants no app authority. Its result establishes only that recorded context:
+   it does not assert successful execution by the polkit daemon.
+
+The later denial window must separately prove the actual daemon-context invocation:
+after successful rule registration, the helper waits at most five seconds within the
+unchanged 45-second total for the exact loaded marker before it reports ready. The
+journal entry must carry trusted `_SYSTEMD_UNIT=polkit.service`, the actual `polkitd`
+`_UID`, `_EXE=/usr/bin/logger`, the current `_BOOT_ID` and a timestamp no earlier than
+window start; the tag alone does not establish provenance. The
+actual rejecting marker must meet the same provenance and subject/session correlation
+requirements. No separate marker-only rule or authority window is part of preflight.
+
+If the executable/interface or real preflight logging check fails, record the
+failure visibly and stop before an authority window. No observed marker means no
+logging qualification, even when a command returned zero. Preserve bounded diagnostics
+and all failed evidence; return the blocker to LINUX-20261016 for disposition. This
+runbook defines a later-lease prerequisite, not permission to probe Office400's guest.
+
+### Staged provisioning and recorder
+
 Use only the coordinator's existing private guest authentication for root provisioning.
 Do not collect an administrator password, put it in arguments/logs, use `sudo -S`,
 terminal sudo, or build an alternate escalation path. The remaining provisioning
@@ -148,7 +210,7 @@ python3 -B spikes/1057/installed-updater/probe/desktop.py \
   --root-preflight-sha256 'COORDINATOR_VERIFIED_PREFLIGHT_SHA256' \
   --observer 'ACTUAL_OBSERVER' --planned-observation 'Observe the prompt and select cancel' \
   --receipt /approved/evidence/cancel.json \
-  --screenshot /approved/evidence/cancel.png --timeout 40
+  --screenshot /approved/evidence/cancel.png --timeout 20
 ```
 
 Use `deny`, `missing-authority` or `prompt` for the other cases. The prompt/cancel
@@ -189,6 +251,18 @@ reserved for restoration, so use `--timeout 20` for the refusal recorder. For de
 also require the matching `campus1057-deny-loaded` and actual `campus1057-deny` journal
 markers: rule-file creation is not proof of denial. Preserve journal lines only for
 this lease's marker and subject PID, not an unrelated session log dump.
+The fixture bridge emits the loaded marker only after successful `polkit.addRule`
+registration. Its fixed executable/options use `polkit.spawn` argument vectors with
+validated bounded lease/user/session/PID values; no shell or app-authority fallback
+is involved. A missing/failing logger or absent exact marker prevents qualification
+and must be retained as a failure, never replaced by rule-count evidence. Keep the
+loaded marker's exact lease identity, the action/user/session scope in the owned hashed
+rule and the rejecting marker's actual PID/user/session/active diagnostic fields, and
+correlate them with the invocation. The rule also requires a local subject.
+If the rejecting logger invocation throws, the rule retains its scoped `Result.NO`;
+it never falls through to authentication. Missing the exact rejecting marker still
+makes the case failed/incomplete, even when pkexec refused. The helper's
+`window_elapsed` status or successful cleanup reports window operation, not case success.
 The 45-second total authority bound and 20-second recorder timeout stay unchanged.
 Afterward, the reviewer must compare the actual update invocation's start/end times
 with `ready_unix_ns` and `restore_started_unix_ns` in the authority receipt: the whole
@@ -267,3 +341,10 @@ Primary implementation references: [pkexec124 source](https://github.com/polkit-
 [polkit D-Bus activation](https://github.com/polkit-org/polkit/blob/124/data/org.freedesktop.PolicyKit1.service.in),
 [polkit systemd unit](https://github.com/polkit-org/polkit/blob/124/data/polkit.service.in),
 [systemd255 mask semantics](https://github.com/systemd/systemd/blob/v255/man/systemctl.xml).
+
+The marker bridge follows the [polkit124 interface](https://github.com/polkit-org/polkit/blob/124/docs/man/polkit.xml):
+`polkit.spawn` takes an argument vector and throws on unsuccessful execution. The
+[util-linux logger interface](https://github.com/util-linux/util-linux/blob/v2.39.3/misc-utils/logger.1.adoc)
+documents `--socket-errors=on` to surface local socket delivery errors. These interface
+references justify the expected invocation; they do not prove the guest's executable,
+supported options, service context or actual journal delivery.

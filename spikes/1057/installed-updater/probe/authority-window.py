@@ -35,6 +35,10 @@ MASK = Path("/run/systemd/system/polkit.service")
 ACTION = "dev.campus.updater1057.install"
 PROGRAM = "/usr/lib/campus-updater-1057/install-deb.py"
 BUS_NAME = "org.freedesktop.PolicyKit1"
+LOGGER = "/usr/bin/logger"
+LOGGER_TAG = "campus-updater-1057"
+LOGGER_ARGV = [LOGGER, "--socket-errors=on", "--priority", "user.notice",
+               "--tag", LOGGER_TAG, "--"]
 PROPERTIES = "Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths"
 
 
@@ -71,25 +75,45 @@ def staged_source(path, expected_sha256):
 
 
 def deny_rule(user, lease, pid=None, session=None):
+    # Restrict each diagnostic operand independently; JSON serialization remains
+    # mandatory for JavaScript literals. No shell or caller-selected executable.
+    require(isinstance(user, str) and re.fullmatch(r"[A-Za-z_][A-Za-z0-9_.-]{0,63}", user),
+            "invalid fixture subject user")
+    require(isinstance(lease, str) and re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}", lease),
+            "invalid explicit lease identifier")
+    require(isinstance(session, str) and re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.:-]{0,63}", session),
+            "deny requires a bounded explicit subject session")
+    require(pid is None or (type(pid) is int and 1 < pid <= 2147483647), "invalid subject PID")
     # Polkit 124 exposes subject.user, not subject.uid. The caller validates the
     # exact UID/name mapping through NSS before creating this deny-only rule.
     checks = [f"action.id === {json.dumps(ACTION)}",
               f"action.lookup('program') === {json.dumps(PROGRAM)}",
               "action.lookup('user') === 'root'",
               f"subject.user === {json.dumps(user)}", "subject.local === true",
-              "subject.active === true"]
+              "subject.active === true",
+              f"subject.session === {json.dumps(session)}"]
     if pid is not None:
         checks.append(f"subject.pid === {pid}")
-    if session is not None:
-        checks.append(f"subject.session === {json.dumps(session)}")
     marker = json.dumps("campus1057-deny lease=" + lease)
     loaded = json.dumps("campus1057-deny-loaded lease=" + lease)
-    return (f"polkit.log({loaded});\n"
-            "polkit.addRule(function(action, subject) {\n"
+    prefix = json.dumps(LOGGER_ARGV)
+    return ("polkit.addRule(function(action, subject) {\n"
             "  if (" + " && ".join(checks) + ") {\n"
-            f"    polkit.log({marker} + ' pid=' + subject.pid + ' user=' + subject.user"
-            " + ' session=' + subject.session + ' active=' + subject.active);\n"
-            "    return polkit.Result.NO;\n  }\n});\n").encode()
+            "    try {\n"
+            "      if (typeof subject.pid !== 'number' || subject.pid < 2 ||\n"
+            "          subject.pid > 2147483647 || Math.floor(subject.pid) !== subject.pid)\n"
+            "        throw new Error('invalid fixture subject PID');\n"
+            f"      polkit.spawn({prefix}.concat([{marker} + ' pid=' + subject.pid"
+            " + ' user=' + subject.user + ' session=' + subject.session"
+            " + ' active=' + subject.active]));\n"
+            "    } catch (error) {\n"
+            "      // Never fall through to authentication on a logging failure.\n"
+            "      // Absence of the exact rejecting marker invalidates evidence.\n"
+            "      return polkit.Result.NO;\n"
+            "    }\n"
+            "    return polkit.Result.NO;\n  }\n});\n"
+            # Registration must succeed before its loaded marker can be emitted.
+            f"polkit.spawn({prefix}.concat([{loaded}]));\n").encode()
 
 
 class Window:
@@ -116,8 +140,8 @@ class Window:
         os.ftruncate(self.fd, len(data))
         os.fsync(self.fd)
 
-    def run(self, argv, ok=True, restoring=False):
-        timeout = 2.0 if restoring else 5.0
+    def run(self, argv, ok=True, restoring=False, timeout_seconds=5.0):
+        timeout = 2.0 if restoring else min(5.0, timeout_seconds)
         if self.deadline is not None and not restoring:
             timeout = min(timeout, self.deadline - time.monotonic())
             require(timeout > 0, "authority window deadline reached")
@@ -160,6 +184,41 @@ class Window:
         require(result.stdout.strip() in ("b true", "b false"), "unexpected bus owner response")
         return result.stdout.strip() == "b true"
 
+    def wait_loaded_marker(self):
+        # Read actual journal evidence, not polkit.log's discarded stderr or a
+        # rule count. This wait consumes the existing observation budget.
+        expected = "campus1057-deny-loaded lease=" + self.args.lease
+        daemon_uid = str(pwd.getpwnam("polkitd").pw_uid)
+        boot_id = Path("/proc/sys/kernel/random/boot_id").read_text().strip().replace("-", "")
+        self.record["marker_bridge"] = {
+            "argv_prefix": LOGGER_ARGV, "expected_loaded_message": expected,
+            "daemon_uid": daemon_uid, "boot_id": boot_id,
+            "systemd_unit": "polkit.service", "loaded_wait_max_seconds": 5,
+            "rejecting_marker_required_for_case_acceptance": True,
+        }
+        self.save()
+        until = min(self.deadline, time.monotonic() + 5)
+        argv = ["/usr/bin/journalctl", "--no-pager", "--output=json", "--lines=64",
+                "--since=@" + str(self.record["window_started_unix_ns"] // 1_000_000_000),
+                "SYSLOG_IDENTIFIER=" + LOGGER_TAG, "_EXE=" + LOGGER,
+                "_SYSTEMD_UNIT=polkit.service", "_UID=" + daemon_uid, "_BOOT_ID=" + boot_id]
+        while time.monotonic() < until:
+            result = self.run(argv, timeout_seconds=until - time.monotonic())
+            for line in result.stdout.splitlines():
+                row = json.loads(line)
+                if (row.get("MESSAGE") == expected
+                        and row.get("SYSLOG_IDENTIFIER") == LOGGER_TAG
+                        and row.get("_EXE") == LOGGER and row.get("_UID") == daemon_uid
+                        and row.get("_SYSTEMD_UNIT") == "polkit.service"
+                        and row.get("_BOOT_ID") == boot_id
+                        and int(row.get("__REALTIME_TIMESTAMP", "0")) * 1000
+                        >= self.record["window_started_unix_ns"]):
+                    self.record["loaded_marker"] = row
+                    self.save()
+                    return
+            time.sleep(max(0, min(0.1, until - time.monotonic())))
+        raise RuntimeError("required exact loaded logger marker absent; logging/registration prerequisite failed")
+
     def begin(self):
         account = pwd.getpwuid(self.args.uid)
         require(pwd.getpwnam(account.pw_name).pw_uid == self.args.uid, "ambiguous NSS identity")
@@ -188,7 +247,8 @@ class Window:
                 os.fsync(fd)
             finally:
                 os.close(fd)
-            self.record["ready_caveat"] = "Wait for matching deny-loaded journal marker before launching; require deny marker for actual refusal evidence"
+            self.wait_loaded_marker()
+            self.record["ready_caveat"] = "Loaded marker verified; require exact rejecting subject/session logger marker for actual refusal evidence"
         else:
             require(self.args.allow_shared_authority_window,
                     "missing mode requires explicit shared-authority-window acknowledgement")
