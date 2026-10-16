@@ -1,6 +1,6 @@
 # PRD: Campus for Linux
 
-**Revision:** 2026-10-15. **Status:** decided; no implementation started.
+**Revision:** 2026-10-16. **Status:** decided; no implementation started.
 **Product:** a Linux desktop client and per-user local execution service.
 
 The seven decisions in [section 4](#4-architecture-and-decisions) were made by the owner on
@@ -9,6 +9,8 @@ L0 proves the residual risks each one names; it does not reopen the choices. Imp
 starts only on an explicit owner request after this document merges.
 Engineering clarifications below preserve D1–D7; repository policy tooling is not app
 implementation. No runtime, app scaffold or product build is introduced by this revision.
+The [implementation gates](docs/implementation-gates.md) define the remaining contract
+and acceptance evidence. They refine execution of these decisions without reopening them.
 
 ## 1. Owner requirements and outcome
 
@@ -55,6 +57,11 @@ Paths below are relative to the pinned Mac tree. Before implementation freeze, r
 with then-current merged Mac source and record additions explicitly rather than silently
 chasing later features. The retired web and CLI clients are not dependencies.
 
+The local `docs/api/.source` records `campus@ab114c50b2cc881c9b3b65315355e2d469751dd0`;
+its snapshot has 132 paths, versus 292 in the pinned server above. These counts establish
+drift, not compatibility. S2 in section 7 owns the verified post-S1 import and its path
+migration before L1 generates bindings. This documentation revision does not refresh it.
+
 ## 3. Feature parity inventory
 
 All rows are **not implemented**. Each needs an owner, exact API operation/schema references,
@@ -87,6 +94,13 @@ binary is an upstream parity blocker, not invented Linux support or an automatic
 All applicable rows must pass; unavailable equivalents require explicit owner disposition.
 Platform notification, tray/menu and speech equivalents are evaluated in P06/P13/P18;
 Apple-specific frameworks are replaced, not assumed portable.
+
+The [implementation gates](docs/implementation-gates.md) make the non-portable mechanisms
+explicit: P08/P16 native-session discovery, attach and exact resume; P09 PTY login;
+P06 Linux speech; P13 task-link activation; P12 the verified renderer export and bridge;
+and P18 the helper-update handback protocol. A failed native resume must never silently
+start a fresh conversation. Missing Linux mechanisms remain parity gaps until proven or
+explicitly dispositioned by the owner.
 
 ### Visual fidelity acceptance
 
@@ -121,7 +135,7 @@ code the Mac has; everything else is Swift and does not transfer to a non-Swift 
 
 | Mac component | Lines | Reused on Linux |
 |---|---|---|
-| Island renderer (`island/src`, React and Three.js) | 25,815 | As-is, pinned, in the web view |
+| Island renderer (`island/src`, React and Three.js) | 25,815 | Verified built renderer export from the pinned producer; no wholesale source-directory import |
 | Board screens (`CampusApp/Sources/CampusApp`, SwiftUI) | 26,528 | No; rewritten in React |
 | Shared UI (`CampusUI`, SwiftUI) | 4,683 | No; rewritten in React |
 | `CampusKit` (models, stores, HTTP, cable, executor) | 72,063 | No; rewritten in Rust and TypeScript against the snapshot |
@@ -131,8 +145,9 @@ code the Mac has; everything else is Swift and does not transfer to a non-Swift 
 
 **Decided.** Not Electron, not a native toolkit, not Swift on Linux.
 
-- *Why.* The island drops in unchanged and the new board sits beside it in one language and
-  one build. Tauri's Rust host is the natural home for the executor (D2), so shell and
+- *Why.* The shared island renderer is reused through M1's verified export and host bridge;
+  the new board sits beside it in one language and one build. Tauri's Rust host is the
+  natural home for the executor (D2), so shell and
   execution share one toolchain. Avoiding a bundled Chromium runtime is the weight
   rationale; package size, installed size, memory and startup are measurements for L0,
   not a few-megabyte promise for both formats.
@@ -160,9 +175,11 @@ built from one Rust crate.
   groups, `PR_SET_PDEATHSIG`, cgroups and libsecret. The executor protocol is defined by the
   OpenAPI snapshot, so the Mac broker is a reference to read, not code to port. Execution
   never runs in renderer JavaScript.
-- *Cost accepted.* The recovery rules in campus-server's executor recovery drills are
-  reimplemented and proven against the same fixtures. Rust is slower to write than Swift or
-  TypeScript, and an agent gets fewer first-try compiles.
+- *Cost accepted.* The four crash boundaries in campus-server's executor recovery drills
+  are reproduced in Linux tests; no ready-made cross-platform fixture suite is assumed.
+  Interactive provider login uses a PTY; ordinary execution keeps its non-interactive pipe
+  protocol. Rust is slower to write than Swift or TypeScript, and an agent gets fewer
+  first-try compiles.
 - *Rejected.* A TypeScript sidecar: faster to write but reintroduces a second runtime beside
   the web view and gives back the weight D1 was chosen for. Ruby: cannot be the Tauri host at
   all, needs a bundled or distribution Ruby for the executor, needs an FFI build for libsecret,
@@ -178,19 +195,29 @@ Campus controls only one.
 | Concern | Mac today | Linux |
 |---|---|---|
 | Session token and executor token | Login Keychain | Secret Service through libsecret (gnome-keyring, kwallet). No file fallback. |
-| Provider OAuth state (Claude, Codex, Gemini, Grok) | Config dir under `~/.campus/credentials/<id>`, bounded by the broker; plain files for every engine except Claude Code, which uses the Keychain on macOS only | Same path, same bound, same `*_CONFIG_DIR`/`*_HOME` variables, mode 0700. Plain files because the provider writes them that way; Campus adds isolation and permissions, not encryption, and says so. |
+| Isolated provider OAuth state (Claude Code, Codex, Grok) | The broker derives `<root>/scopes/<base64url(credential_scope)>`; Claude Code namespaces its Mac Keychain item by the config-path bytes, while other provider state is file-backed | Derive the same relative scope encoding locally under the trusted credentials root; preserve exact path bytes in the engine's config/home variable, mode 0700. Provider-owned files remain plaintext; verify each Linux CLI's actual storage in L0. No server-supplied directory. |
+| Antigravity (`agy`) subscription/ambient login | No config-directory variable; the pinned CLI uses the login Keychain on macOS and cannot isolate accounts through that directory | Linux storage and identity scope require L0 evidence. Report observations for S1-2 readiness; do not invent per-account isolation or a Linux Keychain equivalent. Gemini is the API-key engine in the pinned server mapping, not this OAuth path. |
 | API keys | Delivered per attempt by Rails, no-store, environment only | Same. Never on disk. |
-| Local IPC secret | 0600 token file | Same |
+| Per-run Campus credentials | Claim `campus_agent_token` and the attempt MCP credential have fixed environment injection contracts | Memory and the authorized child's fixed environment only; no durable outbox, argv, renderer or diagnostics. Honor authority, expiry/revoke and attempt scope from the contract. |
+| Local IPC secret | 0600 token file | Retain a distinct 0600 local token; this does not select loopback TCP. L0 must prove peer authentication before secret transmission and principal-scoped IPC. |
 | Store locked or absent | Broker refuses; Rails authors the message | Session token held in memory for that run only; executor registration withheld with a Rails-authored diagnostic (S1-3). The board still works. |
 
-- *Why.* Rails already owns credential state, readiness, API-key delivery and the rule that a
-  config directory sits under the credentials root. Nothing moves to the machine that is not
-  on the Mac already; only the store's name changes. A provider CLI rewrites its own file on
-  token refresh, so Campus cannot own that file's encryption without racing the provider.
+- *Why.* Rails owns credential state, readiness, API-key delivery and opaque scope issuance.
+  The trusted executor derives and confines local paths, as the pinned Mac broker does.
+  The default root is `~/.campus/credentials`, with a trusted local
+  `CAMPUS_CREDENTIALS_ROOT` override; scopes must be strict descendants both lexically and
+  after symlink resolution. A scope is never interpreted as a path. A provider CLI rewrites
+  its own file on token refresh, so Campus cannot own that file's encryption without racing
+  the provider.
 - *Cost accepted.* A desktop with no keyring daemon signs in every launch and cannot run
   agents locally until one is installed. Provider files on an unencrypted home directory are
   readable by any process running as the user, which is true of the provider CLIs without
   Campus too.
+- *Security boundary.* Secret Service protects persistent Campus-owned tokens; it is not a
+  per-application sandbox against arbitrary processes running as the same user. L0 must
+  document and test that exposure, child environment/descriptor handling and crash capture
+  under [G4](docs/implementation-gates.md#g4-host-and-executor-trust-boundaries).
+  This correction does not authorize broader token access or claim full Mac ACL parity.
 - *Rejected.* Encrypting provider directories with a Secret Service key and decrypting to a
   tmpfs per run: possible, but it fights the provider for a file format Campus does not own.
 
@@ -228,6 +255,10 @@ Campus controls only one.
   exact polkit prompt for the deb path. Pin Tauri/bundler/updater versions and verify each
   artifact end to end; updater behavior is version-dependent (see the
   [updater changelog](https://github.com/tauri-apps/plugins-workspace/blob/v2/plugins/updater/CHANGELOG.md)).
+  [G5](docs/implementation-gates.md#g5-signed-updates-and-package-selection) requires
+  package-specific manifest entries, privileged verification of the installed deb bytes,
+  and no application-collected administrator password. One manifest still serves both
+  formats and architectures on the single production channel.
 
 #### Bundled helper installation and update contract
 
@@ -271,6 +302,13 @@ The systemd unit must never point into that mount or depend on the UI keeping it
   every promotion boundary; incompatible state; rollback; uninstall. Receipts must show
   unit paths, helper identity, process/lease ownership and outbox continuity, with secrets
   redacted. This is an acceptance contract, not a service implementation in this PRD.
+
+The Linux lifecycle must also implement the existing helper-update report/confirmation
+contract, with claim-supplied grace periods and truthful `executor_helper` and
+`helper_update_monitor` observations. [G3](docs/implementation-gates.md#g3-supervision-recovery-and-live-updates)
+defines retry versus intentional-stop exits, sign-out precedence, authorized epoch
+preservation, singleton locking and crash-recovery receipts. A package replacement or UI
+relaunch must not directly restart a busy helper.
 
 ### D5. Verification: Docker for headless tests, hosted CI on a public repository, a Lima VM for the desktop
 
@@ -336,16 +374,26 @@ human-run prerelease QA requirement.
 ### D6. Server prerequisites: S1 is five named campus-server PRs
 
 **Decided.** Each is one PR in `yuric/campus-server` with one card on that building, in this
-order, so the client never waits on wording. The executor protocol itself needs no change; a
-Linux executor speaks it today. The five-executor cap per account stays.
+order, so the client never waits on wording. Retain execution protocol v2 and the existing
+claim/lease/heartbeat/report flow; Linux readiness is not proven by registration alone.
+The pinned server requires Mac-shaped workspace roots and some paths call a local Mac
+broker. S1 must close those platform gaps before L2. Existing capability fields such as
+`broker_execution_capacity` and `helper_update_monitor` are already in the pinned server
+schema; preserve compatible wire names rather than renaming them for appearance.
+The five workstreams below, their order and the five-executor cap per account stay.
 
 | # | Item | Why it gates the client |
 |---|---|---|
-| S1-1 | Platform-neutral copy in the public contract. The spec mentions the Mac 66 times; endpoint summaries say "registered Macs" and "this Mac", and error strings the client renders verbatim say "on this Mac". | The client must not rewrite a single server string. Copy only, so it is first. |
-| S1-2 | `platform` and `arch` in the executor registration capability observation, and readiness derived per platform rather than from the Mac engine set. | Rails must know it is judging Linux. The Antigravity account-isolation limit is a Mac-binary fact Rails must not apply blindly. The one guarded change here; it needs a careful review. |
+| S1-1 | Platform-neutral copy in the public contract and runtime diagnostics, including credential/login, CLI-update and speech messages. Audit the pinned source rather than relying on an occurrence count. | The client must not rewrite a server string. Copy only, so it is first; a wire identifier is not renamed as a copy edit. |
+| S1-2 | `platform` and `arch` observations; platform-aware workspace-root/readiness, provider identity scope and CLI-update eligibility; explicit native-session and capability contracts required by Linux. | Rails must judge Linux facts rather than Mac-only paths or engine assumptions. G1 inventories existing fields versus genuine gaps, including hosted native-session transport; schema/behavior changes preserve existing Mac consumers. |
 | S1-3 | Two normalized diagnostics: "no secure credential store on this desktop" and "credential store locked", with Rails-authored reason, severity and message. | D3's fallback renders a server sentence, not a client one. |
-| S1-4 | A Linux release record, or a platform dimension on the Mac release catalog under the admin endpoints. | Version skew and the supported protocol window are keyed to Mac releases today; without this Rails cannot tell a Linux build it is too old. |
+| S1-4 | A Linux release record, or a platform dimension on the Mac release catalog under the admin endpoints. | Gates Linux release identity and P18 diagnostics/catalog integration. Protocol v2 compatibility already has a platform-neutral check; a release record is not what makes that check possible. |
 | S1-5 | Confirm the hosted CLI-subscription login path is platform-neutral. The `broker_login` endpoints have Rails call a broker on localhost, which only works when Rails runs on the same machine; hosted Macs sign in through the executor-side binding. | Not verified end to end at this revision. If it leans on the Mac broker, it is real server work and must be known before L2, not found in it. |
+
+The [G1 contract ledger](docs/implementation-gates.md#g1-server-contracts-and-snapshot-handoff)
+maps detailed evidence into these five prerequisites. S1-5 remains open until its
+end-to-end proof passes. S2 is the Linux-owned snapshot handoff. No server PR or production
+task is created by this document.
 
 ### D7. The boundary is a failing build, not a principle
 
@@ -382,6 +430,8 @@ contract tests and future language-aware enforcement. The authority table remain
   do not port Mac's remaining client-rule drift.
 - Generate bindings from a verified pinned OpenAPI snapshot. The existing Linux snapshot
   is not assumed current. Missing schemas/operations merge in `campus-server` first.
+  S2 records the merged post-S1 SHA and exporter layout; G1 requires regeneration checks,
+  scoped unknown-value handling, sensitive-field redaction and the host-owned Cable contract.
 - Events invalidate authorized snapshots. Reconnect/foreground refresh preserves drafts
   and marks stale data. Writes use server idempotency/confirmation; ambiguous timeouts
   reconcile status rather than replay blindly. Accepted/queued is not running/completed.
@@ -405,11 +455,16 @@ contract tests and future language-aware enforcement. The authority table remain
   symlink escapes and cross-account access; support approved worktrees/Git authentication
   and recovery/cleanup without deleting user modifications.
 - Provider OAuth and config files follow D3: provider-owned, isolated under the credentials
-  root with the Mac's bounds and permissions, plaintext because the provider writes them so.
-  Campus-owned tokens never leave Secret Service. Do not claim all provider credentials are
+  root where that provider supports isolation, plaintext because the provider writes them so.
+  Persistent Campus-owned session/executor tokens use Secret Service; D3 separately defines
+  memory-only runs and per-attempt credentials. Do not claim all provider credentials are
   portable, and do not add a file fallback for Campus-owned tokens.
 - D7's gate checks the documented syntax on every eligible pull request; review and contract
   tests must establish the semantic boundary this section requires.
+
+[G2–G7](docs/implementation-gates.md) supply the required credential, recovery, IPC/process,
+privileged update, PTY/speech/link and webview acceptance cases. They are future test
+obligations, not evidence that an implementation or security guarantee already exists.
 
 ## 6. Compatibility contract
 
@@ -422,7 +477,7 @@ not a claim of existing support:
 | First desktop target | Ubuntu 24.04 LTS, GNOME, Wayland and X11. x86_64 desktop evidence remains outstanding under D5; arm64 Lima evidence covers only its recorded configuration. Confirm the first user's actual Ubuntu/hardware in L0 and add that combination if different. |
 | Broad desktop | Ubuntu 22.04 compatibility where dependencies allow, Debian stable, current stable Fedora GNOME/KDE and Arch/KDE at a recorded snapshot. Version support is earned by installed-package tests. |
 | Architectures | x86_64 is the primary release architecture: deb and AppImage built/tested headless in CI (D5 layers 1–2), labeled preview with desktop unverified until real x86_64 evidence arrives. arm64 runs both formats in the Lima VM (D5 layer 3) and is released once provider CLIs are confirmed on it. Section 8's evidence labels apply per artifact, architecture and session. Untested combinations are never advertised supported. |
-| Additional systems | Non-systemd desktops via the supervisor path; musl/Alpine, NixOS and immutable/custom systems require explicit packaging/runtime evidence. |
+| Additional systems | Non-systemd desktops require a designed and verified equivalent graphical-session supervisor; no alternate supervisor exists yet. They, musl/Alpine, NixOS and immutable/custom systems require explicit packaging/runtime evidence before a support claim. |
 
 Cover locked/missing keyring, unavailable WebGL/GPU/software rendering, high DPI/multiple
 monitors, suspend/resume, microphone permissions and file chooser behavior. Require complete
@@ -438,13 +493,14 @@ have been created by this document.
 
 | Milestone | Dependencies | Outcome and gate |
 |---|---|---|
-| L0: inventory/spikes | This document merged; owner starts implementation | Expand P01–P18 into action cases; capture visual references; wire D5 layers 1–3 and their required checks/receipts; pin the compatible release build baseline and runtime ownership per format; prove D1/D4 risks (software-rendered island, updater for both formats, durable helper lifecycle); one supervised CLI end to end. No ADRs: the decisions are in section 4. |
+| L0: inventory/spikes | This document merged; owner starts implementation | Expand P01–P18 and G1–G8 into action cases; fix G8's performance/visual criteria before measuring; capture references; wire D5 layers 1–3; pin the release build baseline; prove D1/D4 risks and G2–G7 platform mechanisms. One supervised CLI end to end after its S1 dependencies merge. No ADRs: the decisions are in section 4. |
 | S1: API prerequisites | None; opens in parallel with L0 | The five campus-server PRs in D6, merged with contract tests, in order S1-1 to S1-5 |
+| S2: verified contract import | Required S1 changes merged | Linux-owned export PR from a recorded merged server SHA containing those changes; verify provenance/fixtures and move snapshot references/checks with the export layout. G1 defines receipts; no handwritten schema edits. |
 | M1: renderer export | L0; S1 if needed | Mac-owned platform-neutral host/export changes where needed; exact merged-source artifact/manifest; no renderer fork |
-| L1: foundation | L0, required S1 contracts | Snapshot/generator checks, shell, secure sessions, endpoint isolation and the build-time local-endpoint override, refresh/unknown-version behavior; P01–P03 |
-| L2: execution | L0, required S1 contracts | Per-user service/register/bind/login/workspaces, claim-to-result/cancel/recovery vertical slice; P15–P17; one CLI initially is spike scope, not release scope |
+| L1: foundation | L0, S2 for required S1 contracts | Snapshot/generator checks, shell, secure sessions, endpoint isolation and the build-time local-endpoint override, refresh/unknown-version behavior; P01–P03 |
+| L2: execution | L0, S2 for required S1 contracts | Per-user service/register/bind/PTY login/workspaces, claim-to-result/cancel/recovery and native-session attach/exact resume; P15–P17; one CLI initially is spike scope, not release scope |
 | L3: workflows | L1; L2 for local actions | P04–P11/P13–P14; all supported offered providers/actions, assistant/consent, attachments/speech and shared semantic fixtures |
-| L4: Island/integration | L1, M1, L2/L3 actions | P12, restricted host bridge, accessibility and integrated local/remote operation |
+| L4: Island/integration | L1, M1, L2/L3 actions | P12, G7's restricted presentation/mutation/lifecycle bridge and CSP, accessibility and integrated local/remote operation |
 | L5: distribution/acceptance | L1–L4 | P18, deb and AppImage, signed updates, recovery, the single production channel, advertised matrix and isolated live QA in the Lima VM. Publish installable artifacts with section 8's earned evidence labels; full parity sign-off requires all P01–P18 evidence, with D5's x86_64 desktop gap explicit until closed. |
 
 Linux owns client/service/packages. Server owns Rails/OpenAPI/deploy. Mac owns renderer
@@ -494,9 +550,10 @@ new update channel. Retaining `stable/linux.json` does not itself certify parity
    platform differences and remaining discrepancies; do not claim pixel perfection without
    evidence. Installed packages pass on every advertised combination, including accessibility,
    graphics/audio, service lifecycle, uninstall and upgrade. Measure startup/board latency,
-   Island frame time and idle CPU/RAM. The release gate for frame time is set in L0 from the
-   Lima VM under software rendering; real-hardware frame time is reported by the diagnostics
-   screen and recorded, never gated (D5). Every check in this item except real-hardware
+   Island frame time and idle CPU/RAM. Fix the numeric frame-time budget and G8's repeatable
+   Lima/software-rendering protocol before the first candidate measurement; a result cannot
+   set its own passing threshold. D1's fallback remains unchanged. Real-hardware frame time
+   is reported by the diagnostics screen and recorded, never gated (D5). Every check in this item except real-hardware
    frame time is automated for the D5 Lima combinations, in layers 1–3. D5 supplies no
    x86_64 desktop environment; those cases remain unverified for its preview, and future
    real-user receipts must identify the exact package/system and checks performed.
@@ -508,6 +565,10 @@ new update channel. Retaining `stable/linux.json` does not itself certify parity
 8. Live QA uses an isolated account/island and disposable repositories/agents, never the
    owner's working data, and runs in the Lima VM. Credentials and release keys use
    authorized secure channels.
+
+G1–G8 receipts in [the implementation gates](docs/implementation-gates.md) accompany these
+items. A blocked mechanism has a named dependent milestone and an explicit unresolved
+receipt; a documentation or policy-tooling pass does not establish installed-app behavior.
 
 ## 9. Estimates and open evidence
 
@@ -521,7 +582,8 @@ Open evidence, after the 2026-10-15 decisions: the first user's actual Ubuntu re
 and GPU; provider CLI availability and login behaviour on Linux and on arm64; D1/D4's L0
 spikes including helper persistence/update recovery for both formats; the compatible
 release build baseline/runtime receipts; D5's future CI wiring and per-combination desktop
-evidence; and the outcome of S1-5. These are engineering proofs of the chosen design, not
+evidence; Antigravity storage/identity scope, Linux speech and G1–G8's other platform proofs;
+and the outcome of S1-5. These are engineering proofs of the chosen design, not
 new product decisions. Everything else that was open at the
 2026-10-13 revision is decided in section 4. Ask the owner only for product, spend,
 credential or trust decisions that those sections do not already answer. Implementation

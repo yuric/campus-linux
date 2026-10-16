@@ -62,8 +62,11 @@ edits, whatever building the card sits on and whatever folder your shell started
   local agent execution, and home of the island renderer.
 
 `docs/api/openapi.yaml` is an imported snapshot, not proof of the current server contract.
-Its current provenance has not been verified. Re-import from a recorded merged server
-SHA and verify it before generating product bindings or claiming API compatibility.
+Its recorded provenance predates the PRD's server baseline and has not been revalidated.
+S2 owns re-import from a recorded merged server SHA containing required S1 changes,
+including migration to the exporter's `contract/` layout and all affected references/checks.
+Verify it before generating product bindings or claiming API compatibility. The detailed
+handoff and future acceptance requirements are in [docs/implementation-gates.md](docs/implementation-gates.md).
 
 ## The rule that overrides everything else
 
@@ -152,11 +155,12 @@ is not release 1. See `PRD.md`.
 **PRD location.** Overall requirements live at `PRD.md`, at the root like every other Campus
 client. Feature PRDs belong at `TODO/<feature-name>/PRD.md`, following `TODO/README.md`.
 
-**Secrets follow the Mac split, with Secret Service in the Keychain's place.** Campus-owned
-tokens go to Secret Service and nowhere else. Provider OAuth files are the provider's,
-isolated under the credentials root exactly as the Mac broker does it, plaintext because the
-provider writes them so. Do not add a file fallback for Campus-owned tokens and do not try to
-encrypt the provider's files (PRD D3).
+**Secrets follow D3's split.** Persistent Campus-owned session/executor tokens use Secret
+Service with no file fallback; per-attempt credentials stay in memory and their authorized
+child environment. The trusted executor derives scoped paths locally from opaque server
+scopes. Provider-owned files stay plaintext where the provider uses them; verify actual
+Linux storage/isolation, especially Antigravity. Do not invent encryption or claim same-user
+process isolation from Secret Service alone (PRD D3 and implementation gates G2/G4).
 
 **Packaging and updates are decided.** deb and AppImage from one Tauri build, Tauri's signed
 updater, one production channel, the executor inside the app package (PRD D4). There is no
