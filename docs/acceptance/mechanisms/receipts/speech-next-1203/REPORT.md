@@ -13,9 +13,12 @@ product backend adoption, full L0 pass or installed-package acceptance follows.
 
 ## Locale and launch boundary
 
-The [observer](session.json) actually ran from GNOME's Run dialog through
-`gnome-terminal`, in authenticated GDM Wayland session 7, UID1000, Class=user,
-Remote=no, Active=yes. Only LANG, LC_ALL, LC_MESSAGES and LC_CTYPE were collected.
+The operator observed launching the [observer](session.json) from GNOME's Run
+dialog through `gnome-terminal`. This launch origin is **operator-attested**:
+`session.py` hardcodes `launch_origin`, and `loginctl show-user Display` identifies
+the active GDM context (Wayland session 7, UID1000, Class=user, Remote=no, Active=yes).
+The recorded PID is not independently bound to that graphical session. Only LANG,
+LC_ALL, LC_MESSAGES and LC_CTYPE were collected from the observer's environment.
 Inherited LANG and effective LC_MESSAGES/LC_CTYPE were `C.UTF-8`: language is
 **unknown**, never English by default. The probe designates effective LC_MESSAGES
 as its language input, strips region/encoding when present, and maps C/POSIX to null.
@@ -26,7 +29,7 @@ No locale file/user setting changed or locale package was installed.
 The [supervisor](launch.json) launched inference as a separate unprivileged system
 service, copying only the observer's allowlisted locale values. This is a disclosed
 variation from the brief's single inherited graphical-runner process: locale discovery
-is verified in the graphical observer, **the inference process is not a graphical
+is recorded by the operator-attested observer, **the inference process is not a graphical
 session child**. An unprivileged network-namespace attempt failed before this route.
 The system service's existing PrivateNetwork mechanism provided only `lo`; its exact
 namespace, unit argv, memory.max=536870912 and memory.swap.max=0 were read back.

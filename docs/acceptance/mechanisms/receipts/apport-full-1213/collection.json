@@ -1,0 +1,153 @@
+{
+  "source_sha256": "633d3246d225de9874d2adaedab79ca42c02ae8ff21c68eaef0e3a36570bab35",
+  "boot_id": "e5de54e0-b9a4-4215-8c6c-108bf49e93b2",
+  "owned_sources": {
+    "recover.py": "3285d52e94a48efe7945eb7c279f73c5a281b0650aeb72bf874b7d9b6fc74211",
+    "host.py": "8be1d8c7f30b582bf9c93034fb2545d527e694b47e49daf7277929916b026b15",
+    "pair.py": "2ec67954f53e805a18f5f353977da8d34a43898315211b1805b49afe686726cd",
+    "core-sentinel-probe.py": "3aca30e49471b4c12cbcd5c6abcccf9a9f1006262beb4eaedb3e36e03d3ba22d",
+    "apport-positive-preflight.py": "98d600ae98bb4501edba643b62094b94570aa2659f85a91ec8bb6439813a53fb",
+    "resume_negative.py": "0008d32a7e16758c978e915836d95447f37759a41f805a90969dd078b1c859f3",
+    "apport-activation-pair.py": "95a65dd9a77f0cf8775455ee7d282f7d4ecc3049cfa40e009bc086db5e179cb9",
+    "metadata.py": "d32d54c0c2431a3496217e82d70b88e0e5e45b5dbe8d70f919981c3b10f92036",
+    "collect.py": "633d3246d225de9874d2adaedab79ca42c02ae8ff21c68eaef0e3a36570bab35",
+    "report_scan.py": "bfda61e431f365e083bd88007fe51151eea429192f71439ea1f514a3e2163041",
+    "watchdog.py": "0d5f7b5c2a7c5fa37e5e933d3a485c7166d6bce90962071fc4f2a403cc583302",
+    "drill.py": "9f3f9f49ac6dffa620045a867dc8b5ce30179bb419f59a362c4c8f0ef928ca54",
+    "apport-activation-launch.py": "a82ac897227291bfa4a6cf25afe50a03ff54f4953f197f1b5edae10e24c797b3",
+    "test_report_scan.py": "55181180adaa555e407907d73b952b2aa93fdc050e6d802a8ebf6f144666cd2f"
+  },
+  "support_receipt_scans": {
+    "positive.json": {
+      "bytes": 6629,
+      "sha256": "f29dac694f7ee05904cc452609924af37372c732ae57445b93dd4740ee0310d0",
+      "public_marker_count": 0
+    },
+    "negative.json": {
+      "bytes": 5361,
+      "sha256": "2a82706709f3dc570691528bd496bd3412b5bda2b1d6b0d6b7d7dd9284200237",
+      "public_marker_count": 0
+    },
+    "reinspection.json": {
+      "bytes": 2279,
+      "sha256": "f1873d2f584c9f9dad7672e69ed0e2dbc8852e60bd65e82601bd26546462aac3",
+      "public_marker_count": 0
+    }
+  },
+  "identities_exited": [
+    {
+      "pid": 2445,
+      "start_ticks": 33006,
+      "exited": true
+    },
+    {
+      "pid": 2465,
+      "start_ticks": 33048,
+      "exited": true
+    },
+    {
+      "pid": 2610,
+      "start_ticks": 44163,
+      "exited": true
+    }
+  ],
+  "owned_cgroups_absent": {
+    "campus982-full-1213-positive": true,
+    "campus982-full-1213-negative": true,
+    "campus982-full-monitor-1213-positive": true,
+    "campus982-full-monitor-1213-negative": true,
+    "campus982-metadata-1213-2318": true
+  },
+  "exact_report_paths_absent": {
+    "_usr_bin_sleep.1000.crash": true,
+    "_usr_bin_sleep.1000.upload": true,
+    "_usr_bin_sleep.1000.uploaded": true,
+    "_usr_bin_sleep.1000.2445.hanging": true,
+    "_usr_bin_sleep.1000.2610.hanging": true
+  },
+  "guest_free_bytes": 20298649600,
+  "owned_files": {
+    "recover.py": {
+      "bytes": 3843,
+      "allocated": 4096
+    },
+    "negative.json": {
+      "bytes": 5361,
+      "allocated": 8192
+    },
+    "host.py": {
+      "bytes": 5497,
+      "allocated": 8192
+    },
+    "pair.py": {
+      "bytes": 18014,
+      "allocated": 20480
+    },
+    "core-sentinel-probe.py": {
+      "bytes": 8909,
+      "allocated": 12288
+    },
+    "allocation-baseline.json": {
+      "bytes": 601,
+      "allocated": 4096
+    },
+    "apport-positive-preflight.py": {
+      "bytes": 4189,
+      "allocated": 8192
+    },
+    "heartbeat": {
+      "bytes": 0,
+      "allocated": 0
+    },
+    "resume_negative.py": {
+      "bytes": 2965,
+      "allocated": 4096
+    },
+    "apport-activation-pair.py": {
+      "bytes": 11602,
+      "allocated": 12288
+    },
+    "metadata.py": {
+      "bytes": 10156,
+      "allocated": 12288
+    },
+    "collect.py": {
+      "bytes": 2487,
+      "allocated": 4096
+    },
+    "report_scan.py": {
+      "bytes": 3063,
+      "allocated": 4096
+    },
+    "reinspection.json": {
+      "bytes": 2279,
+      "allocated": 4096
+    },
+    "watchdog.py": {
+      "bytes": 3784,
+      "allocated": 4096
+    },
+    "positive.json": {
+      "bytes": 6629,
+      "allocated": 8192
+    },
+    "drill.py": {
+      "bytes": 1510,
+      "allocated": 4096
+    },
+    "apport-activation-launch.py": {
+      "bytes": 1400,
+      "allocated": 4096
+    },
+    "test_report_scan.py": {
+      "bytes": 1443,
+      "allocated": 4096
+    },
+    "source-pair1/pair.py": {
+      "bytes": 17978,
+      "allocated": 20480
+    }
+  },
+  "owned_allocated_bytes": 151552,
+  "pass": true
+}

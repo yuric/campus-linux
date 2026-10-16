@@ -3,8 +3,8 @@
   "files": [
     {
       "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/REPORT.md",
-      "bytes": 11094,
-      "sha256": "29e24711eaa0609f141108d93ed07c7f88b4e07cc9e2a666538598f4e021dd02"
+      "bytes": 11357,
+      "sha256": "c19e429ca045117534eb03259c8039243bc53917200c239b46c77cc37cc24d58"
     },
     {
       "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt1/launch.json",

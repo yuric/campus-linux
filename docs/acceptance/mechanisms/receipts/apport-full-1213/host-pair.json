@@ -1,0 +1,76 @@
+{
+  "utc": "2026-10-16T14:26:01.347482+00:00",
+  "samples": [
+    {
+      "arm": "positive",
+      "utc": "2026-10-16T14:26:02.300569+00:00",
+      "host_free": 33130598400,
+      "image_positive_delta": 0,
+      "local_allocated": 24576
+    },
+    {
+      "arm": "positive",
+      "utc": "2026-10-16T14:26:02.920154+00:00",
+      "host_free": 33071767552,
+      "image_positive_delta": 0,
+      "local_allocated": 24576
+    },
+    {
+      "arm": "positive",
+      "utc": "2026-10-16T14:26:03.541768+00:00",
+      "host_free": 33193181184,
+      "image_positive_delta": 0,
+      "local_allocated": 24576
+    },
+    {
+      "arm": "positive",
+      "utc": "2026-10-16T14:26:04.176845+00:00",
+      "host_free": 33194622976,
+      "image_positive_delta": 0,
+      "local_allocated": 24576
+    },
+    {
+      "arm": "positive",
+      "utc": "2026-10-16T14:26:04.816687+00:00",
+      "host_free": 33193099264,
+      "image_positive_delta": 0,
+      "local_allocated": 24576
+    },
+    {
+      "arm": "positive",
+      "utc": "2026-10-16T14:26:05.450561+00:00",
+      "host_free": 33193091072,
+      "image_positive_delta": 0,
+      "local_allocated": 24576
+    },
+    {
+      "arm": "positive",
+      "utc": "2026-10-16T14:26:06.084921+00:00",
+      "host_free": 33193033728,
+      "image_positive_delta": 0,
+      "local_allocated": 24576
+    },
+    {
+      "arm": "positive",
+      "utc": "2026-10-16T14:26:06.723225+00:00",
+      "host_free": 33192968192,
+      "image_positive_delta": 65536,
+      "local_allocated": 24576
+    }
+  ],
+  "source_sha256": {
+    "report_scan.py": "bfda61e431f365e083bd88007fe51151eea429192f71439ea1f514a3e2163041",
+    "metadata.py": "d32d54c0c2431a3496217e82d70b88e0e5e45b5dbe8d70f919981c3b10f92036",
+    "watchdog.py": "0d5f7b5c2a7c5fa37e5e933d3a485c7166d6bce90962071fc4f2a403cc583302",
+    "host.py": "8be1d8c7f30b582bf9c93034fb2545d527e694b47e49daf7277929916b026b15",
+    "test_report_scan.py": "55181180adaa555e407907d73b952b2aa93fdc050e6d802a8ebf6f144666cd2f",
+    "drill.py": "9f3f9f49ac6dffa620045a867dc8b5ce30179bb419f59a362c4c8f0ef928ca54",
+    "pair.py": "405a7b5af9b47b007ddf1c944f73df4b175f97b91335282f349fac1dbd578d55"
+  },
+  "baseline_consumed_bytes": 126476288,
+  "matched_pair_pass": false,
+  "error": "positive failed; no next arm",
+  "host_free_final": 33192947712,
+  "image_allocated_before": 6828589056,
+  "image_allocated_after": 6828654592
+}

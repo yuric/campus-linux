@@ -1,0 +1,25 @@
+{
+  "kind": "non-crashing-watchdog-drill",
+  "crash_sent": false,
+  "source_sha256": {
+    "drill.py": "9f3f9f49ac6dffa620045a867dc8b5ce30179bb419f59a362c4c8f0ef928ca54",
+    "watchdog.py": "0d5f7b5c2a7c5fa37e5e933d3a485c7166d6bce90962071fc4f2a403cc583302"
+  },
+  "deadline_exercised": true,
+  "cleanup_confirmed": true,
+  "identities": [
+    {
+      "pid": 2312,
+      "start_ticks": 6289,
+      "parent": null,
+      "exited": true
+    },
+    {
+      "pid": 2313,
+      "start_ticks": 6291,
+      "parent": 2312,
+      "exited": true
+    }
+  ],
+  "pass": true
+}

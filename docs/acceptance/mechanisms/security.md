@@ -164,3 +164,12 @@ keys. [Package-manager output](receipts/package-cleanup.txt) and the
 SSH key was removed while preserving other authorized-key bytes; its host temporary
 key directory was also removed. Polkit was restored, idle delay restored to300 seconds,
 and user/provider data plus the original locked login keyring were preserved.
+
+## Bounded full-report control (directions10577/1213)
+
+The [new matched SIGABRT report](receipts/apport-full-1213/REPORT.md) records one
+positive with a marker in the streamed decoded core, its failed initial parser and
+same-inode reinspection/cleanup, then one sentinel-suppressed negative. It preserves
+the earlier SIGQUIT activation pair and all failures. This closes the synthetic
+capture/scanner linkage observation only; forced actual-collector stop, provider
+reporters, host/product policy and real support export remain unproved.

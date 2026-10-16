@@ -174,7 +174,7 @@ Root reports final-export verification and owns its subsequent consumer handoff.
 
 The published branch remains `campus-linux/982-mechanism-proofs`, draft PR12.
 This batch preserves recovered commit `26f6909` and adds one consolidated repair
-commit. All four evidence manifests participate in the normal repository check;
+commit. All registered evidence manifests participate in the normal repository check;
 checks count committed membership/bytes/hashes, not product acceptance. The active
 human coordinator LINUX-20261016 (comments10512/10517) is the explicit next owner
 for exact-head independent review, CI/admission, Council and remaining probes.

@@ -1,0 +1,284 @@
+{
+  "bindings": [
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/positive.json",
+      "field": "source_sha256",
+      "name": "host.py",
+      "sha256": "8be1d8c7f30b582bf9c93034fb2545d527e694b47e49daf7277929916b026b15",
+      "source": "spikes/982/security/full-report/host.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/positive.json",
+      "field": "source_sha256",
+      "name": "pair.py",
+      "sha256": "405a7b5af9b47b007ddf1c944f73df4b175f97b91335282f349fac1dbd578d55",
+      "source": "docs/acceptance/mechanisms/receipts/apport-full-1213/source-pair1/pair.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/positive.json",
+      "field": "source_sha256",
+      "name": "core-sentinel-probe.py",
+      "sha256": "3aca30e49471b4c12cbcd5c6abcccf9a9f1006262beb4eaedb3e36e03d3ba22d",
+      "source": "spikes/982/security/core-sentinel-probe.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/positive.json",
+      "field": "source_sha256",
+      "name": "apport-positive-preflight.py",
+      "sha256": "98d600ae98bb4501edba643b62094b94570aa2659f85a91ec8bb6439813a53fb",
+      "source": "spikes/982/security/apport-positive-preflight.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/positive.json",
+      "field": "source_sha256",
+      "name": "apport-activation-pair.py",
+      "sha256": "95a65dd9a77f0cf8775455ee7d282f7d4ecc3049cfa40e009bc086db5e179cb9",
+      "source": "spikes/982/security/apport-activation-pair.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/positive.json",
+      "field": "source_sha256",
+      "name": "metadata.py",
+      "sha256": "d32d54c0c2431a3496217e82d70b88e0e5e45b5dbe8d70f919981c3b10f92036",
+      "source": "spikes/982/security/full-report/metadata.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/positive.json",
+      "field": "source_sha256",
+      "name": "report_scan.py",
+      "sha256": "bfda61e431f365e083bd88007fe51151eea429192f71439ea1f514a3e2163041",
+      "source": "spikes/982/security/full-report/report_scan.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/positive.json",
+      "field": "source_sha256",
+      "name": "watchdog.py",
+      "sha256": "0d5f7b5c2a7c5fa37e5e933d3a485c7166d6bce90962071fc4f2a403cc583302",
+      "source": "docs/acceptance/mechanisms/receipts/apport-full-1213/source-pair1/watchdog.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/positive.json",
+      "field": "source_sha256",
+      "name": "drill.py",
+      "sha256": "9f3f9f49ac6dffa620045a867dc8b5ce30179bb419f59a362c4c8f0ef928ca54",
+      "source": "spikes/982/security/full-report/drill.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/positive.json",
+      "field": "source_sha256",
+      "name": "apport-activation-launch.py",
+      "sha256": "a82ac897227291bfa4a6cf25afe50a03ff54f4953f197f1b5edae10e24c797b3",
+      "source": "spikes/982/security/apport-activation-launch.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/positive.json",
+      "field": "source_sha256",
+      "name": "test_report_scan.py",
+      "sha256": "55181180adaa555e407907d73b952b2aa93fdc050e6d802a8ebf6f144666cd2f",
+      "source": "spikes/982/security/full-report/test_report_scan.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/negative.json",
+      "field": "source_sha256",
+      "name": "recover.py",
+      "sha256": "3285d52e94a48efe7945eb7c279f73c5a281b0650aeb72bf874b7d9b6fc74211",
+      "source": "spikes/982/security/full-report/recover.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/negative.json",
+      "field": "source_sha256",
+      "name": "host.py",
+      "sha256": "8be1d8c7f30b582bf9c93034fb2545d527e694b47e49daf7277929916b026b15",
+      "source": "spikes/982/security/full-report/host.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/negative.json",
+      "field": "source_sha256",
+      "name": "pair.py",
+      "sha256": "2ec67954f53e805a18f5f353977da8d34a43898315211b1805b49afe686726cd",
+      "source": "spikes/982/security/full-report/pair.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/negative.json",
+      "field": "source_sha256",
+      "name": "core-sentinel-probe.py",
+      "sha256": "3aca30e49471b4c12cbcd5c6abcccf9a9f1006262beb4eaedb3e36e03d3ba22d",
+      "source": "spikes/982/security/core-sentinel-probe.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/negative.json",
+      "field": "source_sha256",
+      "name": "apport-positive-preflight.py",
+      "sha256": "98d600ae98bb4501edba643b62094b94570aa2659f85a91ec8bb6439813a53fb",
+      "source": "spikes/982/security/apport-positive-preflight.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/negative.json",
+      "field": "source_sha256",
+      "name": "resume_negative.py",
+      "sha256": "0008d32a7e16758c978e915836d95447f37759a41f805a90969dd078b1c859f3",
+      "source": "spikes/982/security/full-report/resume_negative.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/negative.json",
+      "field": "source_sha256",
+      "name": "apport-activation-pair.py",
+      "sha256": "95a65dd9a77f0cf8775455ee7d282f7d4ecc3049cfa40e009bc086db5e179cb9",
+      "source": "spikes/982/security/apport-activation-pair.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/negative.json",
+      "field": "source_sha256",
+      "name": "metadata.py",
+      "sha256": "d32d54c0c2431a3496217e82d70b88e0e5e45b5dbe8d70f919981c3b10f92036",
+      "source": "spikes/982/security/full-report/metadata.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/negative.json",
+      "field": "source_sha256",
+      "name": "report_scan.py",
+      "sha256": "bfda61e431f365e083bd88007fe51151eea429192f71439ea1f514a3e2163041",
+      "source": "spikes/982/security/full-report/report_scan.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/negative.json",
+      "field": "source_sha256",
+      "name": "watchdog.py",
+      "sha256": "0d5f7b5c2a7c5fa37e5e933d3a485c7166d6bce90962071fc4f2a403cc583302",
+      "source": "docs/acceptance/mechanisms/receipts/apport-full-1213/source-pair1/watchdog.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/negative.json",
+      "field": "source_sha256",
+      "name": "drill.py",
+      "sha256": "9f3f9f49ac6dffa620045a867dc8b5ce30179bb419f59a362c4c8f0ef928ca54",
+      "source": "spikes/982/security/full-report/drill.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/negative.json",
+      "field": "source_sha256",
+      "name": "apport-activation-launch.py",
+      "sha256": "a82ac897227291bfa4a6cf25afe50a03ff54f4953f197f1b5edae10e24c797b3",
+      "source": "spikes/982/security/apport-activation-launch.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/negative.json",
+      "field": "source_sha256",
+      "name": "test_report_scan.py",
+      "sha256": "55181180adaa555e407907d73b952b2aa93fdc050e6d802a8ebf6f144666cd2f",
+      "source": "spikes/982/security/full-report/test_report_scan.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/reinspection.json",
+      "field": "source_sha256",
+      "name": "recover.py",
+      "sha256": "3285d52e94a48efe7945eb7c279f73c5a281b0650aeb72bf874b7d9b6fc74211",
+      "source": "spikes/982/security/full-report/recover.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/reinspection.json",
+      "field": "source_sha256",
+      "name": "report_scan.py",
+      "sha256": "bfda61e431f365e083bd88007fe51151eea429192f71439ea1f514a3e2163041",
+      "source": "spikes/982/security/full-report/report_scan.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/reinspection.json",
+      "field": "source_sha256",
+      "name": "watchdog.py",
+      "sha256": "0d5f7b5c2a7c5fa37e5e933d3a485c7166d6bce90962071fc4f2a403cc583302",
+      "source": "docs/acceptance/mechanisms/receipts/apport-full-1213/source-pair1/watchdog.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/collection.json",
+      "field": "source_sha256",
+      "name": "source_sha256",
+      "sha256": "633d3246d225de9874d2adaedab79ca42c02ae8ff21c68eaef0e3a36570bab35",
+      "source": "spikes/982/security/full-report/collect.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/host-pair.json",
+      "field": "source_sha256",
+      "name": "report_scan.py",
+      "sha256": "bfda61e431f365e083bd88007fe51151eea429192f71439ea1f514a3e2163041",
+      "source": "spikes/982/security/full-report/report_scan.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/host-pair.json",
+      "field": "source_sha256",
+      "name": "metadata.py",
+      "sha256": "d32d54c0c2431a3496217e82d70b88e0e5e45b5dbe8d70f919981c3b10f92036",
+      "source": "spikes/982/security/full-report/metadata.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/host-pair.json",
+      "field": "source_sha256",
+      "name": "watchdog.py",
+      "sha256": "0d5f7b5c2a7c5fa37e5e933d3a485c7166d6bce90962071fc4f2a403cc583302",
+      "source": "docs/acceptance/mechanisms/receipts/apport-full-1213/source-pair1/watchdog.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/host-pair.json",
+      "field": "source_sha256",
+      "name": "host.py",
+      "sha256": "8be1d8c7f30b582bf9c93034fb2545d527e694b47e49daf7277929916b026b15",
+      "source": "spikes/982/security/full-report/host.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/host-pair.json",
+      "field": "source_sha256",
+      "name": "test_report_scan.py",
+      "sha256": "55181180adaa555e407907d73b952b2aa93fdc050e6d802a8ebf6f144666cd2f",
+      "source": "spikes/982/security/full-report/test_report_scan.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/host-pair.json",
+      "field": "source_sha256",
+      "name": "drill.py",
+      "sha256": "9f3f9f49ac6dffa620045a867dc8b5ce30179bb419f59a362c4c8f0ef928ca54",
+      "source": "spikes/982/security/full-report/drill.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/host-pair.json",
+      "field": "source_sha256",
+      "name": "pair.py",
+      "sha256": "405a7b5af9b47b007ddf1c944f73df4b175f97b91335282f349fac1dbd578d55",
+      "source": "docs/acceptance/mechanisms/receipts/apport-full-1213/source-pair1/pair.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/host-negative.json",
+      "field": "source_sha256",
+      "name": "source_sha256",
+      "sha256": "0008d32a7e16758c978e915836d95447f37759a41f805a90969dd078b1c859f3",
+      "source": "spikes/982/security/full-report/resume_negative.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/host-negative.json",
+      "field": "pair_sha256",
+      "name": "pair_sha256",
+      "sha256": "2ec67954f53e805a18f5f353977da8d34a43898315211b1805b49afe686726cd",
+      "source": "spikes/982/security/full-report/pair.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/metadata.stdout",
+      "field": "source_sha256",
+      "name": "source_sha256",
+      "sha256": "d32d54c0c2431a3496217e82d70b88e0e5e45b5dbe8d70f919981c3b10f92036",
+      "source": "spikes/982/security/full-report/metadata.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/drill.stdout",
+      "field": "source_sha256",
+      "name": "drill.py",
+      "sha256": "9f3f9f49ac6dffa620045a867dc8b5ce30179bb419f59a362c4c8f0ef928ca54",
+      "source": "spikes/982/security/full-report/drill.py"
+    },
+    {
+      "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/drill.stdout",
+      "field": "source_sha256",
+      "name": "watchdog.py",
+      "sha256": "0d5f7b5c2a7c5fa37e5e933d3a485c7166d6bce90962071fc4f2a403cc583302",
+      "source": "docs/acceptance/mechanisms/receipts/apport-full-1213/source-pair1/watchdog.py"
+    }
+  ]
+}

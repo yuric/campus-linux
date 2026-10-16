@@ -1,0 +1,9 @@
+{
+  "utc": "2026-10-16T14:21:18.998794+00:00",
+  "host_free_bytes": 31244832768,
+  "disk_allocated": 6828523520,
+  "disk_logical": 6975979520,
+  "prior_estimated_bytes": 121749504,
+  "reservation_bytes": 67108864,
+  "limitation": "Initial preboot accounting attempted nonexistent diffdisk and failed before writing receipt; shell then started Lima. Corrected baseline is after start; boot growth unmeasured. No crash or fixture started; refreshed guest accounting required."
+}

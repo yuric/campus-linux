@@ -1,0 +1,186 @@
+{
+  "arm": "negative",
+  "kind": "bounded-SIGABRT",
+  "utc": "2026-10-16T14:27:53.908939+00:00",
+  "boot_id": "e5de54e0-b9a4-4215-8c6c-108bf49e93b2",
+  "crash_sent": true,
+  "source_sha256": {
+    "recover.py": "3285d52e94a48efe7945eb7c279f73c5a281b0650aeb72bf874b7d9b6fc74211",
+    "host.py": "8be1d8c7f30b582bf9c93034fb2545d527e694b47e49daf7277929916b026b15",
+    "pair.py": "2ec67954f53e805a18f5f353977da8d34a43898315211b1805b49afe686726cd",
+    "core-sentinel-probe.py": "3aca30e49471b4c12cbcd5c6abcccf9a9f1006262beb4eaedb3e36e03d3ba22d",
+    "apport-positive-preflight.py": "98d600ae98bb4501edba643b62094b94570aa2659f85a91ec8bb6439813a53fb",
+    "resume_negative.py": "0008d32a7e16758c978e915836d95447f37759a41f805a90969dd078b1c859f3",
+    "apport-activation-pair.py": "95a65dd9a77f0cf8775455ee7d282f7d4ecc3049cfa40e009bc086db5e179cb9",
+    "metadata.py": "d32d54c0c2431a3496217e82d70b88e0e5e45b5dbe8d70f919981c3b10f92036",
+    "report_scan.py": "bfda61e431f365e083bd88007fe51151eea429192f71439ea1f514a3e2163041",
+    "watchdog.py": "0d5f7b5c2a7c5fa37e5e933d3a485c7166d6bce90962071fc4f2a403cc583302",
+    "drill.py": "9f3f9f49ac6dffa620045a867dc8b5ce30179bb419f59a362c4c8f0ef928ca54",
+    "apport-activation-launch.py": "a82ac897227291bfa4a6cf25afe50a03ff54f4953f197f1b5edae10e24c797b3",
+    "test_report_scan.py": "55181180adaa555e407907d73b952b2aa93fdc050e6d802a8ebf6f144666cd2f"
+  },
+  "runtime_pass": true,
+  "cleanup_confirmed": true,
+  "command": [
+    "systemd-run",
+    "--unit=campus982-full-1213-negative",
+    "--collect",
+    "-p",
+    "User=campusqa",
+    "-p",
+    "Group=campusqa",
+    "-p",
+    "NoNewPrivileges=yes",
+    "-p",
+    "LimitCORE=infinity",
+    "-p",
+    "MemoryMax=64M",
+    "-p",
+    "MemorySwapMax=0",
+    "-p",
+    "TasksMax=8",
+    "-p",
+    "RuntimeMaxSec=90",
+    "-p",
+    "TimeoutStopSec=2",
+    "-p",
+    "PrivateNetwork=no",
+    "-p",
+    "CPUQuota=100%",
+    "-p",
+    "UMask=0077",
+    "-p",
+    "WorkingDirectory=/home/campusqa/spike982/apport-full-1213",
+    "/usr/bin/python3",
+    "-B",
+    "-I",
+    "-S",
+    "/home/campusqa/spike982/apport-full-1213/apport-activation-launch.py",
+    "negative"
+  ],
+  "pid": 2610,
+  "start_ticks": 44163,
+  "predicates": {
+    "stopped": true,
+    "one_thread": true,
+    "core_limit": true,
+    "as_limit": true,
+    "maps": true,
+    "vmas": true,
+    "pathnames": true,
+    "nnp": true,
+    "seccomp": true,
+    "same_namespaces": true,
+    "environment": true,
+    "argv": true,
+    "uid": true,
+    "gid": true,
+    "filter": true,
+    "descriptors": true
+  },
+  "namespaces": {
+    "pid": [
+      "pid:[4026531836]",
+      "pid:[4026531836]"
+    ],
+    "mnt": [
+      "mnt:[4026531841]",
+      "mnt:[4026531841]"
+    ]
+  },
+  "cgroup": "0::/system.slice/campus982-full-1213-negative.service\n",
+  "mapped_bytes": 2322432,
+  "vmas": 16,
+  "pathname_bytes": 369,
+  "executable_sha256": "5b814cc93d7f2110d40c936f5f86a6135de783ae2a28afe25eabac4ecc25bf10",
+  "target_uid": 1000,
+  "target_gid": 1001,
+  "metadata": {
+    "serialized_bytes": 3556,
+    "sha256": "b88a3ca1b62adfb219355cd407cc1adae6ed32c0237dc8d6b2b5e62e9f004649",
+    "required_readable": {
+      "ProcEnviron": true,
+      "ProcStatus": true,
+      "ProcCmdline": true,
+      "ProcMaps": true,
+      "ExecutablePath": true,
+      "ExecutableTimestamp": true,
+      "ProcCwd": true
+    },
+    "euid": 1000,
+    "egid": 1001,
+    "groups": [],
+    "root_open_procfd": true,
+    "root_established_executable": "/usr/bin/sleep"
+  },
+  "collectors": [],
+  "quiet_complete": true,
+  "apport_pid_lines": [],
+  "kernel_pid_lines": [
+    "Process 2610(sleep) has RLIMIT_CORE set to 1"
+  ],
+  "log_delta_bytes": 0,
+  "marker_in_attributable_log": false,
+  "retained_identities": [
+    {
+      "pid": 2610,
+      "start_ticks": 44163,
+      "parent": null,
+      "exited": true
+    }
+  ],
+  "cgroup_absent": true,
+  "remaining_exact_paths": {},
+  "accounting_samples": [
+    {
+      "monotonic": 441.628931702,
+      "explicit_allocated": 139264,
+      "log_positive_deltas_unattributed": 0,
+      "conservative_total": 126615552,
+      "guest_free": 20298670080
+    },
+    {
+      "monotonic": 442.145114015,
+      "explicit_allocated": 139264,
+      "log_positive_deltas_unattributed": 0,
+      "conservative_total": 126615552,
+      "guest_free": 20298670080
+    },
+    {
+      "monotonic": 442.66299182,
+      "explicit_allocated": 139264,
+      "log_positive_deltas_unattributed": 0,
+      "conservative_total": 126615552,
+      "guest_free": 20298670080
+    },
+    {
+      "monotonic": 443.165122016,
+      "explicit_allocated": 139264,
+      "log_positive_deltas_unattributed": 4096,
+      "conservative_total": 126619648,
+      "guest_free": 20298665984
+    },
+    {
+      "monotonic": 443.683634127,
+      "explicit_allocated": 139264,
+      "log_positive_deltas_unattributed": 4096,
+      "conservative_total": 126619648,
+      "guest_free": 20298665984
+    },
+    {
+      "monotonic": 444.202112897,
+      "explicit_allocated": 139264,
+      "log_positive_deltas_unattributed": 4096,
+      "conservative_total": 126619648,
+      "guest_free": 20298665984
+    },
+    {
+      "monotonic": 444.715124061,
+      "explicit_allocated": 139264,
+      "log_positive_deltas_unattributed": 4096,
+      "conservative_total": 126619648,
+      "guest_free": 20298665984
+    }
+  ],
+  "collector_stop_exercised": false
+}

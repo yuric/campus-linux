@@ -1,0 +1,16 @@
+{
+  "owned": {
+    "/home/campusqa/spike982/apport-metadata-1200": 20480,
+    "/home/campusqa/spike982/speech-next-1203": 79118336,
+    "/home/campusqa/spike982/core-sentinel-10470": 12288,
+    "/home/campusqa/spike982/apport-metadata-1200-run2": 20480,
+    "/home/campusqa/spike982/apport-activation-1196-run2": 45056,
+    "/home/campusqa/spike982/apport-activation-1196": 45056
+  },
+  "var_log_allocated": 144707584,
+  "historical_log_baseline": 114270208,
+  "prior_overhead_reserve": 16777216,
+  "consumed_bytes": 126476288,
+  "remaining_bytes": 141959168,
+  "new_explicit_reservation": 67108864
+}

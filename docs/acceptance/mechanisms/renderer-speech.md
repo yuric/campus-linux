@@ -400,7 +400,7 @@ Current Linux speech evidence dimensions:
 
 | Dimension | Observation / remaining proof |
 |---|---|
-| Availability | Native Apple API unavailable; GTK speech constructors absent in both sessions; offline English-only candidate runs, current-locale parity unproven |
+| Availability | Native Apple API unavailable; historical GTK constructor-absence observations are session-unbound. The [new speech report](receipts/speech-next-1203/REPORT.md) records forced en/es offline observations with preserved transcription errors; actual C.UTF-8 language is unknown and current-locale parity remains unproven |
 | Permission/interruption | Native synthetic audio access and cancel pass in both sessions; product prompts/revoke/device removal/suspend/logout remain untested |
 | Privacy/data destination | Constructor probe captures none; separate native probe records only public synthetic audio locally and inference is offline; product disclosure/retention unresolved |
 | Cost | No paid speech call authorized/performed; bounded offline download/probe tracked separately; no zero-cost cloud claim |

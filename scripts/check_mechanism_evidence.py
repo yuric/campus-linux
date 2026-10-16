@@ -12,6 +12,8 @@ MANIFESTS = (
     'docs/acceptance/mechanisms/receipts/apport-positive-preflight-index.json',
     'docs/acceptance/mechanisms/receipts/apport-activation-index.json',
     'docs/acceptance/mechanisms/receipts/repair-1200-index.json',
+    'docs/acceptance/mechanisms/receipts/speech-next-1203/index.json',
+    'docs/acceptance/mechanisms/receipts/apport-full-1213/index.json',
 )
 
 
