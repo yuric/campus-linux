@@ -35,9 +35,10 @@ waits through that deadline +8+45seconds plus2seconds for recorder finalization,
 than terminating it58seconds after recorder launch. Thus bounded pre-app setup cannot
 shorten app-start +8+45 retention. This does not extend app20, gate8, authority45,
 restore10 or loaded5. Recorder errors kill without reap; absent or malformed restoration
-acknowledgment retains through the bound. Abort-hint OSError is recorded without
-skipping kill-before-restoration; receipt-save failures preserve the original error and
-do not end retention. Parent/controller crash limits remain; no
+acknowledgment retains through the bound. All ordinary abort-hint publication errors,
+including short-write RuntimeError, are recorded separately; a finally block guarantees
+kill-before-restoration. Receipt-save failures preserve the original error and do not
+end retention. Parent/controller crash limits remain; no
 claim of general PID-reuse immunity or automatic acceptance follows from exit status0.
 
 Tests exercise actual isolated old/new validator subprocesses with complete synthetic
@@ -45,13 +46,14 @@ exports, controller-hash refusal, concurrent exact Handler workers with immediat
 requests/write failures, ordinary bytes, atomic hint visibility, partial readiness,
 same-lifetime exit transitions, delayed setup/absent or delayed restoration, actual driver
 and controller entrypoints, Window.begin binding/arming/recheck/rule/loaded/release
-ordering and refusal at each seam, abort-hint OSError, malformed acknowledgment,
-receipt-save failure, and release-removal/withheld-ack ordering. These are
+ordering and refusal at each seam, abort-hint OSError and actual helper short writes,
+malformed acknowledgment, receipt-save failure, and release-removal/withheld-ack ordering. These are
 host source tests, not real polkit/GDM acceptance. Against old7ec production files, five
 focused tests reproduced two failures and two errors (CLI, Handler race, empty hint,
 exit sampling); ordinary serving remained green. The repaired suite and exact committed
-head commands/counts are recorded in the PR/card. The final suite contains107probe
-and10adapter tests; the focused gate subset contains37. Three new retention regressions
+head commands/counts are recorded in the PR/card. The suite at
+`29287296076ca3af48359619ab12837105b18108` contains 107 probe and 10 adapter tests;
+its focused gate subset contains 37. Three new retention regressions
 against actual7ec desktop source reproduce two failures and four subtest errors; the
 repaired candidate passes them. Direction1364 resumes the same unfinished repair after
 two resource stops; it does not authorize runtime acceptance. The default Python lacked PyYAML;
@@ -59,18 +61,29 @@ the unchanged repository verifier ran in the already-existing `/tmp/rv1057` envi
 without installing dependencies. Initial new fixtures needed the required timing fields
 and canonical macOS temporary paths; those setup errors were corrected and rerun.
 
+The focused follow-up to source `29287296076ca3af48359619ab12837105b18108`
+repairs the remaining abort-publication failure. Its new regression calls the actual
+`hint_write` with an `os.write` wrapper that writes one byte fewer than requested.
+Against unchanged 292 production source it fails eight assertions across absent and
+delayed valid restoration schedules: the original recorder error is replaced, kill is
+skipped, and the publication diagnostic is lost. With the repair it passes both
+schedules, retains the original exception and short-write diagnostic, kills before
+restoration waiting, and never reaps before valid acknowledgment. The OSError regression
+remains. The source suite now contains 108 probe tests; exact committed-head results are
+recorded in the PR. No source test establishes real polkit/GDM acceptance.
+
 Current reviewed-source candidates (SHA-256; fresh coordinator review still required):
 
 | File | SHA-256 |
 |---|---|
-| desktop.py | `2b4b54860e3569e9dcad7d361a57f457114a9955fa30fd25affeb55f81f80edc` |
+| desktop.py | `166f323caeba384b80aa5a49591c08ab77209787f5d65f5f6360e76b4e136c11` |
 | gated.py | `bf630dfc35dc577dcac52d60f58c6d53fd3ddbbc745d19417c27a9c361c3e5b5` |
 | serve.py | `a4deeb4d9d13cf5388421645c4b6281e44f19ff268fb1e0e9be863b3c694c3a3` |
 | gated-control.py | `4dfb8039e62633172b663a2076870dc7f674846c6c3795a257c59d39da815110` |
 | gated-driver.py | `fb027cdfc7fc706577dc2e0cb82e2f71e5e6b257e685c9e11b88361170895755` |
 | authority-window.py | `a6901ad047245612b4f9d1a570825085f7e254db5a394643b7a10db1d03b644d` |
 | test_gated.py | `c6d67d892b4566b724296f33df6d6cdc074885efdce76ee443dd51ec83ed0d1f` |
-| test_gated_repair.py | `7c84c9938c11ba5793454238d41259effa224f674f0b77f0712d9f044b74612a` |
+| test_gated_repair.py | `36bd8b898245cd27a396ad417478bc4c2e8949136a6888480602ca71e771558a` |
 
 Direction1352 allows at most16MiB additional source/Git/test/log allocation, including
 incoming main, with12GiB free after the remaining allowance. Initial host free was

@@ -463,14 +463,15 @@ class Recorder:
             record["gated_error"] = str(error)
             try:
                 gated.hint_write(Path(config["hints"]) / "abort.json", {"error": str(error)[:1024]})
-            except OSError as publication_error:
+            except Exception as publication_error:
                 record["abort_hint_error"] = str(publication_error)
-            # Killing is not reaping. The retaining parent stays alive through
-            # restoration, including for a zombie caused by this timeout.
-            try:
-                os.killpg(child.pid, signal.SIGKILL)
-            except ProcessLookupError:
-                pass
+            finally:
+                # Publication must never skip killing. Killing is not reaping:
+                # retain the parent through restoration even after this kill.
+                try:
+                    os.killpg(child.pid, signal.SIGKILL)
+                except ProcessLookupError:
+                    pass
         finally:
             record.update({name: bytes(value).decode(errors="replace") for name, value in captured.items()})
             self.summarize_pkexec(record)

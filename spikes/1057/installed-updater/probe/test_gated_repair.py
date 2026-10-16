@@ -197,6 +197,9 @@ class RetentionFaultTests(unittest.TestCase):
     def test_abort_hint_oserror_kills_before_restoration_without_early_reap(self):
         self.retention_fault('abort')
 
+    def test_abort_hint_actual_short_write_kills_before_restoration_without_early_reap(self):
+        self.retention_fault('short_write')
+
     def test_malformed_ack_retains_until_valid_ack_or_bound(self):
         self.retention_fault('ack')
 
@@ -206,22 +209,33 @@ class RetentionFaultTests(unittest.TestCase):
     def retention_fault(self, fault=None):
         from types import SimpleNamespace
         for acknowledgment_at in (None, 62):
-            with self.subTest(acknowledgment_at=acknowledgment_at):
+            with self.subTest(acknowledgment_at=acknowledgment_at), tempfile.TemporaryDirectory() as hints:
                 recorder = desktop.Recorder.__new__(desktop.Recorder)
                 recorder.args = SimpleNamespace(gate_directory=Path('/gate'), case='deny', timeout=20,
                                                 lease_reference='lease1', gate_server_pid=125)
                 recorder.receipt, recorder.save = {'commands': []}, Mock()
-                recorder.sample_children = Mock(side_effect=RuntimeError('injected recorder failure'))
+                original_error = RuntimeError('injected recorder failure')
+                recorder.sample_children = Mock(side_effect=original_error)
                 config = {'lease': 'lease1', 'nonce': 'a' * 32, 'boot_id': 'b' * 32,
-                          'hints': '/hints', 'prepare_deadline_ns': 61_000_000_000}
+                          'hints': hints, 'prepare_deadline_ns': 61_000_000_000}
                 # Recorder launched at 1; actual app setup took ten seconds.
                 clock = [11_000_000_000]; restored = [False]
                 def sleep(seconds): clock[0] += 1_000_000_000
                 events = []
+                actual_hint_write = desktop.gated.hint_write
+                actual_write = os.write
+                short_writes = []
+                def short_write(fd, raw):
+                    written = actual_write(fd, raw[:-1])
+                    short_writes.append((written, len(raw)))
+                    return written
                 def hint_write(path, value):
                     if path.name == 'abort.json':
                         events.append('abort')
                         if fault == 'abort': raise OSError('injected abort publication failure')
+                        if fault == 'short_write':
+                            with patch.object(desktop.gated.os, 'write', side_effect=short_write):
+                                return actual_hint_write(path, value)
                 def save():
                     if fault == 'save' and 'kill' in events:
                         raise OSError('injected receipt save failure')
@@ -253,9 +267,18 @@ class RetentionFaultTests(unittest.TestCase):
                         (desktop.selectors, 'DefaultSelector', {'return_value': selector})):
                         stack.enter_context(patch.object(target, name, **options))
                     kill = stack.enter_context(patch.object(desktop.os, 'killpg', side_effect=lambda *args: events.append('kill')))
-                    with self.assertRaisesRegex(RuntimeError, 'injected recorder failure'):
+                    with self.assertRaises(RuntimeError) as raised:
                         recorder.gated_command([desktop.APP, '--update'])
-                    kill.assert_called_once_with(123, desktop.signal.SIGKILL)
+                    with self.subTest(check='original error retained'):
+                        self.assertIs(raised.exception, original_error)
+                    with self.subTest(check='kill before restoration'):
+                        kill.assert_called_once_with(123, desktop.signal.SIGKILL)
+                    if fault == 'short_write':
+                        self.assertEqual(len(short_writes), 1)
+                        self.assertEqual(short_writes[0][0], short_writes[0][1] - 1)
+                        self.assertFalse((Path(hints) / 'abort.json').exists())
+                        with self.subTest(check='publication diagnostic retained'):
+                            self.assertEqual(recorder.receipt['commands'][0].get('abort_hint_error'), 'short hint write')
                 child.poll.assert_not_called(); child.communicate.assert_not_called()
                 if acknowledgment_at is None:
                     child.wait.assert_not_called()
@@ -266,6 +289,7 @@ class RetentionFaultTests(unittest.TestCase):
                     self.assertGreaterEqual(clock[0], 62_000_000_000)
                 record = recorder.receipt['commands'][0]
                 self.assertEqual(record['gated_error'], 'injected recorder failure')
+                self.assertIn('kill', events)
                 self.assertLess(events.index('abort'), events.index('kill'))
                 self.assertLess(events.index('kill'), events.index('restoration'))
                 if fault == 'abort': self.assertEqual(record['abort_hint_error'], 'injected abort publication failure')
