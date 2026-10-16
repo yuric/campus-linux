@@ -33,6 +33,9 @@ def main():
     started = time.time()
     with tempfile.TemporaryDirectory(prefix="campus-981-") as tmp:
         staging = Path(tmp)
+        # Only public committed source lives here. Container root has no DAC override
+        # after cap-drop=ALL and must be able to traverse the host-owned export.
+        staging.chmod(0o755)
         archive = run(["git", "archive", "HEAD"], capture_output=True).stdout
         run(["tar", "-xf", "-", "-C", str(staging)], input=archive)
         tag = f"campus-linux-verify:{head[:12]}-{args.arch}"

@@ -2008,6 +2008,39 @@
       }
     },
     {
+      "action": "performCrossModelReviewRetry",
+      "sources": [
+        "CampusApp/Sources/CampusKit/HTTP.swift#L1231"
+      ],
+      "operations": [
+        {
+          "method": "POST",
+          "path": "/tasks/{id}/cross_model_review/retry",
+          "operation_id": "taskCrossModelReviewRetry",
+          "schema_pointer": "#/paths/~1tasks~1{id}~1cross_model_review~1retry/post",
+          "schema_refs": [
+            "#/components/schemas/CrossModelReview",
+            "#/components/schemas/Error"
+          ],
+          "summary": "Start the card's cross-model review again",
+          "in_prd_server_baseline": true
+        }
+      ],
+      "wire_types": [],
+      "group": "P05",
+      "owner_card": 991,
+      "expected": "Start the card's cross-model review again. Retain claim/lease ownership and ordered durable delivery; replay safely after each crash boundary; never equate HTTP receipt with work success.",
+      "status": "unimplemented",
+      "test_case": "P05.performCrossModelReviewRetry",
+      "receipt": "P05.performCrossModelReviewRetry.json",
+      "contract_status": "source-mapped; replay only the server-offered supported request; post-S1 revalidation required",
+      "test_spec": {
+        "seam": "host HTTP decoder/request + UI action",
+        "scenario": "Exercise performCrossModelReviewRetry once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
+        "execution": "not implemented; owning card must supply an actual test command and observed receipt before pass"
+      }
+    },
+    {
       "action": "preserve-draft",
       "group": "P05",
       "owner_card": 991,
@@ -2123,18 +2156,6 @@
         },
         {
           "method": "GET",
-          "path": "/tasks/{id}/chat",
-          "operation_id": "tasksChat",
-          "schema_pointer": "#/paths/~1tasks~1{id}~1chat/get",
-          "schema_refs": [
-            "#/components/schemas/ChatMessage",
-            "#/components/schemas/ChatMessageCollectionPage"
-          ],
-          "summary": "Read the task chat",
-          "in_prd_server_baseline": true
-        },
-        {
-          "method": "GET",
           "path": "/tasks/{id}",
           "operation_id": "tasksShow",
           "schema_pointer": "#/paths/~1tasks~1{id}/get",
@@ -2142,6 +2163,17 @@
             "#/components/schemas/TaskDetail"
           ],
           "summary": "Show a task",
+          "in_prd_server_baseline": true
+        },
+        {
+          "method": "GET",
+          "path": "/tasks/{id}/chat/{message_id}",
+          "operation_id": "tasksChatTurn",
+          "schema_pointer": "#/paths/~1tasks~1{id}~1chat~1{message_id}/get",
+          "schema_refs": [
+            "#/components/schemas/ChatTurnStatus"
+          ],
+          "summary": "Read one accepted chat turn's correlation status",
           "in_prd_server_baseline": true
         }
       ],
@@ -2783,7 +2815,8 @@
         "seam": "host HTTP decoder/request + UI action",
         "scenario": "Exercise storageData once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
         "execution": "not implemented; owning card must supply an actual test command and observed receipt before pass"
-      }
+      },
+      "transport_note": "GET the absolute URL from AttachmentDownloadDescriptor with descriptor fields only; the listed API operation produces that descriptor, not the storage bytes. No Campus bearer/redirect forwarding."
     },
     {
       "action": "taskAttachment",
@@ -3018,7 +3051,8 @@
         "seam": "host HTTP decoder/request + UI action",
         "scenario": "Exercise uploadTaskAttachment once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
         "execution": "not implemented; owning card must supply an actual test command and observed receipt before pass"
-      }
+      },
+      "transport_note": "POST stages upload; PUT exact descriptor URL/headers/bytes without Campus bearer; bound returned upload_id on create/update. No client error-text interpretation."
     },
     {
       "action": "archiveProject",
@@ -3145,41 +3179,6 @@
       "test_spec": {
         "seam": "named presentation/OS/executor seam in source reference",
         "scenario": "Exercise bind-folder once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
-        "execution": "not implemented; owning card must supply an actual test command and observed receipt before pass"
-      }
-    },
-    {
-      "action": "bindExecutorProject",
-      "sources": [
-        "CampusApp/Sources/CampusKit/HTTP.swift#L942"
-      ],
-      "operations": [
-        {
-          "method": "PUT",
-          "path": "/executors/{executor_id}/project_bindings/{project_id}",
-          "operation_id": "executorProjectBindingsUpdate",
-          "schema_pointer": "#/paths/~1executors~1{executor_id}~1project_bindings~1{project_id}/put",
-          "schema_refs": [
-            "#/components/schemas/ExecutorProjectBindingEnvelope",
-            "#/components/schemas/ProjectObservation"
-          ],
-          "summary": "Report this Mac's versioned filesystem and Git observation",
-          "in_prd_server_baseline": true
-        }
-      ],
-      "wire_types": [
-        "ExecutorProjectBindingResponse"
-      ],
-      "group": "P07",
-      "owner_card": 991,
-      "expected": "Report this Mac's versioned filesystem and Git observation. Honor server validation, binding and lifecycle confirmation; preserve user repositories and rejected drafts.",
-      "status": "unimplemented",
-      "test_case": "P07.bindExecutorProject",
-      "receipt": "P07.bindExecutorProject.json",
-      "contract_status": "source-mapped; post-S1 revalidation required",
-      "test_spec": {
-        "seam": "host HTTP decoder/request + UI action",
-        "scenario": "Exercise bindExecutorProject once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
         "execution": "not implemented; owning card must supply an actual test command and observed receipt before pass"
       }
     },
@@ -3573,40 +3572,6 @@
       }
     },
     {
-      "action": "executorProjectBinding",
-      "sources": [
-        "CampusApp/Sources/CampusKit/HTTP.swift#L936"
-      ],
-      "operations": [
-        {
-          "method": "GET",
-          "path": "/executors/{executor_id}/project_bindings/{project_id}",
-          "operation_id": "executorProjectBindingsShow",
-          "schema_pointer": "#/paths/~1executors~1{executor_id}~1project_bindings~1{project_id}/get",
-          "schema_refs": [
-            "#/components/schemas/ExecutorProjectBindingEnvelope"
-          ],
-          "summary": "Read Rails-authored local Project readiness for one Mac",
-          "in_prd_server_baseline": true
-        }
-      ],
-      "wire_types": [
-        "ExecutorProjectBindingResponse"
-      ],
-      "group": "P07",
-      "owner_card": 991,
-      "expected": "Read Rails-authored local Project readiness for one Mac. Honor server validation, binding and lifecycle confirmation; preserve user repositories and rejected drafts.",
-      "status": "unimplemented",
-      "test_case": "P07.executorProjectBinding",
-      "receipt": "P07.executorProjectBinding.json",
-      "contract_status": "source-mapped; post-S1 revalidation required",
-      "test_spec": {
-        "seam": "host HTTP decoder/request + UI action",
-        "scenario": "Exercise executorProjectBinding once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
-        "execution": "not implemented; owning card must supply an actual test command and observed receipt before pass"
-      }
-    },
-    {
       "action": "import-confirm",
       "group": "P07",
       "owner_card": 991,
@@ -3678,6 +3643,72 @@
       "test_spec": {
         "seam": "host HTTP decoder/request + UI action",
         "scenario": "Exercise importProjects once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
+        "execution": "not implemented; owning card must supply an actual test command and observed receipt before pass"
+      }
+    },
+    {
+      "action": "projectSetupPromptCopy",
+      "sources": [
+        "CampusApp/Sources/CampusKit/HTTP.swift#L1152"
+      ],
+      "operations": [
+        {
+          "method": "GET",
+          "path": "/projects/setup_prompt",
+          "operation_id": "projectsSetupPromptCopy",
+          "schema_pointer": "#/paths/~1projects~1setup_prompt/get",
+          "schema_refs": [],
+          "summary": "Copy-button contract for New Project agent setup",
+          "in_prd_server_baseline": true
+        }
+      ],
+      "wire_types": [
+        "ProjectSetupPromptCopy"
+      ],
+      "group": "P07",
+      "owner_card": 991,
+      "expected": "Copy-button contract for New Project agent setup. Render settings/copy/options from Rails; save only authorized fields, reconcile failed saves; preserve telemetry choice.",
+      "status": "unimplemented",
+      "test_case": "P07.projectSetupPromptCopy",
+      "receipt": "P07.projectSetupPromptCopy.json",
+      "contract_status": "source-mapped; post-S1 revalidation required",
+      "test_spec": {
+        "seam": "host HTTP decoder/request + UI action",
+        "scenario": "Exercise projectSetupPromptCopy once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
+        "execution": "not implemented; owning card must supply an actual test command and observed receipt before pass"
+      }
+    },
+    {
+      "action": "projectStatuses",
+      "sources": [
+        "CampusApp/Sources/CampusKit/HTTP.swift#L1160"
+      ],
+      "operations": [
+        {
+          "method": "GET",
+          "path": "/projects/status",
+          "operation_id": "projectsStatus",
+          "schema_pointer": "#/paths/~1projects~1status/get",
+          "schema_refs": [
+            "#/components/schemas/ProjectWorkStatus"
+          ],
+          "summary": "Activity status for every project on the island",
+          "in_prd_server_baseline": true
+        }
+      ],
+      "wire_types": [
+        "[ProjectWorkStatusRow]"
+      ],
+      "group": "P07",
+      "owner_card": 991,
+      "expected": "Activity status for every project on the island. Retain claim/lease ownership and ordered durable delivery; replay safely after each crash boundary; never equate HTTP receipt with work success.",
+      "status": "unimplemented",
+      "test_case": "P07.projectStatuses",
+      "receipt": "P07.projectStatuses.json",
+      "contract_status": "source-mapped; post-S1 revalidation required",
+      "test_spec": {
+        "seam": "host HTTP decoder/request + UI action",
+        "scenario": "Exercise projectStatuses once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
         "execution": "not implemented; owning card must supply an actual test command and observed receipt before pass"
       }
     },
@@ -4135,28 +4166,14 @@
           ],
           "summary": "Show an agent",
           "in_prd_server_baseline": true
-        },
-        {
-          "method": "GET",
-          "path": "/agents",
-          "operation_id": "agentsIndex",
-          "schema_pointer": "#/paths/~1agents/get",
-          "schema_refs": [
-            "#/components/schemas/Agent",
-            "#/components/schemas/AgentCollectionPage",
-            "#/components/schemas/Error"
-          ],
-          "summary": "List agents",
-          "in_prd_server_baseline": true
         }
       ],
       "wire_types": [
-        "Agent?",
-        "[Agent]"
+        "Agent?"
       ],
       "group": "P08",
       "owner_card": 992,
-      "expected": "Show an agent / List agents. Render offered landing/session/control choices; retain exact native session and identity; no fresh-run fallback on failed resume.",
+      "expected": "Show an agent. Render offered landing/session/control choices; retain exact native session and identity; no fresh-run fallback on failed resume.",
       "status": "unimplemented",
       "test_case": "P08.agent",
       "receipt": "P08.agent.json",
@@ -4649,6 +4666,38 @@
       }
     },
     {
+      "action": "detachAndStartFresh",
+      "sources": [
+        "CampusApp/Sources/CampusKit/HTTP.swift#L2092"
+      ],
+      "operations": [
+        {
+          "method": "POST",
+          "path": "/agents/{id}/detach_and_start_fresh",
+          "operation_id": "agentsDetachAndStartFresh",
+          "schema_pointer": "#/paths/~1agents~1{id}~1detach_and_start_fresh/post",
+          "schema_refs": [],
+          "summary": "Detach an unresumable conversation and start a fresh session",
+          "in_prd_server_baseline": true
+        }
+      ],
+      "wire_types": [
+        "RecoveryStartReceipt"
+      ],
+      "group": "P08",
+      "owner_card": 992,
+      "expected": "Detach an unresumable conversation and start a fresh session. Retain claim/lease ownership and ordered durable delivery; replay safely after each crash boundary; never equate HTTP receipt with work success.",
+      "status": "unimplemented",
+      "test_case": "P08.detachAndStartFresh",
+      "receipt": "P08.detachAndStartFresh.json",
+      "contract_status": "source-mapped; post-S1 revalidation required",
+      "test_spec": {
+        "seam": "host HTTP decoder/request + UI action",
+        "scenario": "Exercise detachAndStartFresh once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
+        "execution": "not implemented; owning card must supply an actual test command and observed receipt before pass"
+      }
+    },
+    {
       "action": "dismissAgent",
       "sources": [
         "CampusApp/Sources/CampusKit/HTTP.swift#L2123"
@@ -5093,18 +5142,6 @@
           ],
           "summary": "Stop the agent's engine process",
           "in_prd_server_baseline": true
-        },
-        {
-          "method": "PATCH",
-          "path": "/agents/{id}",
-          "operation_id": "agentsUpdate",
-          "schema_pointer": "#/paths/~1agents~1{id}/patch",
-          "schema_refs": [
-            "#/components/schemas/Agent",
-            "#/components/schemas/Error"
-          ],
-          "summary": "Rename an agent",
-          "in_prd_server_baseline": true
         }
       ],
       "wire_types": [
@@ -5112,7 +5149,7 @@
       ],
       "group": "P08",
       "owner_card": 992,
-      "expected": "Stop the agent's engine process / Rename an agent. Render offered landing/session/control choices; retain exact native session and identity; no fresh-run fallback on failed resume.",
+      "expected": "Stop the agent's engine process. Render offered landing/session/control choices; retain exact native session and identity; no fresh-run fallback on failed resume.",
       "status": "unimplemented",
       "test_case": "P08.stopAgent",
       "receipt": "P08.stopAgent.json",
@@ -5482,24 +5519,14 @@
           ],
           "summary": "What this installation can run",
           "in_prd_server_baseline": true
-        },
-        {
-          "method": "GET",
-          "path": "/diagnostics",
-          "operation_id": "diagnosticsShow",
-          "schema_pointer": "#/paths/~1diagnostics/get",
-          "schema_refs": [],
-          "summary": "Broker poll copy, fault map, and session-failure fallback",
-          "in_prd_server_baseline": true
         }
       ],
       "wire_types": [
-        "DiagnosticContract",
         "[EngineCapability]"
       ],
       "group": "P09",
       "owner_card": 992,
-      "expected": "What this installation can run / Broker poll copy, fault map, and session-failure fallback. Use server capability/plan, isolated credential identity, redacted PTY and verification receipt; never infer support from provider name.",
+      "expected": "What this installation can run. Use server capability/plan, isolated credential identity, redacted PTY and verification receipt; never infer support from provider name.",
       "status": "unimplemented",
       "test_case": "P09.engines",
       "receipt": "P09.engines.json",
@@ -8720,17 +8747,6 @@
       ],
       "operations": [
         {
-          "method": "PUT",
-          "path": "/landing/prompt",
-          "operation_id": "landingUpdate",
-          "schema_pointer": "#/paths/~1landing~1prompt/put",
-          "schema_refs": [
-            "#/components/schemas/LandingPrompt"
-          ],
-          "summary": "Replace the landing prompt",
-          "in_prd_server_baseline": true
-        },
-        {
           "method": "GET",
           "path": "/landing/prompt",
           "operation_id": "landingShow",
@@ -8747,7 +8763,7 @@
       ],
       "group": "P14",
       "owner_card": 988,
-      "expected": "Replace the landing prompt / Read the landing prompt. Render settings/copy/options from Rails; save only authorized fields, reconcile failed saves; preserve telemetry choice.",
+      "expected": "Read the landing prompt. Render settings/copy/options from Rails; save only authorized fields, reconcile failed saves; preserve telemetry choice.",
       "status": "unimplemented",
       "test_case": "P14.landingPrompt",
       "receipt": "P14.landingPrompt.json",
@@ -8847,38 +8863,6 @@
       "test_spec": {
         "seam": "named presentation/OS/executor seam in source reference",
         "scenario": "Exercise profile-load once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
-        "execution": "not implemented; owning card must supply an actual test command and observed receipt before pass"
-      }
-    },
-    {
-      "action": "projectSetupPromptCopy",
-      "sources": [
-        "CampusApp/Sources/CampusKit/HTTP.swift#L1152"
-      ],
-      "operations": [
-        {
-          "method": "GET",
-          "path": "/projects/setup_prompt",
-          "operation_id": "projectsSetupPromptCopy",
-          "schema_pointer": "#/paths/~1projects~1setup_prompt/get",
-          "schema_refs": [],
-          "summary": "Copy-button contract for New Project agent setup",
-          "in_prd_server_baseline": true
-        }
-      ],
-      "wire_types": [
-        "ProjectSetupPromptCopy"
-      ],
-      "group": "P14",
-      "owner_card": 988,
-      "expected": "Copy-button contract for New Project agent setup. Render settings/copy/options from Rails; save only authorized fields, reconcile failed saves; preserve telemetry choice.",
-      "status": "unimplemented",
-      "test_case": "P14.projectSetupPromptCopy",
-      "receipt": "P14.projectSetupPromptCopy.json",
-      "contract_status": "source-mapped; post-S1 revalidation required",
-      "test_spec": {
-        "seam": "host HTTP decoder/request + UI action",
-        "scenario": "Exercise projectSetupPromptCopy once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
         "execution": "not implemented; owning card must supply an actual test command and observed receipt before pass"
       }
     },
@@ -9081,26 +9065,14 @@
           ],
           "summary": "Read workspace settings",
           "in_prd_server_baseline": true
-        },
-        {
-          "method": "GET",
-          "path": "/settings/rules/capabilities",
-          "operation_id": "workspaceRuleCapabilities",
-          "schema_pointer": "#/paths/~1settings~1rules~1capabilities/get",
-          "schema_refs": [
-            "#/components/schemas/WorkspaceRuleCapabilities"
-          ],
-          "summary": "Read the versioned Workspace Rules capability contract",
-          "in_prd_server_baseline": true
         }
       ],
       "wire_types": [
-        "Settings",
-        "WorkspaceRuleCapabilities"
+        "Settings"
       ],
       "group": "P14",
       "owner_card": 988,
-      "expected": "Read workspace settings / Read the versioned Workspace Rules capability contract. Render settings/copy/options from Rails; save only authorized fields, reconcile failed saves; preserve telemetry choice.",
+      "expected": "Read workspace settings. Render settings/copy/options from Rails; save only authorized fields, reconcile failed saves; preserve telemetry choice.",
       "status": "unimplemented",
       "test_case": "P14.settings",
       "receipt": "P14.settings.json",
@@ -9352,6 +9324,41 @@
       }
     },
     {
+      "action": "bindExecutorProject",
+      "sources": [
+        "CampusApp/Sources/CampusKit/HTTP.swift#L942"
+      ],
+      "operations": [
+        {
+          "method": "PUT",
+          "path": "/executors/{executor_id}/project_bindings/{project_id}",
+          "operation_id": "executorProjectBindingsUpdate",
+          "schema_pointer": "#/paths/~1executors~1{executor_id}~1project_bindings~1{project_id}/put",
+          "schema_refs": [
+            "#/components/schemas/ExecutorProjectBindingEnvelope",
+            "#/components/schemas/ProjectObservation"
+          ],
+          "summary": "Report this Mac's versioned filesystem and Git observation",
+          "in_prd_server_baseline": true
+        }
+      ],
+      "wire_types": [
+        "ExecutorProjectBindingResponse"
+      ],
+      "group": "P15",
+      "owner_card": 989,
+      "expected": "Report this Mac's versioned filesystem and Git observation. Honor server validation, binding and lifecycle confirmation; preserve user repositories and rejected drafts.",
+      "status": "unimplemented",
+      "test_case": "P15.bindExecutorProject",
+      "receipt": "P15.bindExecutorProject.json",
+      "contract_status": "source-mapped; post-S1 revalidation required",
+      "test_spec": {
+        "seam": "host HTTP decoder/request + UI action",
+        "scenario": "Exercise bindExecutorProject once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
+        "execution": "not implemented; owning card must supply an actual test command and observed receipt before pass"
+      }
+    },
+    {
       "action": "capacity-observation",
       "group": "P15",
       "owner_card": 989,
@@ -9402,6 +9409,40 @@
       "test_spec": {
         "seam": "host HTTP decoder/request + UI action",
         "scenario": "Exercise executorCredentialBinding once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
+        "execution": "not implemented; owning card must supply an actual test command and observed receipt before pass"
+      }
+    },
+    {
+      "action": "executorProjectBinding",
+      "sources": [
+        "CampusApp/Sources/CampusKit/HTTP.swift#L936"
+      ],
+      "operations": [
+        {
+          "method": "GET",
+          "path": "/executors/{executor_id}/project_bindings/{project_id}",
+          "operation_id": "executorProjectBindingsShow",
+          "schema_pointer": "#/paths/~1executors~1{executor_id}~1project_bindings~1{project_id}/get",
+          "schema_refs": [
+            "#/components/schemas/ExecutorProjectBindingEnvelope"
+          ],
+          "summary": "Read Rails-authored local Project readiness for one Mac",
+          "in_prd_server_baseline": true
+        }
+      ],
+      "wire_types": [
+        "ExecutorProjectBindingResponse"
+      ],
+      "group": "P15",
+      "owner_card": 989,
+      "expected": "Read Rails-authored local Project readiness for one Mac. Honor server validation, binding and lifecycle confirmation; preserve user repositories and rejected drafts.",
+      "status": "unimplemented",
+      "test_case": "P15.executorProjectBinding",
+      "receipt": "P15.executorProjectBinding.json",
+      "contract_status": "source-mapped; post-S1 revalidation required",
+      "test_spec": {
+        "seam": "host HTTP decoder/request + UI action",
+        "scenario": "Exercise executorProjectBinding once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
         "execution": "not implemented; owning card must supply an actual test command and observed receipt before pass"
       }
     },
@@ -10203,38 +10244,6 @@
       }
     },
     {
-      "action": "detachAndStartFresh",
-      "sources": [
-        "CampusApp/Sources/CampusKit/HTTP.swift#L2092"
-      ],
-      "operations": [
-        {
-          "method": "POST",
-          "path": "/agents/{id}/detach_and_start_fresh",
-          "operation_id": "agentsDetachAndStartFresh",
-          "schema_pointer": "#/paths/~1agents~1{id}~1detach_and_start_fresh/post",
-          "schema_refs": [],
-          "summary": "Detach an unresumable conversation and start a fresh session",
-          "in_prd_server_baseline": true
-        }
-      ],
-      "wire_types": [
-        "RecoveryStartReceipt"
-      ],
-      "group": "P16",
-      "owner_card": 990,
-      "expected": "Detach an unresumable conversation and start a fresh session. Retain claim/lease ownership and ordered durable delivery; replay safely after each crash boundary; never equate HTTP receipt with work success.",
-      "status": "unimplemented",
-      "test_case": "P16.detachAndStartFresh",
-      "receipt": "P16.detachAndStartFresh.json",
-      "contract_status": "source-mapped; post-S1 revalidation required",
-      "test_spec": {
-        "seam": "host HTTP decoder/request + UI action",
-        "scenario": "Exercise detachAndStartFresh once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
-        "execution": "not implemented; owning card must supply an actual test command and observed receipt before pass"
-      }
-    },
-    {
       "action": "disk-full",
       "group": "P16",
       "owner_card": 990,
@@ -10505,39 +10514,6 @@
       }
     },
     {
-      "action": "performCrossModelReviewRetry",
-      "sources": [
-        "CampusApp/Sources/CampusKit/HTTP.swift#L1231"
-      ],
-      "operations": [
-        {
-          "method": "POST",
-          "path": "/tasks/{id}/cross_model_review/retry",
-          "operation_id": "taskCrossModelReviewRetry",
-          "schema_pointer": "#/paths/~1tasks~1{id}~1cross_model_review~1retry/post",
-          "schema_refs": [
-            "#/components/schemas/CrossModelReview",
-            "#/components/schemas/Error"
-          ],
-          "summary": "Start the card's cross-model review again",
-          "in_prd_server_baseline": true
-        }
-      ],
-      "wire_types": [],
-      "group": "P05",
-      "owner_card": 991,
-      "expected": "Start the card's cross-model review again. Retain claim/lease ownership and ordered durable delivery; replay safely after each crash boundary; never equate HTTP receipt with work success.",
-      "status": "unimplemented",
-      "test_case": "P05.performCrossModelReviewRetry",
-      "receipt": "P05.performCrossModelReviewRetry.json",
-      "contract_status": "source-mapped; replay only the server-offered supported request; post-S1 revalidation required",
-      "test_spec": {
-        "seam": "host HTTP decoder/request + UI action",
-        "scenario": "Exercise performCrossModelReviewRetry once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
-        "execution": "not implemented; owning card must supply an actual test command and observed receipt before pass"
-      }
-    },
-    {
       "action": "prepare-worktree",
       "group": "P16",
       "owner_card": 990,
@@ -10554,40 +10530,6 @@
       "test_spec": {
         "seam": "named presentation/OS/executor seam in source reference",
         "scenario": "Exercise prepare-worktree once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
-        "execution": "not implemented; owning card must supply an actual test command and observed receipt before pass"
-      }
-    },
-    {
-      "action": "projectStatuses",
-      "sources": [
-        "CampusApp/Sources/CampusKit/HTTP.swift#L1160"
-      ],
-      "operations": [
-        {
-          "method": "GET",
-          "path": "/projects/status",
-          "operation_id": "projectsStatus",
-          "schema_pointer": "#/paths/~1projects~1status/get",
-          "schema_refs": [
-            "#/components/schemas/ProjectWorkStatus"
-          ],
-          "summary": "Activity status for every project on the island",
-          "in_prd_server_baseline": true
-        }
-      ],
-      "wire_types": [
-        "[ProjectWorkStatusRow]"
-      ],
-      "group": "P16",
-      "owner_card": 990,
-      "expected": "Activity status for every project on the island. Retain claim/lease ownership and ordered durable delivery; replay safely after each crash boundary; never equate HTTP receipt with work success.",
-      "status": "unimplemented",
-      "test_case": "P16.projectStatuses",
-      "receipt": "P16.projectStatuses.json",
-      "contract_status": "source-mapped; post-S1 revalidation required",
-      "test_spec": {
-        "seam": "host HTTP decoder/request + UI action",
-        "scenario": "Exercise projectStatuses once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
         "execution": "not implemented; owning card must supply an actual test command and observed receipt before pass"
       }
     },
