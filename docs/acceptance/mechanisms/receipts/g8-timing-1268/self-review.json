@@ -1,0 +1,78 @@
+{
+  "utc": "2026-10-16T17:10:06.984181+00:00",
+  "source": "9d7743a25f4ce15c5fbad4932d3a7c37d9a29617",
+  "renderer_source_files_unchanged": 23,
+  "all_guest_exported_raw_files_byte_equal": true,
+  "fresh_motion_verified": true,
+  "motion_sha256": "b32d16699f4e859a483c658f10fb343634f9bb5d17d495f00fc9c9c5904eaf81",
+  "timing_freeze_sha256": "bb54e85e536382a2cdd85c5ae934615a544f9d0be19a463366faa0b49fc6b449",
+  "runs": [
+    {
+      "file": "run-1.json",
+      "valid": true,
+      "workload_error": null,
+      "frames": 445,
+      "p50_ms": 134,
+      "p95_ms": 143,
+      "max_ms": 433,
+      "intervals_over_33_3_ms": 444,
+      "missed_60hz_frames": 2911,
+      "errors": [],
+      "pass_run": false
+    },
+    {
+      "file": "run-2.json",
+      "valid": true,
+      "workload_error": null,
+      "frames": 433,
+      "p50_ms": 132,
+      "p95_ms": 187,
+      "max_ms": 357,
+      "intervals_over_33_3_ms": 432,
+      "missed_60hz_frames": 2931,
+      "errors": [],
+      "pass_run": false
+    },
+    {
+      "file": "run-3.json",
+      "valid": true,
+      "workload_error": null,
+      "frames": 455,
+      "p50_ms": 132,
+      "p95_ms": 142,
+      "max_ms": 159,
+      "intervals_over_33_3_ms": 454,
+      "missed_60hz_frames": 2905,
+      "errors": [],
+      "pass_run": false
+    },
+    {
+      "file": "run-4.json",
+      "valid": true,
+      "workload_error": null,
+      "frames": 456,
+      "p50_ms": 131,
+      "p95_ms": 140,
+      "max_ms": 213,
+      "intervals_over_33_3_ms": 455,
+      "missed_60hz_frames": 2891,
+      "errors": [],
+      "pass_run": false
+    },
+    {
+      "file": "run-5.json",
+      "valid": true,
+      "workload_error": null,
+      "frames": 422,
+      "p50_ms": 138,
+      "p95_ms": 174,
+      "max_ms": 227,
+      "intervals_over_33_3_ms": 421,
+      "missed_60hz_frames": 3002,
+      "errors": [],
+      "pass_run": false
+    }
+  ],
+  "candidate_preflight_returncode": 1,
+  "x11_timing_not_run": true
+}

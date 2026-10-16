@@ -118,12 +118,14 @@ Preserved failures and corrections:
    failed with FileNotFoundError for `desktop-first/._Island`; [original inventory](transferred-export.json)
    and [provenance](export-provenance.json) retain all extra paths/hashes and the failed
    equality conclusion. All13 original export files matched bytes/modes throughout;
-   extras were outside the manifest and never served. After all probes exited,
+   extras were outside the manifest and never served. After successful-proof cleanup,
    [cleanup](transfer-metadata-cleanup.json) removed only42 newly added163-byte AppleDouble
    files across this source/export transfer, checking owner/type/magic first. The final
    complete16-entry export inventory matches host bytes and modes. Future host transport
    should use `COPYFILE_DISABLE=1 tar --no-xattrs` to avoid these metadata additions.
    Cleanup changed no manifest-listed file or runtime source, and creates no new runtime proof.
+   The failed-preflight process-absence observation was recorded132ms after metadata
+   deletion; it does not establish that failed-preflight cleanup was observed beforehand.
 
 No narrow benchmark-source repair was made. Expected strings and thresholds are unchanged.
 The existing run plan's manual observation split, host variables/GPU assignment, index
@@ -136,10 +138,13 @@ and [X11](x11-cleanup.json) observations confirm all observed renderer/wrapper P
 application scopes absent; no termination signal was needed. Both normal graphical logouts
 completed before shutdown. The [login keyring Wayland](wayland-login-keyring-locked.txt)
 and [X11](x11-login-keyring-locked.txt) queries each report Locked=true.
-[Protected files before](guest-before.json), [after](guest-after.json) and
+[Protected files snapshot](guest-before.json), [after](guest-after.json) and
 [comparison](cleanup-verification.json) show identical hashes/UID/GID/modes for GDM config,
 polkit rules/action, updater package/helper/verifier/admission/public-key files; coordinator
 PhaseB hashes/owners/modes also match. No owned deny rule or polkit mask was introduced.
+The first named snapshot is a15:29:49 mid-run observation, not a pre-probe baseline;
+earlier protected state relies on coordinator PhaseB evidence. The comparison contains
+24 rows covering16 unique protected paths, because eight rules occur twice.
 Office377's evidence and processes were not operated on.
 
 Lima was [stopped normally](shutdown.txt), confirmed [15:38:12UTC](host-stopped-after.json),
@@ -150,6 +155,8 @@ budget. Final new guest files3,440,640 allocated bytes. Conservative aggregate c
 since the historical baseline and16MiB overhead reserve; remaining99,315,712 bytes.
 Whole-log growth is conservative accounting, not attribution of other Offices' writes.
 Guest free20,223,381,504 bytes; stopped host free21,560,815,616 bytes, above20GiB.
+These are sampled floor observations, not a continuous guarantee; the between-session
+host sample records26,928,074,752 free bytes.
 The corrected interval includes boot/shutdown disk growth. No old evidence or unrelated
 cache was deleted. This is operational accounting, not a filesystem quota.
 

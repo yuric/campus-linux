@@ -1,0 +1,85 @@
+{
+  "utc": "2026-10-16T17:05:47.356859+00:00",
+  "commands": [
+    {
+      "argv": [
+        "systemctl",
+        "is-active",
+        "gdm",
+        "polkit"
+      ],
+      "returncode": 0,
+      "stdout": "active\nactive\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "systemctl",
+        "show",
+        "polkit",
+        "-p",
+        "MainPID",
+        "-p",
+        "FragmentPath",
+        "-p",
+        "LoadState",
+        "-p",
+        "ActiveState",
+        "-p",
+        "SubState"
+      ],
+      "returncode": 0,
+      "stdout": "MainPID=711\nLoadState=loaded\nActiveState=active\nSubState=running\nFragmentPath=/usr/lib/systemd/system/polkit.service\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "busctl",
+        "--system",
+        "status",
+        "org.freedesktop.PolicyKit1"
+      ],
+      "returncode": 0,
+      "stdout": "PID=711\nPPID=1\nTTY=n/a\nUID=989\nEUID=989\nSUID=989\nFSUID=989\nGID=989\nEGID=989\nSGID=989\nFSGID=989\nSupplementaryGIDs=989\nComm=polkitd\nExe=/usr/lib/polkit-1/polkitd\nCommandLine=/usr/lib/polkit-1/polkitd --no-debug\nLabel=unconfined\nCGroup=/system.slice/polkit.service\nUnit=polkit.service\nSlice=system.slice\nUserUnit=n/a\nUserSlice=n/a\nSession=n/a\nAuditLoginUID=n/a\nAuditSessionID=n/a\nUniqueName=:1.8\nEffectiveCapabilities=\nPermittedCapabilities=\nInheritableCapabilities=\nBoundingCapabilities=cap_setgid cap_setuid\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "systemctl",
+        "is-active",
+        "apt-daily.service",
+        "apt-daily-upgrade.service"
+      ],
+      "returncode": 3,
+      "stdout": "inactive\ninactive\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "dpkg-query",
+        "-W",
+        "-f=${Package}\t${Version}\t${Architecture}\n",
+        "libwebkit2gtk-4.1-0",
+        "libegl-mesa0",
+        "libgl1-mesa-dri",
+        "libllvm20",
+        "mutter-common",
+        "gnome-shell",
+        "gdm3",
+        "systemd"
+      ],
+      "returncode": 0,
+      "stdout": "gdm3\t46.2-1ubuntu1~24.04.9\tarm64\ngnome-shell\t46.0-0ubuntu6~24.04.16\tarm64\nlibegl-mesa0\t25.2.8-0ubuntu0.24.04.4\tarm64\nlibgl1-mesa-dri\t25.2.8-0ubuntu0.24.04.4\tarm64\nlibllvm20\t1:20.1.2-0ubuntu1~24.04.3\tarm64\nlibwebkit2gtk-4.1-0\t2.52.6-0ubuntu0.24.04.1\tarm64\nmutter-common\t46.2-1ubuntu0.24.04.18\tall\nsystemd\t255.4-1ubuntu8.18\tarm64\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "loginctl",
+        "list-sessions"
+      ],
+      "returncode": 0,
+      "stdout": "SESSION  UID USER     SEAT  TTY  STATE  IDLE SINCE\n      4  501 yuri     -     -    active no   -\n      7 1000 campusqa seat0 tty2 active no   -\n\n2 sessions listed.\n",
+      "stderr": ""
+    }
+  ]
+}

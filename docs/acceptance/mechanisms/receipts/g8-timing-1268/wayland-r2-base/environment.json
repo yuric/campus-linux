@@ -1,0 +1,28 @@
+{
+  "webkit": "2.52.6",
+  "mesa": "25.2.8-0ubuntu0.24.04.4",
+  "llvm": "20.1.2",
+  "kernel": "6.8.0-147-generic",
+  "architecture": "aarch64",
+  "os": "Ubuntu 24.04.5 LTS",
+  "session": "GDM gdm-password wayland session 7, campusqa UID1000",
+  "graphics": "llvmpipe (LLVM 20.1.2, 128 bits)",
+  "webgl_api_renderer": "Apple GPU",
+  "rendering_env": {
+    "LIBGL_ALWAYS_SOFTWARE": "1",
+    "GDK_BACKEND": null,
+    "WEBKIT_DISABLE_COMPOSITING_MODE": null,
+    "WEBKIT_DISABLE_DMABUF_RENDERER": null,
+    "WEBKIT_SKIA_ENABLE_CPU_RENDERING": null,
+    "GSK_RENDERER": null,
+    "MESA_LOADER_DRIVER_OVERRIDE": null,
+    "GALLIUM_DRIVER": null,
+    "EGL_PLATFORM": null
+  },
+  "compositing_policy": "on-demand",
+  "effective_policy_observed": "<enum WEBKIT_HARDWARE_ACCELERATION_POLICY_ALWAYS of type WebKit2.HardwareAccelerationPolicy>",
+  "observation_sha256": "1c209029911f8d9554a4160d4679db075a46c833574c9e7aabf3d71019cd6fa9",
+  "preflight_sha256": "902321604e7dbb4a473c468787693f2b7762026c1df55774b34419baf9ed57d3",
+  "observed_written_utc": "2026-10-16T16:36:55.912516+00:00",
+  "observation_note": "Written after operator inspected fresh native/preflight/session/package/display observations. Kernel147 follows documented unattended upgrade and new boot; no expected runtime/source/protocol changed."
+}

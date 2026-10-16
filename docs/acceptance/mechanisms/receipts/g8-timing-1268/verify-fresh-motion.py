@@ -1,0 +1,6 @@
+import subprocess,pathlib,tarfile,io,json,hashlib,datetime,sys
+label=sys.argv[1];root=pathlib.Path('/tmp/campus982-1268');data=subprocess.check_output(['limactl','shell','campus-linux-d5-noble-arm64','sudo','tar','-cf','-','-C','/home/campusqa/spike982/g8-timing-1268',label]);tarfile.open(fileobj=io.BytesIO(data)).extractall(root)
+sys.path.insert(0,str(pathlib.Path.cwd()/'spikes/982/renderer'));from motion_evidence import verified_motion
+p=root/label;assert (p/'motion-complete.json').exists();raw,h=verified_motion(p/'motion.json');freeze=json.loads((p/'timing-freeze.json').read_text());assert freeze['motion_proof_sha256']==h
+record={'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'source':'9d7743a25f4ce15c5fbad4932d3a7c37d9a29617','motion_sha256':h,'timing_freeze_sha256':hashlib.sha256((p/'timing-freeze.json').read_bytes()).hexdigest(),'inputs':len(raw['inputs']),'checkpoints':len(raw['checkpoints']),'performance_frames':len(raw['frames']),'verified_motion_passed':True,'phase':'external verification before timed launch','idle_inhibitor_start_sha256':hashlib.sha256((p/'inhibitor-start.json').read_bytes()).hexdigest()}
+assert record['idle_inhibitor_start_sha256']==freeze['idle_inhibitor_start_sha256'];(p/'external-freeze-record.json').write_text(json.dumps(record,indent=2)+'\n');print(json.dumps(record))

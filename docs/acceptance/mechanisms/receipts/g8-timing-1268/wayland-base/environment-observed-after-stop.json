@@ -1,0 +1,27 @@
+{
+  "webkit": "2.52.6",
+  "mesa": "25.2.8-0ubuntu0.24.04.4",
+  "llvm": "20.1.2",
+  "kernel": "6.8.0-142-generic",
+  "architecture": "aarch64",
+  "os": "Ubuntu 24.04.5 LTS",
+  "session": "GDM gdm-password Wayland session6, campusqa UID1000",
+  "graphics": "llvmpipe (LLVM 20.1.2, 128 bits)",
+  "webgl_api_renderer": "Apple GPU",
+  "rendering_env": {
+    "LIBGL_ALWAYS_SOFTWARE": "1",
+    "GDK_BACKEND": null,
+    "WEBKIT_DISABLE_COMPOSITING_MODE": null,
+    "WEBKIT_DISABLE_DMABUF_RENDERER": null,
+    "WEBKIT_SKIA_ENABLE_CPU_RENDERING": null,
+    "GSK_RENDERER": null,
+    "MESA_LOADER_DRIVER_OVERRIDE": null,
+    "GALLIUM_DRIVER": null,
+    "EGL_PLATFORM": null
+  },
+  "compositing_policy": "on-demand",
+  "effective_policy": "<enum WEBKIT_HARDWARE_ACCELERATION_POLICY_ALWAYS of type WebKit2.HardwareAccelerationPolicy>",
+  "observation_sha256": "390460142b9e2b3c96f75918473aecc4998354d5831477f03846f9d924758778",
+  "preflight_sha256": "c11e96883a8f2c7db7b5a316e6de33be7057bfa5117a11d04017582c764509d7",
+  "note": "Host transcription of inspected fresh observations after shutdown; not used for diagnostic or timing freeze. Resource breach stopped sequence before motion."
+}

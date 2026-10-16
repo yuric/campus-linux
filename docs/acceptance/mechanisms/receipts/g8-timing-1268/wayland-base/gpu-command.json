@@ -1,0 +1,28 @@
+{
+  "argv": [
+    "python3",
+    "-B",
+    "/home/campusqa/spike982/g8-timing-1268/repo/spikes/982/renderer/capture-gpu.py"
+  ],
+  "utc": "2026-10-16T16:29:32.576038+00:00",
+  "timeout_seconds": 25,
+  "launch": {
+    "pid": 20907,
+    "stat": "20907 (python3) R 20889 20907 20907 0 -1 4194304 27 0 0 0 0 0 0 0 20 0 1 0 14735 9089024 128 18446744073709551615 4194304 10541512 281474354157680 0 0 0 0 0 0 0 0 0 17 1 0 0 0 0 0 10616216 12102016 659476480 281474354162061 281474354162151 281474354162151 281474354163687 0\n",
+    "starttime": 14735,
+    "ppid": 20889,
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-python3-20889.scope\n",
+    "uid": 1000,
+    "comm": "python3",
+    "sd_pid_get_session": {
+      "returncode": -61,
+      "session": null
+    }
+  },
+  "returncode": 0,
+  "after": {
+    "pid": 20907,
+    "error": "[Errno 2] No such file or directory: '/proc/20907/stat'"
+  },
+  "finished_utc": "2026-10-16T16:29:37.225821+00:00"
+}

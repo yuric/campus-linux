@@ -1,0 +1,28 @@
+{
+  "argv": [
+    "python3",
+    "-B",
+    "/home/campusqa/spike982/g8-timing-1268/repo/spikes/982/renderer/capture-gpu.py"
+  ],
+  "utc": "2026-10-16T16:36:13.660863+00:00",
+  "timeout_seconds": 25,
+  "launch": {
+    "pid": 2925,
+    "stat": "2925 (python3) R 2910 2925 2925 0 -1 4194304 20 0 0 0 0 0 0 0 20 0 1 0 10754 8888320 96 18446744073709551615 4194304 10541512 281473905396512 0 0 0 0 0 0 0 0 0 17 2 0 0 0 0 0 10616216 12102016 607817728 281473905400209 281473905400299 281473905400299 281473905401831 0\n",
+    "starttime": 10754,
+    "ppid": 2910,
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-python3-2910.scope\n",
+    "uid": 1000,
+    "comm": "python3",
+    "sd_pid_get_session": {
+      "returncode": -61,
+      "session": null
+    }
+  },
+  "returncode": 0,
+  "after": {
+    "pid": 2925,
+    "error": "[Errno 2] No such file or directory: '/proc/2925/stat'"
+  },
+  "finished_utc": "2026-10-16T16:36:18.089477+00:00"
+}

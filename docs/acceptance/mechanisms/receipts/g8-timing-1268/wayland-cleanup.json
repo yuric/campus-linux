@@ -1,0 +1,19 @@
+{
+  "utc": "2026-10-16T16:30:20.917593+00:00",
+  "observed_pids": [
+    20889,
+    20907,
+    21044,
+    21053,
+    21079
+  ],
+  "remaining": [],
+  "scopes": [
+    {
+      "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-python3-20889.scope",
+      "exists": false
+    }
+  ],
+  "cleanup_confirmed": true,
+  "signals_sent": []
+}

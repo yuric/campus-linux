@@ -1,0 +1,71 @@
+{
+  "utc": "2026-10-16T16:26:47.421035+00:00",
+  "disk": {
+    "path": "/Users/yuri/.lima/campus-linux-d5-noble-arm64/disk",
+    "size": 7017725952,
+    "allocated_bytes": 6905659392,
+    "inode": 944391844
+  },
+  "free_bytes": 26930417664,
+  "commands": [
+    {
+      "argv": [
+        "limactl",
+        "list",
+        "--json"
+      ],
+      "returncode": 0,
+      "stdout": "{\"name\":\"campus-linux-d5-noble-arm64\",\"hostname\":\"lima-campus-linux-d5-noble-arm64\",\"status\":\"Stopped\",\"dir\":\"/Users/yuri/.lima/campus-linux-d5-noble-arm64\",\"vmType\":\"qemu\",\"arch\":\"aarch64\",\"cpus\":4,\"memory\":6442450944,\"disk\":30064771072,\"sshLocalPort\":50136,\"sshConfigFile\":\"/Users/yuri/.lima/campus-linux-d5-noble-arm64/ssh.config\",\"config\":{\"minimumLimaVersion\":\"2.0.0\",\"vmType\":\"qemu\",\"os\":\"Linux\",\"arch\":\"aarch64\",\"images\":[{\"location\":\"https://cloud-images.ubuntu.com/releases/noble/release-20260926/ubuntu-24.04-server-cloudimg-arm64.img\",\"arch\":\"aarch64\",\"digest\":\"sha256:1d6bffe64b848468ac97f821d369a4846d983de1800ccf6b5ec8853e85cefc55\"}],\"cpus\":4,\"memory\":\"6GiB\",\"disk\":\"28GiB\",\"mountInotify\":false,\"ssh\":{\"localPort\":0,\"loadDotSSHPubKeys\":false,\"forwardAgent\":false,\"forwardX11\":false,\"forwardX11Trusted\":false},\"firmware\":{\"legacyBIOS\":false},\"audio\":{\"device\":\"\",\"interface\":\"\"},\"video\":{\"display\":\"vnc\",\"vnc\":{\"display\":\"127.0.0.1:15\"}},\"provision\":[{\"mode\":\"system\",\"script\":\"#!/bin/bash\\nset -eu\\nexport DEBIAN_FRONTEND=noninteractive\\napt-get update\\napt-get install -y --no-install-recommends ubuntu-desktop-minimal gdm3 \\\\\\n  gnome-keyring libpam-gnome-keyring libsecret-tools seahorse \\\\\\n  dbus-user-session polkitd pkexec gnome-terminal mesa-utils\\nid campusqa >/dev/null 2>&1 || useradd -m -s /bin/bash -G sudo campusqa\\nsystemctl set-default graphical.target\\nsystemctl enable gdm3\\n\"}],\"upgradePackages\":false,\"containerd\":{\"system\":false,\"user\":false,\"archives\":[{\"location\":\"https://github.com/containerd/nerdctl/releases/download/v2.4.1/nerdctl-full-2.4.1-linux-amd64.tar.gz\",\"arch\":\"x86_64\",\"digest\":\"sha256:ff018f11ac2f1354bf7b3aaaca6e0b52d81139c746a89134744d0b7be3a0e62f\"},{\"location\":\"https://github.com/containerd/nerdctl/releases/download/v2.4.1/nerdctl-full-2.4.1-linux-arm64.tar.gz\",\"arch\":\"aarch64\",\"digest\":\"sha256:2deffe14625f93866f90a8f265d0f59d6fa476c7dc54b98adb327b1b4613efd4\"}]},\"guestInstallPrefix\":\"/usr/local\",\"portForwards\":[{\"guestIPMustBeZero\":true,\"guestIP\":\"0.0.0.0\",\"guestPortRange\":[1,65535],\"hostIP\":\"127.0.0.1\",\"hostPortRange\":[1,65535],\"proto\":\"any\",\"ignore\":true}],\"hostResolver\":{\"enabled\":true,\"ipv6\":false},\"propagateProxyEnv\":true,\"caCerts\":{\"removeDefaults\":false},\"plain\":false,\"timezone\":\"America/Phoenix\",\"nestedVirtualization\":false,\"user\":{\"name\":\"yuri\",\"comment\":\"yuri\",\"home\":\"/home/yuri.guest\",\"shell\":\"/bin/bash\",\"uid\":501,\"passwordlessSudo\":true},\"tpm\":false},\"sshAddress\":\"127.0.0.1\",\"protected\":false,\"limaVersion\":\"2.2.1\",\"HostOS\":\"darwin\",\"HostArch\":\"aarch64\",\"LimaHome\":\"/Users/yuri/.lima\",\"IdentityFile\":\"/Users/yuri/.lima/_config/user\"}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "uptime"
+      ],
+      "returncode": 0,
+      "stdout": " 9:26  up 6 days,  1:21, 1 user, load averages: 18.50 15.27 17.13\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "vm_stat"
+      ],
+      "returncode": 0,
+      "stdout": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                   262843.\nPages active:                                1649115.\nPages inactive:                              1547576.\nPages speculative:                            104129.\nPages throttled:                                   0.\nPages wired down:                             683749.\nPages purgeable:                               66059.\n\"Translation faults\":                    38730191601.\nPages copy-on-write:                      3542398830.\nPages zero filled:                       12149122799.\nPages reactivated:                         884486260.\nPages purged:                              117857850.\nFile-backed pages:                           1405080.\nAnonymous pages:                             1895739.\nPages stored in compressor:                  4085792.\nPages occupied by compressor:                1986348.\nDecompressions:                            798385850.\nCompressions:                              881435014.\nPageins:                                   473116251.\nPageouts:                                    2688558.\nSwapins:                                    59254958.\nSwapouts:                                   62086597.\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "sysctl",
+        "vm.swapusage"
+      ],
+      "returncode": 0,
+      "stdout": "vm.swapusage: total = 5120.00M  used = 3543.44M  free = 1576.56M  (encrypted)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "df",
+        "-k",
+        "/Users/yuri"
+      ],
+      "returncode": 0,
+      "stdout": "Filesystem   1024-blocks      Used Available Capacity  iused     ifree %iused  Mounted on\n/dev/disk3s5   971350180 911133240  26299132    98% 10823762 262991320    4%   /System/Volumes/Data\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "top",
+        "-l",
+        "2",
+        "-n",
+        "0",
+        "-s",
+        "1"
+      ],
+      "returncode": 0,
+      "stdout": "Processes: 1303 total, 6 running, 1297 sleeping, 8553 threads \n2026/10/16 09:26:48\nLoad Avg: 17.58, 15.13, 17.08 \nCPU usage: 16.16% user, 13.31% sys, 70.52% idle \nSharedLibs: 896M resident, 163M data, 346M linkedit.\nMemRegions: 1019193 total, 9590M resident, 538M private, 22G shared.\nPhysMem: 90G used (11G wired, 30G compressor), 5637M unused.\nVM: 592T vsize, 6144M framework vsize, 59254958(0) swapins, 62086597(0) swapouts.\nNetworks: packets: 2881257574/1953G in, 2445282368/1330G out.\nDisks: 947990011/11T read, 348514838/9028G written.\n\n\nProcesses: 1303 total, 9 running, 1294 sleeping, 8375 threads \n2026/10/16 09:26:49\nLoad Avg: 17.58, 15.13, 17.08 \nCPU usage: 16.54% user, 9.94% sys, 73.50% idle \nSharedLibs: 896M resident, 163M data, 346M linkedit.\nMemRegions: 30 total, 640K resident, 538M private, 22G shared.\nPhysMem: 90G used (11G wired, 30G compressor), 5721M unused.\nVM: 592T vsize, 6144M framework vsize, 59254958(0) swapins, 62086597(0) swapouts.\nNetworks: packets: 2881257818/1953G in, 2445282588/1330G out.\nDisks: 947991382/11T read, 348516000/9028G written.\n\n\n",
+      "stderr": ""
+    }
+  ]
+}

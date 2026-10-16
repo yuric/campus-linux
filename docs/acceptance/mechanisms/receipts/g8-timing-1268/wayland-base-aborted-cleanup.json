@@ -1,0 +1,44 @@
+{
+  "utc": "2026-10-16T16:45:39.691322+00:00",
+  "observed_pids": [
+    2910,
+    2925,
+    3035,
+    3044,
+    3070,
+    3178,
+    3193,
+    3194,
+    3203,
+    3229,
+    3296,
+    3305,
+    3323,
+    3325,
+    3334,
+    3360,
+    3439,
+    3448,
+    3474,
+    3533,
+    3542,
+    3568
+  ],
+  "remaining": [],
+  "scopes": [
+    {
+      "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-python3-3305.scope",
+      "exists": false
+    },
+    {
+      "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-python3-3178.scope",
+      "exists": false
+    },
+    {
+      "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-python3-2910.scope",
+      "exists": false
+    }
+  ],
+  "cleanup_confirmed": true,
+  "signals_sent": []
+}

@@ -1,0 +1,28 @@
+{
+  "argv": [
+    "python3",
+    "-B",
+    "/home/campusqa/spike982/g8-timing-1268/repo/spikes/982/renderer/capture-gpu.py"
+  ],
+  "utc": "2026-10-16T16:51:15.489835+00:00",
+  "timeout_seconds": 25,
+  "launch": {
+    "pid": 3801,
+    "stat": "3801 (python3) R 3784 3801 3801 0 -1 4194304 33 0 0 0 0 0 0 0 20 0 1 0 100957 11132928 128 18446744073709551615 4194304 10541512 281474625062400 0 0 0 0 0 0 0 0 0 17 3 0 0 0 0 0 10616216 12102016 134877184 281474625063313 281474625063403 281474625063403 281474625064935 0\n",
+    "starttime": 100957,
+    "ppid": 3784,
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-python3-3784.scope\n",
+    "uid": 1000,
+    "comm": "python3",
+    "sd_pid_get_session": {
+      "returncode": -61,
+      "session": null
+    }
+  },
+  "returncode": 0,
+  "after": {
+    "pid": 3801,
+    "error": "[Errno 2] No such file or directory: '/proc/3801/stat'"
+  },
+  "finished_utc": "2026-10-16T16:51:19.914523+00:00"
+}

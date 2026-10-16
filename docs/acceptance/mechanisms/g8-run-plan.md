@@ -1,12 +1,23 @@
 # G8 source preparation and next authorized run
 
-LINUX-20261016 / #982. Direction1229 prepared this plan. Direction1240 subsequently
-returned the existing Lima lease to Office400 for native preflight, fresh untimed motion
-proof and proof-bound freeze only. **Timing, optimization and Electron remain withheld.**
-The current slice allows64MiB new allocated source/export/receipts inside the earlier
-256MiB aggregate guest budget, with20GiB host and2GiB guest free. No install, build,
-download, provider/account use or CI/Council watcher is authorized. The separate35GiB
-large-growth guard remains. See the [returned evidence](receipts/g8-native-1240/REPORT.md).
+LINUX-20261016 / #982. The [1268 evidence](receipts/g8-timing-1268/REPORT.md) now records
+one complete valid Wayland baseline on exact source `9d7743a`: p95 **143/187/142/140/174 ms**,
+all above33.3ms. Requested `on-demand` was effective `ALWAYS`. Increased shared-host
+contention is preserved alongside the five complete fresh-process results.
+
+Human10789/10795 superseded an identical `always` repeat with the existing
+`WEBKIT_DISABLE_DMABUF_RENDERER=1` option plus requested `always`. Its fresh native output
+omitted required render-process diagnostics; preflight failed closed before motion/timing.
+This is an unsupported candidate, not a numeric miss. **X11 timing and Electron were held
+by the newer coordinator boundary. Lima is stopped; G8 remains unaccepted.**
+
+The first boot exceeded the original allocation allowance and changed one protected rule
+inode during automatic package activity. Those failures remain recorded. Human10757 then
+authorized1GiB new total disk/host-receipt growth from a fresh stopped baseline and2GiB
+cumulative, with20GiB host/2GiB guest floors. The resumed boot's32 protected entries compare
+exactly equal through logout. No worker install/build/download/provider use occurred.
+The separate35GiB large-growth guard remains. Root owns the D1 decision and any new lease;
+the executable sequence below is reproduction guidance, not renewed launch permission.
 
 ## Inputs and reconciliation
 
@@ -150,14 +161,18 @@ series and preserves its outputs; a valid slow run stays in its five-run series.
 all raw JSON/logs and summary, hash/index them, and report each p95 plus all-five result.
 An exit0 from the host is not a numeric pass. No old aborted run becomes a baseline miss.
 
-On a verified miss, test the existing allowed `always` compositing candidate using a new
-output directory, `POLICY=always`, newly observed effective policy/environment, new native
-capture/preflight/motion/freeze, and another complete five-run series. No scene/scale/
-producer/threshold change or renderer optimization fork. If it still misses, follow D1's
-[Electron fallback sequence](../../../spikes/982/renderer/electron/README.md) with the same
-new desktop pin and fixed scene/bars. Its44.8.0 archive/extraction is currently absent;
-426,442,476bytes must be separately budgeted/scheduled by root before acquisition.
-Neither direction1229 nor1240 authorizes that allocation/download or any fallback launch.
+The completed baseline was a verified miss. Human10789 selected the sole distinct candidate:
+`POLICY=always` and `export WEBKIT_DISABLE_DMABUF_RENDERER=1` **before native capture and
+every later candidate command**, in a fresh directory with fresh inhibitor/environment/proofs.
+Both requests otherwise resolve to effective `ALWAYS`, so an unchanged `always` run cannot
+be called a distinct optimization. The option failed native admission; no further steps ran.
+Do not weaken the native check or treat this unsupported result as a numeric miss.
+
+Root now owns assessment of D1's
+[Electron fallback sequence](../../../spikes/982/renderer/electron/README.md). Its44.8.0
+archive/extraction is absent; the pinned426,442,476 logical bytes, plus separately bounded
+allocation overhead/receipts, require explicit scheduling/allocation. No Electron acquisition
+or launch is authorized by these directions. X11 timing is also paused pending that decision.
 
 Remaining next owner: explicit human handoff to LINUX-20261016 for returned-evidence review,
 exact-head hosted checks/admission/Council and separately observed guest/timing scheduling.

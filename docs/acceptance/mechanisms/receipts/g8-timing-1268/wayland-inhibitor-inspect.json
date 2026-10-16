@@ -1,0 +1,43 @@
+{
+  "utc": "2026-10-16T16:51:03.309843+00:00",
+  "boot_id": "ee95b746-c664-4b55-b133-a94764726e74",
+  "holder": {
+    "pid": 3762,
+    "starttime": 99735,
+    "stat": "3762 (python3) R 2471 2471 2471 0 -1 4194304 2782 371 0 0 2 0 0 0 20 0 4 0 99735 262696960 5696 18446744073709551615 4194304 10541512 281474838943792 0 0 0 0 16781312 24578 0 0 0 17 1 0 0 0 0 0 10616216 12102016 339095552 281474838948265 281474838948355 281474838948355 281474838949863 0\n",
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-python3-3762.scope\n",
+    "sd_pid_get_session": {
+      "returncode": -61,
+      "session": null
+    }
+  },
+  "parent": {
+    "pid": 2471,
+    "starttime": 8308,
+    "stat": "2471 (gnome-shell) S 2334 2471 2471 0 -1 4194304 11385844 174310 45 264 4482 1035 904 149 20 0 23 0 8308 4988198912 109684 18446744073709551615 207085628620800 207085628639292 281474200782048 0 0 0 0 16781312 17656 0 0 0 17 1 0 0 0 0 0 207085628750272 207085628752224 207086442663936 281474200783498 281474200783519 281474200783519 281474200784867 0\n",
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service\n",
+    "sd_pid_get_session": {
+      "returncode": -61,
+      "session": null
+    }
+  },
+  "session": "Id=7\nUser=1000\nName=campusqa\nTimestamp=Fri 2026-10-16 09:35:48 MST\nTimestampMonotonic=82848738\nVTNr=2\nSeat=seat0\nTTY=tty2\nRemote=no\nService=gdm-password\nScope=session-7.scope\nLeader=2317\nAudit=7\nType=wayland\nClass=user\nActive=yes\nState=active\nIdleHint=no\nIdleSinceHint=1792169150798454\nIdleSinceHintMonotonic=684882178\nLockedHint=no",
+  "connection_unique_name": ":1.103",
+  "idle_delay": "uint32 300",
+  "lock_enabled": "true",
+  "source_sha256": "63fd55b2b4896f58bbb28b906857f0b967c7a89afb6a7c6512416e77edb1e437",
+  "before": [],
+  "flags": 8,
+  "absolute_lifetime_bound_seconds": 1200,
+  "normal_deadline_seconds": 1170,
+  "api_documentation": "https://gnome.pages.gitlab.gnome.org/gnome-session/re04.html",
+  "cookie": 734655386,
+  "after": [
+    {
+      "path": "/org/gnome/SessionManager/Inhibitor1",
+      "app_id": "campus-g8-982-wayland-final-base",
+      "flags": 8
+    }
+  ],
+  "idle_inhibited": true
+}

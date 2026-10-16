@@ -193,3 +193,21 @@ No worker wakeup, readiness, merge or task completion is assumed.
 GDM Wayland/X11 native preflight, unchanged-harness untimed proofs and proof-bound freezes.
 No timing, optimization, Electron or final acceptance is claimed. Lima is stopped; root
 LINUX-20261016 owns independent review and separate observed timing scheduling.
+
+## Direction1268 consolidated timing return
+
+The [complete evidence and exact allocation](receipts/g8-timing-1268/REPORT.md) preserves
+an initial allocation overrun, early protected inode replacement during unattended upgrades,
+and a later idle-lock interruption. None is promoted to success. After the revised lease,
+a fresh idle-inhibited Wayland series completed all five valid processes: p95
+143/187/142/140/174ms, all misses. Shared-host contention increased and is recorded.
+The coordinator-selected distinct transport-option candidate failed native admission;
+no candidate timing was attempted and no numeric miss is inferred from that failure.
+
+Exact accepted source9d7743a and merged Mac3e3d4bcd export stayed unchanged. Newer
+human10789/10795 paused X11 and Electron before the D1 decision. Both inhibitors were
+released; all captured owned PIDs/scopes are absent, with shared GNOME attribution limits
+explicit. The resumed boot's32 protected entries match exactly through graphical logout.
+Lima returned Stopped at17:06:46 observation, actual disk7,405,699,072bytes. Root
+LINUX-20261016 owns review, CI/Council, D1 decision and the next observed lease. This is
+one consolidated evidence push to draft PR12, not readiness or task completion.

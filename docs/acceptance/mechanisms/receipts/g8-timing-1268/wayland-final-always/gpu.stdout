@@ -1,0 +1,7 @@
+{
+  "kind": "native_gpu_diagnostics",
+  "uri": "webkit://gpu",
+  "body": "Copy to clipboardPrint in stdout\nVersion Information\nWebKit version\nWebKitGTK 2.52.6 (tarball)\nOperating system\nLinux 6.8.0-147-generic #147-Ubuntu SMP PREEMPT_DYNAMIC Thu Sep 24 11:39:52 UTC 2026 aarch64\nDesktop\nubuntu:GNOME\nGStreamer version\n1.24.2 (build) GStreamer 1.24.2 (runtime)\nGTK version\n3.24.41 (build) 3.24.41 (runtime)\nDisplay Information\nIdentifier\n1\nType\nWayland\nScreen geometry\n0,0 1920x1200\nScreen work area\n0,0 1920x1200\nDevice scale\n1\nDepth\n32\nBits per color component\n8\nFont Scaling DPI\n96\nScreen DPI\n152.39999999999998\nVBlank type\nTimer\nVBlank refresh rate\n60Hz\nView Information\nSize\n1000x800\nState\nin window, visible, focused, active\nHardware Acceleration Information\nPolicy\nnever\nWebGL enabled\nYes\n2D canvas\nAccelerated",
+  "pid": 4751,
+  "LIBGL_ALWAYS_SOFTWARE": "1"
+}

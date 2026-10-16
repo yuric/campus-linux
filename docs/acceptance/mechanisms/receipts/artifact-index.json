@@ -31,6 +31,1551 @@
       "sha256": "bd390f7a2922b26f2a8894a14755c290a7ff5c4626980ff43444aaecfd99e19d"
     },
     {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/REPORT.md",
+      "bytes": 14565,
+      "sha256": "d1b09a1e035bec1869d6fb5bab0933c3e63b0b542c373ac19f6c308e6b2690a6"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/accounting-stop.txt",
+      "bytes": 1063,
+      "sha256": "bdd103176e22d3aa2b317714b238233e5f32e28366a6a8be289d17d21e7e2715"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/base-merge.json",
+      "bytes": 118,
+      "sha256": "53c6fc82dc0ad24032a58d1d976b5eff74ebb3552ca8e68d0e363adca7660953"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/boot-corrected.txt",
+      "bytes": 3126,
+      "sha256": "459324046a835efba0352362e81a453ee3448f6a39a544514cc9c832767f6e2d"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/boot.txt",
+      "bytes": 3341,
+      "sha256": "f4ca36c90f96c85a0f592291786862e5fc4b16ca2b0d05efa73eaba244d26777"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/cleanup-observe.py",
+      "bytes": 1207,
+      "sha256": "badbee74407e501dfb1d6f4662ec7d59beb2fddb9ddf62c0a4f9b49d95ddf491"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/cleanup-verification.json",
+      "bytes": 3643,
+      "sha256": "9d6e8840cd724c59c8345120d9891da005d5fff2a49ad8fb75fb55464dcde57b"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/delivery-verification.json",
+      "bytes": 1220,
+      "sha256": "54903042e361ad5989913705c37bbed64a6691506ccd7fb4de4e2b0705780fb5"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/display-change-152905.json",
+      "bytes": 4176,
+      "sha256": "06580d89fe9084efcb7267fcf9927d6eccdd1b4e2885705cb2761dfe20c4cafc"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/display-change-153357.json",
+      "bytes": 4354,
+      "sha256": "bb86b118599d4ba7868f31fac90e2712faf6a33ec641e5ef85a6279a08837941"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/display.py",
+      "bytes": 949,
+      "sha256": "c0a0f16225bfa79820f7a318c4d970e992cf63bbebf90601e06e5d08a847fc42"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/export-provenance.json",
+      "bytes": 4420,
+      "sha256": "7b5004e8cd8d0057ed2322ae9edc1e494145393a71f26fb2d2b6df4c94ce27be"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/export-verification.txt",
+      "bytes": 53,
+      "sha256": "85606aedf617b957ca5adee8c56fa9c1dbe268ecd17ebc150527691d59ce5e46"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/graphical-probe-first.py",
+      "bytes": 5319,
+      "sha256": "80e9e2da42b6c4d0e873c43da1e5b421473106fb619437fa9b56e07d00c3fed1"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/graphical-probe.py",
+      "bytes": 5507,
+      "sha256": "1cd3740daf3c8ddedcafb427f553d5a044591dd9967444d7db917d77b940958e"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/guest-after.json",
+      "bytes": 5620,
+      "sha256": "c7533a208826d8532fe31e535abb7ce42907083f440d3b879666c6e5ead2986c"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/guest-before.json",
+      "bytes": 5621,
+      "sha256": "2fd455dd1eac138f13614c21ce41977f62620c100904d0bd731b67842e5c2b7e"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/host-between-sessions.json",
+      "bytes": 2596,
+      "sha256": "6c3507503ecfebf2860ca5f6c5f7a1b4bf0ac105e36940b6ba9f582df2301e1e"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/host-stopped-after.json",
+      "bytes": 1630,
+      "sha256": "fb719236766f75334cfe082ec4a0cbfd3b997273f5f2a68c18929c2d52876b23"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/host-stopped-before.json",
+      "bytes": 5179,
+      "sha256": "f1f938fe03094523228e87bb1b4ebd378ae19015a0f62fcbed9518e6c881ea76"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/host-stopped-corrected.json",
+      "bytes": 377,
+      "sha256": "b8cb6c2c21a48ac9fd61e63c2f9ccb5f723a8bad289aedff9072b63372c6be42"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/independent-motion-validation.json",
+      "bytes": 2065,
+      "sha256": "137093583e17a2d118906c34ee76780e328845489bbbeef221bfb0b1487ac38d"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/operator-failures.txt",
+      "bytes": 726,
+      "sha256": "3fa6467f72f24997415d29866daa46af03c796b31d9f07b5855ab7cd5296e90c"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/producer-merge.json",
+      "bytes": 118,
+      "sha256": "fc51fbcc850e16725832310946868e125e3fe7846384b4f0766a727f1c745823"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/qmp-type.py",
+      "bytes": 731,
+      "sha256": "4c06b768b7ca53e7b698a8945c91a614ae87acd4fbc1d44ef08f00cfead3261b"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/sessions-after-logout.txt",
+      "bytes": 150,
+      "sha256": "5fd259d781f22f0df2900ccd17e130ca1617122c90a7b0600697ce83ba124c8c"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/shutdown.txt",
+      "bytes": 1063,
+      "sha256": "5c2b03ef093a8527e167fff59280076d6d2637d4e544aa2731b2e78fbb8d4b41"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/snapshot.py",
+      "bytes": 1834,
+      "sha256": "f64edaca1680ff2598f47722054ee00c545658acf074000e0a366d0b491b3f40"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/transfer-metadata-cleanup.json",
+      "bytes": 10775,
+      "sha256": "a02876b7e0097d26a3e029c8c6ca7b79b77efef7392b341bcf13d3b0e0c5aff5"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/transferred-export.json",
+      "bytes": 5119,
+      "sha256": "eed6f997ae515672f66cef7bf9bde26e0821fc712d7ae5af09ff21881a2fd56b"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/unchanged-harness-hashes.json",
+      "bytes": 2555,
+      "sha256": "086be904b2b313f91534b3ce2f6694431bde9bd9d7f6fae251350f30be7ecded"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/diagnostic-freeze-command.json",
+      "bytes": 1210,
+      "sha256": "12009380a9566731015afc148dfb31b6d7d6384bda0b170bbb53ce67bc93ef59"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/diagnostic-freeze.json",
+      "bytes": 2993,
+      "sha256": "43a8ad7b8641df19d51a018a7373accd5c45090aae8469486d893bb77686d489"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/diagnostic-freeze.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/diagnostic-freeze.stdout",
+      "bytes": 65,
+      "sha256": "4ddc7a5e9badab037dca7374faa6324dbe295302d4f4ab23470b08638ff8e2c7"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/environment.json",
+      "bytes": 1106,
+      "sha256": "87e80fa1c808acc5040bc68cff85b751996b082797088eedb124467ddc63239a"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/gpu-command.json",
+      "bytes": 970,
+      "sha256": "154df248ad4111e62e117ffb8c32d2e58cc7bb208eeaab4bbbaac24da05ebc68"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/gpu.json",
+      "bytes": 7054,
+      "sha256": "dcd45cc68814e1623a17dfab901f534ac1eafe9bfe0548f359bfffd17e8b8155"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/gpu.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/gpu.stdout",
+      "bytes": 7054,
+      "sha256": "dcd45cc68814e1623a17dfab901f534ac1eafe9bfe0548f359bfffd17e8b8155"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/motion-command.json",
+      "bytes": 1337,
+      "sha256": "1f08317f23a9b8733bcacd01d58f71edabe6b2178342b4049ecaf06fae93e98d"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/motion-complete.json",
+      "bytes": 76,
+      "sha256": "e88cd563ecfe2c1da037739115916986b5a5d990883db3c4bd09990a38a2509e"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/motion-launch.json",
+      "bytes": 10278,
+      "sha256": "cafcc65b2626ef06bcaa98dea8f315afc8129eb4d7987dab01e3d7c3fbf2ed75"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/motion.json",
+      "bytes": 684382,
+      "sha256": "29a27639443b4bd0eb9b4bf676678d8b3eb487c65eb3a68f34a300a0a9724403"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/motion.stderr",
+      "bytes": 292,
+      "sha256": "d6ea38e61045b3207c7eb58f4a884c97a2052e05f681b7725914a30c85b2b9c0"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/motion.stdout",
+      "bytes": 121197,
+      "sha256": "7b14f239749fce42c2108952a7000353eba3b75b2d5d68528f23d71f091d2c7c"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/preflight-command.json",
+      "bytes": 1277,
+      "sha256": "5b72e8f70c41d6563fcf5f5282ed57d32feff391f9cf93db9972901c345553de"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/preflight-complete.json",
+      "bytes": 79,
+      "sha256": "52996714a095fb8fd01771e9edcd49390522389721e6622be04aef9a3c21955b"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/preflight-launch.json",
+      "bytes": 10271,
+      "sha256": "6b6159a6f31632c86026dafa807336d3beb3d9d3c191b05c98547e236791e5dc"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/preflight.json",
+      "bytes": 6847,
+      "sha256": "775d7a00327995a2fc5f6b797e96b3ca6ed3cf67036b8d5efad57f7fe15b975b"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/preflight.stderr",
+      "bytes": 292,
+      "sha256": "d6ea38e61045b3207c7eb58f4a884c97a2052e05f681b7725914a30c85b2b9c0"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/preflight.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/proof-bound-freeze-command.json",
+      "bytes": 1300,
+      "sha256": "2091779adabae1a32e6d59775d379ef9217b107e6a9744488a5c146072bc4b7b"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/proof-bound-freeze.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/proof-bound-freeze.stdout",
+      "bytes": 65,
+      "sha256": "95d0abb6c76f8844aac866bb63afe9610a03e5475fb74c96ddf1bcb6c899cafe"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/timing-freeze.json",
+      "bytes": 3100,
+      "sha256": "95464e1028e5ea102326ae75560d7333e4b79ccdb850144f1080fb6bfbdc230b"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-cleanup.json",
+      "bytes": 549,
+      "sha256": "d2c95422f897a40e7a74e00e2ecff9fb8f68ae9c0dac5900b7e38d8037d9fb0b"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-failed-preflight-cleanup.json",
+      "bytes": 350,
+      "sha256": "160e1f26cb2295c09ba9b9d8308b3aa2fcb8670d3d0f9eb565a884e1029c04c0"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-launch-ui.png",
+      "bytes": 457367,
+      "sha256": "4905daf053510cded4e068bc93e7ad1f1e59085f7173a0054be4442b94db231b"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-login-keyring-locked.txt",
+      "bytes": 10,
+      "sha256": "b47aab0773d9e29952e06bb1d2682843eb5c01d1258f5c0e7747c4b9dfa027ca"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland/gpu-command.json",
+      "bytes": 970,
+      "sha256": "d7ffa213e78d5e83191fc2f1d89699048af171fd9e4f0f5aadeaa47edcad499d"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland/gpu.json",
+      "bytes": 7039,
+      "sha256": "8909c23791719b7ef8902bfa86f19d6e89ff8a8e0c58f370263f236b54aeae12"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland/gpu.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland/gpu.stdout",
+      "bytes": 7039,
+      "sha256": "8909c23791719b7ef8902bfa86f19d6e89ff8a8e0c58f370263f236b54aeae12"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland/preflight-command.json",
+      "bytes": 1270,
+      "sha256": "68c9440d59cf7cce7de2440659ce4685618bf53f9a22f74ef2a7aa3b37cd26fe"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland/preflight-launch.json",
+      "bytes": 9765,
+      "sha256": "8f3a6b117a350b43b59f3c74f741a0c2f425103a29a0d493564b545f256a089b"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland/preflight.json",
+      "bytes": 6895,
+      "sha256": "299998a7d66984f70e35f5985a5631a48b115c3391b1107e74917fdc0383cf3b"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland/preflight.stderr",
+      "bytes": 292,
+      "sha256": "d6ea38e61045b3207c7eb58f4a884c97a2052e05f681b7725914a30c85b2b9c0"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland/preflight.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11-cleanup.json",
+      "bytes": 549,
+      "sha256": "8d7ce598dc9a92e106617f9e031ef7bb0c0a96fa309e42956a268878a4a63664"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11-login-keyring-locked.txt",
+      "bytes": 10,
+      "sha256": "b47aab0773d9e29952e06bb1d2682843eb5c01d1258f5c0e7747c4b9dfa027ca"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11-motion-screen.png",
+      "bytes": 896067,
+      "sha256": "2f8e42a8da189ebcc31094c14c08896986093b7e624be6e5206c228020fc5e83"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11-session-selection.png",
+      "bytes": 32705,
+      "sha256": "fa4d0972f11c190e084a703423d6d37634d8a9b429e81268ba020c582ee97700"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/diagnostic-freeze-command.json",
+      "bytes": 1192,
+      "sha256": "5aa3b309ffd7a1f6d168a4be9930cb2a6df7ed544444a35afa9e9377a1850d63"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/diagnostic-freeze.json",
+      "bytes": 2986,
+      "sha256": "2b9a2d701439332f53b7205e4a3469d3d7d9c3e8f36f1841c5d7f6e8dd1cec79"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/diagnostic-freeze.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/diagnostic-freeze.stdout",
+      "bytes": 65,
+      "sha256": "568c9164008fdd8be22da5cc1d6d3cf44ce5116af257de93c0f5550875fa62ee"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/environment.json",
+      "bytes": 1103,
+      "sha256": "ec1a663f99ee7af5d953e70c6582695afae98898e11862c1663e1354da4d2ef6"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/gpu-command.json",
+      "bytes": 972,
+      "sha256": "d1943e70f0fd86436486866c11c4f4112d08175b4fc320b3e5264222711cb474"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/gpu.json",
+      "bytes": 7053,
+      "sha256": "fd511977dc231a61339c84d17a6c72ca8a7bfe7286ee2c022d109fb4313df119"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/gpu.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/gpu.stdout",
+      "bytes": 7053,
+      "sha256": "fd511977dc231a61339c84d17a6c72ca8a7bfe7286ee2c022d109fb4313df119"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/motion-command.json",
+      "bytes": 1319,
+      "sha256": "5aa3b1983a4f3931630e8832367ba55e89cd36708761f8bc79340e04699b1cf1"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/motion-complete.json",
+      "bytes": 76,
+      "sha256": "7cc8bad1d3a0aa8ed7719ce927ca3c76fc7881f2e37bd464c263099bebee8910"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/motion-launch.json",
+      "bytes": 9472,
+      "sha256": "e2333eebffe4642a8636144478edd8418a73214174d92661a009c2dfdcb11378"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/motion.json",
+      "bytes": 709490,
+      "sha256": "6006bf1762255fea3f2242ec6197a577139a9665ac3b9799b98967ba7b4146f5"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/motion.stderr",
+      "bytes": 292,
+      "sha256": "d6ea38e61045b3207c7eb58f4a884c97a2052e05f681b7725914a30c85b2b9c0"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/motion.stdout",
+      "bytes": 122011,
+      "sha256": "b6c96311c17f75ec5f031f7e54c2dbb230ab4997de0eae6b6751c8d4ed4a1558"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/preflight-command.json",
+      "bytes": 1261,
+      "sha256": "76114aead4be54eaf02e30cf6471977da8db6f2087cdd875c5b9374864bf861d"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/preflight-complete.json",
+      "bytes": 79,
+      "sha256": "09172f311f8dff93b76cff4531f8b33c876435142cff19204294c64815f95359"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/preflight-launch.json",
+      "bytes": 9469,
+      "sha256": "c307e1f154302f4a755a56308aec754a7716a6f6978a8d26f0a6ecae0d0d7426"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/preflight.json",
+      "bytes": 6959,
+      "sha256": "9e07487d6e3d9ddb18e42b5af3fca899ce6439895ec19ba8ea8c625a9d04496a"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/preflight.stderr",
+      "bytes": 292,
+      "sha256": "d6ea38e61045b3207c7eb58f4a884c97a2052e05f681b7725914a30c85b2b9c0"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/preflight.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/proof-bound-freeze-command.json",
+      "bytes": 1276,
+      "sha256": "4f42aa493b97013c61acccc6ae8e4281b7931c7ca6ea5daaa39501ebe1b6dc88"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/proof-bound-freeze.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/proof-bound-freeze.stdout",
+      "bytes": 65,
+      "sha256": "707aaf0c2a88949d663addd25d4860bafa303f9c6bc8356b7869d79de5906580"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/timing-freeze.json",
+      "bytes": 3093,
+      "sha256": "1fad6568371edd10dc0bbf8c80921a3571930d9dde27e178c4db7d9cf954cdc1"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-sourceprep-1229/historical-source/electron/main.cjs",
+      "bytes": 10198,
+      "sha256": "c5d9bb3dda1b4c6045c5848cb5090ac000afd3cb78b2ff18cc137e0754f76aee"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-sourceprep-1229/historical-source/freeze.py",
+      "bytes": 3341,
+      "sha256": "37e99c8b3494be361e4991a8b6a916b997c1075db93328249a6dfe9445ddf0ad"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-sourceprep-1229/historical-source/run-webkit.py",
+      "bytes": 12553,
+      "sha256": "19111e1b9b374c159333d7174a0986b6761a9cb72fdf60ef3085b89b39ec674d"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-sourceprep-1229/source-hashes.json",
+      "bytes": 4077,
+      "sha256": "c8fb6e0a5ed1233c17e77cb717bf52ae0d7d1469d609c6f0c39a20ad63f02a9f"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-sourceprep-1229/source-receipt.json",
+      "bytes": 3662,
+      "sha256": "4bd796f2a17fb54a0662a56712620d03a9c70df530ddc463341de41cfebf041f"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/REPORT.md",
+      "bytes": 19341,
+      "sha256": "9a8a58fbc631d4a97464171049c56a87db9bf5459300169e11c36b300a80e264"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/always-inhibitor-inspect.json",
+      "bytes": 2229,
+      "sha256": "f8d6744f8824c00d601a9cb9667702581ca46d165f17ddb751fe0cf73746db8b"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/base-merge.json",
+      "bytes": 172,
+      "sha256": "4f499333c7408b7f29dea2859daa48f44c5d4ece3816661d5f6b46ccc1461110"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/boot.txt",
+      "bytes": 3126,
+      "sha256": "ddb5a64f1a5a89fe9b60cf5615305cbc02f93cdbf57ea50c0f54ed62a4683bcb"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/candidate-launch.png",
+      "bytes": 1001494,
+      "sha256": "dc8ffdc3ae8796359d81fc775909be3bac64a4e6c656a8cd2fb643ec94e05638"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/cleanup-attribution.py",
+      "bytes": 2059,
+      "sha256": "60a8212adcb3e41ca6ed503de4c6723e072182af40398416511b88218ae2ad59"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/cleanup-observe.py",
+      "bytes": 1207,
+      "sha256": "c61fe4162ce4b924ed21e03a90365d937cd5657e39e0719017dff0aa40048093"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/cleanup-series.py",
+      "bytes": 1208,
+      "sha256": "c7820039f7d04a3227e4d509d9803de2cb9685b3b95892c036d3c85f255e727b"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/cleanup-verification.json",
+      "bytes": 5718,
+      "sha256": "c3f4ea5859b9b2a25c4737cd742d78d6ed96bc58d9eb0b26fa76537e36142b92"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/display-change-162911.json",
+      "bytes": 4176,
+      "sha256": "06580d89fe9084efcb7267fcf9927d6eccdd1b4e2885705cb2761dfe20c4cafc"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/display-change-163601.json",
+      "bytes": 4176,
+      "sha256": "06580d89fe9084efcb7267fcf9927d6eccdd1b4e2885705cb2761dfe20c4cafc"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/display.py",
+      "bytes": 949,
+      "sha256": "a32362b247ad55e65f20c6628f46f55c60c514028b8052010b06686633a92f79"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/export-verification.txt",
+      "bytes": 53,
+      "sha256": "85606aedf617b957ca5adee8c56fa9c1dbe268ecd17ebc150527691d59ce5e46"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/final-allocation.json",
+      "bytes": 2473,
+      "sha256": "923f05e29e80cc06c90cc41762582f7b1f869273f97c910ac268fa938354a74b"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/finish-series.py",
+      "bytes": 1999,
+      "sha256": "17493774ba466ab1c6649bf9931704e13e38f61e9d9d1f5fdbae28f1a524acfa"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/full-protected-after-logout.json",
+      "bytes": 11825,
+      "sha256": "b91b325a6c44998607f961e5a9c219b24ab13c917054f32b8f1848fd0b455338"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/full-protected-resume-after.json",
+      "bytes": 11825,
+      "sha256": "1520cd9093179854454a4501523a8f9698f20a9bbc20b8e0a16da9f7ab5fc81a"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/full-protected-resume-before.json",
+      "bytes": 11825,
+      "sha256": "298c84dde5624a928fc844cae01b065f555e0bb7d7eaea608fa5ec8f57d7203f"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/full-protected-snapshot.py",
+      "bytes": 3405,
+      "sha256": "98f6bdab7b128fea344098df3b7b9c1f0b89d93d8fb30ed3d16501d7a7202ab8"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/gnome-session-files.txt",
+      "bytes": 982,
+      "sha256": "85751fd991dd1ec9372e594e2946a2cd836a0dcd1d7ee116d5f91c25ef133075"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/graphical-probe.py",
+      "bytes": 5742,
+      "sha256": "daa69fb3ea8b6facc65dbde251017ea6679526f22fcf2cd00d6448a36deacc60"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/greeter-after-logout.png",
+      "bytes": 20073,
+      "sha256": "7eefe1a7f69ef595d4555b58ac51261f5fd73846f8a7409dd8fbd09adb4ade69"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/greeter.png",
+      "bytes": 20762,
+      "sha256": "6358d8e5a44dd6962d7bfef7c8aed37e421345a645a846bed5715eed49a4a8df"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/guest-before.json",
+      "bytes": 6351,
+      "sha256": "d3882ec0618c9a9c5c89a88ca61ac9068eb2c423befba55adf93d5f6bc9d8d81"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/gui-launch.py",
+      "bytes": 943,
+      "sha256": "cef14a1746ae4136182b37bbc3f4e9a97fa4afd4cf5b4f259deeafb7f8763f4a"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/gui-launches.jsonl",
+      "bytes": 539,
+      "sha256": "7896f6563631fe33f9afb7a6342219c91ba7555d2951db97680ede37111584b3"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/host-resume-stopped-after-sample.json",
+      "bytes": 3539,
+      "sha256": "a28a7e0bcb96ca360e812ee2586bceb8ba0a6f437b4467b0373064567431f033"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/host-sample.py",
+      "bytes": 618,
+      "sha256": "d29a5b6eb5d732d7c6e7535a1e65dcfa6d82f73f8188f9c019588bf0fc932edf"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/host-stopped-after-sample.json",
+      "bytes": 3538,
+      "sha256": "2786919200bc8a43e4ba833f2a05d4c2be53eb887e7c17fb8e2c6fd6000466bd"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/host-stopped-after.json",
+      "bytes": 412,
+      "sha256": "68dd279d068d318300967545111bbbf6c81d4b885d57676d76d92f54cb2ed366"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/host-stopped-before.json",
+      "bytes": 6739,
+      "sha256": "285d7765689a8d40c343b28ee64bcbd6163112b2ad28583b76b886691f3e00e4"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/host-wayland-base-after-series.json",
+      "bytes": 3527,
+      "sha256": "500d5ad9083fca14e73342fa84c85e0bcb40dbd4f0522674af04d98373d24c4c"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/host-wayland-base-before-series.json",
+      "bytes": 3531,
+      "sha256": "738753b43423c807b40161514a188a2b476e30b176ff771096c7593a17e4655f"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/host-wayland-final-always-after-preflight.json",
+      "bytes": 3538,
+      "sha256": "dd414a9c8d3c2fc34fab8bfccc86ea559a5a6bdb638f27c4582f7be2d0ff3096"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/host-wayland-final-base-after-series.json",
+      "bytes": 3538,
+      "sha256": "96cfca066fcce52947c7cf38b27010a73fb46eaf2e7fa59c42e718eec821f986"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/host-wayland-final-base-before-series.json",
+      "bytes": 3540,
+      "sha256": "726315339148c5314840e9c776375ad2979e50818955d62764a72d852fe22277"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/host-wayland-preflight.json",
+      "bytes": 3551,
+      "sha256": "e523b76a7bc32fe1efcfa8b175c3d88983f50e1e1da492349f8266722249f8d4"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/host-wayland-r2-preflight.json",
+      "bytes": 3527,
+      "sha256": "5c5f5500e5c65ed90a5ff5b0dd04fa1bbf0511a232ed71a4c8778871f94a2683"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/idle-delay-after.txt",
+      "bytes": 11,
+      "sha256": "e5f0a643a652e5d63ad3ae102564e5ff0f114842b9de5eb5bb8619bb2cd5985b"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/idle-holder.py",
+      "bytes": 4294,
+      "sha256": "63fd55b2b4896f58bbb28b906857f0b967c7a89afb6a7c6512416e77edb1e437"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/inhibit-help.txt",
+      "bytes": 643,
+      "sha256": "04343609cdc38bab73ce1092d0f7d0c0fd5c3a1243e6174e1e1f6875d3716872"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/inhibitors-after.txt",
+      "bytes": 10,
+      "sha256": "ab13dadd23a0f82d809c2b00babffbf7e016ac1aa4966c1f4b86dd928c709721"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/initial-protected-changes.json",
+      "bytes": 961,
+      "sha256": "3ec939a68aca4ff1ae5d84ed580f77e7c0572d375817de482fba62632ad6e421"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/inspect-preflight.py",
+      "bytes": 1142,
+      "sha256": "21310a34887daf0617b0efad0b5037ae5eebfe4cf7b3cd677cb0c01dd159c249"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/keyring-locked.txt",
+      "bytes": 10,
+      "sha256": "b47aab0773d9e29952e06bb1d2682843eb5c01d1258f5c0e7747c4b9dfa027ca"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/keyring-resume-locked.txt",
+      "bytes": 10,
+      "sha256": "b47aab0773d9e29952e06bb1d2682843eb5c01d1258f5c0e7747c4b9dfa027ca"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/launch-inspect.json",
+      "bytes": 10267,
+      "sha256": "390460142b9e2b3c96f75918473aecc4998354d5831477f03846f9d924758778"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/lock-enabled-after.txt",
+      "bytes": 5,
+      "sha256": "a17fcf0a2f50e2d495e4f90ce263410edc183add6c62699a2facbccf60410f74"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/package-audit-after-resume.json",
+      "bytes": 16362,
+      "sha256": "cdabe407bb1058be92b5a248496d74da7259fe8f868bb05931631dc07fec6efc"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/package-audit-detail.json",
+      "bytes": 8853,
+      "sha256": "8e56f0597e85d74b156dcaab9c0081d2eb47e2f9d66bf72c301d4655ad71e7b3"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/package-audit.py",
+      "bytes": 1918,
+      "sha256": "6d7abe5ed9b08144d4daacd1e15deb110e8a1255ba696546f486671fe1011a2f"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/password-field-ready.png",
+      "bytes": 27748,
+      "sha256": "0cde4a2baa7de75088ae56879fca0ba21a726355cc2b42d27dfdb45b6afedf04"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/password-field.png",
+      "bytes": 27649,
+      "sha256": "1e3cf39f9b5adb273ac6ffbf8e7bcf6397257e0003158dc5f01d142f88f96bb4"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/preflight-inspect.json",
+      "bytes": 6853,
+      "sha256": "c11e96883a8f2c7db7b5a316e6de33be7057bfa5117a11d04017582c764509d7"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/producer-ancestry.json",
+      "bytes": 109,
+      "sha256": "47ea7984b920121cd618dc0f2efd77607bd7162f8544cf3cb32a345acfb0e0a9"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/producer-merge.json",
+      "bytes": 173,
+      "sha256": "031aacdcea44ae4c075b5792097a404b4048f8cedae24ec2500f2454f5312998"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/protected-after.json",
+      "bytes": 9523,
+      "sha256": "11df8ea265699fe65a44b272491191b81bf62973d659fda468df5d7eaf042bec"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/protected-before.json",
+      "bytes": 9468,
+      "sha256": "8646f93cb02645c0b5fe92078218fa1a77a4a589c9b3f3678a5b40063ffcff2e"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/protected-mid-preflight.json",
+      "bytes": 9523,
+      "sha256": "153f81d2f8685dc0a0fb804336eec00dad84216769ddccba1f6c9471b5cba18e"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/protected-resume-comparison.json",
+      "bytes": 280,
+      "sha256": "e71bca689d69820ea3a3a5cd0a22194cb605145757a17ecbc6a4ce91b99bef17"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/protected-snapshot.py",
+      "bytes": 2089,
+      "sha256": "f3bb1bb5b7cc927a92462e219211012adad2b225c21c1e8d67122c2b10be497f"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/qmp-click.py",
+      "bytes": 828,
+      "sha256": "6f8b44315d9d24f084bcc50fd6fe165b555652b46f85cec06c79d43fa46924e8"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/qmp-type-env.py",
+      "bytes": 743,
+      "sha256": "a1840a4f8fae67d14e069b0d58659ed5fc04c8fb77f48a93c7f86ef6673ea59d"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/resource-samples.jsonl",
+      "bytes": 200,
+      "sha256": "899f2329b54c3b92d34bf21f4fc76b732e09c4870196969091f4e06f7f4c2398"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/resume-boot.txt",
+      "bytes": 3230,
+      "sha256": "0fd1120fc1fcba2f9c2c7e147ddf27654a4e7378d4aab28f56cea3cdf5ac5872"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/resume-greeter.png",
+      "bytes": 20879,
+      "sha256": "96aacb95db9915f0569c53734d78ee21c49b463becd4a1155ab364419c6cfdf6"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/resume-password-field.png",
+      "bytes": 27752,
+      "sha256": "469d0943923245eb1453cfe89c727fec56bd11e647adb59f6c4ec4e6827a8e32"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/resume-resource-motion.json",
+      "bytes": 148,
+      "sha256": "b8d40805749759c72bf280fc215d4b4147431d3817df17aa90cec65ea5f6c6db"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/resume-shutdown.txt",
+      "bytes": 1063,
+      "sha256": "d6c77c698197857cd39089814e3177c05e2bbce258cec78c21e5904d7ba0fdf6"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/resume-stopped-after.json",
+      "bytes": 4005,
+      "sha256": "fd11c86c82f39b3c85d415fbb3726927d4b6d042437d7137b9624c29fa965603"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/resume-stopped-before.json",
+      "bytes": 430,
+      "sha256": "b113f755a29d33db255c79e48caf9bf9d15c840c60f621717dee04a94361a3f2"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/running-disk-budget.json",
+      "bytes": 126,
+      "sha256": "ab3a99e133ac2dd65df18414e0f338d4f0659d915e5b6ae8f594f8d168af3396"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/self-review.json",
+      "bytes": 1950,
+      "sha256": "53acde9d3166f6cbeadd2102becdcc7f8c0daf04445b0480b576fca166abfc68"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/series-progress.jsonl",
+      "bytes": 8707,
+      "sha256": "4e1bbefe56e30417ea17ed41c654148939306701f75d4ae1505ed10e6de7abb0"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/services-after.json",
+      "bytes": 2710,
+      "sha256": "ae6aed88b3e088aa5ca3623997434a007d337b5e6993297f85e25df43f50416c"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/session-manager-introspection.txt",
+      "bytes": 3349,
+      "sha256": "69d815d2b5b28a666fef6ffec27f0c51799ad256cb67268e372d1fcfa496a229"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/session-menu.png",
+      "bytes": 32469,
+      "sha256": "9a65c6183aea28ab0f81ed785cd80d32006cd49062a95c4bb5dc97c734a1c5d7"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/sessions-after-logout.txt",
+      "bytes": 150,
+      "sha256": "dab400ef01dcd9c8b745be26864a401fd33e50e795b79b8099a7b4924d2c5f6c"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/shutdown.txt",
+      "bytes": 1063,
+      "sha256": "e1ca56171a1dc680ac06b438ad7675a465613278d16bcf73e616d80880772b56"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/snapshot.py",
+      "bytes": 1872,
+      "sha256": "5ac830483f68c5442926af22e0597d4d47519dfc5bdf95614fffc595bf5f8f19"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/source-hashes.json",
+      "bytes": 4212,
+      "sha256": "8383fda7a8c4811686754499dbb02f4490b42351f0affe6a89ffa0188afdb322"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/status-series.py",
+      "bytes": 1467,
+      "sha256": "9df703c7acfc3f27076d7cf4eeaa73446b51582c5b84fb5ff7c5ebdd5041e06e"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/transfer-inventory.json",
+      "bytes": 11270,
+      "sha256": "a85f06482a0ad17f64feee54d205c48b7c7a8242d84fea47bfb1d9ad72b38b4e"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/transfer-inventory.py",
+      "bytes": 685,
+      "sha256": "128404af22dab328a6d8d9b586e5aca7bb53407b87c0aa96f71e0210de02e4da"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/transfer-verification.json",
+      "bytes": 2302,
+      "sha256": "acb023cff6972b044013b59e289376f488050b9583672a5630e4d4ef082f8c2e"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/unlock-ready.png",
+      "bytes": 60497,
+      "sha256": "d256d4d7918c783356c6c3438e3e316966886e7c3b8f10eae3cbb7242afc4a00"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/verify-fresh-motion.py",
+      "bytes": 1339,
+      "sha256": "84d5ac8ecd7d72131f1029168d7a5eca21fa025d850f7eeefd4e8f62730c7b52"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-base-aborted-cleanup.json",
+      "bytes": 798,
+      "sha256": "0f9170f37e54362c402a26dc7357ffeddaa32466dae6ad804a27191638b88c8e"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-base/environment-observed-after-stop.json",
+      "bytes": 1176,
+      "sha256": "9e8376157ebcf9323315b0754648b83e7dd58535dda0aa2d6e8392964768df70"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-base/gpu-command.json",
+      "bytes": 980,
+      "sha256": "d93a85260ffe8fc73b207e0ea3732a7fc3f52f4b16417153403960756ac46cbe"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-base/gpu.json",
+      "bytes": 7055,
+      "sha256": "da646834378d65b1860ecca893435cb433488f5f59962aecb391115b94a0009f"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-base/gpu.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-base/gpu.stdout",
+      "bytes": 7055,
+      "sha256": "da646834378d65b1860ecca893435cb433488f5f59962aecb391115b94a0009f"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-base/preflight-command.json",
+      "bytes": 1288,
+      "sha256": "1220a0ee834a7e1ecd1f64b1d435b6f5b63ec6c87818eba68011de7fd2bd0f71"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-base/preflight-complete.json",
+      "bytes": 80,
+      "sha256": "0b2c346355bf06f9102f32b799fa929b502a9ee374593ed19d658b58769635b9"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-base/preflight-launch.json",
+      "bytes": 10267,
+      "sha256": "390460142b9e2b3c96f75918473aecc4998354d5831477f03846f9d924758778"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-base/preflight.json",
+      "bytes": 6853,
+      "sha256": "c11e96883a8f2c7db7b5a316e6de33be7057bfa5117a11d04017582c764509d7"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-base/preflight.stderr",
+      "bytes": 292,
+      "sha256": "dee97b38b476fff4f034fa4b1d0bce43b0cbb04a056615154373239bd84e9267"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-base/preflight.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-cleanup.json",
+      "bytes": 356,
+      "sha256": "c12ab7e78f4b2f4c023b4cc31e37b6bee642bab0ec978af7f8715fbb0f09eba4"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-desktop.png",
+      "bytes": 478361,
+      "sha256": "df70d22b3116138c7e87925cb14a2cb7de5b6bc06297b36e3b9dc19a6f53cbe4"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-always/cleanup-attribution.json",
+      "bytes": 890,
+      "sha256": "4e5088ed58ef5d531d62d7bbb24541d43a5e50139413e31b56030b63d43f2026"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-always/gpu-command.json",
+      "bytes": 968,
+      "sha256": "7d9bfa2c06159d327b1ba56a44b6791f087b8f590986a7611cbd56f5d81c79e0"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-always/gpu.json",
+      "bytes": 913,
+      "sha256": "5efe84da1bc3780a68ed9a595d2b2eb7e2ed549ec29e2a28c8504fa2379ae542"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-always/gpu.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-always/gpu.stdout",
+      "bytes": 913,
+      "sha256": "5efe84da1bc3780a68ed9a595d2b2eb7e2ed549ec29e2a28c8504fa2379ae542"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-always/inhibitor-release.json",
+      "bytes": 241,
+      "sha256": "0fd928548efed958088bdf12076d0c39cb533be7a59ac89a83cd0b6a12fb422b"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-always/inhibitor-samples.jsonl",
+      "bytes": 675,
+      "sha256": "a823a93548e2368dc33680fa4d5b57721759d3e7042b32895c7e6d5768052847"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-always/inhibitor-start.json",
+      "bytes": 2229,
+      "sha256": "f8d6744f8824c00d601a9cb9667702581ca46d165f17ddb751fe0cf73746db8b"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-always/inhibitor.stop",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-always/preflight-command.json",
+      "bytes": 1292,
+      "sha256": "7302f076808db1da2ff60d039a43e4d9d1984909e3d34fa028c57ef1b591e424"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-always/preflight-launch.json",
+      "bytes": 10310,
+      "sha256": "9f4408d9d853ef5f070ffa45aa557e57a531e0cc5323cea164bf42130aa02cc8"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-always/preflight.stderr",
+      "bytes": 612,
+      "sha256": "73685b2388e9a7d38f37f8b3b562187a722138ba5a963524c3198751e1652ff7"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-always/preflight.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/cleanup-attribution.json",
+      "bytes": 1750,
+      "sha256": "7b870a69461656683275a9a5517e9520513b6fcfe1bbf44e3dafa4861159cef8"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/diagnostic-freeze-command.json",
+      "bytes": 1239,
+      "sha256": "06d26c7f18c811355c2545f3b56eedcae2a111186f86860a68bd873b16a70839"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/diagnostic-freeze.json",
+      "bytes": 3479,
+      "sha256": "2abffdf5c6a6fa9db8e421421056e8f5ce7714f3450cfec82052232b91a9e7f0"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/diagnostic-freeze.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/diagnostic-freeze.stdout",
+      "bytes": 65,
+      "sha256": "25cf113772682162a60a065f8510afdf5a3628f7df9e0375e26df86d0f488216"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/environment.json",
+      "bytes": 1592,
+      "sha256": "e22c6b599807e4e39f554298b7276a663976150fa065ee7aa885b105b6381c08"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/external-freeze-record.json",
+      "bytes": 541,
+      "sha256": "5df651394cd8f3f7b9728255deba19c32e58e1c8f43b2682d4393dc91e33deec"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/external-series-verification.json",
+      "bytes": 1522,
+      "sha256": "88abe2f7e46fcd3381efb2cf595bab431c5b4a82661195e6c72e30736eb01f88"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/five-command.json",
+      "bytes": 1286,
+      "sha256": "9f9b3a2cc10bd3f221e574f22766b9893bc96020abc21804cf9fc87f58561565"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/five.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/five.stdout",
+      "bytes": 1812,
+      "sha256": "ff5b1b4a106c7fbc139e99b4a5a89d8b063793feeabe350fcf8ffe26b4cc37c1"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/five/run-1.json",
+      "bytes": 418950,
+      "sha256": "61b2f42d2edd0cb3c71bacea0ccce1fe9363e9c6de6da8a5780abfafa8002afc"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/five/run-1.log",
+      "bytes": 292,
+      "sha256": "dee97b38b476fff4f034fa4b1d0bce43b0cbb04a056615154373239bd84e9267"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/five/run-2.json",
+      "bytes": 421549,
+      "sha256": "2af5df56f0ccaac62c5168ff2585b5333ea0b30728c6179f736fd85cdaad620c"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/five/run-2.log",
+      "bytes": 292,
+      "sha256": "dee97b38b476fff4f034fa4b1d0bce43b0cbb04a056615154373239bd84e9267"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/five/run-3.json",
+      "bytes": 423383,
+      "sha256": "782f67972954d3f1385e0d4908545e3f0ec7b5f756d56eb441e64db218307911"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/five/run-3.log",
+      "bytes": 292,
+      "sha256": "dee97b38b476fff4f034fa4b1d0bce43b0cbb04a056615154373239bd84e9267"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/five/run-4.json",
+      "bytes": 442727,
+      "sha256": "8f5bf0717a9bbf8f0e4143a1af83eab8ccacb0febf8b2e0b1652eb9db5160cf3"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/five/run-4.log",
+      "bytes": 292,
+      "sha256": "dee97b38b476fff4f034fa4b1d0bce43b0cbb04a056615154373239bd84e9267"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/five/run-5.json",
+      "bytes": 428313,
+      "sha256": "cdefbd7d0649a84b989bf74c0958d55e91e1540580d7c900a92f8df2d69f13fa"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/five/run-5.log",
+      "bytes": 292,
+      "sha256": "dee97b38b476fff4f034fa4b1d0bce43b0cbb04a056615154373239bd84e9267"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/five/summary.json",
+      "bytes": 1811,
+      "sha256": "b3ac3661037df4b638627183dafed3a5e9e155853c2d6db7a473430ca8af984a"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/gpu-command.json",
+      "bytes": 974,
+      "sha256": "113ea3605dbfb98a313d9b128a4e734436ccda8b35c012080b043382241ce96d"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/gpu.json",
+      "bytes": 7055,
+      "sha256": "e67d3d9b4ecdd647c1fcc9ab47eac8c619ca2168d60a802f034fcd37ec4575f1"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/gpu.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/gpu.stdout",
+      "bytes": 7055,
+      "sha256": "e67d3d9b4ecdd647c1fcc9ab47eac8c619ca2168d60a802f034fcd37ec4575f1"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/inhibitor-release.json",
+      "bytes": 236,
+      "sha256": "8106921297cb6b17b5189d37b5d96e3ddd0a8d253fa81196ec41ecc5bbabe728"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/inhibitor-samples.jsonl",
+      "bytes": 5324,
+      "sha256": "efd48630831fd4de2fc0bca105e29e13c0af845bccb1fe14bf8860e8c9fadc8f"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/inhibitor-start.json",
+      "bytes": 2222,
+      "sha256": "50f45d527222bd435b0a8d40e5136e212822b781cf0abd75c46aeeb65710c089"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/inhibitor.stop",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/motion-command.json",
+      "bytes": 1366,
+      "sha256": "85320551f5dc613160ca8e9b8a5b04c65b7e01e9cb258ec33d60059b8d6acc5f"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/motion-complete.json",
+      "bytes": 76,
+      "sha256": "fb708be78be8c925a49e0597c47cc6f3e3bd0f1346aa14c56ebef689016ced90"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/motion-launch.json",
+      "bytes": 10315,
+      "sha256": "adcd271006e08520245a5b61b1fb80ea7dc42d3bfd1c823427700e420ea68a97"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/motion.json",
+      "bytes": 706146,
+      "sha256": "b32d16699f4e859a483c658f10fb343634f9bb5d17d495f00fc9c9c5904eaf81"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/motion.stderr",
+      "bytes": 292,
+      "sha256": "dee97b38b476fff4f034fa4b1d0bce43b0cbb04a056615154373239bd84e9267"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/motion.stdout",
+      "bytes": 121645,
+      "sha256": "e263a7060c19ef718ff34c9359021e4b3da71018819f4a786a77b86db9396511"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/preflight-command.json",
+      "bytes": 1293,
+      "sha256": "32e7f258f576706ca22b524687af4045368d7944edd728325afba6ba2855c975"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/preflight-complete.json",
+      "bytes": 79,
+      "sha256": "9f21d99120728a7272c7985faa024dda97f768d60e2b88e489d9ce83c5e7989f"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/preflight-launch.json",
+      "bytes": 10314,
+      "sha256": "8b2dd7cf03742e3b187cbe441ff5b3ce8cfd8584bfa5364bfc0b06687a3153a7"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/preflight.json",
+      "bytes": 6847,
+      "sha256": "f5cd176645a71ae82e7161cd6e78450fcd89d05b8cc24b64f133a4ca32399262"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/preflight.stderr",
+      "bytes": 292,
+      "sha256": "dee97b38b476fff4f034fa4b1d0bce43b0cbb04a056615154373239bd84e9267"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/preflight.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/process-cleanup.json",
+      "bytes": 877,
+      "sha256": "1406b69e19c6825e3acda4044ba4e129d0fac2d11984b66fcb34aeb75d568e6b"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/proof-bound-freeze-command.json",
+      "bytes": 1337,
+      "sha256": "69de455577bbc86a92f0df01d27233986dda436b6248c45911f8ae6675302e21"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/proof-bound-freeze.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/proof-bound-freeze.stdout",
+      "bytes": 65,
+      "sha256": "0890f041920d3348091d16252565a6e9d6a343f5e08faeae4f2968012b15b7c2"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/timing-complete.json",
+      "bytes": 76,
+      "sha256": "54a84b29f6ba1863181cd12a680760453541623edaa283626c0b80183921bede"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/timing-freeze.json",
+      "bytes": 3586,
+      "sha256": "bb54e85e536382a2cdd85c5ae934615a544f9d0be19a463366faa0b49fc6b449"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-final-base/timing-launch.json",
+      "bytes": 10318,
+      "sha256": "74dff3b59dd2e0c76744e20258641e41a86b7fab59949fcb5f1b8001d1abce8c"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-idle-delay.txt",
+      "bytes": 11,
+      "sha256": "e5f0a643a652e5d63ad3ae102564e5ff0f114842b9de5eb5bb8619bb2cd5985b"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-idle-lock.png",
+      "bytes": 7188,
+      "sha256": "9d4d38336f5027535c5f534efb7374bdd935fbfa3443677bb7eff4dae9c4cdbb"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-inhibitor-inspect.json",
+      "bytes": 2222,
+      "sha256": "50f45d527222bd435b0a8d40e5136e212822b781cf0abd75c46aeeb65710c089"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-launch-ui.png",
+      "bytes": 1032610,
+      "sha256": "1e79835e8d77b9326bfa1564d9beff5a6a6cfa7343b94a51b9e34e8204417a36"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-lock-enabled.txt",
+      "bytes": 5,
+      "sha256": "a17fcf0a2f50e2d495e4f90ce263410edc183add6c62699a2facbccf60410f74"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/aborted-summary.json",
+      "bytes": 1018,
+      "sha256": "2e3df1f89a9d144a31b09f7fd400720c42516eaaf6f019765056d577409a5de5"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/diagnostic-freeze-command.json",
+      "bytes": 1227,
+      "sha256": "bcd3c1a7fe5cd5043225cadb2e5c2d64636a99a1a0534c9cd64bc0c193e19909"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/diagnostic-freeze.json",
+      "bytes": 3191,
+      "sha256": "2de67f220f7e46643c8cd50d98447bc13e3169108ee53cf1d5f88f9914bd44e5"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/diagnostic-freeze.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/diagnostic-freeze.stdout",
+      "bytes": 65,
+      "sha256": "555911470530e016c348141d2a8cd62d10c18067fdf21cd4934970b4e5d75005"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/environment.json",
+      "bytes": 1304,
+      "sha256": "a0fad50081142fef3e26db98cbcab51b9fe177ce738610c5c39d33ac7b658350"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/external-freeze-record.json",
+      "bytes": 399,
+      "sha256": "83bbc3685c8246293e6337513df42618aec6b7a6a5cd9bd815e5fde5e52f62d9"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/five-command.json",
+      "bytes": 1275,
+      "sha256": "36c72b0ecfbe8e7bcbe9ad1efbff4524be3daab70871aa98ccebc0687db6e08e"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/five.stderr",
+      "bytes": 1034,
+      "sha256": "0acbc5c841851df2a6a12e004dbc93cf18153296e0f99b18e36d345643fdea0d"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/five.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/five/run-1.json",
+      "bytes": 414091,
+      "sha256": "061bbf89289ca63e3b21996c55e781367df5ab2bc9763ceb240c6d9c059af12c"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/five/run-1.log",
+      "bytes": 292,
+      "sha256": "dee97b38b476fff4f034fa4b1d0bce43b0cbb04a056615154373239bd84e9267"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/five/run-2.json",
+      "bytes": 413076,
+      "sha256": "1a8f9cc5cdd1aa3c62cd93c103a24b4fed19d5205354dec80ffce94b640cd765"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/five/run-2.log",
+      "bytes": 292,
+      "sha256": "dee97b38b476fff4f034fa4b1d0bce43b0cbb04a056615154373239bd84e9267"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/five/run-3.json",
+      "bytes": 410862,
+      "sha256": "91b44195fcb62b8a0493535edb05b827ca1646c3acd43b9632342cbae43413ce"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/five/run-3.log",
+      "bytes": 292,
+      "sha256": "dee97b38b476fff4f034fa4b1d0bce43b0cbb04a056615154373239bd84e9267"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/gpu-command.json",
+      "bytes": 970,
+      "sha256": "d0a18fe40c50c653568d222649c6544205879ede9cd5acc9d18b7d972811a38d"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/gpu.json",
+      "bytes": 7055,
+      "sha256": "7bb51052b0d93ada0e82a90f3b93462b20e1fc9a9f25cac6f0679a6dbe1d04d6"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/gpu.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/gpu.stdout",
+      "bytes": 7055,
+      "sha256": "7bb51052b0d93ada0e82a90f3b93462b20e1fc9a9f25cac6f0679a6dbe1d04d6"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/motion-command.json",
+      "bytes": 1354,
+      "sha256": "e305576e728462f9c370e7071ca5e599b02f07cc329c6e51c52fe1b6db9f6796"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/motion-complete.json",
+      "bytes": 76,
+      "sha256": "8de016c644aa8c24190f62dd624c5e579a5eb0ca92455d25af4756bc10e5df87"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/motion-launch.json",
+      "bytes": 10261,
+      "sha256": "5cb4ad9e4388b2e5dac4f95352fc224ffe533398fc3ed4094668c4f8ea34994d"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/motion.json",
+      "bytes": 705856,
+      "sha256": "a6682a8027f4c7e3b5cbbb5c1c4554fd225e8cfeb3020bbfff536185c0b5c6ec"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/motion.stderr",
+      "bytes": 292,
+      "sha256": "dee97b38b476fff4f034fa4b1d0bce43b0cbb04a056615154373239bd84e9267"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/motion.stdout",
+      "bytes": 122253,
+      "sha256": "4d497446b35e84149d7720dd2ccd2f478f4dcddb9dac82614ddb42b274c3e50d"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/preflight-command.json",
+      "bytes": 1289,
+      "sha256": "69d360ef35626a72ad78e290c433fa35f1bb85adfd6a5994a2585d802b76b446"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/preflight-complete.json",
+      "bytes": 79,
+      "sha256": "1eb30605e43bfc2cdafb9eb914a1d071ffdfc4bdb19f0a97c73fedee373e3d01"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/preflight-launch.json",
+      "bytes": 10243,
+      "sha256": "1c209029911f8d9554a4160d4679db075a46c833574c9e7aabf3d71019cd6fa9"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/preflight.json",
+      "bytes": 6847,
+      "sha256": "902321604e7dbb4a473c468787693f2b7762026c1df55774b34419baf9ed57d3"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/preflight.stderr",
+      "bytes": 292,
+      "sha256": "dee97b38b476fff4f034fa4b1d0bce43b0cbb04a056615154373239bd84e9267"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/preflight.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/proof-bound-freeze-command.json",
+      "bytes": 1325,
+      "sha256": "46fa24fe517cfe8e09b1a602395b86dfabec147e01a22b9d0ebef3648c669012"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/proof-bound-freeze.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/proof-bound-freeze.stdout",
+      "bytes": 65,
+      "sha256": "f1f84807bf063322c48a1241f653edbe3d83aafff77c5963a6713781c70de4ba"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/timing-freeze.json",
+      "bytes": 3298,
+      "sha256": "40dd7a38b81b328fc9b6028ddc6ae6b92d778fe09d36513739b846fa6670602e"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/wayland-r2-base/timing-launch.json",
+      "bytes": 10270,
+      "sha256": "c6d5d611027c79dc29fdc1fbc739e8cc0f7fe888ac32ee108e49b65b09037638"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-timing-1268/write-environment.py",
+      "bytes": 2451,
+      "sha256": "05963f6ceeef699cbfe2b6aa70e3a36abdb233794e83edd52fcdf661a9d84161"
+    },
+    {
       "path": "docs/acceptance/mechanisms/receipts/graphics-wayland.txt",
       "bytes": 435,
       "sha256": "a38e46242c9c5eee0ce69857b8afb116a0bdbeb63b28ec6fc613073280ea55d9"
@@ -561,11 +2106,6 @@
       "sha256": "4a63950afea87313ebeaeaee17e6642c3736744c1263411e9cac3f3f7dc0c7ff"
     },
     {
-      "path": "docs/acceptance/mechanisms/receipts/providers/claude/artifact.json",
-      "bytes": 1431,
-      "sha256": "b58b2a0e8c88248ec284876238c68b66e8e9eb32accaef92689b34d758a79c35"
-    },
-    {
       "path": "docs/acceptance/mechanisms/receipts/providers/claude-transition-attempt1.json",
       "bytes": 4772,
       "sha256": "62f8a8584fd11c54d327e36c3c19bcd0ccce31c4e09d2099248d045a27853787"
@@ -621,9 +2161,49 @@
       "sha256": "e4b45efe474abeb792d0bd4f5e728fdb625241da2a4dcda9fe8ad88d5b39ea32"
     },
     {
+      "path": "docs/acceptance/mechanisms/receipts/providers/claude/artifact.json",
+      "bytes": 1431,
+      "sha256": "b58b2a0e8c88248ec284876238c68b66e8e9eb32accaef92689b34d758a79c35"
+    },
+    {
       "path": "docs/acceptance/mechanisms/receipts/providers/codex/artifact.json",
       "bytes": 1308,
       "sha256": "f3d27ddd1bb458ae2753b3ef4b2a72e5dda097b236ef57c298d022650c177d54"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-download-failed-1792151308937335563/node-fingerprint.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-download-failed-1792151308937335563/node-fingerprint.stdout",
+      "bytes": 567,
+      "sha256": "6d423df40a7a0cdbc6182862af56098ffdd147ffc5165ed9dd78f6a2ca773c0a"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-download-failed-1792151308937335563/node-key-import.stderr",
+      "bytes": 299,
+      "sha256": "9e827be21d6249360551f28c49c479bd934fc5227c5610f49a9a1163413500c1"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-download-failed-1792151308937335563/node-key-import.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-download-failed-1792151308937335563/node-signature.stderr",
+      "bytes": 482,
+      "sha256": "6ab6e88d2a4a1a10b55bb56a105b0973960f9c38e3de927f0947768784165fb8"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-download-failed-1792151308937335563/node-signature.stdout",
+      "bytes": 383,
+      "sha256": "735abf4e499262d562a5cb47015def338dcab8e711831ff8fc8c43f048503017"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-download-failed-1792151308937335563/receipt.json",
+      "bytes": 3118,
+      "sha256": "879ce7040837cfa2d7f745610ef6aa98cd60c9b08e445ed8c8fb4e49cb1879e4"
     },
     {
       "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-download/node-fingerprint.stderr",
@@ -671,39 +2251,29 @@
       "sha256": "80a53f76c7ed6969dade3b6ee47cdb753162db7c00be625448999d08bae77ed8"
     },
     {
-      "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-download-failed-1792151308937335563/node-fingerprint.stderr",
+      "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-offline-failed-1792151496029361731/node-version.stderr",
       "bytes": 0,
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
-      "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-download-failed-1792151308937335563/node-fingerprint.stdout",
-      "bytes": 567,
-      "sha256": "6d423df40a7a0cdbc6182862af56098ffdd147ffc5165ed9dd78f6a2ca773c0a"
+      "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-offline-failed-1792151496029361731/node-version.stdout",
+      "bytes": 9,
+      "sha256": "2b796b748c85883d00cfea9775eaa143435f0dc06c69311b444cf0dfc98214bc"
     },
     {
-      "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-download-failed-1792151308937335563/node-key-import.stderr",
-      "bytes": 299,
-      "sha256": "9e827be21d6249360551f28c49c479bd934fc5227c5610f49a9a1163413500c1"
+      "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-offline-failed-1792151496029361731/npm-version.stderr",
+      "bytes": 117,
+      "sha256": "250e369d730a46c4d41df37449a5c58c169b4b1d2ab546951a8bed0285805a95"
     },
     {
-      "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-download-failed-1792151308937335563/node-key-import.stdout",
+      "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-offline-failed-1792151496029361731/npm-version.stdout",
       "bytes": 0,
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
-      "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-download-failed-1792151308937335563/node-signature.stderr",
-      "bytes": 482,
-      "sha256": "6ab6e88d2a4a1a10b55bb56a105b0973960f9c38e3de927f0947768784165fb8"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-download-failed-1792151308937335563/node-signature.stdout",
-      "bytes": 383,
-      "sha256": "735abf4e499262d562a5cb47015def338dcab8e711831ff8fc8c43f048503017"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-download-failed-1792151308937335563/receipt.json",
-      "bytes": 3118,
-      "sha256": "879ce7040837cfa2d7f745610ef6aa98cd60c9b08e445ed8c8fb4e49cb1879e4"
+      "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-offline-failed-1792151496029361731/receipt.json",
+      "bytes": 1274,
+      "sha256": "1ecb27433b0f7b62b813918d5051a0c9f28bd492959ab89fde6c45815af19cb3"
     },
     {
       "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-offline/gemini-help.stderr",
@@ -769,31 +2339,6 @@
       "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-offline/receipt.json",
       "bytes": 4508,
       "sha256": "f8c136823d5283948badceb8341b1cafcf58eda50d4ec07a10c47ba4093865b5"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-offline-failed-1792151496029361731/node-version.stderr",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-offline-failed-1792151496029361731/node-version.stdout",
-      "bytes": 9,
-      "sha256": "2b796b748c85883d00cfea9775eaa143435f0dc06c69311b444cf0dfc98214bc"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-offline-failed-1792151496029361731/npm-version.stderr",
-      "bytes": 117,
-      "sha256": "250e369d730a46c4d41df37449a5c58c169b4b1d2ab546951a8bed0285805a95"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-offline-failed-1792151496029361731/npm-version.stdout",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/providers/gemini/captures-offline-failed-1792151496029361731/receipt.json",
-      "bytes": 1274,
-      "sha256": "1ecb27433b0f7b62b813918d5051a0c9f28bd492959ab89fde6c45815af19cb3"
     },
     {
       "path": "docs/acceptance/mechanisms/receipts/providers/grok/artifact.json",
@@ -1076,6 +2621,21 @@
       "sha256": "1530034e4b0fce729904f7d73a74288a101e6d95b73a49e68802d055d031da4c"
     },
     {
+      "path": "docs/acceptance/mechanisms/receipts/speech-offline-attempt1/configure.stderr",
+      "bytes": 296,
+      "sha256": "525050ce01a23fba49a61758ad48dae2c725fbe5658b0bf89c4f650648037756"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-offline-attempt1/configure.stdout",
+      "bytes": 44,
+      "sha256": "204e913b87cf5c75b808ca3186aab27bf7d903deb3392da1736bc0c966ba1151"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-offline-attempt1/receipt.json",
+      "bytes": 3249,
+      "sha256": "5e643da7698fa6eea3927c7bc7936bbcbabaad471ff4108438d31ee0e2ffb240"
+    },
+    {
       "path": "docs/acceptance/mechanisms/receipts/speech-offline/build.stderr",
       "bytes": 0,
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -1199,21 +2759,6 @@
       "path": "docs/acceptance/mechanisms/receipts/speech-offline/warm2.txt",
       "bytes": 110,
       "sha256": "a9a2d827271256df892eff446a5607fb6f023e74da6db621d77dded660928b69"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/speech-offline-attempt1/configure.stderr",
-      "bytes": 296,
-      "sha256": "525050ce01a23fba49a61758ad48dae2c725fbe5658b0bf89c4f650648037756"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/speech-offline-attempt1/configure.stdout",
-      "bytes": 44,
-      "sha256": "204e913b87cf5c75b808ca3186aab27bf7d903deb3392da1736bc0c966ba1151"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/speech-offline-attempt1/receipt.json",
-      "bytes": 3249,
-      "sha256": "5e643da7698fa6eea3927c7bc7936bbcbabaad471ff4108438d31ee0e2ffb240"
     },
     {
       "path": "docs/acceptance/mechanisms/receipts/speech-wayland.json",
@@ -1581,6 +3126,11 @@
       "sha256": "da3ab0cb316bb4fb803c7a00d7f359a41486bd6337806243ee21ba49901b3d6d"
     },
     {
+      "path": "spikes/982/renderer/desktop-producer-manifest.json",
+      "bytes": 5720,
+      "sha256": "7b5fabefd830d3cd3d3577da1c4cb4ba55217de0f7eb5b5bbfc9501443428f09"
+    },
+    {
       "path": "spikes/982/renderer/electron/README.md",
       "bytes": 6315,
       "sha256": "4391c2877052e54d6e81f7ed75d6626cbd72f2da1a50e1324ec5276f0a254a08"
@@ -1724,526 +3274,6 @@
       "path": "spikes/982/speech/synthetic_recorder.py",
       "bytes": 4424,
       "sha256": "e1af7155f3763b26c3158f8686af9fb76e7b6c17246615cfb84081f64b80d6f5"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-sourceprep-1229/source-hashes.json",
-      "bytes": 4077,
-      "sha256": "c8fb6e0a5ed1233c17e77cb717bf52ae0d7d1469d609c6f0c39a20ad63f02a9f"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-sourceprep-1229/source-receipt.json",
-      "bytes": 3662,
-      "sha256": "4bd796f2a17fb54a0662a56712620d03a9c70df530ddc463341de41cfebf041f"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-sourceprep-1229/historical-source/run-webkit.py",
-      "bytes": 12553,
-      "sha256": "19111e1b9b374c159333d7174a0986b6761a9cb72fdf60ef3085b89b39ec674d"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-sourceprep-1229/historical-source/freeze.py",
-      "bytes": 3341,
-      "sha256": "37e99c8b3494be361e4991a8b6a916b997c1075db93328249a6dfe9445ddf0ad"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-sourceprep-1229/historical-source/electron/main.cjs",
-      "bytes": 10198,
-      "sha256": "c5d9bb3dda1b4c6045c5848cb5090ac000afd3cb78b2ff18cc137e0754f76aee"
-    },
-    {
-      "path": "spikes/982/renderer/desktop-producer-manifest.json",
-      "bytes": 5720,
-      "sha256": "7b5fabefd830d3cd3d3577da1c4cb4ba55217de0f7eb5b5bbfc9501443428f09"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/REPORT.md",
-      "bytes": 14001,
-      "sha256": "df92d631c13fafc6ebfdfa247a32fad35df6fd83e5bd930370fff7827018ff44"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/accounting-stop.txt",
-      "bytes": 1063,
-      "sha256": "bdd103176e22d3aa2b317714b238233e5f32e28366a6a8be289d17d21e7e2715"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/base-merge.json",
-      "bytes": 118,
-      "sha256": "53c6fc82dc0ad24032a58d1d976b5eff74ebb3552ca8e68d0e363adca7660953"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/boot-corrected.txt",
-      "bytes": 3126,
-      "sha256": "459324046a835efba0352362e81a453ee3448f6a39a544514cc9c832767f6e2d"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/boot.txt",
-      "bytes": 3341,
-      "sha256": "f4ca36c90f96c85a0f592291786862e5fc4b16ca2b0d05efa73eaba244d26777"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/cleanup-observe.py",
-      "bytes": 1207,
-      "sha256": "badbee74407e501dfb1d6f4662ec7d59beb2fddb9ddf62c0a4f9b49d95ddf491"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/cleanup-verification.json",
-      "bytes": 3643,
-      "sha256": "9d6e8840cd724c59c8345120d9891da005d5fff2a49ad8fb75fb55464dcde57b"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/display-change-152905.json",
-      "bytes": 4176,
-      "sha256": "06580d89fe9084efcb7267fcf9927d6eccdd1b4e2885705cb2761dfe20c4cafc"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/display-change-153357.json",
-      "bytes": 4354,
-      "sha256": "bb86b118599d4ba7868f31fac90e2712faf6a33ec641e5ef85a6279a08837941"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/display.py",
-      "bytes": 949,
-      "sha256": "c0a0f16225bfa79820f7a318c4d970e992cf63bbebf90601e06e5d08a847fc42"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/export-provenance.json",
-      "bytes": 4420,
-      "sha256": "7b5004e8cd8d0057ed2322ae9edc1e494145393a71f26fb2d2b6df4c94ce27be"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/export-verification.txt",
-      "bytes": 53,
-      "sha256": "85606aedf617b957ca5adee8c56fa9c1dbe268ecd17ebc150527691d59ce5e46"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/graphical-probe-first.py",
-      "bytes": 5319,
-      "sha256": "80e9e2da42b6c4d0e873c43da1e5b421473106fb619437fa9b56e07d00c3fed1"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/graphical-probe.py",
-      "bytes": 5507,
-      "sha256": "1cd3740daf3c8ddedcafb427f553d5a044591dd9967444d7db917d77b940958e"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/guest-after.json",
-      "bytes": 5620,
-      "sha256": "c7533a208826d8532fe31e535abb7ce42907083f440d3b879666c6e5ead2986c"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/guest-before.json",
-      "bytes": 5621,
-      "sha256": "2fd455dd1eac138f13614c21ce41977f62620c100904d0bd731b67842e5c2b7e"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/host-between-sessions.json",
-      "bytes": 2596,
-      "sha256": "6c3507503ecfebf2860ca5f6c5f7a1b4bf0ac105e36940b6ba9f582df2301e1e"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/host-stopped-after.json",
-      "bytes": 1630,
-      "sha256": "fb719236766f75334cfe082ec4a0cbfd3b997273f5f2a68c18929c2d52876b23"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/host-stopped-before.json",
-      "bytes": 5179,
-      "sha256": "f1f938fe03094523228e87bb1b4ebd378ae19015a0f62fcbed9518e6c881ea76"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/host-stopped-corrected.json",
-      "bytes": 377,
-      "sha256": "b8cb6c2c21a48ac9fd61e63c2f9ccb5f723a8bad289aedff9072b63372c6be42"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/independent-motion-validation.json",
-      "bytes": 2065,
-      "sha256": "137093583e17a2d118906c34ee76780e328845489bbbeef221bfb0b1487ac38d"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/operator-failures.txt",
-      "bytes": 726,
-      "sha256": "3fa6467f72f24997415d29866daa46af03c796b31d9f07b5855ab7cd5296e90c"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/producer-merge.json",
-      "bytes": 118,
-      "sha256": "fc51fbcc850e16725832310946868e125e3fe7846384b4f0766a727f1c745823"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/qmp-type.py",
-      "bytes": 731,
-      "sha256": "4c06b768b7ca53e7b698a8945c91a614ae87acd4fbc1d44ef08f00cfead3261b"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/sessions-after-logout.txt",
-      "bytes": 150,
-      "sha256": "5fd259d781f22f0df2900ccd17e130ca1617122c90a7b0600697ce83ba124c8c"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/shutdown.txt",
-      "bytes": 1063,
-      "sha256": "5c2b03ef093a8527e167fff59280076d6d2637d4e544aa2731b2e78fbb8d4b41"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/snapshot.py",
-      "bytes": 1834,
-      "sha256": "f64edaca1680ff2598f47722054ee00c545658acf074000e0a366d0b491b3f40"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/transfer-metadata-cleanup.json",
-      "bytes": 10775,
-      "sha256": "a02876b7e0097d26a3e029c8c6ca7b79b77efef7392b341bcf13d3b0e0c5aff5"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/transferred-export.json",
-      "bytes": 5119,
-      "sha256": "eed6f997ae515672f66cef7bf9bde26e0821fc712d7ae5af09ff21881a2fd56b"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/unchanged-harness-hashes.json",
-      "bytes": 2555,
-      "sha256": "086be904b2b313f91534b3ce2f6694431bde9bd9d7f6fae251350f30be7ecded"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland/gpu-command.json",
-      "bytes": 970,
-      "sha256": "d7ffa213e78d5e83191fc2f1d89699048af171fd9e4f0f5aadeaa47edcad499d"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland/gpu.json",
-      "bytes": 7039,
-      "sha256": "8909c23791719b7ef8902bfa86f19d6e89ff8a8e0c58f370263f236b54aeae12"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland/gpu.stderr",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland/gpu.stdout",
-      "bytes": 7039,
-      "sha256": "8909c23791719b7ef8902bfa86f19d6e89ff8a8e0c58f370263f236b54aeae12"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland/preflight-command.json",
-      "bytes": 1270,
-      "sha256": "68c9440d59cf7cce7de2440659ce4685618bf53f9a22f74ef2a7aa3b37cd26fe"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland/preflight-launch.json",
-      "bytes": 9765,
-      "sha256": "8f3a6b117a350b43b59f3c74f741a0c2f425103a29a0d493564b545f256a089b"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland/preflight.json",
-      "bytes": 6895,
-      "sha256": "299998a7d66984f70e35f5985a5631a48b115c3391b1107e74917fdc0383cf3b"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland/preflight.stderr",
-      "bytes": 292,
-      "sha256": "d6ea38e61045b3207c7eb58f4a884c97a2052e05f681b7725914a30c85b2b9c0"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland/preflight.stdout",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/diagnostic-freeze-command.json",
-      "bytes": 1210,
-      "sha256": "12009380a9566731015afc148dfb31b6d7d6384bda0b170bbb53ce67bc93ef59"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/diagnostic-freeze.json",
-      "bytes": 2993,
-      "sha256": "43a8ad7b8641df19d51a018a7373accd5c45090aae8469486d893bb77686d489"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/diagnostic-freeze.stderr",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/diagnostic-freeze.stdout",
-      "bytes": 65,
-      "sha256": "4ddc7a5e9badab037dca7374faa6324dbe295302d4f4ab23470b08638ff8e2c7"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/environment.json",
-      "bytes": 1106,
-      "sha256": "87e80fa1c808acc5040bc68cff85b751996b082797088eedb124467ddc63239a"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/gpu-command.json",
-      "bytes": 970,
-      "sha256": "154df248ad4111e62e117ffb8c32d2e58cc7bb208eeaab4bbbaac24da05ebc68"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/gpu.json",
-      "bytes": 7054,
-      "sha256": "dcd45cc68814e1623a17dfab901f534ac1eafe9bfe0548f359bfffd17e8b8155"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/gpu.stderr",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/gpu.stdout",
-      "bytes": 7054,
-      "sha256": "dcd45cc68814e1623a17dfab901f534ac1eafe9bfe0548f359bfffd17e8b8155"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/motion-command.json",
-      "bytes": 1337,
-      "sha256": "1f08317f23a9b8733bcacd01d58f71edabe6b2178342b4049ecaf06fae93e98d"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/motion-complete.json",
-      "bytes": 76,
-      "sha256": "e88cd563ecfe2c1da037739115916986b5a5d990883db3c4bd09990a38a2509e"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/motion-launch.json",
-      "bytes": 10278,
-      "sha256": "cafcc65b2626ef06bcaa98dea8f315afc8129eb4d7987dab01e3d7c3fbf2ed75"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/motion.json",
-      "bytes": 684382,
-      "sha256": "29a27639443b4bd0eb9b4bf676678d8b3eb487c65eb3a68f34a300a0a9724403"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/motion.stderr",
-      "bytes": 292,
-      "sha256": "d6ea38e61045b3207c7eb58f4a884c97a2052e05f681b7725914a30c85b2b9c0"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/motion.stdout",
-      "bytes": 121197,
-      "sha256": "7b14f239749fce42c2108952a7000353eba3b75b2d5d68528f23d71f091d2c7c"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/preflight-command.json",
-      "bytes": 1277,
-      "sha256": "5b72e8f70c41d6563fcf5f5282ed57d32feff391f9cf93db9972901c345553de"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/preflight-complete.json",
-      "bytes": 79,
-      "sha256": "52996714a095fb8fd01771e9edcd49390522389721e6622be04aef9a3c21955b"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/preflight-launch.json",
-      "bytes": 10271,
-      "sha256": "6b6159a6f31632c86026dafa807336d3beb3d9d3c191b05c98547e236791e5dc"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/preflight.json",
-      "bytes": 6847,
-      "sha256": "775d7a00327995a2fc5f6b797e96b3ca6ed3cf67036b8d5efad57f7fe15b975b"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/preflight.stderr",
-      "bytes": 292,
-      "sha256": "d6ea38e61045b3207c7eb58f4a884c97a2052e05f681b7725914a30c85b2b9c0"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/preflight.stdout",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/proof-bound-freeze-command.json",
-      "bytes": 1300,
-      "sha256": "2091779adabae1a32e6d59775d379ef9217b107e6a9744488a5c146072bc4b7b"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/proof-bound-freeze.stderr",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/proof-bound-freeze.stdout",
-      "bytes": 65,
-      "sha256": "95d0abb6c76f8844aac866bb63afe9610a03e5475fb74c96ddf1bcb6c899cafe"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-2/timing-freeze.json",
-      "bytes": 3100,
-      "sha256": "95464e1028e5ea102326ae75560d7333e4b79ccdb850144f1080fb6bfbdc230b"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-cleanup.json",
-      "bytes": 549,
-      "sha256": "d2c95422f897a40e7a74e00e2ecff9fb8f68ae9c0dac5900b7e38d8037d9fb0b"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-failed-preflight-cleanup.json",
-      "bytes": 350,
-      "sha256": "160e1f26cb2295c09ba9b9d8308b3aa2fcb8670d3d0f9eb565a884e1029c04c0"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-launch-ui.png",
-      "bytes": 457367,
-      "sha256": "4905daf053510cded4e068bc93e7ad1f1e59085f7173a0054be4442b94db231b"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/wayland-login-keyring-locked.txt",
-      "bytes": 10,
-      "sha256": "b47aab0773d9e29952e06bb1d2682843eb5c01d1258f5c0e7747c4b9dfa027ca"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/diagnostic-freeze-command.json",
-      "bytes": 1192,
-      "sha256": "5aa3b309ffd7a1f6d168a4be9930cb2a6df7ed544444a35afa9e9377a1850d63"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/diagnostic-freeze.json",
-      "bytes": 2986,
-      "sha256": "2b9a2d701439332f53b7205e4a3469d3d7d9c3e8f36f1841c5d7f6e8dd1cec79"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/diagnostic-freeze.stderr",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/diagnostic-freeze.stdout",
-      "bytes": 65,
-      "sha256": "568c9164008fdd8be22da5cc1d6d3cf44ce5116af257de93c0f5550875fa62ee"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/environment.json",
-      "bytes": 1103,
-      "sha256": "ec1a663f99ee7af5d953e70c6582695afae98898e11862c1663e1354da4d2ef6"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/gpu-command.json",
-      "bytes": 972,
-      "sha256": "d1943e70f0fd86436486866c11c4f4112d08175b4fc320b3e5264222711cb474"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/gpu.json",
-      "bytes": 7053,
-      "sha256": "fd511977dc231a61339c84d17a6c72ca8a7bfe7286ee2c022d109fb4313df119"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/gpu.stderr",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/gpu.stdout",
-      "bytes": 7053,
-      "sha256": "fd511977dc231a61339c84d17a6c72ca8a7bfe7286ee2c022d109fb4313df119"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/motion-command.json",
-      "bytes": 1319,
-      "sha256": "5aa3b1983a4f3931630e8832367ba55e89cd36708761f8bc79340e04699b1cf1"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/motion-complete.json",
-      "bytes": 76,
-      "sha256": "7cc8bad1d3a0aa8ed7719ce927ca3c76fc7881f2e37bd464c263099bebee8910"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/motion-launch.json",
-      "bytes": 9472,
-      "sha256": "e2333eebffe4642a8636144478edd8418a73214174d92661a009c2dfdcb11378"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/motion.json",
-      "bytes": 709490,
-      "sha256": "6006bf1762255fea3f2242ec6197a577139a9665ac3b9799b98967ba7b4146f5"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/motion.stderr",
-      "bytes": 292,
-      "sha256": "d6ea38e61045b3207c7eb58f4a884c97a2052e05f681b7725914a30c85b2b9c0"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/motion.stdout",
-      "bytes": 122011,
-      "sha256": "b6c96311c17f75ec5f031f7e54c2dbb230ab4997de0eae6b6751c8d4ed4a1558"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/preflight-command.json",
-      "bytes": 1261,
-      "sha256": "76114aead4be54eaf02e30cf6471977da8db6f2087cdd875c5b9374864bf861d"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/preflight-complete.json",
-      "bytes": 79,
-      "sha256": "09172f311f8dff93b76cff4531f8b33c876435142cff19204294c64815f95359"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/preflight-launch.json",
-      "bytes": 9469,
-      "sha256": "c307e1f154302f4a755a56308aec754a7716a6f6978a8d26f0a6ecae0d0d7426"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/preflight.json",
-      "bytes": 6959,
-      "sha256": "9e07487d6e3d9ddb18e42b5af3fca899ce6439895ec19ba8ea8c625a9d04496a"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/preflight.stderr",
-      "bytes": 292,
-      "sha256": "d6ea38e61045b3207c7eb58f4a884c97a2052e05f681b7725914a30c85b2b9c0"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/preflight.stdout",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/proof-bound-freeze-command.json",
-      "bytes": 1276,
-      "sha256": "4f42aa493b97013c61acccc6ae8e4281b7931c7ca6ea5daaa39501ebe1b6dc88"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/proof-bound-freeze.stderr",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/proof-bound-freeze.stdout",
-      "bytes": 65,
-      "sha256": "707aaf0c2a88949d663addd25d4860bafa303f9c6bc8356b7869d79de5906580"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11/timing-freeze.json",
-      "bytes": 3093,
-      "sha256": "1fad6568371edd10dc0bbf8c80921a3571930d9dde27e178c4db7d9cf954cdc1"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11-cleanup.json",
-      "bytes": 549,
-      "sha256": "8d7ce598dc9a92e106617f9e031ef7bb0c0a96fa309e42956a268878a4a63664"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11-login-keyring-locked.txt",
-      "bytes": 10,
-      "sha256": "b47aab0773d9e29952e06bb1d2682843eb5c01d1258f5c0e7747c4b9dfa027ca"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11-motion-screen.png",
-      "bytes": 896067,
-      "sha256": "2f8e42a8da189ebcc31094c14c08896986093b7e624be6e5206c228020fc5e83"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/x11-session-selection.png",
-      "bytes": 32705,
-      "sha256": "fa4d0972f11c190e084a703423d6d37634d8a9b429e81268ba020c582ee97700"
-    },
-    {
-      "path": "docs/acceptance/mechanisms/receipts/g8-native-1240/delivery-verification.json",
-      "bytes": 1220,
-      "sha256": "54903042e361ad5989913705c37bbed64a6691506ccd7fb4de4e2b0705780fb5"
     }
   ],
   "source_revision_note": "Source entries updated by consolidated review repair; historical receipt source identities remain unchanged and original source is retained at d784405d34437cd68cb8349efef588d7d5ae2470.",

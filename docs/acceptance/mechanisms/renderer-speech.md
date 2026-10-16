@@ -3,18 +3,25 @@
 This is pre-product evidence for **LINUX-20261016**, not release acceptance. LINUX-16/17
 must repeat applicable tests on final deb/AppImage packages in both real GDM sessions.
 The bounded real-session observations below do not establish release acceptance.
-**G8 remains unaccepted. Historical untimed X11 v7 and Wayland v7 proofs passed at their recorded hashes; current-source proof and timing remain pending.**
+**G8 remains unaccepted.** Direction1240 completed fresh current-source untimed proofs in
+both sessions. The [1268 continuation](receipts/g8-timing-1268/REPORT.md) subsequently
+completed a valid Wayland five-run baseline: p95 143/187/142/140/174ms, all misses, with
+increased shared-host contention retained. Requested `on-demand` was effective `ALWAYS`.
+The newer coordinator-selected transport-option candidate failed native admission before
+timing. Human10789/10795 held X11 and Electron pending D1 assessment; neither ran.
+Initial allocation and idle-lock failures remain separate. Lima is stopped, with full
+resumed protected-state equality and owned-process cleanup; root owns the next decision.
 Human coordinator decision **10413**, independently verified by root, supersedes the earlier
 10405 investigation: the defect was the harness's initial zoom units, not a producer clamp
 or incompatible protocol. Absolute zoom 0.75, 1 and 1.5 are all reachable. The authorized
 correction preserves producer bytes, scene, protocol and every threshold. The sole VM owner
-must still satisfy the 35 GiB host reserve and human 10420 scheduling hold before further timings.
+was then subject to the35GiB host reserve and human10420 scheduling hold.
 At that historical capture, the reported host reserve was32.7GiB and Lima was stopping.
-Current source-only direction1229 leaves the guest lease with Office377.
 
-Current source-only preparation is [the G8 run plan](g8-run-plan.md): it pins the merged
-desktop producer `3e3d4bcd` without rebinding any old capture. Fresh per-session untimed
-proof and timing freeze are required; direction1229 authorizes no guest access or timing.
+The [G8 run plan](g8-run-plan.md) pins merged desktop producer `3e3d4bcd` without
+rebinding any old capture. Each new session/candidate still requires fresh native/environment
+observations, untimed proof and timing freeze. The35GiB large-growth guard remains separate
+from the revised bounded lease; the original small-run allowance was exceeded and is preserved.
 The following original observations and commands remain historical.
 
 ## Historical producer and premeasurement freeze

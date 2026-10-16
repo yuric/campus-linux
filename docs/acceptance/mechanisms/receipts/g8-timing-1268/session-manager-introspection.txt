@@ -1,0 +1,180 @@
+node /org/gnome/SessionManager {
+  interface org.freedesktop.DBus.Properties {
+    methods:
+      Get(in  s interface_name,
+          in  s property_name,
+          out v value);
+      GetAll(in  s interface_name,
+             out a{sv} properties);
+      Set(in  s interface_name,
+          in  s property_name,
+          in  v value);
+    signals:
+      PropertiesChanged(s interface_name,
+                        a{sv} changed_properties,
+                        as invalidated_properties);
+    properties:
+  };
+  interface org.freedesktop.DBus.Introspectable {
+    methods:
+      Introspect(out s xml_data);
+    signals:
+    properties:
+  };
+  interface org.freedesktop.DBus.Peer {
+    methods:
+      Ping();
+      GetMachineId(out s machine_uuid);
+    signals:
+    properties:
+  };
+  interface org.gnome.SessionManager {
+    methods:
+      Setenv(in  s variable,
+             in  s value);
+      GetLocale(in  i category,
+                out s value);
+      InitializationError(in  s message,
+                          in  b fatal);
+      Initialized();
+      RegisterClient(in  s app_id,
+                     in  s client_startup_id,
+                     out o client_id);
+      UnregisterClient(in  o client_id);
+      Inhibit(in  s app_id,
+              in  u toplevel_xid,
+              in  s reason,
+              in  u flags,
+              out u inhibit_cookie);
+      Uninhibit(in  u inhibit_cookie);
+      IsInhibited(in  u flags,
+                  out b is_inhibited);
+      GetClients(out ao clients);
+      GetInhibitors(out ao inhibitors);
+      IsAutostartConditionHandled(in  s condition,
+                                  out b handled);
+      Shutdown();
+      Reboot();
+      CanShutdown(out b is_available);
+      SetRebootToFirmwareSetup(in  b enable);
+      CanRebootToFirmwareSetup(out b is_available);
+      Logout(in  u mode);
+      IsSessionRunning(out b running);
+      RequestShutdown();
+      RequestReboot();
+    signals:
+      ClientAdded(o id);
+      ClientRemoved(o id);
+      InhibitorAdded(o id);
+      InhibitorRemoved(o id);
+      SessionRunning();
+      SessionOver();
+    properties:
+      readonly s SessionName = 'ubuntu';
+      readonly s Renderer = '';
+      readonly b SessionIsActive = true;
+      readonly u InhibitedActions = 0;
+  };
+  node Client8 {
+  };
+  node App36 {
+  };
+  node App10 {
+  };
+  node Client16 {
+  };
+  node App41 {
+  };
+  node Client3 {
+  };
+  node App16 {
+  };
+  node Client11 {
+  };
+  node App6 {
+  };
+  node Client9 {
+  };
+  node App11 {
+  };
+  node Client17 {
+  };
+  node App27 {
+  };
+  node App1 {
+  };
+  node Client4 {
+  };
+  node App42 {
+  };
+  node App17 {
+  };
+  node Client12 {
+  };
+  node App22 {
+  };
+  node App7 {
+  };
+  node App32 {
+  };
+  node Client18 {
+  };
+  node App28 {
+  };
+  node App2 {
+  };
+  node Client5 {
+  };
+  node App33 {
+  };
+  node App12 {
+  };
+  node Client13 {
+  };
+  node App8 {
+  };
+  node App23 {
+  };
+  node App13 {
+  };
+  node Client19 {
+  };
+  node App44 {
+  };
+  node App3 {
+  };
+  node Client6 {
+  };
+  node App34 {
+  };
+  node App19 {
+  };
+  node Client14 {
+  };
+  node App9 {
+  };
+  node App24 {
+  };
+  node Client1 {
+  };
+  node App14 {
+  };
+  node App4 {
+  };
+  node Client7 {
+  };
+  node Client15 {
+  };
+  node App40 {
+  };
+  node Client2 {
+  };
+  node App15 {
+  };
+  node Presence {
+  };
+  node Client10 {
+  };
+  node App5 {
+  };
+};

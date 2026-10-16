@@ -1,0 +1,3 @@
+{"utc": "2026-10-16T17:03:41.815900+00:00", "command": "python3 /home/campusqa/spike982/g8-timing-1268/idle-holder.py wayland-final-always", "actual_qmp_run_dialog": true}
+{"utc": "2026-10-16T17:04:12.462015+00:00", "command": "env WEBKIT_DISABLE_DMABUF_RENDERER=1 python3 /home/campusqa/spike982/g8-timing-1268/graphical-probe.py wayland preflight wayland-final-always always", "actual_qmp_run_dialog": true}
+{"utc": "2026-10-16T17:06:07.029640+00:00", "command": "gnome-session-quit --logout --no-prompt", "actual_qmp_run_dialog": true}
