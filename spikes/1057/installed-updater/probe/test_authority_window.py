@@ -186,7 +186,14 @@ class LoadedMarkerTests(unittest.TestCase):
         self.assertNotIn("loaded_marker", window.record)
 
     def test_failed_loaded_prerequisite_never_announces_ready_and_owned_rule_is_removed(self):
-        with tempfile.TemporaryDirectory() as directory:
+        # Fractional origins reproduce elapsed-time rounding on either side of
+        # 45 seconds without relying on the host's current monotonic clock.
+        for origin in (0.0, 20.1, 63.9):
+            with self.subTest(origin=origin), tempfile.TemporaryDirectory() as directory:
+                self.check_failed_loaded_prerequisite(directory, origin)
+
+    def check_failed_loaded_prerequisite(self, directory, origin):
+        with patch.object(authority.time, "monotonic", return_value=origin):
             rule = Path(directory) / "fixture-deny.rules"
             window = self.window()
             window.args = SimpleNamespace(lease="1057-source-test", uid=1000, mode="deny",
@@ -205,7 +212,10 @@ class LoadedMarkerTests(unittest.TestCase):
                 self.assertEqual(window.record["owned_device_inode"], [rule.stat().st_dev, rule.stat().st_ino])
                 self.assertEqual(window.record["rule_sha256"], hashlib.sha256(rule.read_bytes()).hexdigest())
                 self.assertEqual(window.record["cleanup_reserve_seconds"], 10)
-                self.assertEqual(window.total_deadline - window.started_at, 45)
+                self.assertEqual(window.started_at, origin)
+                self.assertEqual(window.total_deadline, origin + 45)
+                self.assertEqual(window.deadline, (origin + 45) - 10)
+                self.assertAlmostEqual(window.total_deadline - window.started_at, 45, delta=1e-12)
                 self.assertNotIn("ready_unix_ns", window.record)
                 output.assert_not_called()
                 window.restore()

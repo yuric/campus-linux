@@ -20,13 +20,17 @@ Direction1242 authorizes only the narrow fixture marker bridge and source regres
 on draft PR13. Actual Duktape polkit124 runs `--no-debug` with stderr at `/dev/null`,
 where `polkit.log()` writes; the bridge instead uses a fixed `/usr/bin/logger` argv
 through `polkit.spawn`. Its real guest availability and logging are **unverified**.
-No guest read, access or boot is permitted now: Office400 exclusively holds Lima;
-UTM stays stopped. Source work remains within 128 MiB and the 20 GiB host floor, with
-no dependency, build, download, provider or paid operations. Preserve the exact
+Human10677 / direction1247 records Office400's returned Lima lease and root's Stopped
+verification; this grants no guest read, access or boot. UTM stays stopped. Small
+source/docs/evidence work and focused Python checks may use the existing 128 MiB
+source budget with an 18 GiB host free-space floor. Record actual free/allocation and
+stop new growth below that floor. The 20 GiB host reserve for guest work and 35 GiB
+large-growth guard remain; no download, build or runtime/timing work is authorized.
+Dependency, provider and paid operations remain prohibited. Preserve the exact
 approved 113a artifacts and every prior receipt/screenshot, including the failed
 marker window. LINUX-20261016 reviews the new helper bytes and remaining evidence,
-then separately grants any bounded execution lease after Office400 returns the
-machine. The coordinator owns CI/Council and merge; this source handoff starts no watcher.
+then separately grants any bounded execution lease when resource floors permit it.
+The coordinator owns CI/Council and merge; this source handoff starts no watcher.
 
 The historical procedure below describes source preparation. Lease10643 scoped execution
 to three refusal scenarios only, with20-second recorder timeout,45-second total windows

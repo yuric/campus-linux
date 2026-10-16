@@ -257,16 +257,34 @@ loaded marker visibly fails the helper and restores its exact owned rule. Source
 permission does not assert that this executable or interface is present or usable in
 the guest, and preflight exit-zero alone cannot establish real delivery or daemon context.
 
-Office400 currently owns Lima exclusively; this source work permits no guest reads,
-access or boot and UTM stays stopped. The 128 MiB source budget and 20 GiB host floor hold;
-no dependency, build, download, provider or paid operations are authorized. The approved
+Human10677 / direction1247 records Office400's returned lease and root's Lima Stopped
+verification. This permits no guest reads, access or boot; UTM stays stopped. The
+existing 128 MiB source budget now has an 18 GiB host free-space floor for small
+source/docs/evidence work and focused Python checks only. Record actual free/allocation
+and stop new growth below that floor; retain the 20 GiB host reserve for guest work and
+35 GiB large-growth guard. No download, build or runtime/timing work is authorized;
+dependency, provider and paid operations remain prohibited. The approved
 source113a packages and all old receipt/screenshot bytes, including the failed marker
 window, remain unchanged. Focused marker invocation, escaping and failure regressions
 extend the prior 59-test coverage; they prove only source behavior. LINUX-20261016 is
 the explicit next owner for independent helper/evidence review and a separate bounded
-lease after Office400 returns the machine. This consolidated source/docs/test handoff
+lease when resource floors permit it. This consolidated source/docs/test handoff
 neither certifies runtime acceptance nor starts a CI/Council watcher, marks ready,
 enables auto-merge or completes the card.
+
+Human10678 reports both native jobs in
+[run38925541527](https://github.com/yuric/campus-linux/actions/runs/38925541527)
+failed at source `5001e412898ffbac9fde7c64f1e6b75eff0d8216` before package output:
+the new source test compared floating-point subtraction with exact equality and
+observed `44.99999999999999 != 45`. This is a test arithmetic failure, not a measured
+authority-window overrun. A mocked monotonic origin of `20.1` reproduces the exact
+failure. The correction tests origins `0.0`, `20.1` and `63.9`, retains exact
+start/deadline/reserve construction checks, and allows only `1e-12` rounding tolerance
+for the elapsed subtraction. The authority helper and its 45/20/10-second bounds are
+unchanged. The failed run remains failed; these focused source checks establish no
+new installed or guest acceptance. Human10683 records the independent review disposition
+and releases the single corrective push, limited to this test fix and documentation.
+No helper change or relaxation of trusted marker requirements was requested.
 
 ## Fixture and trust boundaries
 
@@ -467,9 +485,21 @@ headless updater pass closes those gates.
 
 Worker verification uses `python3 -B scripts/verify_repository.py` (30 policy regressions,
 boundary, acceptance inventory, links and legacy OpenAPI), the adapter's ten stdlib
-tests, the probe's nineteen source regressions (six smoke, eleven desktop and two
-authority-window tests), Python AST and shell syntax checks,
-and `git diff --check`. At source113a53e, the live `check-linux-admission.py --pr 13
+tests, and the probe's 34 source regressions (six smoke, eleven desktop, eight
+authority-window and nine marker-bridge tests), for 74 tests total. The earlier
+59-test checks at368809e/3697b28 included nineteen probe tests and two authority-window
+tests; those historical counts and raw receipts remain unchanged. Current commands:
+
+```sh
+python3 -B scripts/verify_repository.py
+python3 -B -m unittest discover -s spikes/1057/installed-updater/adapter -p 'test_*.py' -v
+python3 -B -m unittest discover -s spikes/1057/installed-updater/probe -p 'test_*.py' -v
+git diff --check origin/main...HEAD
+```
+
+Python AST and shell syntax checks also pass. Marker tests use existing host Node to
+evaluate generated JavaScript with mocked polkit, without a real logger or guest call.
+At source113a53e, the live `check-linux-admission.py --pr 13
 --head 113a53e4eea44b6d80a8ee3edb55d186d11f3ba6` accepted all six required checks.
 The coordinator takes sole CI/Council observation for the later handoff head, as directed
 in card comment10584; its outcomes must be read independently rather than inherited.
