@@ -1,0 +1,67 @@
+{
+  "source_head": "67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2",
+  "architecture": "arm64",
+  "total_package_bytes": 257065672,
+  "artifacts": [
+    {
+      "filename": "campus-updater-1057_1.0.0_aarch64.AppImage",
+      "version": "1.0.0",
+      "format": "appimage",
+      "architecture": "arm64",
+      "target": "linux-aarch64-appimage",
+      "bytes": 80984584,
+      "sha256": "b8afb7fef30bafbb144ce791bc7ce7e9e037ad3b852729c4547763998cf9f061",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRbTRYVVYzWWdTbFRNSEZ2aE56VVlPRVgzVFdjTnpUUDNMV1pubDFRRGk3MDBGUjhFalFOSkw1bmNoT2tVdEpLOWNRVm9DUWdYQzRyZVV2bEpScUF2MGNKTDc3S2ZmZ3dZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMTU4NjIwCWZpbGU6Y2FtcHVzLXVwZGF0ZXItMTA1N18xLjAuMF9hYXJjaDY0LkFwcEltYWdlCXZlcnNpb246MS4wLjAKN2RONjJYNG84L01IeGZUREh3M2NmNWxkODVrTHc3ODdtemFGTXRqWkVUSlhxOEJ5Qm5zSTY4VEt3R1VEWGRFYmI1MWRBbUV3QkdDUUZONTBibW1nRGc9PQo="
+    },
+    {
+      "filename": "campus-updater-1057_1.0.0_arm64.deb",
+      "version": "1.0.0",
+      "format": "deb",
+      "architecture": "arm64",
+      "target": "linux-aarch64-deb",
+      "bytes": 4705688,
+      "sha256": "120b048bf5b83ca66efb3d71733f68b36e747aad12ec660db7cc23e34b7a736f",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRbTRYVVYzWWdTbFdYcEs2dlVmdDh3UWtxQ2ZHUnBkRTJSdWhPN3NidjcvNDMwSTFIQzVrMmVOdkU4UTJwclVYM3RaL2tMN2liRVJIZWtEUG1zSjJJY2ttZklRQkdYZGdZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMTU4NjIwCWZpbGU6Y2FtcHVzLXVwZGF0ZXItMTA1N18xLjAuMF9hcm02NC5kZWIJdmVyc2lvbjoxLjAuMApxd0Q3bGFJYVIyL3lDU3U4cnFmWnZvdVpGb0NyZlp5c1NFamgrT2hvWHhhTHcxM2MvM0kxaVZCSDloaXVDRklZMXl0eEdwN0FnbkZON0FrbkszN1ZDUT09Cg=="
+    },
+    {
+      "filename": "campus-updater-1057_2.0.0_aarch64.AppImage",
+      "version": "2.0.0",
+      "format": "appimage",
+      "architecture": "arm64",
+      "target": "linux-aarch64-appimage",
+      "bytes": 80984584,
+      "sha256": "0fbe41f95aa34d4adf433d573208e72ac718a051d68b46bcba656cf04035edbd",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRbTRYVVYzWWdTbGE1QWhrQk9EYndTTzYwSThsV20yb1hSTnJ6b2g1T2RKR1I3QTBZOWJlYmlNWmVGL0ExVGI0UnRDZWVmUEFRamx6aHpXZWhEdWdZRnhBUlYweWJxYlFvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMTU4NzE5CWZpbGU6Y2FtcHVzLXVwZGF0ZXItMTA1N18yLjAuMF9hYXJjaDY0LkFwcEltYWdlCXZlcnNpb246Mi4wLjAKSkR0RXIyT1VlNk8rZXMwRHFPNTRGVnhFdnBxYTZSZHRYWlp2YVBJaTlHbW1xemxVZmVuTjFubFVPUE9RU2laMEZvZEFYZ25WSDAvUk9xOXJyR0EzQ1E9PQo="
+    },
+    {
+      "filename": "campus-updater-1057_2.0.0_arm64.deb",
+      "version": "2.0.0",
+      "format": "deb",
+      "architecture": "arm64",
+      "target": "linux-aarch64-deb",
+      "bytes": 4705910,
+      "sha256": "3aebde0d48deb640724fa77cab82a36b7614f5a55ede2cd9cd57ae154633ac52",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRbTRYVVYzWWdTbFpJWFc0UmhjN0VTZFFFc3dNSm1QRTVBalg5Z0RoY3BFMDIxaGdFd2poZktzdlJaeUx2TDJmZDNTY1QwOW1zbFFFOGc1UjkyLzlCZFZzRVAwV1EwT1FVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMTU4NzE5CWZpbGU6Y2FtcHVzLXVwZGF0ZXItMTA1N18yLjAuMF9hcm02NC5kZWIJdmVyc2lvbjoyLjAuMApVRDQ4WFg0eUYzNzRFWVlTYk5meWV5YzU1aXp0M3dLTzF2b0h6aXBuVWVDa2RMcldIQ2x5dGJyNVBWcnFna0Q1VVZHVnVjdXkrNVRzRmNlWUhpYWJEUT09Cg=="
+    },
+    {
+      "filename": "campus-updater-1057_3.0.0_aarch64.AppImage",
+      "version": "3.0.0",
+      "format": "appimage",
+      "architecture": "arm64",
+      "target": "linux-aarch64-appimage",
+      "bytes": 80980488,
+      "sha256": "d960eb38bb6e0e91e7cee3b69ab726fc8b8c00d74eeb1439820cff6c00323e18",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRbTRYVVYzWWdTbGVMakREcWtFVlN2VTIxQUdNeDNRVjhORVNxYWlMZkZGVUZ1UmVzd29KVVh1RWFwL0RYekxaOUJyTjhkVUlyVjBnVnFsaGVuL0YyUXAzU1hja0JqbkFVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMTU4ODIyCWZpbGU6Y2FtcHVzLXVwZGF0ZXItMTA1N18zLjAuMF9hYXJjaDY0LkFwcEltYWdlCXZlcnNpb246My4wLjAKenVmSlRMemhYUG9KOU5LUW9QYlNYcU9DUUZjQlpyejRsZkIyRjcydTJ1aGVHMG1ZNE1kdHBydmxXMzFXQUcrc3ZVL1ZqUld3di9NeVZCaGlYVUlPREE9PQo="
+    },
+    {
+      "filename": "campus-updater-1057_3.0.0_arm64.deb",
+      "version": "3.0.0",
+      "format": "deb",
+      "architecture": "arm64",
+      "target": "linux-aarch64-deb",
+      "bytes": 4704418,
+      "sha256": "2766c94a5f7b7042869be1595e1cfc8accdc35a87d23b479bb01aa74b53aeb9a",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRbTRYVVYzWWdTbFZPZE5ucmtPdGdLcjNkQTJybXd5UTI4MEJlbk1Ub3I2MC94UnRIdGZKSC9kSVVPL1M5TnVuU3pOL2VaZ0ZhaWx6ZXhWQUk3WUVDQmN1TmFRdE1EZWdVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMTU4ODIyCWZpbGU6Y2FtcHVzLXVwZGF0ZXItMTA1N18zLjAuMF9hcm02NC5kZWIJdmVyc2lvbjozLjAuMAoyTE0zeXRqelhJUitLTHpITnVXQWNWUlBNY1dPS0xwMTdHaVFRdjhYRzNQY1JZM0VjaVpCZnZoY3R3cU5IbmJQYnNHekxibnkzWWM3MmF6S0VmVUpDUT09Cg=="
+    }
+  ]
+}

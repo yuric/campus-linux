@@ -6,6 +6,7 @@ spike=spikes/1057/installed-updater
 mkdir -p updater-output/receipts
 work=$(mktemp -d "$RUNNER_TEMP/updater1057.XXXXXX")
 container="campus-1057-build-${FIXTURE_ARCH}"
+export FIXTURE_OWNER="$(id -u):$(id -g)"
 trap 'docker rm -f "$container" >/dev/null 2>&1 || true; rm -rf "$work"' EXIT
 git archive HEAD > "$work/source.tar"
 tar xf "$work/source.tar" -C "$work"
@@ -23,6 +24,12 @@ receipt = {'source_head': os.environ['EXACT_HEAD'], 'source_archive_sha256': os.
            'recipe_sha256': {p:hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest() for p in paths},
            'commands': ['docker build ci/Dockerfile.release-baseline', 'docker build hosted/Dockerfile.build',
                         'hosted/prepare-or-build.sh'], 'result': 'started'}
+fixture_paths = subprocess.check_output(['git', 'ls-files', '-z', '--',
+    'spikes/1057/installed-updater', '.github/workflows/l0-installed-updater.yml'], text=True).split('\0')
+fixture_files = {p: hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest() for p in sorted(fixture_paths) if p}
+fixture_hash = hashlib.sha256(json.dumps(fixture_files, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+receipt['fixture_tree_sha256'] = fixture_hash
+pathlib.Path('updater-output/receipts/fixture-inputs.json').write_text(json.dumps(fixture_files, indent=2)+'\n')
 pathlib.Path('updater-output/receipts/build.json').write_text(json.dumps(receipt, indent=2)+'\n')
 PY
 docker build --progress=plain -f ci/Dockerfile.release-baseline -t campus-1057-release-baseline .
@@ -30,7 +37,7 @@ docker build --progress=plain -f "$spike/hosted/Dockerfile.build" -t campus-1057
 docker image inspect campus-1057-builder --format '{{.Id}}' > updater-output/receipts/build-image-id.txt
 timeout 2400 docker run --rm --name "$container" --cpus 2 --memory 6g --pids-limit 1024 \
   --tmpfs /private:rw,noexec,nosuid,size=4m,mode=0700 \
-  -e GITHUB_ACTIONS=true -e FIXTURE_ARCH -e EXACT_HEAD \
+  -e GITHUB_ACTIONS=true -e FIXTURE_ARCH -e EXACT_HEAD -e FIXTURE_OWNER \
   -v "$work:/work" -v "$PWD/updater-output:/output" \
   campus-1057-builder bash hosted/prepare-or-build.sh
 if test ! -d updater-output/packages; then

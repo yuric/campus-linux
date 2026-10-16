@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 umask 077
-trap 'chmod -R a+rX /output' EXIT
+trap 'chmod -R a+rX /output; chown -R "$FIXTURE_OWNER" /work' EXIT
 test "${GITHUB_ACTIONS:-}" = true
 test "$(getconf GNU_LIBC_VERSION)" = 'glibc 2.35'
 test "$(rustc --version | cut -d' ' -f2)" = 1.99.1
@@ -36,6 +36,7 @@ for version in 1.0.0 2.0.0 3.0.0; do
   cargo tauri build --ci --bundles deb,appimage -- --locked
   python3 hosted/collect-packages.py "$version"
 done
+python3 hosted/sign-negative.py
 (cd src-tauri && cargo build --locked --release --features privileged-verifier --bin verify-signature)
 cp src-tauri/target/release/verify-signature /output/bootstrap/
 python3 adapter/make-admission.py --output /output/bootstrap/admission.json \

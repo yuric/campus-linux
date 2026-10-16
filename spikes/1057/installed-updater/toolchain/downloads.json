@@ -18,5 +18,8 @@
       "cli_url": "https://github.com/tauri-apps/tauri/releases/download/tauri-cli-v2.12.3/cargo-tauri-aarch64-unknown-linux-gnu.tgz",
       "cli_sha256": "13baa60bb1bfa8567c1e021b1192bbb0d5baa60949f03650492eecfb22c8f8e0"
     }
-  }
+  },
+  "tauri_source_commit": "59b63ab500da9859f12d8888c3298bc29bba0b92",
+  "updater_source_commit": "44293a5722efcaf27060504e63b17aeba721b40f",
+  "updater_source_url": "https://github.com/tauri-apps/plugins-workspace/tree/44293a5722efcaf27060504e63b17aeba721b40f/plugins/updater"
 }

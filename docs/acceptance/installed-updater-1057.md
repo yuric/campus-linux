@@ -15,6 +15,18 @@ receipts record the real runner, image ID, build dependencies and source archive
 did not compile or install packages. Only the small source/receipt archives (38,769 bytes
 amd64; 38,729 bytes arm64) were retrieved locally; no package artifact was downloaded.
 
+The first package [run 38910101310](https://github.com/yuric/campus-linux/actions/runs/38910101310)
+at `67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2` built all six real packages per architecture
+and recorded 24 passing headless cases on each. Both jobs nevertheless **failed** during
+runner cleanup: root-owned exported build directories prevented host `rm`. The
+[failure receipt](receipts/installed-updater-1057/first-build/run.json), complete native
+[arm64 smoke](receipts/installed-updater-1057/first-build/arm64/installed-smoke.json) and
+[amd64 smoke](receipts/installed-updater-1057/first-build/amd64/installed-smoke.json) preserve
+that distinction. A corrected rerun is required; these jobs are not reported green.
+First-run package ZIP sizes are 257,737,151 bytes arm64 and 262,889,749 bytes amd64.
+Only text/source receipt archives were retrieved locally. These sizes inform the later
+coordinator download budget, not a VM lease or download authorization.
+
 This document initially records the implementation and execution contract. Pending rows
 must be replaced with observed commands, exact source head and linked receipts before a
 pass is claimed. Repository-policy checks, unit tests and extracted-source tests do not
@@ -114,6 +126,23 @@ contains two real native entries and two deliberately unavailable other-architec
 trap entries. These test selection only; they do not certify a combined four-artifact
 publication manifest. A later combined manifest uses both native builds' real receipts.
 
+For the later explicitly leased GDM run, the unprivileged
+[standalone server](../../spikes/1057/installed-updater/probe/serve.py) serves only indexed,
+checksum-verified packages and logs requests. From the exact source checkout, point it at
+the downloaded hosted output:
+
+```sh
+python3 -B spikes/1057/installed-updater/probe/serve.py \
+  --index /approved/output/receipts/package-index.json \
+  --version 2 --port 17857 --log /approved/receipts/requests.jsonl
+```
+
+Use `--version 1`, `2` or `3`; restart with
+`--missing-target linux-aarch64-deb` (or the actual installed target) to remove that key
+while retaining the real opposite-format entry and a generic trap. The server does not
+invent packages for absent architectures, elevate privileges, alter environments or
+perform installation. This command is a later-lease runbook, not a recorded desktop run.
+
 Run the sequence separately for each architecture and format. Archive each actual command,
 exit status, standard output/error and the relevant manifest/server request log. Stop on a
 failure and record it; do not relabel a rejected or unavailable operation as success.
@@ -155,6 +184,22 @@ failure and record it; do not relabel a rejected or unavailable operation as suc
 For substituted staging, retain a receipt showing the adapter copied the caller package
 once into its private root directory, checked that staged digest, and passed that same
 fixed staged path to `dpkg`; replacing the caller copy must not change installed bytes.
+The hosted `deb/live-caller-substitution` case uses an unprivileged
+[inotify watcher](../../spikes/1057/installed-updater/probe/replace-on-open.py) on genuine
+caller-owned signed v1 while v2 is installed. It replaces the caller path with invalid
+bytes after the adapter opens it. One ordered inotify queue must place the atomic
+replacement before the original reader closes; a late wakeup, timeout or overflow fails
+the case. The adapter must authenticate the original root-staged v1, refuse its lower
+version, never invoke `dpkg`, and preserve installed hashes while the caller-path hash
+changes. This proves the copy-once/refusal seam, not an interrupted installation.
+[Linux inotify ordering and limitations](https://man7.org/linux/man-pages/man7/inotify.7.html)
+
+The signed AppImage wrong-architecture negative changes only ELF `e_machine` in genuine
+v2 bytes and signs that malformed fixture with the disposable key. It is streamed from
+the original plus the recorded two-byte patch; it is never installed or described as a
+valid cross-architecture artifact. A pass requires full updater signature verification,
+refusal before replacement and unchanged installed v1 app/helper/outer hashes.
+
 Keep fixture authority changes isolated to its own polkit action and restore them after
 each test. A hosted fixture allow rule only proves headless integration, never a GDM
 prompt or authentication interaction.

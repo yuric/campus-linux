@@ -3,8 +3,6 @@ on:
   pull_request:
     paths:
       - 'spikes/1057/installed-updater/**'
-      - 'docs/acceptance/installed-updater-1057.md'
-      - 'docs/acceptance/receipts/installed-updater-1057/**'
       - '.github/workflows/l0-installed-updater.yml'
   workflow_dispatch:
 permissions:

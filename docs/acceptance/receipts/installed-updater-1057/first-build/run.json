@@ -1,0 +1,30 @@
+{
+  "source_head": "67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2",
+  "run": "https://github.com/yuric/campus-linux/actions/runs/38910101310",
+  "workflow_conclusion": "failure",
+  "failure": "runner cleanup rm could not remove root-owned exported target/gen/__pycache__ directories",
+  "native_builds": "both completed; signed v1/v2/v3 deb and AppImage",
+  "headless_cases": {
+    "arm64": {
+      "passed": 24,
+      "failed": 0
+    },
+    "amd64": {
+      "passed": 24,
+      "failed": 0
+    }
+  },
+  "package_artifacts": {
+    "arm64": {
+      "id": 12050801153,
+      "zip_bytes": 257737151,
+      "package_bytes": 257065672
+    },
+    "amd64": {
+      "id": 12050671914,
+      "zip_bytes": 262889749,
+      "package_bytes": 262211058
+    }
+  },
+  "local_download_scope": "only source/receipt ZIPs; no package ZIP downloaded"
+}

@@ -15,6 +15,7 @@ import os
 from pathlib import Path
 import platform
 import pwd
+import select
 import shutil
 import subprocess
 import threading
@@ -37,6 +38,16 @@ def digest(path):
         for chunk in iter(lambda: stream.read(1024 * 1024), b""):
             value.update(chunk)
     return value.hexdigest()
+
+
+def patched_chunks(path, offset, replacement):
+    with open(path, "rb") as stream:
+        prefix = stream.read(offset)
+        if len(prefix) != offset or len(stream.read(len(replacement))) != len(replacement):
+            raise RuntimeError("negative fixture patch exceeds source bytes")
+        yield prefix
+        yield replacement
+        yield from iter(lambda: stream.read(1024 * 1024), b"")
 
 
 class Smoke:
@@ -66,6 +77,19 @@ class Smoke:
             self.packages[artifact["version"], artifact["format"]] = artifact
         if set(self.packages) != {(version, fmt) for version in VERSIONS for fmt in ("deb", "appimage")}:
             raise RuntimeError("expected exactly v1/v2/v3 deb and AppImage")
+        self.negative = json.loads((source / "receipts/signed-negative.json").read_text())
+        original = self.packages["2.0.0", "appimage"]
+        expected_machine = "3e00" if self.arch == "arm64" else "b700"
+        for key, wanted in {"version": "2.0.0", "format": "appimage", "filename": original["filename"],
+                            "offset": 18, "replacement_hex": expected_machine, "bytes": original["bytes"]}.items():
+            if self.negative.get(key) != wanted:
+                raise RuntimeError("signed wrong-architecture fixture schema mismatch: " + key)
+        negative_hash = hashlib.sha256()
+        for block in patched_chunks(original["path"], 18, bytes.fromhex(expected_machine)):
+            negative_hash.update(block)
+        if negative_hash.hexdigest() != self.negative["sha256"] or not self.negative.get("signature"):
+            raise RuntimeError("signed wrong-architecture fixture checksum/signature missing")
+        self.receipt["signed_wrong_architecture_negative"] = self.negative
         self.receipt["architecture"] = self.arch
         self.receipt["uname"] = list(platform.uname())
         self.receipt["os_release"] = Path("/etc/os-release").read_text()
@@ -203,6 +227,14 @@ class Smoke:
                     self.end_headers()
                     self.wfile.write(body)
                     return
+                if self.path == "/negative/wrong-architecture":
+                    self.send_response(200)
+                    self.send_header("Content-Length", str(fixture.negative["bytes"]))
+                    self.end_headers()
+                    source = fixture.packages["2.0.0", "appimage"]["path"]
+                    for block in patched_chunks(source, fixture.negative["offset"], bytes.fromhex(fixture.negative["replacement_hex"])):
+                        self.wfile.write(block)
+                    return
                 match = next((a for a in fixture.packages.values() if self.path == "/packages/" + a["filename"]), None)
                 if not match:
                     self.send_error(404)
@@ -295,7 +327,17 @@ class Smoke:
         elif kind == "wrong-format":
             wrong = self.packages["2.0.0", "appimage" if fmt == "deb" else "deb"]
             selected.update(url=self.url + "/packages/" + wrong["filename"], signature=self.signature(wrong))
-        self.invoke(executable, "--update", success=False)
+        elif kind == "wrong-architecture":
+            if fmt != "appimage":
+                raise RuntimeError("signed ELF negative applies only to AppImage")
+            selected.update(url=self.url + "/negative/wrong-architecture", signature=self.negative["signature"])
+        events = self.invoke(executable, "--update", success=False)
+        if kind == "wrong-architecture":
+            verified = next(event for event in events if event.get("event") == "verified_download")
+            if verified.get("sha256") != self.negative["sha256"] or verified.get("version") != "2.0.0":
+                raise RuntimeError("wrong-architecture negative did not traverse authenticated download")
+            if any(event.get("event") in ("appimage_replaced", "appimage_relaunched") for event in events):
+                raise RuntimeError("wrong-architecture negative reached replacement")
         return self.unchanged(before, executable, "1.0.0", fmt)
 
     def update(self, executable, old, new, fmt):
@@ -334,6 +376,71 @@ class Smoke:
         signature.unlink()
         return dict(self.unchanged(before, APP, "2.0.0", "deb"), adapter=response)
 
+    def caller_substitution(self):
+        before = self.identity(APP, "2.0.0", "deb")
+        artifact = self.packages["1.0.0", "deb"]
+        package = self.work / "caller-substitution.deb"
+        replacement = self.work / "caller-substitution-replacement.deb"
+        signature = self.work / "caller-substitution.sig"
+        invalid = b"invalid caller replacement: fixture 1057\n"
+        shutil.copyfile(artifact["path"], package)
+        replacement.write_bytes(invalid)
+        signature.write_text(self.signature(artifact))
+        for path in (package, replacement, signature):
+            os.chown(path, self.user.pw_uid, self.user.pw_gid)
+            path.chmod(0o600)
+        watcher_command = ["runuser", "-u", USER, "--", "python3", "-B",
+                           "/opt/fixture/probe/replace-on-open.py", "--source", str(package),
+                           "--replacement", str(replacement)]
+        watcher = subprocess.Popen(watcher_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        first_line = ""
+        try:
+            if not select.select([watcher.stdout], [], [], 5)[0]:
+                raise RuntimeError("caller substitution watcher did not arm")
+            first_line = watcher.stdout.readline()
+            ready = json.loads(first_line)
+            if ready.get("event") != "watch_ready" or ready.get("uid") != self.user.pw_uid:
+                raise RuntimeError("caller substitution watcher is not armed as fixture user")
+            started = time.monotonic_ns()
+            result = self.command(["pkexec", "--disable-internal-agent", ADAPTER, package, signature], user=True, check=False)
+            finished = time.monotonic_ns()
+            stdout, stderr = watcher.communicate(timeout=35)
+            self.receipt["commands"].append({"case": self.current, "argv": watcher_command,
+                                              "returncode": watcher.returncode, "stdout": first_line + stdout, "stderr": stderr})
+            self.save()
+            if watcher.returncode:
+                raise RuntimeError("caller replacement timing was not proven; see ordered inotify receipt")
+            observed = next(json.loads(line) for line in stdout.splitlines()
+                            if json.loads(line).get("event") == "caller_path_replaced")
+            if not observed.get("replacement_before_original_reader_close"):
+                raise RuntimeError("replacement did not occur before original source closed")
+            if not all(started <= event["monotonic_ns"] <= finished for event in observed["events"]):
+                raise RuntimeError("caller replacement observations fall outside privileged invocation")
+            expected_replacement = hashlib.sha256(invalid).hexdigest()
+            if observed.get("replacement_sha256") != expected_replacement or digest(package) != expected_replacement:
+                raise RuntimeError("caller path was not replaced with expected invalid bytes")
+            response = json.loads(result.stdout.strip())
+            if result.returncode == 0:
+                raise RuntimeError("substituted lower version unexpectedly installed")
+            for key, wanted in {"status": "refused", "phase": "forward_version", "reason": "signed_same_or_lower_version",
+                                "authenticated_version": "1.0.0", "installed_version": "2.0.0",
+                                "package_sha256": artifact["sha256"], "app_helper_unchanged": True}.items():
+                if response.get(key) != wanted:
+                    raise RuntimeError("root did not authenticate original staged v1 after substitution: " + key)
+            if "dpkg_exit" in response:
+                raise RuntimeError("caller substitution replay invoked dpkg")
+            return dict(self.unchanged(before, APP, "2.0.0", "deb"), adapter=response,
+                        watcher=observed, invocation_started_ns=started, invocation_finished_ns=finished,
+                        caller_before_sha256=artifact["sha256"], caller_after_sha256=expected_replacement)
+        finally:
+            if watcher.poll() is None:
+                watcher.kill()
+                stdout, stderr = watcher.communicate()
+                self.receipt["commands"].append({"case": self.current, "argv": watcher_command,
+                                                  "returncode": watcher.returncode, "stdout": first_line + stdout, "stderr": stderr})
+            for path in (package, replacement, signature):
+                path.unlink(missing_ok=True)
+
     def run_format(self, fmt):
         if fmt == "deb":
             executable = APP
@@ -349,11 +456,14 @@ class Smoke:
         self.case(fmt + "/missing-exact-target", lambda: self.missing_target(executable, fmt))
         for kind in ("bad-signature", "signed-version-mismatch", "wrong-format"):
             self.case(fmt + "/" + kind, lambda kind=kind: self.tampered(executable, fmt, kind))
+        if fmt == "appimage":
+            self.case("appimage/wrong-architecture", lambda: self.tampered(executable, fmt, "wrong-architecture"))
         if not self.case(fmt + "/v1-to-v2", lambda: self.update(executable, "1.0.0", "2.0.0", fmt)):
             return
         if fmt == "deb":
             for version in ("1.0.0", "2.0.0"):
                 self.case("deb/privileged-replay-" + version, lambda version=version: self.replay(version))
+            self.case("deb/live-caller-substitution", self.caller_substitution)
         for version in ("1.0.0", "2.0.0"):
             def no_newer(version=version):
                 before = self.identity(executable, "2.0.0", fmt)
