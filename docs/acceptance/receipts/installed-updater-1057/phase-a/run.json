@@ -1,0 +1,44 @@
+{
+  "scope": "phase A archive verification and read-only preflight only; no installed graphical result",
+  "lease_reference": "Campus task1057 human comment10619",
+  "recorded_unix_ns": 1792162509997970000,
+  "prepared_from_head": "1d878c08fa450c2b6a5fe8f35b394ed27498ed41",
+  "built_package_source": "113a53e4eea44b6d80a8ee3edb55d186d11f3ba6",
+  "private_staging_directory": "/Users/yuri/.campus/coordinate/linux-20261016/environment/1057-gdm-lease",
+  "archives_extracted": false,
+  "guest_artifact_bytes_written": 0,
+  "guest_end_state": "Stopped",
+  "actual_root_route": "pre-existing Lima SSH plus sudo -n, read-only inline system observations; never used for app elevation",
+  "outcome": "download and public byte verification complete; no package/bootstrap/helper/window executed; actual desktop still requires later lease and existing private graphical login",
+  "preflight_attempts": [
+    {
+      "result": "failed",
+      "operation": "loginctl show-user 1000 assertion",
+      "reason": "campusqa has no active logind user; retained this fact in successful broader session inventory"
+    },
+    {
+      "result": "failed",
+      "operation": "loginctl list-sessions --json=short parse",
+      "reason": "guest loginctl did not produce JSON; used supported --no-legend listing then exact show-session reads"
+    },
+    {
+      "result": "completed",
+      "operation": "read-only root/session/service/file/space observations",
+      "receipt": "root-preflight.json"
+    }
+  ],
+  "measurement_limitation": "Preboot disk probe incorrectly expected basedisk/diffdisk and omitted actual disk. First actual allocation sampled after boot; no boot-growth claim. Stopped receipt is the next-lease baseline.",
+  "remaining": [
+    "Coordinator independent source and downloaded-byte review",
+    "Later privileged-operation lease with private existing graphical login and reviewed root staging",
+    "Real prompt/cancel/deny/missing-authority observations and own-change restoration"
+  ],
+  "receipt_sha256": {
+    "archive-validation.json": "dc813864620ad8df11d9435e68bc6d3a95525232c8ec862514e13388f28dc882",
+    "package-verification.json": "a3ea2c0f0de8a48505ee4e8c267051736867f48dab4ed363c82476b9d5ceb91d",
+    "root-preflight.json": "22087630ff567e7790781de965ef3378acdb0bc2bdeb18eae72178cf4ebbcd3f",
+    "runtime-preflight.json": "8396f9fc1840aa2afb8ed0dbea68cb99ac3c28a7ba76e07f4848cd723acb308c",
+    "capacity-preflight.json": "6239035cf355702066ce6367f3d0fdf61bda652f3e93d6ea61a9508a9182754f",
+    "capacity-stopped.json": "d0d35ac0a6e060f0c9cb41f0f08f4bfbbb6114ba15358ab3081c34f9e3230e14"
+  }
+}

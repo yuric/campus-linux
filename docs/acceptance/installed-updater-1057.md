@@ -73,7 +73,7 @@ own earlier build.
 | Signed v1 → v2 and higher v3 with reverted fixture behavior | Pass | Pass | AppImage replacement/relaunch and privileged deb verification |
 | Lower/same signed deb replay refused at privileged seam | Pass | Pass | App/helper hashes unchanged; live caller substitution also passed |
 | Privileged bad signature and signed wrong-architecture AppImage | Pass | Pass | Intended rejecting boundaries; no installation/replacement |
-| GDM polkit prompt, cancellation, denial and missing authority | Awaiting explicit VM lease | Downstream desktop gap | Hosted allow rules cannot satisfy graphical acceptance |
+| GDM polkit prompt, cancellation, denial and missing authority | Awaiting execution lease after phase A | Downstream desktop gap | Hosted allow rules cannot satisfy graphical acceptance |
 
 | Final artifact budget | arm64 | x86_64 |
 |---|---:|---:|
@@ -87,9 +87,10 @@ All twelve package hashes, sizes, signatures and exact manifest targets are in t
 [arm64 package index](receipts/installed-updater-1057/verified-run/arm64/package-index.json)
 and [x86_64 package index](receipts/installed-updater-1057/verified-run/amd64/package-index.json).
 Full admission schemas and public keys are retained alongside them and match the root
-bootstrap and smoke hashes. Package ZIP retention is seven days. Only the two small
-source/receipt ZIPs were downloaded locally. A later approved download needs both the
-package ZIP and its small receipt ZIP, extracted into the same output root.
+bootstrap and smoke hashes. Package ZIP retention is seven days. The initial source
+handoff downloaded only small receipts. The subsequently authorized phase A retrieved
+the exact arm64 package ZIP and reused the coordinator's small receipt ZIP; neither
+archive was extracted on the Mac or executed. Later guest extraction uses one output root.
 
 Worker schema review found exactly two control files (`control`, `md5sums`, 611 bytes
 total), four payload files (app, inert helper, desktop entry and icon) and ten directories
@@ -98,18 +99,45 @@ No scripts, links, special files or adapter/key/verifier/policy paths are admitt
 Admission, package index and extracted payload hashes agree for all three versions on
 both architectures. This is review of these exact fixture packages, not a general installer.
 
-The worker has no VM lease. Office400/#982 exclusively owns Lima until LINUX-20261016
-explicitly transfers it. Do not boot, install, change sessions or run guest probes before
-that transfer. The host is below the 35 GiB large-allocation floor: no local build,
-dependency installation, Docker startup or artifact download. Small source/lock/docs
-preparation is bounded to 128 MiB new allocation while preserving 20 GiB free. Before the
-later arm64 download, report exact hosted artifact bytes and obtain the coordinator's
-resource allocation. No second VM or x86_64 graphical prerequisite is introduced.
+Human direction10619 transferred only phase A after Office400's stop/cleanup:
+bounded download/byte verification and read-only guest preflight, plus source fixes.
+The [phase A record](receipts/installed-updater-1057/phase-a/run.json) binds the actual
+[archive inventory](receipts/installed-updater-1057/phase-a/archive-validation.json),
+[package/public trust verification](receipts/installed-updater-1057/phase-a/package-verification.json)
+and [read-only root observations](receipts/installed-updater-1057/phase-a/root-preflight.json).
+The ZIPs match the approved hashes and total 257,873,625 bytes. Expanded member sizes
+are 257,742,285 and 826,410 bytes. All six package hashes/signatures and six public
+bootstrap files match the admitted source and provisioning receipts. Verification
+streamed members without extraction; no artifact was copied into the guest.
+
+The exclusive Lima guest booted normally and was returned to **Stopped** after preflight.
+Existing noninteractive root management authentication was used only for read-only
+system observations, never for an app update. GDM and polkit were active, but only the
+greeter and management SSH sessions existed; `campusqa` UID1000 had no active desktop
+or runtime directory. The actual rules directory is root-owned `0750`, so desktop
+permission denial must use the explicit root observation rather than imply absence.
+Fixture package/trust/rules were absent. The [runtime receipt](receipts/installed-updater-1057/phase-a/runtime-preflight.json)
+binds actual pkexec and systemd/D-Bus activation hashes; libfuse2 is absent, leaving any
+optional AppImage desktop replay outside this deb authorization preparation.
+
+Guest free space was 20,293,009,408 bytes. The [stopped capacity receipt](receipts/installed-updater-1057/phase-a/capacity-stopped.json)
+records host free space 29,213,704,192 bytes and sparse disk allocation 6,819,020,800 bytes.
+The initial preboot probe mistakenly looked for `basedisk`/`diffdisk`, missing the actual
+`disk` file; no preboot allocation or boot-growth claim is made. The stopped measurement
+is the next lease's baseline. Host-wide deltas are not attributed to this task.
+
+The phase A exception permits at most 260 MiB private Mac staging and 1.25 GiB additional
+guest allocation, preserving 20 GiB host and 2 GiB guest free. Source work remains bounded
+to 128 MiB. No local build, dependency installation, Docker, second VM, package install,
+trust bootstrap, graphical login change or authority-window execution occurred.
 The concrete [arm64 GDM handoff](../../spikes/1057/installed-updater/probe/DESKTOP.md)
 records exact artifacts and extraction/install/storage bounds, graphical PID/session
-binding, genuine prompt observation and bounded authority restoration. It reserves
-1.25 GiB additional guest storage and, only if the coordinator chooses Mac staging,
-260 MiB for ZIP transfer. Neither allocation nor guest access has been granted here.
+binding, genuine prompt observation and bounded authority restoration. Returned source
+requires reviewed root-owned staging with isolated Python, explicit protected-rule
+evidence, post-invocation observer statements and actual authority-window timestamps.
+LINUX-20261016 must independently clear these bytes/source and grant the later privileged
+execution lease, including existing private graphical login, before those commands run.
+No second VM or x86_64 graphical prerequisite is introduced.
 
 ## Fixture and trust boundaries
 
@@ -310,7 +338,8 @@ headless updater pass closes those gates.
 
 Worker verification uses `python3 -B scripts/verify_repository.py` (30 policy regressions,
 boundary, acceptance inventory, links and legacy OpenAPI), the adapter's ten stdlib
-tests, the smoke validator's six regression tests, Python AST and shell syntax checks,
+tests, the probe's nineteen source regressions (six smoke, eleven desktop and two
+authority-window tests), Python AST and shell syntax checks,
 and `git diff --check`. At source113a53e, the live `check-linux-admission.py --pr 13
 --head 113a53e4eea44b6d80a8ee3edb55d186d11f3ba6` accepted all six required checks.
 The coordinator takes sole CI/Council observation for the later handoff head, as directed

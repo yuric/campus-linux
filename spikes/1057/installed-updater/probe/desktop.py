@@ -27,6 +27,7 @@ HELPER = "/usr/lib/campus-updater-1057/inert-helper.txt"
 POLICY = Path("/usr/share/polkit-1/actions/dev.projectcampus.updater1057.policy")
 HOSTED_RULE = Path("/etc/polkit-1/rules.d/49-campus-updater-1057-headless.rules")
 CAPTURE_LIMIT = 128 * 1024
+RECEIPT_LIMIT = 1024 * 1024
 
 
 def require(condition, reason):
@@ -44,6 +45,78 @@ def file_record(path, maximum=16 * 1024 * 1024):
             value.update(block)
     return {"path": str(path.absolute()), "bytes": info.st_size, "sha256": value.hexdigest(),
             "uid": info.st_uid, "mode": oct(stat.S_IMODE(info.st_mode)), "mtime_ns": info.st_mtime_ns}
+
+
+def root_preflight(path, expected_sha256, lease_reference, uid):
+    """Bind an exported read-only root observation to the coordinator's digest.
+
+    Exported copies need not retain root ownership. The supplied digest is the
+    coordinator's provenance binding, not a signature or a grant of authority.
+    Refresh the observation after provisioning and before the desktop cases.
+    """
+    record = file_record(path, RECEIPT_LIMIT)
+    require(record["sha256"] == expected_sha256, "root preflight digest differs from coordinator binding")
+    with path.open("rb") as stream:
+        content = stream.read(RECEIPT_LIMIT + 1)
+    require(len(content) <= RECEIPT_LIMIT and hashlib.sha256(content).hexdigest() == expected_sha256,
+            "root preflight changed while reading coordinator-bound evidence")
+    value = json.loads(content)
+    require(value.get("schema") == 1 and value.get("kind") == "campus1057-root-preflight"
+            and value.get("lease_reference") == lease_reference and value.get("graphical_uid") == uid,
+            "root preflight does not match this lease and graphical user")
+    require(type(value.get("observed_unix_ns")) is int and 0 < value["observed_unix_ns"] <= time.time_ns(),
+            "root preflight lacks its actual observation time")
+    require(value.get("hosted_allow_rule") == {"path": str(HOSTED_RULE), "exists": False},
+            "root preflight must explicitly observe absence of this fixture's headless allow rule")
+    require(isinstance(value.get("rules"), list) and len(value["rules"]) <= 128,
+            "root preflight requires a bounded rules inventory")
+    return {"file": record, "observation": value,
+            "provenance": "coordinator-supplied digest binds exported root observation; independent review required",
+            "freshness": "refresh after fixture provisioning and before actual desktop cases"}
+
+
+def hosted_rule_observation(verified_preflight=None):
+    try:
+        HOSTED_RULE.lstat()
+    except FileNotFoundError:
+        return {"path": str(HOSTED_RULE), "exists": False, "source": "desktop lstat"}
+    except PermissionError:
+        require(verified_preflight is not None,
+                "desktop cannot inspect protected rule path; provide coordinator-bound root preflight absence evidence")
+        return {"path": str(HOSTED_RULE), "exists": None, "unreadable": "PermissionError",
+                "absence_source": "root_preflight.observation.hosted_allow_rule"}
+    raise RuntimeError("hosted automatic-allow rule must not exist during GDM evidence")
+
+
+def record_outcome(path, observer, observation):
+    """Attach an actual human observation only after the recorded invocation ends."""
+    descriptor = os.open(path, os.O_RDWR | os.O_NOFOLLOW)
+    with os.fdopen(descriptor, "r+") as stream:
+        info = os.fstat(stream.fileno())
+        require(stat.S_ISREG(info.st_mode) and info.st_uid == os.getuid()
+                and not info.st_mode & 0o077 and info.st_size <= RECEIPT_LIMIT,
+                "outcome requires this user's private bounded receipt")
+        value = json.load(stream)
+        require(value.get("schema") == 1 and value.get("status") in
+                ("observation_recorded", "not_certified", "incomplete"), "recorder has not finished")
+        updates = [command for command in value.get("commands", [])
+                   if command.get("argv", [])[:2] == [APP, "--update"]]
+        require(len(updates) == 1 and type(updates[0].get("finished_ns")) is int,
+                "receipt lacks a completed updater invocation")
+        require(value.get("observer_statement") is None, "actual outcome is already recorded")
+        now = time.time_ns()
+        require(now >= updates[0]["finished_ns"], "outcome time precedes invocation completion")
+        value["observer_statement"] = {"observer": observer, "observation": observation,
+                                       "recorded_unix_ns": now, "invocation_finished_ns": updates[0]["finished_ns"],
+                                       "review": "actual operator statement; independent coordinator review required"}
+        value["acceptance"] = "pending_coordinator_review"
+        encoded = json.dumps(value, indent=2) + "\n"
+        require(len(encoded.encode()) <= RECEIPT_LIMIT, "outcome would exceed bounded receipt")
+        stream.seek(0)
+        stream.write(encoded)
+        stream.truncate()
+        stream.flush()
+        os.fsync(stream.fileno())
 
 
 def logind_process(pid):
@@ -82,7 +155,8 @@ class Recorder:
                         "case": args.case, "lease_reference": args.lease_reference,
                         "authority_reference": args.authority_reference, "source_head_claim": args.source_head,
                         "recorder": file_record(__file__, 128 * 1024), "commands": [],
-                        "observer_statement": {"observer": args.observer, "observation": args.observation},
+                        "planned_scenario": {"observer": args.observer, "description": args.planned_observation},
+                        "observer_statement": None,
                         "limits": {"capture_bytes_per_command": CAPTURE_LIMIT, "update_timeout_seconds": args.timeout},
                         "gui_evidence": "not automatically certified; coordinator must inspect actual compositor capture"}
         self.save()
@@ -197,7 +271,7 @@ class Recorder:
                 record["pkexec_pid_observation"] = {"executable_observed_pids": executable_pids,
                                                     "name_only_pids": name_only_pids,
                                                     "status": "observed" if executable_pids else "not_verified_coordinator_review_required",
-                                                    "limitation": "bounded sampling cannot prove child absence; quick refusals may finish before sampling"}
+                                                    "limitation": "unprivileged /proc pkexec executable lookup may be denied after setuid; name-only is not executable verification; bounded sampling may miss quick refusals"}
             self.save()
         return record
 
@@ -209,7 +283,13 @@ class Recorder:
     def bind_session(self):
         require(platform.system() == "Linux" and platform.machine() == "aarch64", "recorder requires the leased native arm64 Linux guest")
         require(os.getuid() == os.geteuid() != 0, "recorder must be the unprivileged desktop user")
-        require(not HOSTED_RULE.exists(), "hosted automatic-allow rule must not exist during GDM evidence")
+        preflight = None
+        if self.args.root_preflight is not None:
+            preflight = root_preflight(self.args.root_preflight, self.args.root_preflight_sha256,
+                                       self.args.lease_reference, os.getuid())
+            self.receipt["root_preflight"] = preflight
+        self.receipt["hosted_rule_observation"] = hosted_rule_observation(preflight)
+        self.save()
         user = self.properties("user", os.getuid())
         sessions = user.get("Sessions", "").split()
         require(0 < len(sessions) <= 8, "cannot bound this user's actual logind sessions")
@@ -408,26 +488,46 @@ class Recorder:
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--case", required=True, choices=("prompt", "cancel", "deny", "missing-authority"))
-    parser.add_argument("--lease-reference", required=True, help="explicit coordinator lease comment/receipt reference; not a grant of authority")
-    parser.add_argument("--authority-reference", required=True, help="coordinator's actual authority-window preparation receipt")
-    parser.add_argument("--source-head", required=True, help="full reviewed source SHA; recorder hash is independently retained")
-    parser.add_argument("--index", required=True, type=Path, help="reviewed native hosted receipts/package-index.json")
-    parser.add_argument("--inventory", required=True, type=Path, help="matching hosted receipts/payload-inventory.json")
+    mode = parser.add_mutually_exclusive_group(required=True)
+    mode.add_argument("--case", choices=("prompt", "cancel", "deny", "missing-authority"))
+    mode.add_argument("--record-outcome", type=Path, help="completed receipt to append the actual observation to, after the recorder exits")
+    parser.add_argument("--lease-reference", help="explicit coordinator lease comment/receipt reference; not a grant of authority")
+    parser.add_argument("--authority-reference", help="coordinator's actual authority-window preparation receipt")
+    parser.add_argument("--source-head", help="full reviewed source SHA; recorder hash is independently retained")
+    parser.add_argument("--index", type=Path, help="reviewed native hosted receipts/package-index.json")
+    parser.add_argument("--inventory", type=Path, help="matching hosted receipts/payload-inventory.json")
+    parser.add_argument("--root-preflight", type=Path, help="exported root rule inventory/absence receipt refreshed after provisioning")
+    parser.add_argument("--root-preflight-sha256", help="coordinator-verified SHA-256 binding for the exported root receipt")
     parser.add_argument("--endpoint", default="http://127.0.0.1:17857/stable/linux.json")
     parser.add_argument("--observer", required=True)
-    parser.add_argument("--observation", required=True, help="actual observed GUI outcome; never enter any password or secret")
+    parser.add_argument("--planned-observation", help="planned scenario only; not a claim about an outcome")
+    parser.add_argument("--observation", help="actual observed GUI outcome, only with --record-outcome; never enter any password or secret")
     parser.add_argument("--screenshot", type=Path, help="fresh compositor PNG captured during this invocation; mandatory for prompt/cancel")
-    parser.add_argument("--receipt", required=True, type=Path, help="new receipt path in an existing user-owned evidence directory")
+    parser.add_argument("--receipt", type=Path, help="new receipt path in an existing user-owned evidence directory")
     parser.add_argument("--timeout", type=int, default=180)
     args = parser.parse_args()
+    if not args.observer.strip() or len(args.observer) > 2048:
+        parser.error("observer must be nonempty and bounded")
+    if args.record_outcome is not None:
+        if not args.observation or not args.observation.strip() or len(args.observation) > 2048:
+            parser.error("--record-outcome requires a nonempty bounded --observation")
+        record_outcome(args.record_outcome, args.observer, args.observation)
+        return
+    if any(getattr(args, name) is None for name in
+           ("lease_reference", "authority_reference", "source_head", "index", "inventory", "receipt", "planned_observation")):
+        parser.error("--case requires lease/authority references, source head, index, inventory, receipt and planned observation")
+    if args.observation is not None:
+        parser.error("actual --observation is accepted only after the run, using --record-outcome")
+    if (args.root_preflight is None) != (args.root_preflight_sha256 is None) or (
+            args.root_preflight_sha256 is not None and not re.fullmatch(r"[0-9a-f]{64}", args.root_preflight_sha256)):
+        parser.error("--root-preflight and its coordinator-verified --root-preflight-sha256 must be supplied together")
     endpoint = urlsplit(args.endpoint)
     if endpoint.scheme != "http" or endpoint.hostname != "127.0.0.1" or endpoint.username or endpoint.password or endpoint.path != "/stable/linux.json" or endpoint.query or endpoint.fragment:
         parser.error("endpoint must be the literal loopback fixture /stable/linux.json")
     if not re.fullmatch(r"[0-9a-f]{40}", args.source_head) or not 15 <= args.timeout <= 300:
         parser.error("requires a full source SHA and timeout between 15 and 300 seconds")
     if any(not value.strip() or len(value) > 2048 for value in
-           (args.lease_reference, args.authority_reference, args.observer, args.observation)):
+           (args.lease_reference, args.authority_reference, args.planned_observation)):
         parser.error("lease/authority references and observer statements must be nonempty and bounded")
     if args.case in ("prompt", "cancel") and args.screenshot is None:
         parser.error("prompt/cancel requires the actual compositor screenshot destination")

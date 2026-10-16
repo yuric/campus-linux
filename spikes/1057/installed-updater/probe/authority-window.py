@@ -2,8 +2,9 @@
 """Leased, root-operated GDM negative-evidence window; never acquires privilege.
 
 Prepared source only: this helper must not run before the coordinator grants the
-exclusive VM lease. Run from an existing independent root control session, while
-the real installed fixture is launched by its existing GDM user session.
+execution lease. Stage the reviewed SHA-bound bytes in a fresh root-owned,
+nonwritable directory and invoke /usr/bin/python3 -I -B from an existing independent
+root control session. The installed fixture runs in its existing GDM user session.
 
 A killed process cannot execute finally. Recovery from that independent root
 session: inspect the receipt; remove ONLY the recorded matching fixture deny rule,
@@ -53,6 +54,22 @@ def safe_root_parent(path, private=False):
         require(not path.stat().st_mode & 0o077, "receipt parent must be root-private")
 
 
+def staged_source(path, expected_sha256):
+    require(re.fullmatch(r"[0-9a-f]{64}", expected_sha256), "invalid reviewed source SHA-256")
+    require(path.is_absolute() and path.resolve(strict=True) == path,
+            "authority helper must have an absolute nonsymlinked path")
+    safe_root_parent(path.parent, private=True)
+    require(not path.parent.stat().st_mode & 0o222, "staged helper directory must be nonwritable")
+    info = path.stat()
+    require(stat.S_ISREG(info.st_mode) and info.st_uid == 0 and not info.st_mode & 0o222,
+            "staged helper must be a root-owned nonwritable regular file")
+    digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    require(digest == expected_sha256, "staged helper differs from reviewed source SHA-256")
+    return {"path": str(path), "sha256": digest, "uid": info.st_uid,
+            "mode": oct(stat.S_IMODE(info.st_mode)), "isolated_python": True,
+            "bytecode_disabled": True}
+
+
 def deny_rule(user, lease, pid=None, session=None):
     # Polkit 124 exposes subject.user, not subject.uid. The caller validates the
     # exact UID/name mapping through NSS before creating this deny-only rule.
@@ -86,6 +103,7 @@ class Window:
         self.initial = None
         self.record = {"scope": "leased GDM negative preparation only", "mode": args.mode,
                        "lease": args.lease, "uid": args.uid,
+                       "authority_helper": args.source_receipt,
                        "shared_authority_window_acknowledged": args.allow_shared_authority_window,
                        "requested_seconds": args.duration_seconds, "commands": [],
                        "status": "preparing", "cleanup": "not_needed"}
@@ -228,6 +246,7 @@ class Window:
                     and "masked" in activation.stderr, "activation was not rejected at the runtime mask")
             require(not self.owner(), "authority appeared after activation attempt")
         self.record["status"] = "ready"
+        self.record["ready_unix_ns"] = time.time_ns()
         self.record["remaining_seconds"] = max(0, self.deadline - time.monotonic())
         self.save()
         print(json.dumps({"event": "authority_window_ready", "mode": self.args.mode,
@@ -235,6 +254,13 @@ class Window:
                           "remaining_seconds": self.record["remaining_seconds"]}), flush=True)
 
     def restore(self):
+        self.record["restore_started_unix_ns"] = time.time_ns()
+        try:
+            self.save()
+        except OSError as error:
+            # Receipt I/O failure must not prevent removal of our own authority
+            # change. Preserve the error if a later receipt write succeeds.
+            self.record["restore_start_persist_error"] = type(error).__name__
         if self.owned is None:
             return
         path = RULE if self.args.mode == "deny" else MASK
@@ -266,6 +292,8 @@ def main():
     parser.add_argument("--uid", required=True, type=int)
     parser.add_argument("--duration-seconds", type=int, default=20)
     parser.add_argument("--receipt", required=True, type=Path)
+    parser.add_argument("--source-sha256", required=True,
+                        help="SHA-256 of independently reviewed, root-staged authority helper")
     parser.add_argument("--subject-pid", type=int)
     parser.add_argument("--session-id")
     parser.add_argument("--allow-shared-authority-window", action="store_true")
@@ -273,6 +301,8 @@ def main():
     require(sys.platform == "linux" and os.getuid() == 0 and os.geteuid() == 0,
             "requires an existing Linux root control session")
     require("PKEXEC_UID" not in os.environ, "must not be launched through pkexec")
+    require(sys.flags.isolated and sys.dont_write_bytecode, "invoke /usr/bin/python3 -I -B")
+    args.source_receipt = staged_source(Path(__file__), args.source_sha256)
     require(args.uid > 0 and 15 <= args.duration_seconds <= 45, "invalid nonroot UID or duration (15..45 seconds)")
     require(re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}", args.lease), "invalid explicit lease identifier")
     require(args.subject_pid is None or args.subject_pid > 1, "invalid subject PID")

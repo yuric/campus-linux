@@ -1,9 +1,11 @@
 # Arm64 GDM lease handoff — #1057
 
-Prepared source only. No desktop case has run. LINUX-20261016 owns the explicit
-download/VM lease after Office400's stopped/cleanup handoff, private existing guest
-authentication, independent review, CI/Council and merge. The worker must not start
-Lima, access the guest or retrieve package archives before that lease.
+No desktop case has run. Direction10619 authorizes phase A: the exact archive
+download/verification and read-only guest preflight. Root staging, bootstrap/helper
+execution, package installation and authority windows below remain prepared source
+for a later execution lease. LINUX-20261016 owns that lease after Office400's
+stopped/cleanup handoff, private existing guest authentication, independent review,
+CI/Council and merge. A read-only preflight does not authorize the later commands.
 
 ## Exact inputs and bounded allocation
 
@@ -40,6 +42,7 @@ No package is executed until coordinator verification of these exact bytes.
 | Caller and root-staged deb copies | 9412104 bytes |
 | Old/new installed deb payload allowance | 30175088 bytes |
 | Separately provisioned public trust/verifier | 64 MiB |
+| Root-owned helper/bootstrap staging | 65 MiB |
 | Desktop receipts/screenshots | 64 MiB |
 | Filesystem/package-manager overhead reserve | 128 MiB |
 
@@ -54,18 +57,68 @@ fixture process, a loopback server and the bounded authority window.
 
 ## Preflight and initial provisioning
 
+Phase A read-only inspection found active GDM with only its greeter (`c1`, UID110)
+and the SSH management session (`4`, UID501); existing `campusqa` UID1000 had no
+active session/runtime. Neither greeter nor SSH is the required user desktop.
+The later execution lease must include an existing private graphical login, then
+bind that actual new session. No login or configuration change was made in phase A.
+`/etc/polkit-1/rules.d` was root-owned `0750` (GID989), explaining desktop read denial;
+`/run/systemd/system` was root-owned `0755`. Polkit was active/running without masks
+or drop-ins, owned its system-bus name and supported systemd activation. Preserve
+those constraints. `libfuse2t64` was absent; optional AppImage desktop replay remains
+separate from these deb authorization cases and does not authorize installation.
+
 Record the lease reference, approved directories and byte budget, actual Ubuntu/arm64
 identity, active local GDM session, user/UID, session leader, Wayland/X11 display,
 runtime directory and relevant polkit/D-Bus/GTK versions. Preserve existing session
 and service state. Reject a pre-existing `campus-updater-1057` package, trust directory
 or fixture polkit rule rather than overwriting it. No headless allow rule may be present.
+The existing private root context must inspect the actual rules-directory owner/mode
+and effective policy files when the desktop user cannot read them. Export a bounded
+JSON preflight receipt and bind its SHA-256 in the coordinator handoff. Preserve the
+observed directory restrictions; do not relax them to make an unprivileged read work.
+After later provisioning, refresh that root inventory before running desktop cases:
+the phase A baseline cannot certify subsequently changed authority state.
 
 Use only the coordinator's existing private guest authentication for root provisioning.
 Do not collect an administrator password, put it in arguments/logs, use `sudo -S`,
-terminal sudo, or build an alternate escalation path. In that already-authorized root
-context, run the reviewed `bootstrap/bootstrap.py --bundle ABSOLUTE_BUNDLE_PATH`,
-then install the exact v1 deb as initial provisioning. Initial `dpkg --install` is
-separate from the updater; every update invokes the real fixed pkexec adapter.
+terminal sudo, or build an alternate escalation path. The remaining provisioning
+commands require the later execution lease, not phase A.
+
+Before either privileged Python program runs, stage its exact reviewed bytes from
+that independent root context into a fresh root-owned directory under `/root`, with
+root-controlled nonsymlinked ancestors. Use `0700` while copying, then `0500` for the
+staging directory and `0400` for every staged file. Never execute a helper directly
+from the desktop user's checkout or extracted bundle. Independently compare the
+staged authority helper SHA-256 to the reviewed source head; compare the staged
+`bootstrap.py` to source113a53e's `fixture-inputs.json`. Also stage and independently
+compare all bootstrap inputs to the admitted provisioning receipts:
+`install-deb.py`, `verify-signature`, `public-key.txt`, `admission.json` and
+`dev.projectcampus.updater1057.policy`. This matters because bootstrap explicitly
+imports its bundled adapter. Keep all six bootstrap files in the same staged
+`bootstrap` subdirectory; make that directory `0500` too. A hash generated from the
+new copy alone is not verification against the admitted bytes.
+
+Authority-helper staging command shape, only in the later root execution lease:
+
+```sh
+umask 077
+stage_root=$(/usr/bin/mktemp -d /root/campus1057-reviewed.XXXXXXXX)
+authority_sha256='REVIEWED_AUTHORITY_HELPER_SHA256'
+/usr/bin/install -m 0400 /approved/source/authority-window.py "$stage_root/authority-window.py"
+/usr/bin/chmod 0500 "$stage_root"
+printf '%s  %s\n' "$authority_sha256" "$stage_root/authority-window.py" | /usr/bin/sha256sum --check --strict
+```
+
+Record the actual staging paths, owners, modes, expected and observed SHA-256s in
+the lease receipt, and stop if any comparison fails. Prepare the bootstrap staging
+directory by the same copy/compare/lock procedure. Execute the verified staged copy
+using `/usr/bin/python3 -I -B /root/ACTUAL_STAGE/bootstrap/bootstrap.py --bundle
+/root/ACTUAL_STAGE/bootstrap`, then install the exact v1 deb as initial provisioning.
+Both root Python invocations use `-I -B`: this excludes user-controlled module paths
+(including a neighboring or working-directory `json.py`) and avoids bytecode writes.
+Initial `dpkg --install` is separate from the updater; every update invokes the real
+fixed pkexec adapter.
 
 Launch `serve.py` as the actual GDM user with the final package index, `--version 2`,
 `--port 17857` and a lease-specific request log. Launch the desktop recorder from the
@@ -83,7 +136,9 @@ python3 -B spikes/1057/installed-updater/probe/desktop.py \
   --source-head 113a53e4eea44b6d80a8ee3edb55d186d11f3ba6 \
   --index /approved/output/receipts/package-index.json \
   --inventory /approved/output/receipts/payload-inventory.json \
-  --observer 'ACTUAL_OBSERVER' --observation 'ACTUAL_GUI_OUTCOME' \
+  --root-preflight /approved/evidence/root-policy-preflight.json \
+  --root-preflight-sha256 'COORDINATOR_VERIFIED_PREFLIGHT_SHA256' \
+  --observer 'ACTUAL_OBSERVER' --planned-observation 'Observe the prompt and select cancel' \
   --receipt /approved/evidence/cancel.json \
   --screenshot /approved/evidence/cancel.png --timeout 40
 ```
@@ -91,13 +146,30 @@ python3 -B spikes/1057/installed-updater/probe/desktop.py \
 Use `deny`, `missing-authority` or `prompt` for the other cases. The prompt/cancel
 screenshot must be captured during the invocation, before any password is entered.
 For deny/missing-authority, supply the actual bounded-window receipt reference.
-
-From the already-authorized independent root context, with an existing root-owned
-`0700` receipt directory, prepare a window using the actual GDM UID:
+The initial command records the intended interaction only. After the process exits,
+the actual observer records what happened, including unexpected or absent prompts:
 
 ```sh
-python3 -B spikes/1057/installed-updater/probe/authority-window.py deny \
+python3 -B spikes/1057/installed-updater/probe/desktop.py \
+  --record-outcome /approved/evidence/cancel.json \
+  --observer 'ACTUAL_OBSERVER' --observation 'ACTUAL_GUI_OUTCOME'
+```
+
+The separately timed observation does not replace the technical result or independently
+prove the prompt; both remain for coordinator review. An unprivileged process may be
+denied `/proc/PID/exe` access for setuid pkexec. Preserve `name_only`/unavailable evidence
+honestly; do not call a process-name sample proof of the executable path. Correlate
+that sample with the exact app child PID, polkit subject/session and the fixed invoked
+`/usr/bin/pkexec` path; root may inspect that exact PID if the execution lease allows.
+
+From the already-authorized independent root context, with an existing root-owned
+`0700` receipt directory, prepare a window using the actual GDM UID and session ID
+from verified logind binding. Use the staged helper and the SHA-256 verified above:
+
+```sh
+/usr/bin/python3 -I -B "$stage_root/authority-window.py" deny \
   --lease COORDINATOR_LEASE_ID --uid ACTUAL_GDM_UID --duration-seconds 45 \
+  --session-id ACTUAL_GDM_SESSION_ID --source-sha256 "$authority_sha256" \
   --receipt /approved/root-private/deny-window.json
 ```
 
@@ -109,6 +181,14 @@ reserved for restoration, so use `--timeout 20` for the refusal recorder. For de
 also require the matching `campus1057-deny-loaded` and actual `campus1057-deny` journal
 markers: rule-file creation is not proof of denial. Preserve journal lines only for
 this lease's marker and subject PID, not an unrelated session log dump.
+The 45-second total authority bound and 20-second recorder timeout stay unchanged.
+Afterward, the reviewer must compare the actual update invocation's start/end times
+with `ready_unix_ns` and `restore_started_unix_ns` in the authority receipt: the whole
+invocation must fall within that interval. Window creation/readiness alone is not
+proof that the update occurred while denial or missing authority was effective.
+For denial, also establish that the matching loaded marker preceded that invocation.
+Do not prefilter the rule by a PID that does not exist yet; bind the actual session
+and correlate the logged rejecting subject PID to the observed app child afterward.
 
 Elapsed overruns or failed restoration remain failures even if the command eventually
 restores authority. An abrupt process kill can prevent in-process restoration; the
@@ -128,7 +208,7 @@ pkexec result. A network/startup failure is not an authority refusal.
    screenshot hash; require no adapter entry and unchanged v1 app/helper bytes.
 2. **Explicit denial.** In the private root context use the bounded `deny` authority
    window. Its temporary rule matches only this fixture action and the actual GDM
-   username, optionally the observed subject/session, and logs the rejecting PID.
+   username and actual session ID, and logs the rejecting PID.
    Invoke the same installed update; correlate the polkit log and invocation/session.
    Require no adapter entry and unchanged bytes. Remove only the exact rule created
    by this window and verify the original authority still operates.

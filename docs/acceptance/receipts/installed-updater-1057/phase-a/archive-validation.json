@@ -1,0 +1,180 @@
+{
+  "arm64-packages.zip": {
+    "bytes": 257745483,
+    "sha256": "6a7fe78c15105644067cf373e417949f0bb45138972bc9bf9396ba390164f419",
+    "members": 18,
+    "expanded_bytes": 257742285,
+    "expanded_limit": 314572800,
+    "member_inventory": [
+      {
+        "name": "packages/campus-updater-1057_1.0.0_aarch64.AppImage",
+        "bytes": 80988680
+      },
+      {
+        "name": "packages/campus-updater-1057_1.0.0_aarch64.AppImage.sig",
+        "bytes": 456
+      },
+      {
+        "name": "packages/campus-updater-1057_1.0.0_arm64.deb",
+        "bytes": 4705600
+      },
+      {
+        "name": "packages/campus-updater-1057_1.0.0_arm64.deb.sig",
+        "bytes": 448
+      },
+      {
+        "name": "packages/campus-updater-1057_2.0.0_aarch64.AppImage",
+        "bytes": 80984584
+      },
+      {
+        "name": "packages/campus-updater-1057_2.0.0_aarch64.AppImage.sig",
+        "bytes": 456
+      },
+      {
+        "name": "packages/campus-updater-1057_2.0.0_arm64.deb",
+        "bytes": 4706052
+      },
+      {
+        "name": "packages/campus-updater-1057_2.0.0_arm64.deb.sig",
+        "bytes": 448
+      },
+      {
+        "name": "packages/campus-updater-1057_3.0.0_aarch64.AppImage",
+        "bytes": 80984584
+      },
+      {
+        "name": "packages/campus-updater-1057_3.0.0_aarch64.AppImage.sig",
+        "bytes": 456
+      },
+      {
+        "name": "packages/campus-updater-1057_3.0.0_arm64.deb",
+        "bytes": 4704504
+      },
+      {
+        "name": "packages/campus-updater-1057_3.0.0_arm64.deb.sig",
+        "bytes": 448
+      },
+      {
+        "name": "bootstrap/admission.json",
+        "bytes": 11578
+      },
+      {
+        "name": "bootstrap/bootstrap.py",
+        "bytes": 3244
+      },
+      {
+        "name": "bootstrap/dev.projectcampus.updater1057.policy",
+        "bytes": 793
+      },
+      {
+        "name": "bootstrap/install-deb.py",
+        "bytes": 18130
+      },
+      {
+        "name": "bootstrap/public-key.txt",
+        "bytes": 152
+      },
+      {
+        "name": "bootstrap/verify-signature",
+        "bytes": 631672
+      }
+    ]
+  },
+  "arm64-source-receipts.zip": {
+    "bytes": 128142,
+    "sha256": "df4efdf7f4dc79f8ccc6869b94ab1cb79c678cbacc02eb943203a5c54fdbf878",
+    "members": 22,
+    "expanded_bytes": 826410,
+    "expanded_limit": 4194304,
+    "member_inventory": [
+      {
+        "name": "locks/Cargo.lock",
+        "bytes": 116119
+      },
+      {
+        "name": "receipts/admission.json",
+        "bytes": 11578
+      },
+      {
+        "name": "receipts/build-image-id.txt",
+        "bytes": 72
+      },
+      {
+        "name": "receipts/build-inputs-1.0.0.json",
+        "bytes": 612
+      },
+      {
+        "name": "receipts/build-inputs-2.0.0.json",
+        "bytes": 611
+      },
+      {
+        "name": "receipts/build-inputs-3.0.0.json",
+        "bytes": 612
+      },
+      {
+        "name": "receipts/build.json",
+        "bytes": 1001
+      },
+      {
+        "name": "receipts/bundler-helper-inputs.json",
+        "bytes": 780
+      },
+      {
+        "name": "receipts/campus-1057-build-packages.tsv",
+        "bytes": 18033
+      },
+      {
+        "name": "receipts/campus-release-baseline-packages.tsv",
+        "bytes": 17979
+      },
+      {
+        "name": "receipts/fixture-inputs.json",
+        "bytes": 3935
+      },
+      {
+        "name": "receipts/installed-smoke.json",
+        "bytes": 176006
+      },
+      {
+        "name": "receipts/package-index.json",
+        "bytes": 4816
+      },
+      {
+        "name": "receipts/payload-inventory.json",
+        "bytes": 360171
+      },
+      {
+        "name": "receipts/phase.json",
+        "bytes": 55
+      },
+      {
+        "name": "receipts/polkit.log",
+        "bytes": 0
+      },
+      {
+        "name": "receipts/public-key.txt",
+        "bytes": 152
+      },
+      {
+        "name": "receipts/rust-dependencies.json",
+        "bytes": 85783
+      },
+      {
+        "name": "receipts/signed-negative.json",
+        "bytes": 710
+      },
+      {
+        "name": "receipts/smoke-image-id.txt",
+        "bytes": 72
+      },
+      {
+        "name": "receipts/toolchain-downloads.json",
+        "bytes": 1485
+      },
+      {
+        "name": "receipts/xvfb.log",
+        "bytes": 25828
+      }
+    ]
+  }
+}

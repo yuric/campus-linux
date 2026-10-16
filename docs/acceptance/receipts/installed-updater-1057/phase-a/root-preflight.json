@@ -1,0 +1,440 @@
+{
+  "schema": 1,
+  "kind": "campus1057-root-preflight",
+  "lease_reference": "Campus task1057 comment10619 phase A",
+  "observed_unix_ns": 1792162299742027967,
+  "graphical_uid": 1000,
+  "graphical_user": "campusqa",
+  "hosted_allow_rule": {
+    "path": "/etc/polkit-1/rules.d/49-campus-updater-1057-headless.rules",
+    "exists": false
+  },
+  "rules": [
+    {
+      "path": "/usr/share/polkit-1/rules.d/49-ubuntu-admin.rules",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o644",
+      "bytes": 104,
+      "type": "file",
+      "sha256": "543995005caa05d096b9781b27a48e2369ef61e39a8a52234d2d271b6d0a9c1e"
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/50-default.rules",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o644",
+      "bytes": 325,
+      "type": "file",
+      "sha256": "29f073ed9a8a6996b62f718e2bec962d5c84d311d23bb874830b4f9887eeabbf"
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/gnome-control-center.rules",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o644",
+      "bytes": 556,
+      "type": "file",
+      "sha256": "e8006001eae0c8beefc6aeeed185d28a260d78e6beeceb3560da4707cbca778d"
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/org.freedesktop.GeoClue2.rules",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o644",
+      "bytes": 287,
+      "type": "file",
+      "sha256": "392e205d6b993b8e629c35ddd2307ad8460bd41ff893801028c2e530fe816567"
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/org.freedesktop.bolt.rules",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o644",
+      "bytes": 368,
+      "type": "file",
+      "sha256": "16da883b6ec384e0018b7e955efef1726e6470c2b4f72bfc23f9aadbec0709ca"
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/org.freedesktop.fwupd.rules",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o644",
+      "bytes": 251,
+      "type": "file",
+      "sha256": "f78e67e4e002dfd135d5bd8cb8d7b66c174d795316a1cd7bf0f3e021b85ee3a0"
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/org.freedesktop.packagekit.rules",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o644",
+      "bytes": 334,
+      "type": "file",
+      "sha256": "06c328a41876929d46dfc8c33cfd963ec5b26f0bbe0d0345ea407ba10b6bc9e5"
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/systemd-networkd.rules",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o644",
+      "bytes": 527,
+      "type": "file",
+      "sha256": "f199e386a9297858331b00df07ed0b0ee5fcf4bea67f6c0bccc8a92b7e310bbd"
+    }
+  ],
+  "paths": [
+    {
+      "path": "/etc",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o755",
+      "bytes": 12288,
+      "type": "dir"
+    },
+    {
+      "path": "/etc/polkit-1",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o755",
+      "bytes": 4096,
+      "type": "dir"
+    },
+    {
+      "path": "/etc/polkit-1/rules.d",
+      "exists": true,
+      "uid": 0,
+      "gid": 989,
+      "mode": "0o750",
+      "bytes": 4096,
+      "type": "dir"
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o755",
+      "bytes": 4096,
+      "type": "dir"
+    },
+    {
+      "path": "/run",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o755",
+      "bytes": 1000,
+      "type": "dir"
+    },
+    {
+      "path": "/run/systemd",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o755",
+      "bytes": 620,
+      "type": "dir"
+    },
+    {
+      "path": "/run/systemd/system",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o755",
+      "bytes": 100,
+      "type": "dir"
+    },
+    {
+      "path": "/root",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o700",
+      "bytes": 4096,
+      "type": "dir"
+    },
+    {
+      "path": "/usr/lib",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o755",
+      "bytes": 4096,
+      "type": "dir"
+    },
+    {
+      "path": "/usr/lib/campus-updater-1057",
+      "exists": false
+    },
+    {
+      "path": "/etc/campus-updater-1057",
+      "exists": false
+    },
+    {
+      "path": "/usr/share/polkit-1/actions/dev.projectcampus.updater1057.policy",
+      "exists": false
+    },
+    {
+      "path": "/etc/polkit-1/rules.d/00-campus-updater-1057-deny.rules",
+      "exists": false
+    },
+    {
+      "path": "/run/systemd/system/polkit.service",
+      "exists": false
+    },
+    {
+      "path": "/etc/systemd/system/polkit.service",
+      "exists": false
+    },
+    {
+      "path": "/usr/bin/pkexec",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o4755",
+      "bytes": 67640,
+      "type": "file"
+    },
+    {
+      "path": "/usr/bin/python3",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o777",
+      "bytes": 10,
+      "type": "symlink",
+      "target": "python3.12"
+    },
+    {
+      "path": "/usr/bin/dpkg",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o755",
+      "bytes": 330192,
+      "type": "file"
+    },
+    {
+      "path": "/run/user/1000",
+      "exists": false
+    }
+  ],
+  "sessions": [
+    {
+      "Id": "4",
+      "User": "501",
+      "Name": "yuri",
+      "Timestamp": "Fri 2026-10-16 07:49:00 MST",
+      "TimestampMonotonic": "5537225",
+      "VTNr": "0",
+      "Remote": "yes",
+      "RemoteHost": "192.168.5.2",
+      "Service": "sshd",
+      "Scope": "session-4.scope",
+      "Leader": "1324",
+      "Audit": "4",
+      "Type": "tty",
+      "Class": "user",
+      "Active": "yes",
+      "State": "active",
+      "IdleHint": "no",
+      "IdleSinceHint": "0",
+      "IdleSinceHintMonotonic": "0",
+      "LockedHint": "no"
+    },
+    {
+      "Id": "c1",
+      "User": "110",
+      "Name": "gdm",
+      "Timestamp": "Fri 2026-10-16 07:49:10 MST",
+      "TimestampMonotonic": "15034468",
+      "VTNr": "1",
+      "Seat": "seat0",
+      "TTY": "tty1",
+      "Remote": "no",
+      "Service": "gdm-launch-environment",
+      "Scope": "session-c1.scope",
+      "Leader": "1911",
+      "Audit": "4294967295",
+      "Type": "wayland",
+      "Class": "greeter",
+      "Active": "yes",
+      "State": "active",
+      "IdleHint": "no",
+      "IdleSinceHint": "0",
+      "IdleSinceHintMonotonic": "0",
+      "LockedHint": "no"
+    }
+  ],
+  "user": {},
+  "polkit": {
+    "Id": "polkit.service",
+    "LoadState": "loaded",
+    "ActiveState": "active",
+    "SubState": "running",
+    "FragmentPath": "/usr/lib/systemd/system/polkit.service",
+    "DropInPaths": "",
+    "UnitFileState": "static"
+  },
+  "gdm": {
+    "Id": "gdm.service",
+    "LoadState": "loaded",
+    "ActiveState": "active",
+    "SubState": "running",
+    "FragmentPath": "/usr/lib/systemd/system/gdm.service",
+    "UnitFileState": "static"
+  },
+  "os_release": "PRETTY_NAME=\"Ubuntu 24.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.5 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo\n",
+  "architecture": "aarch64",
+  "kernel": "6.8.0-142-generic",
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/loginctl",
+        "show-user",
+        "1000",
+        "--no-pager"
+      ],
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Failed to get user: User ID 1000 is not logged in or lingering\n"
+    },
+    {
+      "argv": [
+        "/usr/bin/loginctl",
+        "list-sessions",
+        "--no-legend",
+        "--no-pager"
+      ],
+      "returncode": 0,
+      "stdout": " 4 501 yuri -     -    active no -\nc1 110 gdm  seat0 tty1 active no -\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/loginctl",
+        "show-session",
+        "4",
+        "--no-pager"
+      ],
+      "returncode": 0,
+      "stdout": "Id=4\nUser=501\nName=yuri\nTimestamp=Fri 2026-10-16 07:49:00 MST\nTimestampMonotonic=5537225\nVTNr=0\nRemote=yes\nRemoteHost=192.168.5.2\nService=sshd\nScope=session-4.scope\nLeader=1324\nAudit=4\nType=tty\nClass=user\nActive=yes\nState=active\nIdleHint=no\nIdleSinceHint=0\nIdleSinceHintMonotonic=0\nLockedHint=no\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/loginctl",
+        "show-session",
+        "c1",
+        "--no-pager"
+      ],
+      "returncode": 0,
+      "stdout": "Id=c1\nUser=110\nName=gdm\nTimestamp=Fri 2026-10-16 07:49:10 MST\nTimestampMonotonic=15034468\nVTNr=1\nSeat=seat0\nTTY=tty1\nRemote=no\nService=gdm-launch-environment\nScope=session-c1.scope\nLeader=1911\nAudit=4294967295\nType=wayland\nClass=greeter\nActive=yes\nState=active\nIdleHint=no\nIdleSinceHint=0\nIdleSinceHintMonotonic=0\nLockedHint=no\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/df",
+        "-B1",
+        "/"
+      ],
+      "returncode": 0,
+      "stdout": "Filesystem       1B-blocks       Used   Available Use% Mounted on\n/dev/vda1      28003532800 7693746176 20293009408  28% /\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/dpkg",
+        "--print-architecture"
+      ],
+      "returncode": 0,
+      "stdout": "arm64\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/dpkg-query",
+        "-W",
+        "-f=${binary:Package}\t${Version}\t${db:Status-Status}\n",
+        "gdm3",
+        "polkitd",
+        "pkexec",
+        "dbus",
+        "libgtk-3-0t64",
+        "libwebkit2gtk-4.1-0",
+        "libfuse2t64",
+        "campus-updater-1057"
+      ],
+      "returncode": 1,
+      "stdout": "dbus\t1.14.10-4ubuntu4.1\tinstalled\ngdm3\t46.2-1ubuntu1~24.04.9\tinstalled\nlibgtk-3-0t64:arm64\t3.24.41-4ubuntu1.3\tinstalled\nlibwebkit2gtk-4.1-0:arm64\t2.52.6-0ubuntu0.24.04.1\tinstalled\npkexec\t124-2ubuntu1.24.04.4\tinstalled\npolkitd\t124-2ubuntu1.24.04.4\tinstalled\n",
+      "stderr": "dpkg-query: no packages found matching libfuse2t64\ndpkg-query: no packages found matching campus-updater-1057\n"
+    },
+    {
+      "argv": [
+        "/usr/bin/systemctl",
+        "show",
+        "polkit.service",
+        "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths"
+      ],
+      "returncode": 0,
+      "stdout": "Id=polkit.service\nLoadState=loaded\nActiveState=active\nSubState=running\nFragmentPath=/usr/lib/systemd/system/polkit.service\nDropInPaths=\nUnitFileState=static\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/systemctl",
+        "show",
+        "gdm3.service",
+        "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath"
+      ],
+      "returncode": 0,
+      "stdout": "Id=gdm.service\nLoadState=loaded\nActiveState=active\nSubState=running\nFragmentPath=/usr/lib/systemd/system/gdm.service\nUnitFileState=static\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/busctl",
+        "--system",
+        "--timeout=3",
+        "call",
+        "org.freedesktop.DBus",
+        "/org/freedesktop/DBus",
+        "org.freedesktop.DBus",
+        "NameHasOwner",
+        "s",
+        "org.freedesktop.PolicyKit1"
+      ],
+      "returncode": 0,
+      "stdout": "b true\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/busctl",
+        "--system",
+        "--timeout=3",
+        "get-property",
+        "org.freedesktop.DBus",
+        "/org/freedesktop/DBus",
+        "org.freedesktop.DBus",
+        "Features"
+      ],
+      "returncode": 0,
+      "stdout": "as 4 \"ActivatableServicesChanged\" \"AppArmor\" \"HeaderFiltering\" \"SystemdActivation\"\n",
+      "stderr": ""
+    }
+  ],
+  "management_route": "existing Lima SSH management authentication; preexisting noninteractive sudo -n for read-only observations only",
+  "scope": "phase A read-only; no package/helper/bootstrap/window execution; refresh rule inventory after later provisioning"
+}
