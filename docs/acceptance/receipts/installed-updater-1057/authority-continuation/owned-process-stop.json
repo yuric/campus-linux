@@ -1,0 +1,18 @@
+{
+  "driver_stopped": {
+    "time_ns": 1792167309345966709,
+    "server_returncode": -15
+  },
+  "requests_bytes": 943,
+  "evidence_files": [
+    "driver-stopped.json",
+    "server.log",
+    "requests.jsonl",
+    "driver-ready.json",
+    "root-preflight.json"
+  ],
+  "owned_process_absence": {
+    "3228": true,
+    "3229": true
+  }
+}

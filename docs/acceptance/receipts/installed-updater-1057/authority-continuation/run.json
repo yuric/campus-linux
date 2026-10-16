@@ -1,0 +1,139 @@
+{
+  "schema": 1,
+  "scope": "Actual root logger preflight and failed GDM denial readiness; no updater invocation",
+  "lease_reference": "Campus task1057 comment10715 direction1263 attemptea7d6086-436d-4d6d-af0f-9f2e83b295d1",
+  "direction_receipt": "Acknowledged exact delivered attempt before guest work at2026-10-16T16:08:47.289564Z",
+  "source_head": "7383449c76baedcb0e762bc288345605cb0d4150",
+  "built_package_source": "113a53e4eea44b6d80a8ee3edb55d186d11f3ba6",
+  "merged_dependency": "37ef5d622da09cd7ba113dc0d1119e62e7378f84",
+  "authority_helper_sha256": "7ff5dc4b38311a792790f48f8266089bbd17aa94dfba979d8a8fc221c8e349fc",
+  "desktop_helper_sha256": "5efe47170775ff9074768010ddfd6c3b105a5f09dc4a4709eeac23c37c333d32",
+  "fresh_after_login_preflight_sha256": "ac407e18e6967eb2f1ec9ea81a48d8a42d3ae07158d61de4b820d5a7d8d83767",
+  "logger": {
+    "status": "root-context exact marker observed",
+    "sha256": "613c4c47d05aee29ad4e3879377ca44bb1144308aec0cdf828dc39580eeae1f6",
+    "implementation": "util-linux2.39.3",
+    "receipt": "logger-preflight.json",
+    "limitations": "Root-context journal lacks _EXE/_SYSTEMD_UNIT. Actual fixed executable/hash and process execution recorded separately. No daemon-context qualification from this preflight."
+  },
+  "graphical_tuple": {
+    "uid": 1000,
+    "user": "campusqa",
+    "session": "6",
+    "leader": 2291,
+    "type": "x11",
+    "service": "gdm-password",
+    "seat": "seat0",
+    "remote": false,
+    "boot_id": "b59b3d1f-8914-4758-8d6b-b5d334859490",
+    "display": ":0",
+    "compositor_pid": 2531,
+    "xorg_pid": 2371,
+    "driver_pid": 3228,
+    "server_pid": 3229,
+    "driver_start_ticks": 19476,
+    "limitation": "Actual authenticated graphical Terminal driver is in GNOME user-manager scope, XDG_SESSION_ID absent. No direct updater PID/session association exists because updater never ran. Initial root-preflight.json was taken while login was pending; root-preflight-after-login.json is the fresh bound baseline."
+  },
+  "cases": [
+    {
+      "case": "cancel",
+      "status": "not_repeated",
+      "reason": "Recorded369 cancellation already manually accepted under10670; raw not_certified and first timeout unchanged"
+    },
+    {
+      "case": "deny",
+      "status": "not_invoked",
+      "window_status": "failed",
+      "reason": "required exact loaded logger marker absent; logging/registration prerequisite failed",
+      "diagnostic": "Two exact loaded-message journal records have current boot/time and UID/GID989 but no _EXE or _SYSTEMD_UNIT. Required trusted daemon provenance absent; no readiness and no app command queued. No exact rejecting marker.",
+      "receipt": "deny-window.json",
+      "elapsed_seconds_including_cleanup": 5.0184679890000155,
+      "cleanup": "restored",
+      "deadline_exceeded": false,
+      "app_exit": null,
+      "app_stderr": null,
+      "actual_download_sha256": null,
+      "raw_recorder_status": "not_run"
+    },
+    {
+      "case": "missing-authority",
+      "status": "not_run",
+      "reason": "Stopped remaining authority experiments after denial readiness prerequisite failed; no mask/stop operation attempted"
+    }
+  ],
+  "approved_existing_input_verification": "verified-inputs.json",
+  "download": "No updater or artifact download during continuation; retained package inputs hashed in place, not copied. Server emitted serving event only. No HTTP request logged.",
+  "cleanup": {
+    "inventory": "root-cleanup.json",
+    "rules_masks_trust_gdm_app_helper": "Full before/after paths, rules and rules-directory owner/mode/inode/content equal; owned deny path absent, no runtime or persistent polkit mask; authority active/running and named bus ownership true",
+    "processes": "Driver3228/server3229 absent; no updater/fixture renderer launched",
+    "keyring": "Locked=true before and after; no reset or unlock",
+    "vm": "Stopped",
+    "utm": "No operation; coordinator native stopped observation retained"
+  },
+  "resource_evidence": "capacity-stopped.json",
+  "resource_limit_caveat": "Before boot host floor and actual stopped sparse allocation rechecked; guest free had last retained20,241,424,384-byte reading, not a fresh stopped-filesystem measurement. Fresh online20,218,400,768 bytes immediately after normal boot; before-case and before-stop floors passed. No claim of fresh guest filesystem measurement while stopped.",
+  "historical_preservation": {
+    "files_unchanged": 169,
+    "phase_b_indexed_hashes_verified": 43,
+    "original_timeout_failed_deny_and_invalid_empty_file_audit": "Unchanged; no earlier receipts replaced. Coordinator invalid empty-file audit remains outside this worktree and untouched.",
+    "build_input_hashes_verified_per_architecture": 31
+  },
+  "source_changes": "None; only this receipt directory and acceptance doc added/updated",
+  "next_owner": "LINUX-20261016",
+  "handoff": "Explicit coordinator/human handoff; no worker CI/Council watcher or assumed scheduled wakeup",
+  "remaining": [
+    "Coordinator disposition of actual missing trusted journal provenance before any new runtime lease",
+    "Actual denial with exact loaded/rejecting daemon metadata and app correlation",
+    "Actual missing-authority refusal after approved prerequisites",
+    "Exact evidence-head independent review, CI, Council and merge; production and later package gates unchanged"
+  ],
+  "receipt_sha256": {
+    "allocation-budget.json": "f3684d54701cd17cc545afb3cc0a937e056261550e0af6e51c85d4295a6c9bd6",
+    "capacity-before-stop.json": "6e12596dfba80a9df22deda0fbe528ba86b42feb765493469b713e30ff3ff082",
+    "capacity-before.json": "f50528133ab67ebc3edf9fcb4707c88531f307ea014dce2659e3fbcb72a20457",
+    "capacity-stopped.json": "1d68aee7f0ca7b03351b5886e6c50091a54beacea57308470469a50be3bda2d3",
+    "deny-control.json": "6526c6fd170c3bd78900f802c8ee940f9e35ddb91600f8ce1cffb43ca4e0cf8f",
+    "deny-invocation.json": "267993fe850026522a55f1c594db8b64a780815f826361d5a90d68b12894416c",
+    "deny-marker-diagnostic.json": "d4cb0f9fcc70448370177901574c39ac48085db58343b61c5d809b60c3a24fc4",
+    "deny-state-before.json": "3e3ea597ed7e46f3c48d930cf338fd8c6e5bc769fd077ccd4da1e2a155d88ac3",
+    "deny-window-transport.json": "783e4a0256e2371b18874e7cbeb4fe15207eee5c44051a7c5de08a8bf1bed37a",
+    "deny-window.json": "8ff09865d470603c7a27cbab5d97cd8ae0dc15575bf88dc9b9c1b2c1a42331bb",
+    "deny-window.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "deny-window.stdout": "eec96132ed1581a0e861f8f6059e7eb33012f042e21a2f62903c6fe670024e57",
+    "gdm-after-login.png": "b0fb970e6c747d85d975e12ddf01b97526141fe421a5a7ca34ceeedfd3da1e61",
+    "gdm-before-login.png": "28abd93cc1979760defa4286117687b05d58ff7d8fd93ae89e1fb09f532a6fb1",
+    "graphical-driver-launch.png": "95978d391f6197c4e833d5352cfb0639b79266995c461dc26c60807269f6f95b",
+    "graphical-driver.json": "82a235d36618bc249a522669a273ff1c415009b7924844179ed225eab731d736",
+    "guest-final.json": "dea94d8bb5f7e0e699846d3d335a3522fd12845f973e4831e389d15200ec5fe1",
+    "keyring-before.json": "78b54fad6d20f7fe51618de5b69cbc461f21af3ed8cf17d306ef39ca91fe09b3",
+    "lima-start.txt": "e54cd365c5501c52cc7b1404a2b3f527f24b9bc7a132a05e52e0437068ab440c",
+    "lima-stop.txt": "2306ad56441c5a7e0d195e38c72f6e133387bd73986dea15b51762478f878d45",
+    "logger-control.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logger-preflight.json": "571e279b7e2485701ab5fe92d6f5d6b42b7720706d30b769a696e29b1eda0a1d",
+    "operation-inputs/desktop-driver.py.txt": "0bc1e72ba2cdf4b8c225263fa786d5b5d2f4bda9f30a6fdf851041717daaad56",
+    "operation-inputs/final-guest-observation.py.txt": "ba09df9f94f87a733afd34723174a897473dc84cf6b0456fb8863942786cb498",
+    "operation-inputs/logger-preflight.py.txt": "9011bf0545aa4ef825a96ee87983b0f4d7d4aa7feff6281403f5c3f550ac1aa4",
+    "operation-inputs/marker-diagnostic.py.txt": "87ac4365a23b9a76c08caeee860eb8d6c02bda81c2d26d7a2318645e5f6274bb",
+    "operation-inputs/root-preflight.py.txt": "39cb443074a00cba3f5a273586eb34c0abf1848f6ae08137559583f06543ad24",
+    "operation-inputs/stage-helper.py.txt": "d96c710a482c186f3972501d043641593f1c8da16cbe579bd2a2504e831d2a0f",
+    "operation-inputs/stop-driver.py.txt": "112ad55f2d46135a298b060ba0d345d5ed5e329d993422bf1adfdf430d8889a4",
+    "operation-inputs/verify-inputs.py.txt": "a25138f22add8683017b7e8cc4214cafdb242ff55b7161e3c276c955f7c5d52a",
+    "operation-inputs/window-control.py.txt": "3b0694be374deab1bcd1aa2b23a0a1cf799d0e509c6e1d64062a2b91c46c27ae",
+    "owned-process-stop.json": "3e72ef7920760e499f75639025c19c51adf936909fb1bf237466953956467d1e",
+    "root-cleanup.json": "f02dc95c81ec49cd92f666c085f3dbc0335729f49a5171910d1e8e51d84a4582",
+    "root-preflight-after-login.json": "ac407e18e6967eb2f1ec9ea81a48d8a42d3ae07158d61de4b820d5a7d8d83767",
+    "root-preflight.json": "b22f6e3a1222774d3806b51510886d57dd022baedebdede4800e7a2cdd3d1fbe",
+    "root-preflight.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "root-staging.json": "3b620c4b7b1a2511cb7230c931c3a4a59d51bd0b3ec1f058ce22226d001c538e",
+    "root-staging.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verified-inputs.json": "ffd8238d2f887414efce17823ef2d9390ef767748124969a401506ad88cdb312"
+  },
+  "additional_failed_operations": [
+    {
+      "operation": "git diff --cached --check before commit",
+      "result": "exit2: deny-window.json:845 new blank line at EOF",
+      "disposition": "Preserved exact root-control stdout in deny-window-transport.json; removed only print-added transport newline from exported guest JSON. No runtime or earlier receipt changed."
+    }
+  ]
+}

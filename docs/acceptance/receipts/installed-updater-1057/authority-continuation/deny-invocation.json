@@ -1,0 +1,33 @@
+{
+  "argv": [
+    "/opt/homebrew/bin/limactl",
+    "shell",
+    "campus-linux-d5-noble-arm64",
+    "--",
+    "sudo",
+    "-n",
+    "/usr/bin/python3",
+    "-I",
+    "-B",
+    "/root/campus1057-1263-ea7d6086/authority-window.py",
+    "deny",
+    "--lease",
+    "1057-1263-ea7d6086",
+    "--uid",
+    "1000",
+    "--session-id",
+    "6",
+    "--duration-seconds",
+    "45",
+    "--source-sha256",
+    "7ff5dc4b38311a792790f48f8266089bbd17aa94dfba979d8a8fc221c8e349fc",
+    "--receipt",
+    "/root/campus1057-1263-ea7d6086/evidence/deny-window.json"
+  ],
+  "started_unix_ns": 1792167265281400000,
+  "limits": {
+    "total_seconds": 45,
+    "recorder_seconds": 20,
+    "restore_reserve_seconds": 10
+  }
+}

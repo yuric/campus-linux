@@ -4,6 +4,74 @@ LINUX-20261016 owns acceptance, independent review, Council and merge. This is d
 D4/G5 evidence for L0, not L0 completion or a production package. The only merged build
 dependency is bootstrap #981 at `37ef5d622da09cd7ba113dc0d1119e62e7378f84`.
 
+## Authorized authority continuation at source 7383449
+
+Human 10715 / direction 1263 granted the bounded continuation on 2026-10-16. The
+[consolidated record](receipts/installed-updater-1057/authority-continuation/run.json)
+preserves the new failed attempt separately from every historical receipt. Source
+`7383449c76baedcb0e762bc288345605cb0d4150` and both reviewed helper hashes were unchanged.
+No cancellation repeat, package reinstall, artifact download or source repair occurred.
+
+The [actual logger preflight](receipts/installed-updater-1057/authority-continuation/logger-preflight.json)
+verified canonical `/usr/bin/logger`, root-owned nonsymlinked ancestors, mode 0755,
+util-linux 2.39.3, exact supported argv and SHA256
+`613c4c47d05aee29ad4e3879377ca44bb1144308aec0cdf828dc39580eeae1f6`.
+Its unique root-context message appeared in the current-boot journal with trusted
+UID/GID 0, PID and timestamp. That record lacked `_EXE` and `_SYSTEMD_UNIT`; executable
+identity was observed separately, and no daemon provenance was inferred from it.
+The accepted logger hash was rechecked immediately before the denial window.
+
+The unchanged authority helper was staged in a fresh root-owned 0500 directory as 0400,
+then invoked through existing independent root control with `/usr/bin/python3 -I -B`.
+All 19 retained public/package/probe inputs were verified in place. The
+[fresh post-login root inventory](receipts/installed-updater-1057/authority-continuation/root-preflight-after-login.json)
+has SHA256 `ac407e18e6967eb2f1ec9ea81a48d8a42d3ae07158d61de4b820d5a7d8d83767`;
+it records full effective rules, protected paths and active authority. The earlier
+preflight taken while login was pending is preserved separately. Actual private GDM
+login produced campusqa UID 1000, X11 session 6, leader 2291, boot
+`b59b3d1f-8914-4758-8d6b-b5d334859490`. The driver/server were launched from the
+[actual graphical Terminal](receipts/installed-updater-1057/authority-continuation/graphical-driver-launch.png).
+Their user-manager scope and absent `XDG_SESSION_ID` remain explicit limitations;
+this is neither the earlier Wayland tuple nor direct updater PID-session evidence.
+
+The [denial helper](receipts/installed-updater-1057/authority-continuation/deny-window.json)
+failed before readiness: `required exact loaded logger marker absent;
+logging/registration prerequisite failed`. The
+[diagnostic journal](receipts/installed-updater-1057/authority-continuation/deny-marker-diagnostic.json)
+contains two exact loaded-message records with current boot/time and UID/GID 989, but
+both lack `_EXE` and `_SYSTEMD_UNIT`. Consequently no record satisfies the unchanged
+trusted-daemon predicate. This proves missing required metadata, not its cause.
+The helper restored its exact owned rule in **5.018467989 seconds**, inside the 45-second
+bound; no timeout or provenance requirement was relaxed.
+
+No readiness was emitted, so **no updater invocation, download, adapter entry or
+rejecting subject marker exists for this attempt**. The recorder was not run; no exit,
+stderr, download digest or raw case classification is fabricated. The server recorded
+only its serving event and no request. **Missing authority remains not_run** after
+this prerequisite failure; no mask or service-stop window was attempted. Earlier
+manual cancellation acceptance and raw `not_certified` remain unchanged.
+
+[Cleanup](receipts/installed-updater-1057/authority-continuation/root-cleanup.json)
+matched the fresh baseline's complete rules and protected path owner/mode/inode/content
+inventory. Original polkit remained active/running with its bus name owned; deny rule
+and masks were absent, installed v1/public trust/GDM configuration unchanged. Owned
+driver 3228 and server 3229 exited; no fixture renderer was launched. Keyring remained
+locked. [Lima was returned Stopped](receipts/installed-updater-1057/authority-continuation/capacity-stopped.json),
+with actual allocated disk 6,905,659,392 bytes versus 6,890,979,328 before boot: **14 MiB growth**.
+Host free was 28,570,193,920 bytes at stopped readback; guest free before stop was
+20,208,312,320 bytes. Before boot, guest free used the last retained observation;
+a fresh online reading followed normal boot. No fresh stopped-filesystem measurement
+is claimed. No UTM operation occurred, and no input/artifact duplication was retained.
+The [conservative allocation accounting](receipts/installed-updater-1057/authority-continuation/allocation-budget.json)
+counts the entire worktree, own temporary files, disk growth and 4 MiB publication
+reserve: 29,966,336 bytes, below 64 MiB. The 20 GiB host / 2 GiB guest floors remain unchanged.
+
+LINUX-20261016 must disposition the observed missing daemon metadata before another
+runtime lease. Both actual denial and missing-authority refusal remain unproven;
+cleanup and root logger delivery do not qualify either case. The coordinator owns
+independent evidence review, exact-head CI/Council and merge. No worker watcher,
+ready/auto-merge/done action or production acceptance follows from this handoff.
+
 ## Evidence status
 
 Public native runners actually executed the initial lock-preparation

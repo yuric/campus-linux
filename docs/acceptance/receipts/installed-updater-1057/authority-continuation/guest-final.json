@@ -1,0 +1,32 @@
+{
+  "observed_unix_ns": 1792167334164523562,
+  "files": {
+    "driver-ready.json": "{\"pid\": 3228, \"server_pid\": 3229, \"boot_id\": \"b59b3d1f-8914-4758-8d6b-b5d334859490\", \"root_preflight_sha256\": \"ac407e18e6967eb2f1ec9ea81a48d8a42d3ae07158d61de4b820d5a7d8d83767\", \"environment\": {\"XDG_SESSION_ID\": null, \"XDG_RUNTIME_DIR\": \"/run/user/1000\", \"DISPLAY\": \":0\", \"WAYLAND_DISPLAY\": null, \"DBUS_SESSION_BUS_ADDRESS\": \"unix:path=/run/user/1000/bus\"}}",
+    "driver-stopped.json": "{\"time_ns\": 1792167309345966709, \"server_returncode\": -15}",
+    "server.log": "{\"endpoint\": \"http://127.0.0.1:17857/stable/linux.json\", \"event\": \"serving\", \"index_sha256\": \"c41d30c6839eae2a542766d0dd3aea1b81a3925452631ed50b77878bcd34f546\", \"manifest\": {\"platforms\": {\"linux-aarch64-deb\": {\"signature\": \"dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRT0NVODFwMFV4WGNPM1pBZ3hSNS90NERpck5FaS9DSDdnOVdYbHArTklBRUFURkt3V3Bwa211WTNxTGRmbkxsQ3BWcnBndXFjM005dXFLUUdBYVJxUm1IK2haZG50REFrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMTYwMzgwCWZpbGU6Y2FtcHVzLXVwZGF0ZXItMTA1N18yLjAuMF9hcm02NC5kZWIJdmVyc2lvbjoyLjAuMApIOTRJT2IrMjZCRFNUTXdLWGphSUJrbjRxaldOcGxsdDUwMDZHWlA3ZncxenZIUXQ0SUZad3BpQzQveFB1Y2g0ODZNQTBnQXJaSGFGenJwc2w5aTBDZz09Cg==\", \"url\": \"http://127.0.0.1:17857/packages/campus-updater-1057_2.0.0_arm64.deb\"}}, \"version\": \"2.0.0\"}, \"scope\": \"only real indexed targets; absent architectures are not claimed\", \"source_head\": \"113a53e4eea44b6d80a8ee3edb55d186d11f3ba6\", \"time_ns\": 1792167214717137471}\n",
+    "requests.jsonl": "{\"endpoint\": \"http://127.0.0.1:17857/stable/linux.json\", \"event\": \"serving\", \"index_sha256\": \"c41d30c6839eae2a542766d0dd3aea1b81a3925452631ed50b77878bcd34f546\", \"manifest\": {\"platforms\": {\"linux-aarch64-deb\": {\"signature\": \"dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRT0NVODFwMFV4WGNPM1pBZ3hSNS90NERpck5FaS9DSDdnOVdYbHArTklBRUFURkt3V3Bwa211WTNxTGRmbkxsQ3BWcnBndXFjM005dXFLUUdBYVJxUm1IK2haZG50REFrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMTYwMzgwCWZpbGU6Y2FtcHVzLXVwZGF0ZXItMTA1N18yLjAuMF9hcm02NC5kZWIJdmVyc2lvbjoyLjAuMApIOTRJT2IrMjZCRFNUTXdLWGphSUJrbjRxaldOcGxsdDUwMDZHWlA3ZncxenZIUXQ0SUZad3BpQzQveFB1Y2g0ODZNQTBnQXJaSGFGenJwc2w5aTBDZz09Cg==\", \"url\": \"http://127.0.0.1:17857/packages/campus-updater-1057_2.0.0_arm64.deb\"}}, \"version\": \"2.0.0\"}, \"scope\": \"only real indexed targets; absent architectures are not claimed\", \"source_head\": \"113a53e4eea44b6d80a8ee3edb55d186d11f3ba6\", \"time_ns\": 1792167214717137471}\n"
+  },
+  "guest_free_bytes": 20208312320,
+  "process_absence": {
+    "3228": true,
+    "3229": true
+  },
+  "keyring": {
+    "argv": [
+      "/usr/sbin/runuser",
+      "-u",
+      "campusqa",
+      "--",
+      "/usr/bin/busctl",
+      "--address=unix:path=/run/user/1000/bus",
+      "get-property",
+      "org.freedesktop.secrets",
+      "/org/freedesktop/secrets/collection/login",
+      "org.freedesktop.Secret.Collection",
+      "Locked"
+    ],
+    "returncode": 0,
+    "stdout": "b true\n",
+    "stderr": ""
+  }
+}
