@@ -1,0 +1,219 @@
+{
+  "events": [
+    {
+      "event": "inference_start",
+      "monotonic": 329.901094984,
+      "label": "observation-en",
+      "pid": 3048,
+      "samples": [
+        0,
+        64074
+      ]
+    },
+    {
+      "event": "inference_collected",
+      "monotonic": 330.876043858,
+      "label": "observation-en",
+      "returncode": 0
+    },
+    {
+      "event": "inference_start",
+      "monotonic": 330.877264937,
+      "label": "observation-es",
+      "pid": 3104,
+      "samples": [
+        0,
+        70915
+      ]
+    },
+    {
+      "event": "inference_collected",
+      "monotonic": 332.204737948,
+      "label": "observation-es",
+      "returncode": 0
+    },
+    {
+      "event": "failure",
+      "monotonic": 332.283764924,
+      "type": "RuntimeError",
+      "message": "command failed: ['pactl', 'load-module', 'module-null-sink', 'sink_name=campus982_synthetic_aa4ca331', 'sink_properties=device.description=Campus982SyntheticOnly']"
+    },
+    {
+      "event": "cleanup_complete",
+      "monotonic": 332.284046218
+    }
+  ],
+  "inferences": [
+    {
+      "label": "observation-en",
+      "argv": [
+        "/home/campusqa/spike982/speech-offline2/build/bin/whisper-cli",
+        "-m",
+        "/home/campusqa/spike982/speech-next-1203/ggml-tiny.bin",
+        "-f",
+        "-",
+        "-t",
+        "2",
+        "-ng",
+        "-l",
+        "en",
+        "-nt"
+      ],
+      "pid": 3048,
+      "start": 329.90035663,
+      "samples": [
+        0,
+        64074
+      ],
+      "language_selection": "explicit forced-language observation",
+      "translation": false,
+      "max_rss_sampled_kib": 177012,
+      "returncode": 0,
+      "wall_seconds": 0.9754823400000419,
+      "cpu_seconds": 1.8237480000000001,
+      "stdout": "",
+      "stderr_sha256": "63aa6955fa736364ee87fbc41f00461a1877f62146b1f8c52216ca1d3e198de7"
+    },
+    {
+      "label": "observation-es",
+      "argv": [
+        "/home/campusqa/spike982/speech-offline2/build/bin/whisper-cli",
+        "-m",
+        "/home/campusqa/spike982/speech-next-1203/ggml-tiny.bin",
+        "-f",
+        "-",
+        "-t",
+        "2",
+        "-ng",
+        "-l",
+        "es",
+        "-nt"
+      ],
+      "pid": 3104,
+      "start": 330.876118556,
+      "samples": [
+        0,
+        70915
+      ],
+      "language_selection": "explicit forced-language observation",
+      "translation": false,
+      "max_rss_sampled_kib": 177156,
+      "returncode": 0,
+      "wall_seconds": 1.3284766610000247,
+      "cpu_seconds": 2.504775,
+      "stdout": "",
+      "stderr_sha256": "ae04dd6fedbca850287b1e072249e12756eb6146928a0b601a133b813b689d51"
+    }
+  ],
+  "fixtures": {
+    "en": {
+      "reference": "The blue notebook is beside the window. Please keep these words as a draft.",
+      "license": "CC0-1.0",
+      "voice": "en-us",
+      "source_rate": 22050,
+      "source_samples": 88302,
+      "samples": 64074,
+      "resampling": "linear interpolation to mono PCM16 LE 16000Hz",
+      "wav_sha256": "134b930bee2e09cee3eab34f750b1ce62e00c1046fe0e3b92e41a29f9c9ca484"
+    },
+    "es": {
+      "reference": "El cuaderno azul está junto a la ventana. Guarda estas palabras como borrador.",
+      "license": "CC0-1.0",
+      "voice": "es",
+      "source_rate": 22050,
+      "source_samples": 97731,
+      "samples": 70915,
+      "resampling": "linear interpolation to mono PCM16 LE 16000Hz",
+      "wav_sha256": "108cfe9bc0aed94b1af43a2afbba031755977e3386958d30dfbbb14db9fc64d2"
+    }
+  },
+  "scope": "public synthetic offline mechanism only; prefix-batch, not native streaming",
+  "runner_sha256": "638224267782239cc0a692966eef55c8317bd1ff32818f256f2c5db326384db2",
+  "cgroup": "/sys/fs/cgroup/system.slice/campus982-speech-1203.service",
+  "memory_max": "536870912",
+  "swap_max": "0",
+  "interfaces": [
+    "lo"
+  ],
+  "net_namespace": "net:[4026532478]",
+  "binary_sha256": "50712621452d3ab5f0d7b2a2c5dbaad5100c8d9b86538da1e1a192074b3ec2a2",
+  "model_sha256": "be07e048e1e599ad46341c8d2a135645097a538221678b7acdd1b1919c6e1b21",
+  "recorder_sha256": "b8ed625c69cce8ceb04cc592eb9dd0dc8d3ac3a3c4cabb5e7c052d76fb2ef595",
+  "graphical_locale_observation": {
+    "launch_origin": "GNOME Run dialog -> gnome-terminal -> session.py",
+    "pid": 3022,
+    "ppid": 3012,
+    "monotonic": 323.55034111,
+    "environment": {
+      "LANG": "C.UTF-8"
+    },
+    "session_id": "7",
+    "session": "Id=7\nUser=1000\nRemote=no\nService=gdm-password\nType=wayland\nClass=user\nActive=yes\n",
+    "effective": {
+      "LC_MESSAGES": "C.UTF-8",
+      "LC_CTYPE": "C.UTF-8"
+    }
+  },
+  "locale_mapping": {
+    "input": "effective LC_MESSAGES in graphical session observer",
+    "effective": "C.UTF-8",
+    "language": null,
+    "observed_language_tested": false
+  },
+  "process_local_locale_tests": [
+    {
+      "input": "en_US.UTF-8",
+      "initialized": true,
+      "LC_MESSAGES": "en_US.UTF-8",
+      "LC_CTYPE": "en_US.UTF-8"
+    },
+    {
+      "input": "es_ES.UTF-8",
+      "initialized": false,
+      "error": "unsupported locale setting"
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "dpkg-query",
+        "-W",
+        "-f=${binary:Package} ${Version} ${Architecture}\n",
+        "libespeak-ng1",
+        "espeak-ng-data",
+        "libpulse0",
+        "pulseaudio-utils"
+      ],
+      "returncode": 0,
+      "stdout": "espeak-ng-data:arm64 1.51+dfsg-12build1 arm64\nlibespeak-ng1:arm64 1.51+dfsg-12build1 arm64\nlibpulse0:arm64 1:16.1+dfsg1-2ubuntu10.1 arm64\npulseaudio-utils 1:16.1+dfsg1-2ubuntu10.1 arm64\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "pactl",
+        "load-module",
+        "module-null-sink",
+        "sink_name=campus982_synthetic_aa4ca331",
+        "sink_properties=device.description=Campus982SyntheticOnly"
+      ],
+      "returncode": -25,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "packages": "espeak-ng-data:arm64 1.51+dfsg-12build1 arm64\nlibespeak-ng1:arm64 1.51+dfsg-12build1 arm64\nlibpulse0:arm64 1:16.1+dfsg1-2ubuntu10.1 arm64\npulseaudio-utils 1:16.1+dfsg1-2ubuntu10.1 arm64\n",
+  "synthesizer_files": {
+    "/usr/lib/aarch64-linux-gnu/libespeak-ng.so.1.1.51": "1c9e3ef95292bccae8049f8c97289a50519beb57dd571d719477f8b8568b6d42",
+    "/var/lib/dpkg/info/espeak-ng-data:arm64.md5sums": "e24390439ec82bdc7babbb27678348f53e9c39763460d883fb9a1d06060e3c90"
+  },
+  "completed": false,
+  "failure": {
+    "type": "RuntimeError",
+    "message": "command failed: ['pactl', 'load-module', 'module-null-sink', 'sink_name=campus982_synthetic_aa4ca331', 'sink_properties=device.description=Campus982SyntheticOnly']"
+  },
+  "owned_workers_remaining": [],
+  "tree_memory_peak_bytes": 196497408,
+  "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+  "memory_swap_peak": "0\n",
+  "output_allocated_bytes": 327680
+}

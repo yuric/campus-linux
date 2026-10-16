@@ -1,0 +1,365 @@
+{
+  "scope": "Additive speech1203 source/evidence inventory; historical manifests untouched; verify with spikes/982/speech-next/verify.py",
+  "files": [
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/REPORT.md",
+      "bytes": 11094,
+      "sha256": "29e24711eaa0609f141108d93ed07c7f88b4e07cc9e2a666538598f4e021dd02"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt1/launch.json",
+      "bytes": 1851,
+      "sha256": "5dcef9cdf8d126b7f1f6ae72b2afe0197ee2a5ff9cf8c0c0c7987d29156673ac"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt1/launch.py",
+      "bytes": 1821,
+      "sha256": "6cdd0cdf0b727bb72e12d21f1e2e7f3a9d87636fc43a0b92a576a38618a821c5"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt1/observation-en.stderr",
+      "bytes": 2592,
+      "sha256": "63aa6955fa736364ee87fbc41f00461a1877f62146b1f8c52216ca1d3e198de7"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt1/observation-en.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt1/observation-es.stderr",
+      "bytes": 2592,
+      "sha256": "ae04dd6fedbca850287b1e072249e12756eb6146928a0b601a133b813b689d51"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt1/observation-es.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt1/prepare.py",
+      "bytes": 3068,
+      "sha256": "46c96f7ee0c7dda8095536ad618605ca95d9e45ae2e86856de76724af0880914"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt1/receipt.json",
+      "bytes": 6759,
+      "sha256": "577646e73770ef424a1383fe7bce2bd51c431d48fef70a7b4b97a50d2afff20c"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt1/recorder.py",
+      "bytes": 4424,
+      "sha256": "b8ed625c69cce8ceb04cc592eb9dd0dc8d3ac3a3c4cabb5e7c052d76fb2ef595"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt1/runner.py",
+      "bytes": 14226,
+      "sha256": "638224267782239cc0a692966eef55c8317bd1ff32818f256f2c5db326384db2"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt1/session.py",
+      "bytes": 1223,
+      "sha256": "bda74c0534cc0f8cb0e5a0c4dd04d0ded3b080afe967647d5b90e1dcb75117d1"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt2/launch.json",
+      "bytes": 1825,
+      "sha256": "4df10f71e7fce6b4a0c95b667abe440e9ee52b61c0a34fca770ce9ee8810a7ad"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt2/launch.py",
+      "bytes": 1826,
+      "sha256": "d4c900eb534a20023c95a6532d78081dc7ff2b928374f8a84138b3e8e91ed47d"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt2/observation-en.stderr",
+      "bytes": 2530,
+      "sha256": "8d876d43311863d09481c05f63fc59786739d83ba0cf9758b326b637b22b9250"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt2/observation-en.stdout",
+      "bytes": 76,
+      "sha256": "d072922f8f5c6ea9bf050f2f51baf1e793cc894d3667b7e2c999a22ee0c70ee0"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt2/observation-es.stderr",
+      "bytes": 2530,
+      "sha256": "527cc13cdcf10bd8c18ad203ac374bda8b0e793225027c2cf1f815730f3e0431"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt2/observation-es.stdout",
+      "bytes": 85,
+      "sha256": "cdb2b72ba60b2d2d6417e8051676d2cf2000b573fc821e8ffe593f2c1917cb9f"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt2/prepare.py",
+      "bytes": 3068,
+      "sha256": "46c96f7ee0c7dda8095536ad618605ca95d9e45ae2e86856de76724af0880914"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt2/receipt.json",
+      "bytes": 11726,
+      "sha256": "24cdc390d9727d439949de072952fa8eb6fe6b947502e5bbfe7db8aec09e1ac1"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt2/recorder.py",
+      "bytes": 4424,
+      "sha256": "b8ed625c69cce8ceb04cc592eb9dd0dc8d3ac3a3c4cabb5e7c052d76fb2ef595"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt2/runner.py",
+      "bytes": 14227,
+      "sha256": "87b9db180fb4cb705be0a4fd6f3955554e75e95859c3dd25acc06d12a98e1980"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt2/session.py",
+      "bytes": 1223,
+      "sha256": "bda74c0534cc0f8cb0e5a0c4dd04d0ded3b080afe967647d5b90e1dcb75117d1"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt3/launch.json",
+      "bytes": 1825,
+      "sha256": "dddea70be4d92f0b555a6deb87a1338299c8dcb832550ace52a6952d16b8fa54"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt3/launch.py",
+      "bytes": 1826,
+      "sha256": "f2a21640eb36003d2b89b0910231c49812b3a0cc241277642df7dcd5fa5e5a67"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt3/observation-en.stderr",
+      "bytes": 2530,
+      "sha256": "96a032b9523e334a48d1062e9116067b0ece3f5f8f8c69810d4dcac3dfb48d50"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt3/observation-en.stdout",
+      "bytes": 76,
+      "sha256": "d072922f8f5c6ea9bf050f2f51baf1e793cc894d3667b7e2c999a22ee0c70ee0"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt3/observation-es.stderr",
+      "bytes": 2530,
+      "sha256": "9eb7a1209b05a4a9dca7b6f366879bfa5dcf0305b9bacbe4c3b217a7e1b114b7"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt3/observation-es.stdout",
+      "bytes": 85,
+      "sha256": "cdb2b72ba60b2d2d6417e8051676d2cf2000b573fc821e8ffe593f2c1917cb9f"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt3/prepare.py",
+      "bytes": 3068,
+      "sha256": "46c96f7ee0c7dda8095536ad618605ca95d9e45ae2e86856de76724af0880914"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt3/receipt.json",
+      "bytes": 11980,
+      "sha256": "aa88e9822e32a572fcf8ce43838d244e36cf836c81c1a172cb0a564ad1c4e331"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt3/recorder.py",
+      "bytes": 4424,
+      "sha256": "b8ed625c69cce8ceb04cc592eb9dd0dc8d3ac3a3c4cabb5e7c052d76fb2ef595"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt3/runner.py",
+      "bytes": 14625,
+      "sha256": "6e84cd3121ead6bf0209bed6e673382078032eddcdd08ea6ad59d3a2d37e2e4f"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/attempt3/session.py",
+      "bytes": 1223,
+      "sha256": "bda74c0534cc0f8cb0e5a0c4dd04d0ded3b080afe967647d5b90e1dcb75117d1"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/cancel-recorder.stderr",
+      "bytes": 64,
+      "sha256": "625de64af99a3a5001caed51cf5c0d470138bee6dc70aca9e48dc1d386a74d22"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/cancel1.stderr",
+      "bytes": 1887,
+      "sha256": "07964c62d55086c96a3030e047675cab248d24e31f6256d65d7e73cf5e3dbb20"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/cancel1.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/collection.json",
+      "bytes": 2157,
+      "sha256": "e28662a77d032141c2b7c42e71daf0dd7f326a7353af875f73bd11740fec4339"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/final.stderr",
+      "bytes": 2531,
+      "sha256": "8c23d670b7eb5477359fac50b77399240d3b506e477a5f5ecc109b90761c3c54"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/final.stdout",
+      "bytes": 135,
+      "sha256": "f6be4337ac39fbe10a643552825c897bae44b76de1c45c8724b77f867cedce8c"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/host-after.json",
+      "bytes": 236,
+      "sha256": "51f1bd0b45352336fa15311d62bcf673dc30fbe0b8c2da267542f91abe9d303e"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/host-before.json",
+      "bytes": 156,
+      "sha256": "b6aa8944f1b9c0ce02da3d542bbd617b780e66f354bbfe77c78f148a29fd7c9c"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/host-pre-download.json",
+      "bytes": 329,
+      "sha256": "06ea5d805defa1861e472966ffc0343b0a1d764259d5dca314a3383fd323ce3c"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/launch.json",
+      "bytes": 1825,
+      "sha256": "a473c132ba5d76d14f2a4990e9ea8814815c7ece99f3b68c31733594931bee53"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/launch.py",
+      "bytes": 1826,
+      "sha256": "d99216442bfbbe51d510afffa4414b45de8bfcd097b9639ce1174be1dcaf5c5b"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/observation-en.stderr",
+      "bytes": 2530,
+      "sha256": "cf0479aeac04859f763ae19a6407ac8e2232d2c5fe8f58206c3670ccaf831993"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/observation-en.stdout",
+      "bytes": 76,
+      "sha256": "d072922f8f5c6ea9bf050f2f51baf1e793cc894d3667b7e2c999a22ee0c70ee0"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/observation-es.stderr",
+      "bytes": 2530,
+      "sha256": "0c7095929111f28950a03081b20bdeba92b92836e752add930c624a146abcb21"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/observation-es.stdout",
+      "bytes": 85,
+      "sha256": "cdb2b72ba60b2d2d6417e8051676d2cf2000b573fc821e8ffe593f2c1917cb9f"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/operator-observations.json",
+      "bytes": 2121,
+      "sha256": "bab32ccd39f88ad3e55a3067732a69fcc87d701eff75ddb11db2dac5c7f6766d"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/prefix-recorder.stderr",
+      "bytes": 64,
+      "sha256": "625de64af99a3a5001caed51cf5c0d470138bee6dc70aca9e48dc1d386a74d22"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/prefix1.stderr",
+      "bytes": 2529,
+      "sha256": "a07e26f9db2181b7384ba5bba387350152657fad59cd5754892026ea2e8a7f47"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/prefix1.stdout",
+      "bytes": 55,
+      "sha256": "11c1e3c9a2f770366ea3fa09b3cc0d00dd9823aa9d47ed0f973b056b8d3ebee1"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/prefix2.stderr",
+      "bytes": 2530,
+      "sha256": "a3dc873ed7948855e3d0bb71bf95acb3356f40b06c7ce904e1bdf3dc344ef277"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/prefix2.stdout",
+      "bytes": 115,
+      "sha256": "12cdc428af81197afdffccfa671ed026a3f103960dfa28de1b420d898f8cfcf5"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/prepare.json",
+      "bytes": 2053,
+      "sha256": "84281e3302aa05e2b2de5161f99fe96958fe8130b7f60ed80b6441e3e3c7282f"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/prepare.py",
+      "bytes": 3068,
+      "sha256": "46c96f7ee0c7dda8095536ad618605ca95d9e45ae2e86856de76724af0880914"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/prepare.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/prepare.stdout",
+      "bytes": 2053,
+      "sha256": "84281e3302aa05e2b2de5161f99fe96958fe8130b7f60ed80b6441e3e3c7282f"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/receipt.json",
+      "bytes": 19496,
+      "sha256": "50d64eb8cc167d719f9a090c551eb57e06d8b898654ed754d7a6a94ccc089b0c"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/recorder.py",
+      "bytes": 4424,
+      "sha256": "b8ed625c69cce8ceb04cc592eb9dd0dc8d3ac3a3c4cabb5e7c052d76fb2ef595"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/runner.py",
+      "bytes": 14890,
+      "sha256": "f29d00ae892b536d354a42247538d2283bc55813becc76c860d5889913b33afd"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/session.json",
+      "bytes": 384,
+      "sha256": "ad229a162384736c3b1410b3ccabb2b3ff8dbbee366890d00651346be38c8b80"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/session.py",
+      "bytes": 1223,
+      "sha256": "bda74c0534cc0f8cb0e5a0c4dd04d0ded3b080afe967647d5b90e1dcb75117d1"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/speech-next-1203/stop.txt",
+      "bytes": 1063,
+      "sha256": "ad42e70c30e470ede80c466222f8e33db160ef0f7403c943ee0c1ddd35c4160c"
+    },
+    {
+      "path": "spikes/982/speech-next/collect.py",
+      "bytes": 2979,
+      "sha256": "a755ef9c8a0932409082ce613daf9200e901d691c1aacf7d11e0e4be3d266305"
+    },
+    {
+      "path": "spikes/982/speech-next/launch.py",
+      "bytes": 1826,
+      "sha256": "d99216442bfbbe51d510afffa4414b45de8bfcd097b9639ce1174be1dcaf5c5b"
+    },
+    {
+      "path": "spikes/982/speech-next/prepare.py",
+      "bytes": 3068,
+      "sha256": "46c96f7ee0c7dda8095536ad618605ca95d9e45ae2e86856de76724af0880914"
+    },
+    {
+      "path": "spikes/982/speech-next/recorder.py",
+      "bytes": 4424,
+      "sha256": "b8ed625c69cce8ceb04cc592eb9dd0dc8d3ac3a3c4cabb5e7c052d76fb2ef595"
+    },
+    {
+      "path": "spikes/982/speech-next/runner.py",
+      "bytes": 14890,
+      "sha256": "f29d00ae892b536d354a42247538d2283bc55813becc76c860d5889913b33afd"
+    },
+    {
+      "path": "spikes/982/speech-next/session.py",
+      "bytes": 1223,
+      "sha256": "bda74c0534cc0f8cb0e5a0c4dd04d0ded3b080afe967647d5b90e1dcb75117d1"
+    },
+    {
+      "path": "spikes/982/speech-next/verify.py",
+      "bytes": 2927,
+      "sha256": "58efbd0e0f3fa43c155b94c5e4aabde4dca072432874c2907ceff4f614065257"
+    }
+  ]
+}

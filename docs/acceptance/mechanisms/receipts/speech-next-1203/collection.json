@@ -1,0 +1,61 @@
+{
+  "allocated_bytes": 79134720,
+  "guest_free_bytes": 20303396864,
+  "var_log_allocated_bytes": 139968512,
+  "audio_hashes": {
+    "es.wav": {
+      "bytes": 141874,
+      "sha256": "108cfe9bc0aed94b1af43a2afbba031755977e3386958d30dfbbb14db9fc64d2"
+    },
+    "en.wav": {
+      "bytes": 128192,
+      "sha256": "134b930bee2e09cee3eab34f750b1ce62e00c1046fe0e3b92e41a29f9c9ca484"
+    },
+    "attempt1/es.wav": {
+      "bytes": 141874,
+      "sha256": "108cfe9bc0aed94b1af43a2afbba031755977e3386958d30dfbbb14db9fc64d2"
+    },
+    "attempt1/en.wav": {
+      "bytes": 128192,
+      "sha256": "134b930bee2e09cee3eab34f750b1ce62e00c1046fe0e3b92e41a29f9c9ca484"
+    },
+    "attempt3/es.wav": {
+      "bytes": 141874,
+      "sha256": "108cfe9bc0aed94b1af43a2afbba031755977e3386958d30dfbbb14db9fc64d2"
+    },
+    "attempt3/en.wav": {
+      "bytes": 128192,
+      "sha256": "134b930bee2e09cee3eab34f750b1ce62e00c1046fe0e3b92e41a29f9c9ca484"
+    },
+    "attempt2/es.wav": {
+      "bytes": 141874,
+      "sha256": "108cfe9bc0aed94b1af43a2afbba031755977e3386958d30dfbbb14db9fc64d2"
+    },
+    "attempt2/en.wav": {
+      "bytes": 128192,
+      "sha256": "134b930bee2e09cee3eab34f750b1ce62e00c1046fe0e3b92e41a29f9c9ca484"
+    }
+  },
+  "output_allocated_bytes": 1441792,
+  "cgroups_absent": {
+    "campus982-speech-preflight": true,
+    "campus982-speech-bound-check": true,
+    "campus982-speech-1203": true,
+    "campus982-speech-1203-run2": true,
+    "campus982-speech-1203-run3": true,
+    "campus982-speech-1203-run4": true
+  },
+  "publication_redactions": [
+    {
+      "path": "attempt3/receipt.json",
+      "original_sha256": "2f6c9ca37f9611e1c375d892b9ff7fe5e604cf13990ce69bcf885b2d6c62e89c",
+      "published_sha256": "aa88e9822e32a572fcf8ce43838d244e36cf836c81c1a172cb0a564ad1c4e331",
+      "reason": "Unrelated public upstream module-author metadata; original guest receipt preserved; failure unchanged."
+    }
+  ],
+  "utc": "2026-10-16T14:03:23.093322+00:00",
+  "host_free_bytes": 22988763136,
+  "disk_apparent_bytes": 6925058048,
+  "disk_allocated_bytes": 6823018496,
+  "collector_sha256": "a755ef9c8a0932409082ce613daf9200e901d691c1aacf7d11e0e4be3d266305"
+}

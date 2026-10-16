@@ -1,0 +1,15 @@
+{
+  "launch_origin": "GNOME Run dialog -> gnome-terminal -> session.py",
+  "pid": 3022,
+  "ppid": 3012,
+  "monotonic": 323.55034111,
+  "environment": {
+    "LANG": "C.UTF-8"
+  },
+  "session_id": "7",
+  "session": "Id=7\nUser=1000\nRemote=no\nService=gdm-password\nType=wayland\nClass=user\nActive=yes\n",
+  "effective": {
+    "LC_MESSAGES": "C.UTF-8",
+    "LC_CTYPE": "C.UTF-8"
+  }
+}

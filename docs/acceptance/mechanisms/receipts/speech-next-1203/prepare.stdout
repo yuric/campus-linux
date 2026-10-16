@@ -1,0 +1,39 @@
+{
+  "source_sha256": "46c96f7ee0c7dda8095536ad618605ca95d9e45ae2e86856de76724af0880914",
+  "monotonic": 142.978526468,
+  "guest_free_bytes": 20382588928,
+  "prior_g4_allocated_bytes": 163840,
+  "var_log_allocated_bytes": 139943936,
+  "g4_var_log_baseline_bytes": 114270208,
+  "prior_consumed_upper_account": 42614784,
+  "remaining_256mib": 225820672,
+  "binary_sha256": "50712621452d3ab5f0d7b2a2c5dbaad5100c8d9b86538da1e1a192074b3ec2a2",
+  "cgroup_preflight": {
+    "args": [
+      "systemd-run",
+      "--unit=campus982-speech-bound-check",
+      "--wait",
+      "--pipe",
+      "-p",
+      "User=campusqa",
+      "-p",
+      "MemoryMax=536870912",
+      "-p",
+      "MemorySwapMax=0",
+      "-p",
+      "PrivateNetwork=yes",
+      "/usr/bin/python3",
+      "-c",
+      "from pathlib import Path; p=Path(\"/sys/fs/cgroup\"+Path(\"/proc/self/cgroup\").read_text().strip().split(\":\")[-1]); assert (p/\"memory.max\").read_text().strip()==\"536870912\"; assert (p/\"memory.swap.max\").read_text().strip()==\"0\"; print(Path(\"/proc/net/dev\").read_text())"
+    ],
+    "returncode": 0,
+    "stdout": "Inter-|   Receive                                                |  Transmit\n face |bytes    packets errs drop fifo frame compressed multicast|bytes    packets errs drop fifo colls carrier compressed\n    lo:       0       0    0    0    0     0          0         0        0       0    0    0    0     0       0          0\n\n",
+    "stderr": "Running as unit: campus982-speech-bound-check.service; invocation ID: f58b919caf904b7b8e06291da24401b2\nFinished with result: success\nMain processes terminated with: code=exited/status=0\nService runtime: 19ms\nCPU time consumed: 18ms\nMemory peak: 256.0K\nMemory swap peak: 0B\n"
+  },
+  "url": "https://huggingface.co/ggerganov/whisper.cpp/resolve/5359861c739e955e79d9a303bcbc70fb988958b1/ggml-tiny.bin",
+  "model_bytes": 77691713,
+  "model_sha256": "be07e048e1e599ad46341c8d2a135645097a538221678b7acdd1b1919c6e1b21",
+  "completed": true,
+  "allocated_bytes": 77705216,
+  "guest_free_after": 20304896000
+}
