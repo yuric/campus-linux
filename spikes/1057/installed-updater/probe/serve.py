@@ -11,6 +11,8 @@ import shutil
 import threading
 import time
 
+import gated
+
 
 def digest(path):
     value = hashlib.sha256()
@@ -27,7 +29,10 @@ def main():
     parser.add_argument("--missing-target", help="omit this exact key and retain a cross-format generic trap")
     parser.add_argument("--port", type=int, default=17857)
     parser.add_argument("--log", type=Path, help="append request/manifest JSON lines here as well as stdout")
+    parser.add_argument("--gate-directory", type=Path, help="optional root-controlled one-shot denial manifest gate")
     args = parser.parse_args()
+    if args.gate_directory and (args.version != "2" or args.missing_target or args.port != 17857):
+        parser.error("gated denial uses only the fixed v2 endpoint, without missing-target mode")
     if os.geteuid() == 0:
         parser.error("run as the unprivileged desktop fixture user")
     if not 1024 <= args.port <= 65535:
@@ -82,25 +87,49 @@ def main():
                 with args.log.open("a") as stream:
                     stream.write(encoded + "\n")
 
+    gate = gated.ManifestGate(args.gate_directory, record) if args.gate_directory else None
+
     class Handler(http.server.BaseHTTPRequestHandler):
         def log_message(self, unused, *values):
             pass
 
         def do_GET(self):
             if self.path == "/stable/linux.json":
+                if gate:
+                    try:
+                        gate.manifest(self.connection)
+                    except Exception as error:
+                        gate.fail(error)
+                        self.send_error(409)
+                        return
                 body = json.dumps(manifest).encode()
                 record({"event": "request", "path": self.path, "status": 200, "bytes": len(body)})
                 self.send_response(200)
                 self.send_header("Content-Type", "application/json")
                 self.send_header("Content-Length", str(len(body)))
                 self.end_headers()
-                self.wfile.write(body)
+                try:
+                    self.wfile.write(body)
+                    self.wfile.flush()
+                    if gate:
+                        gate.delivered()
+                except OSError as error:
+                    if gate:
+                        gate.fail(error)
+                    raise
                 return
             artifact = artifacts.get(self.path.removeprefix("/packages/")) if self.path.startswith("/packages/") else None
             if artifact is None:
                 record({"event": "request", "path": self.path, "status": 404})
                 self.send_error(404)
                 return
+            if gate:
+                try:
+                    gate.package(artifact)
+                except Exception as error:
+                    gate.fail(error)
+                    self.send_error(409)
+                    return
             # Refuse replacement since startup instead of serving bytes under a stale receipt.
             if artifact["path"].stat().st_size != artifact["bytes"] or digest(artifact["path"]) != artifact["sha256"]:
                 record({"event": "request", "path": self.path, "status": 409, "reason": "package_changed"})

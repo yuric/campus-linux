@@ -206,7 +206,46 @@ def process_identity(pid):
             "uids": ids["Uid"], "gids": ids["Gid"]}
 
 
-def deny_rule(user, lease, pid=None, session=None, *, nonce):
+def require_null_binding(binding, user, lease, pid, session, nonce):
+    require(type(binding) is dict and binding.get("mode") == "root-correlated-user-manager",
+            "explicit complete root binding required")
+    require(binding.get("lease") == lease and binding.get("nonce") == nonce
+            and type(pid) is int and binding.get("app", {}).get("pid") == pid,
+            "null denial requires exact app PID/lease/nonce")
+    app, recorder = binding["app"], binding.get("recorder", {})
+    require(decimal(app.get("starttime"), 1) and app.get("exe") == "/usr/bin/campus-updater-1057"
+            and type(app.get("exe_identity")) is list and len(app["exe_identity"]) == 4
+            and len(app.get("uids", [])) == 4 and len(set(app["uids"])) == 1
+            and decimal(app["uids"][0], 1) and len(app.get("gids", [])) == 4 and len(set(app["gids"])) == 1
+            and app.get("ppid") == recorder.get("pid") and decimal(recorder.get("starttime"), 1),
+            "incomplete app/retaining parent lifetime")
+    custody = binding.get("custody", {})
+    selected = custody.get("session", {})
+    require(selected.get("Id") == session and selected.get("User") == app["uids"][0]
+            and selected.get("Active") == "yes" and selected.get("Remote") == "no"
+            and selected.get("State") == "active" and selected.get("Class") == "user"
+            and selected.get("Type") in ("wayland", "x11") and selected.get("Service", "").startswith("gdm-")
+            and selected.get("Seat") and custody.get("leader_logind", {}).get("session") == session,
+            "missing selected GDM custody")
+    direct = binding.get("direct_logind", {})
+    require(direct.get("session") is None and type(direct.get("session_result")) is int
+            and direct["session_result"] < 0 and direct.get("owner_uid") == int(app["uids"][0]),
+            "missing actual null user-manager observation")
+    require(type(binding.get("boot_id")) is str and re.fullmatch(r"[0-9a-f]{32}", binding["boot_id"])
+            and type(binding.get("app_sha256")) is str and re.fullmatch(r"[0-9a-f]{64}", binding["app_sha256"])
+            and all(type(binding.get(key)) is dict and binding[key].get("pid", 0) > 1
+                    for key in ("driver", "server", "terminal"))
+            and type(binding.get("ancestry")) is list and 0 < len(binding["ancestry"]) <= 8
+            and type(binding.get("sources")) is dict and binding["sources"], "incomplete root custody/source binding")
+    times = [binding.get("app_started_ns"), binding.get("request", {}).get("waiting_ns"), binding.get("bound_ns")]
+    require(all(type(t) is int and t > 0 for t in times) and times == sorted(times)
+            and binding.get("app_deadline_ns") == times[0] + 20_000_000_000
+            and type(binding.get("gate_deadline_ns")) is int
+            and times[-1] < binding["gate_deadline_ns"] <= times[0] + 8_000_000_000,
+            "incomplete bounded root binding timing")
+
+
+def deny_rule(user, lease, pid=None, session=None, *, nonce, null_binding=None):
     # Restrict each diagnostic operand independently; JSON serialization remains
     # mandatory for JavaScript literals. No shell or caller-selected executable.
     require(isinstance(user, str) and re.fullmatch(r"[A-Za-z_][A-Za-z0-9_.-]{0,63}", user),
@@ -225,9 +264,16 @@ def deny_rule(user, lease, pid=None, session=None, *, nonce):
               f"subject.user === {json.dumps(user)}", "subject.local === true",
               "subject.active === true",
               f"subject.session === {json.dumps(session)}"]
+    if null_binding is not None:
+        require_null_binding(null_binding, user, lease, pid, session, nonce)
+        checks[-1] = "subject.session === null"
     if pid is not None:
         checks.append(f"subject.pid === {pid}")
     marker = json.dumps("campus1057-deny lease=" + lease + " nonce=" + nonce)
+    suffix = ""
+    if null_binding is not None:
+        binding_hash = hashlib.sha256((json.dumps(null_binding, sort_keys=True, separators=(",", ":")) + "\n").encode()).hexdigest()
+        suffix = " mode=root-correlated-user-manager binding=" + binding_hash
     loaded = json.dumps("campus1057-deny-loaded lease=" + lease + " nonce=" + nonce)
     prefix = json.dumps(LOGGER_ARGV)
     # Diagnostic-only callback snapshot: its narrower outer gate grants nothing.
@@ -314,7 +360,7 @@ def deny_rule(user, lease, pid=None, session=None, *, nonce):
             "        throw new Error('invalid fixture subject PID');\n"
             f"      polkit.spawn({prefix}.concat([{marker} + ' pid=' + subject.pid"
             " + ' user=' + subject.user + ' session=' + subject.session"
-            " + ' active=' + subject.active]));\n"
+            " + ' active=' + subject.active" + (" + " + json.dumps(suffix) if suffix else "") + "]));\n"
             "    } catch (error) {\n"
             "      // Never fall through to authentication on a logging failure.\n"
             "      // Absence of the exact rejecting marker invalidates evidence.\n"
@@ -525,12 +571,23 @@ class Window:
             if evidence["accepted"]:
                 self.record["loaded_marker"] = evidence["accepted"][0]
                 self.record["loaded_marker_observed_unix_ns"] = observed
+                self.record["loaded_marker_observed_monotonic_ns"] = time.monotonic_ns()
                 self.save()
                 return
             time.sleep(max(0, min(0.1, until - time.monotonic())))
         raise RuntimeError("required exact loaded logger marker absent; logging/registration prerequisite failed")
 
     def begin(self):
+        gated_context = getattr(self, "gated_context", None)
+        if gated_context:
+            gate, config, hint, request = gated_context
+            require(self.args.mode == "deny" and self.args.uid == config["uid"]
+                    and self.args.session_id == config["session_id"] and self.args.lease == config["lease"],
+                    "gated mode is denial only and must match root scope")
+            require(gate.config_read(self.args.gate_directory) == config, "gate config changed")
+            binding = gate.actual_binding(config, hint, request)
+            self.record["user_manager_binding"] = binding
+            self.args.subject_pid = binding["app"]["pid"]
         account = pwd.getpwuid(self.args.uid)
         require(pwd.getpwnam(account.pw_name).pw_uid == self.args.uid, "ambiguous NSS identity")
         self.record["user"] = account.pw_name
@@ -548,14 +605,18 @@ class Window:
             require_service_binding(self.record["service_binding"])
             self.record["boot_id"] = self.record["service_binding"]["boot_id"]
             require(re.fullmatch(r"[0-9a-f]{32}", self.record["boot_id"]), "invalid current boot")
-            self.record["marker_nonce"] = secrets.token_hex(16)
+            self.record["marker_nonce"] = config["nonce"] if gated_context else secrets.token_hex(16)
             self.record["service_identity_valid"] = False
             # Persist the fresh helper-generated nonce and binding before the
             # first owned rule byte can become visible to polkit.
             self.save()
             self.rule_bytes = deny_rule(account.pw_name, self.args.lease,
                                         self.args.subject_pid, self.args.session_id,
-                                        nonce=self.record["marker_nonce"])
+                                        nonce=self.record["marker_nonce"],
+                                        null_binding=self.record.get("user_manager_binding"))
+            if gated_context:
+                gate.recheck(binding, config, min(binding["gate_deadline_ns"], int(self.deadline * 1e9)))
+                gate.no_pkexec(binding["app"]["pid"])
             fd = os.open(RULE, os.O_CREAT | os.O_EXCL | os.O_WRONLY | os.O_NOFOLLOW, 0o644)
             try:
                 os.fchmod(fd, 0o644)
@@ -631,6 +692,20 @@ class Window:
         require(time.monotonic() < self.deadline, "authority observation deadline reached before readiness")
         self.record["status"] = "ready"
         self.record["ready_unix_ns"] = time.time_ns()
+        if gated_context:
+            gate.recheck(binding, config, min(binding["gate_deadline_ns"], int(self.deadline * 1e9)))
+            gate.no_pkexec(binding["app"]["pid"])
+            rechecked = time.monotonic_ns()
+            gate.publish(self.args.gate_directory, "binding.json", binding)
+            release = {"schema": 1, "lease": config["lease"], "nonce": config["nonce"],
+                       "boot_id": binding["boot_id"], "app_pid": binding["app"]["pid"],
+                       "app_starttime": binding["app"]["starttime"], "binding_sha256": gate.sha(gate.encode(binding)),
+                       "window_started_ns": int(self.started_at * 1e9),
+                       "loaded_ns": self.record["loaded_marker_observed_monotonic_ns"],
+                       "rechecked_ns": rechecked, "released_ns": time.monotonic_ns()}
+            require(release["released_ns"] < binding["gate_deadline_ns"], "gate expired before publication")
+            gate.publish(self.args.gate_directory, "release.json", release)
+            self.record["gate_release"] = release
         self.record["remaining_seconds"] = max(0, self.deadline - time.monotonic())
         self.save()
         print(json.dumps({"event": "authority_window_ready", "mode": self.args.mode,
@@ -638,6 +713,7 @@ class Window:
                           "remaining_seconds": self.record["remaining_seconds"]}), flush=True)
 
     def restore(self):
+        self.record["restore_started_monotonic_ns"] = time.monotonic_ns()
         self.record["restore_started_unix_ns"] = time.time_ns()
         try:
             self.save()

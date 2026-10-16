@@ -21,6 +21,8 @@ import subprocess
 import time
 from urllib.parse import urlsplit
 
+import gated
+
 
 APP = "/usr/bin/campus-updater-1057"
 HELPER = "/usr/lib/campus-updater-1057/inert-helper.txt"
@@ -238,15 +240,24 @@ def validate_denial_exports(args):
                     "authority window did not run these reviewed helper bytes")
             namespace = {"__name__": "campus1057_marker_validation", "__file__": str(helper)}
             exec(compile(source, str(helper), "exec"), namespace)
-            output.update(validate_denial_evidence(values["desktop"], values["authority"], values["journal"],
-                                                   namespace["validate_marker_rows"], namespace["deny_rule"]))
+            if getattr(args, "validate_user_manager", None):
+                for name in ("gated.py", "serve.py", "desktop.py", "gated-driver.py"):
+                    actual = file_record(Path(__file__).with_name(name), RECEIPT_LIMIT)
+                    require(values["authority"].get("gated_control_sources", {}).get("gui_sources", {}).get(name, {}).get("sha256") == actual["sha256"],
+                            "gated source/export hash differs: " + name)
+                output["kind"] = "campus1057-root-correlated-user-manager"
+                output.update(gated.correlate(values["desktop"], values["authority"], values["journal"],
+                                               namespace["validate_marker_rows"], namespace["deny_rule"]))
+            else:
+                output.update(validate_denial_evidence(values["desktop"], values["authority"], values["journal"],
+                                                       namespace["validate_marker_rows"], namespace["deny_rule"]))
         except Exception as error:
             output["error"] = str(error)
         json.dump(output, stream, indent=2)
         stream.write("\n")
         stream.flush()
         os.fsync(stream.fileno())
-    return 0 if output["status"] == "correlated_pending_coordinator_review" else 1
+    return 0 if output["status"] in ("correlated_pending_coordinator_review", "root_correlated_user_manager_pending_coordinator_review") else 1
 
 
 def record_outcome(path, observer, observation):
@@ -376,7 +387,115 @@ class Recorder:
                 observations.append({**observed, "observed_monotonic_ns": time.monotonic_ns()})
                 self.save()
 
+    def gated_command(self, argv):
+        """Observe without reaping until root removes the exact owned NO rule.
+
+        No poll/wait/communicate is permitted before the trusted restoration
+        acknowledgment. A dead controller makes evidence incomplete; it never
+        extends the 20-second invocation or silently frees the subject PID.
+        """
+        config = gated.config_read(self.args.gate_directory)
+        require(self.args.case == "deny" and self.args.timeout == 20
+                and config["lease"] == self.args.lease_reference, "gated recorder scope differs")
+        record = {"argv": argv, "started_ns": time.time_ns(), "monotonic_started_ns": time.monotonic_ns()}
+        deadline = record["monotonic_started_ns"] + gated.APP_NS
+        cleanup_deadline = record["monotonic_started_ns"] + gated.GATE_NS + 45_000_000_000
+        self.receipt["commands"].append(record)
+        self.receipt["gated_mode"] = gated.MODE
+        self.receipt["session_binding"] = "coordinator_review_required"
+        self.save()
+        child = subprocess.Popen(argv, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE,
+                                 stderr=subprocess.PIPE, start_new_session=True)
+        # Retain the Popen object too: its destructor must not poll/reap on error.
+        self._unreaped = [child]
+        selector = selectors.DefaultSelector()
+        captured = {"stdout": bytearray(), "stderr": bytearray()}
+        failure, completed, restored = None, None, False
+        try:
+            record["process"] = logind_process(child.pid)
+            require(record["process"]["session"] is None, "gated mode requires actual null session")
+            gated.hint_write(Path(config["hints"]) / "app.json", {
+                "lease": config["lease"], "nonce": config["nonce"], "app_pid": child.pid,
+                "server_pid": self.args.gate_server_pid, "monotonic_started_ns": record["monotonic_started_ns"]})
+            self.save()
+            for name, pipe in (("stdout", child.stdout), ("stderr", child.stderr)):
+                os.set_blocking(pipe.fileno(), False)
+                selector.register(pipe, selectors.EVENT_READ, name)
+            while completed is None or selector.get_map():
+                require(time.monotonic_ns() < deadline, "original 20-second app deadline exceeded")
+                self.sample_children(child.pid, record)
+                completed = gated.child_exit(child)
+                for key, unused in selector.select(min(0.02, max(0, (deadline - time.monotonic_ns()) / 1e9))):
+                    block = os.read(key.fileobj.fileno(), 8192)
+                    if not block:
+                        selector.unregister(key.fileobj)
+                        continue
+                    remaining = CAPTURE_LIMIT - sum(map(len, captured.values()))
+                    captured[key.data].extend(block[:remaining])
+                    require(len(block) <= remaining, "command exceeded bounded capture")
+                if completed is not None and "finished_ns" not in record:
+                    record.update(returncode=completed, finished_ns=time.time_ns(), monotonic_finished_ns=time.monotonic_ns())
+            require(record["monotonic_finished_ns"] <= deadline, "late app completion")
+        except Exception as error:
+            failure = error
+            record["gated_error"] = str(error)
+            try:
+                gated.hint_write(Path(config["hints"]) / "abort.json", {"error": str(error)[:1024]})
+            except FileExistsError:
+                pass
+            # Killing is not reaping. The retaining parent stays alive through
+            # restoration, including for a zombie caused by this timeout.
+            try:
+                os.killpg(child.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+        finally:
+            record.update({name: bytes(value).decode(errors="replace") for name, value in captured.items()})
+            record.setdefault("finished_ns", time.time_ns())
+            record.setdefault("monotonic_finished_ns", time.monotonic_ns())
+            self.save()
+            try:
+                while time.monotonic_ns() < cleanup_deadline:
+                    try:
+                        acknowledgment = gated.root_read(self.args.gate_directory / "restored.json")
+                    except FileNotFoundError:
+                        time.sleep(0.02)
+                        continue
+                    require(acknowledgment.get("lease") == config["lease"]
+                            and acknowledgment.get("nonce") == config["nonce"]
+                            and acknowledgment.get("boot_id") == config["boot_id"]
+                            and acknowledgment.get("rule_absent") is True
+                            and type(acknowledgment.get("restored_ns")) is int
+                            and record["monotonic_started_ns"] <= acknowledgment["restored_ns"] <= time.monotonic_ns(),
+                            "invalid root restoration acknowledgment")
+                    restored = True
+                    record["root_restoration"] = acknowledgment
+                    break
+                require(restored, "root restoration unavailable; child deliberately not reaped, manual recovery required")
+                # Only now can the numeric PID be released. If root aborted
+                # before app completion, terminate it without claiming success.
+                if gated.child_exit(child) is None:
+                    os.killpg(child.pid, signal.SIGKILL)
+                    failure = failure or RuntimeError("authority restored before app completed")
+                actual_returncode = child.wait(timeout=1)
+                record.setdefault("returncode", actual_returncode)
+                require(record["returncode"] == actual_returncode, "exit observation changed")
+                record["reaped_monotonic_ns"] = time.monotonic_ns()
+                self._unreaped = []
+            except Exception as error:
+                failure = failure or error
+                record["retention_error"] = str(error)
+            selector.close()
+            child.stdout.close()
+            child.stderr.close()
+            self.save()
+        if failure:
+            raise failure
+        return record
+
     def command(self, argv, timeout=10, bind=False):
+        if bind and getattr(self.args, "gate_directory", None):
+            return self.gated_command(argv)
         record = {"argv": argv, "started_ns": time.time_ns(), "monotonic_started_ns": time.monotonic_ns()}
         self.receipt["commands"].append(record)
         self.save()
@@ -644,7 +763,7 @@ class Recorder:
             return 0
         except Exception as error:
             self.receipt.update(status="incomplete", error=str(error))
-            if "before" in self.receipt and "after" not in self.receipt:
+            if "before" in self.receipt and "after" not in self.receipt and not getattr(self, "_unreaped", []):
                 try:
                     observed = self.command([APP, "--diagnose"], timeout=5)
                     self.receipt["after_incomplete_observation"] = json.loads(observed["stdout"])
@@ -661,6 +780,7 @@ def main():
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--case", choices=("prompt", "cancel", "deny", "missing-authority"))
     mode.add_argument("--record-outcome", type=Path, help="completed receipt to append the actual observation to, after the recorder exits")
+    mode.add_argument("--validate-user-manager", type=Path, help="separate pending root correlation; never upgrades raw null-session evidence")
     mode.add_argument("--validate-denial", type=Path, help="post-run completed deny receipt; produces a separate correlation receipt")
     parser.add_argument("--desktop-receipt-sha256", help="coordinator binding for the completed desktop receipt")
     parser.add_argument("--authority-receipt", type=Path, help="exported final root authority receipt, after restoration")
@@ -683,7 +803,14 @@ def main():
     parser.add_argument("--screenshot", type=Path, help="fresh compositor PNG captured during this invocation; mandatory for prompt/cancel")
     parser.add_argument("--receipt", type=Path, help="new receipt path in an existing user-owned evidence directory")
     parser.add_argument("--timeout", type=int, default=180)
+    parser.add_argument("--gate-directory", type=Path, help="optional separately leased root-correlated user-manager denial")
+    parser.add_argument("--gate-server-pid", type=int)
     args = parser.parse_args()
+    if args.gate_directory and (args.case != "deny" or args.timeout != 20 or not args.gate_server_pid
+                               or args.endpoint != "http://127.0.0.1:17857/stable/linux.json"):
+        parser.error("gated mode requires deny, original 20 seconds, actual server PID and fixed endpoint")
+    if args.validate_user_manager is not None:
+        args.validate_denial = args.validate_user_manager
     if args.validate_denial is not None:
         if any(getattr(args, name) is None for name in ("desktop_receipt_sha256", "authority_receipt",
                 "authority_receipt_sha256", "journal", "journal_sha256", "authority_helper_sha256", "validation_receipt")):

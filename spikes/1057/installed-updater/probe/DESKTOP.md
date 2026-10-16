@@ -456,3 +456,80 @@ The marker bridge follows the [polkit124 interface](https://github.com/polkit-or
 documents `--socket-errors=on` to surface local socket delivery errors. These interface
 references justify the expected invocation; they do not prove the guest's executable,
 supported options, service context or actual journal delivery.
+
+## Optional normal-GUI user-manager gate (human10966, source only)
+
+This is a separately reviewed deny-only fixture mode, not a new activation. Office382
+owns the current guest lease. Do not run it until LINUX-20261016 grants a new lease
+following source and different-family review. The existing direct mode and strict
+`--validate-denial` path remain unchanged. All activation10908 raw evidence remains
+immutable and incomplete.
+
+The new entry points are `gated-driver.py` (normal GDM Terminal, unprivileged) and
+`gated-control.py` (existing independent root session, `/usr/bin/python3 -I -B`).
+Neither acquires privilege. Use a new lease directory and new empty user-owned hints
+and receipt directories. Stage `gated.py`, `serve.py`, `desktop.py` and
+`gated-driver.py` together as root-owned nonwritable files in a readable mode0555
+root-controlled directory. Stage the controller and authority helper in the existing
+private mode0500 root staging model. Review/hash all six files. The controller verifies
+its own, gate and authority source hashes before work; its immutable root source manifest
+maps exactly the four GUI filenames to `{"path": "/absolute/reviewed/path", "sha256": "…"}`.
+Do not use a user-writable ancestor for staged source or root gate records.
+
+Start the GUI driver manually in the selected real Terminal with its fixed arguments
+(`--gate-directory`, `--hints`, index/inventory, receipt, root-preflight and SHA,
+lease/authority references, reviewed source head and observer). It reports its actual
+PID and waits at most60 seconds. Root independently selects that actual driver and its
+normal `/usr/libexec/gnome-terminal-server` ancestor, then invokes the controller with
+`--driver-pid`, `--terminal-pid`, `--uid`, `--session-id`, `--lease`, `--app-sha256`,
+`--gate-directory`, `--hints`, `--receipt`, `--source-manifest`, `--source-sha256`,
+`--gate-source`, `--gate-source-sha256`, `--authority-source` and
+`--authority-source-sha256`. Hashes and paths must come from the separately reviewed
+source and approved installed113a v1; never invent a new package or substitute a build.
+The controller creates the gate directory exclusively. It cannot reuse an old attempt.
+
+The driver starts only the fixed v2 loopback server and the existing installed deb
+recorder with its original20-second timer. No manifest/package is served before release.
+Client PID/request files are hints. Root independently reads kernel credentials,
+starttime, executable identity/hash, actual parent chain, VTE scope, direct logind null
+and owner UID, and the unique selected active local GDM session/leader/seat. The Terminal
+service and its child VTE scope are distinct, as observed in10908; actual ancestry binds
+them. The script paths/hashes are root staged and sampled from kernel command lines.
+This is controlled-guest GUI custody, not protection against root or same-user takeover.
+
+Ordering is actual app start → manifest waiting → root binding → authority window →
+loaded marker → fresh root recheck → one root release → unchanged manifest/package
+bytes → exact-PID/literal-null rejecting marker → completion → owned-rule restoration
+→ child reap. The8-second gate ceiling includes sampling/readiness and intersects the
+actual20-second invocation. Window45/restore10/loaded5 limits remain. The direct path
+still requires readiness before app launch. No start timestamp is rewritten.
+
+The new rule requires literal `subject.session === null`, all fixed existing action,
+program, root target, user, local/active predicates, a mandatory exact app PID and the
+complete root binding. Missing/undefined/false/empty/string-null/other sessions never
+match. Its sole return is NO; the marker names the different mode and binding digest.
+Kernel lifetime is independently monitored; JS does not compare starttime or boot.
+
+The recorder uses `waitid(WNOWAIT)` and retains the parent/Popen object until root's
+immutable restoration acknowledgment. It never polls, waits or communicates with the
+app before that acknowledgment. Timeout kills without reaping and requests restoration.
+Parent loss, changed identity/custody, absent observations, gate failure or expiry makes
+proof incomplete. A dead controller requires independent recovery; retention is bounded
+by app start +8+45 seconds and is not a promise to prevent PID reuse after parent death.
+Any residual NO after a crash is a restricted availability effect, never a privilege grant.
+
+Root removes the exact owned release and rule before acknowledging restoration. Other
+immutable gate records and their dot-prefixed `.pending` hardlinks remain evidence; after
+export, root must inventory and remove only this lease's known files/directory, and verify
+all owned PIDs/scopes absent, full protected baseline equality and normal logout/stopped
+handoff. The hardlinks permit atomic publication of fully fsynced bytes without a partial
+JSON visibility window. No preexisting path is overwritten.
+
+Export the complete literal journal union with the existing65-row sentinel, the root
+receipt, raw recorder receipt, complete server log, source hashes, GUI evidence and full
+before/after protected baseline. `desktop.py --validate-user-manager` uses the same export
+SHA arguments as `--validate-denial`, produces a separate report and never changes the raw
+`not_certified`/null classification. Even its successful correlation remains pending root
+review and `exact_logind_session=false`. Full package/trust/rules/service/keyring equality,
+GUI custody and missed setuid observations remain independent root review obligations.
+No source test is a successful installed denial or permission to activate.
