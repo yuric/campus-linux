@@ -9,7 +9,8 @@ dependency is bootstrap #981 at `37ef5d622da09cd7ba113dc0d1119e62e7378f84`.
 Human 10799 activated the existing disposable Lima lease on 2026-10-16 at 17:10 UTC.
 The unchanged reviewed helpers from `1666bd8ea3ded8aa47fd9d30eac42be10f28073c`
 ran with lease `1057-1285-60dc337b`: missing authority first, then denial after complete
-restoration and a fresh preflight. Source review and its 100 tests remain source evidence.
+restoration and a fresh preflight. The historical `1666bd8` review and its 100 tests
+remain source evidence; the later `4001fb6` source verification passed 110 tests.
 The installed v1 and approved signed v2 from build source `113a53e` were reused; no
 bootstrap, reinstall, hosted artifact download, dependency/build operation or cancellation repeat
 occurred. D1–D7 and every downstream production/package gate remain in force.
@@ -52,6 +53,34 @@ This is an observed technical refusal; raw status remains **not_certified**, wit
 `pending_coordinator_review`. The helper restored only its owned mask and original
 active configuration/bus ownership; its whole window including cleanup lasted
 35.215079122 seconds, without a deadline overrun.
+
+### Separate coordinator disposition under human10841
+
+On 2026-10-16, LINUX-20261016 independently checked the authority, desktop and graphical
+receipts, launch/after screenshots, all 99 indexed byte/hash records, and full protected
+paths/rules/keyring/session baseline equality. The coordinator recomputed the actual
+0.162752301-second invocation inside readiness through restoration and the
+35.215079122-second total window. Together with independent review, human10841 **accepted
+only the exact arm64 deb / GDM Wayland missing-authority refusal tuple**, using the
+previous manual-evidence method applied to cancellation at source369.
+
+This disposition binds the immutable evidence at
+`4001fb63042e9029d85365d561d27722fe3cf0ce`:
+
+- `activation-1285/guest/missing-authority.json` SHA256:
+  `049a26eb6a7b4ec1dda78d64080abb05a1d7a722c173b210e00297b1fbbc1afe`.
+- `activation-1285/run.json` SHA256:
+  `5a01183e398fb46808103e2221ed8d6958c17312d999fbcb8254078887378f5e`.
+
+Raw **not_certified** / `pending_coordinator_review` stays unchanged, with no direct
+app/logind mapping. No pkexec child was sampled in this case: provenance rests on the
+trusted unchanged app, fixed absolute invocation and captured real masked-authority
+error, not an independently observed child. External screenshots establish graphical
+custody only. The coordinator record is
+`reviews/linux-pr13-evidence/activation1285-missing-authority/{REPORT.md,root-verification.json}`
+in the coordinator's review workspace. This separate disposition neither accepts denial
+nor changes the validator, grants a guest lease, or completes L0/card1057. No
+missing-authority rerun is required solely to force direct GNOME user-manager session proof.
 
 After [independent restoration comparison](receipts/installed-updater-1057/activation-1285/missing-restoration-equality.json),
 the [fresh denial baseline](receipts/installed-updater-1057/activation-1285/root-preflight-after-missing.json)
@@ -99,8 +128,8 @@ Original active authority/bus ownership, absent owned rule/mask, v1/public trust
 configuration and locked keyring were verified. The
 [final guest observation](receipts/installed-updater-1057/activation-1285/guest-final.json)
 records owned driver/server/recorder/app process absence and no remaining fixture process.
-Missing-authority manual assessment and the failed denial remain for LINUX-20261016;
-no worker acceptance, readiness, merge or CI/Council watcher is implied.
+The separate missing-authority disposition is recorded above; failed denial remains for
+LINUX-20261016. No worker acceptance, readiness, merge or CI/Council watcher is implied.
 
 [Lima was returned Stopped](receipts/installed-updater-1057/activation-1285/capacity-stopped.json)
 with disk inode944391844 and allocated bytes7,424,835,584, versus the fresh stopped
@@ -122,7 +151,8 @@ the later source-only diagnostic is separate below. The read-only preflight tran
 failure (`Message too long`) and initial local shell-check wrapper error are retained
 separately; neither is an authority case result. No authority retry or source repair
 followed the failed denial. LINUX-20261016 is the explicit next owner and sole watcher
-for missing-authority assessment, denial disposition, exact-head review and landing.
+for denial disposition, exact-head review and landing; human10841 records the bounded
+missing-authority acceptance separately above.
 
 ## Source-only callback diagnostics under human10809
 
@@ -140,9 +170,11 @@ It records only those fields, subject PID/user/local/active/session, and expecte
 session/PID scope. Each value retains its type and own-property presence so missing,
 explicit undefined, null, empty string and false remain distinguishable. String/PID
 bounds and unsupported types produce explicit `diagnostic-invalid` evidence; unsupported
-objects are never coerced or serialized. ASCII JSON escaping bounds the complete logger
-message to2,048 bytes, including event/lease/nonce; oversize serialization yields an
-explicit invalid diagnostic rather than a truncated value that could appear valid.
+objects are never coerced or serialized. The complete logger-message limit is 2,048 bytes,
+including event/lease/nonce; ASCII JSON escaping and oversize rejection are Node/source-tested.
+A general byte bound for arbitrary extended Duktape strings remains unproven in the actual
+polkit callback runtime. Oversize serialization in the tested cases yields an explicit
+invalid diagnostic rather than a truncated value that could appear valid.
 
 The fixed logger argv receives exactly one message operand. Diagnostic construction
 or spawn errors are contained, then the original strict local/active/session/optional-PID
@@ -174,8 +206,8 @@ no new helper byte has been staged or executed in either guest.
 Direction 1269 authorizes source and mocked tests from evidence head 333d59b only. The
 VM lease is returned to Office 400; this correction authorizes no guest access or runtime.
 The failed 7383449 attempt and all historical raw evidence below remain failed or incomplete
-at their original scope. Actual denial and missing-authority refusal remain unproven;
-the independently checked missing-authority case must run first under a future lease.
+at their original scope. At that historical handoff, denial and missing-authority refusal
+were unproven; the later activation1285 and human10841 disposition are recorded above.
 Changed helpers require fresh hashes and coordinator review before any execution.
 
 The bounded marker contract retains the fixed logger argv and root-owned source/rule
@@ -294,8 +326,8 @@ counts the entire worktree, own temporary files, disk growth and 4 MiB publicati
 reserve: 29,966,336 bytes, below 64 MiB. The 20 GiB host / 2 GiB guest floors remain unchanged.
 
 Direction 1269 addresses the observed missing daemon metadata through the source-only
-contract above; it grants no runtime lease. Both denial and missing authority remain unproven;
-cleanup and root logger delivery do not qualify either case. The coordinator owns
+contract above; it granted no runtime lease. Both cases were unproven at that historical
+handoff; cleanup and root logger delivery did not qualify either case. The coordinator owns
 independent evidence review, exact-head CI/Council and merge. No worker watcher,
 ready/auto-merge/done action or production acceptance follows from this handoff.
 
@@ -398,7 +430,7 @@ by the 7383449 run.
 | Signed v1 → v2 and higher v3 with reverted fixture behavior | Pass | Pass | AppImage replacement/relaunch and privileged deb verification |
 | Lower/same signed deb replay refused at privileged seam | Pass | Pass | App/helper hashes unchanged; live caller substitution also passed |
 | Privileged bad signature and signed wrong-architecture AppImage | Pass | Pass | Intended rejecting boundaries; no installation/replacement |
-| GDM polkit prompt, cancellation, denial and missing authority | Recorded cancellation tuple manually accepted under10670; first timeout incomplete, denial prerequisite failed, missing not run | Downstream desktop gap | Partial Phase B evidence only; raw `not_certified` retained, no direct PID-session proof |
+| GDM polkit prompt, cancellation, denial and missing authority | Cancellation tuple manually accepted under10670; activation1285 missing-authority arm64 deb/GDM Wayland tuple separately accepted under10841; denial timed out after20 seconds, `incomplete`, with no rejecting marker | Downstream desktop gap | Partial desktop evidence only; missing-authority raw `not_certified` / `pending_coordinator_review` retained, no direct app/logind mapping or sampled pkexec child; denial remains failed |
 
 | Final artifact budget | arm64 | x86_64 |
 |---|---:|---:|
@@ -816,11 +848,14 @@ interrupted-`dpkg` recovery, external package replacement during work and the co
 product/session matrix remain #989/#990/#996/#997/#999. Neither an inert helper nor a
 headless updater pass closes those gates.
 
-Worker verification uses `python3 -B scripts/verify_repository.py` (30 policy regressions,
-boundary, acceptance inventory, links and legacy OpenAPI), the adapter's ten stdlib
-tests, and the probe's 60 source regressions (six smoke, twenty-one desktop, twenty-four
-authority-window and nine marker-bridge tests), for 100 tests total. Source 7383449
-passed the then-current 74 tests (34 probe); that historical result is unchanged. The earlier
+At source `4001fb63042e9029d85365d561d27722fe3cf0ce`, worker verification passed
+`python3 -B scripts/verify_repository.py` (30 policy regressions, boundary, acceptance
+inventory, links and legacy OpenAPI), the adapter's ten stdlib tests, and the probe's
+70 source regressions (six smoke, twenty-one desktop, twenty-six authority-window and
+seventeen marker-bridge tests), for **110 tests total**. The 100-test result belongs to
+historical source `1666bd8` (60 probe: six smoke, twenty-one desktop, twenty-four
+authority-window and nine marker-bridge). Source7383449 passed the then-current 74 tests
+(34 probe); that historical result is unchanged. The earlier
 59-test checks at368809e/3697b28 included nineteen probe tests and two authority-window
 tests; those historical counts and raw receipts remain unchanged. Current commands:
 
@@ -831,7 +866,12 @@ python3 -B -m unittest discover -s spikes/1057/installed-updater/probe -p 'test_
 git diff --check origin/main...HEAD
 ```
 
-Python AST and shell syntax checks also pass. Marker tests use existing host Node to
+The docs-only follow-up under direction1316 changes no source, helper, validator or raw
+receipt bytes. The 110-test result above belongs to source4001; those tests were not rerun
+for the documentation-only head. Its read-only committed-tree link/hash and whitespace
+checks are recorded separately on the card under the bounded publication exception.
+
+Python AST and shell syntax checks also passed at4001. Marker tests use existing host Node to
 evaluate generated JavaScript with mocked polkit, without a real logger or guest call.
 At source113a53e, the live `check-linux-admission.py --pr 13
 --head 113a53e4eea44b6d80a8ee3edb55d186d11f3ba6` accepted all six required checks.
