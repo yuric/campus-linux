@@ -3,17 +3,23 @@
 This is pre-product evidence for **LINUX-20261016**, not release acceptance. LINUX-16/17
 must repeat applicable tests on final deb/AppImage packages in both real GDM sessions.
 The bounded real-session observations below do not establish release acceptance.
-**G8 remains unaccepted. Corrected untimed X11 v7 and Wayland v7 proofs passed; valid timing series remain held.**
+**G8 remains unaccepted. Historical untimed X11 v7 and Wayland v7 proofs passed at their recorded hashes; current-source proof and timing remain pending.**
 Human coordinator decision **10413**, independently verified by root, supersedes the earlier
 10405 investigation: the defect was the harness's initial zoom units, not a producer clamp
 or incompatible protocol. Absolute zoom 0.75, 1 and 1.5 are all reachable. The authorized
 correction preserves producer bytes, scene, protocol and every threshold. The sole VM owner
 must still satisfy the 35 GiB host reserve and human 10420 scheduling hold before further timings.
-The latest reported host reserve is 32.7 GiB; the VM owner is stopping Lima normally.
+At that historical capture, the reported host reserve was32.7GiB and Lima was stopping.
+Current source-only direction1229 leaves the guest lease with Office377.
 
-## Producer and premeasurement freeze
+Current source-only preparation is [the G8 run plan](g8-run-plan.md): it pins the merged
+desktop producer `3e3d4bcd` without rebinding any old capture. Fresh per-session untimed
+proof and timing freeze are required; direction1229 authorizes no guest access or timing.
+The following original observations and commands remain historical.
 
-Current merged Mac main was read through `gh api repos/yuric/campus-macos/commits/main
+## Historical producer and premeasurement freeze
+
+At the original capture, merged Mac main was read through `gh api repos/yuric/campus-macos/commits/main
 --jq .sha` on 2026-10-16: `8e39806c5b1fb2ffeda6e55718a4fd2a4d2890da`.
 An isolated `gh repo clone yuric/campus-macos /tmp/campus-982-renderer-git -- --depth 1`
 checkout returned the identical HEAD. No reference checkout was modified. Individual

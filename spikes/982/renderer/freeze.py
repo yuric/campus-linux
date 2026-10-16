@@ -19,10 +19,10 @@ if not isinstance(env.get('rendering_env'),dict) or env['rendering_env'].get('LI
     raise SystemExit('Copy actual rendering_env from untimed preflight')
 base=Path(__file__).resolve().parent
 digest=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
-manifest=json.loads((base/'producer-manifest.json').read_text())
+manifest=json.loads((base/'desktop-producer-manifest.json').read_text())
 native=native_receipt(a.native_gpu_receipt)
 if env['webgl_api_renderer']!=native['webgl_api_renderer']: raise SystemExit('WebGL API identity differs from reviewed source')
-frozen=dict(env,purpose='untimed-diagnostic-only',zoom_units='absolute producer camera zoom',driver_revision='absolute-zoom-v3',initial_zoom=1,initial_zoom_tolerance=1e-5,projection_observer_during_timing=False,motion_evidence_code_sha256=digest(base/'motion_evidence.py'),native_evidence=native,native_evidence_code_sha256=digest(base/'native_evidence.py'),producer_sha=manifest['source'],manifest_sha256=digest(base/'producer-manifest.json'),
+frozen=dict(env,purpose='untimed-diagnostic-only',zoom_units='absolute producer camera zoom',driver_revision='absolute-zoom-v3',initial_zoom=1,initial_zoom_tolerance=1e-5,projection_observer_during_timing=False,motion_evidence_code_sha256=digest(base/'motion_evidence.py'),native_evidence=native,native_evidence_code_sha256=digest(base/'native_evidence.py'),producer_sha=manifest['source'],manifest_sha256=digest(base/'desktop-producer-manifest.json'),
             fixture_sha256=digest(base/'fixture.json'),measure_sha256=digest(base/'measure.js'),
             runner_sha256=digest(base/'run-webkit.py'),run_five_sha256=digest(base/'run-five.py'),summarizer_sha256=digest(base/'summarize.py'),protocol_sha256=digest(base.parents[2]/'docs/acceptance/visual-protocol.json'),
             seed=98120261016,repeats=5,duration_seconds=60,warmup_seconds=30,p95_ms_max=33.3,

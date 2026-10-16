@@ -22,13 +22,13 @@ if(process.platform!=='linux'||process.arch!=='arm64'||process.versions.electron
 if(process.env.LIBGL_ALWAYS_SOFTWARE!=='1') throw Error('Mesa software rendering required');
 if(options.has('--no-sandbox')||process.argv.includes('--no-sandbox')) throw Error('Sandbox downgrade forbidden');
 const renderingEnv=Object.fromEntries(['LIBGL_ALWAYS_SOFTWARE','GDK_BACKEND','MESA_LOADER_DRIVER_OVERRIDE','GALLIUM_DRIVER','EGL_PLATFORM'].map(key=>[key,process.env[key]??null]));
-const hashes=Object.fromEntries(['measure.js','fixture.json','producer-manifest.json','summarize.py','electron/main.cjs','electron/preload.cjs','electron/run-five.py','electron/freeze.py','electron/source.json','motion_evidence.py'].map(file=>[file,digest(path.join(base,file))]));
+const hashes=Object.fromEntries(['measure.js','fixture.json','desktop-producer-manifest.json','summarize.py','electron/main.cjs','electron/preload.cjs','electron/run-five.py','electron/freeze.py','electron/source.json','motion_evidence.py'].map(file=>[file,digest(path.join(base,file))]));
 hashes.executable=digest(process.execPath);
 if(hashes.executable!==JSON.parse(fs.readFileSync(path.join(__dirname,'source.json'))).executable_sha256) throw Error('Official pinned runtime executable differs');
 if(!preflight&&JSON.stringify(freeze.runtime)!==JSON.stringify(process.versions)) throw Error('Actual runtime differs from successful frozen preflight');
 if(!preflight&&(JSON.stringify(freeze.input_hashes)!==JSON.stringify(hashes)||JSON.stringify(freeze.rendering_env)!==JSON.stringify(renderingEnv))) throw Error('Electron frozen inputs/environment changed');
 const manifest=JSON.parse(fs.readFileSync(path.join(exportPath,'manifest.json')));
-if(digest(path.join(exportPath,'manifest.json'))!==hashes['producer-manifest.json']) throw Error('Producer manifest differs');
+if(digest(path.join(exportPath,'manifest.json'))!==hashes['desktop-producer-manifest.json']) throw Error('Producer manifest differs');
 const assets=new Map();
 for(const item of manifest.files){
  const full=path.resolve(exportPath,item.path);

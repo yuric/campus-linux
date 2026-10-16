@@ -1592,8 +1592,8 @@
     },
     {
       "path": "spikes/982/renderer/electron/main.cjs",
-      "bytes": 10198,
-      "sha256": "c5d9bb3dda1b4c6045c5848cb5090ac000afd3cb78b2ff18cc137e0754f76aee"
+      "bytes": 10214,
+      "sha256": "70cd2f44e6dcf8f91c30a438ac829e2b26fa0fc32ad2e99a83eeb6fd8cd10d84"
     },
     {
       "path": "spikes/982/renderer/electron/preload.cjs",
@@ -1627,8 +1627,8 @@
     },
     {
       "path": "spikes/982/renderer/freeze.py",
-      "bytes": 3341,
-      "sha256": "37e99c8b3494be361e4991a8b6a916b997c1075db93328249a6dfe9445ddf0ad"
+      "bytes": 3357,
+      "sha256": "7049a6c260841c336f5c33570ce5cedf85ba644c04c63941a92b2b30e37ff1e3"
     },
     {
       "path": "spikes/982/renderer/lifecycle.js",
@@ -1667,8 +1667,8 @@
     },
     {
       "path": "spikes/982/renderer/run-webkit.py",
-      "bytes": 12553,
-      "sha256": "19111e1b9b374c159333d7174a0986b6761a9cb72fdf60ef3085b89b39ec674d"
+      "bytes": 12569,
+      "sha256": "5f6956d9b7a68e40ef558c9926a8909c634a8fed8c4bb7179e3b4af87856efdb"
     },
     {
       "path": "spikes/982/renderer/source-receipt.json",
@@ -1724,6 +1724,36 @@
       "path": "spikes/982/speech/synthetic_recorder.py",
       "bytes": 4424,
       "sha256": "e1af7155f3763b26c3158f8686af9fb76e7b6c17246615cfb84081f64b80d6f5"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-sourceprep-1229/source-hashes.json",
+      "bytes": 4077,
+      "sha256": "c8fb6e0a5ed1233c17e77cb717bf52ae0d7d1469d609c6f0c39a20ad63f02a9f"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-sourceprep-1229/source-receipt.json",
+      "bytes": 3662,
+      "sha256": "4bd796f2a17fb54a0662a56712620d03a9c70df530ddc463341de41cfebf041f"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-sourceprep-1229/historical-source/run-webkit.py",
+      "bytes": 12553,
+      "sha256": "19111e1b9b374c159333d7174a0986b6761a9cb72fdf60ef3085b89b39ec674d"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-sourceprep-1229/historical-source/freeze.py",
+      "bytes": 3341,
+      "sha256": "37e99c8b3494be361e4991a8b6a916b997c1075db93328249a6dfe9445ddf0ad"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-sourceprep-1229/historical-source/electron/main.cjs",
+      "bytes": 10198,
+      "sha256": "c5d9bb3dda1b4c6045c5848cb5090ac000afd3cb78b2ff18cc137e0754f76aee"
+    },
+    {
+      "path": "spikes/982/renderer/desktop-producer-manifest.json",
+      "bytes": 5720,
+      "sha256": "7b5fabefd830d3cd3d3577da1c4cb4ba55217de0f7eb5b5bbfc9501443428f09"
     }
   ],
   "source_revision_note": "Source entries updated by consolidated review repair; historical receipt source identities remain unchanged and original source is retained at d784405d34437cd68cb8349efef588d7d5ae2470."

@@ -42,10 +42,10 @@ if a.output.exists(): raise SystemExit('Preserve existing raw capture; choose fr
 a.output.parent.mkdir(parents=True,exist_ok=True)
 def digest(path): return hashlib.sha256(path.read_bytes()).hexdigest()
 for path,key in [(a.export/'manifest.json','manifest_sha256'),(base/'fixture.json','fixture_sha256'),(base/'measure.js','measure_sha256'),(base/'run-webkit.py','runner_sha256'),(base/'native_evidence.py','native_evidence_code_sha256'),(base/'motion_evidence.py','motion_evidence_code_sha256')]:
-    expected=digest(base/'producer-manifest.json') if a.preflight and key=='manifest_sha256' else digest(path) if a.preflight else frozen[key]
+    expected=digest(base/'desktop-producer-manifest.json') if a.preflight and key=='manifest_sha256' else digest(path) if a.preflight else frozen[key]
     if digest(path)!=expected: raise SystemExit('Frozen bytes changed: '+key)
 manifest=json.loads((a.export/'manifest.json').read_text())
-if manifest['source'] != json.loads((base/'producer-manifest.json').read_text())['source']: raise SystemExit('Producer pin mismatch')
+if manifest['source'] != json.loads((base/'desktop-producer-manifest.json').read_text())['source']: raise SystemExit('Producer pin mismatch')
 for entry in manifest['files']:
     path=a.export/entry['path']
     if not path.is_file() or path.is_symlink() or digest(path)!=entry['sha256']:

@@ -1,0 +1,78 @@
+{
+  "direction": 1229,
+  "observed_at": "2026-10-16T15:04:07.329125+00:00",
+  "scope": "Source-only preparation. No guest access, runtime proof or timing admission.",
+  "linux_parent": "83cc1bdff1e2213c47eaa8fb6f99411f6efd7db8",
+  "producer": "3e3d4bcd64fd1504c4546b2f7a063b55e2eea783",
+  "merge": {
+    "mergeCommit": {
+      "oid": "3e3d4bcd64fd1504c4546b2f7a063b55e2eea783"
+    },
+    "mergedAt": "2026-10-16T12:41:16Z",
+    "state": "MERGED",
+    "url": "https://github.com/yuric/campus-macos/pull/114"
+  },
+  "manifest_sha256": "7b5fabefd830d3cd3d3577da1c4cb4ba55217de0f7eb5b5bbfc9501443428f09",
+  "contract_source": "yuric/campus-server@d93b841762183af5ba0d357f3f1c42351aeed9ff",
+  "contract_scope": "Producer provenance only; no Linux API snapshot import or API compatibility claim.",
+  "existing_artifacts": "Coordinator reviews/macos-pr114-final-exports/desktop-first and desktop-second; neither rebuilt nor downloaded.",
+  "verifier": "node island/scripts/verify-desktop-export.mjs --input EXISTING_EXPORT --source 3e3d4bcd64fd1504c4546b2f7a063b55e2eea783 --contract-source yuric/campus-server@d93b841762183af5ba0d357f3f1c42351aeed9ff --manifest-sha256 7b5fabefd830d3cd3d3577da1c4cb4ba55217de0f7eb5b5bbfc9501443428f09",
+  "verifier_result": "exit 0 for both desktop-first and desktop-second: Desktop Island export verified against external pins",
+  "source_files": [
+    {
+      "path": "island/src/world3d/scene.ts",
+      "sha256": "b702f39700580e7b12dd7c2c2c8dd8a04c20e99117b8290a1eb5786e3956a8e1"
+    },
+    {
+      "path": "island/src/island-host.tsx",
+      "sha256": "fba147fc7c2070105602c73841a5f0697d11bc46a4061e450076caa6fd0b0560"
+    },
+    {
+      "path": "island/src/desktop-bridge.ts",
+      "sha256": "83557c6d5b71f2daca46d12e06143e03d77f352ed468662fd08b9108bd93020b"
+    },
+    {
+      "path": "island/DESKTOP_EXPORT.md",
+      "sha256": "87af08a4731351874ff2d616b526a6dfbc57129350c828ef84ad8c9d6169c74a"
+    },
+    {
+      "path": "island/desktop-bridge.schema.json",
+      "sha256": "4d73eea8fb118df341bd98600ee0c06aba4f33018cc0f01ab586918a8e0fa91c"
+    },
+    {
+      "path": "island/scripts/verify-desktop-export.mjs",
+      "sha256": "91a921d75976ed53ed4c346ec1162fab6807daedd209462f442b48a0e4dfc9a0"
+    },
+    {
+      "path": "island/scripts/verify-ios-export.mjs",
+      "sha256": "983b29a7e90e0c7e9a13dcf14e03a1b5fcc7aa8468197b63b4d2cd9fd5e9f840"
+    }
+  ],
+  "historical_sources": [
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-sourceprep-1229/historical-source/freeze.py",
+      "original_path": "spikes/982/renderer/freeze.py",
+      "source_commit": "83cc1bdff1e2213c47eaa8fb6f99411f6efd7db8",
+      "sha256": "37e99c8b3494be361e4991a8b6a916b997c1075db93328249a6dfe9445ddf0ad"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-sourceprep-1229/historical-source/run-webkit.py",
+      "original_path": "spikes/982/renderer/run-webkit.py",
+      "source_commit": "83cc1bdff1e2213c47eaa8fb6f99411f6efd7db8",
+      "sha256": "19111e1b9b374c159333d7174a0986b6761a9cb72fdf60ef3085b89b39ec674d"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-sourceprep-1229/historical-source/electron/main.cjs",
+      "original_path": "spikes/982/renderer/electron/main.cjs",
+      "source_commit": "83cc1bdff1e2213c47eaa8fb6f99411f6efd7db8",
+      "sha256": "c5d9bb3dda1b4c6045c5848cb5090ac000afd3cb78b2ff18cc137e0754f76aee"
+    }
+  ],
+  "merged_ancestry": {
+    "command": "gh api repos/yuric/campus-macos/compare/3e3d4bcd64fd1504c4546b2f7a063b55e2eea783...main",
+    "status": "ahead",
+    "ahead_by": 1,
+    "behind_by": 0,
+    "merge_base": "3e3d4bcd64fd1504c4546b2f7a063b55e2eea783"
+  }
+}

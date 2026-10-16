@@ -1,0 +1,200 @@
+{
+  "version": 1,
+  "producer": "yuric/campus-macos",
+  "source": "3e3d4bcd64fd1504c4546b2f7a063b55e2eea783",
+  "contractSource": "yuric/campus-server@d93b841762183af5ba0d357f3f1c42351aeed9ff",
+  "entrypoint": "Island/island.html",
+  "sourceArchiveSHA256": "30872d807a5750769e12631841ef5ba7cded56911bd5b90333f006f9ea642654",
+  "sourceMode": "git-archive",
+  "lockSHA256": "c297ca0ab9cad00571eb13bcb767c626a606f4f28482f627edb323a8c07d482c",
+  "recipe": "campus-island-desktop-v1",
+  "command": "npm ci --ignore-scripts --include=dev --no-audit --no-fund && vite build --config vite.ios.config.ts",
+  "toolchain": {
+    "platform": "darwin",
+    "arch": "arm64",
+    "git": "git version 2.50.1 (Apple Git-155)",
+    "node": "v22.23.1",
+    "installNode": "v22.23.1",
+    "npm": "10.9.8",
+    "vite": "8.3.0"
+  },
+  "runtimePackages": [
+    {
+      "name": "react",
+      "version": "19.3.0",
+      "license": "MIT",
+      "licenseFiles": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "react-dom",
+      "version": "19.3.0",
+      "license": "MIT",
+      "licenseFiles": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "rolldown",
+      "version": "1.2.8",
+      "license": "MIT",
+      "licenseFiles": [
+        "LICENSE",
+        "THIRD-PARTY-LICENSE"
+      ]
+    },
+    {
+      "name": "scheduler",
+      "version": "0.28.0",
+      "license": "MIT",
+      "licenseFiles": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "three",
+      "version": "0.186.0",
+      "license": "MIT",
+      "licenseFiles": [
+        "LICENSE"
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": "Island/assets/island-B3jZU801.js",
+      "bytes": 1034883,
+      "sha256": "1a409b8e7bb93bd3bed44b430b347708518010a03f00ae56f99c89448ebeefcf",
+      "mode": "0644"
+    },
+    {
+      "path": "Island/assets/island-BKmEIAej.css",
+      "bytes": 38196,
+      "sha256": "0d14030367618221d904e075d4a2d5e48039c61dcd1c0b1dbf73a289781d79c6",
+      "mode": "0644"
+    },
+    {
+      "path": "Island/island.html",
+      "bytes": 719,
+      "sha256": "eadbb3b349a470e1ea5e0b022dd86432136c7f9b17ced055f646062425d8e0ed",
+      "mode": "0644"
+    },
+    {
+      "path": "Island/licenses/Campus-LICENSE",
+      "bytes": 11357,
+      "sha256": "33c10090cfdaf84eec1fa300a30619d34a1c2283f21410d085778096265d0b7c",
+      "mode": "0644"
+    },
+    {
+      "path": "Island/licenses/Campus-NOTICE",
+      "bytes": 647,
+      "sha256": "2fbc7cb83c241b4711fdef1f153d9107d2d83e1810fd85db4706ff6a66a2bbe9",
+      "mode": "0644"
+    },
+    {
+      "path": "Island/licenses/react-19.3.0-LICENSE",
+      "bytes": 1088,
+      "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+      "mode": "0644"
+    },
+    {
+      "path": "Island/licenses/react-dom-19.3.0-LICENSE",
+      "bytes": 1088,
+      "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+      "mode": "0644"
+    },
+    {
+      "path": "Island/licenses/rolldown-1.2.8-LICENSE",
+      "bytes": 1302,
+      "sha256": "23ecfff35a5a2e80d92142f75228912c3b1abc4b5a8337a821ff4397e2f9f734",
+      "mode": "0644"
+    },
+    {
+      "path": "Island/licenses/rolldown-1.2.8-THIRD-PARTY-LICENSE",
+      "bytes": 2209,
+      "sha256": "a877291d800ed43692f3f9ae09d8e01cc6f7293ad39d43896059c188ffbb8b7c",
+      "mode": "0644"
+    },
+    {
+      "path": "Island/licenses/scheduler-0.28.0-LICENSE",
+      "bytes": 1088,
+      "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+      "mode": "0644"
+    },
+    {
+      "path": "Island/licenses/three-0.186.0-LICENSE",
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+      "mode": "0644"
+    }
+  ],
+  "directories": [
+    {
+      "path": "Island",
+      "mode": "0755"
+    },
+    {
+      "path": "Island/assets",
+      "mode": "0755"
+    },
+    {
+      "path": "Island/licenses",
+      "mode": "0755"
+    }
+  ],
+  "bridgeSchema": {
+    "path": "bridge.schema.json",
+    "bytes": 15458,
+    "sha256": "4d73eea8fb118df341bd98600ee0c06aba4f33018cc0f01ab586918a8e0fa91c",
+    "mode": "0600"
+  },
+  "licenseCoverage": [
+    {
+      "path": "Island/assets/island-B3jZU801.js",
+      "licenses": [
+        "Island/licenses/Campus-LICENSE",
+        "Island/licenses/Campus-NOTICE",
+        "Island/licenses/react-19.3.0-LICENSE",
+        "Island/licenses/react-dom-19.3.0-LICENSE",
+        "Island/licenses/rolldown-1.2.8-LICENSE",
+        "Island/licenses/rolldown-1.2.8-THIRD-PARTY-LICENSE",
+        "Island/licenses/scheduler-0.28.0-LICENSE",
+        "Island/licenses/three-0.186.0-LICENSE"
+      ]
+    },
+    {
+      "path": "Island/assets/island-BKmEIAej.css",
+      "licenses": [
+        "Island/licenses/Campus-LICENSE",
+        "Island/licenses/Campus-NOTICE",
+        "Island/licenses/react-19.3.0-LICENSE",
+        "Island/licenses/react-dom-19.3.0-LICENSE",
+        "Island/licenses/rolldown-1.2.8-LICENSE",
+        "Island/licenses/rolldown-1.2.8-THIRD-PARTY-LICENSE",
+        "Island/licenses/scheduler-0.28.0-LICENSE",
+        "Island/licenses/three-0.186.0-LICENSE"
+      ]
+    },
+    {
+      "path": "Island/island.html",
+      "licenses": [
+        "Island/licenses/Campus-LICENSE",
+        "Island/licenses/Campus-NOTICE",
+        "Island/licenses/react-19.3.0-LICENSE",
+        "Island/licenses/react-dom-19.3.0-LICENSE",
+        "Island/licenses/rolldown-1.2.8-LICENSE",
+        "Island/licenses/rolldown-1.2.8-THIRD-PARTY-LICENSE",
+        "Island/licenses/scheduler-0.28.0-LICENSE",
+        "Island/licenses/three-0.186.0-LICENSE"
+      ]
+    },
+    {
+      "path": "bridge.schema.json",
+      "licenses": [
+        "Island/licenses/Campus-LICENSE",
+        "Island/licenses/Campus-NOTICE"
+      ]
+    }
+  ]
+}
