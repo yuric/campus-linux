@@ -1,0 +1,8 @@
+{
+  "contract_version": 1,
+  "resource": "TaskBoard.columns",
+  "produced_by": "GET /tasks/kanban: api/app/services/task_board.rb#TaskBoard.for",
+  "board_version": 1,
+  "columns": ["imaginarium", "approval", "blocked", "seashore", "in_progress", "done"],
+  "active_columns": ["imaginarium", "approval", "blocked", "seashore", "in_progress"]
+}

@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "state": "unknown",
+  "reason": "secure_store_unknown",
+  "severity": "warning",
+  "message": "Campus has not confirmed this desktop's secure credential store. Local execution is unavailable until the helper reports an unlocked store."
+}

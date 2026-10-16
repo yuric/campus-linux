@@ -1,0 +1,1 @@
+{"error":"Run as Agent is not ready for this Rule","reason":"credential_unavailable","recovery":{"id":"open_agent_settings","label":"Open Agent settings","message":"Choose an eligible Agent or make this Agent ready before enabling the Rule.","action":"open_agent_settings"}}

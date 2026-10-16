@@ -3,8 +3,8 @@
   "mac_repo": "yuric/campus-macos",
   "mac_sha": "8e39806c5b1fb2ffeda6e55718a4fd2a4d2890da",
   "prd_mac_sha": "3cc71216e3ca05090e90c5f09a56350b065acdcd",
-  "server_contract_source": "yuric/campus-server@d93b841762183af5ba0d357f3f1c42351aeed9ff",
-  "server_contract_sha256": "ac2b1ce2b2ca76c1744bfe348ae1a26d103fbcb915ad8442da557db8cc685cf9",
+  "server_contract_source": "yuric/campus-server@a7e0abceb23f874e5a8c01ba043679a844e6d287",
+  "server_contract_sha256": "e5b10521076db00ad02c8d7e064abffa67b1c303a6136ec6cd3df4effb61bc88",
   "snapshot_import_owner": 985,
   "actions": [
     {

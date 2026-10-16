@@ -5,8 +5,9 @@ Rails owns domain decisions. Presentation code renders API data. Generated wire 
 trusted executor bindings have narrow, reviewed uses of identifiers; they do not own
 capability catalogs, workflow rules or domain messages.
 
-This repository has policy tooling, but no app implementation. Run it with Python 3.9 or
-later (standard library only):
+This repository has policy tooling, but no app implementation. The boundary checker uses
+Python 3.9 or later and the standard library. The shared regression command also runs
+contract-import tests, which use the repository verification environment's existing PyYAML:
 
 ```sh
 python3 -B -m unittest discover -s scripts/tests -v

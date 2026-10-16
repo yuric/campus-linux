@@ -1,0 +1,408 @@
+{
+  "version": 1,
+  "session": {
+    "version": 1,
+    "id": "5e2d8c1a-7b3f-4a6e-9c0d-2f1e3a4b5c6d",
+    "state": "open",
+    "execution_request_id": "9d8c7b6a-5f4e-4d3c-8b2a-1f0e9d8c7b6a",
+    "executor_id": "0f1e2d3c-4b5a-4968-8776-655443322110",
+    "executor_name": "Studio Mac",
+    "run_state": "completed",
+    "opened_at": "2026-10-03T09:00:00.000000Z",
+    "ended_at": null,
+    "reason": null,
+    "message": null,
+    "display": {
+      "version": 1,
+      "placement": "details"
+    },
+    "status": {
+      "version": 1,
+      "display": {
+        "version": 1,
+        "placement": "status"
+      },
+      "label": "Failed",
+      "message": "This turn ended after a Campus tool call lost its connection before Campus recorded a result, and it did not answer your question. Use Retry to ask it again.",
+      "actions": [
+        {
+          "id": "stop_session",
+          "label": "Stop session",
+          "intent": "destructive",
+          "request": {
+            "method": "POST",
+            "path": "/assistant/sessions/5e2d8c1a-7b3f-4a6e-9c0d-2f1e3a4b5c6d/stop"
+          }
+        },
+        {
+          "id": "steer_session",
+          "label": "Send guidance",
+          "request": {
+            "method": "POST",
+            "path": "/assistant/sessions/5e2d8c1a-7b3f-4a6e-9c0d-2f1e3a4b5c6d/steer"
+          }
+        },
+        {
+          "id": "try_again",
+          "label": "Try again",
+          "intent": "default",
+          "request": {
+            "method": "POST",
+            "path": "/assistant/sessions"
+          }
+        }
+      ]
+    },
+    "details": [
+      {
+        "id": "session",
+        "message": null,
+        "display": {
+          "version": 1,
+          "placement": "details"
+        }
+      },
+      {
+        "id": "ask",
+        "message": "This coordinator session is open. A question you send here is answered by its next turn.",
+        "display": {
+          "version": 1,
+          "placement": "details"
+        }
+      },
+      {
+        "id": "continuation",
+        "message": "An idle session closes after an hour. Your next question starts a new session with its transcript as context.",
+        "display": {
+          "version": 1,
+          "placement": "details"
+        }
+      },
+      {
+        "id": "limits",
+        "message": "One turn runs at a time. Use Stop or Steer to control the work.",
+        "display": {
+          "version": 1,
+          "placement": "details"
+        }
+      },
+      {
+        "id": "wakeups",
+        "message": "Events matching this session's subscriptions can wake the coordinator while it is open.",
+        "display": {
+          "version": 1,
+          "placement": "details"
+        }
+      },
+      {
+        "id": "steering",
+        "message": "A running coordinator turn cannot take new input. Campus gives your guidance to the session's next turn and shows whether the coordinator confirmed it used it.",
+        "display": {
+          "version": 1,
+          "placement": "details"
+        }
+      }
+    ],
+    "error_detail": "A Campus tool call on the last turn lost its connection before Campus recorded a result, so Campus recorded it as failed and did not run it again.",
+    "model_output": {
+      "text": "{\"type\":\"assistant\",\"message\":{\"content\":[{\"type\":\"tool_use\",\"id\":\"toolu_00000000\",\"name\":\"mcp__campus__tasksIndex\",\"input\":{}}]}}{\"type\":\"result\",\"subtype\":\"success\",\"is_error\":false}",
+      "source": "coordinator_model_output",
+      "message": "The first 2 KB of what the model said on this session's last turn, as Campus read it.",
+      "version": 1,
+      "byte_size": 184,
+      "truncated": false,
+      "display": {
+        "version": 1,
+        "placement": "details"
+      }
+    },
+    "operations": {
+      "version": 1,
+      "state": "ready",
+      "message": "Campus operations use your current access. An ordinary reversible change you ask for is applied as you asked it; anything else waits for your confirmation.",
+      "calls": [
+        {
+          "id": "mcp:0:0000000000000000000000000000000000000000000000000000000000000000",
+          "question_id": "7b2c3d4e-5f6a-4b8c-9d0e-1f2a3b4c5d6e",
+          "result": {
+            "state": "tool_error",
+            "reason": "coordinator_tool_transport_failed",
+            "message": "This tool call's connection to Campus ended before Campus recorded its result. Check the saved resource before requesting the change again.",
+            "version": 1
+          },
+          "finished": true,
+          "started_at": "2026-10-03T09:00:00.000Z",
+          "finished_at": "2026-10-03T09:00:00.000Z"
+        }
+      ],
+      "reviews": [],
+      "handoffs": [],
+      "unsupported_message": "Update Campus to use these coordinator operations.",
+      "display": {
+        "version": 1,
+        "placement": "details"
+      }
+    },
+    "pause": null,
+    "budget": {
+      "version": 2,
+      "max_rounds": 16,
+      "max_output_bytes": 65536,
+      "max_prompt_bytes": 98304,
+      "time_limit_seconds": 900,
+      "enforcement": {
+        "version": 1,
+        "enforced_limits": [
+          "concurrent_turns"
+        ],
+        "max_concurrent_turns": 1,
+        "monetary_limit": "not_enforced",
+        "message": "No turn, time or spending limit ends this session. One turn runs at a time. Use Stop or Steer to control the work."
+      }
+    },
+    "usage": {
+      "version": 1,
+      "rounds_used": 2,
+      "wall_seconds": 4,
+      "spend_estimate_cents": 0
+    },
+    "waiting_for": [],
+    "wakeups": {
+      "version": 1,
+      "subscription_mode": "own_work",
+      "waiting_for": null,
+      "message": "Events matching this session's subscriptions can wake the coordinator while it is open.",
+      "events": [],
+      "display": {
+        "version": 1,
+        "placement": "details"
+      }
+    },
+    "steering": {
+      "version": 1,
+      "supported": true,
+      "native": false,
+      "delivery": "next_turn",
+      "message": "A running coordinator turn cannot take new input. Campus gives your guidance to the session's next turn and shows whether the coordinator confirmed it used it.",
+      "unsupported_message": "Update Campus to steer this coordinator session.",
+      "action": {
+        "id": "steer_session",
+        "label": "Send guidance",
+        "request": {
+          "method": "POST",
+          "path": "/assistant/sessions/5e2d8c1a-7b3f-4a6e-9c0d-2f1e3a4b5c6d/steer"
+        }
+      },
+      "steers": [],
+      "display": {
+        "version": 1,
+        "placement": "details"
+      }
+    },
+    "questions": [
+      {
+        "id": "6a1b2c3d-4e5f-4a7b-8c9d-0e1f2a3b4c5d",
+        "state": "answered",
+        "body": "What is blocked?",
+        "asked_at": "2026-10-03T09:00:00.000000Z",
+        "answered_at": "2026-10-03T09:00:00.000000Z",
+        "reply": "Two cards are blocked: #12 waits on review and #14 on a decision.",
+        "display": {
+          "version": 1,
+          "placement": "chat"
+        },
+        "error": null,
+        "answer_source": {
+          "engine": "claude",
+          "message": null,
+          "version": 1,
+          "credential_id": 1,
+          "display": {
+            "version": 1,
+            "placement": "details"
+          }
+        },
+        "answer_note": {
+          "reason": "campus_answer_not_called",
+          "message": "The model did not publish this reply with campus_answer, so Campus published the last thing it wrote on this turn.",
+          "version": 1,
+          "display": {
+            "version": 1,
+            "placement": "details"
+          }
+        },
+        "body_withheld": false,
+        "references": [],
+        "references_withheld": false,
+        "actions": [
+          {
+            "id": "copy",
+            "label": "Copy",
+            "intent": "default",
+            "request": null
+          },
+          {
+            "id": "retry",
+            "label": "Retry",
+            "intent": "default",
+            "presentation": "send",
+            "client_token": {
+              "field": "client_token",
+              "fresh": true
+            },
+            "request": {
+              "method": "POST",
+              "path": "/assistant/sessions",
+              "body": {
+                "tool_protocol_version": 1,
+                "question": "What is blocked?",
+                "references": []
+              }
+            }
+          },
+          {
+            "id": "edit_resend",
+            "label": "Edit and resend",
+            "intent": "default",
+            "presentation": "edit",
+            "client_token": {
+              "field": "client_token",
+              "fresh": true
+            },
+            "request": {
+              "method": "POST",
+              "path": "/assistant/sessions",
+              "body": {
+                "tool_protocol_version": 1,
+                "question": "What is blocked?",
+                "references": []
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "7b2c3d4e-5f6a-4b8c-9d0e-1f2a3b4c5d6e",
+        "state": "failed",
+        "body": "Move card 12 to review",
+        "asked_at": "2026-10-03T09:00:00.000000Z",
+        "answered_at": null,
+        "reply": null,
+        "display": {
+          "version": 1,
+          "placement": "chat"
+        },
+        "error": {
+          "reason": "coordinator_tool_transport_failed",
+          "message": "This turn ended after a Campus tool call lost its connection before Campus recorded a result, and it did not answer your question. Use Retry to ask it again.",
+          "version": 1,
+          "display": {
+            "version": 1,
+            "placement": "status"
+          }
+        },
+        "answer_source": null,
+        "answer_note": null,
+        "body_withheld": false,
+        "references": [],
+        "references_withheld": false,
+        "actions": [
+          {
+            "id": "copy",
+            "label": "Copy",
+            "intent": "default",
+            "request": null
+          },
+          {
+            "id": "retry",
+            "label": "Retry",
+            "intent": "default",
+            "presentation": "send",
+            "client_token": {
+              "field": "client_token",
+              "fresh": true
+            },
+            "request": {
+              "method": "POST",
+              "path": "/assistant/sessions",
+              "body": {
+                "tool_protocol_version": 1,
+                "question": "Move card 12 to review",
+                "references": []
+              }
+            }
+          },
+          {
+            "id": "edit_resend",
+            "label": "Edit and resend",
+            "intent": "default",
+            "presentation": "edit",
+            "client_token": {
+              "field": "client_token",
+              "fresh": true
+            },
+            "request": {
+              "method": "POST",
+              "path": "/assistant/sessions",
+              "body": {
+                "tool_protocol_version": 1,
+                "question": "Move card 12 to review",
+                "references": []
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "ask": {
+      "version": 1,
+      "accepting": true,
+      "message": "This coordinator session is open. A question you send here is answered by its next turn.",
+      "action": {
+        "id": "ask_question",
+        "label": "Ask the coordinator",
+        "request": {
+          "method": "POST",
+          "path": "/assistant/sessions/5e2d8c1a-7b3f-4a6e-9c0d-2f1e3a4b5c6d/questions"
+        }
+      },
+      "display": {
+        "version": 1,
+        "placement": "details"
+      }
+    },
+    "composer": {
+      "version": 1,
+      "primary": {
+        "id": "ask",
+        "label": "Ask the coordinator",
+        "request": {
+          "method": "POST",
+          "path": "/assistant/sessions/5e2d8c1a-7b3f-4a6e-9c0d-2f1e3a4b5c6d/questions"
+        },
+        "intent": "default"
+      },
+      "return_target": {
+        "id": "ask",
+        "label": "Ask the coordinator",
+        "request": {
+          "method": "POST",
+          "path": "/assistant/sessions/5e2d8c1a-7b3f-4a6e-9c0d-2f1e3a4b5c6d/questions"
+        }
+      },
+      "secondary": [],
+      "message": "This coordinator session is open. A question you send here is answered by its next turn.",
+      "display": {
+        "version": 1,
+        "placement": "details"
+      }
+    },
+    "actions": [
+      {
+        "id": "stop_session",
+        "label": "Stop session",
+        "intent": "destructive"
+      }
+    ]
+  }
+}

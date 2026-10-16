@@ -1,0 +1,14 @@
+{
+  "nothing_waiting": {
+    "version": 1,
+    "waiting_count": 0,
+    "label": "Nothing waiting",
+    "specialist_count": 2
+  },
+  "two_waiting": {
+    "version": 1,
+    "waiting_count": 2,
+    "label": "2 waiting",
+    "specialist_count": 2
+  }
+}

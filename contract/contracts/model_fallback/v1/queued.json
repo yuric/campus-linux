@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "scope": "model",
+  "state": "queued",
+  "from_model": "claude-fable-5-1",
+  "to_model": "claude-opus-5-5",
+  "message": "Model claude-fable-5-1 reached its limit. Campus continued this work on claude-opus-5-5 on the same account, keeping its workspace."
+}

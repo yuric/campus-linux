@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "session_id": "00000000-0000-4000-8000-000000000733",
+  "run_state": "stopping",
+  "message": "An earlier session's turn is still stopping. This session's turn starts once the computer confirms it ended.",
+  "action": null,
+  "display": { "version": 1, "placement": "status" }
+}

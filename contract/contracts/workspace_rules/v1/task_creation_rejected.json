@@ -1,0 +1,13 @@
+{
+  "error": "Workspace Rule “Creation policy”: Add a description before creating this task.",
+  "reason": "workspace_rule_rejected",
+  "details": {
+    "violations": [
+      {
+        "field": "description",
+        "operator": "present",
+        "message": "Workspace Rule “Creation policy”: Add a description before creating this task."
+      }
+    ]
+  }
+}

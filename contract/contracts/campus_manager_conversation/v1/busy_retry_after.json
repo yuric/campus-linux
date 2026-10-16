@@ -1,0 +1,14 @@
+{
+  "error": "Another request is updating this conversation. Campus retries in a moment.",
+  "code": "assistant_coordinator_busy",
+  "retry_after_seconds": 2,
+  "readiness": {
+    "version": 1,
+    "state": "unavailable",
+    "reason": "assistant_coordinator_busy",
+    "severity": "info",
+    "title": "Campus is updating this conversation",
+    "message": "Another request is updating this conversation. Campus retries in a moment.",
+    "actions": []
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "error": "Campus could not confirm that the local process stopped. Check the Office status before trying again.",
+  "reason": "stop_failed",
+  "message": "Campus could not confirm that the local process stopped. Check the Office status before trying again."
+}

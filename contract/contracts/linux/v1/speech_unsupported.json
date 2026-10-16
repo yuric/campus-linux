@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "state": "unsupported",
+  "reason": "platform_speech_unavailable",
+  "message": "Speech transcription is not available on this platform yet. You can type and edit your description.",
+  "text": null,
+  "retryable": false,
+  "transport": "platform_speech",
+  "max_seconds": 300,
+  "live_partials": false,
+  "max_bytes": 32000,
+  "content_type": "text/plain"
+}

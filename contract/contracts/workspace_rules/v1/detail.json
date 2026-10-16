@@ -1,0 +1,52 @@
+{
+  "id": "campus.review.new_task_draft",
+  "current_revision_id": null,
+  "revision": 1,
+  "name": "Review new task drafts",
+  "kind": "review",
+  "origin": "campus",
+  "protected": true,
+  "enabled": true,
+  "trigger": {
+    "id": "task_draft_created",
+    "label": "When a task draft is created",
+    "supported": true,
+    "authorable": false,
+    "state": "Always on",
+    "explanation": null
+  },
+  "project_scope": {
+    "mode": "all",
+    "project_ids": []
+  },
+  "conditions": {
+    "version": 1,
+    "items": []
+  },
+  "execution_principal": null,
+  "execution_profile": {
+    "id": "hardened_exact_pr",
+    "capability_digest": "sha256:0d35fb53638ae727edefb2afb9dccf40f272a2f9d44852fc5ccf0cf1903d36ec",
+    "response_deadline_minutes": 30,
+    "team_child_timeout_minutes": 22,
+    "team_aggregator_timeout_minutes": 8
+  },
+  "review_plan": null,
+  "activation_required": false,
+  "allowed_actions": [],
+  "actions": [],
+  "summary": "Review every new task draft.",
+  "source_label": "Task creation service",
+  "details": {},
+  "status": {
+    "id": "always_on",
+    "label": "Always on",
+    "severity": "message"
+  },
+  "lock": {
+    "locked": true,
+    "label": "Campus default",
+    "explanation": "Campus owns this behavior and it cannot be edited."
+  },
+  "archived": false
+}

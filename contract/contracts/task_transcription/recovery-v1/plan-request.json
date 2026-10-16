@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "request_id": "83600000-0000-4000-8000-000000000001",
+  "failure": "empty_final",
+  "had_partial_text": true,
+  "retained_audio": true,
+  "on_device_available": false,
+  "language": "en",
+  "sample_count": 4800000
+}

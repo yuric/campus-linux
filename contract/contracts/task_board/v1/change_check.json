@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "scopes": [
+    {
+      "id": "board",
+      "revision": "1.0f3c9a7d2b6e4f18a5c7d9e0b1a2c3d4",
+      "revalidate_at": "2026-10-05T22:02:00Z",
+      "header": "Campus-Board-Revision",
+      "reads": ["GET /tasks", "GET /tasks/kanban", "GET /tasks/kanban/page", "GET /tasks/{id}"],
+      "refresh_rule": "every_read_agrees"
+    },
+    {
+      "id": "fleet",
+      "revision": "1.9b8a7c6d5e4f30211a2b3c4d5e6f7a8b",
+      "revalidate_at": "2026-10-05T22:01:00Z",
+      "header": "Campus-Fleet-Revision",
+      "reads": ["GET /agents"],
+      "refresh_rule": "every_read_agrees"
+    }
+  ],
+  "polling": {
+    "version": 1,
+    "active_interval_seconds": 5,
+    "idle_interval_seconds": 30,
+    "active_when": "Campus is the frontmost app and the Kanban is the selected, visible surface.",
+    "idle_when": "Any other state, including Campus in the background or another surface selected. Checks continue at this interval; they never stop.",
+    "check_immediately_when": "Campus comes to the foreground, or the Kanban opens or becomes selected."
+  }
+}

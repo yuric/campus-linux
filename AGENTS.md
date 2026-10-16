@@ -80,11 +80,11 @@ edits, whatever building the card sits on and whatever folder your shell started
 - [`campus-macos`](https://github.com/yuric/campus-macos) — native Swift; the reference for
   local agent execution, and home of the island renderer.
 
-`docs/api/openapi.yaml` is an imported snapshot, not proof of the current server contract.
-Its recorded provenance predates the PRD's server baseline and has not been revalidated.
-S2 owns re-import from a recorded merged server SHA containing required S1 changes,
-including migration to the exporter's `contract/` layout and all affected references/checks.
-Verify it before generating product bindings or claiming API compatibility. The detailed
+`contract/api/docs/openapi.yaml` is an imported snapshot from the merged server SHA
+recorded in `contract/.source`. S2's [import receipt](docs/acceptance/contract-import.md)
+records source equality, fixture closure and clean re-export. Future refreshes must use
+the server-owned exporter and repeat those checks before generating product bindings
+or claiming compatibility with a later server. The detailed
 handoff and future acceptance requirements are in [docs/implementation-gates.md](docs/implementation-gates.md).
 
 ## The rule that overrides everything else

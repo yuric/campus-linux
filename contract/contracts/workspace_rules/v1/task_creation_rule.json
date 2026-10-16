@@ -1,0 +1,104 @@
+{
+  "id": "2",
+  "current_revision_id": "2",
+  "revision": 1,
+  "name": "Creation policy",
+  "kind": "task_creation",
+  "origin": "workspace",
+  "protected": false,
+  "enabled": false,
+  "trigger": {
+    "id": "task_created",
+    "label": "When a task is created",
+    "supported": true,
+    "authorable": true,
+    "state": "available",
+    "explanation": null
+  },
+  "project_scope": {
+    "mode": "all",
+    "project_ids": [],
+    "projects": []
+  },
+  "conditions": {
+    "version": 1,
+    "items": []
+  },
+  "execution_principal": null,
+  "execution_profile": null,
+  "review_plan": null,
+  "activation_required": true,
+  "allowed_actions": [
+    "edit",
+    "enable",
+    "archive"
+  ],
+  "actions": [
+    {
+      "id": "edit",
+      "label": "Edit",
+      "intent": "default",
+      "confirmation": null
+    },
+    {
+      "id": "enable",
+      "label": "Enable",
+      "intent": "primary",
+      "confirmation": {
+        "title": "Enable this Rule?",
+        "body": "Enabling this Rule applies its defaults and validations to every task a person or an agent creates in its projects. It makes no model requests.",
+        "confirm_label": "Acknowledge and Enable"
+      }
+    },
+    {
+      "id": "archive",
+      "label": "Archive",
+      "intent": "destructive",
+      "confirmation": {
+        "title": "Archive this Rule?",
+        "body": "Archiving disables this Rule and keeps its revisions and run history.",
+        "confirm_label": "Archive Rule"
+      }
+    }
+  ],
+  "summary": "Priority defaults to P2; Review on create defaults to Off; Description is present.",
+  "source_label": "Workspace Rule",
+  "details": {},
+  "status": {
+    "id": "disabled",
+    "label": "Disabled",
+    "severity": "message"
+  },
+  "lock": {
+    "locked": false,
+    "label": "Editable workspace rule",
+    "explanation": "This Rule belongs to this Island."
+  },
+  "archived": false,
+  "task_creation": {
+    "defaults": [
+      {
+        "field": "priority",
+        "label": "Priority",
+        "value": "P2",
+        "value_label": "P2"
+      },
+      {
+        "field": "review_on_create",
+        "label": "Review on create",
+        "value": false,
+        "value_label": "Off"
+      }
+    ],
+    "validations": [
+      {
+        "field": "description",
+        "label": "Description",
+        "operator": "present",
+        "operator_label": "is present",
+        "message": "Add a description before creating this task."
+      }
+    ],
+    "actions": []
+  }
+}

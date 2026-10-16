@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "state": "tool_error",
+  "reason": "coordinator_operation_deadline",
+  "message": "tasksIndex did not finish within Campus's 20 second coordinator operation limit. Narrow the request, or check the saved resource before trying again."
+}

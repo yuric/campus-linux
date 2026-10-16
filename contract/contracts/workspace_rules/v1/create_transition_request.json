@@ -1,0 +1,19 @@
+{
+  "workspace_rule": {
+    "name": "Done needs tests",
+    "kind": "transition",
+    "trigger_id": "task_transition_requested",
+    "project_scope": {
+      "mode": "all",
+      "project_ids": []
+    },
+    "transition": {
+      "edge_id": "in_progress:done",
+      "failure_action_id": "keep_in_place",
+      "instruction": {
+        "source": "prompt",
+        "body": "The description must say which tests were run."
+      }
+    }
+  }
+}

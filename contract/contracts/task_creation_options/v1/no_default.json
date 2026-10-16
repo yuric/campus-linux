@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "surface": "mobile",
+  "default_project_id": null,
+  "request_defaults": {
+    "ready": false
+  },
+  "project_message": "There is no active default project. You can submit without a project; Workspace Rules may require one.",
+  "landing": {
+    "state": "default",
+    "message": "New tasks start in Imaginarium. Move the saved task to Ready when you want an agent to pick it up."
+  }
+}

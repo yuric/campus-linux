@@ -1,0 +1,155 @@
+{
+  "contract_version": 1,
+  "self_update": {
+    "supported": false,
+    "explanation": "Campus builds from before the public release shipped without an updater, so they cannot find or install a newer version. There is nothing wrong with your copy and nothing to repair. Download Campus once from this page and open it. It carries its own updates from then on."
+  },
+  "eligible_signatures": [
+    {
+      "id": "campus-pre-split-build-1",
+      "bundle_identifier": "ai.campus.mac",
+      "bundle_names": [
+        "Campus"
+      ],
+      "builds": [
+        "1"
+      ],
+      "absent_keys": [
+        "CAMPUSProductChannel",
+        "SUFeedURL",
+        "SUPublicEDKey",
+        "SUEnableInstallerLauncherService"
+      ],
+      "signing_requirement": "developer-id-same-team-as-running-app",
+      "note": "Pre-split Campus.app: CFBundleVersion 1, no Sparkle feed, no update driver."
+    }
+  ],
+  "disqualifying_keys": [
+    {
+      "key": "CAMPUSProductChannel",
+      "refusal": "modern_channel_bundle"
+    },
+    {
+      "key": "SUFeedURL",
+      "refusal": "sparkle_equipped"
+    },
+    {
+      "key": "SUPublicEDKey",
+      "refusal": "sparkle_equipped"
+    },
+    {
+      "key": "SUEnableInstallerLauncherService",
+      "refusal": "sparkle_equipped"
+    }
+  ],
+  "refusals": {
+    "unknown_bundle_identifier": "This app is not a Campus build Campus can upgrade. Nothing was changed.",
+    "modern_channel_bundle": "This app is a current Campus build and already updates itself. Nothing was changed.",
+    "development_bundle": "This is Campus Dev, which is a separate product and stays where it is. Nothing was changed.",
+    "sparkle_equipped": "This app already has an update feed, so it is not a pre-Sparkle build. Nothing was changed.",
+    "unlisted_build": "This build is not one of the pre-Sparkle builds Campus can upgrade. Nothing was changed.",
+    "unexpected_bundle_name": "This app's name does not match any pre-Sparkle Campus build. Nothing was changed.",
+    "unreadable_bundle": "Campus could not read this app's Info.plist, so it cannot be identified. Nothing was changed.",
+    "signature_missing": "This app is not signed, so Campus cannot confirm it came from Campus. Nothing was changed.",
+    "signature_invalid": "This app's signature does not verify, so its contents may have been altered. Nothing was changed.",
+    "signature_foreign_team": "This app was signed by a different developer, so Campus will not act on it. Nothing was changed.",
+    "destination_mismatch": "This copy of Campus is not the product this upgrade is for. Nothing was changed.",
+    "unsupported_contract": "This copy of Campus is too old to perform the upgrade safely. Install the current Campus from projectcampus.dev. Nothing was changed."
+  },
+  "destination": {
+    "bundle_identifier": "dev.projectcampus.mac",
+    "bundle_name": "Campus",
+    "supported_paths": [
+      "/Applications",
+      "~/Applications"
+    ],
+    "protected_bundles": [
+      {
+        "bundle_identifier": "ai.campus.mac",
+        "product_channel": "dev",
+        "bundle_name": "Campus Dev"
+      }
+    ]
+  },
+  "migration": {
+    "items": [
+      {
+        "id": "login-credential",
+        "kind": "keychain",
+        "secret": true,
+        "transport": "keychain-to-keychain",
+        "source": {
+          "service": "ai.campus.app",
+          "account": "campus.token"
+        },
+        "destination": {
+          "service": "dev.projectcampus.mac.api",
+          "account": "campus.token"
+        },
+        "required": false,
+        "ownership": "legacy-production-when-uncontested",
+        "contested_by": [
+          {
+            "bundle_identifier": "ai.campus.mac",
+            "product_channel": "dev"
+          }
+        ],
+        "precondition": "legacy-endpoint-equals-production-endpoint",
+        "note": "Copied only when no modern Dev bundle shares the service and the recorded endpoint is production's own."
+      },
+      {
+        "id": "interface-preferences",
+        "kind": "preferences",
+        "secret": false,
+        "transport": "defaults-to-defaults",
+        "source": {
+          "domain": "ai.campus.mac",
+          "keys": [
+            "campus.onboarding.completed",
+            "campus.sidebar.width",
+            "campus.appearance"
+          ]
+        },
+        "destination": {
+          "domain": "dev.projectcampus.mac"
+        },
+        "required": false,
+        "ownership": "legacy-production-when-uncontested",
+        "contested_by": [
+          {
+            "bundle_identifier": "ai.campus.mac",
+            "product_channel": "dev"
+          }
+        ],
+        "precondition": null,
+        "note": "Presentation state only. Endpoint and credential keys are deliberately absent."
+      }
+    ],
+    "excluded_paths": [
+      {
+        "path": "~/.campus",
+        "reason": "Shared with Campus Dev's broker and local runtime; not owned by the legacy production install."
+      }
+    ],
+    "contested_message": "Campus Dev is installed and shares these settings, so Campus left them alone. Sign in once and Campus is set up.",
+    "failed_message": "Campus could not carry one of the earlier settings across and left it where it was. Nothing was lost. Sign in once and Campus is set up.",
+    "partial_failure": "roll-back-destination-and-report"
+  },
+  "retirement": {
+    "strategy": "quarantine",
+    "quarantine_root": "~/Library/Application Support/Campus/Retired Installations",
+    "receipt_file": "retirement.json",
+    "unregister_launch_services": true,
+    "confirmed_by": "modern-production-launch-verifies-retained-state",
+    "receipt_file_mode": "0600"
+  },
+  "notice": {
+    "audience": "pre-sparkle-macos-install",
+    "headline": "Early Campus builds need one manual reinstall",
+    "body": "Campus builds from before the public release shipped without an updater, so they cannot find or install a newer version. There is nothing wrong with your copy and nothing to repair. Download Campus once from this page and open it. It carries its own updates from then on.",
+    "what_moves": "When Campus opens it looks for the earlier install, keeps the settings and saved login that belong to it, and puts the old app away where you can get it back.",
+    "development_coexistence": "Campus Dev is a separate product. It is left exactly where it is, keeps its own settings and login, and is never renamed or replaced.",
+    "recovery": "The earlier app is moved to Retired Installations in your Library, not deleted. If anything looks wrong, drag it back to Applications and open it. It works exactly as it did before.",
+    "self_update_supported": false
+  }
+}

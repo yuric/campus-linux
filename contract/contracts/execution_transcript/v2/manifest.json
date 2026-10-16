@@ -1,0 +1,39 @@
+{
+  "api_version": 2,
+  "resource": "ExecutionTranscript",
+  "route_sets": [
+    "rails",
+    "campus_api_gateway"
+  ],
+  "paths": [
+    "GET /execution_requests/current",
+    "GET /execution_requests/{id}"
+  ],
+  "response_fixtures": {
+    "GET /execution_requests/current": "current_execution_status.json",
+    "GET /execution_requests/{id}": "completed_execution_status.json"
+  },
+  "transcript_contract": {
+    "version": 2,
+    "entry_contract_versions": [
+      1,
+      2
+    ],
+    "unknown_versions": "fail_closed",
+    "readability": "transcript.version and every entry.contract_version",
+    "raw_events": "audit_only"
+  },
+  "server_authored_copy": [
+    "presentation.title",
+    "presentation.message",
+    "presentation_entries.transcript.label",
+    "presentation_entries.transcript.text",
+    "presentation_entries.transcript.summary",
+    "execution_request.actions.label",
+    "presentation_entries.command.label",
+    "presentation_entries.command.command",
+    "presentation_entries.command.output",
+    "command_activity.label",
+    "attention.message"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "contract_version": 1,
+  "resource": "ExecutorClaim.execution",
+  "tool_access": "manager_tool_free_v1",
+  "produced_by": "POST /executor/claims — api/app/controllers/executor_claims_controller.rb#claim_payload",
+  "enforced_by": "yuric/campus-macos Sources/CampusBrokerCore/RunStream.swift: RunStream.start, ToolAccess.managerToolFree",
+  "claim_fixtures": {
+    "assistant_ask": "manager_ask_claim.json",
+    "assistant_coordinator": "coordinator_turn_claim.json"
+  },
+  "decoder_rules": {
+    "engine": "claude",
+    "env": {},
+    "workdir": "",
+    "absent_keys": [
+      "native_session_id",
+      "native_contract_version",
+      "ambient_login",
+      "config_dir"
+    ]
+  },
+  "helper_supplied_keys": [
+    "config_dir",
+    "workdir",
+    "tool_access",
+    "credential_kind",
+    "credential_provider",
+    "credential_secret",
+    "agent_runtime_credential"
+  ],
+  "per_run_fields": [
+    "broker_request.prompt",
+    "work.correlation_id"
+  ]
+}

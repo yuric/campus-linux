@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "state": "succeeded",
+  "reason": "succeeded",
+  "message": "Transcription recovered. Review and edit it before creating the task.",
+  "text": "Fixture transcript. Fixture transcript. Fixture transcript. Fixture transcript. Fixture transcript. Fixture transcript. Fixture transcript. Fixture transcript. Fixture transcript. Fixture transcript.",
+  "failure": "empty_final",
+  "had_partial_text": true,
+  "retryable": false,
+  "retain_audio": false,
+  "limits": {
+    "version": 1,
+    "plan_path": "/task_transcription/recovery",
+    "max_seconds": 300,
+    "max_samples": 4800000,
+    "sample_rate": 16000,
+    "channels": 1,
+    "bits_per_sample": 16,
+    "content_type": "audio/wav",
+    "max_chunk_seconds": 30,
+    "max_chunk_bytes": 960044,
+    "max_chunks": 10,
+    "max_candidate_accounts": 3,
+    "max_provider_calls": 12,
+    "provider_timeout_seconds": 20,
+    "chunk_request_timeout_seconds": 25,
+    "retention_seconds": 900,
+    "retention": "client_memory_only",
+    "languages": [
+      "en",
+      "es",
+      "fr",
+      "de",
+      "it",
+      "pt",
+      "ja",
+      "ko",
+      "zh",
+      "ru"
+    ],
+    "failure_facts": [
+      "empty_final",
+      "finalization_timeout",
+      "recognizer_unavailable",
+      "recognition_timeout",
+      "quota_exhausted",
+      "transport_error",
+      "no_speech",
+      "empty_capture",
+      "permission_denied",
+      "device_failure"
+    ],
+    "local_replay_preferred": true,
+    "max_audio_bytes": 9600000,
+    "chunk_samples": 480000,
+    "max_request_bytes": 1300000,
+    "max_base64_bytes": 1280060,
+    "content_length_required": true,
+    "transcript_retention_seconds": 900,
+    "transcript_cleanup_interval_seconds": 60,
+    "transcript_cleanup_batch_size": 500,
+    "replay_metadata_grace_seconds": 86400
+  },
+  "actions": [
+    {
+      "id": "edit_text",
+      "label": "Continue typing"
+    }
+  ],
+  "request_id": "83600000-0000-4000-8000-000000000001",
+  "expires_at": "2026-10-10T00:15:00Z",
+  "candidates": [
+    {
+      "label": "Authorized speech account",
+      "model": "gemini-2.5-flash",
+      "engine": "gemini_inline_audio",
+      "provider": "google",
+      "destination": "Google Gemini (generativelanguage.googleapis.com)",
+      "credential_id": 99,
+      "secret_version": 1
+    }
+  ],
+  "disclosure_version": 1,
+  "next_chunk": 10,
+  "chunk_count": 10,
+  "cancel": {
+    "method": "DELETE",
+    "path": "/task_transcription/recovery/83600000-0000-4000-8000-000000000001"
+  },
+  "attempt": 0
+}

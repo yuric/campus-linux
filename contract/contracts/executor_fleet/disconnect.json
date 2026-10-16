@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "id": "disconnect",
+  "label": "Disconnect computer",
+  "intent": "destructive",
+  "confirm": {
+    "title": "Disconnect Studio Mac?",
+    "body": "Disconnecting revokes this computer's Campus access, fails its queued runs, marks live runs lost, and unbinds its Offices. Cards those Offices hold move to Blocked for a person to review, and Campus restarts nothing automatically. Campus cannot confirm that local processes have stopped. Its project folder links stay on Campus and return if this computer registers again; its Offices stay unbound. This computer may reconnect or claim work after this status was displayed; disconnect applies to that work too.",
+    "confirm_label": "Disconnect computer"
+  },
+  "request": {
+    "method": "DELETE",
+    "path": "/executors/12345678-1234-4234-8234-123456789abc?disconnect_version=1"
+  }
+}

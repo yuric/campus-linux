@@ -1,0 +1,113 @@
+{
+  "id": "1",
+  "current_revision_id": "1",
+  "revision": 1,
+  "name": "Done needs tests",
+  "kind": "transition",
+  "origin": "workspace",
+  "protected": false,
+  "enabled": false,
+  "trigger": {
+    "id": "task_transition_requested",
+    "label": "When a task transition is requested",
+    "supported": true,
+    "authorable": true,
+    "state": "available",
+    "explanation": null
+  },
+  "project_scope": {
+    "mode": "all",
+    "project_ids": [],
+    "projects": []
+  },
+  "conditions": {
+    "version": 1,
+    "items": []
+  },
+  "execution_principal": null,
+  "execution_profile": null,
+  "review_plan": null,
+  "activation_required": true,
+  "allowed_actions": [
+    "edit",
+    "enable",
+    "archive"
+  ],
+  "actions": [
+    {
+      "id": "edit",
+      "label": "Edit",
+      "intent": "default",
+      "confirmation": null
+    },
+    {
+      "id": "enable",
+      "label": "Enable",
+      "intent": "primary",
+      "confirmation": {
+        "title": "Enable this Rule?",
+        "body": "Enabling this Rule holds each matching board move while the task assistant checks it against this Rule's instructions. Each check is one task-assistant chat turn on this Island's assistant provider, sent the task's title, description, recent comments and chat, and the Rule instructions. Findings or failure keep the card in place. After 10 minutes, a timeout lets the move proceed with a note on the card; late answers are ignored.",
+        "confirm_label": "Acknowledge and Enable"
+      }
+    },
+    {
+      "id": "archive",
+      "label": "Archive",
+      "intent": "destructive",
+      "confirmation": {
+        "title": "Archive this Rule?",
+        "body": "Archiving disables this Rule and keeps its revisions and run history.",
+        "confirm_label": "Archive Rule"
+      }
+    }
+  ],
+  "summary": "Checks In progress → Done moves before they land.",
+  "source_label": "Workspace Rule",
+  "details": {},
+  "status": {
+    "id": "disabled",
+    "label": "Disabled",
+    "severity": "message"
+  },
+  "lock": {
+    "locked": false,
+    "label": "Editable workspace rule",
+    "explanation": "This Rule belongs to this Island."
+  },
+  "archived": false,
+  "transition": {
+    "edge": {
+      "id": "in_progress:done",
+      "label": "In progress → Done",
+      "from": {
+        "id": "in_progress",
+        "label": "In progress"
+      },
+      "to": {
+        "id": "done",
+        "label": "Done"
+      }
+    },
+    "failure_action": {
+      "id": "keep_in_place",
+      "label": "Keep the card in place",
+      "description": "Findings or a failed check keep the card in its current lane. A timeout lets the move proceed."
+    },
+    "instruction": {
+      "id": "check",
+      "name": "Check instructions",
+      "role": "reviewer",
+      "source": "prompt",
+      "filename": null,
+      "digest": "sha256:cd9aa859265fba4e484bcf34259eab473856ecce79cacda7e8913e68948b4d2f",
+      "byte_size": 46,
+      "body": "The description must say which tests were run."
+    },
+    "check": {
+      "mode": "agent_check",
+      "deadline_minutes": 10
+    },
+    "message": null,
+    "actions": []
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "state": "locked",
+  "reason": "secure_store_locked",
+  "severity": "warning",
+  "message": "The credential store is locked. Unlock it in your desktop session before enabling local execution."
+}
