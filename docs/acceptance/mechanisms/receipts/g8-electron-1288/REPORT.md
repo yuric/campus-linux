@@ -128,8 +128,10 @@ failure is not a frame benchmark or an uncontended performance estimate. Host fr
 changes are not attributed to this worker. [Preflight accounting](preflight-budget.json)
 charges432,406,528 disk growth plus32,518,144 allocated host scopes plus16MiB reserve:
 481,701,888 new/1,194,004,480 cumulative bytes, below768MiB/2GiB. Guest files are inside
-disk growth and are not added again. [Final accounting](final-allocation.json) includes
-the preserved lease highwater and subsequent bounded source allowance. The original
+disk growth and are not added again. [Final accounting](final-allocation.json) retains
+the historical final charge480,526,336 and subsequent bounded source allowance. That
+final charge is not the highwater: the earlier preflight charge481,701,888 is larger
+by1,175,552 bytes and governs future conservative accounting. Raw receipts are unchanged. The original
 publication floor check failed; direction1318 later grants only the separate8MiB source
 exception at16GiB hostfree. No runtime floor is lowered. Floors were sampled, not continuously enforced.
 

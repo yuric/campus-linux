@@ -24,7 +24,7 @@ class SandboxProposalInputs(unittest.TestCase):
             p = Path(name) / 'file'
             p.write_bytes(b'public fixture')
             self.assertEqual(operator.regular(p, 32)[0], b'public fixture')
-            with self.assertRaises(RuntimeError):
+            with self.assertRaisesRegex(RuntimeError, '^Oversized file: '):
                 operator.regular(p, 1)
             link = Path(name) / 'link'
             link.symlink_to(p)
@@ -32,7 +32,7 @@ class SandboxProposalInputs(unittest.TestCase):
                 operator.regular(link, 32)
             link.unlink()
             os.link(p, link)
-            with self.assertRaises(RuntimeError):
+            with self.assertRaisesRegex(RuntimeError, '^Not a unique regular file: '):
                 operator.regular(p, 32)
 
     def archive(self, extra=None):
@@ -73,12 +73,13 @@ class SandboxProposalInputs(unittest.TestCase):
         self.assertEqual(directories, set())
 
     def test_archive_refuses_traversal_symlink_privilege_and_duplicate(self):
-        for extra in [('../escape', stat.S_IFREG | 0o644),
-                      ('/absolute', stat.S_IFREG | 0o644),
-                      ('link', stat.S_IFLNK | 0o777),
-                      ('suid', stat.S_IFREG | 0o4755),
-                      ('electron', stat.S_IFREG | 0o755)]:
-            with self.subTest(extra=extra), self.assertRaises(RuntimeError):
+        for extra, guard in [
+                (('../escape', stat.S_IFREG | 0o644), 'Unsafe/duplicate archive name'),
+                (('/absolute', stat.S_IFREG | 0o644), 'Unsafe/duplicate archive name'),
+                (('link', stat.S_IFLNK | 0o777), 'Unexpected archive type'),
+                (('suid', stat.S_IFREG | 0o4755), 'Privileged/encrypted archive'),
+                (('electron', stat.S_IFREG | 0o755), 'Unsafe/duplicate archive name')]:
+            with self.subTest(extra=extra), self.assertRaisesRegex(RuntimeError, '^' + guard + '$'):
                 self.validate_fixture(extra)
 
     def test_full_manifest_refuses_missing_or_wrong_member_digest(self):
@@ -97,7 +98,9 @@ class SandboxProposalInputs(unittest.TestCase):
             else:
                 expected['LICENSE'] = '0' * 64
             with patch.multiple(operator, **dict(pins, EXPECTED_FILES=expected)):
-                with self.subTest(mismatch=mismatch), self.assertRaises(RuntimeError):
+                guard = ('Expected exactly 72 vendor files' if mismatch == 'missing'
+                         else 'Full pinned vendor manifest mismatch')
+                with self.subTest(mismatch=mismatch), self.assertRaisesRegex(RuntimeError, '^' + guard + '$'):
                     operator.archive_manifest(data)
 
     def mocked_install(self, fail_after_privilege=False):

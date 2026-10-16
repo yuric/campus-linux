@@ -1,7 +1,10 @@
-# Unexecuted fresh-inode Electron sandbox proposal
+# Fresh-inode Electron sandbox proposal and bounded execution
 
-LINUX-20261016 / #982 / human10834 and direction1318. **Source review only;
-installation, rollback and runtime remain unexecuted. No guest lease is active.**
+LINUX-20261016 / #982 / human10834 and direction1318. The original source-only
+proposal was subsequently activated under10963. The [1337 receipt](receipts/g8-electron-1337/REPORT.md)
+records successful normal installation and rollback of the exact reviewed operator.
+A conservative capacity guard stopped the attempt before login or renderer launch;
+sandbox runtime, failure recovery and G8 remain unproven. Lima was returned Stopped.
 The [1288 failure](receipts/g8-electron-1288/REPORT.md) is a sandbox prerequisite
 failure, not a benchmark miss. Root and independent review must accept the exact
 source before a separately activated, freshly budgeted guest window.
@@ -54,11 +57,11 @@ and helper device/inode, manifest, source digest and state; it survives rollback
 
 ## Resource and activation boundary
 
-This proposal would allocate a SECOND approximately302MB extraction plus filesystem
+This mechanism allocates a SECOND approximately302MB extraction plus filesystem
 overhead. It preserves the original archive/extraction and all failure receipts.
-It is not authorized by1318's8MiB source exception. Root must verify the remaining
-original768MiB and cumulative2GiB budgets against a fresh stopped baseline and
-reserve the full extraction/overhead before granting any activation. Host20GiB
+It was not authorized by1318's8MiB source exception. The subsequent10963 activation
+provided a separate512MiB incremental budget and retained the cumulative2GiB ceiling.
+Any future activation requires a fresh baseline and remaining-reserve accounting. Host20GiB
 after reservation and guest2GiB floors remain; do not allocate if it cannot fit.
 
 Both actions require root, the exact disposable Lima hostname, externally supplied
@@ -67,8 +70,8 @@ does not grant authorization. No download/build, Electron launch, OS policy,
 AppArmor, usernamespace, sysctl, authentication or service change is implemented.
 All23 accepted renderer files remain unchanged.
 
-A later reviewed launcher adaptation would change only the absolute executable
-path and fresh output label. Any later benchmark still requires fresh normal GDM
+The reviewed launcher adaptation changes only the absolute executable
+path and fresh output label, and was staged but not launched under10963. Any later benchmark still requires fresh normal GDM
 session/native preflight/untimed motion/proof-bound freeze and all five original
 30s/60s runs at33.3ms. Nothing here proves sandbox operation or selects a product.
 
@@ -88,8 +91,8 @@ root tree, incomplete ledger, or an installed helper after the final privilege s
 Normal rollback may refuse an incomplete tree. Root must inspect retained identities
 and review a specific recovery. There is no transactional or crash-recovery claim.
 
-No installer, extraction, chmod, rollback or filesystem-failure branch has been
-executed. Current source validation is separately recorded in
+Normal installation and rollback ran successfully under10963; filesystem-failure
+branches and crash recovery remain unexecuted. Historical source validation is recorded in
 [source-validation.json](receipts/g8-electron-1288/source-validation.json).
 Historical four-test results belong only to the rejected proposal. Full repository
 checks and publication status must be taken from the current handoff, not inherited

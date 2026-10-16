@@ -1,0 +1,24 @@
+{
+  "utc": "2026-10-16T18:37:54.158537+00:00",
+  "authority": "human10979 / direction1341: source-only continuation; runtime10963 closed",
+  "host_available_bytes": 22173138944,
+  "source_reserve_bytes": 16777216,
+  "conservatively_unconsumed_source_reserve_bytes": 16777216,
+  "host_after_reserve_bytes": 22156361728,
+  "host_floor_bytes": 19327352832,
+  "guest_baseline_allocated_bytes": 7871332352,
+  "guest_peak_allocated_bytes": 8193835008,
+  "guest_peak_growth_bytes": 322502656,
+  "host_receipts_allocated_bytes": 274432,
+  "conservative_total_charge_bytes": 339554304,
+  "closed_runtime_allowance_bytes": 536870912,
+  "prior_publication_failure": {
+    "utc": "2026-10-16T18:31:04Z",
+    "host_available_bytes": 21380030464,
+    "remaining_runtime_reserve_bytes": 197316608,
+    "host_after_reserve_bytes": 21182713856,
+    "host_floor_bytes": 21474836480
+  },
+  "no_remaining_runtime_reserve_for_source_publication": true,
+  "limits": "Samples are not continuous enforcement. Historical charge is never reduced; no guest/runtime authorization."
+}

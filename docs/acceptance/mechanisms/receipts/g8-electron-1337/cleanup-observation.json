@@ -1,0 +1,16 @@
+{
+  "utc": "2026-10-16T18:28:31.495841+00:00",
+  "argv": [
+    "limactl",
+    "shell",
+    "campus-linux-d5-noble-arm64",
+    "sudo",
+    "/usr/bin/env",
+    "-i",
+    "PATH=/usr/sbin:/usr/bin:/sbin:/bin",
+    "/bin/sh",
+    "-c",
+    "test ! -e /opt/campus-linux-spike982/electron-44.8.0-730d44d5aefb6a969b209cf8ee3e843bd873a06c297bf2c409fbb1cebcb3e6bc; test ! -L /opt/campus-linux-spike982/electron-44.8.0-730d44d5aefb6a969b209cf8ee3e843bd873a06c297bf2c409fbb1cebcb3e6bc; test -z \"$(pgrep -u 1000)\"; loginctl list-sessions; loginctl show-user 1000 -p Linger; df -B1 /; stat -c \"%d %i %h %s %a %U %G %n\" /opt/campus-linux-spike982/.*-fresh-1318.json; systemctl is-active polkit"
+  ],
+  "returncode": 0
+}

@@ -1,0 +1,9 @@
+SESSION UID USER SEAT  TTY  STATE  IDLE SINCE
+      4 501 yuri -     -    active no   -
+     c1 110 gdm  seat0 tty1 active no   -
+
+2 sessions listed.
+Filesystem       1B-blocks       Used   Available Use% Mounted on
+/dev/vda1      28003532800 8551309312 19435446272  31% /
+64769 1102319 1 11979 600 root root /opt/campus-linux-spike982/.electron-44.8.0-730d44d5aefb6a969b209cf8ee3e843bd873a06c297bf2c409fbb1cebcb3e6bc-fresh-1318.json
+active

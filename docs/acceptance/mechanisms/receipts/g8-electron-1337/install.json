@@ -1,0 +1,21 @@
+{
+  "utc": "2026-10-16T18:27:56.377059+00:00",
+  "argv": [
+    "limactl",
+    "shell",
+    "campus-linux-d5-noble-arm64",
+    "sudo",
+    "/usr/bin/env",
+    "-i",
+    "PATH=/usr/sbin:/usr/bin:/sbin:/bin",
+    "/usr/bin/python3",
+    "-I",
+    "-B",
+    "/root/campus982-runtime-1329-fee59815/electron-sandbox-operator.py",
+    "install",
+    "--approved-source-sha256",
+    "91e983738a53e2d28c798ec80a748b29ee0a57cf94b415a7565feb3a3fd6ab84",
+    "--execute-under-new-lease"
+  ],
+  "returncode": 0
+}

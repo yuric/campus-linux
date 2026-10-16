@@ -1,0 +1,9 @@
+91e983738a53e2d28c798ec80a748b29ee0a57cf94b415a7565feb3a3fd6ab84  /root/campus982-runtime-1329-fee59815/electron-sandbox-operator.py
+64769 1102291 1 22821 444 root root /root/campus982-runtime-1329-fee59815/electron-sandbox-operator.py
+Filesystem       1B-blocks       Used   Available Use% Mounted on
+/dev/vda1      28003532800 8551288832 19435466752  31% /
+SESSION UID USER SEAT  TTY  STATE  IDLE SINCE
+      4 501 yuri -     -    active no   -
+     c1 110 gdm  seat0 tty1 active no   -
+
+2 sessions listed.

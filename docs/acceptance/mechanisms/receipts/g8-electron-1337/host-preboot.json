@@ -1,0 +1,17 @@
+{
+  "utc": "2026-10-16T18:25:53.872828+00:00",
+  "host_free": 23953465344,
+  "after_full_reserve": 23416594432,
+  "required_floor": 21474836480,
+  "disk_allocated": 7871332352,
+  "disk_inode": 944391844,
+  "incremental_cap": 536870912,
+  "prior_cumulative": 1262161920,
+  "holder": 382,
+  "source_head": "e74edf542ef1f8cec879a1fef4bf09dd46d6f37b",
+  "prepared_hashes": {
+    "graphical-probe.proposed.py": "c33ec39afda2be4f4d2005d2bf25ef82ee8af5aa2b3a4e2617df9d3a4e3e320f",
+    "idle-holder.proposed.py": "565b1ecb0ad57c0b8e00b0bfbe2cb913f84c117b3c5b5eb4ed22b532af05b719",
+    "protected-snapshot.reference.py": "c59dd96636fe417008f0dc89862a82400f0a07989b96762fd183325d348bb750"
+  }
+}

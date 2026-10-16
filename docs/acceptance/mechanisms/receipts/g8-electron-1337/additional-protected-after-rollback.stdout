@@ -1,0 +1,264 @@
+[
+  {
+    "path": "/home/campusqa/campus1057-10908-office391",
+    "uid": 1000,
+    "gid": 1000,
+    "mode": "0o700",
+    "device": 64769,
+    "inode": 1102271,
+    "nlink": 4,
+    "entries": [
+      "desktop-driver.py",
+      "evidence",
+      "probe"
+    ]
+  },
+  {
+    "path": "/home/campusqa/campus1057-10908-office391/desktop-driver.py",
+    "uid": 1000,
+    "gid": 1000,
+    "mode": "0o400",
+    "device": 64769,
+    "inode": 1102278,
+    "nlink": 1,
+    "bytes": 2641,
+    "sha256": "ca4a6e23c8ed50153a97f13b2772803857281c200d26efc232691fa8e65eeb8f"
+  },
+  {
+    "path": "/home/campusqa/campus1057-10908-office391/evidence",
+    "uid": 1000,
+    "gid": 1000,
+    "mode": "0o700",
+    "device": 64769,
+    "inode": 1102273,
+    "nlink": 2,
+    "entries": [
+      "denial-correlation.json",
+      "deny-finished.json",
+      "deny-journal.jsonl",
+      "deny-window.json",
+      "deny.json",
+      "deny.log",
+      "driver-ready.json",
+      "driver-stopped.json",
+      "requests.jsonl",
+      "root-preflight.json",
+      "server.log"
+    ]
+  },
+  {
+    "path": "/home/campusqa/campus1057-10908-office391/evidence/denial-correlation.json",
+    "uid": 1000,
+    "gid": 1001,
+    "mode": "0o600",
+    "device": 64769,
+    "inode": 1102279,
+    "nlink": 1,
+    "bytes": 34268,
+    "sha256": "ab4073d28019d8820966ea0660370a2b73a8a84e8481e68621d16b6826d4636b"
+  },
+  {
+    "path": "/home/campusqa/campus1057-10908-office391/evidence/deny-finished.json",
+    "uid": 1000,
+    "gid": 1001,
+    "mode": "0o664",
+    "device": 64769,
+    "inode": 1102266,
+    "nlink": 1,
+    "bytes": 53,
+    "sha256": "0e0005af80826aeb11388009b8eed4419034a30dc86e61f67632888ba1e4ace6"
+  },
+  {
+    "path": "/home/campusqa/campus1057-10908-office391/evidence/deny-journal.jsonl",
+    "uid": 1000,
+    "gid": 1000,
+    "mode": "0o600",
+    "device": 64769,
+    "inode": 1102268,
+    "nlink": 1,
+    "bytes": 26263,
+    "sha256": "226673a712ba4147d790470410acdc6b1772c449ba2e318c4572f5dc1abc7921"
+  },
+  {
+    "path": "/home/campusqa/campus1057-10908-office391/evidence/deny-window.json",
+    "uid": 1000,
+    "gid": 1000,
+    "mode": "0o600",
+    "device": 64769,
+    "inode": 1102267,
+    "nlink": 1,
+    "bytes": 88134,
+    "sha256": "794447a6afeed8a1f2f555465540c4d0984c7d1e905ed94849649cc2a692bef6"
+  },
+  {
+    "path": "/home/campusqa/campus1057-10908-office391/evidence/deny.json",
+    "uid": 1000,
+    "gid": 1001,
+    "mode": "0o600",
+    "device": 64769,
+    "inode": 1102261,
+    "nlink": 1,
+    "bytes": 93529,
+    "sha256": "e36fb877fc6a71003dc8bc9f34bf1015947cc449aa999b3aa4814e1b0da99f93"
+  },
+  {
+    "path": "/home/campusqa/campus1057-10908-office391/evidence/deny.log",
+    "uid": 1000,
+    "gid": 1001,
+    "mode": "0o664",
+    "device": 64769,
+    "inode": 1102256,
+    "nlink": 1,
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "/home/campusqa/campus1057-10908-office391/evidence/driver-ready.json",
+    "uid": 1000,
+    "gid": 1001,
+    "mode": "0o664",
+    "device": 64769,
+    "inode": 1102253,
+    "nlink": 1,
+    "bytes": 1320,
+    "sha256": "83f2f813258563c8c2a2a10386fee7418abbfd89ae1890e7a347fd26be65a7a8"
+  },
+  {
+    "path": "/home/campusqa/campus1057-10908-office391/evidence/driver-stopped.json",
+    "uid": 1000,
+    "gid": 1001,
+    "mode": "0o664",
+    "device": 64769,
+    "inode": 1102280,
+    "nlink": 1,
+    "bytes": 58,
+    "sha256": "7d14b50085eabcd73da867114e71bd678f0b71380adc8eb874b91496a94f131c"
+  },
+  {
+    "path": "/home/campusqa/campus1057-10908-office391/evidence/requests.jsonl",
+    "uid": 1000,
+    "gid": 1001,
+    "mode": "0o664",
+    "device": 64769,
+    "inode": 1102254,
+    "nlink": 1,
+    "bytes": 1276,
+    "sha256": "903a2338c8ad116e7a92d94f74426ae92e7c745a733bedbbf818195b6ada6915"
+  },
+  {
+    "path": "/home/campusqa/campus1057-10908-office391/evidence/root-preflight.json",
+    "uid": 1000,
+    "gid": 1000,
+    "mode": "0o600",
+    "device": 64769,
+    "inode": 1102264,
+    "nlink": 1,
+    "bytes": 74492,
+    "sha256": "cb2703236761af7f111e5f5ad37320b9af6c4576f0ccbc80dfebecc0c70d4162"
+  },
+  {
+    "path": "/home/campusqa/campus1057-10908-office391/evidence/server.log",
+    "uid": 1000,
+    "gid": 1001,
+    "mode": "0o664",
+    "device": 64769,
+    "inode": 1102233,
+    "nlink": 1,
+    "bytes": 1276,
+    "sha256": "903a2338c8ad116e7a92d94f74426ae92e7c745a733bedbbf818195b6ada6915"
+  },
+  {
+    "path": "/home/campusqa/campus1057-10908-office391/probe",
+    "uid": 1000,
+    "gid": 1000,
+    "mode": "0o700",
+    "device": 64769,
+    "inode": 1102272,
+    "nlink": 2,
+    "entries": [
+      "authority-window.py",
+      "desktop.py"
+    ]
+  },
+  {
+    "path": "/home/campusqa/campus1057-10908-office391/probe/authority-window.py",
+    "uid": 1000,
+    "gid": 1000,
+    "mode": "0o400",
+    "device": 64769,
+    "inode": 1102275,
+    "nlink": 1,
+    "bytes": 43505,
+    "sha256": "3631d41b52eb72099edf3c0e3a8878968ba1620f3593f3088e9efc7756918331"
+  },
+  {
+    "path": "/home/campusqa/campus1057-10908-office391/probe/desktop.py",
+    "uid": 1000,
+    "gid": 1000,
+    "mode": "0o400",
+    "device": 64769,
+    "inode": 1102277,
+    "nlink": 1,
+    "bytes": 49447,
+    "sha256": "b42d4f199efce7c24f956d8bc464b46db655306dd7ee736650d2466c66938b12"
+  },
+  {
+    "path": "/root/campus1057-10908-office391",
+    "uid": 0,
+    "gid": 0,
+    "mode": "0o500",
+    "device": 64769,
+    "inode": 1102269,
+    "nlink": 3,
+    "entries": [
+      "authority-window.py",
+      "desktop.py",
+      "evidence"
+    ]
+  },
+  {
+    "path": "/root/campus1057-10908-office391/authority-window.py",
+    "uid": 0,
+    "gid": 0,
+    "mode": "0o400",
+    "device": 64769,
+    "inode": 1102274,
+    "nlink": 1,
+    "bytes": 43505,
+    "sha256": "3631d41b52eb72099edf3c0e3a8878968ba1620f3593f3088e9efc7756918331"
+  },
+  {
+    "path": "/root/campus1057-10908-office391/desktop.py",
+    "uid": 0,
+    "gid": 0,
+    "mode": "0o400",
+    "device": 64769,
+    "inode": 1102276,
+    "nlink": 1,
+    "bytes": 49447,
+    "sha256": "b42d4f199efce7c24f956d8bc464b46db655306dd7ee736650d2466c66938b12"
+  },
+  {
+    "path": "/root/campus1057-10908-office391/evidence",
+    "uid": 0,
+    "gid": 0,
+    "mode": "0o700",
+    "device": 64769,
+    "inode": 1102270,
+    "nlink": 2,
+    "entries": [
+      "deny-window.json"
+    ]
+  },
+  {
+    "path": "/root/campus1057-10908-office391/evidence/deny-window.json",
+    "uid": 0,
+    "gid": 0,
+    "mode": "0o600",
+    "device": 64769,
+    "inode": 1102255,
+    "nlink": 1,
+    "bytes": 88134,
+    "sha256": "794447a6afeed8a1f2f555465540c4d0984c7d1e905ed94849649cc2a692bef6"
+  }
+]
