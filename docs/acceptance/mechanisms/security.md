@@ -18,7 +18,7 @@ and no server lease, registration or outbox success is claimed.
 | Attempt termination | Real systemd user service contains leader and `setsid` grandchild in the same attempt cgroup; two source-bound process runs terminated both TERM-ignoring processes in 2.185s/2.206s with pidfd exit readiness | Probe timeout is not a production claim stop grace. Fork races, hostile cgroup escape and full protocol handback remain unproven |
 | Identity | Boot ID, PID, start ticks, cgroup and actual pidfd exit readiness recorded | PID reuse not forced; final code must retain handles and never trust PID alone |
 | Crash policy | Normal exec resets parent-set dumpability to 1. No new dump was observed after SIGABRT with both dumpability 0 and core limit 0 inside the executed synthetic child during the recorded three-second window; no matching positive collector control isolates either setting | This exposes a production gap: closed-source provider executables have not been shown to apply child-side policy; a parent prctl/core limit alone is insufficient |
-| Secret Service | Final Wayland/X11 unaliased disposable collections completed create/read/lock/refusal/graphical unlock, verified item deletion and verified collection deletion while preserving default/login aliases and preexisting collections | Original login collection remains locked after password rotation. This is not PAM auto-unlock; historical default-store cleanup was unverified. No product memory-only/registration withholding behavior exists yet |
+| Secret Service | Retained unaliased disposable-collection output records create/read/lock/refusal/graphical unlock, verified item deletion and verified collection deletion while preserving default/login aliases and preexisting collections | Graphical tuple unbound. Original login collection remains locked after password rotation. This is not PAM auto-unlock; historical default-store cleanup was unverified. No product memory-only/registration withholding behavior exists yet |
 | Same-user exposure | Separate same-UID process read the synthetic Secret Service item | Secret Service is not a per-application sandbox; no Mac application ACL parity claim |
 | Absent store | Private D-Bus with no service activation has no secret-service owner; no fallback file created by the probe | This is an isolated bus absence test, not uninstalling the guest's backend or testing a product |
 | Privileged package update | Tauri-signature fixture passed seventeen session-independent allow-rule cases; separate authentication, cancellation and missing-authority observations preserved helper bytes, with graphical tuple unbound | Exact source-extracted signature verification with disposable keys; stock updater fallback still fails G5 and full product integration remains unproven |
@@ -36,8 +36,11 @@ process read before returning success. After the disposable Unix password rotati
 cold graphical login left the existing login collection locked: PAM password change did
 not rekey it. Preserve that failed default-store observation and the original collection;
 do not delete/reset it to obtain a passing result. Historical pre-rotation unlocked-store
-observations retain their original scope. Both final Wayland/X11 disposable-collection runs passed
-with script SHA `4e0eb5d7723d070a367f0c815a0fcdff37e5f350fb0ad8095f04ede6cef62f04`.
+observations retain their original scope. The historically named Wayland/X11
+disposable-collection files contain the same passing cycle output with script SHA
+`4e0eb5d7723d070a367f0c815a0fcdff37e5f350fb0ad8095f04ede6cef62f04`. They lack
+run-bound session, boot, PID and time metadata and do not independently establish
+two graphical-session runs. Identical deterministic bytes do not prove fabrication.
 Its [earlier creation timeout](receipts/store-x11-disposable-timeout.jsonl) and
 [dismissed unlock](receipts/store-x11-disposable-dismissed.jsonl) remain failures, not
 passes. The operator attributed dismissal to Tab/Return racing the next prompt; the
@@ -64,7 +67,12 @@ Package details and hashes are in [the package matrix](packages.md) and
 suite receipts and [missing-authority preservation](receipts/tauri-install-wayland-schema-polkit-missing.json).
 These installer receipts do not bind timestamp/boot/graphical session identity; process
 receipts bind time/boot/process identity but omit observed graphical identity. Their
-filenames cannot establish per-session coverage. Separate GDM captures are context,
+filenames cannot establish per-session coverage. The historical store and GTK speech
+capability pairs are also session-unbound: paired files are byte-identical and omit
+run-bound session/boot/PID/time metadata. Their recorded operations and cleanup remain
+observations, not proof of two graphical tuples. This qualification does not invalidate
+the separate task-link result/event records with distinct PIDs and session context.
+Separate GDM captures are context,
 not a run-bound proof. Future tuple evidence requires observed loginctl identity/type/
 service/active/remote and boot/timestamp bound to source/artifact identities; historical
 receipts are unchanged. See the [package evidence limits](packages.md).

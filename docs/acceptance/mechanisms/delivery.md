@@ -31,8 +31,24 @@ Self-review corrected actual defects rather than interpreting failed receipts as
   cleanup, not protection against an adversarial process under the same UID.
 - Provider wrappers now distinguish completed observations from successful mechanisms,
   enforce failure exit status and validate installed bytes before execution. Historical
-  provider receipts lack an executed-script digest and are source-unbound; new refusal paths are
+  provider receipts listed in the historical binding limit lack an executed-script digest
+  and are source-unbound; Gemini has historical digests but unavailable producing revisions. New refusal paths are
   separately identified as source-reviewed rather than recaptured observations.
+
+The aborted X11 timing history is retained explicitly:
+[first-series disposition](receipts/renderer-x11-baseline-aborted/disposition.json)
+and [completed run 1](receipts/renderer-x11-baseline-aborted/run-1.json);
+[second-series disposition](receipts/renderer-x11-baseline-final-aborted/disposition.json),
+[completed run 1](receipts/renderer-x11-baseline-final-aborted/run-1.json) and
+[completed run 2](receipts/renderer-x11-baseline-final-aborted/run-2.json).
+The first series stopped for disposable credential remediation; the second stopped
+under the coordinator resource/timing hold with the superseded relative-zoom harness
+and an incomplete series. These historical traces are not accepted or compared as a
+G8 baseline, valid performance miss, optimization result or D1 fallback trigger.
+No slow run was removed to obtain a pass, and the fixed 30-second warmup,
+60-second trace, 33.3 ms p95 and all-five-run bar is unchanged. No missing tail result
+is inferred from the incomplete logs. Existing aborted-v2 disclosures remain valid;
+these direct links improve discoverability without changing any raw receipt.
 
 The [renderer/link/speech review](renderer-links-speech-review.md) records focused
 negative checks and source hashes. These worker/helper reviews are **not** the
@@ -64,6 +80,10 @@ coordinator's required different-family review or Council approval.
    environment owner must reconcile UTM through its existing private control channel.
 
 6. Allow-rule installer and process checks establish session-independent mechanisms.
+   Historical store and GTK speech-capability pairs are also session-unbound; their
+   byte-identical output does not establish two independent graphical tuples. Recorded
+   operations/cleanup remain observations, and distinct task-link result/event records
+   retain their own PID/session binding.
    Historical wayland/x11 filenames do not bind graphical session identity; prompt
    receipts also lack run-bound graphical metadata. No per-tuple acceptance follows
    from those captures. Future session evidence must capture observed identity with

@@ -410,8 +410,10 @@ was proven, and fails its wrapper if source/install/sentinel preservation fails.
 Nonzero vendor outcomes in these deliberately negative probes are raw observations,
 never domain-success mappings. Runtime harnesses now enforce the exact owned guest
 hostname; Gemini additionally checks exact version strings and expected help entry
-text. Those older receipts lack a probe/script source digest; they cannot bind an execution
-to either the previous or corrected harness bytes.
+text. The native captures, Claude transitions and updater-failure receipts named in
+the historical binding limit below lack a probe/script source digest. Gemini receipts
+do contain historical digests, but the producing revisions are unavailable; neither
+set proves execution against the current corrected harness bytes.
 
 Receipt consistency review verified all four completed Claude transition records,
 their final preservation/allocation checks, all four offline updater preservation
@@ -446,6 +448,12 @@ execution-source binding is **unproven**; later source fixes cannot retroactivel
 them. These receipts must not be admitted as current-source mechanism proof. Future
 recapture must bind the actual executed script and inputs. No historical source hash
 is invented and the raw receipts are preserved.
+
+Gemini's retained download/offline receipts record historical `probe_sha256` digests,
+but those producing source revisions are not retained in this repository and differ
+from the current committed `gemini_probe.py`. Their output/artifact observations
+remain; execution against the current committed probe is unproven. This is unavailable
+producing source, not an absent digest. No historical hash is backfilled or replaced.
 
 `spikes/982/providers/pins.json` is the historical 10:53 UTC inventory; its Gemini
 “not installed” status predates the later Gemini install receipts described above.

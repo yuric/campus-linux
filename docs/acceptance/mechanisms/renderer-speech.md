@@ -357,10 +357,13 @@ contracts, not authorization to activate a Linux cloud transcription path. The l
 single WAV upload is not selected as a fallback.
 
 Linux Apple Speech availability: **unavailable as a native Linux implementation**. The
-actual GTK Web Speech API constructors were **absent in both tested GDM sessions**:
-[speech-wayland.json](receipts/speech-wayland.json) and [speech-x11.json](receipts/speech-x11.json) records `SpeechRecognition` and
-`webkitSpeechRecognition` as `undefined`, with `mediaDevices` present, `getUserMedia` a
-function and secure context true. This is the disposable GTK host on WebKitGTK 2.52.6,
+retained GTK capability output in [speech-wayland.json](receipts/speech-wayland.json)
+and [speech-x11.json](receipts/speech-x11.json) records `SpeechRecognition` and
+`webkitSpeechRecognition` as `undefined`, with `mediaDevices` present, `getUserMedia`
+a function and secure context true. These Wayland/X11-named files are byte-identical
+and omit run-bound session/boot/PID/time metadata, so they do not independently
+establish coverage of both GDM tuples. Identical deterministic output does not prove
+fabrication. This is a disposable GTK host observation on WebKitGTK 2.52.6,
 not installed-product evidence. Reproduce with:
 
 ```sh

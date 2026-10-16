@@ -51,12 +51,18 @@ download, owner-provider operation or benchmark was run by this reviewer.
    reruns now pass all twelve cases, active/visible observations, UI stop and restoration
    in all four tuples, bound to the new probe hash.
 
-## Fixed bytes and host verification
+## Historical fixed bytes and host verification
 
-| File | SHA-256 after this review |
+These are hashes at the initial review, not current-source identities. Later
+corrections below supersede these bytes. Current `run-webkit.py` SHA-256 is
+`19111e1b9b374c159333d7174a0986b6761a9cb72fdf60ef3085b89b39ec674d`;
+the [direction 1200 freeze](repair-1200.md) records later timing-source identities.
+Historical producing hashes remain unchanged.
+
+| File | SHA-256 at the initial historical review |
 | --- | --- |
 | `measure.js` — unchanged | `0b252839b5c6b6f485cf5c735aa4bcee1e662f6ac2a423032bc8c36d223c86e0` |
-| `run-webkit.py` — unchanged | `543548f2d362e3307fa62636ef666d6a9ee71e5206e62b62bf6cff040e8db352` |
+| `run-webkit.py` — historical, before diagnostic-timeout correction | `543548f2d362e3307fa62636ef666d6a9ee71e5206e62b62bf6cff040e8db352` |
 | `motion_evidence.py` | `ec3a984d6bb3edbaddff1a3e0ea26fba492e0c8cdd33201aec6e5d00282d9901` |
 | `freeze.py` | `37e99c8b3494be361e4991a8b6a916b997c1075db93328249a6dfe9445ddf0ad` |
 | `links/probe.py` | `a59d69833f46b76106d67036ab5ffc30bdf04b80a3ab336098d6bfa8024f6cd1` |

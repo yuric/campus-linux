@@ -100,7 +100,8 @@ the matched signals. No old failed receipt should be rewritten. A complete
 positive must still include the actual collector trace and synthetic marker in
 stream-decoded CoreDump, followed by the matched filtered negative.
 
-Lima shut down normally at 13:10:04 UTC. UTM was not operated. Its CLI status
+The 13:11:31 UTC host-after observation records Lima stopped; it is not the shutdown
+event timestamp. UTM was not operated. Its CLI status
 lookup reported not found; a read-only QEMU process check found no guest before
 Lima startup. This does not repair or certify UTM. No global core, sysctl, Apport,
 credential, unrelated workspace or Docker/CI setting was changed.
