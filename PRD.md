@@ -491,12 +491,12 @@ as Island parity. Broader compatibility is designed in, never inferred from one 
 ## 7. Delivery sequence and repository ownership
 
 Each milestone has a bounded reviewable outcome, exact checks, owner and handoff containing
-repository/commit, contracts, artifacts, results and remaining gaps. No production tasks
-have been created by this document.
+repository/commit, contracts, artifacts, results and remaining gaps. LINUX-20261016 created
+cards #981–#999 with native dependencies after the owner authorized implementation.
 
 | Milestone | Dependencies | Outcome and gate |
 |---|---|---|
-| L0: inventory/spikes | This document merged; owner starts implementation | Expand P01–P18 and G1–G8 into action cases; fix G8's performance/visual criteria before measuring; capture references; wire D5 layers 1–3; pin the release build baseline; prove D1/D4 risks and G2–G7 platform mechanisms. One supervised CLI end to end after its S1 dependencies merge. No ADRs: the decisions are in section 4. |
+| L0: inventory/spikes | Document merged; owner start authorized 2026-10-16 | Expand P01–P18 and G1–G8 into action cases; fix G8's performance/visual criteria before measuring; capture references; wire D5 layers 1–3; pin the release build baseline; prove D1/D4 risks and G2–G7 platform mechanisms. One supervised CLI end to end after its S1 dependencies merge. No ADRs: the decisions are in section 4. |
 | S1: API prerequisites | None; opens in parallel with L0 | The consolidated D6 product PR (#984), separate policy PR (#983), and hosted proof (#986), preserving S1-1–S1-5 |
 | S2: verified contract import | Required S1 changes merged | Linux-owned export PR from a recorded merged server SHA containing those changes; verify provenance/fixtures and move snapshot references/checks with the export layout. G1 defines receipts; no handwritten schema edits. |
 | M1: renderer export | L0; S1 if needed | Mac-owned platform-neutral host/export changes where needed; exact merged-source artifact/manifest; no renderer fork |

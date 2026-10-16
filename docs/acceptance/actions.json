@@ -2055,6 +2055,158 @@
       }
     },
     {
+      "action": "workflow-block_for_review",
+      "sources": [
+        "contract/contracts/task_workflow/v1/mobile_ready.json",
+        "CampusApp/Sources/CampusKit/HTTP.swift#L1406"
+      ],
+      "operations": [
+        {
+          "method": "POST",
+          "path": "/tasks/{id}/transition",
+          "operation_id": "tasksTransition",
+          "schema_pointer": "#/paths/~1tasks~1{id}~1transition/post",
+          "schema_refs": [
+            "#/components/schemas/Error",
+            "#/components/schemas/Priority",
+            "#/components/schemas/Stage",
+            "#/components/schemas/Task"
+          ],
+          "summary": "Move a task to another stage",
+          "in_prd_server_baseline": true
+        }
+      ],
+      "wire_types": [
+        "TaskMove"
+      ],
+      "group": "P04",
+      "owner_card": 991,
+      "expected": "Offer block_for_review only when supplied; render its exact label/confirmation/fields; send the exact transition and reconcile held versus completed state.",
+      "status": "unimplemented",
+      "test_case": "P04.workflow-block_for_review",
+      "receipt": "P04.workflow-block_for_review.json",
+      "contract_status": "source-mapped; post-S1 revalidation required",
+      "test_spec": {
+        "seam": "actual workflow-block_for_review presentation/bridge action and mapped host API",
+        "scenario": "Offer block_for_review only when supplied; render its exact label/confirmation/fields; send the exact transition and reconcile held versus completed state. Exercise supported/refused/unknown-version and account switch cases.",
+        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
+      }
+    },
+    {
+      "action": "workflow-close",
+      "sources": [
+        "contract/contracts/task_workflow/v1/mobile_ready.json",
+        "CampusApp/Sources/CampusKit/HTTP.swift#L1406"
+      ],
+      "operations": [
+        {
+          "method": "POST",
+          "path": "/tasks/{id}/transition",
+          "operation_id": "tasksTransition",
+          "schema_pointer": "#/paths/~1tasks~1{id}~1transition/post",
+          "schema_refs": [
+            "#/components/schemas/Error",
+            "#/components/schemas/Priority",
+            "#/components/schemas/Stage",
+            "#/components/schemas/Task"
+          ],
+          "summary": "Move a task to another stage",
+          "in_prd_server_baseline": true
+        }
+      ],
+      "wire_types": [
+        "TaskMove"
+      ],
+      "group": "P04",
+      "owner_card": 991,
+      "expected": "Offer close only when supplied; render its exact label/confirmation/fields; send the exact transition and reconcile held versus completed state.",
+      "status": "unimplemented",
+      "test_case": "P04.workflow-close",
+      "receipt": "P04.workflow-close.json",
+      "contract_status": "source-mapped; post-S1 revalidation required",
+      "test_spec": {
+        "seam": "actual workflow-close presentation/bridge action and mapped host API",
+        "scenario": "Offer close only when supplied; render its exact label/confirmation/fields; send the exact transition and reconcile held versus completed state. Exercise supported/refused/unknown-version and account switch cases.",
+        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
+      }
+    },
+    {
+      "action": "workflow-request_approval",
+      "sources": [
+        "contract/contracts/task_workflow/v1/mobile_ready.json",
+        "CampusApp/Sources/CampusKit/HTTP.swift#L1406"
+      ],
+      "operations": [
+        {
+          "method": "POST",
+          "path": "/tasks/{id}/transition",
+          "operation_id": "tasksTransition",
+          "schema_pointer": "#/paths/~1tasks~1{id}~1transition/post",
+          "schema_refs": [
+            "#/components/schemas/Error",
+            "#/components/schemas/Priority",
+            "#/components/schemas/Stage",
+            "#/components/schemas/Task"
+          ],
+          "summary": "Move a task to another stage",
+          "in_prd_server_baseline": true
+        }
+      ],
+      "wire_types": [
+        "TaskMove"
+      ],
+      "group": "P04",
+      "owner_card": 991,
+      "expected": "Offer request_approval only when supplied; render its exact label/confirmation/fields; send the exact transition and reconcile held versus completed state.",
+      "status": "unimplemented",
+      "test_case": "P04.workflow-request_approval",
+      "receipt": "P04.workflow-request_approval.json",
+      "contract_status": "source-mapped; post-S1 revalidation required",
+      "test_spec": {
+        "seam": "actual workflow-request_approval presentation/bridge action and mapped host API",
+        "scenario": "Offer request_approval only when supplied; render its exact label/confirmation/fields; send the exact transition and reconcile held versus completed state. Exercise supported/refused/unknown-version and account switch cases.",
+        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
+      }
+    },
+    {
+      "action": "workflow-return_to_ideas",
+      "sources": [
+        "contract/contracts/task_workflow/v1/mobile_ready.json",
+        "CampusApp/Sources/CampusKit/HTTP.swift#L1406"
+      ],
+      "operations": [
+        {
+          "method": "POST",
+          "path": "/tasks/{id}/transition",
+          "operation_id": "tasksTransition",
+          "schema_pointer": "#/paths/~1tasks~1{id}~1transition/post",
+          "schema_refs": [
+            "#/components/schemas/Error",
+            "#/components/schemas/Priority",
+            "#/components/schemas/Stage",
+            "#/components/schemas/Task"
+          ],
+          "summary": "Move a task to another stage",
+          "in_prd_server_baseline": true
+        }
+      ],
+      "wire_types": [
+        "TaskMove"
+      ],
+      "group": "P04",
+      "owner_card": 991,
+      "expected": "Offer return_to_ideas only when supplied; render its exact label/confirmation/fields; send the exact transition and reconcile held versus completed state.",
+      "status": "unimplemented",
+      "test_case": "P04.workflow-return_to_ideas",
+      "receipt": "P04.workflow-return_to_ideas.json",
+      "contract_status": "source-mapped; post-S1 revalidation required",
+      "test_spec": {
+        "seam": "actual workflow-return_to_ideas presentation/bridge action and mapped host API",
+        "scenario": "Offer return_to_ideas only when supplied; render its exact label/confirmation/fields; send the exact transition and reconcile held versus completed state. Exercise supported/refused/unknown-version and account switch cases.",
+        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
+      }
+    },
+    {
       "action": "add-dependency",
       "group": "P05",
       "owner_card": 991,
@@ -5719,7 +5871,7 @@
             "#/components/schemas/ExecutionRequest"
           ],
           "summary": "Queue an Office run for an explicitly selected eligible Mac",
-          "in_prd_server_baseline": false
+          "in_prd_server_baseline": true
         },
         {
           "method": "POST",
@@ -5730,7 +5882,7 @@
             "#/components/schemas/ExecutionRequest"
           ],
           "summary": "Request cancellation; the executor acknowledges only after ending the process group",
-          "in_prd_server_baseline": false
+          "in_prd_server_baseline": true
         },
         {
           "method": "POST",
@@ -5741,7 +5893,7 @@
             "#/components/schemas/AgentMessage"
           ],
           "summary": "Send a message to (or from) an agent",
-          "in_prd_server_baseline": false
+          "in_prd_server_baseline": true
         },
         {
           "method": "POST",
@@ -5752,7 +5904,7 @@
             "#/components/schemas/AgentMessage"
           ],
           "summary": "Retry a saved direction without resending its text",
-          "in_prd_server_baseline": false
+          "in_prd_server_baseline": true
         }
       ],
       "wire_types": [],
@@ -9075,6 +9227,304 @@
       }
     },
     {
+      "action": "cloud-approval-undo",
+      "sources": [
+        "CampusApp/Sources/CampusApp/IslandScreen.swift",
+        "CampusApp/Sources/CampusKit/HTTP.swift#L1406"
+      ],
+      "operations": [
+        {
+          "method": "POST",
+          "path": "/tasks/{id}/transition",
+          "operation_id": "tasksTransition",
+          "schema_pointer": "#/paths/~1tasks~1{id}~1transition/post",
+          "schema_refs": [
+            "#/components/schemas/Error",
+            "#/components/schemas/Priority",
+            "#/components/schemas/Stage",
+            "#/components/schemas/Task"
+          ],
+          "summary": "Move a task to another stage",
+          "in_prd_server_baseline": true
+        }
+      ],
+      "wire_types": [
+        "TaskMove"
+      ],
+      "group": "P12",
+      "owner_card": 995,
+      "expected": "Undo each approved task only through its newly offered workflow action; preserve held/refused results.",
+      "status": "unimplemented",
+      "test_case": "P12.cloud-approval-undo",
+      "receipt": "P12.cloud-approval-undo.json",
+      "contract_status": "Mac action and Rails operation mapped; portable bridge schema still blocked on #987",
+      "test_spec": {
+        "seam": "actual cloud-approval-undo presentation/bridge action and mapped host API",
+        "scenario": "Undo each approved task only through its newly offered workflow action; preserve held/refused results. Exercise supported/refused/unknown-version and account switch cases.",
+        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
+      }
+    },
+    {
+      "action": "cloud-drop-approve",
+      "sources": [
+        "CampusApp/Sources/CampusApp/IslandScreen.swift",
+        "CampusApp/Sources/CampusKit/HTTP.swift#L1396"
+      ],
+      "operations": [
+        {
+          "method": "POST",
+          "path": "/tasks/approve_batch",
+          "operation_id": "tasksApproveBatch",
+          "schema_pointer": "#/paths/~1tasks~1approve_batch/post",
+          "schema_refs": [
+            "#/components/schemas/TaskApprovalBatch"
+          ],
+          "summary": "Approve an explicit Island cloud selection",
+          "in_prd_server_baseline": true
+        }
+      ],
+      "wire_types": [
+        "TaskApprovalBatch"
+      ],
+      "group": "P12",
+      "owner_card": 995,
+      "expected": "Cloud drop invokes the same authorized batch approval; reject unknown selection contract.",
+      "status": "unimplemented",
+      "test_case": "P12.cloud-drop-approve",
+      "receipt": "P12.cloud-drop-approve.json",
+      "contract_status": "Mac action and Rails operation mapped; portable bridge schema still blocked on #987",
+      "test_spec": {
+        "seam": "actual cloud-drop-approve presentation/bridge action and mapped host API",
+        "scenario": "Cloud drop invokes the same authorized batch approval; reject unknown selection contract. Exercise supported/refused/unknown-version and account switch cases.",
+        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
+      }
+    },
+    {
+      "action": "cloud-selection-approve",
+      "sources": [
+        "CampusApp/Sources/CampusApp/IslandScreen.swift",
+        "CampusApp/Sources/CampusKit/HTTP.swift#L1396"
+      ],
+      "operations": [
+        {
+          "method": "POST",
+          "path": "/tasks/approve_batch",
+          "operation_id": "tasksApproveBatch",
+          "schema_pointer": "#/paths/~1tasks~1approve_batch/post",
+          "schema_refs": [
+            "#/components/schemas/TaskApprovalBatch"
+          ],
+          "summary": "Approve an explicit Island cloud selection",
+          "in_prd_server_baseline": true
+        }
+      ],
+      "wire_types": [
+        "TaskApprovalBatch"
+      ],
+      "group": "P12",
+      "owner_card": 995,
+      "expected": "Approve the exact selected IDs/priority once; preserve refused IDs selected and show server result.",
+      "status": "unimplemented",
+      "test_case": "P12.cloud-selection-approve",
+      "receipt": "P12.cloud-selection-approve.json",
+      "contract_status": "Mac action and Rails operation mapped; portable bridge schema still blocked on #987",
+      "test_spec": {
+        "seam": "actual cloud-selection-approve presentation/bridge action and mapped host API",
+        "scenario": "Approve the exact selected IDs/priority once; preserve refused IDs selected and show server result. Exercise supported/refused/unknown-version and account switch cases.",
+        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
+      }
+    },
+    {
+      "action": "cloud-selection-clear",
+      "group": "P12",
+      "owner_card": 995,
+      "sources": [
+        "CampusApp/Sources/CampusApp/IslandScreen.swift",
+        "CampusApp/Sources/CampusApp/IslandScreen.swift"
+      ],
+      "operations": [],
+      "wire_types": [],
+      "contract_status": "Mac action and Rails operation mapped; portable bridge schema still blocked on #987",
+      "expected": "Clear selected task IDs without dispatching a mutation.",
+      "test_case": "P12.cloud-selection-clear",
+      "receipt": "P12.cloud-selection-clear.json",
+      "status": "unimplemented",
+      "test_spec": {
+        "seam": "actual cloud-selection-clear presentation/bridge action and mapped host API",
+        "scenario": "Clear selected task IDs without dispatching a mutation. Exercise supported/refused/unknown-version and account switch cases.",
+        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
+      },
+      "api_applicability": "producer bridge schema pending #987; world snapshot and offered actions remain Rails-owned"
+    },
+    {
+      "action": "cloud-selection-disable",
+      "group": "P12",
+      "owner_card": 995,
+      "sources": [
+        "CampusApp/Sources/CampusApp/IslandScreen.swift",
+        "CampusApp/Sources/CampusApp/IslandScreen.swift"
+      ],
+      "operations": [],
+      "wire_types": [],
+      "contract_status": "Mac action and Rails operation mapped; portable bridge schema still blocked on #987",
+      "expected": "Leave selection mode and clear selection without mutation.",
+      "test_case": "P12.cloud-selection-disable",
+      "receipt": "P12.cloud-selection-disable.json",
+      "status": "unimplemented",
+      "test_spec": {
+        "seam": "actual cloud-selection-disable presentation/bridge action and mapped host API",
+        "scenario": "Leave selection mode and clear selection without mutation. Exercise supported/refused/unknown-version and account switch cases.",
+        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
+      },
+      "api_applicability": "producer bridge schema pending #987; world snapshot and offered actions remain Rails-owned"
+    },
+    {
+      "action": "cloud-selection-enable",
+      "group": "P12",
+      "owner_card": 995,
+      "sources": [
+        "CampusApp/Sources/CampusApp/IslandScreen.swift",
+        "CampusApp/Sources/CampusApp/IslandScreen.swift"
+      ],
+      "operations": [],
+      "wire_types": [],
+      "contract_status": "Mac action and Rails operation mapped; portable bridge schema still blocked on #987",
+      "expected": "Enter cloud selection mode without mutation.",
+      "test_case": "P12.cloud-selection-enable",
+      "receipt": "P12.cloud-selection-enable.json",
+      "status": "unimplemented",
+      "test_spec": {
+        "seam": "actual cloud-selection-enable presentation/bridge action and mapped host API",
+        "scenario": "Enter cloud selection mode without mutation. Exercise supported/refused/unknown-version and account switch cases.",
+        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
+      },
+      "api_applicability": "producer bridge schema pending #987; world snapshot and offered actions remain Rails-owned"
+    },
+    {
+      "action": "cloud-selection-priority",
+      "group": "P12",
+      "owner_card": 995,
+      "sources": [
+        "CampusApp/Sources/CampusApp/IslandScreen.swift",
+        "CampusApp/Sources/CampusApp/IslandScreen.swift"
+      ],
+      "operations": [],
+      "wire_types": [],
+      "contract_status": "Mac action and Rails operation mapped; portable bridge schema still blocked on #987",
+      "expected": "Choose only an offered priority; preserve server recommended value without deriving ranking.",
+      "test_case": "P12.cloud-selection-priority",
+      "receipt": "P12.cloud-selection-priority.json",
+      "status": "unimplemented",
+      "test_spec": {
+        "seam": "actual cloud-selection-priority presentation/bridge action and mapped host API",
+        "scenario": "Choose only an offered priority; preserve server recommended value without deriving ranking. Exercise supported/refused/unknown-version and account switch cases.",
+        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
+      },
+      "api_applicability": "producer bridge schema pending #987; world snapshot and offered actions remain Rails-owned"
+    },
+    {
+      "action": "dismiss-onboarding-hint",
+      "group": "P12",
+      "owner_card": 995,
+      "sources": [
+        "CampusApp/Sources/CampusApp/IslandScreen.swift",
+        "CampusApp/Sources/CampusApp/IslandScreen.swift"
+      ],
+      "operations": [],
+      "wire_types": [],
+      "contract_status": "Mac action and Rails operation mapped; portable bridge schema still blocked on #987",
+      "expected": "Dismiss the local Island navigation hint without server mutation.",
+      "test_case": "P12.dismiss-onboarding-hint",
+      "receipt": "P12.dismiss-onboarding-hint.json",
+      "status": "unimplemented",
+      "test_spec": {
+        "seam": "actual dismiss-onboarding-hint presentation/bridge action and mapped host API",
+        "scenario": "Dismiss the local Island navigation hint without server mutation. Exercise supported/refused/unknown-version and account switch cases.",
+        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
+      },
+      "api_applicability": "producer bridge schema pending #987; world snapshot and offered actions remain Rails-owned"
+    },
+    {
+      "action": "focus-overview",
+      "group": "P12",
+      "owner_card": 995,
+      "sources": [
+        "CampusApp/Sources/CampusApp/IslandScreen.swift",
+        "CampusApp/Sources/CampusApp/IslandScreen.swift"
+      ],
+      "operations": [],
+      "wire_types": [],
+      "contract_status": "Mac action and Rails operation mapped; portable bridge schema still blocked on #987",
+      "expected": "Return camera to overview and acknowledge focus result.",
+      "test_case": "P12.focus-overview",
+      "receipt": "P12.focus-overview.json",
+      "status": "unimplemented",
+      "test_spec": {
+        "seam": "actual focus-overview presentation/bridge action and mapped host API",
+        "scenario": "Return camera to overview and acknowledge focus result. Exercise supported/refused/unknown-version and account switch cases.",
+        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
+      },
+      "api_applicability": "producer bridge schema pending #987; world snapshot and offered actions remain Rails-owned"
+    },
+    {
+      "action": "focus-zone",
+      "group": "P12",
+      "owner_card": 995,
+      "sources": [
+        "CampusApp/Sources/CampusApp/IslandScreen.swift",
+        "CampusApp/Sources/CampusApp/IslandScreen.swift"
+      ],
+      "operations": [],
+      "wire_types": [],
+      "contract_status": "Mac action and Rails operation mapped; portable bridge schema still blocked on #987",
+      "expected": "Focus the named presentation zone and require supported focus acknowledgement.",
+      "test_case": "P12.focus-zone",
+      "receipt": "P12.focus-zone.json",
+      "status": "unimplemented",
+      "test_spec": {
+        "seam": "actual focus-zone presentation/bridge action and mapped host API",
+        "scenario": "Focus the named presentation zone and require supported focus acknowledgement. Exercise supported/refused/unknown-version and account switch cases.",
+        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
+      },
+      "api_applicability": "producer bridge schema pending #987; world snapshot and offered actions remain Rails-owned"
+    },
+    {
+      "action": "island-dismiss-agent",
+      "sources": [
+        "CampusApp/Sources/CampusApp/IslandScreen.swift",
+        "CampusApp/Sources/CampusKit/HTTP.swift#L2123"
+      ],
+      "operations": [
+        {
+          "method": "POST",
+          "path": "/agents/{id}/dismiss",
+          "operation_id": "agentsDismiss",
+          "schema_pointer": "#/paths/~1agents~1{id}~1dismiss/post",
+          "schema_refs": [
+            "#/components/schemas/DismissedAgent",
+            "#/components/schemas/Error"
+          ],
+          "summary": "Dismiss an agent",
+          "in_prd_server_baseline": true
+        }
+      ],
+      "wire_types": [
+        "DismissedAgent"
+      ],
+      "group": "P12",
+      "owner_card": 995,
+      "expected": "Render and honor the offered agent dismissal confirmation; refresh actual state.",
+      "status": "unimplemented",
+      "test_case": "P12.island-dismiss-agent",
+      "receipt": "P12.island-dismiss-agent.json",
+      "contract_status": "Mac action and Rails operation mapped; portable bridge schema still blocked on #987",
+      "test_spec": {
+        "seam": "actual island-dismiss-agent presentation/bridge action and mapped host API",
+        "scenario": "Render and honor the offered agent dismissal confirmation; refresh actual state. Exercise supported/refused/unknown-version and account switch cases.",
+        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
+      }
+    },
+    {
       "action": "load-artifact",
       "group": "P12",
       "owner_card": 995,
@@ -9087,6 +9537,40 @@
       "expected": "Render the verified producer artifact through a restricted bridge; apply acknowledged motion/visibility states; preserve board controls on Island failure and host recovery on full webview failure.",
       "test_case": "P12.load-artifact",
       "receipt": "P12.load-artifact.json",
+      "status": "unimplemented",
+      "test_spec": {
+        "seam": "named presentation/OS/executor seam in source reference",
+        "scenario": "Exercise load-artifact once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
+        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
+      },
+      "api_applicability": "producer bridge schema pending #987; world snapshot and offered actions remain Rails-owned"
+    },
+    {
+      "action": "load-island-presentation",
+      "group": "P12",
+      "owner_card": 995,
+      "sources": [
+        "CampusApp/Sources/CampusApp/IslandScreen.swift#L998",
+        "CampusApp/Sources/CampusKit/Configuration.swift"
+      ],
+      "operations": [
+        {
+          "method": "GET",
+          "path": "/island",
+          "operation_id": "islandShow",
+          "schema_pointer": "#/paths/~1island/get",
+          "schema_refs": [
+            "#/components/schemas/IslandPresentation"
+          ],
+          "summary": "Read the versioned Island presentation contract",
+          "in_prd_server_baseline": true
+        }
+      ],
+      "wire_types": [],
+      "contract_status": "blocked bridge schema: #987 merged manifest/schema required before #995; camera/motion remain local",
+      "expected": "Forward authenticated GET /island from trusted host and return presentation bytes through the restricted main-frame bridge; no renderer bearer.",
+      "test_case": "P12.load-island-presentation",
+      "receipt": "P12.load-island-presentation.json",
       "status": "unimplemented",
       "test_spec": {
         "seam": "named presentation/OS/executor seam in source reference",
@@ -9112,48 +9596,6 @@
       "test_spec": {
         "seam": "named presentation/OS/executor seam in source reference",
         "scenario": "Exercise navigate once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
-        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
-      },
-      "api_applicability": "producer bridge schema pending #987; world snapshot and offered actions remain Rails-owned"
-    },
-    {
-      "action": "offered-approval",
-      "group": "P12",
-      "owner_card": 995,
-      "sources": [
-        "CampusApp/Sources/CampusApp/IslandScreen.swift"
-      ],
-      "operations": [],
-      "wire_types": [],
-      "contract_status": "blocked bridge schema: #987 merged manifest/schema required before #995; camera/motion remain local",
-      "expected": "Render the verified producer artifact through a restricted bridge; apply acknowledged motion/visibility states; preserve board controls on Island failure and host recovery on full webview failure.",
-      "test_case": "P12.offered-approval",
-      "receipt": "P12.offered-approval.json",
-      "status": "unimplemented",
-      "test_spec": {
-        "seam": "named presentation/OS/executor seam in source reference",
-        "scenario": "Exercise offered-approval once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
-        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
-      },
-      "api_applicability": "producer bridge schema pending #987; world snapshot and offered actions remain Rails-owned"
-    },
-    {
-      "action": "offered-mutation",
-      "group": "P12",
-      "owner_card": 995,
-      "sources": [
-        "CampusApp/Sources/CampusApp/IslandScreen.swift"
-      ],
-      "operations": [],
-      "wire_types": [],
-      "contract_status": "blocked bridge schema: #987 merged manifest/schema required before #995; camera/motion remain local",
-      "expected": "Render the verified producer artifact through a restricted bridge; apply acknowledged motion/visibility states; preserve board controls on Island failure and host recovery on full webview failure.",
-      "test_case": "P12.offered-mutation",
-      "receipt": "P12.offered-mutation.json",
-      "status": "unimplemented",
-      "test_spec": {
-        "seam": "named presentation/OS/executor seam in source reference",
-        "scenario": "Exercise offered-mutation once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
         "execution": "not implemented; owning card supplies real command and observed receipt before pass"
       },
       "api_applicability": "producer bridge schema pending #987; world snapshot and offered actions remain Rails-owned"
@@ -9327,6 +9769,94 @@
       "api_applicability": "producer bridge schema pending #987; world snapshot and offered actions remain Rails-owned"
     },
     {
+      "action": "select-assistant",
+      "group": "P12",
+      "owner_card": 995,
+      "sources": [
+        "CampusApp/Sources/CampusApp/IslandScreen.swift",
+        "CampusApp/Sources/CampusApp/IslandScreen.swift"
+      ],
+      "operations": [],
+      "wire_types": [],
+      "contract_status": "Mac action and Rails operation mapped; portable bridge schema still blocked on #987",
+      "expected": "Open assistant/coordinator surface.",
+      "test_case": "P12.select-assistant",
+      "receipt": "P12.select-assistant.json",
+      "status": "unimplemented",
+      "test_spec": {
+        "seam": "actual select-assistant presentation/bridge action and mapped host API",
+        "scenario": "Open assistant/coordinator surface. Exercise supported/refused/unknown-version and account switch cases.",
+        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
+      },
+      "api_applicability": "producer bridge schema pending #987; world snapshot and offered actions remain Rails-owned"
+    },
+    {
+      "action": "select-billboard",
+      "group": "P12",
+      "owner_card": 995,
+      "sources": [
+        "CampusApp/Sources/CampusApp/IslandScreen.swift",
+        "CampusApp/Sources/CampusApp/IslandScreen.swift"
+      ],
+      "operations": [],
+      "wire_types": [],
+      "contract_status": "Mac action and Rails operation mapped; portable bridge schema still blocked on #987",
+      "expected": "Route billboard selection to Home without changing authority.",
+      "test_case": "P12.select-billboard",
+      "receipt": "P12.select-billboard.json",
+      "status": "unimplemented",
+      "test_spec": {
+        "seam": "actual select-billboard presentation/bridge action and mapped host API",
+        "scenario": "Route billboard selection to Home without changing authority. Exercise supported/refused/unknown-version and account switch cases.",
+        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
+      },
+      "api_applicability": "producer bridge schema pending #987; world snapshot and offered actions remain Rails-owned"
+    },
+    {
+      "action": "select-board",
+      "group": "P12",
+      "owner_card": 995,
+      "sources": [
+        "CampusApp/Sources/CampusApp/IslandScreen.swift",
+        "CampusApp/Sources/CampusApp/IslandScreen.swift"
+      ],
+      "operations": [],
+      "wire_types": [],
+      "contract_status": "Mac action and Rails operation mapped; portable bridge schema still blocked on #987",
+      "expected": "Route board selection to the existing Board screen.",
+      "test_case": "P12.select-board",
+      "receipt": "P12.select-board.json",
+      "status": "unimplemented",
+      "test_spec": {
+        "seam": "actual select-board presentation/bridge action and mapped host API",
+        "scenario": "Route board selection to the existing Board screen. Exercise supported/refused/unknown-version and account switch cases.",
+        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
+      },
+      "api_applicability": "producer bridge schema pending #987; world snapshot and offered actions remain Rails-owned"
+    },
+    {
+      "action": "select-empty-office",
+      "group": "P12",
+      "owner_card": 995,
+      "sources": [
+        "CampusApp/Sources/CampusApp/IslandScreen.swift",
+        "CampusApp/Sources/CampusApp/IslandScreen.swift"
+      ],
+      "operations": [],
+      "wire_types": [],
+      "contract_status": "Mac action and Rails operation mapped; portable bridge schema still blocked on #987",
+      "expected": "Open landing for the selected empty office; do not change project scope prematurely.",
+      "test_case": "P12.select-empty-office",
+      "receipt": "P12.select-empty-office.json",
+      "status": "unimplemented",
+      "test_spec": {
+        "seam": "actual select-empty-office presentation/bridge action and mapped host API",
+        "scenario": "Open landing for the selected empty office; do not change project scope prematurely. Exercise supported/refused/unknown-version and account switch cases.",
+        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
+      },
+      "api_applicability": "producer bridge schema pending #987; world snapshot and offered actions remain Rails-owned"
+    },
+    {
       "action": "select-project",
       "group": "P12",
       "owner_card": 995,
@@ -9346,6 +9876,63 @@
         "execution": "not implemented; owning card supplies real command and observed receipt before pass"
       },
       "api_applicability": "producer bridge schema pending #987; world snapshot and offered actions remain Rails-owned"
+    },
+    {
+      "action": "select-specialists",
+      "group": "P12",
+      "owner_card": 995,
+      "sources": [
+        "CampusApp/Sources/CampusApp/IslandScreen.swift",
+        "CampusApp/Sources/CampusApp/IslandScreen.swift"
+      ],
+      "operations": [],
+      "wire_types": [],
+      "contract_status": "Mac action and Rails operation mapped; portable bridge schema still blocked on #987",
+      "expected": "Open offered specialist landing surface.",
+      "test_case": "P12.select-specialists",
+      "receipt": "P12.select-specialists.json",
+      "status": "unimplemented",
+      "test_spec": {
+        "seam": "actual select-specialists presentation/bridge action and mapped host API",
+        "scenario": "Open offered specialist landing surface. Exercise supported/refused/unknown-version and account switch cases.",
+        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
+      },
+      "api_applicability": "producer bridge schema pending #987; world snapshot and offered actions remain Rails-owned"
+    },
+    {
+      "action": "select-task",
+      "sources": [
+        "CampusApp/Sources/CampusApp/IslandScreen.swift",
+        "CampusApp/Sources/CampusKit/HTTP.swift#L1227"
+      ],
+      "operations": [
+        {
+          "method": "GET",
+          "path": "/tasks/{id}",
+          "operation_id": "tasksShow",
+          "schema_pointer": "#/paths/~1tasks~1{id}/get",
+          "schema_refs": [
+            "#/components/schemas/TaskDetail"
+          ],
+          "summary": "Show a task",
+          "in_prd_server_baseline": true
+        }
+      ],
+      "wire_types": [
+        "Task"
+      ],
+      "group": "P12",
+      "owner_card": 995,
+      "expected": "Open the selected task and avoid duplicate camera echo.",
+      "status": "unimplemented",
+      "test_case": "P12.select-task",
+      "receipt": "P12.select-task.json",
+      "contract_status": "Mac action and Rails operation mapped; portable bridge schema still blocked on #987",
+      "test_spec": {
+        "seam": "actual select-task presentation/bridge action and mapped host API",
+        "scenario": "Open the selected task and avoid duplicate camera echo. Exercise supported/refused/unknown-version and account switch cases.",
+        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
+      }
     },
     {
       "action": "webview-crash",
@@ -13146,7 +13733,7 @@
             "#/components/schemas/ExecutionRequest"
           ],
           "summary": "Queue an Office run for an explicitly selected eligible Mac",
-          "in_prd_server_baseline": false
+          "in_prd_server_baseline": true
         },
         {
           "method": "POST",
@@ -13157,7 +13744,7 @@
             "#/components/schemas/ExecutionRequest"
           ],
           "summary": "Request cancellation; the executor acknowledges only after ending the process group",
-          "in_prd_server_baseline": false
+          "in_prd_server_baseline": true
         }
       ],
       "wire_types": [

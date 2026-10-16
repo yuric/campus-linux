@@ -27,8 +27,12 @@ def main():
     parser.add_argument("--arch", choices=["amd64", "arm64"], required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
+    # A failed rerun must not leave an earlier success looking like its receipt.
+    (args.output / f"receipt-{args.arch}.json").unlink(missing_ok=True)
     if sys.platform == "darwin" and shutil.disk_usage(ROOT).free < 35 * 1024**3:
         raise RuntimeError("coordinator free-space floor: need at least 35 GiB before Docker work")
+    if output(["git", "status", "--porcelain"]):
+        raise RuntimeError("commit or isolate all changes first; verification exports exact HEAD")
     head = output(["git", "rev-parse", "HEAD"])
     # No host credentials, Docker socket or home directory enter the test container.
     # A tar export keeps ignored/private host files out and tests the committed head.

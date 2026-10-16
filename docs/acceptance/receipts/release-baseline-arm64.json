@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "task": 981,
+  "repository": "yuric/campus-linux",
+  "source_commit": "8c602d8b85dd4ce466ef94dadc6f9314a819d1cd",
+  "recipe": "ci/Dockerfile.release-baseline",
+  "recipe_sha256": "79371f245a85a0c4f2967cb91e6e6d1696eadf5765f1559c000efda216bce63f",
+  "base": "ubuntu:22.04@sha256:5ec03bb3441e8b0bf3b4f9cd4629a1ae763010dc3035bb8da3ae6cf026486401",
+  "image_id": "sha256:aa9c0fcc54b36f30642d44bea8aa233e4c211169d26ab400734c151415cef6af",
+  "architecture": "arm64",
+  "os": "Ubuntu 22.04",
+  "command": "docker build --platform linux/arm64 -f ci/Dockerfile.release-baseline -t campus-linux-release-baseline:981-arm64 .",
+  "timeout_seconds": 900,
+  "expected": "Install release-build dependency closure, including WebKitGTK 4.1, on glibc 2.35 base",
+  "observed": "success; libc6 2.35-0ubuntu3.15, WebKitGTK/JavaScriptCore 2.50.4-0ubuntu0.22.04.1, GTK 3.24.33-1ubuntu2.2, GCC 11.4.0, libstdc++ 12.3.0",
+  "package_inventory": "release-baseline-arm64-packages.tsv",
+  "package_inventory_sha256": "dd2bcaefe8bd557ca7ca4e608fdb499cdde480f7ea61c3dcc0564d6717dd5dcc",
+  "scope": "dependency-image only",
+  "product_compile": "not-run",
+  "package_install_startup": "not-run",
+  "desktop_session": "none; Docker headless",
+  "graphics": "not exercised",
+  "remaining_gaps": [
+    "x86_64 release-baseline dependency build",
+    "Pinned Rust/Node/Tauri compatibility and lockfiles",
+    "Actual product ELF symbol/NEEDED audit and per-format SBOM",
+    "linuxdeploy/AppImage runtime byte pins",
+    "Installed package startup on 22.04 and 24.04; no support claim"
+  ]
+}

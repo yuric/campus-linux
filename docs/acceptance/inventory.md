@@ -1,6 +1,8 @@
 # Linux action acceptance inventory
 
-Task #981, next owner **LINUX-20261016**. All product actions are **unimplemented**.
+Task #981, next owner **LINUX-20261016**. All **450** product action cases are **unimplemented**;
+356 have concrete API operation/delegate mappings. The rest are explicit local steps or
+producer-blocked bridge cases, not uncounted omissions.
 [actions.json](actions.json) is the action ledger: one independently named test case and
 receipt per action, owning card, expected behavior, source location and exact API path /
 method / operationId / schema JSON pointer where the source maps to a concrete operation.

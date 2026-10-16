@@ -101,6 +101,10 @@ pinned `ubuntu:22.04` index, glibc 2.35, native x86_64 and arm64, from
 build dependencies and writes their package inventory; it does not manufacture a package.
 22.04 is the selected oldest candidate with Tauri v2 WebKitGTK 4.1 in standard repositories,
 following [Tauri's oldest-base requirement](https://v2.tauri.app/distribute/appimage/).
+The arm64 dependency image was actually built successfully; its
+[receipt](receipts/release-baseline-arm64.json) and
+[full installed package inventory](receipts/release-baseline-arm64-packages.tsv) record
+glibc 2.35, WebKitGTK 4.1 and the actual library versions. This is not a product build.
 Compatibility remains unproven until #982/#996 build and inspect actual artifacts.
 
 | Library/ABI | deb | AppImage | Required observation |

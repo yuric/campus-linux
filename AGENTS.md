@@ -46,7 +46,8 @@ edits, whatever building the card sits on and whatever folder your shell started
 |---|---|---|
 | `yuric/campus-server` | Rails API (`api/`), the OpenAPI spec and `contracts/`, deploy and release (`deploy/`, `changes/`, `VERSION`), AWS (`infrastructure/`), CI and policy (`.github/`, `scripts/`, `config/`), Campus skills (`.agents/skills`, `api/app/skills`) | Swift, the Mac app, the island renderer, any client UI |
 | `yuric/campus-macos` | The Mac app (`CampusApp/`, `Sources/`, `Package.swift`), the island renderer (`island/`), the contract snapshot (`contract/`, moved only by a snapshot PR) | Rails, migrations, OpenAPI edits, deploy and release, client pins |
-| `yuric/campus-ios`, `campus-android`, `campus-linux`, `campus-windows` | Scaffolds: PRDs and docs, until the owner starts the client | Product code, frameworks, dependencies |
+| `yuric/campus-linux` | Authorized Linux client, executor, packages and repository tooling | Rails/API edits, renderer producer source |
+| `yuric/campus-ios`, `campus-android`, `campus-windows` | Scaffolds: PRDs and docs, until the owner starts the client | Product code, frameworks, dependencies |
 | `yuric/campus-cli`, `yuric/campus-web` | Retired on 2026-10-05 (`campus-web` is archived) | Any new work |
 | `yuric/campus` | The umbrella: submodule pointers and its own scaffold docs | Product code of any kind |
 | `yuric/campus-marketing-page` | The public marketing site | API or client code |
