@@ -13,19 +13,19 @@ and no server lease, registration or outbox success is claimed.
 | Scope encoding | Shared-rule vectors include ASCII, Japanese, accented Unicode, empty, NUL, 160-byte boundary and oversized Unicode; unpadded base64url | Safety binding only; no presentation or server validation rule |
 | Descriptor-relative access | `openat2(RESOLVE_BENEATH | RESOLVE_NO_SYMLINKS)` rejects symlink/absolute/parent escapes; 3,000 concurrent rename/symlink attempts never opened the external sentinel | Kernel FD pins the inode, not immutable lexical ancestry; hostile same-UID relocation still requires fencing before CLI launch |
 | Cross-filesystem workspaces | Independent authorized directory descriptor on `/dev/shm` works while credentials remain on the home filesystem | Does not impose a global `RESOLVE_NO_XDEV` restriction; product adoption/reconciliation remains required |
-| IPC | AF_UNIX kernel peer identities obtained before token read; actual nobody UID rejected; final Wayland/X11 clients authenticated root server UID/PID/start ticks and withheld token for a wrong expected server identity; stale socket/principal/attempt negatives also observed | This root-server fixture is not the final same-UID executor design. Same UID is not application identity; synthetic principal tests do not establish Rails token authority, expiry or revocation |
+| IPC | AF_UNIX kernel peer identities obtained before token read; actual nobody UID rejected; source-bound process-probe clients authenticated root server UID/PID/start ticks and withheld token for a wrong expected server identity; stale socket plus in-process synthetic principal/attempt predicate negatives also observed | This root-server fixture is not the final same-UID executor design. Same UID is not application identity; synthetic principal tests do not establish Rails token authority, expiry or revocation |
 | Child inheritance | Explicit allowlist contains only basic runtime fields plus synthetic attempt runtime/MCP variables; no unintended FD survives `close_fds` | Git/SSH/provider-login exceptions still require dedicated evidence; no general session bus/display/SSH-agent inheritance |
-| Attempt termination | Real systemd user service contains leader and `setsid` grandchild in the same attempt cgroup; final X11/Wayland runs terminated both TERM-ignoring processes in 2.185s/2.206s with pidfd exit readiness | Probe timeout is not a production claim stop grace. Fork races, hostile cgroup escape and full protocol handback remain unproven |
+| Attempt termination | Real systemd user service contains leader and `setsid` grandchild in the same attempt cgroup; two source-bound process runs terminated both TERM-ignoring processes in 2.185s/2.206s with pidfd exit readiness | Probe timeout is not a production claim stop grace. Fork races, hostile cgroup escape and full protocol handback remain unproven |
 | Identity | Boot ID, PID, start ticks, cgroup and actual pidfd exit readiness recorded | PID reuse not forced; final code must retain handles and never trust PID alone |
-| Crash policy | Normal exec resets parent-set dumpability to 1. Setting it inside the executed synthetic child prevents an observed Apport dump after SIGABRT | This exposes a production gap: closed-source provider executables have not been shown to apply child-side policy; a parent prctl/core limit alone is insufficient |
+| Crash policy | Normal exec resets parent-set dumpability to 1. No new dump was observed after SIGABRT with both dumpability 0 and core limit 0 inside the executed synthetic child during the recorded three-second window; no matching positive collector control isolates either setting | This exposes a production gap: closed-source provider executables have not been shown to apply child-side policy; a parent prctl/core limit alone is insufficient |
 | Secret Service | Final Wayland/X11 unaliased disposable collections completed create/read/lock/refusal/graphical unlock, verified item deletion and verified collection deletion while preserving default/login aliases and preexisting collections | Original login collection remains locked after password rotation. This is not PAM auto-unlock; historical default-store cleanup was unverified. No product memory-only/registration withholding behavior exists yet |
 | Same-user exposure | Separate same-UID process read the synthetic Secret Service item | Secret Service is not a per-application sandbox; no Mac application ACL parity claim |
 | Absent store | Private D-Bus with no service activation has no secret-service owner; no fallback file created by the probe | This is an isolated bus absence test, not uninstalling the guest's backend or testing a product |
-| Privileged package update | Final Tauri-signature fixture passed seventeen cases per session, actual Wayland/X11 password prompts, and Wayland cancellation/missing-authority cases with intact helper bytes | Exact source-extracted signature verification with disposable keys; stock updater fallback still fails G5 and full product integration remains unproven |
+| Privileged package update | Tauri-signature fixture passed seventeen session-independent allow-rule cases; separate authentication, cancellation and missing-authority observations preserved helper bytes, with graphical tuple unbound | Exact source-extracted signature verification with disposable keys; stock updater fallback still fails G5 and full product integration remains unproven |
 
 Raw observations: [OS probes](receipts/security-os.json),
-[final X11 process/cgroup/crash](receipts/process-x11-final.json),
-[final Wayland process/cgroup/crash](receipts/process-wayland-final.json),
+[process-x11-final process/cgroup/crash](receipts/process-x11-final.json),
+[process-wayland-final process/cgroup/crash](receipts/process-wayland-final.json),
 [final X11 disposable store](receipts/store-x11-disposable.jsonl),
 [final Wayland disposable store](receipts/store-wayland-disposable.jsonl),
 [historical Wayland store](receipts/store-wayland.jsonl), [absent bus](receipts/store-absent.json),
@@ -46,16 +46,28 @@ The [default-store attempt](receipts/store-x11-final.jsonl) contains only a pend
 not a completed cycle. Neither final disposable-collection pass repairs or proves
 auto-unlock of that original login collection.
 
-Both final Wayland/X11 process runs passed with script SHA
+The [earlier process run before session readiness](receipts/process-x11-before-session-ready.json)
+failed (`pass:false`): user systemd could not connect to the bus and cgroup termination
+was not exercised. Preserve that failed run separately from the later successes.
+
+Both source-bound process runs (historical wayland/x11 filenames) passed with script SHA
 `1a7edac20f39131aefbcf8764d447be7fbd713f994c07ab28c844f5b2d4b5578`.
 Each checked equal cgroups, all three reciprocal IPC cases and aggregate exit status;
 both wrong-server cases recorded `token_sent=false`. Historical process receipts prove
 their recorded server-side checks, not this newly added client check. The crash result
 remains limited to the recorded Apport configuration and three-second observation window.
+The separate [G4 follow-up](core-sentinel-followup.md) retains its own evidence and
+inconclusive positive collector control; it does not upgrade this historical result.
 Package details and hashes are in [the package matrix](packages.md) and
 [signature proof](tauri-signatures.md), with final
 [Wayland](receipts/tauri-install-wayland-schema.json)/[X11](receipts/tauri-install-x11-schema.json)
 suite receipts and [missing-authority preservation](receipts/tauri-install-wayland-schema-polkit-missing.json).
+These installer receipts do not bind timestamp/boot/graphical session identity; process
+receipts bind time/boot/process identity but omit observed graphical identity. Their
+filenames cannot establish per-session coverage. Separate GDM captures are context,
+not a run-bound proof. Future tuple evidence requires observed loginctl identity/type/
+service/active/remote and boot/timestamp bound to source/artifact identities; historical
+receipts are unchanged. See the [package evidence limits](packages.md).
 The operator restored polkit afterward. This is not evidence for a separately missing
 desktop agent or for owner-held release-key custody.
 Sources: [openat2 ABI](https://kernel.googlesource.com/pub/scm/docs/man-pages/man-pages/+/refs/tags/man-pages-6.12/man/man2/openat2.2),
@@ -88,9 +100,10 @@ targets that exact item. Cleanup may delete only the collection newly returned i
 run, never a preexisting collection or a current default/login alias. Final success
 requires item removal, collection removal, preserved default/login aliases and preserved
 preexisting collection paths. A canceled prompt, unknown collection identity or failed
-cleanup returns failure. Host mocked API checks exercise immediate/prompted creation,
-preexisting-path rejection and canceled deletion; they are not actual Secret Service
-or graphical prompt evidence.
+cleanup returns failure. Reported host mocks for immediate/prompted creation,
+preexisting-path rejection and canceled deletion have no retained run receipts here.
+They are source-only/unreceipted and receive no runtime pass credit; they are not
+actual Secret Service or graphical prompt evidence.
 
 Inspect the actual password field before invoking `qmp-console.py password` with the
 private support credential file path. No password is passed in an argument, printed,

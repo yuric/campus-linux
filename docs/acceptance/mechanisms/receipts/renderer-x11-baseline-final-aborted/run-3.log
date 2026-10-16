@@ -1,0 +1,2 @@
+/home/campusqa/spike982/spikes/982/renderer/run-webkit.py:54: DeprecationWarning: WebKit2.WebContext.set_network_proxy_settings is deprecated
+  context.set_network_proxy_settings(WebKit2.NetworkProxyMode.CUSTOM,WebKit2.NetworkProxySettings.new('http://127.0.0.1:9',None))

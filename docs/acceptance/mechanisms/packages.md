@@ -107,13 +107,14 @@ one-second pause after verification allows substitution of the original untruste
 No user-controlled pathname is reopened by dpkg. Root attackers are outside this boundary.
 The current verifier caps subprocess output at 128KiB while reading and kills/reaps the
 private process group on overflow/timeout. Earlier receipts checked the expanded size
-only after buffering it; they do not establish this new resource bound. Host checks cover
-the exact 128KiB limit and rejection at 128KiB+1 and 256KiB. The
+only after buffering it; they do not establish this new resource bound. The reported host checks for
+the exact 128KiB limit and rejection at 128KiB+1 and 256KiB have no retained run
+receipt here; treat those boundary checks as source-only/unreceipted, not runtime proof. The
 [X11 bounded OpenSSL run](receipts/install-x11-bounded.json) passed ten cases and the
-[X11 bounded Tauri run](receipts/tauri-install-x11-bounded.json) passed fifteen, including
+[x11-labelled bounded Tauri allow-rule run](receipts/tauri-install-x11-bounded.json) passed fifteen, including
 the signed expansion rejection with installed helper intact. The later
-[exact-schema X11](receipts/tauri-install-x11-schema.json) and
-[exact-schema Wayland](receipts/tauri-install-wayland-schema.json) Tauri runs each passed
+[x11-labelled exact-schema allow-rule receipt](receipts/tauri-install-x11-schema.json) and
+[wayland-labelled exact-schema allow-rule receipt](receipts/tauri-install-wayland-schema.json) Tauri runs each passed
 all seventeen cases, including wrong-owner and writable-helper rejection. The
 [final OpenSSL X11 run](receipts/install-x11-schema.json) passed its twelve cases.
 
@@ -149,13 +150,28 @@ sudo python3 spikes/982/packages/prepare-guest.py --user campusqa \
 Cleanup now requires successful `dpkg --remove`, an uninstalled/config-files-only package
 state and absent installed helper before removing the action/rule/helper/root staging.
 If removal fails, it preserves the fixture rather than printing a successful cleanup.
-The failure path passed a host mock; actual cleanup remains a guest observation. Remove the
+The reported failure-path host mock has no retained run receipt here and provides no
+runtime pass credit; its handling is source-only. Actual cleanup remains a guest observation. Remove the
 caller-owned fresh fixture directory explicitly after preserving safe captures, deleting
 the disposable private key. No provider-owned credential or repository is targeted.
 Keep artifact digests, public-key fingerprint, command logs, actual session tuple and
 result JSON; never collect the private key or real passwords in the receipt.
 
 ## Observed disposable guest results
+
+The allow-rule installer and process checks below are session-independent mechanism
+observations. Their historical `wayland`/`x11` filenames are operator labels, not proof
+of an observed graphical tuple. Installer JSON lacks timestamp, boot and graphical
+session identity; process JSON records time/boot/process identity but no graphical
+session identity. The schema receipts have identical bytes, which is possible for this
+deterministic suite and does not independently prove two session executions. Prompt
+receipts likewise lack the run-bound graphical metadata needed for per-tuple admission;
+the recorded authentication/cancellation results remain bounded observations. Separate
+GDM identity captures and screenshots are contextual corroboration only, without a
+verifiable linkage to each run. No historical facts have been backfilled. Future
+per-session runs must bind timestamp, boot ID, observed `loginctl` session ID/type/service/
+active/remote fields and source/artifact hashes in the receipt or a hash-bound companion.
+
 
 The parent executed these probes in the owned Ubuntu 24.04 arm64 guest. The
 [session identity](receipts/lima-wayland-identity.txt) records a real active local
@@ -172,7 +188,7 @@ not an installed Tauri application or a trusted release artifact.
   records the desktop authorization UI. [Prompt dismissal](receipts/install-wayland-cancel.json)
   returned pkexec 126 with `Request dismissed` and an unchanged installed helper digest.
   These fixture prompts use the synthetic Ed25519 trust anchor, not Tauri signatures.
-- [Sixteen lifecycle cases on the final probe revision](receipts/helper-lifecycle-final.json) passed across deb extraction
+- [Sixteen lifecycle cases on the source-bound final probe revision](receipts/helper-lifecycle-bounded.json) passed across deb extraction
   and AppImage extraction: stable copy/singleton/move-delete/busy fence/promotion, five
   interruption boundaries, incompatible synthetic state, and sibling-data preservation.
   Raw process identities and measured termination times are retained. Synthetic outbox
@@ -192,14 +208,14 @@ status to fail; the recorded nine-case run contains all fixtures. Preserve those
 receipts. The corrected Tauri driver separately checks expected helper bytes on every
 accepted install, records its own source hash, and exits
 nonzero for a missing or failed case. The
-[stronger Wayland rerun](receipts/tauri-install-wayland-allow-final.json) and
-[stronger X11 rerun](receipts/tauri-install-x11-allow-final.json) each passed all fourteen
+[wayland-labelled stronger allow-rule receipt](receipts/tauri-install-wayland-allow-final.json) and
+[x11-labelled stronger allow-rule receipt](receipts/tauri-install-x11-allow-final.json) each passed all fourteen
 cases, including expected helper digest assertions, on their recorded driver SHA. The
 original X11 receipt without the `-final` suffix retains its earlier assertion scope.
 The latest source adds the signed expansion and two archive-metadata negatives and
-requires seventeen cases; the [X11 exact-schema run](receipts/tauri-install-x11-schema.json)
-and [Wayland exact-schema run](receipts/tauri-install-wayland-schema.json) both passed on
-current driver SHA `15ce813245922d7668522a0d80fad3a7d34d121102c9c03cb5a3f637f8a2c9fd`.
+requires seventeen cases; the [x11-labelled exact-schema allow-rule receipt](receipts/tauri-install-x11-schema.json)
+and [wayland-labelled exact-schema allow-rule receipt](receipts/tauri-install-wayland-schema.json) both passed on
+recorded driver SHA `15ce813245922d7668522a0d80fad3a7d34d121102c9c03cb5a3f637f8a2c9fd`.
 The current root-helper source hashes are OpenSSL
 `7f76fd8b4b3fb0f0c63da62425ad62683e2e3e670aefe09b37896513270cd441`
 and Tauri `f59d75f3e67e47285c31f7689a90311a575050f06cd187c17df3adad99d57111`.
@@ -210,15 +226,15 @@ The [current lifecycle rerun](receipts/helper-lifecycle-bounded.json) also passe
 cases and records aggregate success with its matching source SHA.
 
 The separate [Tauri minisign experiment](tauri-signatures.md) now has seventeen passing
-privileged cases in each graphical session, including exact upstream signature/version
+session-independent privileged allow-rule cases, including exact upstream signature/version
 verification and no OpenSSL-format fallback. Actual product
 formats, four installed updater targets, production integration/custody, interrupted dpkg
 and external package replacement remain separate obligations. A positive fixture receipt
 does not remove any of those gates.
 
-The final driver also passed real password authentication on
-[Wayland](receipts/tauri-install-wayland-schema-prompt.json) and
-[X11](receipts/tauri-install-x11-schema-prompt.json),
+The final driver recorded real password authentication in the historically labelled
+[wayland prompt receipt](receipts/tauri-install-wayland-schema-prompt.json) and
+[x11 prompt receipt](receipts/tauri-install-x11-schema-prompt.json),
 [Wayland prompt cancellation with intact installation](receipts/tauri-install-wayland-schema-cancel.json),
 and [missing runtime polkit authority with intact installation](receipts/tauri-install-wayland-schema-polkit-missing.json).
 The operator unmasked/restarted the authority after this bounded failure probe. No
@@ -246,14 +262,21 @@ The [cold login without UI](receipts/session-cold-login-no-ui.json) additionally
 the stable helper on a changed boot ID, retaining synthetic epoch4 with the graphical
 target active. These are not real account/lease or production reboot-recovery receipts.
 
-Separate [Wayland](receipts/process-wayland.json) and [X11](receipts/process-x11.json)
-process probes observed a detached grandchild remain in the attempt cgroup and die with
+The [process attempt before session readiness](receipts/process-x11-before-session-ready.json)
+is an explicit failed run (`pass:false`): the user systemd launch could not connect to
+the session bus, so cgroup termination was not exercised. Later successful observations
+do not erase this failure.
+
+Separate process probes retained under the historical filenames
+[process-wayland](receipts/process-wayland.json) and [process-x11](receipts/process-x11.json) observed a detached grandchild remain in the attempt cgroup and die with
 its parent in 2.145 s / 2.218 s. Both receipts record boot ID/start ticks/pidfd exit,
 cross-UID peer/token bounds, same-UID access limits and synthetic-secret crash handling
-under the actual Apport collector. The [strengthened final X11 run](receipts/process-x11-final.json)
+with the recorded Apport configuration. No new dump was observed while both child-side
+dumpability and core limit were zero during a three-second window; no matching positive
+collector control establishes which setting caused the absence. The [strengthened process-x11-final run](receipts/process-x11-final.json)
 passed reciprocal server authentication before token send, rejected a wrong expected
 server identity without sending the token, verified equal attempt cgroups, and stopped
-both children in 2.185s. The [strengthened Wayland run](receipts/process-wayland-final.json)
+both children in 2.185s. The [strengthened process-wayland-final run](receipts/process-wayland-final.json)
 passed the same checks and stopped both children in 2.206s. This does not prove every crash collector or real
 provider lifecycle. The [scope/workspace receipt](receipts/security-os.json) supplements
 path-safety and user-data preservation; those results never substitute for final package
@@ -272,8 +295,10 @@ second AppImage/update transaction, and this is not per-format updater acceptanc
 Promotion is explicitly a local model: a synthetic active-attempt marker fences changes,
 old process termination precedes replacement, a durable atomic pointer selects the helper,
 and a journal retains previous/candidate versions. Interrupted unaccepted promotion selects
-the previous compatible helper; accepted promotion retains the new helper. Recovery leaves
-claims fenced until external reconciliation. An unchanged synthetic outbox digest proves
+the previous compatible helper; accepted promotion retains the new helper. These pointer
+rollback observations remain valid, but fence survival and claim withholding across
+recovery are explicitly **UNTESTED** by the lifecycle tests. They must not be inferred
+from an interruption-point case label or pointer selection. An unchanged synthetic outbox digest proves
 only file preservation, not Rails acknowledgements, delivery order or lease recovery.
 The model never advertises `helper_update_monitor` or acquires a real claim.
 
@@ -303,7 +328,7 @@ are the authority for fixture results; all actual product cases remain unproven.
 | Concurrent UI and old/new packages | File-lock duplicate process rejection | One supervisor/lease owner during concurrent installer/start; #989/#996 |
 | Busy update / grace and confirmation | Synthetic active marker refuses promotion | Report, confirm, fence, drain/cancel, prove termination, handback; Rails owns resume; #989/#996 |
 | Stage interrupted | Crash after verified staging | Old compatible helper, no partial execution; #996 |
-| Fence interrupted | Crash after durable fence | Claims remain withheld until ownership reconciliation; #989/#996 |
+| Fence interrupted | Interruption point exercised; fence survival and claim withholding **UNTESTED** | Claims remain withheld until ownership reconciliation; #989/#996 |
 | Before atomic promotion | Crash after journal before pointer switch | Previous helper retained, outbox/ack cursor intact; #996 |
 | After atomic promotion | Crash after pointer switch before acceptance | Compatible previous helper or safe forward recovery, no duplicate work; #996 |
 | After acceptance / cleanup | Crash after accepted journal | New helper retained, old version cleanup safe; #996 |
@@ -320,19 +345,31 @@ are the authority for fixture results; all actual product cases remain unproven.
 | Same-account sign-in / repair / relaunch | No account in fixture | Preserve authorized epoch, no busy helper restart; #989/#997 |
 | New sign-in during work | No account in fixture | Account/principal isolation and ownership reconciliation; #989/#997 |
 | Four manifest keys | Exact upstream method harness | Actual format detection and URL/signature from each installed architecture; #996 |
-| Wrong package/architecture/signature/metadata | Final [OpenSSL twelve cases](receipts/install-x11-schema.json) and Tauri seventeen cases on [Wayland](receipts/tauri-install-wayland-schema.json)/[X11](receipts/tauri-install-x11-schema.json), including expected-helper digests and bounded expansion/owner/mode rejection | Exact installed bytes verified with owner release public key; #996 |
+| Wrong package/architecture/signature/metadata | Final [OpenSSL twelve cases](receipts/install-x11-schema.json) and Tauri seventeen session-independent allow-rule cases in [wayland-labelled receipt](receipts/tauri-install-wayland-schema.json)/[X11](receipts/tauri-install-x11-schema.json), including expected-helper digests and bounded expansion/owner/mode rejection | Exact installed bytes verified with owner release public key; #996 |
 | Source substitution after verification | Both signature suites passed original-file replacement after root verification | Audited privileged installer across complete TOCTOU boundaries; #996 |
-| Missing/denied polkit | Final Tauri password prompts passed on [Wayland](receipts/tauri-install-wayland-schema-prompt.json)/[X11](receipts/tauri-install-x11-schema-prompt.json); final Wayland [cancel](receipts/tauri-install-wayland-schema-cancel.json)/[masked authority](receipts/tauri-install-wayland-schema-polkit-missing.json) preserved helper; earlier X11 dismissal and denied-rule fixture also observed | Actual product missing-agent/authority, denied and cancelled prompts; no sudo/password fallback; #996/#997 |
+| Missing/denied polkit | Tauri prompt observations (graphical tuple unbound) in [wayland-labelled receipt](receipts/tauri-install-wayland-schema-prompt.json)/[x11 prompt receipt](receipts/tauri-install-x11-schema-prompt.json); final Wayland [cancel](receipts/tauri-install-wayland-schema-cancel.json)/[masked authority](receipts/tauri-install-wayland-schema-polkit-missing.json) preserved helper; earlier X11 dismissal and denied-rule fixture also observed | Actual product missing-agent/authority, denied and cancelled prompts; no sudo/password fallback; #996/#997 |
 | Interrupted dpkg transaction | Not tested | Distribution database and helper recovery without extra claimant; #996 |
 | Offline per-user uninstall | Fixture cleanup preserves sibling sentinel | Fence/reconcile, disable unit, remove owned helper/registration credentials, preserve provider files/repos; #989/#996 |
 | SBOM / actual WebKitGTK runtime | No webview bundled | deb distro version; AppImage bundled runtime/SBOM, rebuild owner #996; #998 release repetition |
 
 ## Additional signature-compatibility probe
 
+Authenticated-version presence is not downgrade prevention. The historical case named
+`tauri-unsigned-version-downgrade-rejected` announced 0.982.2 with an unversioned
+signature; it proves the required signed version field only. Future driver output names
+it `tauri-missing-authenticated-version-rejected`. Both schema receipts first install
+correctly signed 0.982.1 over the v2 helper. The disposable root helper accepts both
+fixture versions without comparing the installed version. Signed replay/downgrade
+rejection remains unproven at the privileged/product boundary, as does D4's new
+higher-version published rollback. Historical JSON and its recorded hashes are unchanged.
+The original-file substitution test remains useful regression evidence for root-owned
+staging and is preserved; it is not a complete TOCTOU audit.
+
+
 [The separate Tauri-signature probe](tauri-signatures.md) compiled the exact pinned updater
 verification functions against its locked minisign/base64/semver crates. It uses a new
 disposable key/action namespace and requires authenticated version binding. It preserves
-all OpenSSL receipts above; seventeen privileged cases passed in each session with the exact upstream
+all OpenSSL receipts above; seventeen session-independent privileged allow-rule cases passed with the exact upstream
 verification functions. This resolves the synthetic-key format/verification mechanism gap,
 while actual product integration and owner key custody remain unproven. It is not a full
 installed Tauri updater test.

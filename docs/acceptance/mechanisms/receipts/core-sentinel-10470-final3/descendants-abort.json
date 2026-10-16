@@ -1,0 +1,114 @@
+{
+  "case": "descendants-abort",
+  "command": [
+    "/opt/homebrew/bin/limactl",
+    "shell",
+    "campus-linux-d5-noble-arm64",
+    "sudo",
+    "systemd-run",
+    "--unit=campus982-core-10470-final3-descendants-abort",
+    "--wait",
+    "--pipe",
+    "--collect",
+    "-p",
+    "User=campusqa",
+    "-p",
+    "Group=campusqa",
+    "-p",
+    "LimitCORE=infinity",
+    "-p",
+    "MemoryMax=64M",
+    "-p",
+    "MemorySwapMax=0",
+    "-p",
+    "TasksMax=8",
+    "-p",
+    "RuntimeMaxSec=20",
+    "-p",
+    "TimeoutStopSec=2",
+    "-p",
+    "PrivateNetwork=yes",
+    "-p",
+    "CPUQuota=100%",
+    "-p",
+    "UMask=0077",
+    "-p",
+    "WorkingDirectory=/home/campusqa/spike982/core-sentinel-10470",
+    "/usr/bin/python3",
+    "-I",
+    "-S",
+    "/home/campusqa/spike982/core-sentinel-10470/probe.py",
+    "descendants-abort"
+  ],
+  "host_free_bytes_before": 34860609536,
+  "before": {
+    "metadata": {
+      "/var/crash": [
+        {
+          "name": "_usr_share_netplan_netplan.script.0.crash",
+          "size": 31462,
+          "mtime_ns": 1792148210723000117,
+          "inode": 87894
+        }
+      ],
+      "/var/lib/apport/coredump": [],
+      "/var/lib/systemd/coredump": [],
+      "/home/campusqa/spike982/core-sentinel-10470": [
+        {
+          "name": "probe.py",
+          "size": 8909,
+          "mtime_ns": 1792154568253922760,
+          "inode": 1066157
+        }
+      ]
+    },
+    "apport_log_size": 0,
+    "apport_log_inode": 87909,
+    "utc": "2026-10-16 12:45:31 UTC"
+  },
+  "returncode": 0,
+  "stdout": "{\"case\": \"descendants-abort\", \"initial\": {\"boot_id\": \"f47cb6c7-dcc4-4492-9b27-29f1e8033dc2\", \"cgroup\": \"0::/system.slice/campus982-core-10470-final3-descendants-abort.service\", \"core_limit\": [-1, -1], \"dumpable\": 1, \"label\": \"before-secret\", \"marker_admitted\": false, \"monotonic\": 420.569703125, \"no_new_privs\": \"0\", \"pid\": 3195, \"ppid\": 1, \"seccomp\": \"0\", \"seccomp_filters\": \"0\", \"sid\": 3195, \"start_ticks\": 42054}, \"launcher_sha256\": \"3aca30e49471b4c12cbcd5c6abcccf9a9f1006262beb4eaedb3e36e03d3ba22d\"}\n{\"boot_id\": \"f47cb6c7-dcc4-4492-9b27-29f1e8033dc2\", \"cgroup\": \"0::/system.slice/campus982-core-10470-final3-descendants-abort.service\", \"core_limit\": [1, 1], \"dumpable\": 1, \"label\": \"after-exec-depth-0\", \"marker_admitted\": true, \"monotonic\": 420.585757823, \"no_new_privs\": \"1\", \"pid\": 3195, \"ppid\": 1, \"seccomp\": \"2\", \"seccomp_filters\": \"1\", \"sid\": 3195, \"start_ticks\": 42054}\n{\"core_query\": {\"errno\": 0, \"return\": 0}, \"high_pointer\": {\"errno\": 1, \"return\": -1}, \"mutations\": [{\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 164, \"value\": 0}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 164, \"value\": 0}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 164, \"value\": 1}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 164, \"value\": 1}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 164, \"value\": 18446744073709551615}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 164, \"value\": 18446744073709551615}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 261, \"value\": 0}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 261, \"value\": 0}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 261, \"value\": 1}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 261, \"value\": 1}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 261, \"value\": 18446744073709551615}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 261, \"value\": 18446744073709551615}], \"noncore_same_value\": [{\"errno\": 0, \"return\": 0}, {\"errno\": 0, \"return\": 0}]}\n{\"boot_id\": \"f47cb6c7-dcc4-4492-9b27-29f1e8033dc2\", \"cgroup\": \"0::/system.slice/campus982-core-10470-final3-descendants-abort.service\", \"core_limit\": [1, 1], \"dumpable\": 1, \"label\": \"after-exec-depth-1\", \"marker_admitted\": true, \"monotonic\": 420.601562618, \"no_new_privs\": \"1\", \"pid\": 3196, \"ppid\": 3195, \"seccomp\": \"2\", \"seccomp_filters\": \"1\", \"sid\": 3195, \"start_ticks\": 42058}\n{\"core_query\": {\"errno\": 0, \"return\": 0}, \"high_pointer\": {\"errno\": 1, \"return\": -1}, \"mutations\": [{\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 164, \"value\": 0}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 164, \"value\": 0}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 164, \"value\": 1}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 164, \"value\": 1}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 164, \"value\": 18446744073709551615}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 164, \"value\": 18446744073709551615}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 261, \"value\": 0}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 261, \"value\": 0}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 261, \"value\": 1}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 261, \"value\": 1}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 261, \"value\": 18446744073709551615}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 261, \"value\": 18446744073709551615}], \"noncore_same_value\": [{\"errno\": 0, \"return\": 0}, {\"errno\": 0, \"return\": 0}]}\n{\"boot_id\": \"f47cb6c7-dcc4-4492-9b27-29f1e8033dc2\", \"cgroup\": \"0::/system.slice/campus982-core-10470-final3-descendants-abort.service\", \"core_limit\": [1, 1], \"dumpable\": 1, \"label\": \"after-exec-depth-2\", \"marker_admitted\": true, \"monotonic\": 420.617766375, \"no_new_privs\": \"1\", \"pid\": 3197, \"ppid\": 3196, \"seccomp\": \"2\", \"seccomp_filters\": \"1\", \"sid\": 3197, \"start_ticks\": 42060}\n{\"core_query\": {\"errno\": 0, \"return\": 0}, \"high_pointer\": {\"errno\": 1, \"return\": -1}, \"mutations\": [{\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 164, \"value\": 0}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 164, \"value\": 0}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 164, \"value\": 1}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 164, \"value\": 1}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 164, \"value\": 18446744073709551615}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 164, \"value\": 18446744073709551615}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 261, \"value\": 0}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 261, \"value\": 0}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 261, \"value\": 1}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 261, \"value\": 1}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 261, \"value\": 18446744073709551615}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 261, \"value\": 18446744073709551615}], \"noncore_same_value\": [{\"errno\": 0, \"return\": 0}, {\"errno\": 0, \"return\": 0}]}\n{\"abort_pid\": 3197, \"state\": {\"boot_id\": \"f47cb6c7-dcc4-4492-9b27-29f1e8033dc2\", \"cgroup\": \"0::/system.slice/campus982-core-10470-final3-descendants-abort.service\", \"core_limit\": [1, 1], \"dumpable\": 1, \"label\": \"immediately-before-abort\", \"marker_admitted\": true, \"monotonic\": 420.61794252, \"no_new_privs\": \"1\", \"pid\": 3197, \"ppid\": 3196, \"seccomp\": \"2\", \"seccomp_filters\": \"1\", \"sid\": 3197, \"start_ticks\": 42060}}\n{\"wait_status\": 6, \"waited_pid\": 3197}\n{\"wait_status\": 0, \"waited_pid\": 3196}\n",
+  "stderr": "Running as unit: campus982-core-10470-final3-descendants-abort.service; invocation ID: 4bb0c22fd5f84710badb80ec6ce16d34\nFinished with result: success\nMain processes terminated with: code=exited/status=0\nService runtime: 84ms\nCPU time consumed: 81ms\nMemory peak: 1.5M\nMemory swap peak: 0B\n",
+  "observations": {
+    "kernel_command_returncode": 0,
+    "kernel_command_stderr": "",
+    "kernel_pid_lines": [
+      "Process 3197(python3) has RLIMIT_CORE set to 1",
+      "Aborting core"
+    ],
+    "matched_collector_pids": [],
+    "observation_seconds": 3,
+    "apport_new_bytes": 0,
+    "apport_rotated": false,
+    "apport_pid_lines": [],
+    "cgroup_exists": false,
+    "cgroup_procs": "",
+    "original_pids_still_present": []
+  },
+  "after": {
+    "metadata": {
+      "/var/crash": [
+        {
+          "name": "_usr_share_netplan_netplan.script.0.crash",
+          "size": 31462,
+          "mtime_ns": 1792148210723000117,
+          "inode": 87894
+        }
+      ],
+      "/var/lib/apport/coredump": [],
+      "/var/lib/systemd/coredump": [],
+      "/home/campusqa/spike982/core-sentinel-10470": [
+        {
+          "name": "probe.py",
+          "size": 8909,
+          "mtime_ns": 1792154568253922760,
+          "inode": 1066157
+        }
+      ]
+    },
+    "apport_log_size": 0,
+    "apport_log_inode": 87909,
+    "utc": "2026-10-16 12:45:35 UTC"
+  },
+  "wall_seconds": 3.6372984999907203
+}

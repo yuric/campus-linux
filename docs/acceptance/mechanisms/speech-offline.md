@@ -191,3 +191,14 @@ speech observations into #1030, then #1031 for #994/#996 as applicable. Function
 integration and all applicable final-package permission, cancellation, offline,
 retention and editable-result cases remain for LINUX-16/17. This candidate does
 not unblock those gates on its own.
+
+
+## Historical execution-source binding limit
+
+The successful `speech-offline/receipt.json` omits `probe_sha256`. Its executable,
+source/model and output hashes identify those artifacts, but they do not identify the
+exact Python orchestration script executed. The current committed probe has later
+changes, so **execution-source binding is unproven**. The recorded timings/cancellation
+remain historical observations, not current-probe or product acceptance. The original
+raw logs have now been restored with their indexed hashes; this repairs delivery, not
+the missing script binding. A future bounded recapture must record that binding.

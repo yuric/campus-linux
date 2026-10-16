@@ -1,0 +1,112 @@
+{
+  "case": "sentinel-abort",
+  "command": [
+    "/opt/homebrew/bin/limactl",
+    "shell",
+    "campus-linux-d5-noble-arm64",
+    "sudo",
+    "systemd-run",
+    "--unit=campus982-core-10470-final2-sentinel-abort",
+    "--wait",
+    "--pipe",
+    "--collect",
+    "-p",
+    "User=campusqa",
+    "-p",
+    "Group=campusqa",
+    "-p",
+    "LimitCORE=infinity",
+    "-p",
+    "MemoryMax=64M",
+    "-p",
+    "MemorySwapMax=0",
+    "-p",
+    "TasksMax=8",
+    "-p",
+    "RuntimeMaxSec=20",
+    "-p",
+    "TimeoutStopSec=2",
+    "-p",
+    "PrivateNetwork=yes",
+    "-p",
+    "CPUQuota=100%",
+    "-p",
+    "UMask=0077",
+    "-p",
+    "WorkingDirectory=/home/campusqa/spike982/core-sentinel-10470",
+    "/usr/bin/python3",
+    "-I",
+    "-S",
+    "/home/campusqa/spike982/core-sentinel-10470/probe.py",
+    "sentinel-abort"
+  ],
+  "host_free_bytes_before": 35860074496,
+  "before": {
+    "metadata": {
+      "/var/crash": [
+        {
+          "name": "_usr_share_netplan_netplan.script.0.crash",
+          "size": 31462,
+          "mtime_ns": 1792148210723000117,
+          "inode": 87894
+        }
+      ],
+      "/var/lib/systemd/coredump": [],
+      "/home/campusqa/spike982/core-sentinel-10470": [
+        {
+          "name": "probe.py",
+          "size": 8909,
+          "mtime_ns": 1792154568253922760,
+          "inode": 1066157
+        }
+      ]
+    },
+    "apport_log_size": 0,
+    "apport_log_inode": 87909,
+    "utc": "2026-10-16 12:44:23 UTC"
+  },
+  "returncode": 255,
+  "stdout": "{\"case\": \"sentinel-abort\", \"initial\": {\"boot_id\": \"f47cb6c7-dcc4-4492-9b27-29f1e8033dc2\", \"cgroup\": \"0::/system.slice/campus982-core-10470-final2-sentinel-abort.service\", \"core_limit\": [-1, -1], \"dumpable\": 1, \"label\": \"before-secret\", \"marker_admitted\": false, \"monotonic\": 352.560440503, \"no_new_privs\": \"0\", \"pid\": 2874, \"ppid\": 1, \"seccomp\": \"0\", \"seccomp_filters\": \"0\", \"sid\": 2874, \"start_ticks\": 35253}, \"launcher_sha256\": \"3aca30e49471b4c12cbcd5c6abcccf9a9f1006262beb4eaedb3e36e03d3ba22d\"}\n{\"boot_id\": \"f47cb6c7-dcc4-4492-9b27-29f1e8033dc2\", \"cgroup\": \"0::/system.slice/campus982-core-10470-final2-sentinel-abort.service\", \"core_limit\": [1, 1], \"dumpable\": 1, \"label\": \"after-exec-depth-0\", \"marker_admitted\": true, \"monotonic\": 352.575794831, \"no_new_privs\": \"0\", \"pid\": 2874, \"ppid\": 1, \"seccomp\": \"0\", \"seccomp_filters\": \"0\", \"sid\": 2874, \"start_ticks\": 35253}\n{\"abort_pid\": 2874, \"state\": {\"boot_id\": \"f47cb6c7-dcc4-4492-9b27-29f1e8033dc2\", \"cgroup\": \"0::/system.slice/campus982-core-10470-final2-sentinel-abort.service\", \"core_limit\": [1, 1], \"dumpable\": 1, \"label\": \"immediately-before-abort\", \"marker_admitted\": true, \"monotonic\": 352.575902755, \"no_new_privs\": \"0\", \"pid\": 2874, \"ppid\": 1, \"seccomp\": \"0\", \"seccomp_filters\": \"0\", \"sid\": 2874, \"start_ticks\": 35253}}\n",
+  "stderr": "Running as unit: campus982-core-10470-final2-sentinel-abort.service\nFinished with result: signal\nMain processes terminated with: code=killed/status=ABRT\nService runtime: 40ms\nCPU time consumed: 36ms\nMemory peak: 2.5M\nMemory swap peak: 0B\n",
+  "observations": {
+    "kernel_command_returncode": 0,
+    "kernel_command_stderr": "",
+    "kernel_pid_lines": [
+      "Process 2874(python3) has RLIMIT_CORE set to 1",
+      "Aborting core"
+    ],
+    "matched_collector_pids": [],
+    "observation_seconds": 3,
+    "apport_new_bytes": 0,
+    "apport_rotated": false,
+    "apport_pid_lines": [],
+    "cgroup_exists": false,
+    "cgroup_procs": "",
+    "original_pids_still_present": []
+  },
+  "after": {
+    "metadata": {
+      "/var/crash": [
+        {
+          "name": "_usr_share_netplan_netplan.script.0.crash",
+          "size": 31462,
+          "mtime_ns": 1792148210723000117,
+          "inode": 87894
+        }
+      ],
+      "/var/lib/systemd/coredump": [],
+      "/home/campusqa/spike982/core-sentinel-10470": [
+        {
+          "name": "probe.py",
+          "size": 8909,
+          "mtime_ns": 1792154568253922760,
+          "inode": 1066157
+        }
+      ]
+    },
+    "apport_log_size": 0,
+    "apport_log_inode": 87909,
+    "utc": "2026-10-16 12:44:27 UTC"
+  },
+  "wall_seconds": 3.690104875015095
+}

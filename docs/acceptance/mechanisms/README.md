@@ -58,6 +58,14 @@ first network boot failed, the original raw Ed25519 test was not a Tauri signatu
 renderer preflights failed, and the first Claude install hit its allocation bound. A later
 corrected receipt does not erase the original observation or broaden its scope.
 
+Installer allow-rule and process receipts are session-independent observations;
+historical wayland/x11 filenames cannot establish per-tuple coverage. Prompt JSON also
+lacks run-bound graphical metadata. [Package evidence limits](packages.md) preserve that
+gap, authenticated-version versus signed-downgrade distinction, and the source-bound
+lifecycle receipt. Historical crash absence with two simultaneous settings and a short
+window is not causal isolation; the [separate G4 follow-up](core-sentinel-followup.md)
+retains an inconclusive positive collector control. No raw history is rewritten.
+
 ## Admission and downstream owners
 
 Unproven trust, updater, session or renderer behavior continues to block dependent

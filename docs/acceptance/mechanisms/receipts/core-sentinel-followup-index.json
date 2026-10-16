@@ -1,0 +1,236 @@
+{
+  "base_head": "d784405d34437cd68cb8349efef588d7d5ae2470",
+  "scope": "Direction10470 bounded synthetic probe in consolidated10480 repair. No product acceptance; positive collector control inconclusive.",
+  "files": [
+    {
+      "path": "spikes/982/security/core-sentinel-probe.py",
+      "bytes": 8909,
+      "sha256": "3aca30e49471b4c12cbcd5c6abcccf9a9f1006262beb4eaedb3e36e03d3ba22d"
+    },
+    {
+      "path": "spikes/982/security/run-core-sentinel.py",
+      "bytes": 8562,
+      "sha256": "fa7c217fb0c5da30b57d615bb4de4a0c1094b26c1c31c1dbc149b1e4265d1f86"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/core-sentinel-followup.md",
+      "bytes": 10694,
+      "sha256": "d34b3ea9e6d1f6e82db3c5fb146571a0840c500a1315c4e77e6989c1c335dbae"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470/bare.json",
+      "bytes": 2076,
+      "sha256": "917713658ff08c50062dd68f1ebf815879053bb7b2f8dd41c0be1ef82836e74a"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470/descendants.json",
+      "bytes": 6956,
+      "sha256": "97839466271b673f15643bb4290596c15a5085030a7d99f4440a0fd6f68ee1b6"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470/fail-filter.json",
+      "bytes": 1908,
+      "sha256": "21253a4f36475b57ffc3c59e5b62d038a0e8a6866828bad735fc0511d935dc9b"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470/fail-limit.json",
+      "bytes": 1902,
+      "sha256": "dc0837aa647abf4635b8688cfe1248eb7c76a59d83d04cbe8ccece0f92dfbb40"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470/filtered.json",
+      "bytes": 3420,
+      "sha256": "d06f2e82cdf09f148002c70dca21379e8b4369ebbec2a924aa0569f755051be8"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470/foreign-abi.json",
+      "bytes": 1733,
+      "sha256": "de4f252e6fae1b5b6ab9d8f9e68c847eead5870c647b1a1b24485b06da1114d9"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470/launcher-v1.py",
+      "bytes": 8296,
+      "sha256": "2ccf88c628625f408aef4b8d18065d06f71e2bf85da3478de165090f7f9a6f73"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final/bare.json",
+      "bytes": 3705,
+      "sha256": "085ff7db8e84a9dc08e9871ae29b04e5da40e104dccefadc7eb8ba34ddedec00"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final/descendants-abort.json",
+      "bytes": 9061,
+      "sha256": "ea170f1813c890933d413eaa706df724526da06a71d2dc6cf657dbcf5b25dc25"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final/descendants.json",
+      "bytes": 8500,
+      "sha256": "3d7fd1749ee17c46151c20303cb1ba12dfaacc2120652f8d6b3ccce215b547ee"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final/fail-filter.json",
+      "bytes": 3433,
+      "sha256": "755950c74825abb20e5226f399142c9e7f5dfba18db1dc32ea310e0643d46d86"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final/fail-limit.json",
+      "bytes": 3476,
+      "sha256": "e727dce78510a8b5102adec22b52caab3818b0c1b501d1c6e2c93c20a16a7558"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final/filtered-abort.json",
+      "bytes": 5451,
+      "sha256": "7c2cfa8c0f0ee3c272251ef952ada2de06f20b0f2e44c844abb10a8ac79ec84a"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final/filtered.json",
+      "bytes": 5000,
+      "sha256": "02ebdbac665d8c680f48bf130c4fa86058d2a039b2d5abb861930224dfe5790a"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final/foreign-abi.json",
+      "bytes": 3306,
+      "sha256": "edaf1f111e144701b04ca70c6f2817232cd1edbb45ade095626d53a6518220de"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final/identity.json",
+      "bytes": 1225,
+      "sha256": "05c87ac6a611a9d4fc9e321e9c52cf4730936603d5354e57fdadce05f98290cf"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final/positive-control.json",
+      "bytes": 400,
+      "sha256": "16e1d90eb681f3b26d99251fc5657db6b917410bc872b2dc3a4248b119303a3b"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final/runner-v1.py",
+      "bytes": 7258,
+      "sha256": "b69feb0311e491ceb2d82e1303cb2b72cd353a554ffaa144547a2bc0bb427918"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final/sentinel-abort.json",
+      "bytes": 4193,
+      "sha256": "326c27cabdc2a7072ac34c7aab66e905916a0b63ecc15d623fbdcdfd508877ff"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final2/bare.json",
+      "bytes": 3716,
+      "sha256": "13d10424146aef2484b3b74dffa028e986e9fd9bc0b035afbacebf10909a9f0e"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final2/descendants-abort.json",
+      "bytes": 9113,
+      "sha256": "08684edb88f7bd3b53811bf3c753d3588070a2e7ed79921828f3f91c9df1860f"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final2/descendants.json",
+      "bytes": 8563,
+      "sha256": "68f73438ca44b471247f1069dfcba800f10dc9b5a09445c97ea2fce87dde70f0"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final2/fail-filter.json",
+      "bytes": 3493,
+      "sha256": "b55859ad8acaceeb72d3ff81175dbbbe052e2345cf8a791e9cf17cbd52819361"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final2/fail-limit.json",
+      "bytes": 3487,
+      "sha256": "98cc2b561ea1166efb6dedcd30b3b90828d91a89aefae917f3f8b35a2c587895"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final2/filtered-abort.json",
+      "bytes": 5596,
+      "sha256": "d6afed134849aedce0c167b43d0b4a5850461b8364f461f8aa8f5c6b9778ceca"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final2/filtered.json",
+      "bytes": 5013,
+      "sha256": "35c96932c4056b2d3bb9c0b38be79f54ff2defe3aff0daf1b3f73ef208507830"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final2/foreign-abi.json",
+      "bytes": 3650,
+      "sha256": "d2c9697c481a3ed7c6443b260828732e4768ead72bd16c45cb04d91e70f06316"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final2/identity.json",
+      "bytes": 1225,
+      "sha256": "05c87ac6a611a9d4fc9e321e9c52cf4730936603d5354e57fdadce05f98290cf"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final2/positive-control.json",
+      "bytes": 400,
+      "sha256": "16e1d90eb681f3b26d99251fc5657db6b917410bc872b2dc3a4248b119303a3b"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final2/runner-v2.py",
+      "bytes": 8482,
+      "sha256": "42d0cf665d3c1a38dde08be1e7b9e563446c2a588fd87c0018805c55bbd70efc"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final2/sentinel-abort.json",
+      "bytes": 4241,
+      "sha256": "347f5c506f0502e8401810521282c8836b76017cd6a8139268421055f8e976af"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final3/bare.json",
+      "bytes": 3793,
+      "sha256": "57054ff2e18065469f9805f023bbaf262c84c777426a543fc984944809c04ab1"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final3/cleanup-observation.json",
+      "bytes": 5205,
+      "sha256": "c3db947f9e2ff12d44575e37a94fe87d9dcf76927ab7489e35e1e1c2fd35dd84"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final3/descendants-abort.json",
+      "bytes": 9237,
+      "sha256": "90ea375f802614955430eae2f1172e5cd75fca44a0ff440dae96d449fe01b44e"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final3/descendants.json",
+      "bytes": 8638,
+      "sha256": "5378e2c3643c04f3e3d5dc57c9e4a0880fa2d8df156dd6abcb5ed68bf0734486"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final3/fail-filter.json",
+      "bytes": 3570,
+      "sha256": "7770d2b894b1dcbc39aa913ac1795f6c478109fbbd2193ae6fa1e4b3bef436a8"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final3/fail-limit.json",
+      "bytes": 3564,
+      "sha256": "064ca559a3597b0a5c1247cc89b4fd101e18482ef2f0c8b6fc9bf4419ed36d19"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final3/filtered-abort.json",
+      "bytes": 5623,
+      "sha256": "9d387718e2c8e0449352dcd8d018be4d32bdca7bafb51fbe6553d80ad6f26154"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final3/filtered.json",
+      "bytes": 5089,
+      "sha256": "e1e80d638cb7b8dd901711725668b3a020f4705edd96764a2d556e3ab54923f0"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final3/foreign-abi.json",
+      "bytes": 3724,
+      "sha256": "315ac500288424536956dc14f68bd623ad270efe43cba05e0dac8186b8d6e0aa"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final3/identity.json",
+      "bytes": 1351,
+      "sha256": "4a61c4760ab106937b86cc3db7a3da6477f57713badde9cc39fd82b5116aca8d"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final3/positive-control.json",
+      "bytes": 400,
+      "sha256": "16e1d90eb681f3b26d99251fc5657db6b917410bc872b2dc3a4248b119303a3b"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/core-sentinel-10470-final3/sentinel-abort.json",
+      "bytes": 4366,
+      "sha256": "4969efd7d07795270b3b62ebf77eb27d7f969406bd2cf0ed8fcc15aaa3ecc3bc"
+    }
+  ]
+}

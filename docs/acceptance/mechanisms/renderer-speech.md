@@ -221,10 +221,9 @@ Old raw receipts are not rewritten. See
 
 The next [X11 v6 diagnostic](receipts/motion-proof-x11-v6.json), SHA-256
 `c612454102db15b30ec0eb3d6341c1fc1fe594eff09399aa74490764cf9b0242`, reached the host's
-115-second wall timeout and remains a failure. The operator's log places the diagnostic
-measurement clock at about 55,131 ms of page time: the additional untimed settled-target
-checks plus warmup/reset left too little of that overall host budget for the full
-60-second trace. This is a diagnostic wall-budget failure, not a measured G8 miss.
+115-second wall timeout and remains a failure. The previously quoted precise page-clock value and causal attribution have no
+retained operator-log receipt and are withdrawn. The preserved receipt establishes
+a diagnostic wall-budget failure, not a measured G8 miss.
 GTK and Electron now allow **180 seconds overall only for motion/lifecycle diagnostics**.
 Ordinary preflight/performance hosts retain 115 seconds, and the GTK five-run wrapper
 retains its 125-second subprocess timeout. The measured JavaScript, 30-second warmup,

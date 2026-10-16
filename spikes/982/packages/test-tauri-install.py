@@ -62,10 +62,10 @@ def main():
             invoke('tauri-native-v1-authenticated-version', payload('v1'), True)
             invoke('tauri-package-bytes-tamper-rejected', payload(corrupt=True), False)
             invoke('tauri-wrong-key-rejected', payload(siglabel='wrong-key'), False)
-            invoke('tauri-unsigned-version-downgrade-rejected', payload(siglabel='unversioned'), False)
+            invoke('tauri-missing-authenticated-version-rejected', payload(siglabel='unversioned'), False)
             invoke('tauri-announced-signed-version-mismatch-rejected', payload('v1', version='0.982.2'), False)
             invoke('tauri-authenticated-comment-tamper-rejected', payload(siglabel='tampered-comment', version='0.982.1'), False)
-            invoke('openssl-signature-no-format-fallback', payload(openssl=True), False)
+            invoke('openssl-signature-wrapper-admission-rejected', payload(openssl=True), False)
             for label in ('wrong-name', 'wrong-arch', 'maintainer-script', 'symlink-payload', 'arbitrary-path', 'setuid-helper', 'oversized-expanded-payload', 'wrong-owner', 'writable-helper'):
                 if (args.fixture / (label + '.deb')).exists():
                     invoke('tauri-' + label + '-intact', payload(label), False)

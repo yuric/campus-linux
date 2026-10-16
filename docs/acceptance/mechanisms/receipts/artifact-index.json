@@ -7,8 +7,8 @@
   "files": [
     {
       "path": "docs/acceptance/mechanisms/receipts/absolute-zoom-correction.json",
-      "bytes": 3562,
-      "sha256": "f182cc248072aa6dea39b2e67af9e81c7ec177e306a14e3c5b58bd889d6ad6ce"
+      "bytes": 3845,
+      "sha256": "e71e36d99dd8036486bb51ef130a274d84aa4c3460f1c3af2d0f661882f61f81"
     },
     {
       "path": "docs/acceptance/mechanisms/receipts/cleanup-final.json",
@@ -1517,8 +1517,8 @@
     },
     {
       "path": "spikes/982/packages/test-tauri-install.py",
-      "bytes": 5882,
-      "sha256": "15ce813245922d7668522a0d80fad3a7d34d121102c9c03cb5a3f637f8a2c9fd"
+      "bytes": 5893,
+      "sha256": "615d2c9841fbb2efe0284b1aceea622622c875218be6fb4c8948f07559c51b5b"
     },
     {
       "path": "spikes/982/providers/claude-signature-receipt.json",
@@ -1677,8 +1677,8 @@
     },
     {
       "path": "spikes/982/renderer/summarize.py",
-      "bytes": 1099,
-      "sha256": "58b2db84e7f8fd3c2515fcd1a663ed4b1bf7a60f7bbddd62f9fe5a73a90df20a"
+      "bytes": 6270,
+      "sha256": "344f5823e1db9066a6d6f36b927fe85314924a42c70686bee92a35614dfd9c78"
     },
     {
       "path": "spikes/982/renderer/webkit-source-receipt.json",
@@ -1725,5 +1725,6 @@
       "bytes": 4424,
       "sha256": "e1af7155f3763b26c3158f8686af9fb76e7b6c17246615cfb84081f64b80d6f5"
     }
-  ]
+  ],
+  "source_revision_note": "Source entries updated by consolidated review repair; historical receipt source identities remain unchanged and original source is retained at d784405d34437cd68cb8349efef588d7d5ae2470."
 }

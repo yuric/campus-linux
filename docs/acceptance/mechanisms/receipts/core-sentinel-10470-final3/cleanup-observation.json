@@ -1,0 +1,84 @@
+{
+  "unit_journals": [
+    {
+      "unit": "campus982-core-10470-final3-descendants",
+      "returncode": 0,
+      "bytes": 222,
+      "sha256": "5700d8a0c9320dfefb2e6efcb712f9e6321ffcc1ea7233ab04d03b48b4d40336",
+      "synthetic_marker_present": false,
+      "text": "Started campus982-core-10470-final3-descendants.service - /usr/bin/python3 -I -S /home/campusqa/spike982/core-sentinel-10470/probe.py descendants.\ncampus982-core-10470-final3-descendants.service: Deactivated successfully.\n"
+    },
+    {
+      "unit": "campus982-core-10470-final3-filtered-abort",
+      "returncode": 0,
+      "bytes": 334,
+      "sha256": "7317708b17b6e67164023a93a97998d0a63eeace111d960e8e07ca2e72210440",
+      "synthetic_marker_present": false,
+      "text": "Started campus982-core-10470-final3-filtered-abort.service - /usr/bin/python3 -I -S /home/campusqa/spike982/core-sentinel-10470/probe.py filtered-abort.\ncampus982-core-10470-final3-filtered-abort.service: Main process exited, code=killed, status=6/ABRT\ncampus982-core-10470-final3-filtered-abort.service: Failed with result 'signal'.\n"
+    },
+    {
+      "unit": "campus982-core-10470-final3-fail-filter",
+      "returncode": 0,
+      "bytes": 325,
+      "sha256": "52b8fc435b121fb8f8004878b25c1e8465949c9d6cc47d338478e84756d9d2c1",
+      "synthetic_marker_present": false,
+      "text": "Started campus982-core-10470-final3-fail-filter.service - /usr/bin/python3 -I -S /home/campusqa/spike982/core-sentinel-10470/probe.py fail-filter.\ncampus982-core-10470-final3-fail-filter.service: Main process exited, code=exited, status=23/n/a\ncampus982-core-10470-final3-fail-filter.service: Failed with result 'exit-code'.\n"
+    },
+    {
+      "unit": "campus982-core-10470-final3-foreign-abi",
+      "returncode": 0,
+      "bytes": 322,
+      "sha256": "6cf63cd4a3e49fcf8aa685ede0de9d0dcb27f02d33aa3e78c5798c3e51e198e9",
+      "synthetic_marker_present": false,
+      "text": "Started campus982-core-10470-final3-foreign-abi.service - /usr/bin/python3 -I -S /home/campusqa/spike982/core-sentinel-10470/probe.py foreign-abi.\ncampus982-core-10470-final3-foreign-abi.service: Main process exited, code=killed, status=31/SYS\ncampus982-core-10470-final3-foreign-abi.service: Failed with result 'signal'.\n"
+    },
+    {
+      "unit": "campus982-core-10470-final3-bare",
+      "returncode": 0,
+      "bytes": 201,
+      "sha256": "f83d22f6ffac016f957d899a3178343b45f6ba4ceb7c0b2e330a6a85315fd53c",
+      "synthetic_marker_present": false,
+      "text": "Started campus982-core-10470-final3-bare.service - /usr/bin/python3 -I -S /home/campusqa/spike982/core-sentinel-10470/probe.py bare.\ncampus982-core-10470-final3-bare.service: Deactivated successfully.\n"
+    },
+    {
+      "unit": "campus982-core-10470-final3-sentinel-abort",
+      "returncode": 0,
+      "bytes": 334,
+      "sha256": "ad63301552844ca9ba7fb10230bc50a97443134275e1ea8d6b65959b6132fceb",
+      "synthetic_marker_present": false,
+      "text": "Started campus982-core-10470-final3-sentinel-abort.service - /usr/bin/python3 -I -S /home/campusqa/spike982/core-sentinel-10470/probe.py sentinel-abort.\ncampus982-core-10470-final3-sentinel-abort.service: Main process exited, code=killed, status=6/ABRT\ncampus982-core-10470-final3-sentinel-abort.service: Failed with result 'signal'.\n"
+    },
+    {
+      "unit": "campus982-core-10470-final3-fail-limit",
+      "returncode": 0,
+      "bytes": 321,
+      "sha256": "c2211f20bd18868599760c54da88345f6eafe5b18841eef1f92c083d275f8ab0",
+      "synthetic_marker_present": false,
+      "text": "Started campus982-core-10470-final3-fail-limit.service - /usr/bin/python3 -I -S /home/campusqa/spike982/core-sentinel-10470/probe.py fail-limit.\ncampus982-core-10470-final3-fail-limit.service: Main process exited, code=exited, status=23/n/a\ncampus982-core-10470-final3-fail-limit.service: Failed with result 'exit-code'.\n"
+    },
+    {
+      "unit": "campus982-core-10470-final3-filtered",
+      "returncode": 0,
+      "bytes": 213,
+      "sha256": "2e4ad164d797de6287d8d42dc3edb5ace3c7a81956598e7ddd8ed767be3dd4ff",
+      "synthetic_marker_present": false,
+      "text": "Started campus982-core-10470-final3-filtered.service - /usr/bin/python3 -I -S /home/campusqa/spike982/core-sentinel-10470/probe.py filtered.\ncampus982-core-10470-final3-filtered.service: Deactivated successfully.\n"
+    },
+    {
+      "unit": "campus982-core-10470-final3-descendants-abort",
+      "returncode": 0,
+      "bytes": 240,
+      "sha256": "27026343fccd240422ca8da0773f6bbff4aebec2f2d94a0db73d464e67c53092",
+      "synthetic_marker_present": false,
+      "text": "Started campus982-core-10470-final3-descendants-abort.service - /usr/bin/python3 -I -S /home/campusqa/spike982/core-sentinel-10470/probe.py descendants-abort.\ncampus982-core-10470-final3-descendants-abort.service: Deactivated successfully.\n"
+    }
+  ],
+  "conservative_all_current_log_and_probe_allocated_bytes": {
+    "/var/log": 108507136,
+    "/home/campusqa/spike982/core-sentinel-10470": 12288,
+    "/var/lib/apport/coredump": 0,
+    "/var/lib/systemd/coredump": 0
+  },
+  "core_pattern": "|/usr/share/apport/apport -p%p -s%s -c%c -d%d -P%P -u%u -g%g -F%F -- %E\n",
+  "core_pipe_limit": "10\n"
+}

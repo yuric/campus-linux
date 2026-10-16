@@ -410,7 +410,8 @@ was proven, and fails its wrapper if source/install/sentinel preservation fails.
 Nonzero vendor outcomes in these deliberately negative probes are raw observations,
 never domain-success mappings. Runtime harnesses now enforce the exact owned guest
 hostname; Gemini additionally checks exact version strings and expected help entry
-text. Current source hashes will differ from pre-correction receipt hashes.
+text. Those older receipts lack a probe/script source digest; they cannot bind an execution
+to either the previous or corrected harness bytes.
 
 Receipt consistency review verified all four completed Claude transition records,
 their final preservation/allocation checks, all four offline updater preservation
@@ -426,11 +427,27 @@ remains governed by the separate security evidence and is not proved here.
 
 Card comment 10452 records an independent public-only review and coordinator reproduction:
 all four recorded Codex/Grok npm registry signatures verified under the already pinned
-npm key, with wrong-version controls rejected. The report and raw verification are held
-by LINUX-20261016 at
-`/Users/yuri/.campus/coordinate/linux-20261016/reviews/provider-authenticity-1220/`.
+npm key, with wrong-version controls rejected. The report and raw verification are coordinator-held evidence referenced by comment
+10452, not independently reproducible files delivered in this PR.
 This supplements the historical captures; they are not rewritten. It establishes registry
 authenticity, not publisher identity or fresh archive-byte verification. Codex metadata
 contains a matching Sigstore provenance bundle, but full verification was still pending
 at this handoff. Grok has no observed attestation and agy has only a checksum. No trust
 downgrade, account proof, update acceptance or release acceptance follows from this review.
+
+
+## Historical execution-source binding limit
+
+The historical `providers/captures/receipt.json`, `claude-transitions/receipt.json`
+and `update-failures/receipt.json` do not record `probe_sha256`. The current committed
+probe is a reproduction candidate, not a proven byte-identical execution source for
+those runs. Their recorded tool/artifact/output hashes remain observations, but the
+execution-source binding is **unproven**; later source fixes cannot retroactively bind
+them. These receipts must not be admitted as current-source mechanism proof. Future
+recapture must bind the actual executed script and inputs. No historical source hash
+is invented and the raw receipts are preserved.
+
+`spikes/982/providers/pins.json` is the historical 10:53 UTC inventory; its Gemini
+“not installed” status predates the later Gemini install receipts described above.
+Its Claude “independently verified” wording means cryptographic manifest verification
+with a vendor HTTPS bootstrapped key, not independently authenticated publisher identity.

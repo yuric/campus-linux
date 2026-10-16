@@ -82,7 +82,7 @@ artifact hashes, commands and safe result captures. Never publish a generated pr
 
 The test suite includes a valid signed-version install; package byte tamper; wrong key;
 cryptographically valid but unversioned signature; signed/announced-version mismatch;
-trusted-comment tamper; raw OpenSSL signature format rejection; wrong package/architecture;
+trusted-comment tamper; raw OpenSSL signature wrapper/admission refusal; wrong package/architecture;
 signed maintainer script, symlink, unrelated path, setuid, oversized expanded archive,
 wrong-owner and writable-helper rejection; and original
 file substitution after privileged verification. Missing negative fixtures are recorded as
@@ -90,13 +90,13 @@ blocked and force a nonzero aggregate result. Result JSON is saved even if a cas
 The current driver compares each positive install with the expected fixture helper
 digest, requires all seventeen cases, and records its own source hash. Before the bounded
 expansion negative was added, the
-[strengthened Wayland run](receipts/tauri-install-wayland-allow-final.json) and
-[strengthened X11 run](receipts/tauri-install-x11-allow-final.json) each passed all
+[wayland-labelled stronger allow-rule receipt](receipts/tauri-install-wayland-allow-final.json) and
+[x11-labelled stronger allow-rule receipt](receipts/tauri-install-x11-allow-final.json) each passed all
 fourteen cases with script SHA
 `3c220e73d12fff6375ca9c04b0787c5d055cc5e127e9f810148f3d875bce2538`.
 The historical X11 run below, without the `-final` suffix, used its earlier assertions.
-The current seventeen-case runs on [X11](receipts/tauri-install-x11-schema.json) and
-[Wayland](receipts/tauri-install-wayland-schema.json) passed the streaming subprocess-output
+The seventeen-case session-independent allow-rule receipts labelled [x11](receipts/tauri-install-x11-schema.json) and
+[wayland](receipts/tauri-install-wayland-schema.json) passed the streaming subprocess-output
 bound and exact archive schema with driver SHA
 `15ce813245922d7668522a0d80fad3a7d34d121102c9c03cb5a3f637f8a2c9fd`.
 Both preserve installed helper bytes on all three new signed negatives. The installed
@@ -105,15 +105,16 @@ root helper's corresponding source SHA is
 The added expansion payload is only 256KiB before
 compression; ownership/mode negatives are tiny copies. No large resource probe is
 needed. The exact schema requires root-owned directories 0755, control 0644 and helper 0755,
-all required paths once and no extra metadata. Host checks reject incorrect types,
-duplicates, missing entries, UID/GID, modes and PAX extensions. Historical fourteen-case
+all required paths once and no extra metadata. Previously reported host checks for incorrect types,
+duplicates, missing entries, UID/GID, modes and PAX extensions have no retained
+command/result receipt here and receive no runtime-proof credit. Historical fourteen-case
 results retain their exact recorded scope.
 
 The [guest build receipt](receipts/tauri-verifier-build.json) records successful compilation
 with Ubuntu rustc 1.75.0 and verifier SHA-256
 `203431af56bea2b4624c2f17f6179fbb0a95978c8012c80a870f4bc46f838471`. This is a source-extracted
 verification experiment, not the Rust 1.99.1 product build. The
-[X11 privileged run](receipts/tauri-install-x11-allow.json) passed all **fourteen** cases.
+[x11-labelled allow-rule receipt](receipts/tauri-install-x11-allow.json) passed all **fourteen** cases.
 The exact source-function block hash is
 `116d93fcf08a6a3d8cb6d9a70e8f3dd9d9ff860d8de219de79d34e8e58db572b`.
 This run used the test-specific polkit allow rule. Separate
@@ -124,7 +125,7 @@ observed in this second namespace. The earlier
 after deliberate Escape and remains as a failed observation, not a passing cancellation
 test.
 
-The final exact-schema driver passed actual password prompts on
+The final exact-schema driver recorded actual password prompts in the historically labelled
 [Wayland](receipts/tauri-install-wayland-schema-prompt.json) and
 [X11](receipts/tauri-install-x11-schema-prompt.json), plus Wayland
 [expected dismissal](receipts/tauri-install-wayland-schema-cancel.json) and
@@ -134,6 +135,22 @@ both negative cases record unchanged helper bytes. The authority was temporarily
 at runtime and the operator unmasked/restarted it afterward. This proves absence handling
 for the authority, not a separate missing desktop-agent case. No alternate elevation path
 was invoked.
+
+These allow-rule checks establish session-independent signature/root-byte predicates.
+Neither their filenames nor the prompt receipts bind an observed graphical session:
+these JSON captures omit run timestamp, boot and loginctl identity/type/service/active/
+remote fields. The identical seventeen-case receipt bytes do not independently prove
+per-tuple execution. Separate session captures are contextual corroboration only;
+future per-session evidence must bind observed metadata and source/artifact hashes to
+the actual run. No historical receipt is rewritten or retrospectively populated.
+
+The historical `tauri-unsigned-version-downgrade-rejected` case tests an unversioned
+signature announcing 0.982.2, not an older correctly signed package. Future output calls
+it `tauri-missing-authenticated-version-rejected`. Both schema runs first accept signed
+0.982.1 over the v2 helper; the disposable helper has no installed-version comparison.
+Signed replay/downgrade rejection and the higher-version published rollback remain
+unproven at the privileged/product boundary. The recorded driver hash above identifies
+the historical source before this case-label-only correction.
 
 Even a successful run is limited to these test keys, package bytes and exact extracted
 verification functions. The final product must integrate the trust anchor under owner
@@ -151,3 +168,11 @@ keys. [Package-manager output](receipts/package-cleanup.txt) and the
 SSH key was removed while preserving other authorized-key bytes; its host temporary
 key directory was also removed. Polkit was restored, idle delay restored to300 seconds,
 and user/provider data plus the original locked login keyring were preserved.
+
+The historical `openssl-signature-no-format-fallback` rows stopped with
+`UnicodeDecodeError` in the Python wrapper before invoking the cryptographic verifier.
+They prove admission refusal with installed bytes intact, not verifier/parser rejection.
+The future driver labels this `openssl-signature-wrapper-admission-rejected`; retained
+raw rows are unchanged. The negative predicate also requires a nonzero exit, so an
+unexpected successful installation fails even if installed bytes happen to match.
+These observations do not prove absence of every possible dpkg side effect.
