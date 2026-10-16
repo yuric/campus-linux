@@ -4,6 +4,81 @@ LINUX-20261016 owns acceptance, independent review, Council and merge. This is d
 D4/G5 evidence for L0, not L0 completion or a production package. The only merged build
 dependency is bootstrap #981 at `37ef5d622da09cd7ba113dc0d1119e62e7378f84`.
 
+## Focused gate repair under direction1352
+
+This source-only repair follows the coordinator's [six grouped findings](https://github.com/yuric/campus-linux/pull/13#pullrequestreview-5552390764)
+on `7ecfc6874ddb0b8545fc192e2a57c4379c7cf45c`. It carries reviewed merged main
+`e2628c3ebef933a13d20366c1f6998e105258bbd` by ordinary merge. All166 imported
+contract files remain identical to that merge; the verified server producer is
+`a7e0abceb23f874e5a8c01ba043679a844e6d287`. No product bindings consume that
+contract in this disposable fixture. Approved113a app/build/package inputs and all
+historical raw receipts remain unchanged.
+
+The isolated validator explicitly loads its adjacent reviewed module without adding
+caller CWD to imports. A successful manifest write/flush and its delivery record share
+the package-admission lock; a failed write closes delivery. New correlation requires
+boot-bound journal monotonic microseconds for loaded/candidate/rejecting records,
+with callbacks between complete manifest delivery and app completion and candidates
+no later than rejection. Wall timestamps remain raw and independently checked; no
+wall-clock adjustment is inferred. Missing or contradictory timing stays incomplete.
+
+Hint files publish complete fsynced bytes through an exclusive hardlink. Readiness
+consumes bounded complete JSONL rows and refuses a stale log. Kernel exit sampling
+permits only five same-PID/starttime/parent observations (four5ms sleeps) when exe
+vanishes on an allowed exit; identity drift still refuses. Gated loaded readiness uses
+the authority-window start as its5-second origin. New export validation additionally
+requires the reviewed controller SHA; gated receipts retain the same pkexec name-only,
+unreadable-executable and missed-fast-process limitations as the direct mode.
+
+The recorder refuses app start after the shared preparation deadline. The outer driver
+waits through that deadline +8+45seconds plus2seconds for recorder finalization, rather
+than terminating it58seconds after recorder launch. Thus bounded pre-app setup cannot
+shorten app-start +8+45 retention. This does not extend app20, gate8, authority45,
+restore10 or loaded5. Recorder errors kill without reap; absent or malformed restoration
+acknowledgment retains through the bound. Abort-hint OSError is recorded without
+skipping kill-before-restoration; receipt-save failures preserve the original error and
+do not end retention. Parent/controller crash limits remain; no
+claim of general PID-reuse immunity or automatic acceptance follows from exit status0.
+
+Tests exercise actual isolated old/new validator subprocesses with complete synthetic
+exports, controller-hash refusal, concurrent exact Handler workers with immediate package
+requests/write failures, ordinary bytes, atomic hint visibility, partial readiness,
+same-lifetime exit transitions, delayed setup/absent or delayed restoration, actual driver
+and controller entrypoints, Window.begin binding/arming/recheck/rule/loaded/release
+ordering and refusal at each seam, abort-hint OSError, malformed acknowledgment,
+receipt-save failure, and release-removal/withheld-ack ordering. These are
+host source tests, not real polkit/GDM acceptance. Against old7ec production files, five
+focused tests reproduced two failures and two errors (CLI, Handler race, empty hint,
+exit sampling); ordinary serving remained green. The repaired suite and exact committed
+head commands/counts are recorded in the PR/card. The final suite contains107probe
+and10adapter tests; the focused gate subset contains37. Three new retention regressions
+against actual7ec desktop source reproduce two failures and four subtest errors; the
+repaired candidate passes them. Direction1364 resumes the same unfinished repair after
+two resource stops; it does not authorize runtime acceptance. The default Python lacked PyYAML;
+the unchanged repository verifier ran in the already-existing `/tmp/rv1057` environment,
+without installing dependencies. Initial new fixtures needed the required timing fields
+and canonical macOS temporary paths; those setup errors were corrected and rerun.
+
+Current reviewed-source candidates (SHA-256; fresh coordinator review still required):
+
+| File | SHA-256 |
+|---|---|
+| desktop.py | `2b4b54860e3569e9dcad7d361a57f457114a9955fa30fd25affeb55f81f80edc` |
+| gated.py | `bf630dfc35dc577dcac52d60f58c6d53fd3ddbbc745d19417c27a9c361c3e5b5` |
+| serve.py | `a4deeb4d9d13cf5388421645c4b6281e44f19ff268fb1e0e9be863b3c694c3a3` |
+| gated-control.py | `4dfb8039e62633172b663a2076870dc7f674846c6c3795a257c59d39da815110` |
+| gated-driver.py | `fb027cdfc7fc706577dc2e0cb82e2f71e5e6b257e685c9e11b88361170895755` |
+| authority-window.py | `a6901ad047245612b4f9d1a570825085f7e254db5a394643b7a10db1d03b644d` |
+| test_gated.py | `c6d67d892b4566b724296f33df6d6cdc074885efdce76ee443dd51ec83ed0d1f` |
+| test_gated_repair.py | `7c84c9938c11ba5793454238d41259effa224f674f0b77f0712d9f044b74612a` |
+
+Direction1352 allows at most16MiB additional source/Git/test/log allocation, including
+incoming main, with12GiB free after the remaining allowance. Initial host free was
+17,122,811,904bytes; baseline worktree14,102,528allocatedbytes and shared Git37,965,824.
+This allowance is only for this repair. No VM, build, download, dependency, provider or
+credential operation was performed. Root LINUX-20261016 is the sole next reviewer and
+observer; runtime remains paused pending fresh review and a separate lease.
+
 ## Optional normal-GUI denial source under human10966
 
 Source-only follow-up from evidence head `81cd32e5bdf6159a32e39d0ee13231f22fcb3c41`.

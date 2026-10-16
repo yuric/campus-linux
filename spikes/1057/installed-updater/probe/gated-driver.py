@@ -14,6 +14,26 @@ import time
 import gated
 
 
+def server_ready(path):
+    try:
+        with path.open('rb') as stream:
+            raw = stream.read(gated.LIMIT + 1)
+    except FileNotFoundError:
+        return False
+    gated.require(len(raw) <= gated.LIMIT, 'unbounded readiness log')
+    # An append may expose an unfinished final row. Only complete rows count.
+    lines = raw.split(b'\n')[:-1]
+    gated.require(len(lines) <= 32, 'too many readiness records')
+    return any(json.loads(line).get('event') == 'serving' for line in lines)
+
+
+def wait_recorder(child, config):
+    # Recorder refuses an app start after the shared preparation deadline.
+    # Thus even setup taking >5s cannot shorten its app-start +8+45 retention.
+    until = config['prepare_deadline_ns'] + gated.GATE_NS + 45_000_000_000 + 2_000_000_000
+    return child.wait(timeout=max(0, (until - time.monotonic_ns()) / 1e9))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ('gate-directory', 'hints', 'index', 'inventory', 'receipt', 'root-preflight'):
@@ -37,6 +57,7 @@ def main():
                   and config['hints'] == str(args.hints) and config['uid'] == os.getuid(), 'root scope differs')
     source = Path(__file__).parent
     log = args.hints / 'server.jsonl'
+    gated.require(not os.path.lexists(log), 'stale server log')
     server = subprocess.Popen(['/usr/bin/python3', '-B', str(source / 'serve.py'), '--index', str(args.index),
                                '--version', '2', '--gate-directory', str(args.gate_directory), '--log', str(log)],
                               stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
@@ -45,7 +66,7 @@ def main():
         ready_until = min(time.monotonic() + 3, config['prepare_deadline_ns'] / 1e9)
         while time.monotonic() < ready_until:
             gated.require(server.poll() is None, 'gated server exited')
-            if log.exists() and any(json.loads(line).get('event') == 'serving' for line in log.read_text().splitlines()):
+            if server_ready(log):
                 break
             time.sleep(0.02)
         else:
@@ -57,7 +78,7 @@ def main():
                      'source-head', 'root-preflight-sha256', 'observer'):
             argv.extend(['--' + name, str(getattr(args, name.replace('-', '_')))])
         child = subprocess.Popen(argv, stdin=subprocess.DEVNULL)
-        return child.wait(timeout=58)
+        return wait_recorder(child, config)
     except Exception as error:
         if not (args.hints / 'abort.json').exists():
             gated.hint_write(args.hints / 'abort.json', {'error': str(error)[:1024]})
@@ -66,8 +87,11 @@ def main():
         # Desktop itself retains its app until root restoration. Keep the server
         # and this ancestry alive until it returns; no early poll of the app.
         if child is not None and child.poll() is None:
-            child.terminate()
-            child.wait(timeout=2)
+            try:
+                wait_recorder(child, config)
+            except subprocess.TimeoutExpired:
+                child.terminate()
+                child.wait(timeout=2)
         server.terminate()
         try:
             server.wait(timeout=2)

@@ -540,7 +540,7 @@ class Window:
         }
         self.record["loaded_marker_observations"] = []
         self.save()
-        until = min(self.deadline, time.monotonic() + 5)
+        until = min(self.deadline, (self.started_at if getattr(self, "gated_context", None) else time.monotonic()) + 5)
         argv = ["/usr/bin/journalctl", "--no-pager", "--output=json", "--lines=65",
                 "--since=@" + str(self.record["window_started_unix_ns"] // 1_000_000_000),
                 "_UID=" + binding["uid"], "_GID=" + binding["gid"],

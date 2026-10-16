@@ -21,7 +21,12 @@ import subprocess
 import time
 from urllib.parse import urlsplit
 
-import gated
+# Resolve only the adjacent reviewed source, including under python -I; never
+# add the caller's working directory to the import path.
+import importlib.util
+_gate_spec = importlib.util.spec_from_file_location("campus1057_gated", Path(__file__).resolve().with_name("gated.py"))
+gated = importlib.util.module_from_spec(_gate_spec)
+_gate_spec.loader.exec_module(gated)
 
 
 APP = "/usr/bin/campus-updater-1057"
@@ -241,6 +246,10 @@ def validate_denial_exports(args):
             namespace = {"__name__": "campus1057_marker_validation", "__file__": str(helper)}
             exec(compile(source, str(helper), "exec"), namespace)
             if getattr(args, "validate_user_manager", None):
+                controller, unused = bound_export(Path(__file__).with_name("gated-control.py"), args.controller_sha256)
+                require(values["authority"].get("gated_control_sources", {}).get("controller_sha256") == controller["sha256"],
+                        "reviewed controller/export hash differs")
+                output["controller_source"] = controller
                 for name in ("gated.py", "serve.py", "desktop.py", "gated-driver.py"):
                     actual = file_record(Path(__file__).with_name(name), RECEIPT_LIMIT)
                     require(values["authority"].get("gated_control_sources", {}).get("gui_sources", {}).get(name, {}).get("sha256") == actual["sha256"],
@@ -387,6 +396,17 @@ class Recorder:
                 observations.append({**observed, "observed_monotonic_ns": time.monotonic_ns()})
                 self.save()
 
+    def summarize_pkexec(self, record):
+        observations = record.get("child_process_observations", [])
+        executable_pids = sorted({item["pid"] for item in observations
+                                  if Path(item.get("executable", "")).name == "pkexec"})
+        name_only_pids = sorted({item["pid"] for item in observations if item.get("name") == "pkexec"
+                                 and item["pid"] not in executable_pids})
+        record["pkexec_pid_observation"] = {"executable_observed_pids": executable_pids,
+                                            "name_only_pids": name_only_pids,
+                                            "status": "observed" if executable_pids else "not_verified_coordinator_review_required",
+                                            "limitation": "unprivileged /proc pkexec executable lookup may be denied after setuid; name-only is not executable verification; bounded sampling may miss quick refusals"}
+
     def gated_command(self, argv):
         """Observe without reaping until root removes the exact owned NO rule.
 
@@ -397,6 +417,7 @@ class Recorder:
         config = gated.config_read(self.args.gate_directory)
         require(self.args.case == "deny" and self.args.timeout == 20
                 and config["lease"] == self.args.lease_reference, "gated recorder scope differs")
+        require(time.monotonic_ns() < config["prepare_deadline_ns"], "recorder preparation deadline exceeded")
         record = {"argv": argv, "started_ns": time.time_ns(), "monotonic_started_ns": time.monotonic_ns()}
         deadline = record["monotonic_started_ns"] + gated.APP_NS
         cleanup_deadline = record["monotonic_started_ns"] + gated.GATE_NS + 45_000_000_000
@@ -408,10 +429,11 @@ class Recorder:
                                  stderr=subprocess.PIPE, start_new_session=True)
         # Retain the Popen object too: its destructor must not poll/reap on error.
         self._unreaped = [child]
-        selector = selectors.DefaultSelector()
+        selector = None
         captured = {"stdout": bytearray(), "stderr": bytearray()}
         failure, completed, restored = None, None, False
         try:
+            selector = selectors.DefaultSelector()
             record["process"] = logind_process(child.pid)
             require(record["process"]["session"] is None, "gated mode requires actual null session")
             gated.hint_write(Path(config["hints"]) / "app.json", {
@@ -441,8 +463,8 @@ class Recorder:
             record["gated_error"] = str(error)
             try:
                 gated.hint_write(Path(config["hints"]) / "abort.json", {"error": str(error)[:1024]})
-            except FileExistsError:
-                pass
+            except OSError as publication_error:
+                record["abort_hint_error"] = str(publication_error)
             # Killing is not reaping. The retaining parent stays alive through
             # restoration, including for a zombie caused by this timeout.
             try:
@@ -451,23 +473,33 @@ class Recorder:
                 pass
         finally:
             record.update({name: bytes(value).decode(errors="replace") for name, value in captured.items()})
+            self.summarize_pkexec(record)
             record.setdefault("finished_ns", time.time_ns())
             record.setdefault("monotonic_finished_ns", time.monotonic_ns())
-            self.save()
+            try:
+                self.save()
+            except Exception as error:
+                record["receipt_save_error"] = str(error)
+                failure = failure or error
             try:
                 while time.monotonic_ns() < cleanup_deadline:
                     try:
                         acknowledgment = gated.root_read(self.args.gate_directory / "restored.json")
+                        require(acknowledgment.get("lease") == config["lease"]
+                                and acknowledgment.get("nonce") == config["nonce"]
+                                and acknowledgment.get("boot_id") == config["boot_id"]
+                                and acknowledgment.get("rule_absent") is True
+                                and type(acknowledgment.get("restored_ns")) is int
+                                and record["monotonic_started_ns"] <= acknowledgment["restored_ns"] <= time.monotonic_ns(),
+                                "invalid root restoration acknowledgment")
                     except FileNotFoundError:
                         time.sleep(0.02)
                         continue
-                    require(acknowledgment.get("lease") == config["lease"]
-                            and acknowledgment.get("nonce") == config["nonce"]
-                            and acknowledgment.get("boot_id") == config["boot_id"]
-                            and acknowledgment.get("rule_absent") is True
-                            and type(acknowledgment.get("restored_ns")) is int
-                            and record["monotonic_started_ns"] <= acknowledgment["restored_ns"] <= time.monotonic_ns(),
-                            "invalid root restoration acknowledgment")
+                    except Exception as error:
+                        failure = failure or error
+                        record["restoration_observation_error"] = str(error)
+                        time.sleep(0.02)
+                        continue
                     restored = True
                     record["root_restoration"] = acknowledgment
                     break
@@ -485,10 +517,15 @@ class Recorder:
             except Exception as error:
                 failure = failure or error
                 record["retention_error"] = str(error)
-            selector.close()
+            if selector is not None:
+                selector.close()
             child.stdout.close()
             child.stderr.close()
-            self.save()
+            try:
+                self.save()
+            except Exception as error:
+                record["receipt_save_error"] = str(error)
+                failure = failure or error
         if failure:
             raise failure
         return record
@@ -549,15 +586,7 @@ class Recorder:
                            "monotonic_finished_ns": time.monotonic_ns(),
                            **{name: bytes(value).decode(errors="replace") for name, value in captured.items()}})
             if bind:
-                observations = record.get("child_process_observations", [])
-                executable_pids = sorted({item["pid"] for item in observations
-                                          if Path(item.get("executable", "")).name == "pkexec"})
-                name_only_pids = sorted({item["pid"] for item in observations if item.get("name") == "pkexec"
-                                         and item["pid"] not in executable_pids})
-                record["pkexec_pid_observation"] = {"executable_observed_pids": executable_pids,
-                                                    "name_only_pids": name_only_pids,
-                                                    "status": "observed" if executable_pids else "not_verified_coordinator_review_required",
-                                                    "limitation": "unprivileged /proc pkexec executable lookup may be denied after setuid; name-only is not executable verification; bounded sampling may miss quick refusals"}
+                self.summarize_pkexec(record)
             self.save()
         return record
 
@@ -787,6 +816,7 @@ def main():
     parser.add_argument("--authority-receipt-sha256", help="coordinator binding for the final root receipt")
     parser.add_argument("--journal", type=Path, help="exported full journal JSONL rows from the bounded authority window")
     parser.add_argument("--journal-sha256", help="coordinator binding for the exported full journal rows")
+    parser.add_argument("--controller-sha256", help="reviewed adjacent controller hash, required for user-manager correlation")
     parser.add_argument("--authority-helper-sha256", help="reviewed SHA-256 of adjacent authority-window.py and actual root helper")
     parser.add_argument("--validation-receipt", type=Path, help="new private post-run correlation receipt; originals stay unchanged")
     parser.add_argument("--lease-reference", help="explicit coordinator lease comment/receipt reference; not a grant of authority")
@@ -810,6 +840,8 @@ def main():
                                or args.endpoint != "http://127.0.0.1:17857/stable/linux.json"):
         parser.error("gated mode requires deny, original 20 seconds, actual server PID and fixed endpoint")
     if args.validate_user_manager is not None:
+        if not args.controller_sha256:
+            parser.error("--validate-user-manager requires --controller-sha256")
         args.validate_denial = args.validate_user_manager
     if args.validate_denial is not None:
         if any(getattr(args, name) is None for name in ("desktop_receipt_sha256", "authority_receipt",

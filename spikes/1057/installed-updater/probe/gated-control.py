@@ -42,6 +42,23 @@ def load(path, expected):
     return module
 
 
+def restore_and_ack(window, args, gate, authority, config):
+    window.restore()
+    # Remove only the exact release emitted by this helper. A changed
+    # artifact requires independent recovery and cannot permit reaping.
+    release = args.gate_directory / 'release.json'
+    if release.exists():
+        gate.require(gate.root_read(release) == window.record.get('gate_release'), 'release changed')
+        release.unlink()
+        (args.gate_directory / '.release.json.pending').unlink()
+    gate.require(not os.path.lexists(authority.RULE), 'rule remains; no restoration acknowledgment')
+    restoration = {
+        'schema': 1, 'lease': config['lease'], 'nonce': config['nonce'], 'boot_id': config['boot_id'],
+        'rule_absent': True, 'restored_ns': time.monotonic_ns(), 'status': window.record['status']}
+    gate.publish(args.gate_directory, 'restored.json', restoration)
+    window.record['gate_restoration'] = restoration
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ('lease', 'session-id', 'app-sha256', 'source-sha256', 'gate-source-sha256', 'authority-source-sha256'):
@@ -68,7 +85,7 @@ def main():
     gate.require(sources['gated.py']['sha256'] == args.gate_source_sha256, 'root and GUI gate source differ')
     gate.require(args.uid > 0 and args.hints.is_absolute() and args.hints.resolve(strict=True) == args.hints
                  and args.hints.stat().st_uid == args.uid, 'existing GUI hint directory required')
-    gate.require(not any((args.hints / name).exists() for name in ('app.json', 'request.json', 'abort.json')),
+    gate.require(not any((args.hints / name).exists() for name in ('app.json', 'request.json', 'abort.json', 'server.jsonl')),
                  'stale hints refuse before preparation')
     authority.safe_root_parent(args.gate_directory.parent)
     authority.safe_root_parent(args.receipt.parent, private=True)
@@ -131,20 +148,7 @@ def main():
         for sig in (signal.SIGTERM, signal.SIGINT, signal.SIGHUP):
             signal.signal(sig, signal.SIG_IGN)
         try:
-            window.restore()
-            # Remove only the exact release emitted by this helper. A changed
-            # artifact requires independent recovery and cannot permit reaping.
-            release = args.gate_directory / 'release.json'
-            if release.exists():
-                gate.require(gate.root_read(release) == window.record.get('gate_release'), 'release changed')
-                release.unlink()
-                (args.gate_directory / '.release.json.pending').unlink()
-            gate.require(not os.path.lexists(authority.RULE), 'rule remains; no restoration acknowledgment')
-            restoration = {
-                'schema': 1, 'lease': config['lease'], 'nonce': config['nonce'], 'boot_id': config['boot_id'],
-                'rule_absent': True, 'restored_ns': time.monotonic_ns(), 'status': window.record['status']}
-            gate.publish(args.gate_directory, 'restored.json', restoration)
-            window.record['gate_restoration'] = restoration
+            restore_and_ack(window, args, gate, authority, config)
         except Exception as error:
             window.record.update(cleanup='manual_recovery_required', cleanup_error=str(error)[:2048])
         window.record['window_finished_unix_ns'] = time.time_ns()

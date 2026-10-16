@@ -231,7 +231,7 @@ class RecorderRetentionTests(unittest.TestCase):
         recorder.args = SimpleNamespace(gate_directory=Path('/gate'), case='deny', timeout=20,
                                         lease_reference='lease1', gate_server_pid=125)
         recorder.receipt, recorder.save, recorder.sample_children = {'commands': []}, Mock(), Mock()
-        config = {'lease': 'lease1', 'nonce': 'a' * 32, 'boot_id': 'b' * 32, 'hints': '/hints'}
+        config = {'lease': 'lease1', 'nonce': 'a' * 32, 'boot_id': 'b' * 32, 'hints': '/hints', 'prepare_deadline_ns': 60_000_000_000}
         clock, restored = [1000], [False]
         def tick():
             clock[0] += 100
@@ -333,14 +333,22 @@ class ActualBindingTests(unittest.TestCase):
 
 
 class CorrelationTests(unittest.TestCase):
-    def test_complete_separate_correlation_and_temporal_mutations(self):
+    def fixture(self):
         from test_authority_window import BINDING
-        b = binding(); rel = release(b)
+        b = binding()
+        for key in ('app_started_ns', 'bound_ns'):
+            b[key] *= 1000
+        b['request']['waiting_ns'] *= 1000
+        b['app_deadline_ns'] = b['app_started_ns'] + gated.APP_NS
+        b['gate_deadline_ns'] = b['app_started_ns'] + gated.GATE_NS
+        rel = release(b)
+        for key in ('window_started_ns', 'loaded_ns', 'rechecked_ns', 'released_ns'):
+            rel[key] *= 1000
         service = copy.deepcopy(BINDING); service['boot_id'] = b['boot_id']
-        restored = {'lease': b['lease'], 'nonce': b['nonce'], 'boot_id': b['boot_id'], 'rule_absent': True, 'restored_ns': 1000}
+        restored = {'lease': b['lease'], 'nonce': b['nonce'], 'boot_id': b['boot_id'], 'rule_absent': True, 'restored_ns': 1000000}
         update = {'argv': [gated.APP, '--update'], 'process': {'pid': 123, 'starttime_ticks': 10, 'session': None,
-                  'uids': [1000] * 4, 'cgroup': 'gui', 'ppid': 122}, 'monotonic_started_ns': 100,
-                  'monotonic_finished_ns': 900, 'reaped_monotonic_ns': 1100, 'started_ns': 1_000_100_000,
+                  'uids': [1000] * 4, 'cgroup': 'gui', 'ppid': 122}, 'monotonic_started_ns': 100000,
+                  'monotonic_finished_ns': 900000, 'reaped_monotonic_ns': 1100000, 'started_ns': 1_000_100_000,
                   'finished_ns': 1_000_900_000, 'returncode': 1, 'root_restoration': restored}
         identity = {'event': 'installed_identity'}
         d = {'gated_mode': gated.MODE, 'case': 'deny', 'status': 'not_certified',
@@ -357,12 +365,12 @@ class CorrelationTests(unittest.TestCase):
              'service_binding': service, 'user': 'campusqa', 'subject_session': '6',
              'rule_sha256': gated.sha(authority.deny_rule('campusqa', 'lease1', 123, '6', nonce=b['nonce'], null_binding=b)),
              'owned_path': str(authority.RULE), 'owned_device_inode': [1,2], 'gate_release': rel, 'gate_restoration': restored,
-             'elapsed_seconds_including_cleanup': 1, 'restore_started_monotonic_ns': 950,
+             'elapsed_seconds_including_cleanup': 1, 'restore_started_monotonic_ns': 950000,
              'window_started_unix_ns': 1_000_400_000, 'loaded_marker_observed_unix_ns': 1_000_500_000,
              'lifetime_observations': [{'app': zombie}], 'gate_transport': {'rows': [
-                {'event': 'manifest_waiting', 'waiting_ns': 200},
-                {'event': 'manifest_released', 'release': rel, 'monotonic_ns': 710},
-                {'event': 'manifest_delivered', 'monotonic_ns': 800},
+                {'event': 'manifest_waiting', 'waiting_ns': 200000},
+                {'event': 'manifest_released', 'release': rel, 'monotonic_ns': 710000},
+                {'event': 'manifest_delivered', 'monotonic_ns': 800000},
                 {'event': 'request', 'path': '/stable/linux.json', 'status': 200},
                 {'event': 'request', 'path': '/packages/fixture.deb', 'status': 200}]}}
         for key in ('service_binding_before_ready', 'service_binding_before_restore', 'service_binding_after_restore'): a[key] = service
@@ -371,7 +379,12 @@ class CorrelationTests(unittest.TestCase):
                     ('campus1057-deny' + prefix + ' pid=123 user=campusqa session=null active=true mode=' + gated.MODE + ' binding=' + gated.sha(gated.encode(b)), 1000850),
                     ('campus1057-deny-candidate' + prefix + ' ' + json.dumps({'status': 'observed', 'subject_session': {'present': True, 'type': 'null'}, 'subject_pid': {'value': 123}}), 1000840)]
         rows = [{'MESSAGE': message, 'SYSLOG_IDENTIFIER': authority.LOGGER_TAG, '_UID': service['uid'], '_GID': service['gid'],
-                 '_PID': '999', '_TRANSPORT': 'syslog', '_BOOT_ID': b['boot_id'], '__REALTIME_TIMESTAMP': str(t)} for message,t in messages]
+                 '_PID': '999', '_TRANSPORT': 'syslog', '_BOOT_ID': b['boot_id'], '__REALTIME_TIMESTAMP': str(t), '__MONOTONIC_TIMESTAMP': str(t - 1000000)} for message,t in messages]
+        return d, a, rows
+
+    def test_complete_separate_correlation_and_temporal_mutations(self):
+        d, a, rows = self.fixture()
+        update = d['commands'][0]
         def check(): return gated.correlate(d, a, rows, authority.validate_marker_rows, authority.deny_rule)
         result = check()
         self.assertEqual(result['status'], 'root_correlated_user_manager_pending_coordinator_review', result)
@@ -379,6 +392,21 @@ class CorrelationTests(unittest.TestCase):
         for field, value in (('reaped_monotonic_ns', 850), ('monotonic_finished_ns', 21_000_000_100)):
             saved = update[field]; update[field] = value
             self.assertEqual(check()['status'], 'incomplete'); update[field] = saved
+        for index in (1, 2):
+            for value in (None, '200', '799', '901', 'bad', -1):
+                saved = rows[index].pop('__MONOTONIC_TIMESTAMP')
+                if value is not None:
+                    rows[index]['__MONOTONIC_TIMESTAMP'] = value
+                with self.subTest(row=index, value=value):
+                    self.assertEqual(check()['status'], 'incomplete')
+                rows[index]['__MONOTONIC_TIMESTAMP'] = saved
+        # A wall-clock rollback cannot substitute for monotonic chronology.
+        rows[2]['__REALTIME_TIMESTAMP'] = '1000200'
+        self.assertEqual(check()['status'], 'root_correlated_user_manager_pending_coordinator_review')
+        rows[2]['__MONOTONIC_TIMESTAMP'] = '200'
+        self.assertEqual(check()['status'], 'incomplete')
+        rows[2]['__MONOTONIC_TIMESTAMP'] = '840'
+        rows[2]['__REALTIME_TIMESTAMP'] = '1000840'
         a['gate_transport']['rows'].append({'event': 'gate_failed'})
         self.assertEqual(check()['status'], 'incomplete')
 

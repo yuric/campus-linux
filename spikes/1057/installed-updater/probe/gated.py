@@ -114,11 +114,16 @@ def hint_read(path):
 def hint_write(path, value):
     raw = encode(value)
     require(len(raw) <= LIMIT, 'unbounded hint')
-    fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600)
+    pending = Path(path).with_name('.' + Path(path).name + '.pending')
+    fd = os.open(pending, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600)
     try:
         require(os.write(fd, raw) == len(raw), 'short hint write')
+        os.fsync(fd)
     finally:
         os.close(fd)
+
+    os.link(pending, path, follow_symlinks=False)
+    # Keep the private pending link until lease cleanup; no post-publication race.
 
 
 def config_read(directory):
@@ -147,11 +152,31 @@ def kernel_process(pid, zombie=False):
            'uids': status['Uid'].split(), 'gids': status['Gid'].split(),
            'cgroup': (proc / 'cgroup').read_text()}
     if before[0] != 'Z':
-        row['exe'] = os.readlink(proc / 'exe')
-        info = (proc / 'exe').stat()
-        row['exe_identity'] = [info.st_dev, info.st_ino, info.st_size, info.st_mtime_ns]
+        try:
+            row['exe'] = os.readlink(proc / 'exe')
+            info = (proc / 'exe').stat()
+            row['exe_identity'] = [info.st_dev, info.st_ino, info.st_size, info.st_mtime_ns]
+        except FileNotFoundError:
+            if not zombie:
+                raise
+            # exit_mm may remove exe before exit_notify publishes Z. Resample
+            # only this same lifetime, at most 20ms; all other drift still fails.
+            for attempt in range(5):
+                after = (proc / 'stat').read_text().rsplit(')', 1)[1].split()
+                require(before[19] == after[19] and before[1] == after[1], 'process changed during exit sampling')
+                if after[0] == 'Z':
+                    row.pop('exe', None)
+                    row.pop('exe_identity', None)
+                    break
+                if attempt == 4:
+                    raise
+                time.sleep(0.005)
     after = (proc / 'stat').read_text().rsplit(')', 1)[1].split()
     require(before[19] == after[19] and before[1] == after[1], 'process changed during sampling')
+    require(after[0] != 'Z' or zombie, 'process exited during sampling')
+    if after[0] == 'Z':
+        row.pop('exe', None)
+        row.pop('exe_identity', None)
     row['state'] = after[0]
     return row
 
@@ -406,11 +431,16 @@ class ManifestGate:
                 and binding['app_deadline_ns'] == binding['app_started_ns'] + APP_NS
                 and release['released_ns'] <= time.monotonic_ns(), 'release deadline exceeded')
 
-    def delivered(self):
+    def deliver(self, write):
         with self.lock:
-            require(self.state == 'released', 'manifest invalidated before delivery')
-            self.state = 'delivered'
-        self.record({'event': 'manifest_delivered', 'monotonic_ns': time.monotonic_ns()})
+            try:
+                require(self.state == 'released', 'manifest invalidated before delivery')
+                write()
+                self.record({'event': 'manifest_delivered', 'monotonic_ns': time.monotonic_ns()})
+                self.state = 'delivered'
+            except Exception:
+                self.state = 'failed'
+                raise
 
     def package(self, artifact):
         with self.lock:
@@ -513,6 +543,14 @@ def correlate(desktop, authority, rows, validate_rows, derive_rule):
                 'not the actual refusal/unchanged-byte path')
         require(0 < len(rows) <= 64, 'incomplete bounded journal union')
         common = {'nonce': b['nonce'], 'lease': b['lease'], 'binding': service, 'boot_id': b['boot_id']}
+        def journal_time(row, lower, upper):
+            value = row.get('__MONOTONIC_TIMESTAMP')
+            require(type(value) is str and re.fullmatch(r'[0-9]{1,20}', value), 'missing journal monotonic time')
+            stamp = int(value)
+            # journald stores microseconds; compare at that recorded precision.
+            require(lower // 1000 <= stamp <= upper // 1000, 'journal callback outside released window')
+            return stamp
+
         loaded_message = 'campus1057-deny-loaded lease=' + b['lease'] + ' nonce=' + b['nonce']
         rejecting_message = 'campus1057-deny lease=' + b['lease'] + ' nonce=' + b['nonce'] + ' pid=' + str(b['app']['pid']) + ' user=' + authority['user'] + ' session=null active=true mode=' + MODE + ' binding=' + sha(encode(b))
         groups = {'loaded': [], 'rejecting': [], 'candidate': []}
@@ -520,9 +558,14 @@ def correlate(desktop, authority, rows, validate_rows, derive_rule):
             message = row.get('MESSAGE', '') if isinstance(row, dict) else ''
             if b['nonce'] not in json.dumps(row):
                 continue
-            if message == loaded_message: groups['loaded'].append(row)
-            elif message == rejecting_message: groups['rejecting'].append(row)
+            if message == loaded_message:
+                journal_time(row, release['window_started_ns'], release['loaded_ns'])
+                groups['loaded'].append(row)
+            elif message == rejecting_message:
+                journal_time(row, delivered[0]['monotonic_ns'], update['monotonic_finished_ns'])
+                groups['rejecting'].append(row)
             elif message.startswith('campus1057-deny-candidate lease=' + b['lease'] + ' nonce=' + b['nonce'] + ' '):
+                journal_time(row, delivered[0]['monotonic_ns'], update['monotonic_finished_ns'])
                 payload = json.loads(message.split(' ', 3)[3])
                 require(payload.get('status') == 'observed' and payload.get('subject_session') == {'present': True, 'type': 'null'}
                         and payload.get('subject_pid', {}).get('value') == b['app']['pid'], 'candidate contradicts literal null/PID')
@@ -538,6 +581,9 @@ def correlate(desktop, authority, rows, validate_rows, derive_rule):
             require(checked['accepted'] and not checked['anomalies'], 'missing or untrusted ' + name)
             result[name] = checked
         require(groups['candidate'], 'actual literal-null callback diagnostic absent')
+        require(max(int(row['__MONOTONIC_TIMESTAMP']) for row in groups['candidate']) <=
+                min(int(row['__MONOTONIC_TIMESTAMP']) for row in groups['rejecting']),
+                'candidate follows rejecting callback')
         result['status'] = 'root_correlated_user_manager_pending_coordinator_review'
         result['remaining_review'] = 'Independent full protected baseline, source/export hashes, GUI custody and package/trust restoration; raw observation remains not_certified.'
     except (RuntimeError, KeyError, TypeError, ValueError) as error:

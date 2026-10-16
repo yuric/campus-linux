@@ -109,10 +109,13 @@ def main():
                 self.send_header("Content-Length", str(len(body)))
                 self.end_headers()
                 try:
-                    self.wfile.write(body)
-                    self.wfile.flush()
+                    def write_body():
+                        self.wfile.write(body)
+                        self.wfile.flush()
                     if gate:
-                        gate.delivered()
+                        gate.deliver(write_body)
+                    else:
+                        write_body()
                 except OSError as error:
                     if gate:
                         gate.fail(error)

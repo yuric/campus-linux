@@ -501,7 +501,8 @@ Ordering is actual app start → manifest waiting → root binding → authority
 loaded marker → fresh root recheck → one root release → unchanged manifest/package
 bytes → exact-PID/literal-null rejecting marker → completion → owned-rule restoration
 → child reap. The8-second gate ceiling includes sampling/readiness and intersects the
-actual20-second invocation. Window45/restore10/loaded5 limits remain. The direct path
+actual20-second invocation. Window45/restore10/loaded5 limits remain; gated loaded5
+starts at authority-window arming, including service binding and rule publication. The direct path
 still requires readiness before app launch. No start timestamp is rewritten.
 
 The new rule requires literal `subject.session === null`, all fixed existing action,
@@ -516,6 +517,10 @@ app before that acknowledgment. Timeout kills without reaping and requests resto
 Parent loss, changed identity/custody, absent observations, gate failure or expiry makes
 proof incomplete. A dead controller requires independent recovery; retention is bounded
 by app start +8+45 seconds and is not a promise to prevent PID reuse after parent death.
+The recorder refuses an app start after the root preparation deadline. The driver
+retains its recorder through that shared deadline +8+45seconds plus2seconds for final
+receipt/exit handling, covering delayed setup without extending any authority budget.
+Absent or invalid acknowledgment never permits early reap.
 Any residual NO after a crash is a restricted availability effect, never a privilege grant.
 
 Root removes the exact owned release and rule before acknowledging restoration. Other
@@ -523,13 +528,21 @@ immutable gate records and their dot-prefixed `.pending` hardlinks remain eviden
 export, root must inventory and remove only this lease's known files/directory, and verify
 all owned PIDs/scopes absent, full protected baseline equality and normal logout/stopped
 handoff. The hardlinks permit atomic publication of fully fsynced bytes without a partial
-JSON visibility window. No preexisting path is overwritten.
+JSON visibility window. No preexisting path is overwritten. User hint publication likewise retains the
+`.app.json.pending`, `.request.json.pending` and (if used) `.abort.json.pending` links
+for owned lease cleanup. The driver/controller reject stale server logs and consume
+only complete bounded readiness rows.
 
 Export the complete literal journal union with the existing65-row sentinel, the root
 receipt, raw recorder receipt, complete server log, source hashes, GUI evidence and full
 before/after protected baseline. `desktop.py --validate-user-manager` uses the same export
-SHA arguments as `--validate-denial`, produces a separate report and never changes the raw
+SHA arguments as `--validate-denial` plus mandatory `--controller-sha256` for the
+adjacent independently reviewed `gated-control.py`, produces a separate report and never changes the raw
 `not_certified`/null classification. Even its successful correlation remains pending root
 review and `exact_logind_session=false`. Full package/trust/rules/service/keyring equality,
 GUI custody and missed setuid observations remain independent root review obligations.
+The full journal export must include boot-bound `__MONOTONIC_TIMESTAMP`; new-mode
+correlation requires loaded timing within the armed5-second window and callbacks
+after manifest delivery through app completion, at journal microsecond precision.
+Missing or contradictory timing is incomplete; raw wall times are never rewritten.
 No source test is a successful installed denial or permission to activate.
