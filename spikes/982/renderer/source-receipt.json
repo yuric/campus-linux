@@ -1,0 +1,38 @@
+{
+  "source": "yuric/campus-macos@8e39806c5b1fb2ffeda6e55718a4fd2a4d2890da",
+  "merged_evidence": "gh api repos/yuric/campus-macos/commits/main --jq .sha returned this exact SHA on 2026-10-16",
+  "files": [
+    {
+      "path": "CampusApp/Sources/CampusKit/TaskLinkBridge.swift",
+      "sha256": "e8afbac8ec8d4f6bec324554060de0a0a1ef773039ab63a765994eeb673a2bc4"
+    },
+    {
+      "path": "CampusApp/Sources/CampusKit/DeepLink.swift",
+      "sha256": "e26f398e53033d75c62072eb3af40badbadec93b1fd9a581b0e92d4bee93aacd"
+    },
+    {
+      "path": "CampusApp/Sources/CampusKit/SpeechRecording.swift",
+      "sha256": "699e7eb73ed2b7f9d6a7d6d51c58c73af5b2255d3019b09d9f1823ffcf16fae0"
+    },
+    {
+      "path": "CampusApp/Sources/CampusKit/TaskSpeechRecovery.swift",
+      "sha256": "a88bc9d29a37ed9392ff97f0e5c068af98aa0dc04ccb7bf199d98cd184e9a8a6"
+    },
+    {
+      "path": "island/IOS_EXPORT.md",
+      "sha256": "a8f861f10c44df5ced11e0a34a8964aca602b259f62826b3a41b3e74fb0a6644"
+    },
+    {
+      "path": "island/src/island-host.tsx",
+      "sha256": "60f8bc0163004b947fc18713bdb661ca938fc85b22f2f131ab67648d594346ee"
+    },
+    {
+      "path": "island/src/world3d/scene.ts",
+      "sha256": "b702f39700580e7b12dd7c2c2c8dd8a04c20e99117b8290a1eb5786e3956a8e1"
+    },
+    {
+      "path": "island/src/test-utils/factories.ts",
+      "sha256": "c1f2df65cb296f6c1b782457e99025bfcadbee34059adbf44c97febc0b8c3406"
+    }
+  ]
+}

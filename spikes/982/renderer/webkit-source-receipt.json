@@ -1,0 +1,23 @@
+{
+  "repository": "WebKit/WebKit",
+  "tag": "webkitgtk-2.52.6",
+  "annotated_tag_object": "b150840d659b7a77582041fadbf209647c80e690",
+  "source_commit": "4fb33923db2f945803df49546f75867980365c08",
+  "verified_with": [
+    "gh api repos/WebKit/WebKit/git/ref/tags/webkitgtk-2.52.6",
+    "gh api repos/WebKit/WebKit/git/tags/b150840d659b7a77582041fadbf209647c80e690"
+  ],
+  "files": [
+    {
+      "path": "Source/WebCore/html/canvas/WebGLRenderingContextBase.cpp",
+      "sha256": "8943579ed3977d393e48dbb91766fd26f027f157d38cd2c7dfebe044d7cc80ba",
+      "observation": "Lines2121\u20132128 unconditionally return Apple GPU and Apple Inc. for debug renderer/vendor; no OS/CPU guard."
+    },
+    {
+      "path": "Source/WebKit/UIProcess/API/glib/WebKitProtocolHandler.cpp",
+      "sha256": "c4ce58b981280172653d68efd388cbe87342bb3ca6f7c2c4192df88c63bcbbec",
+      "observation": "Lines105\u2013110 obtain actual main-frame render process info;802\u2013812 include native GL renderer/vendor/version."
+    }
+  ],
+  "implication": "JavaScript renderer string is preserved as masked API evidence; actual software renderer requires native WebKit driver and live candidate process evidence. Numeric performance criteria remain unchanged."
+}
