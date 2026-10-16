@@ -1677,8 +1677,8 @@
     },
     {
       "path": "spikes/982/renderer/summarize.py",
-      "bytes": 6270,
-      "sha256": "344f5823e1db9066a6d6f36b927fe85314924a42c70686bee92a35614dfd9c78"
+      "bytes": 6281,
+      "sha256": "ffa41f7e7e8d78ab824d79a39b4bf4d1910a04e403ec1c4d2b267e147f4d1080"
     },
     {
       "path": "spikes/982/renderer/webkit-source-receipt.json",

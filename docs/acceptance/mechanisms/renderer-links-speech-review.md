@@ -6,6 +6,14 @@ source under `spikes/982/renderer` (including Electron), `spikes/982/links`, and
 captures. It is neither independent review nor coordinator acceptance. No VM command,
 download, owner-provider operation or benchmark was run by this reviewer.
 
+
+> Historical self-review, superseded where noted below by the evidence corrections
+> at `04e0fb1229c808008d8ec61cddcfc8dc9d4f5fae` and direction 1196. The original
+> captures and historical file hashes remain intact. Current receipt scope and
+> limitations in [renderer-speech.md](renderer-speech.md), [task-links.md](task-links.md)
+> and [speech-offline.md](speech-offline.md) govern; this document supplies no extra
+> session, timing, cleanup-source or product acceptance.
+
 ## Findings and disposition
 
 1. **Motion admission accepted incomplete traces — corrected.**
@@ -99,6 +107,14 @@ dependencies or authorize production commitment.
 
 ## Diagnostic timeout follow-up
 
+**Superseded attribution:** the precise operator-clock value and causal explanation
+in the following historical paragraph were not retained as reproducible evidence.
+They are withdrawn as proof; the actual v6 timeout remains a failure. See the
+current [timeout qualification](renderer-speech.md) and unchanged diagnostic/timing
+limits. Direction 1196 only repairs floating-point duration equality with the
+existing `1e-6` tolerance; it adds no cadence/max-gap metric or performance bar.
+
+
 The subsequent X11 v6 untimed probe timed out at the original 115-second host budget.
 Its operator log showed the 60-second diagnostic clock starting around 55,131 ms after
 extra settled-target checks, warmup and reset. The failed raw receipt remains
@@ -135,3 +151,16 @@ All four final task-link `-nofollow-` result/cleanup receipts use probe
 links/PIDs are in [task-links.md](task-links.md). This closes execution of the bounded
 cleanup correction in both formats/sessions; it does not establish adversarial same-user
 race safety, HTTP bridge behavior or final-product acceptance. Earlier failures remain.
+
+## Producing-source and cleanup limitation, direction 1196
+
+The historical host-check statements above are unretained operator checks, not
+source-bound runtime receipts. Final task-link results name the probe hash, but
+that does not separately bind every outer host orchestration/cleanup command at
+execution. Retain their observed restoration results within the stated cooperative
+scope; do not infer hostile same-user race safety, complete graphical-session
+provenance or a separately verified producing-source chain. Historical provider
+and speech orchestration source remains unbound as documented at 04e0fb12.
+The new Apport pair binds its actual host runner, guest runner, launcher, inherited
+filter and cleanup-function source at execution; this does not retrofit those
+bindings into any old capture.

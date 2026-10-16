@@ -1,0 +1,79 @@
+{
+  "utc": "2026-10-16T13:18:44.322312+00:00",
+  "kind": "read-only-preflight-not-crash-test",
+  "direction": 10500,
+  "uname": [
+    "Linux",
+    "lima-campus-linux-d5-noble-arm64",
+    "6.8.0-142-generic",
+    "#142-Ubuntu SMP PREEMPT_DYNAMIC Wed Sep  2 14:30:29 UTC 2026",
+    "aarch64"
+  ],
+  "boot_id": "d915aa24-3314-474a-aadf-4ee4fa6f2bf8",
+  "guest_free_bytes": 20403585024,
+  "plan_guest_20gib_predicate": false,
+  "files": {
+    "/usr/share/apport/apport": {
+      "sha256": "1b8b5e2c53e8970dd2f47c9a0892030d1ebad57cae1f7242c43a6252f1f6dff2",
+      "bytes": 44730,
+      "canonical_path": "/usr/share/apport/apport",
+      "package": "apport",
+      "package_manifest_sha256": "f3e3f56f46c6926d271fe05c67dc01b04cfaeaaeb3731d1ca87a3d62a25659c6",
+      "package_md5_matches": true,
+      "source_sha256_matches": true
+    },
+    "/usr/lib/python3/dist-packages/apport/report.py": {
+      "sha256": "8b8aefab8abf44254542e63381de7fc517ab91ad3caa9e1febe89d172c6b56c4",
+      "bytes": 76153,
+      "canonical_path": "/usr/lib/python3/dist-packages/apport/report.py",
+      "package": "python3-apport",
+      "package_manifest_sha256": "c50820acba7feefcdcbae429a00e572374198203eb15e27319737e598303acc4",
+      "package_md5_matches": true,
+      "source_sha256_matches": true
+    },
+    "/usr/lib/python3/dist-packages/problem_report.py": {
+      "sha256": "560649a7bf377fa671199aa86e7164b2710f6f80224cf4b63ff44e3a4911b3ad",
+      "bytes": 34689,
+      "canonical_path": "/usr/lib/python3/dist-packages/problem_report.py",
+      "package": "python3-problem-report",
+      "package_manifest_sha256": "8dc407c9a318c8d5228e250298baccd5447b57eb19c4eec749c5098316cb337f",
+      "package_md5_matches": true,
+      "source_sha256_matches": true
+    },
+    "/usr/bin/sleep": {
+      "sha256": "5b814cc93d7f2110d40c936f5f86a6135de783ae2a28afe25eabac4ecc25bf10",
+      "bytes": 67944,
+      "canonical_path": "/usr/bin/sleep",
+      "package": "coreutils",
+      "package_manifest_sha256": "19fa9d9101d94f450526d579725b8332b3978c4585b98b16b119ace8d6c48d85",
+      "package_md5_matches": true,
+      "source_sha256_matches": null
+    }
+  },
+  "prospective_paths": {
+    "/var/crash/_usr_bin_sleep.1000.crash": {
+      "exists_or_symlink": false
+    },
+    "/var/crash/_usr_bin_sleep.1000.upload": {
+      "exists_or_symlink": false
+    },
+    "/var/crash/_usr_bin_sleep.1000.uploaded": {
+      "exists_or_symlink": false
+    }
+  },
+  "core_pattern": "|/usr/share/apport/apport -p%p -s%s -c%c -d%d -P%P -u%u -g%g -F%F -- %E",
+  "core_pipe_limit": "10",
+  "packages": "apport 2.28.3-0ubuntu0.1 all\ncoreutils 9.4-3ubuntu6.3 arm64\nlinux-image-6.8.0-142-generic 6.8.0-142.142 arm64\npython3-apport 2.28.3-0ubuntu0.1 all\npython3-problem-report 2.28.3-0ubuntu0.1 all\n",
+  "all_var_log_logical_bytes_upper_bound": 215919867,
+  "all_var_log_allocated_bytes_upper_bound": 119648256,
+  "kernel_source_directories": [
+    "linux-headers-6.8.0-142",
+    "linux-headers-6.8.0-142-generic"
+  ],
+  "limits": [
+    "No ELF runtime, metadata-size, kernel-note bound or collector positive is proved by this preflight.",
+    "Package MD5 checks compare the installed package database; they are not independent publisher authentication.",
+    "The extra guest 20 GiB predicate in the supplied plan requires coordinator clarification if false."
+  ],
+  "crash_launched": false
+}

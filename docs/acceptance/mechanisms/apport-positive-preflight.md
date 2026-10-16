@@ -11,6 +11,17 @@ exact delivered attempt; the later task comment 10500 governs the bounded probe.
 The published head stays frozen while LINUX-20261016 reviews it. This evidence is
 held locally for the coordinator's next batch, with no push or acceptance action.
 
+## Superseding direction 1196 (task comment 10512)
+
+The historical observations below and commit `26f6909f0e491145e383b666c913bdc92cab7c46`
+are preserved. The coordinator resolved both experiment settings: **host 20 GiB,
+guest 2 GiB**, with 64 MiB explicit files inside 256 MiB operational owned growth;
+the separate 35 GiB large-work reserve remains. Both new synthetic arms use
+`PrivateNetwork=no` and verify mount/PID namespaces against PID 1. The supplied
+plan's assertion that `PrivateNetwork=yes` preserved the mount namespace was
+incorrect on this installed systemd configuration. These are experiment settings,
+not production provider network policy. See [the activation result](apport-activation.md).
+
 ## Observations
 
 The [identity capture](receipts/apport-positive-preflight-10500/identity.json)

@@ -9,6 +9,8 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFESTS = (
     'docs/acceptance/mechanisms/receipts/artifact-index.json',
     'docs/acceptance/mechanisms/receipts/core-sentinel-followup-index.json',
+    'docs/acceptance/mechanisms/receipts/apport-positive-preflight-index.json',
+    'docs/acceptance/mechanisms/receipts/apport-activation-index.json',
 )
 
 

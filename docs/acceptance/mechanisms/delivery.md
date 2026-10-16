@@ -129,3 +129,33 @@ and after-accept persists acceptance before crashing, so a no-op recovery fails 
 former. Earlier pre-write interruption rows have deliberately limited scope. Fence
 assertions remain absent. These explanations preserve the original findings for
 coordinator disposition rather than claiming all lifecycle behavior is proven.
+
+
+## Direction 1196 consolidated evidence
+
+The [matched Apport SIGQUIT pair](apport-activation.md) now establishes activation
+and kernel suppression for a bounded synthetic ELF only. Full-report metadata
+preflight failed; SIGABRT/report creation and decoded-marker proof remain open.
+The historical positive-control limitations above remain accurate for those older
+captures. No original raw capture or commit was rewritten.
+
+The duration-equality repair uses the existing `1e-6` numerical tolerance and a
+valid fractional-start regression. It preserves the 60-second protocol, p95 bar,
+all-five-run rule and absence of a cadence/max-gap threshold. A fresh timing freeze
+is still required. Historical self-review timing/cleanup-source claims are annotated
+as superseded by current receipt limits.
+
+Mac PR114 is now verified **MERGED** at
+`3e3d4bcd64fd1504c4546b2f7a063b55e2eea783`; see the
+[GitHub readback](receipts/apport-activation-1196/mac-pr114-merged.json).
+The existing v7 captures remain bound to their original `8e39806` producer;
+no new export import, benchmark or parity credit is inferred from the later merge.
+Root reports final-export verification and owns its subsequent consumer handoff.
+
+The published branch remains `campus-linux/982-mechanism-proofs`, draft PR12.
+This batch preserves recovered commit `26f6909` and adds one consolidated repair
+commit. All four evidence manifests participate in the normal repository check;
+checks count committed membership/bytes/hashes, not product acceptance. The active
+human coordinator LINUX-20261016 (comments10512/10517) is the explicit next owner
+for exact-head independent review, CI/admission, Council and remaining probes.
+No worker wakeup, readiness, merge or task completion is assumed.

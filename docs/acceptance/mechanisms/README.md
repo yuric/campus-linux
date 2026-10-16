@@ -95,3 +95,5 @@ merge/release. No ready, merge, auto-merge or done transition is authorized for 
 
 See the [worker review and remaining handoff](delivery.md) and
 [verified fixture cleanup](receipts/cleanup-final.json).
+
+Direction 1196: [matched Apport activation-only result](apport-activation.md), preserving the [failed preflight](apport-positive-preflight.md). Full-report proof remains open.

@@ -46,6 +46,20 @@ class TimedMotionTests(unittest.TestCase):
                 result = summary.summarize(complete_synthetic(tuple_name), 'synthetic')
                 self.assertTrue(result['pass_run'], result)
 
+    def test_valid_fractional_clock_start(self):
+        raw = complete_synthetic()
+        delta = 49374.001 - raw['measurement_start_ms']
+        for key in ('measurement_start_ms', 'measurement_end_ms'):
+            raw[key] += delta
+        raw['measurement_end_ms'] = raw['measurement_start_ms'] + 60000
+        raw['frames'] = [value + delta for value in raw['frames']]
+        for row in raw['inputs'] + raw['gestures']:
+            row['at'] += delta
+        self.assertNotEqual(raw['measurement_end_ms'] - raw['measurement_start_ms'], 60000)
+        result = summary.summarize(raw, 'synthetic-fractional-start')
+        self.assertTrue(result['pass_run'], result)
+        self.assertAlmostEqual(result['p95_ms'], 16, places=6)
+
     def test_coordinator_stall_rejected(self):
         result = summary.summarize(stalled_synthetic(), 'synthetic')
         self.assertEqual(result['p95_ms'], 16)

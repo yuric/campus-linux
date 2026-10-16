@@ -15,7 +15,7 @@ def verified_timed_trace(raw):
         if not finite(raw.get(key)):
             raise ValueError('Finite timing clocks required')
     start, end = raw['measurement_start_ms'], raw['measurement_end_ms']
-    if raw['warmup_ms'] < 30000 or raw['duration_ms'] < 60000 or end - start != 60000:
+    if raw['warmup_ms'] < 30000 or raw['duration_ms'] < 60000 or abs(end - start - 60000) > 1e-6:
         raise ValueError('Full 30-second warmup and 60-second measurement required')
     inputs = raw.get('inputs')
     gestures = raw.get('gestures')

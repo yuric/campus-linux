@@ -1,0 +1,145 @@
+{
+  "kind": "SIGQUIT-activation-only",
+  "arm": "positive",
+  "unit_manager": "system",
+  "utc": "2026-10-16T13:19:26.894919+00:00",
+  "source_sha256": {
+    "apport-activation-pair.py": "95a65dd9a77f0cf8775455ee7d282f7d4ecc3049cfa40e009bc086db5e179cb9",
+    "apport-activation-launch.py": "a82ac897227291bfa4a6cf25afe50a03ff54f4953f197f1b5edae10e24c797b3",
+    "core-sentinel-probe.py": "3aca30e49471b4c12cbcd5c6abcccf9a9f1006262beb4eaedb3e36e03d3ba22d",
+    "apport-positive-preflight.py": "98d600ae98bb4501edba643b62094b94570aa2659f85a91ec8bb6439813a53fb"
+  },
+  "cleanup_source_sha256": "57a5063f9383c0eef56cae9b8d8c3ed1b526fbb476cc87898f682567c432f759",
+  "full_report_proved": false,
+  "crash_sent": true,
+  "before": {
+    "guest_free_bytes": 20403519488,
+    "report_paths": {
+      "/var/crash/_usr_bin_sleep.1000.crash": false,
+      "/var/crash/_usr_bin_sleep.1000.upload": false,
+      "/var/crash/_usr_bin_sleep.1000.uploaded": false
+    },
+    "log_inode": 87909,
+    "log_size": 113,
+    "all_var_log_allocated_bytes_upper_bound": 119664640
+  },
+  "core_pattern": "|/usr/share/apport/apport -p%p -s%s -c%c -d%d -P%P -u%u -g%g -F%F -- %E",
+  "command": [
+    "systemd-run",
+    "--unit=campus982-activation-1196-positive-2427",
+    "--collect",
+    "-p",
+    "User=campusqa",
+    "-p",
+    "Group=campusqa",
+    "-p",
+    "NoNewPrivileges=yes",
+    "-p",
+    "LimitCORE=infinity",
+    "-p",
+    "MemoryMax=64M",
+    "-p",
+    "MemorySwapMax=0",
+    "-p",
+    "TasksMax=8",
+    "-p",
+    "RuntimeMaxSec=90",
+    "-p",
+    "TimeoutStopSec=2",
+    "-p",
+    "PrivateNetwork=no",
+    "-p",
+    "CPUQuota=100%",
+    "-p",
+    "UMask=0077",
+    "-p",
+    "WorkingDirectory=/home/campusqa/spike982/apport-activation-1196-run2",
+    "/usr/bin/python3",
+    "-B",
+    "-I",
+    "-S",
+    "/home/campusqa/spike982/apport-activation-1196-run2/apport-activation-launch.py",
+    "positive"
+  ],
+  "pid": 2429,
+  "start_ticks": "17744",
+  "boot_id": "d915aa24-3314-474a-aadf-4ee4fa6f2bf8",
+  "predicates": {
+    "stopped": true,
+    "single_thread": true,
+    "same_mount_namespace": true,
+    "same_pid_namespace": true,
+    "core_limit": true,
+    "address_limit": true,
+    "map_bound": true,
+    "vma_bound": true,
+    "environment": true,
+    "argv": true,
+    "filter_one": true,
+    "nnp": true,
+    "only_standard_fds": true,
+    "seccomp": true
+  },
+  "namespaces": {
+    "mnt": [
+      "mnt:[4026531841]",
+      "mnt:[4026531841]"
+    ],
+    "pid": [
+      "pid:[4026531836]",
+      "pid:[4026531836]"
+    ]
+  },
+  "mapped_bytes": 2322432,
+  "vmas": 16,
+  "environment_bytes": 76,
+  "fd_targets": {
+    "0": "/dev/null",
+    "1": "socket:[15410]",
+    "2": "socket:[15410]"
+  },
+  "core_limit": [
+    0,
+    0
+  ],
+  "executable_sha256": "5b814cc93d7f2110d40c936f5f86a6135de783ae2a28afe25eabac4ecc25bf10",
+  "observation_seconds": 3.088313339999985,
+  "collectors": {
+    "2433": {
+      "start_ticks": "17750",
+      "argv": [
+        "/usr/bin/python3",
+        "/usr/share/apport/apport",
+        "-p2429",
+        "-s3",
+        "-c0",
+        "-d1",
+        "-P2429",
+        "-u1000",
+        "-g1001",
+        "-F",
+        "--",
+        "!usr!bin!sleep"
+      ]
+    }
+  },
+  "quiet_complete": true,
+  "after": {
+    "guest_free_bytes": 20403519488,
+    "report_paths": {
+      "/var/crash/_usr_bin_sleep.1000.crash": false,
+      "/var/crash/_usr_bin_sleep.1000.upload": false,
+      "/var/crash/_usr_bin_sleep.1000.uploaded": false
+    },
+    "log_inode": 87909,
+    "log_size": 226,
+    "all_var_log_allocated_bytes_upper_bound": 119664640
+  },
+  "apport_pid_lines": [
+    "INFO: apport (pid 2433) 2026-10-16 06:19:27,033: called for global pid 2429, signal 3, core limit 0, dump mode 1"
+  ],
+  "kernel_pid_lines": [],
+  "log_delta_bytes": 113,
+  "activation_only_pass": true,
+  "cgroup_absent_after_cleanup": true
+}
