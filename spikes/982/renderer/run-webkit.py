@@ -15,6 +15,8 @@ from gi.repository import Gtk, Gdk, WebKit2, GLib, Gio, Soup, JavaScriptCore
 
 parser=argparse.ArgumentParser()
 parser.add_argument('--native-gpu-receipt',type=Path,required=True)
+parser.add_argument('--motion-proof',action='store_true')
+parser.add_argument('--lifecycle-proof',action='store_true')
 parser.add_argument('--preflight', action='store_true', help='Observe actual WebGL identity without timing; frozen positional is ignored')
 parser.add_argument('--compositing-policy',choices=('on-demand','always'),default='on-demand')
 parser.add_argument('export',type=Path)
@@ -89,8 +91,10 @@ def presentation(_manager,value,reply):
     return True
 manager.connect('script-message-with-reply-received::campusIslandAPI',presentation)
 if not manager.register_script_message_handler_with_reply('campusIslandAPI',None): raise SystemExit('Could not register rendering-only presentation stub')
-script='const SPIKE_NATIVE_LLVMPIPE_PROVEN=true;const SPIKE_EXPECTED_RENDERER='+json.dumps(native['webgl_api_renderer'])+';\n'+(base/'measure.js').read_text()
+script='const SPIKE_DIAGNOSTICS='+json.dumps(a.motion_proof or a.lifecycle_proof)+';const SPIKE_NATIVE_LLVMPIPE_PROVEN=true;const SPIKE_EXPECTED_RENDERER='+json.dumps(native['webgl_api_renderer'])+';\n'+(base/'measure.js').read_text()
 manager.add_script(WebKit2.UserScript.new(script,WebKit2.UserContentInjectedFrames.TOP_FRAME,WebKit2.UserScriptInjectionTime.START,None,None))
+if a.lifecycle_proof:
+    manager.add_script(WebKit2.UserScript.new((base/'lifecycle.js').read_text(),WebKit2.UserContentInjectedFrames.TOP_FRAME,WebKit2.UserScriptInjectionTime.START,None,None))
 view=WebKit2.WebView(web_context=context,user_content_manager=manager)
 entry_uri='campus-spike://renderer/Island/island.html'
 def policy(_view,decision,kind):
@@ -151,6 +155,9 @@ def finish(payload):
     Gtk.main_quit()
 def received(_manager,result):
     value=json.loads(result.get_js_value().to_string())
+    if value.get('kind')=='motion_checkpoint':
+        print(json.dumps(value),flush=True)
+        return
     finish(value)
 manager.connect('script-message-received::spikeReceipt',received)
 view.connect('web-process-terminated',lambda *_: finish(dict(kind='renderer_crash',errors=['WebKit process terminated'])))
@@ -159,7 +166,7 @@ def evaluated(web,result,*_):
     except GLib.Error as error: finish(dict(kind='preflight_failure',errors=[str(error)]))
 def start():
     native_process_ok=bool(candidate_software_processes(process_graphics()))
-    view.evaluate_javascript('window.spikePreflight()' if a.preflight or not native_process_ok else 'window.spikeStart()',-1,None,None,None,evaluated,None)
+    view.evaluate_javascript('window.spikePreflight()' if a.preflight or not native_process_ok else 'void window.spikeLifecycleProof()' if a.lifecycle_proof else 'window.spikeStart(true)' if a.motion_proof else 'window.spikeStart()',-1,None,None,None,evaluated,None)
     return False
 def loaded(web,event):
     if event==WebKit2.LoadEvent.FINISHED: GLib.timeout_add_seconds(5,start)

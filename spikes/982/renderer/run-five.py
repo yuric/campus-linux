@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Five fresh foreground host processes; preserve every run, never retry/drop slow runs."""
-import argparse,json,os,subprocess,sys
+import argparse,hashlib,json,os,subprocess,sys
 from pathlib import Path
 p=argparse.ArgumentParser()
 p.add_argument('--native-gpu-receipt',type=Path,required=True)
@@ -11,6 +11,8 @@ a=p.parse_args()
 a.output.mkdir(exist_ok=False,parents=True)
 base=Path(__file__).resolve().parent
 freeze=json.loads(a.frozen.read_text())
+for filename,key in [('run-five.py','run_five_sha256'),('summarize.py','summarizer_sha256')]:
+    if hashlib.sha256((base/filename).read_bytes()).hexdigest()!=freeze[key]: raise SystemExit('Automation differs from frozen bytes')
 env=dict(os.environ,LIBGL_ALWAYS_SOFTWARE='1')
 runs=[]
 for n in range(1,6):
