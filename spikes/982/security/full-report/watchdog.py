@@ -87,20 +87,47 @@ class Watchdog:
 
     def stop(self):
         end = time.monotonic() + 5
-        # Freeze observed parents before discovering further direct children.
+        def error(operation, exc, pid=None):
+            self.events.append(dict(operation=operation, pid=pid,
+                                    error_type=type(exc).__name__, error=str(exc)))
+
+        # Cleanup alone is best-effort: normal tick/attribution errors still raise.
+        # Keep every pidfd open through all termination attempts, including handles
+        # retained by discovery before it fails. Unknown descendants remain unknown.
         stable = 0
-        while time.monotonic() < end and stable < 3:
-            before = len(self.owned)
+        try:
+            while time.monotonic() < end and stable < 3:
+                before = len(self.owned)
+                for pid in list(self.owned):
+                    try:
+                        self.send(pid, signal.SIGSTOP)
+                    except Exception as exc:
+                        error('SIGSTOP', exc, pid)
+                self.descendants()
+                if self.events:
+                    break
+                stable = stable + 1 if len(self.owned) == before else 0
+                time.sleep(.02)
+        except Exception as exc:
+            error('descendant_freeze', exc)
+        finally:
+            for pid in reversed(list(self.owned)):
+                try:
+                    self.send(pid, signal.SIGKILL)
+                except Exception as exc:
+                    error('SIGKILL', exc, pid)
+        while True:
+            exited = True
             for pid in self.owned:
-                self.send(pid, signal.SIGSTOP)
-            self.descendants()
-            stable = stable + 1 if len(self.owned) == before else 0
+                try:
+                    if self.live(pid):
+                        exited = False
+                except Exception as exc:
+                    error('exit_poll', exc, pid)
+                    exited = False
+            if self.events or exited or time.monotonic() >= end:
+                return not self.events and stable >= 3 and exited
             time.sleep(.02)
-        for pid in reversed(list(self.owned)):
-            self.send(pid, signal.SIGKILL)
-        while time.monotonic() < end and any(self.live(pid) for pid in self.owned):
-            time.sleep(.02)
-        return stable >= 3 and all(not self.live(pid) for pid in self.owned)
 
     def receipt(self):
         return [dict(pid=p, start_ticks=v['identity']['start_ticks'],

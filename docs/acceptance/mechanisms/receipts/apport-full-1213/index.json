@@ -3,8 +3,8 @@
   "files": [
     {
       "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/REPORT.md",
-      "bytes": 9778,
-      "sha256": "845f4b327152d5fa6e597c4649431d5f631cffc3d9f237c167fd404d2ec95c4c"
+      "bytes": 11509,
+      "sha256": "82fb337203b35a4cbfc24446cec15a57c613fef41c77930104cdad01698545d5"
     },
     {
       "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/allocation-baseline.json",
@@ -93,8 +93,8 @@
     },
     {
       "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/source-bindings.json",
-      "bytes": 12724,
-      "sha256": "471fba1d0303284712e74e6632509fbde3692be9f1715b6e53c9106f6834584e"
+      "bytes": 12928,
+      "sha256": "c24b99160dbd37453f2c7b4362ebab0978723c6a891917e0ebb4ac7aead942f0"
     },
     {
       "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/source-pair1/host.py",
@@ -123,8 +123,8 @@
     },
     {
       "path": "scripts/tests/test_apport_full_report.py",
-      "bytes": 1587,
-      "sha256": "23646b91f850a5f8cbd958dd90220fda5c48333978f569f99b2d67c966b7f010"
+      "bytes": 4843,
+      "sha256": "924a84076eea359c941b2e595c0b28bd484db07ca5205e1f464ad18d9c510d09"
     },
     {
       "path": "spikes/982/security/full-report/collect.py",
@@ -133,8 +133,8 @@
     },
     {
       "path": "spikes/982/security/full-report/drill.py",
-      "bytes": 1510,
-      "sha256": "9f3f9f49ac6dffa620045a867dc8b5ce30179bb419f59a362c4c8f0ef928ca54"
+      "bytes": 1665,
+      "sha256": "82ff0ef4d8c5f5bed0aa9ff460b8009ba805f07947969230ab75e2e9b41e5326"
     },
     {
       "path": "spikes/982/security/full-report/host.py",
@@ -148,8 +148,8 @@
     },
     {
       "path": "spikes/982/security/full-report/pair.py",
-      "bytes": 18014,
-      "sha256": "2ec67954f53e805a18f5f353977da8d34a43898315211b1805b49afe686726cd"
+      "bytes": 18104,
+      "sha256": "1a5ca036e317be6d8d351ae0b5f92bb190362295d59b2f61b5a10e83d30b25c9"
     },
     {
       "path": "spikes/982/security/full-report/preflight_host.py",
@@ -178,8 +178,18 @@
     },
     {
       "path": "spikes/982/security/full-report/watchdog.py",
-      "bytes": 4072,
-      "sha256": "62a805716dbd5643d6c09dc257053184a3c08cff69acc0a165eb7821860579a5"
+      "bytes": 5163,
+      "sha256": "ab362bf7d11d98c29e4e04a8c3c1ad32d1be87b02335c15b19b62c34fb9aa424"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/source-pair2/pair.py",
+      "bytes": 18014,
+      "sha256": "2ec67954f53e805a18f5f353977da8d34a43898315211b1805b49afe686726cd"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/source-pair1/drill.py",
+      "bytes": 1510,
+      "sha256": "9f3f9f49ac6dffa620045a867dc8b5ce30179bb419f59a362c4c8f0ef928ca54"
     }
   ]
 }

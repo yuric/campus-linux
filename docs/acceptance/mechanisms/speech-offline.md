@@ -7,6 +7,12 @@ Linux arm64 CPU candidate ran successfully with network interfaces restricted to
 loopback. This supplements the WebKit availability observations in
 [renderer-speech.md](renderer-speech.md); it is not installed-product speech parity.
 
+This page describes the historical forced-English probe. The
+[current speech report](receipts/speech-next-1203/REPORT.md) supersedes that scope with
+forced en/es, prefix/final and cancellation observations, retaining recognition errors,
+unknown actual locale and all product/permission limits. It does not change these
+historical results or establish current-locale parity.
+
 ## Pinned inputs and reproduction
 
 [Source/model pins](../../../spikes/982/speech/pins.json) bind

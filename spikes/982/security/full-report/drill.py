@@ -32,6 +32,10 @@ try:
     result['pass'] = result['cleanup_confirmed'] and len(result['identities']) == 2
 finally:
     watch.stop()
+    result['watchdog_cleanup_errors'] = list(watch.events)
+    if watch.events:
+        result['cleanup_confirmed'] = False
+        result['pass'] = False
     watch.close()
     if child.poll() is None:
         child.kill()

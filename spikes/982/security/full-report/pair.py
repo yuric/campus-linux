@@ -271,6 +271,8 @@ def main():
                 stopped=watch.stop();result['retained_identities']=watch.receipt()
             except Exception as exc:
                 stopped=False;result['watchdog_cleanup_error']=str(exc)
+            finally:
+                result['watchdog_cleanup_errors']=list(watch.events)
         if started and cgroup.exists():
             try:cmd(['systemctl','stop',unit],timeout=5)
             except Exception as exc:stopped=False;result['unit_cleanup_error']=str(exc)

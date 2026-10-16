@@ -16,8 +16,10 @@ or renderer artifact. Existing renderer captures retain their original producer.
 
 The [non-crashing drill](drill.stdout) exercised the common guest deadline against
 an owned Python parent and its sleep child. Both retained pidfds became exited;
-cleanup passed. This is an exercised watchdog deadline, **not** a forced timeout of
-an actual Apport collector. The [metadata preflight](metadata.stdout) reproduced
+cleanup passed. The drill was SSH-attached with a no-op guard: heartbeat loss,
+STOP-file and storage-failure paths were not exercised. This is an exercised
+watchdog deadline, **not** a forced timeout of an actual Apport collector. The
+[metadata preflight](metadata.stdout) reproduced
 3,559 serialized bytes using UID1000/GID1001, empty supplementary groups, a proc
 fd opened as root and ExecutablePath established as root. All seven required proc
 fields were present, nonempty and not `Error:` values; no error-valued field existed.
@@ -39,7 +41,9 @@ The runner checks the exact `.crash`, `.upload`, `.uploaded` and PID-specific
 `.hanging` names before signaling. It retains `/var/crash` through a directory fd.
 Collector attribution requires the complete expected argv, including both target
 PID options, signal/core/dump mode, UID/GID, encoded sleep path and the known empty
-`-F`, plus the installed interpreter/source identity and a new start identity.
+`-F`, plus the resolved interpreter path, installed handler source identity and a new
+start identity. The interpreter hash was recorded, not independently package-verified;
+the handler/report/serialization package-file checks are separate evidence.
 It acquires/rechecks pidfds and tracks directly observed children. The guest monitor
 runs independently of SSH, checks the host heartbeat, and owns the 60-second crash
 observation deadline and bounded cleanup. Host space/image sampling continues during
@@ -57,8 +61,11 @@ each arm. An unexplained identity/sidecar or unconfirmed cleanup withholds the n
    host refused the negative arm. [Original pair source](source-pair1/pair.py) and
    [host result](host-pair.json) preserve this failure; it is not rewritten as a pass.
 2. [Same-report reinspection](reinspection.json): no process/crash/collector was
-   launched. The helper required the original receipt hash, same boot, exited retained
-   identities, absent cgroup and exact captured report inode/owner/type/mode. Corrected
+   launched. Recovery computed and recorded the original receipt hash; it required the
+   same boot, exited retained identities, absent cgroup and exact captured report
+   inode/owner/type/mode. Before launching the negative arm, `resume_negative.py`
+   required that recorded hash to match the original host receipt and required
+   byte-identical guest receipt content. Corrected
    multiline parsing bound ExecutablePath, ProcCmdline, ProcStatus PID/UID, Signal6
    and `_HooksRun=no` to the fixture and exact collector log. Streaming RFC822/base64/
    gzip inspection decoded **393,216 bytes**, SHA256
@@ -94,7 +101,12 @@ The explicit new-file reservation was64 MiB. Polling thresholds were32 MiB repor
 48 MiB explicit,192 MiB aggregate, host20 GiB and guest2 GiB. Whole-log growth is a
 conservative, unattributed upper bound. Positive deltas are used; shrinkage does not
 hide another file's growth. This is operational accounting, not a filesystem quota
-or proof that a fast writer cannot overshoot between samples.
+or proof that a fast writer cannot overshoot between samples. Each arm used a fresh
+log baseline with the prior consumed baseline reused: positive/inter-arm log growth
+was not carried into the next guard. The inter-arm increment was not separately
+measured, so this is not an exact cumulative per-file ledger. The recorded final
+allocation/image measurements remain observations; improved cumulative accounting
+is future reuse hardening, not a new gate for the completed pair.
 
 Peak captured guest explicit allocation during the positive was118,784 bytes;
 final retained guest files allocated151,552 bytes. The report was removed only after
@@ -121,6 +133,17 @@ exit-between-pidfd-poll-and-proc-read race: the current source now tolerates the
 vanished proc path and continues stopping other retained identities. A deterministic
 regression exercises this race in the existing repository unittest suite. That source
 improvement was **not** rerun in the guest and grants no additional runtime credit.
+Direction1223 additionally repairs cleanup when discovery or individual signaling
+operations fail: every retained pidfd still receives a SIGKILL attempt, errors are
+recorded in `watchdog_cleanup_errors`, and cleanup remains unconfirmed on any error.
+Handles stay open through all attempts; normal attribution errors still propagate.
+Mock-only regressions cover discovery RuntimeError after STOP (including a newly
+retained third identity), STOP/KILL refusal without skipping other handles, and
+normal attribution failure. This repair was not run in the guest. The executed
+negative [pair](source-pair2/pair.py) and [drill](source-pair1/drill.py) are preserved
+before adding error-receipt plumbing to their current sources. Other review P3
+suggestions remain future reuse hardening, not requirements for this experiment.
+
 The original four scanner tests cover cross-chunk marker detection, decompression
 bounds, corrupt/truncated gzip and input bounds; they also run in the normal suite.
 The scanner caps report input at32 MiB, each line at1 MiB, metadata at1 MiB, per-call

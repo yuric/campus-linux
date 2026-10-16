@@ -61,7 +61,7 @@
       "field": "source_sha256",
       "name": "drill.py",
       "sha256": "9f3f9f49ac6dffa620045a867dc8b5ce30179bb419f59a362c4c8f0ef928ca54",
-      "source": "spikes/982/security/full-report/drill.py"
+      "source": "docs/acceptance/mechanisms/receipts/apport-full-1213/source-pair1/drill.py"
     },
     {
       "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/positive.json",
@@ -96,7 +96,7 @@
       "field": "source_sha256",
       "name": "pair.py",
       "sha256": "2ec67954f53e805a18f5f353977da8d34a43898315211b1805b49afe686726cd",
-      "source": "spikes/982/security/full-report/pair.py"
+      "source": "docs/acceptance/mechanisms/receipts/apport-full-1213/source-pair2/pair.py"
     },
     {
       "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/negative.json",
@@ -152,7 +152,7 @@
       "field": "source_sha256",
       "name": "drill.py",
       "sha256": "9f3f9f49ac6dffa620045a867dc8b5ce30179bb419f59a362c4c8f0ef928ca54",
-      "source": "spikes/982/security/full-report/drill.py"
+      "source": "docs/acceptance/mechanisms/receipts/apport-full-1213/source-pair1/drill.py"
     },
     {
       "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/negative.json",
@@ -236,7 +236,7 @@
       "field": "source_sha256",
       "name": "drill.py",
       "sha256": "9f3f9f49ac6dffa620045a867dc8b5ce30179bb419f59a362c4c8f0ef928ca54",
-      "source": "spikes/982/security/full-report/drill.py"
+      "source": "docs/acceptance/mechanisms/receipts/apport-full-1213/source-pair1/drill.py"
     },
     {
       "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/host-pair.json",
@@ -257,7 +257,7 @@
       "field": "pair_sha256",
       "name": "pair_sha256",
       "sha256": "2ec67954f53e805a18f5f353977da8d34a43898315211b1805b49afe686726cd",
-      "source": "spikes/982/security/full-report/pair.py"
+      "source": "docs/acceptance/mechanisms/receipts/apport-full-1213/source-pair2/pair.py"
     },
     {
       "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/metadata.stdout",
@@ -271,7 +271,7 @@
       "field": "source_sha256",
       "name": "drill.py",
       "sha256": "9f3f9f49ac6dffa620045a867dc8b5ce30179bb419f59a362c4c8f0ef928ca54",
-      "source": "spikes/982/security/full-report/drill.py"
+      "source": "docs/acceptance/mechanisms/receipts/apport-full-1213/source-pair1/drill.py"
     },
     {
       "receipt": "docs/acceptance/mechanisms/receipts/apport-full-1213/drill.stdout",

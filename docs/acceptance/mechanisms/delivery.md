@@ -5,6 +5,13 @@ not dependency completion. The coordinator independently verifies, obtains a
 different-family review, observes Council and all required exact-head checks, and
 owns admission. The worker does not mark ready, merge, enable auto-merge or mark done.
 
+The historical English-only and direction1196 status below is superseded by the
+[current speech report](receipts/speech-next-1203/REPORT.md) (forced en/es, prefix/final
+and cancellation observations, with errors and unknown actual locale) and the
+[current G4 report](receipts/apport-full-1213/REPORT.md) (one bounded SIGABRT pair,
+failed initial inspection and same-report recovery). Neither closes product speech,
+full G4 or L0; historical receipts and failed outcomes remain unchanged.
+
 ## Source and scope review
 
 The worker reviewed the complete Linux-owned source/document/receipt diff against
