@@ -1,6 +1,6 @@
 {
   "mac_sha": "8e39806c5b1fb2ffeda6e55718a4fd2a4d2890da",
-  "purpose": "control-location audit aid; not proof every dynamic server action is enumerated",
+  "purpose": "Control-location audit aid: original 588-location text scan plus two manually traced NewTaskSheet trailing-closure buttons. Not a complete parser or proof every dynamic server action is enumerated.",
   "files": [
     {
       "path": "CampusApp/Sources/CampusApp/ActivityScreen.swift",
@@ -481,11 +481,13 @@
         633,
         635,
         644,
+        666,
         669,
         674,
         711,
         713,
         717,
+        742,
         746
       ]
     },
@@ -924,6 +926,26 @@
         32,
         37,
         51
+      ]
+    }
+  ],
+  "manual_supplements": [
+    {
+      "reason": "Original scan missed Button { ... } label: controls. Bounded follow-up inspected this syntax in NewTaskSheet and its shared speech/attachment controls.",
+      "inspected_paths": [
+        "CampusApp/Sources/CampusApp/NewTaskSheet.swift",
+        "CampusApp/Sources/CampusUI/TaskSpeechRecoveryPanel.swift",
+        "CampusApp/Sources/CampusUI/TaskAttachmentViews.swift"
+      ],
+      "locations": [
+        {
+          "path": "CampusApp/Sources/CampusApp/NewTaskSheet.swift",
+          "line": 666
+        },
+        {
+          "path": "CampusApp/Sources/CampusApp/NewTaskSheet.swift",
+          "line": 742
+        }
       ]
     }
   ]

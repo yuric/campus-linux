@@ -4211,6 +4211,23 @@
     {
       "path": "CampusApp/Sources/CampusApp/NewTaskSheet.swift",
       "lines": [
+        666
+      ],
+      "disposition": "case",
+      "cases": [
+        "P06.start-dictation"
+      ],
+      "trace": "Manual trailing-closure supplement missed by the original scan. NewTaskSheet.swift:666 \u2192 TaskVoiceStore.start:318 \u2192 admission/capability guards \u2192 local speechRecorder.start or recorder.start. Start does not load capability. Only caught permission/device failure with an offered recovery recording reaches recover:626 \u2192 requestPlan:662 \u2192 NewTaskStore plan callback:162 \u2192 HTTP.planTaskVoiceRecovery:1598.",
+      "controls": [
+        {
+          "line": 666,
+          "source": "Button { _Concurrency.Task { await voice.start() } } label: {"
+        }
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/NewTaskSheet.swift",
+      "lines": [
         669
       ],
       "disposition": "case",
@@ -4295,6 +4312,27 @@
         {
           "line": 717,
           "source": "Button(\"Discard\") { voice.discardRetained() }.disabled(voice.busy)"
+        }
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/NewTaskSheet.swift",
+      "lines": [
+        742
+      ],
+      "disposition": "case",
+      "cases": [
+        "P06.stop-dictation",
+        "P06.stop-dictation-platform",
+        "P06.stop-dictation-legacy",
+        "P06.stop-dictation-incomplete",
+        "P06.stop-dictation-recovery"
+      ],
+      "trace": "Manual trailing-closure supplement missed by the original scan. NewTaskSheet.swift:742 \u2192 TaskVoiceStore.stop:374. Platform canonical words call acceptTranscript:411 \u2192 NewTaskStore:157 \u2192 HTTP:1617 PUT; nonempty incomplete words without a recovery failure branch are retained locally at :404\u2013410; legacy recorder.stop bytes call transcribe:413 \u2192 NewTaskStore:150 \u2192 HTTP:1622 POST; recoverable failure calls recover:626/requestPlan:662 \u2192 HTTP:1598 POST recovery plan.",
+      "controls": [
+        {
+          "line": 742,
+          "source": "Button { _Concurrency.Task { await voice.stop() } } label: {"
         }
       ]
     },

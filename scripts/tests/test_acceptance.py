@@ -190,6 +190,47 @@ class InventorySemanticsTests(unittest.TestCase):
         self.assertIn("omitted", self.rows["P05.create-review-choice"]["test_spec"]["scenario"])
         self.assertIn("false", self.rows["P05.create-review-choice"]["test_spec"]["scenario"])
 
+    def test_dictation_uses_capture_and_the_actual_stop_variants(self):
+        plan = {("POST", "/task_transcription/recovery")}
+        # Normal Start is local. Only its conditional failure-plan branch is a request;
+        # fetching availability cannot satisfy the Record control's receipt.
+        self.assertEqual(self.operations("P06.start-dictation"), plan)
+        self.assertEqual(self.operations("P06.taskVoiceCapability"), {("GET", "/task_transcription")})
+        required = {
+            "P06.stop-dictation-platform": {("PUT", "/task_transcription")},
+            "P06.stop-dictation-legacy": {("POST", "/task_transcription")},
+            "P06.stop-dictation-incomplete": set(),
+            "P06.stop-dictation-recovery": plan,
+        }
+        for case, operations in required.items():
+            self.assertEqual(self.operations(case), operations, case)
+            self.assertEqual(self.rows[case]["receipt"], case + ".json")
+        self.assertEqual(set(self.rows["P06.stop-dictation"]["related_cases"]), set(required))
+        self.assertEqual(self.operations("P06.stop-dictation"),
+                         plan | {("PUT", "/task_transcription"), ("POST", "/task_transcription")})
+        for case, line in [("P06.start-dictation", 666), ("P06.stop-dictation", 742)]:
+            self.assertEqual(self.rows[case]["provenance_kind"], "mac-observed-control")
+            self.assertIn(f"CampusApp/Sources/CampusApp/NewTaskSheet.swift#L{line}", self.rows[case]["sources"])
+        start = self.rows["P06.start-dictation"]["test_spec"]["scenario"]
+        for obligation in ["admission", "permission", "no Campus request", "unknown", "account"]:
+            self.assertIn(obligation, start)
+        self.assertEqual(self.rows["P06.stop-dictation-incomplete"]["execution_kind"], "local")
+        for case in ["P06.microphone-grant", "P06.microphone-deny", "P06.edit-transcript"]:
+            self.assertEqual(self.operations(case), set(), case)
+        self.assertEqual(self.operations("P06.use-retained-transcript"), {("PUT", "/task_transcription")})
+
+    def test_dictation_trailing_closure_controls_are_reconciled(self):
+        census = json.loads((ROOT / "docs/acceptance/mac-control-census.json").read_text())
+        audit = json.loads((ROOT / "docs/acceptance/control-reconciliation.json").read_text())
+        path = "CampusApp/Sources/CampusApp/NewTaskSheet.swift"
+        lines = next(file["control_lines"] for file in census["files"] if file["path"] == path)
+        for line, case in [(666, "P06.start-dictation"), (742, "P06.stop-dictation")]:
+            self.assertIn(line, lines)
+            entry = next(entry for entry in audit["entries"] if entry["path"] == path and line in entry["lines"])
+            self.assertIn(case, entry["cases"])
+            control = next(control for control in entry["controls"] if control["line"] == line)
+            self.assertIn("Button {", control["source"])
+
     def test_other_traced_boundaries(self):
         self.assertEqual(self.operations("P04.board-hide-load-done"), {("GET", "/tasks")})
         self.assertEqual(self.operations("P09.credential-copy-error"), set())

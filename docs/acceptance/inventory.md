@@ -1,14 +1,14 @@
 # Linux action acceptance inventory
 
-Task #981, next owner **LINUX-20261016**. All **519** product action cases are **unimplemented**;
+Task #981, next owner **LINUX-20261016**. All **523** product action cases are **unimplemented**;
 390 have concrete API operation/delegate mappings. The rest are explicit local steps or
 producer-blocked bridge cases, not uncounted omissions.
 [actions.json](actions.json) is the action ledger: one independently named test case and
 receipt per action, owning card, expected behavior, source location and exact API path /
 method / operationId / schema JSON pointer where the source maps to a concrete operation.
 A row is an acceptance obligation, not a product test or a passing receipt. No percentage
-summarizes missing actions. The [Mac control census](mac-control-census.json) records 588 Swift control locations found by the original text scan,
-with 56 file hashes. It is not a complete Swift/renderer parser: multiline buttons, native
+summarizes missing actions. The [Mac control census](mac-control-census.json) records 590 Swift control locations with 56 file hashes: the original 588-location text scan
+plus two manually traced NewTaskSheet `Button { … } label:` controls it missed. It is not a complete Swift/renderer parser: multiline buttons, native
 menus, bindings and adapter entry points require separate inspection.
 [control-reconciliation.json](control-reconciliation.json) dispositions every census
 location as a named case, duplicate entry point, local step or Mac-specific mechanism,
@@ -143,5 +143,19 @@ The bootstrap checker enforces pin/case references, exact census membership and 
 classification. Focused regression tests lock the independently traced restore, staged/saved
 attachment, create-variant, Done-read, clipboard and consent boundaries. These checks cannot
 prove semantic truth of arbitrary source text; human source review and the owning cards’
-real request/state receipts remain mandatory. Every one of the 519 action rows is still
+real request/state receipts remain mandatory. Every one of the 523 action rows is still
 `unimplemented`. No app, desktop, runtime or parity pass is granted here.
+
+The focused speech follow-up traces Record and Stop at NewTaskSheet lines 666 and 742.
+Availability GET is a separate control/task. Record requires actual local admission/capture,
+plus permission/device failure with and without a conditional fact-only recovery-plan POST.
+Stop requires four named receipts: platform-text PUT, server-offered legacy-audio POST,
+incomplete words retained locally without acceptance, and failure/recovery planning. Only
+understood succeeded server text becomes canonical; live partials remain provisional.
+Permission decisions and retained-text editing are local, while explicit Use is a later PUT.
+The bounded follow-up inspected trailing-closure buttons in NewTaskSheet and its shared
+TaskSpeechRecoveryPanel/TaskAttachmentViews; these two were the only matches. This documents
+the scan's blind spot without claiming that all Swift/renderer syntax is now parsed.
+Unsupported or withdrawn server transports are withheld; this inventory selects no new
+Linux speech API or paid provider. Account/cancel retirement and memory-only recovery remain
+required in the actual downstream receipts.

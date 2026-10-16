@@ -4095,38 +4095,30 @@
       "group": "P06",
       "owner_card": 994,
       "sources": [
-        "https://github.com/yuric/campus-linux/blob/e496ac2f756a8656575ec2474b771567f2f68e56/PRD.md#3-feature-parity-inventory",
-        "CampusApp/Sources/CampusKit/HTTP.swift#L1617"
+        "CampusApp/Sources/CampusApp/NewTaskSheet.swift#L701",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L162"
       ],
-      "operations": [
-        {
-          "method": "PUT",
-          "path": "/task_transcription",
-          "operation_id": "taskTranscriptionAcceptText",
-          "schema_pointer": "#/paths/~1task_transcription/put",
-          "schema_refs": [
-            "#/components/schemas/TaskTranscription"
-          ],
-          "summary": "Validate a platform speech task description (idempotent)",
-          "in_prd_server_baseline": true
-        }
-      ],
-      "wire_types": [
-        "TaskTranscription"
-      ],
-      "contract_status": "mapped via acceptTaskVoiceTranscript; only server-offered actions, revalidate verified #985 snapshot",
-      "expected": "Honor server size/type/permission limits; isolate upload/download origins; preserve editable text and cancellation/recovery without leaking audio.",
+      "operations": [],
+      "wire_types": [],
+      "contract_status": "traced observed branch; #985 revalidates server-offered transport and Linux contract",
+      "expected": "Edit incomplete or refused retained text locally while idle; typing sends no Campus request and never changes canonical description by itself. Preserve edits through capability checks and failed Use, and retire them according to the current draft/account scope. Busy state withholds edits. Only explicit Use may send the edited text for server acceptance; Copy and Discard remain local.",
       "test_case": "P06.edit-transcript",
       "receipt": "P06.edit-transcript.json",
       "status": "unimplemented",
       "test_spec": {
-        "seam": "named UI/OS action -> host acceptTaskVoiceTranscript -> exact API operation/response",
-        "scenario": "Exercise edit-transcript once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
+        "seam": "NewTaskSheet retained TextEditor binding \u2192 TaskVoiceStore.retainedText only; Use is the separate acceptTaskVoiceTranscript request.",
+        "scenario": "Edit incomplete or refused retained text locally while idle; typing sends no Campus request and never changes canonical description by itself. Preserve edits through capability checks and failed Use, and retire them according to the current draft/account scope. Busy state withholds edits. Only explicit Use may send the edited text for server acceptance; Copy and Discard remain local.",
         "execution": "not implemented; owning card supplies real command and observed receipt before pass"
       },
-      "api_delegate": "acceptTaskVoiceTranscript",
-      "provenance_kind": "linux-derived-acceptance",
-      "provenance_note": "Acceptance obligation derived from PRD P06 and implementation gates; not claimed as an observed Mac button. API sources identify delegates only."
+      "provenance_kind": "mac-observed-control",
+      "provenance_note": "Pinned Mac call chain at the declared mac_sha; observable capture and request outcomes are required, without prescribing Mac speech APIs or a new Linux paid-speech choice.",
+      "source_trace": "NewTaskSheet retained TextEditor binding \u2192 TaskVoiceStore.retainedText only; Use is the separate acceptTaskVoiceTranscript request.",
+      "execution_kind": "local",
+      "related_cases": [
+        "P06.use-retained-transcript",
+        "P06.copy-retained-transcript",
+        "P06.discard-retained-transcript"
+      ]
     },
     {
       "action": "interrupt-dictation",
@@ -4172,76 +4164,54 @@
       "group": "P06",
       "owner_card": 994,
       "sources": [
-        "https://github.com/yuric/campus-linux/blob/e496ac2f756a8656575ec2474b771567f2f68e56/PRD.md#3-feature-parity-inventory",
-        "CampusApp/Sources/CampusKit/HTTP.swift#L1593"
+        "https://github.com/yuric/campus-linux/blob/e496ac2f756a8656575ec2474b771567f2f68e56/PRD.md#3-feature-parity-inventory"
       ],
-      "operations": [
-        {
-          "method": "GET",
-          "path": "/task_transcription",
-          "operation_id": "taskTranscriptionCapability",
-          "schema_pointer": "#/paths/~1task_transcription/get",
-          "schema_refs": [
-            "#/components/schemas/TaskTranscription"
-          ],
-          "summary": "Read authoritative task microphone availability",
-          "in_prd_server_baseline": true
-        }
-      ],
-      "wire_types": [
-        "TaskTranscription"
-      ],
-      "contract_status": "mapped via taskVoiceCapability; only server-offered actions, revalidate verified #985 snapshot",
-      "expected": "Honor server size/type/permission limits; isolate upload/download origins; preserve editable text and cancellation/recovery without leaking audio.",
+      "operations": [],
+      "wire_types": [],
+      "contract_status": "Linux OS adapter remains unimplemented; Start separately covers conditional failure recovery",
+      "expected": "Exercise the OS microphone permission deny for the current admitted recording. The permission decision itself causes no Campus request and is not demonstrated by a capability GET. Deny prevents capture and preserves the description; conditional fact-only recovery planning is a distinct required Start subcase. Late decisions after cancel/account change cannot start a new recording. Use the Linux OS adapter and server capability; do not introduce a provider or paid-speech choice.",
       "test_case": "P06.microphone-deny",
       "receipt": "P06.microphone-deny.json",
       "status": "unimplemented",
       "test_spec": {
-        "seam": "named UI/OS action -> host taskVoiceCapability -> exact API operation/response",
-        "scenario": "Exercise microphone-deny once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
+        "seam": "Linux OS permission decision during the separately traced Start admission; no Campus HTTP operation is the permission decision.",
+        "scenario": "Exercise the OS microphone permission deny for the current admitted recording. The permission decision itself causes no Campus request and is not demonstrated by a capability GET. Deny prevents capture and preserves the description; conditional fact-only recovery planning is a distinct required Start subcase. Late decisions after cancel/account change cannot start a new recording. Use the Linux OS adapter and server capability; do not introduce a provider or paid-speech choice.",
         "execution": "not implemented; owning card supplies real command and observed receipt before pass"
       },
-      "api_delegate": "taskVoiceCapability",
       "provenance_kind": "linux-derived-acceptance",
-      "provenance_note": "Acceptance obligation derived from PRD P06 and implementation gates; not claimed as an observed Mac button. API sources identify delegates only."
+      "provenance_note": "Linux OS permission obligation from PRD P06; the concrete Linux adapter is not implemented. The related Start case traces the pinned Mac admission/failure behavior without treating capability GET as permission.",
+      "execution_kind": "local",
+      "source_trace": "Linux OS permission decision during the separately traced Start admission; no Campus HTTP operation is the permission decision.",
+      "related_cases": [
+        "P06.start-dictation"
+      ]
     },
     {
       "action": "microphone-grant",
       "group": "P06",
       "owner_card": 994,
       "sources": [
-        "https://github.com/yuric/campus-linux/blob/e496ac2f756a8656575ec2474b771567f2f68e56/PRD.md#3-feature-parity-inventory",
-        "CampusApp/Sources/CampusKit/HTTP.swift#L1593"
+        "https://github.com/yuric/campus-linux/blob/e496ac2f756a8656575ec2474b771567f2f68e56/PRD.md#3-feature-parity-inventory"
       ],
-      "operations": [
-        {
-          "method": "GET",
-          "path": "/task_transcription",
-          "operation_id": "taskTranscriptionCapability",
-          "schema_pointer": "#/paths/~1task_transcription/get",
-          "schema_refs": [
-            "#/components/schemas/TaskTranscription"
-          ],
-          "summary": "Read authoritative task microphone availability",
-          "in_prd_server_baseline": true
-        }
-      ],
-      "wire_types": [
-        "TaskTranscription"
-      ],
-      "contract_status": "mapped via taskVoiceCapability; only server-offered actions, revalidate verified #985 snapshot",
-      "expected": "Honor server size/type/permission limits; isolate upload/download origins; preserve editable text and cancellation/recovery without leaking audio.",
+      "operations": [],
+      "wire_types": [],
+      "contract_status": "Linux OS adapter remains unimplemented; Start separately covers conditional failure recovery",
+      "expected": "Exercise the OS microphone permission grant for the current admitted recording. The permission decision itself causes no Campus request and is not demonstrated by a capability GET. Grant permits only that admitted local capture, not upload or transcript acceptance. Late decisions after cancel/account change cannot start a new recording. Use the Linux OS adapter and server capability; do not introduce a provider or paid-speech choice.",
       "test_case": "P06.microphone-grant",
       "receipt": "P06.microphone-grant.json",
       "status": "unimplemented",
       "test_spec": {
-        "seam": "named UI/OS action -> host taskVoiceCapability -> exact API operation/response",
-        "scenario": "Exercise microphone-grant once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
+        "seam": "Linux OS permission decision during the separately traced Start admission; no Campus HTTP operation is the permission decision.",
+        "scenario": "Exercise the OS microphone permission grant for the current admitted recording. The permission decision itself causes no Campus request and is not demonstrated by a capability GET. Grant permits only that admitted local capture, not upload or transcript acceptance. Late decisions after cancel/account change cannot start a new recording. Use the Linux OS adapter and server capability; do not introduce a provider or paid-speech choice.",
         "execution": "not implemented; owning card supplies real command and observed receipt before pass"
       },
-      "api_delegate": "taskVoiceCapability",
       "provenance_kind": "linux-derived-acceptance",
-      "provenance_note": "Acceptance obligation derived from PRD P06 and implementation gates; not claimed as an observed Mac button. API sources identify delegates only."
+      "provenance_note": "Linux OS permission obligation from PRD P06; the concrete Linux adapter is not implemented. The related Start case traces the pinned Mac admission/failure behavior without treating capability GET as permission.",
+      "execution_kind": "local",
+      "source_trace": "Linux OS permission decision during the separately traced Start admission; no Campus HTTP operation is the permission decision.",
+      "related_cases": [
+        "P06.start-dictation"
+      ]
     },
     {
       "action": "planTaskVoiceRecovery",
@@ -4533,45 +4503,223 @@
       "group": "P06",
       "owner_card": 994,
       "sources": [
-        "https://github.com/yuric/campus-linux/blob/e496ac2f756a8656575ec2474b771567f2f68e56/PRD.md#3-feature-parity-inventory",
-        "CampusApp/Sources/CampusKit/HTTP.swift#L1593"
+        "CampusApp/Sources/CampusApp/NewTaskSheet.swift#L666",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L318",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L52",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L359",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L626",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L662",
+        "CampusApp/Sources/CampusKit/TaskSpeechRecovery.swift#L60",
+        "CampusApp/Sources/CampusKit/NewTaskStore.swift#L146",
+        "CampusApp/Sources/CampusKit/NewTaskStore.swift#L182",
+        "CampusApp/Sources/CampusKit/HTTP.swift#L1598"
       ],
       "operations": [
         {
-          "method": "GET",
-          "path": "/task_transcription",
-          "operation_id": "taskTranscriptionCapability",
-          "schema_pointer": "#/paths/~1task_transcription/get",
+          "method": "POST",
+          "path": "/task_transcription/recovery",
+          "operation_id": "planTaskTranscriptionRecovery",
+          "schema_pointer": "#/paths/~1task_transcription~1recovery/post",
           "schema_refs": [
-            "#/components/schemas/TaskTranscription"
+            "#/components/schemas/TaskSpeechRecovery",
+            "#/components/schemas/TaskSpeechRecoveryFacts"
           ],
-          "summary": "Read authoritative task microphone availability",
+          "summary": "Plan recovery of retained speech audio without uploading it",
           "in_prd_server_baseline": true
         }
       ],
       "wire_types": [
-        "TaskTranscription"
+        "TaskSpeechRecoveryFacts",
+        "TaskSpeechRecovery"
       ],
-      "contract_status": "mapped via taskVoiceCapability; only server-offered actions, revalidate verified #985 snapshot",
-      "expected": "Honor server size/type/permission limits; isolate upload/download origins; preserve editable text and cancellation/recovery without leaking audio.",
+      "contract_status": "traced observed branch; #985 revalidates server-offered transport and Linux contract",
+      "expected": "Require distinct subcases in this receipt: (1) admission denial, busy/retained-draft conflict, unavailable or unknown capability version/transport/limits: no capture and no Campus request; (2) admitted platform speech and server-offered legacy audio: local permission/capture, recording state, levels and elapsed/limit behavior, with no Campus request from successful Start; capability GET belongs to P06.taskVoiceCapability; (3) permission denial/device failure without usable recovery: clean local failure, no request; (4) the same failure with usable recovery limits and a listed failure fact: POST /task_transcription/recovery containing facts for this recording UUID, retained_audio=false when no usable audio exists, no audio bytes or transcript acceptance. Missing/unsupported recovery only withholds that additive recovery path; do not withhold an otherwise understood normal capture. A limit during permission or capture uses the same separately tested Stop branches. Preserve existing text and admission ownership; local live partials remain provisional until server acceptance. Retire late permission, recognition, HTTP and recovery callbacks after cancel, window close or account/island/endpoint change; preserve the current draft and never insert another recording's text. Local retention of audio and unaccepted text is memory-only, without logs or disk fallback. Recovery planning is not audio-upload consent: no automatic authorization, account charge, paid provider choice or transport fallback.",
       "test_case": "P06.start-dictation",
       "receipt": "P06.start-dictation.json",
       "status": "unimplemented",
       "test_spec": {
-        "seam": "named UI/OS action -> host taskVoiceCapability -> exact API operation/response",
-        "scenario": "Exercise start-dictation once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
+        "seam": "NewTaskSheet.swift:666 \u2192 TaskVoiceStore.start:318 \u2192 admission/capability guards \u2192 local speechRecorder.start or recorder.start. Start does not load capability. Only caught permission/device failure with an offered recovery recording reaches recover:626 \u2192 requestPlan:662 \u2192 NewTaskStore plan callback:162 \u2192 HTTP.planTaskVoiceRecovery:1598.",
+        "scenario": "Require distinct subcases in this receipt: (1) admission denial, busy/retained-draft conflict, unavailable or unknown capability version/transport/limits: no capture and no Campus request; (2) admitted platform speech and server-offered legacy audio: local permission/capture, recording state, levels and elapsed/limit behavior, with no Campus request from successful Start; capability GET belongs to P06.taskVoiceCapability; (3) permission denial/device failure without usable recovery: clean local failure, no request; (4) the same failure with usable recovery limits and a listed failure fact: POST /task_transcription/recovery containing facts for this recording UUID, retained_audio=false when no usable audio exists, no audio bytes or transcript acceptance. Missing/unsupported recovery only withholds that additive recovery path; do not withhold an otherwise understood normal capture. A limit during permission or capture uses the same separately tested Stop branches. Preserve existing text and admission ownership; local live partials remain provisional until server acceptance. Retire late permission, recognition, HTTP and recovery callbacks after cancel, window close or account/island/endpoint change; preserve the current draft and never insert another recording's text. Local retention of audio and unaccepted text is memory-only, without logs or disk fallback. Recovery planning is not audio-upload consent: no automatic authorization, account charge, paid provider choice or transport fallback.",
         "execution": "not implemented; owning card supplies real command and observed receipt before pass"
       },
-      "api_delegate": "taskVoiceCapability",
-      "provenance_kind": "linux-derived-acceptance",
-      "provenance_note": "Acceptance obligation derived from PRD P06 and implementation gates; not claimed as an observed Mac button. API sources identify delegates only."
+      "provenance_kind": "mac-observed-control",
+      "provenance_note": "Pinned Mac call chain at the declared mac_sha; observable capture and request outcomes are required, without prescribing Mac speech APIs or a new Linux paid-speech choice.",
+      "source_trace": "NewTaskSheet.swift:666 \u2192 TaskVoiceStore.start:318 \u2192 admission/capability guards \u2192 local speechRecorder.start or recorder.start. Start does not load capability. Only caught permission/device failure with an offered recovery recording reaches recover:626 \u2192 requestPlan:662 \u2192 NewTaskStore plan callback:162 \u2192 HTTP.planTaskVoiceRecovery:1598.",
+      "execution_kind": "request",
+      "related_cases": [
+        "P06.taskVoiceCapability",
+        "P06.stop-dictation",
+        "P06.microphone-grant",
+        "P06.microphone-deny"
+      ]
     },
     {
       "action": "stop-dictation",
       "group": "P06",
       "owner_card": 994,
       "sources": [
-        "https://github.com/yuric/campus-linux/blob/e496ac2f756a8656575ec2474b771567f2f68e56/PRD.md#3-feature-parity-inventory",
+        "CampusApp/Sources/CampusApp/NewTaskSheet.swift#L742",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L374",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L404",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L411",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L413",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L626",
+        "CampusApp/Sources/CampusKit/NewTaskStore.swift#L150",
+        "CampusApp/Sources/CampusKit/NewTaskStore.swift#L157",
+        "CampusApp/Sources/CampusKit/NewTaskStore.swift#L162",
+        "CampusApp/Sources/CampusKit/HTTP.swift#L1598",
+        "CampusApp/Sources/CampusKit/HTTP.swift#L1617",
+        "CampusApp/Sources/CampusKit/HTTP.swift#L1622"
+      ],
+      "operations": [
+        {
+          "method": "PUT",
+          "path": "/task_transcription",
+          "operation_id": "taskTranscriptionAcceptText",
+          "schema_pointer": "#/paths/~1task_transcription/put",
+          "schema_refs": [
+            "#/components/schemas/TaskTranscription"
+          ],
+          "summary": "Validate a platform speech task description (idempotent)",
+          "in_prd_server_baseline": true
+        },
+        {
+          "method": "POST",
+          "path": "/task_transcription",
+          "operation_id": "taskTranscriptionCreate",
+          "schema_pointer": "#/paths/~1task_transcription/post",
+          "schema_refs": [
+            "#/components/schemas/TaskTranscription"
+          ],
+          "summary": "Transcribe a short task description recording",
+          "in_prd_server_baseline": true
+        },
+        {
+          "method": "POST",
+          "path": "/task_transcription/recovery",
+          "operation_id": "planTaskTranscriptionRecovery",
+          "schema_pointer": "#/paths/~1task_transcription~1recovery/post",
+          "schema_refs": [
+            "#/components/schemas/TaskSpeechRecovery",
+            "#/components/schemas/TaskSpeechRecoveryFacts"
+          ],
+          "summary": "Plan recovery of retained speech audio without uploading it",
+          "in_prd_server_baseline": true
+        }
+      ],
+      "wire_types": [
+        "TaskTranscription",
+        "TaskSpeechRecoveryFacts",
+        "TaskSpeechRecovery"
+      ],
+      "contract_status": "traced observed branch; #985 revalidates server-offered transport and Linux contract",
+      "expected": "This control receipt requires all four related variant receipts, not one successful PUT. Stop is a no-op outside recording; entering processing prevents duplicate Stop submissions. Exercise explicit Stop and the server recording-limit callback. Platform completion, legacy audio, incomplete local retention and recovery failure have distinct request/no-request assertions. Only version-1 succeeded server text becomes canonical description text; failures restore any provisional live span and preserve typed context. Retire late permission, recognition, HTTP and recovery callbacks after cancel, window close or account/island/endpoint change; preserve the current draft and never insert another recording's text. Local retention of audio and unaccepted text is memory-only, without logs or disk fallback. Recovery planning is not audio-upload consent: no automatic authorization, account charge, paid provider choice or transport fallback.",
+      "test_case": "P06.stop-dictation",
+      "receipt": "P06.stop-dictation.json",
+      "status": "unimplemented",
+      "test_spec": {
+        "seam": "NewTaskSheet.swift:742 \u2192 TaskVoiceStore.stop:374. Platform canonical words call acceptTranscript:411 \u2192 NewTaskStore:157 \u2192 HTTP:1617 PUT; nonempty incomplete words without a recovery failure branch are retained locally at :404\u2013410; legacy recorder.stop bytes call transcribe:413 \u2192 NewTaskStore:150 \u2192 HTTP:1622 POST; recoverable failure calls recover:626/requestPlan:662 \u2192 HTTP:1598 POST recovery plan.",
+        "scenario": "This control receipt requires all four related variant receipts, not one successful PUT. Stop is a no-op outside recording; entering processing prevents duplicate Stop submissions. Exercise explicit Stop and the server recording-limit callback. Platform completion, legacy audio, incomplete local retention and recovery failure have distinct request/no-request assertions. Only version-1 succeeded server text becomes canonical description text; failures restore any provisional live span and preserve typed context. Retire late permission, recognition, HTTP and recovery callbacks after cancel, window close or account/island/endpoint change; preserve the current draft and never insert another recording's text. Local retention of audio and unaccepted text is memory-only, without logs or disk fallback. Recovery planning is not audio-upload consent: no automatic authorization, account charge, paid provider choice or transport fallback.",
+        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
+      },
+      "provenance_kind": "mac-observed-control",
+      "provenance_note": "Pinned Mac call chain at the declared mac_sha; observable capture and request outcomes are required, without prescribing Mac speech APIs or a new Linux paid-speech choice.",
+      "source_trace": "NewTaskSheet.swift:742 \u2192 TaskVoiceStore.stop:374. Platform canonical words call acceptTranscript:411 \u2192 NewTaskStore:157 \u2192 HTTP:1617 PUT; nonempty incomplete words without a recovery failure branch are retained locally at :404\u2013410; legacy recorder.stop bytes call transcribe:413 \u2192 NewTaskStore:150 \u2192 HTTP:1622 POST; recoverable failure calls recover:626/requestPlan:662 \u2192 HTTP:1598 POST recovery plan.",
+      "execution_kind": "request",
+      "related_cases": [
+        "P06.stop-dictation-platform",
+        "P06.stop-dictation-legacy",
+        "P06.stop-dictation-incomplete",
+        "P06.stop-dictation-recovery"
+      ]
+    },
+    {
+      "action": "stop-dictation-incomplete",
+      "group": "P06",
+      "owner_card": 994,
+      "sources": [
+        "CampusApp/Sources/CampusApp/NewTaskSheet.swift#L742",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L397",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L402",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L404"
+      ],
+      "operations": [],
+      "wire_types": [],
+      "contract_status": "traced observed branch; #985 revalidates server-offered transport and Linux contract",
+      "expected": "Exercise nonempty incomplete platform words without an applicable recovery-failure branch. Release audio, undo the provisional dictated span, retain the words as incomplete beside the description, and send no PUT, POST or recovery-plan request. Keep typed context unchanged; retained words remain editable/copyable and are not canonical. Only explicit Use may later submit edited text for acceptance; copy/discard do not submit. Empty text and declared failure with retained recovery audio follow their separately named branches. Retire late permission, recognition, HTTP and recovery callbacks after cancel, window close or account/island/endpoint change; preserve the current draft and never insert another recording's text. Local retention of audio and unaccepted text is memory-only, without logs or disk fallback. Recovery planning is not audio-upload consent: no automatic authorization, account charge, paid provider choice or transport fallback.",
+      "test_case": "P06.stop-dictation-incomplete",
+      "receipt": "P06.stop-dictation-incomplete.json",
+      "status": "unimplemented",
+      "test_spec": {
+        "seam": "Stop \u2192 platform result with incomplete nonempty words, after any recognized recovery-failure branch has been excluded \u2192 endRecording \u2192 retain(... complete:false) \u2192 finish; no acceptTranscript or transcribe call.",
+        "scenario": "Exercise nonempty incomplete platform words without an applicable recovery-failure branch. Release audio, undo the provisional dictated span, retain the words as incomplete beside the description, and send no PUT, POST or recovery-plan request. Keep typed context unchanged; retained words remain editable/copyable and are not canonical. Only explicit Use may later submit edited text for acceptance; copy/discard do not submit. Empty text and declared failure with retained recovery audio follow their separately named branches. Retire late permission, recognition, HTTP and recovery callbacks after cancel, window close or account/island/endpoint change; preserve the current draft and never insert another recording's text. Local retention of audio and unaccepted text is memory-only, without logs or disk fallback. Recovery planning is not audio-upload consent: no automatic authorization, account charge, paid provider choice or transport fallback.",
+        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
+      },
+      "provenance_kind": "mac-observed-control",
+      "provenance_note": "Pinned Mac call chain at the declared mac_sha; observable capture and request outcomes are required, without prescribing Mac speech APIs or a new Linux paid-speech choice.",
+      "source_trace": "Stop \u2192 platform result with incomplete nonempty words, after any recognized recovery-failure branch has been excluded \u2192 endRecording \u2192 retain(... complete:false) \u2192 finish; no acceptTranscript or transcribe call.",
+      "execution_kind": "local",
+      "related_cases": [
+        "P06.edit-transcript",
+        "P06.use-retained-transcript",
+        "P06.copy-retained-transcript",
+        "P06.discard-retained-transcript"
+      ]
+    },
+    {
+      "action": "stop-dictation-legacy",
+      "group": "P06",
+      "owner_card": 994,
+      "sources": [
+        "CampusApp/Sources/CampusApp/NewTaskSheet.swift#L742",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L52",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L413",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L416",
+        "CampusApp/Sources/CampusKit/NewTaskStore.swift#L150",
+        "CampusApp/Sources/CampusKit/HTTP.swift#L1622"
+      ],
+      "operations": [
+        {
+          "method": "POST",
+          "path": "/task_transcription",
+          "operation_id": "taskTranscriptionCreate",
+          "schema_pointer": "#/paths/~1task_transcription/post",
+          "schema_refs": [
+            "#/components/schemas/TaskTranscription"
+          ],
+          "summary": "Transcribe a short task description recording",
+          "in_prd_server_baseline": true
+        }
+      ],
+      "wire_types": [
+        "TaskTranscription"
+      ],
+      "contract_status": "traced observed branch; #985 revalidates server-offered transport and Linux contract",
+      "expected": "Only when the understood server capability actually offers legacy audio, submit the bounded recording as audio_base64 via POST /task_transcription; no platform-text PUT. Recorder-stop failure sends nothing. Require success, explicit refusal, unknown response version/state and lost-response subcases; only version-1 succeeded returned text is appended. No invented transcript or automatic duplicate upload. A withdrawn legacy capability is withheld rather than selected as fallback; #985 must revalidate this historical Mac branch before Linux implementation. Retire late permission, recognition, HTTP and recovery callbacks after cancel, window close or account/island/endpoint change; preserve the current draft and never insert another recording's text. Local retention of audio and unaccepted text is memory-only, without logs or disk fallback. Recovery planning is not audio-upload consent: no automatic authorization, account charge, paid provider choice or transport fallback.",
+      "test_case": "P06.stop-dictation-legacy",
+      "receipt": "P06.stop-dictation-legacy.json",
+      "status": "unimplemented",
+      "test_spec": {
+        "seam": "Stop \u2192 server-offered legacy audio branch \u2192 recorder.stop() \u2192 NewTaskStore transcribe callback \u2192 HTTP.transcribeTaskVoice \u2192 POST /task_transcription with audio_base64.",
+        "scenario": "Only when the understood server capability actually offers legacy audio, submit the bounded recording as audio_base64 via POST /task_transcription; no platform-text PUT. Recorder-stop failure sends nothing. Require success, explicit refusal, unknown response version/state and lost-response subcases; only version-1 succeeded returned text is appended. No invented transcript or automatic duplicate upload. A withdrawn legacy capability is withheld rather than selected as fallback; #985 must revalidate this historical Mac branch before Linux implementation. Retire late permission, recognition, HTTP and recovery callbacks after cancel, window close or account/island/endpoint change; preserve the current draft and never insert another recording's text. Local retention of audio and unaccepted text is memory-only, without logs or disk fallback. Recovery planning is not audio-upload consent: no automatic authorization, account charge, paid provider choice or transport fallback.",
+        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
+      },
+      "provenance_kind": "mac-observed-control",
+      "provenance_note": "Pinned Mac call chain at the declared mac_sha; observable capture and request outcomes are required, without prescribing Mac speech APIs or a new Linux paid-speech choice.",
+      "source_trace": "Stop \u2192 server-offered legacy audio branch \u2192 recorder.stop() \u2192 NewTaskStore transcribe callback \u2192 HTTP.transcribeTaskVoice \u2192 POST /task_transcription with audio_base64.",
+      "execution_kind": "request"
+    },
+    {
+      "action": "stop-dictation-platform",
+      "group": "P06",
+      "owner_card": 994,
+      "sources": [
+        "CampusApp/Sources/CampusApp/NewTaskSheet.swift#L742",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L374",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L402",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L411",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L416",
+        "CampusApp/Sources/CampusKit/NewTaskStore.swift#L157",
         "CampusApp/Sources/CampusKit/HTTP.swift#L1617"
       ],
       "operations": [
@@ -4590,19 +4738,76 @@
       "wire_types": [
         "TaskTranscription"
       ],
-      "contract_status": "mapped via acceptTaskVoiceTranscript; only server-offered actions, revalidate verified #985 snapshot",
-      "expected": "Honor server size/type/permission limits; isolate upload/download origins; preserve editable text and cancellation/recovery without leaking audio.",
-      "test_case": "P06.stop-dictation",
-      "receipt": "P06.stop-dictation.json",
+      "contract_status": "traced observed branch; #985 revalidates server-offered transport and Linux contract",
+      "expected": "Exercise complete platform text and empty text reaching the acceptance branch. Release any retained capture before acceptance. Send PUT with transport=platform_speech and transcript, never audio. Only version-1 succeeded returned text commits/replaces the provisional span or appends once. Refusal, unknown version/state, timeout and interruption must not commit local words: preserve nonempty spoken text as retained, restore the pre-dictation span and withhold unsupported capability. Empty/incomplete text is not fabricated as success. No automatic resend; explicit Use is separately tested. Retire late permission, recognition, HTTP and recovery callbacks after cancel, window close or account/island/endpoint change; preserve the current draft and never insert another recording's text. Local retention of audio and unaccepted text is memory-only, without logs or disk fallback. Recovery planning is not audio-upload consent: no automatic authorization, account charge, paid provider choice or transport fallback.",
+      "test_case": "P06.stop-dictation-platform",
+      "receipt": "P06.stop-dictation-platform.json",
       "status": "unimplemented",
       "test_spec": {
-        "seam": "named UI/OS action -> host acceptTaskVoiceTranscript -> exact API operation/response",
-        "scenario": "Exercise stop-dictation once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
+        "seam": "Stop \u2192 platform speech stop \u2192 endRecording \u2192 acceptTranscript \u2192 PUT /task_transcription with transport=platform_speech and transcript; TaskVoiceStore:416 applies only a version-1 succeeded response.",
+        "scenario": "Exercise complete platform text and empty text reaching the acceptance branch. Release any retained capture before acceptance. Send PUT with transport=platform_speech and transcript, never audio. Only version-1 succeeded returned text commits/replaces the provisional span or appends once. Refusal, unknown version/state, timeout and interruption must not commit local words: preserve nonempty spoken text as retained, restore the pre-dictation span and withhold unsupported capability. Empty/incomplete text is not fabricated as success. No automatic resend; explicit Use is separately tested. Retire late permission, recognition, HTTP and recovery callbacks after cancel, window close or account/island/endpoint change; preserve the current draft and never insert another recording's text. Local retention of audio and unaccepted text is memory-only, without logs or disk fallback. Recovery planning is not audio-upload consent: no automatic authorization, account charge, paid provider choice or transport fallback.",
         "execution": "not implemented; owning card supplies real command and observed receipt before pass"
       },
-      "api_delegate": "acceptTaskVoiceTranscript",
-      "provenance_kind": "linux-derived-acceptance",
-      "provenance_note": "Acceptance obligation derived from PRD P06 and implementation gates; not claimed as an observed Mac button. API sources identify delegates only."
+      "provenance_kind": "mac-observed-control",
+      "provenance_note": "Pinned Mac call chain at the declared mac_sha; observable capture and request outcomes are required, without prescribing Mac speech APIs or a new Linux paid-speech choice.",
+      "source_trace": "Stop \u2192 platform speech stop \u2192 endRecording \u2192 acceptTranscript \u2192 PUT /task_transcription with transport=platform_speech and transcript; TaskVoiceStore:416 applies only a version-1 succeeded response.",
+      "execution_kind": "request",
+      "related_cases": [
+        "P06.use-retained-transcript"
+      ]
+    },
+    {
+      "action": "stop-dictation-recovery",
+      "group": "P06",
+      "owner_card": 994,
+      "sources": [
+        "CampusApp/Sources/CampusApp/NewTaskSheet.swift#L742",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L387",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L395",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L626",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L662",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L862",
+        "CampusApp/Sources/CampusKit/NewTaskStore.swift#L162",
+        "CampusApp/Sources/CampusKit/HTTP.swift#L1598"
+      ],
+      "operations": [
+        {
+          "method": "POST",
+          "path": "/task_transcription/recovery",
+          "operation_id": "planTaskTranscriptionRecovery",
+          "schema_pointer": "#/paths/~1task_transcription~1recovery/post",
+          "schema_refs": [
+            "#/components/schemas/TaskSpeechRecovery",
+            "#/components/schemas/TaskSpeechRecoveryFacts"
+          ],
+          "summary": "Plan recovery of retained speech audio without uploading it",
+          "in_prd_server_baseline": true
+        }
+      ],
+      "wire_types": [
+        "TaskSpeechRecoveryFacts",
+        "TaskSpeechRecovery"
+      ],
+      "contract_status": "traced observed branch; #985 revalidates server-offered transport and Linux contract",
+      "expected": "Exercise a recognized Stop failure with and without nonempty partial words. With usable recovery limits/route and a listed failure fact, retain incomplete words and POST only the facts for the same recording UUID; bounded intact audio stays in memory. Empty, clipped or out-of-bounds audio is not reported as an intact recording. Missing recovery, unlisted fact or a generic recorder exception cannot invent a plan or upload; release the unusable recording and preserve available text. Lost planning response leaves an explicit retry with the same UUID/facts, not an automatic new operation. Unknown plan version/state or foreign request ID withholds actions and releases audio. An understood succeeded plan may deliver its server text once; otherwise only a later offered recovery action can proceed. Reaching a plan never authorizes paid recovery or sends audio by itself. Retire late permission, recognition, HTTP and recovery callbacks after cancel, window close or account/island/endpoint change; preserve the current draft and never insert another recording's text. Local retention of audio and unaccepted text is memory-only, without logs or disk fallback. Recovery planning is not audio-upload consent: no automatic authorization, account charge, paid provider choice or transport fallback.",
+      "test_case": "P06.stop-dictation-recovery",
+      "receipt": "P06.stop-dictation-recovery.json",
+      "status": "unimplemented",
+      "test_spec": {
+        "seam": "Stop \u2192 TaskSpeechStopFailure or heard.failure while recovery recording exists \u2192 recover \u2192 bounded facts/capture \u2192 requestPlan \u2192 POST advertised recovery path; apply accepts only an understood response for this recording.",
+        "scenario": "Exercise a recognized Stop failure with and without nonempty partial words. With usable recovery limits/route and a listed failure fact, retain incomplete words and POST only the facts for the same recording UUID; bounded intact audio stays in memory. Empty, clipped or out-of-bounds audio is not reported as an intact recording. Missing recovery, unlisted fact or a generic recorder exception cannot invent a plan or upload; release the unusable recording and preserve available text. Lost planning response leaves an explicit retry with the same UUID/facts, not an automatic new operation. Unknown plan version/state or foreign request ID withholds actions and releases audio. An understood succeeded plan may deliver its server text once; otherwise only a later offered recovery action can proceed. Reaching a plan never authorizes paid recovery or sends audio by itself. Retire late permission, recognition, HTTP and recovery callbacks after cancel, window close or account/island/endpoint change; preserve the current draft and never insert another recording's text. Local retention of audio and unaccepted text is memory-only, without logs or disk fallback. Recovery planning is not audio-upload consent: no automatic authorization, account charge, paid provider choice or transport fallback.",
+        "execution": "not implemented; owning card supplies real command and observed receipt before pass"
+      },
+      "provenance_kind": "mac-observed-control",
+      "provenance_note": "Pinned Mac call chain at the declared mac_sha; observable capture and request outcomes are required, without prescribing Mac speech APIs or a new Linux paid-speech choice.",
+      "source_trace": "Stop \u2192 TaskSpeechStopFailure or heard.failure while recovery recording exists \u2192 recover \u2192 bounded facts/capture \u2192 requestPlan \u2192 POST advertised recovery path; apply accepts only an understood response for this recording.",
+      "execution_kind": "request",
+      "related_cases": [
+        "P06.planTaskVoiceRecovery",
+        "P06.retry-speech",
+        "P06.taskVoiceRecovery",
+        "P06.discard-audio"
+      ]
     },
     {
       "action": "storageData",
@@ -4711,6 +4916,10 @@
     {
       "action": "taskVoiceCapability",
       "sources": [
+        "CampusApp/Sources/CampusApp/NewTaskSheet.swift#L669",
+        "CampusApp/Sources/CampusApp/NewTaskSheet.swift#L685",
+        "CampusApp/Sources/CampusKit/TaskVoiceStore.swift#L304",
+        "CampusApp/Sources/CampusKit/NewTaskStore.swift#L147",
         "CampusApp/Sources/CampusKit/HTTP.swift#L1593"
       ],
       "operations": [
@@ -4731,17 +4940,23 @@
       ],
       "group": "P06",
       "owner_card": 994,
-      "expected": "Read authoritative task microphone availability. Honor server size/type/permission limits; isolate upload/download origins; preserve editable text and cancellation/recovery without leaking audio.",
+      "expected": "Read availability independently from Record. Success renders the server capability but never requests OS permission or starts capture. Busy state suppresses the read; failed/stale reads cannot establish availability. Unknown top-level version/transport or unusable bounds withhold recording; unknown additive recovery withholds only recovery. Preserve retained text while checking, and retire old account/endpoint responses. A GET receipt cannot satisfy Start or Stop.",
       "status": "unimplemented",
       "test_case": "P06.taskVoiceCapability",
       "receipt": "P06.taskVoiceCapability.json",
-      "contract_status": "source-mapped; post-S1 revalidation required",
+      "contract_status": "traced observed branch; #985 revalidates server-offered transport and Linux contract",
       "test_spec": {
-        "seam": "host HTTP decoder/request + UI action",
-        "scenario": "Exercise taskVoiceCapability once successfully and once refused/interrupted; compare authorized request and refreshed state; cover unsupported version and account switch when authority-bearing.",
+        "seam": "Check voice availability or TaskVoiceControls.task \u2192 TaskVoiceStore.load \u2192 NewTaskStore load callback \u2192 HTTP.taskVoiceCapability GET /task_transcription?recovery_version=1.",
+        "scenario": "Read availability independently from Record. Success renders the server capability but never requests OS permission or starts capture. Busy state suppresses the read; failed/stale reads cannot establish availability. Unknown top-level version/transport or unusable bounds withhold recording; unknown additive recovery withholds only recovery. Preserve retained text while checking, and retire old account/endpoint responses. A GET receipt cannot satisfy Start or Stop.",
         "execution": "not implemented; owning card supplies real command and observed receipt before pass"
       },
-      "provenance_kind": "mac-transport-source"
+      "provenance_kind": "mac-observed-control",
+      "provenance_note": "Pinned Mac call chain at the declared mac_sha; observable capture and request outcomes are required, without prescribing Mac speech APIs or a new Linux paid-speech choice.",
+      "source_trace": "Check voice availability or TaskVoiceControls.task \u2192 TaskVoiceStore.load \u2192 NewTaskStore load callback \u2192 HTTP.taskVoiceCapability GET /task_transcription?recovery_version=1.",
+      "execution_kind": "request",
+      "related_cases": [
+        "P06.start-dictation"
+      ]
     },
     {
       "action": "taskVoiceRecovery",
