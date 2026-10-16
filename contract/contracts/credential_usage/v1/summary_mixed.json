@@ -1,0 +1,134 @@
+{
+  "version": 1,
+  "state": "mixed",
+  "heading": "Usage is current for 1 of 4 accounts",
+  "message": "2 accounts have older readings, and 1 account has no reading yet.",
+  "counts": {
+    "accounts": 4,
+    "fresh": 1,
+    "stale": 2,
+    "missing": 1,
+    "unsupported": 2,
+    "refreshing": 1
+  },
+  "newest_observed_at": "2026-10-05T11:59:00.000Z",
+  "oldest_observed_at": "2026-10-03T12:00:00.000Z",
+  "refresh": {
+    "eligible": true,
+    "retry_at": null,
+    "message": null
+  },
+  "accounts": [
+    {
+      "credential_id": 1,
+      "version": 1,
+      "freshness": "fresh",
+      "observed_at": "2026-10-05T11:59:00.000Z",
+      "fresh_until": "2026-10-05T12:03:00.000Z",
+      "last_attempt": {
+        "started_at": "2026-10-05T11:58:55.000Z",
+        "lease_expires_at": null,
+        "finished_at": "2026-10-05T11:59:00.000Z",
+        "outcome": "succeeded",
+        "failure": null
+      },
+      "action": {
+        "eligible": true,
+        "reason": "available",
+        "retry_at": null,
+        "message": null
+      }
+    },
+    {
+      "credential_id": 2,
+      "version": 1,
+      "freshness": "stale",
+      "observed_at": "2026-10-05T07:00:00.000Z",
+      "fresh_until": "2026-10-05T07:04:00.000Z",
+      "last_attempt": {
+        "started_at": "2026-10-05T11:59:50.000Z",
+        "lease_expires_at": null,
+        "finished_at": "2026-10-05T11:59:58.000Z",
+        "outcome": "failed",
+        "failure": {
+          "code": "timeout",
+          "message": "The provider did not answer in 15 seconds."
+        }
+      },
+      "action": {
+        "eligible": false,
+        "reason": "cooldown",
+        "retry_at": "2026-10-05T12:00:20.000Z",
+        "message": "Usage was just refreshed. Campus allows another refresh shortly."
+      }
+    },
+    {
+      "credential_id": 3,
+      "version": 1,
+      "freshness": "missing",
+      "observed_at": null,
+      "fresh_until": null,
+      "last_attempt": {
+        "started_at": "2026-10-03T12:00:00.000Z",
+        "lease_expires_at": null,
+        "finished_at": "2026-10-03T12:01:00.000Z",
+        "outcome": "expired",
+        "failure": null
+      },
+      "action": {
+        "eligible": true,
+        "reason": "available",
+        "retry_at": null,
+        "message": null
+      }
+    },
+    {
+      "credential_id": 4,
+      "version": 1,
+      "freshness": "stale",
+      "observed_at": "2026-10-03T12:00:00.000Z",
+      "fresh_until": "2026-10-03T12:04:00.000Z",
+      "last_attempt": {
+        "started_at": "2026-10-05T11:59:50.000Z",
+        "lease_expires_at": "2026-10-05T12:00:50.000Z",
+        "finished_at": null,
+        "outcome": "in_progress",
+        "failure": null
+      },
+      "action": {
+        "eligible": false,
+        "reason": "in_progress",
+        "retry_at": "2026-10-05T12:00:50.000Z",
+        "message": "A usage refresh for this account is already running."
+      }
+    },
+    {
+      "credential_id": 5,
+      "version": 1,
+      "freshness": "unsupported",
+      "observed_at": null,
+      "fresh_until": null,
+      "last_attempt": null,
+      "action": {
+        "eligible": false,
+        "reason": "unsupported",
+        "retry_at": null,
+        "message": "Custom providers do not declare a read-only account-usage capability."
+      }
+    },
+    {
+      "credential_id": 6,
+      "version": 1,
+      "freshness": "unsupported",
+      "observed_at": "2026-10-02T12:00:00.000Z",
+      "fresh_until": "2026-10-02T12:04:00.000Z",
+      "last_attempt": null,
+      "action": {
+        "eligible": false,
+        "reason": "inactive",
+        "retry_at": null,
+        "message": "Usage is read only for active credentials."
+      }
+    }
+  ]
+}

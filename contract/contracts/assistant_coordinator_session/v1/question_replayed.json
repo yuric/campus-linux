@@ -1,0 +1,352 @@
+{
+  "version": 1,
+  "session": {
+    "version": 1,
+    "id": "3b0c7e1a-1d2f-4c3b-9a8e-5f6d7c8b9a01",
+    "state": "open",
+    "execution_request_id": "9d8c7b6a-5f4e-4d3c-8b2a-1f0e9d8c7b6a",
+    "executor_id": "0f1e2d3c-4b5a-4968-8776-655443322110",
+    "executor_name": "Studio Mac",
+    "run_state": "running",
+    "opened_at": "2026-09-22T09:00:00.000000Z",
+    "ended_at": null,
+    "reason": null,
+    "message": null,
+    "error_detail": null,
+    "model_output": null,
+    "operations": {
+      "version": 1,
+      "state": "waiting_confirmation",
+      "message": "Review the saved operation before confirming. No change has been applied.",
+      "unsupported_message": "Update Campus to use these coordinator operations.",
+      "entry": {
+        "version": 1,
+        "state": "separate_entry",
+        "message": "This session is separate from the normal Manager conversation until its migration is available."
+      },
+      "calls": [
+        {
+          "id": "create-follow-up",
+          "question_id": "2b3c4d5e-6f7a-4b8c-9d0e-1f2a3b4c5d6e",
+          "started_at": "2026-09-22T09:00:05.120000Z",
+          "finished": false,
+          "result": {
+            "version": 1,
+            "state": "confirmation_required",
+            "request_id": "c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e5f"
+          }
+        }
+      ],
+      "reviews": [
+        {
+          "version": 2,
+          "request_id": "c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e5f",
+          "title": "Create a task",
+          "body": "Campus will create this task in Harbor.",
+          "effects": [
+            "Adds task “Write the release note” to the Seashore column."
+          ],
+          "arguments_json": "{\n  \"task\": {\n    \"title\": \"Write the release note\"\n  }\n}",
+          "actions": [
+            {
+              "id": "confirm",
+              "label": "Create task",
+              "intent": "default",
+              "request": {
+                "method": "POST",
+                "path": "/api_operations/requests/c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e5f/confirm",
+                "body": {
+                  "version": 1,
+                  "payload_digest": "sha256:5f1d0c",
+                  "confirm": true
+                }
+              }
+            },
+            {
+              "id": "cancel",
+              "label": "Cancel",
+              "intent": "destructive",
+              "request": {
+                "method": "POST",
+                "path": "/api_operations/requests/c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e5f/cancel",
+                "body": {
+                  "version": 1
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "budget": {
+      "version": 2,
+      "max_rounds": 16,
+      "time_limit_seconds": 900,
+      "max_prompt_bytes": 262144,
+      "max_output_bytes": 65536,
+      "enforcement": {
+        "version": 1,
+        "enforced_limits": [
+          "concurrent_turns"
+        ],
+        "max_concurrent_turns": 1,
+        "monetary_limit": "not_enforced",
+        "message": "No turn, time or spending limit ends this session. One turn runs at a time. Use Stop or Steer to control the work."
+      }
+    },
+    "usage": {
+      "version": 1,
+      "rounds_used": 3,
+      "wall_seconds": 214,
+      "spend_estimate_cents": 0
+    },
+    "waiting_for": [
+      "2b3c4d5e-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
+    ],
+    "wakeups": {
+      "version": 1,
+      "waiting_for": {
+        "version": 1,
+        "subjects": [
+          {
+            "kind": "card_blocked",
+            "subject_id": "42"
+          }
+        ]
+      },
+      "message": "Events matching this session's subscriptions can wake the coordinator while it is open.",
+      "events": [
+        {
+          "version": 1,
+          "id": 71,
+          "kind": "card_blocked",
+          "payload": {
+            "task_id": 42,
+            "reason": "Choose a deploy target"
+          },
+          "subject_id": "42",
+          "state": "consumed",
+          "message": "Task #42 is blocked: Choose a deploy target",
+          "created_at": "2026-09-22T09:01:00.000000Z",
+          "delivered_at": "2026-09-22T09:01:02.000000Z",
+          "consumed_at": "2026-09-22T09:01:40.000000Z"
+        }
+      ]
+    },
+    "questions": [
+      {
+        "id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+        "state": "answered",
+        "body": "What is blocked right now?",
+        "asked_at": "2026-09-22T09:00:05.000000Z",
+        "answered_at": "2026-09-22T09:01:40.000000Z",
+        "reply": "Task #42 is blocked waiting for a deploy target.",
+        "references": [],
+        "actions": [
+          {
+            "id": "copy",
+            "label": "Copy",
+            "intent": "default",
+            "request": null
+          },
+          {
+            "id": "retry",
+            "label": "Retry",
+            "intent": "default",
+            "presentation": "send",
+            "client_token": {
+              "field": "client_token",
+              "fresh": true
+            },
+            "request": {
+              "method": "POST",
+              "path": "/assistant/sessions",
+              "body": {
+                "tool_protocol_version": 1,
+                "question": "What is blocked right now?",
+                "references": []
+              }
+            }
+          },
+          {
+            "id": "edit_resend",
+            "label": "Edit and resend",
+            "intent": "default",
+            "presentation": "edit",
+            "client_token": {
+              "field": "client_token",
+              "fresh": true
+            },
+            "request": {
+              "method": "POST",
+              "path": "/assistant/sessions",
+              "body": {
+                "tool_protocol_version": 1,
+                "question": "What is blocked right now?",
+                "references": []
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "2b3c4d5e-6f7a-4b8c-9d0e-1f2a3b4c5d6e",
+        "state": "queued",
+        "body": "Create a follow-up to write the release note.",
+        "asked_at": "2026-09-22T09:02:00.000000Z",
+        "answered_at": null,
+        "reply": null,
+        "references": [],
+        "actions": [
+          {
+            "id": "copy",
+            "label": "Copy",
+            "intent": "default",
+            "request": null
+          }
+        ]
+      }
+    ],
+    "ask": {
+      "version": 1,
+      "accepting": true,
+      "message": "This coordinator session is open. A question you send here is answered by its next turn.",
+      "action": {
+        "id": "ask_question",
+        "label": "Ask the coordinator",
+        "request": {
+          "method": "POST",
+          "path": "/assistant/sessions/3b0c7e1a-1d2f-4c3b-9a8e-5f6d7c8b9a01/questions"
+        }
+      }
+    },
+    "blocked_by_live_run": null,
+    "actions": [
+      {
+        "id": "stop_session",
+        "label": "Stop session",
+        "intent": "destructive"
+      }
+    ],
+    "steering": {
+      "version": 1,
+      "supported": true,
+      "native": false,
+      "delivery": "next_turn",
+      "message": "A running coordinator turn cannot take new input. Campus gives your guidance to the session's next turn and shows whether the coordinator confirmed it used it.",
+      "unsupported_message": "Update Campus to steer this coordinator session.",
+      "action": {
+        "id": "steer_session",
+        "label": "Send guidance",
+        "request": {
+          "method": "POST",
+          "path": "/assistant/sessions/3b0c7e1a-1d2f-4c3b-9a8e-5f6d7c8b9a01/steer"
+        }
+      },
+      "steers": [
+        {
+          "id": "4d5e6f7a-8b9c-4d0e-8f1a-2b3c4d5e6f7a",
+          "body": "Only look at the Harbor project.",
+          "state": "incorporated",
+          "native": false,
+          "incorporated": true,
+          "body_withheld": false,
+          "steered_at": "2026-09-22T09:00:30.000000Z",
+          "delivered_at": "2026-09-22T09:00:41.000000Z",
+          "incorporated_at": "2026-09-22T09:01:40.000000Z",
+          "message": "The coordinator confirmed it used this guidance."
+        },
+        {
+          "id": "5e6f7a8b-9c0d-4e1f-9a2b-3c4d5e6f7a8b",
+          "body": "Keep the release note under a paragraph.",
+          "state": "delivered",
+          "native": false,
+          "incorporated": false,
+          "body_withheld": false,
+          "steered_at": "2026-09-22T09:02:10.000000Z",
+          "delivered_at": "2026-09-22T09:02:20.000000Z",
+          "incorporated_at": null,
+          "message": "Campus gave this guidance to the turn that is running now and is waiting for the coordinator to confirm it."
+        },
+        {
+          "id": "6f7a8b9c-0d1e-4f2a-8b3c-4d5e6f7a8b9c",
+          "body": "Tag it P2.",
+          "state": "queued",
+          "native": false,
+          "incorporated": false,
+          "body_withheld": false,
+          "steered_at": "2026-09-22T09:02:30.000000Z",
+          "delivered_at": null,
+          "incorporated_at": null,
+          "message": "The turn that is running now cannot take new input, so Campus is holding this guidance for the session's next turn."
+        }
+      ]
+    },
+    "composer": {
+      "version": 1,
+      "primary": {
+        "id": "stop",
+        "label": "Stop session",
+        "intent": "destructive",
+        "request": {
+          "method": "POST",
+          "path": "/assistant/sessions/3b0c7e1a-1d2f-4c3b-9a8e-5f6d7c8b9a01/stop"
+        }
+      },
+      "return_target": {
+        "id": "steer",
+        "label": "Steer this run",
+        "request": {
+          "method": "POST",
+          "path": "/assistant/sessions/3b0c7e1a-1d2f-4c3b-9a8e-5f6d7c8b9a01/steer"
+        }
+      },
+      "secondary": [
+        {
+          "id": "steer",
+          "label": "Steer this run",
+          "request": {
+            "method": "POST",
+            "path": "/assistant/sessions/3b0c7e1a-1d2f-4c3b-9a8e-5f6d7c8b9a01/steer"
+          }
+        },
+        {
+          "id": "ask",
+          "label": "New message",
+          "request": {
+            "method": "POST",
+            "path": "/assistant/sessions/3b0c7e1a-1d2f-4c3b-9a8e-5f6d7c8b9a01/questions"
+          }
+        }
+      ],
+      "message": "A turn is running. Return sends guidance for it; Stop ends this session, or send a new message for Campus to answer separately."
+    }
+  },
+  "question": {
+    "id": "2b3c4d5e-6f7a-4b8c-9d0e-1f2a3b4c5d6e",
+    "state": "queued",
+    "body": "Create a follow-up to write the release note.",
+    "asked_at": "2026-09-22T09:02:00.000000Z",
+    "answered_at": null,
+    "reply": null,
+    "display": {
+      "version": 1,
+      "placement": "chat"
+    },
+    "error": null,
+    "answer_source": null,
+    "answer_note": null,
+    "body_withheld": false,
+    "references": [],
+    "references_withheld": false,
+    "actions": [
+      {
+        "id": "copy",
+        "label": "Copy",
+        "intent": "default",
+        "request": null
+      }
+    ],
+    "queue": null
+  }
+}

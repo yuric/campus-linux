@@ -4,7 +4,7 @@ import pathlib
 import re
 import subprocess
 
-import yaml
+from check_contract import check
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 COMMANDS = [
@@ -24,10 +24,8 @@ def documents():
             target = link.split("#")[0]
             if target and not (source.parent / target).exists():
                 raise ValueError(f"broken relative link: {source.relative_to(ROOT)} -> {target}")
-    spec = yaml.safe_load((ROOT / "docs/api/openapi.yaml").read_text())
-    if not spec.get("openapi") or not spec.get("paths"):
-        raise ValueError("legacy OpenAPI snapshot missing/empty; #985 owns path migration")
-    print(f"Legacy snapshot parses: {len(spec['paths'])} paths; NOT current-contract compatibility")
+    result = check(ROOT / "contract")
+    print(f"Contract bundle verified: {result}")
 
 
 def main():

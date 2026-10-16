@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "kind": "review",
+  "creation": {
+    "authorable": false,
+    "reason": "no_eligible_agent",
+    "recovery": {
+      "id": "open_agent_settings",
+      "label": "Open Agent settings",
+      "message": "Make an Agent ready with a supported active credential before creating a Rule.",
+      "action": "open_agent_settings"
+    }
+  },
+  "triggers": [
+    { "id": "pr_attached", "label": "When a pull request is attached", "supported": true, "authorable": true, "state": "available", "explanation": null },
+    { "id": "worktree_before_pr_create", "label": "In the worktree, right before a PR is created", "supported": false, "authorable": false, "state": "Coming later", "explanation": "Worktree review is not available in v1." }
+  ],
+  "review_modes": [
+    { "id": "single", "label": "Single reviewer", "supported": true, "authorable": true, "state": "available", "explanation": null },
+    { "id": "team", "label": "Review team", "supported": true, "authorable": true, "state": "available", "explanation": null }
+  ],
+  "instruction_sources": [
+    { "id": "prompt", "label": "Prompt", "supported": true, "authorable": true },
+    { "id": "skill_snapshot", "label": "Upload skill", "supported": true, "authorable": true }
+  ],
+  "agents": [],
+  "unavailable_agents": [],
+  "projects": [],
+  "project_scope": {
+    "modes": ["all", "selected"],
+    "options": [
+      { "id": "all", "label": "All projects", "supported": true, "authorable": true },
+      { "id": "selected", "label": "Choose projects…", "supported": true, "authorable": true }
+    ],
+    "selected_requires_active": true
+  },
+  "adversarial_preference": {
+    "default": false,
+    "label": "Prefer adversarial provider",
+    "explanation": "When possible, use a provider different from the one that produced the work being reviewed.",
+    "disclosure": "Task text, repository content, and relevant review context may be sent to a provider that did not produce the work."
+  },
+  "skill_import": {
+    "select_label": "Attach skill file",
+    "accepted_extensions": ["md", "txt"],
+    "max_bytes": 65536,
+    "errors": {
+      "unreadable": "Campus could not read that skill file.",
+      "unsupported_type": "Skill snapshots require a .md or .txt filename.",
+      "invalid_utf8": "Review instructions must be valid UTF-8 text.",
+      "too_large": "Review instruction exceeds 64 KiB."
+    }
+  },
+  "assignment_destinations": { "version": 1, "agents": [], "departments": [] },
+  "readiness": { "repository_access": "not_evaluated", "github_projection_access": "available" }
+}

@@ -1,0 +1,8 @@
+{
+  "error": "cursor is invalid for this Kanban lane and filter. Start again without cursor.",
+  "pagination_recovery": {
+    "version": 1,
+    "reason": "invalid_cursor",
+    "action": "restart_without_cursor"
+  }
+}

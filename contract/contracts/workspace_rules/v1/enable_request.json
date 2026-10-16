@@ -1,0 +1,8 @@
+{
+  "workspace_rule": {
+    "current_revision_id": "2",
+    "capability_digest": "sha256:5e58058e921e5bb6a86198b2a3d5b56ff88a4b2cbe66e01eb2c3a783a5ea68df",
+    "disclosure_version": 2,
+    "acknowledged": true
+  }
+}

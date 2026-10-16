@@ -1,0 +1,13 @@
+{
+  "contract_version": 1,
+  "resource": "ActivityEvent.author.category",
+  "produced_by": "GET /activity: api/app/services/activity_author_category.rb#ActivityAuthorCategory",
+  "author_version": 1,
+  "categories": [
+    {"value": "coordinator", "label": "Campus coordinator", "tone": "coordinator"},
+    {"value": "user", "label": "You", "tone": "user"},
+    {"value": "agent", "label": "Agents", "tone": "agent"},
+    {"value": "reviewer", "label": "Reviewers", "tone": "reviewer"},
+    {"value": "system", "label": "System", "tone": "system"}
+  ]
+}

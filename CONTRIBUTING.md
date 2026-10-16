@@ -51,13 +51,15 @@ Feature PRDs belong at `TODO/<feature-name>/PRD.md`; follow [TODO/README.md](TOD
 The root placeholder PRD has been replaced. Shared renderer changes belong in
 `campus-macos`; API changes belong in `campus-server`, merged before Linux consumers.
 The [implementation gates](docs/implementation-gates.md) record the remaining evidence
-required during implementation. S2 owns the post-S1 contract import and
-the exporter's path migration, including updates to documentation and CI in the same PR;
-the existing snapshot is not refreshed by this planning work.
+required during implementation. The post-S1 snapshot lives in `contract/`;
+[the import receipt](docs/acceptance/contract-import.md) records its merged server source,
+export command and verification. Refresh it with the server-owned exporter and update
+all affected documentation and CI in the same PR; never hand-edit the bundle.
 
 Documentation changes are checked for internal links and OpenAPI snapshot parsing by
 `.github/workflows/docs.yml` where its repository-visibility condition permits. The same
-workflow runs `scripts/check-client-boundary.sh` and its standard-library regression suite:
+workflow runs `scripts/check-client-boundary.sh` and the shared repository regression suite
+(the contract checks use the existing PyYAML verification dependency):
 `python3 -B -m unittest discover -s scripts/tests -v`. The gate checks the syntax and
 reviewed exceptions described in [the boundary policy](docs/client-boundary.md); it is not
 a semantic proof. These are repository checks, not Docker/app builds or runtime parity

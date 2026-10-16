@@ -1,0 +1,35 @@
+{
+  "work": {
+    "version": 2,
+    "kind": "assistant_coordinator",
+    "correlation_id": "assistant_coordinator:00000000-0000-4000-8000-000000000001",
+    "output_required": false,
+    "workspace_access": "none",
+    "tool_access": "manager_tool_free_v1"
+  },
+  "broker_request": {
+    "execution_capacity": {
+      "version": 1,
+      "max_concurrent_runs": 1,
+      "retryable_refusals": [
+        "broker_capacity",
+        "executor_admission_paused"
+      ],
+      "readiness": {
+        "version": 1,
+        "state": "ready",
+        "reason": "legacy",
+        "severity": "info",
+        "title": "Computer execution is available",
+        "message": "This computer uses serial execution until its helper is updated.",
+        "actions": []
+      }
+    },
+    "engine": "claude",
+    "workdir": "",
+    "prompt": "The Rails-authored coordinator turn prompt for this session.",
+    "timeout_ms": 21600000,
+    "model": "claude-sonnet-5",
+    "env": {}
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "item_kind": "workspace_rule_evaluations",
+  "items": [
+    {
+      "id": 1,
+      "kind": "transition_check",
+      "rule_id": 1,
+      "revision_id": 1,
+      "state": "failed",
+      "state_label": "Did not pass",
+      "severity": "warning",
+      "resolution": "kept_in_place",
+      "resolution_label": "Kept in place",
+      "active": false,
+      "occurred_at": "2026-09-25T23:37:36.024Z",
+      "created_at": "2026-09-25T23:37:35.926Z",
+      "finished_at": "2026-09-25T23:37:36.024Z",
+      "deadline_at": "2026-09-25T23:47:35.920Z",
+      "task": {
+        "id": 1,
+        "title": "Ship the widget"
+      },
+      "actor": {
+        "kind": "human",
+        "name": "admin"
+      },
+      "transition": {
+        "from": {
+          "id": "in_progress",
+          "label": "In progress"
+        },
+        "to": {
+          "id": "done",
+          "label": "Done"
+        }
+      },
+      "assignment": null,
+      "escalation": null,
+      "rule_action": null,
+      "result": {
+        "reason": "check_findings",
+        "message": "The description does not say which tests were run.",
+        "verdict": "fail",
+        "findings": "The description does not say which tests were run."
+      },
+      "message": "The description does not say which tests were run.",
+      "failure": {
+        "reason": "check_findings",
+        "detail": "The description does not say which tests were run."
+      }
+    }
+  ],
+  "next_cursor": null,
+  "retained_history": {
+    "state": "retained",
+    "message": "Rule check history is kept with this Rule's revisions."
+  }
+}

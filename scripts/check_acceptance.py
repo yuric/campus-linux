@@ -11,8 +11,61 @@ ROOT = Path(__file__).resolve().parents[1]
 REQUIRED_JOBS = {"verify_amd64", "verify_arm64"}
 
 
+def resolve_pointer(document, pointer):
+    if not isinstance(pointer, str) or not pointer.startswith("#/"):
+        raise ValueError("invalid schema pointer")
+    node = document
+    try:
+        for part in pointer[2:].split("/"):
+            if re.search(r"~(?![01])", part):
+                raise ValueError("invalid JSON pointer escape")
+            key = part.replace("~1", "/").replace("~0", "~")
+            if isinstance(node, list):
+                if not re.fullmatch(r"0|[1-9][0-9]*", key):
+                    raise ValueError("invalid JSON pointer array index")
+                node = node[int(key)]
+            else:
+                node = node[key]
+    except (KeyError, IndexError, TypeError) as exc:
+        raise ValueError(f"dangling schema pointer: {pointer}") from exc
+    return node
+
+
+def check_contract_bindings(data, source, spec_bytes):
+    if data.get("server_contract_source") != source.strip():
+        raise ValueError("ledger contract source mismatch")
+    if data.get("server_contract_sha256") != hashlib.sha256(spec_bytes).hexdigest():
+        raise ValueError("ledger contract hash mismatch")
+    # Receipt-only admission does not parse the spec or require PyYAML.
+    import yaml
+    spec = yaml.safe_load(spec_bytes)
+    operations = pointers = 0
+    for row in data["actions"]:
+        for op in row["operations"]:
+            path, method = op.get("path"), op.get("method")
+            if not isinstance(path, str) or not isinstance(method, str):
+                raise ValueError("missing operation path/method")
+            expected = "#/paths/" + path.replace("~", "~0").replace("/", "~1") + "/" + method.lower()
+            if op.get("schema_pointer") != expected:
+                raise ValueError("operation pointer/path/method mismatch")
+            operation = resolve_pointer(spec, expected)
+            if (not isinstance(operation, dict) or not op.get("operation_id")
+                    or operation.get("operationId") != op["operation_id"]):
+                raise ValueError("wrong or missing operationId")
+            pointers += 1
+            for pointer in op["schema_refs"]:
+                resolve_pointer(spec, pointer)
+                pointers += 1
+            operations += 1
+    return operations, pointers
+
+
 def check_inventory(root=ROOT):
     data = json.loads((root / "docs/acceptance/actions.json").read_text())
+    operations, pointers = check_contract_bindings(
+        data, (root / "contract/.source").read_text(),
+        (root / "contract/api/docs/openapi.yaml").read_bytes())
+    print(f"Contract ledger: {operations} operation mappings; {pointers} resolved pointers")
     ids = set()
     groups = set()
     for row in data["actions"]:

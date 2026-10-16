@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "surface": "mobile",
+  "default_project_id": 42,
+  "request_defaults": {
+    "ready": false
+  },
+  "project_message": "Uses the island's default project unless you choose another.",
+  "landing": {
+    "state": "rules_apply",
+    "message": "New tasks normally start in Imaginarium. Workspace Rules can change defaults, act on the task or refuse creation. The saved task shows where it landed."
+  }
+}

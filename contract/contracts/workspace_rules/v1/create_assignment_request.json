@@ -1,0 +1,29 @@
+{
+  "workspace_rule": {
+    "name": "Security routing",
+    "kind": "assignment",
+    "trigger_id": "task_assignment_requested",
+    "project_scope": {
+      "mode": "all",
+      "project_ids": []
+    },
+    "assignment": {
+      "destinations": [
+        {
+          "kind": "agent",
+          "agent_id": 1
+        },
+        {
+          "kind": "department",
+          "specialty": "security"
+        }
+      ],
+      "conditions": {
+        "priorities": [
+          "P0",
+          "P1"
+        ]
+      }
+    }
+  }
+}

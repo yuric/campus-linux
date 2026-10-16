@@ -24,12 +24,14 @@ graphics mode. A proposed mechanism is not an acceptance result.
 
 S2 is a Linux-owned contract-import PR from a recorded merged server SHA containing the
 S1 changes required by its consumers. Use the server-owned
-[exporter](https://github.com/yuric/campus-server/blob/d35361542b895a4fd73c838b1be3531ceea5d5fd/scripts/oss/export-clients.mjs#L48),
-which replaces `docs/api/openapi.yaml` and `docs/api/.source` with a `contract/` bundle
+[exporter](https://github.com/yuric/campus-server/blob/a7e0abceb23f874e5a8c01ba043679a844e6d287/scripts/oss/export-clients.mjs),
+which replaces the legacy snapshot layout with a `contract/` bundle
 (including `contract/api/docs/openapi.yaml`, fixtures and `contract/.source`). Move every
 documentation, generator and CI reference in that same PR; prove external fixture links,
 provenance and clean re-export. If the exporter needs a correction, merge it in the server
-first. This PR leaves the old snapshot untouched and makes no current-contract claim.
+first. The original planning PR left the old snapshot untouched. S2's
+[import receipt](acceptance/contract-import.md) now records the merged source and complete
+bundle verification; this does not prove live Linux behavior or compatibility with later refs.
 
 L1 pins the generator/version/command, commits generated wire types and runs
 regenerate-and-diff. Test additive fields and unknown enums without crashing unrelated

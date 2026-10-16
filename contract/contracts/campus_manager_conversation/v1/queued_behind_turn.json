@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "position": 1,
+  "message": "Queued behind the current answer",
+  "display": { "version": 1, "placement": "status" }
+}

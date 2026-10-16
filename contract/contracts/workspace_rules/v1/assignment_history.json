@@ -1,0 +1,150 @@
+{
+  "version": 1,
+  "item_kind": "workspace_rule_evaluations",
+  "items": [
+    {
+      "id": 10,
+      "kind": "assignment",
+      "rule_id": 5,
+      "revision_id": 5,
+      "state": "skipped",
+      "state_label": "Skipped",
+      "severity": "warning",
+      "resolution": null,
+      "resolution_label": null,
+      "active": false,
+      "occurred_at": "2026-09-28T03:54:11.013Z",
+      "created_at": "2026-09-28T03:54:11.013Z",
+      "finished_at": "2026-09-28T03:54:11.013Z",
+      "deadline_at": null,
+      "task": {
+        "id": 10,
+        "title": "Rotate the keys"
+      },
+      "actor": {
+        "kind": "system",
+        "name": "auto-assigner"
+      },
+      "transition": null,
+      "assignment": {
+        "destinations": [
+          {
+            "kind": "agent",
+            "label": "Scout",
+            "state": "skipped",
+            "reason": "Scout is not among the Offices Campus can offer for this task right now."
+          },
+          {
+            "kind": "department",
+            "label": "security department",
+            "state": "skipped",
+            "reason": "No Office in the security department is eligible for this task right now: Scout is not among the Offices Campus can offer for this task right now. Sage is not among the Offices Campus can offer for this task right now."
+          }
+        ],
+        "candidate_ids": []
+      },
+      "escalation": null,
+      "rule_action": null,
+      "result": {
+        "reason": "no_eligible_destination",
+        "message": "Workspace Rule “Security routing” names no Office Campus can offer for this task right now, so Campus chose from every eligible Office.",
+        "destinations": [
+          {
+            "kind": "agent",
+            "label": "Scout",
+            "state": "skipped",
+            "reason": "Scout is not among the Offices Campus can offer for this task right now."
+          },
+          {
+            "kind": "department",
+            "label": "security department",
+            "state": "skipped",
+            "reason": "No Office in the security department is eligible for this task right now: Scout is not among the Offices Campus can offer for this task right now. Sage is not among the Offices Campus can offer for this task right now."
+          }
+        ],
+        "candidate_ids": []
+      },
+      "message": "Workspace Rule “Security routing” names no Office Campus can offer for this task right now, so Campus chose from every eligible Office.",
+      "failure": {
+        "reason": "no_eligible_destination",
+        "detail": "Workspace Rule “Security routing” names no Office Campus can offer for this task right now, so Campus chose from every eligible Office."
+      }
+    },
+    {
+      "id": 9,
+      "kind": "assignment",
+      "rule_id": 5,
+      "revision_id": 5,
+      "state": "applied",
+      "state_label": "Applied",
+      "severity": "message",
+      "resolution": null,
+      "resolution_label": null,
+      "active": false,
+      "occurred_at": "2026-09-28T03:54:10.906Z",
+      "created_at": "2026-09-28T03:54:10.920Z",
+      "finished_at": "2026-09-28T03:54:10.906Z",
+      "deadline_at": null,
+      "task": {
+        "id": 9,
+        "title": "Harden the login form"
+      },
+      "actor": {
+        "kind": "system",
+        "name": "auto-assigner"
+      },
+      "transition": null,
+      "assignment": {
+        "destinations": [
+          {
+            "kind": "agent",
+            "label": "Scout",
+            "state": "kept",
+            "reason": null
+          },
+          {
+            "kind": "department",
+            "label": "security department",
+            "state": "kept",
+            "reason": null
+          }
+        ],
+        "candidate_ids": [
+          5,
+          6
+        ]
+      },
+      "escalation": null,
+      "rule_action": null,
+      "result": {
+        "reason": "narrowed",
+        "message": "Workspace Rule “Security routing” narrowed the choice to Scout and Sage.",
+        "destinations": [
+          {
+            "kind": "agent",
+            "label": "Scout",
+            "state": "kept",
+            "reason": null
+          },
+          {
+            "kind": "department",
+            "label": "security department",
+            "state": "kept",
+            "reason": null
+          }
+        ],
+        "candidate_ids": [
+          5,
+          6
+        ]
+      },
+      "message": "Workspace Rule “Security routing” narrowed the choice to Scout and Sage.",
+      "failure": null
+    }
+  ],
+  "next_cursor": null,
+  "retained_history": {
+    "state": "retained",
+    "message": "Rule check history is kept with this Rule's revisions."
+  }
+}

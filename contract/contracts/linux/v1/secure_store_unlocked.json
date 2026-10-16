@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "state": "unlocked",
+  "reason": "ready",
+  "severity": "info",
+  "message": "The secure credential store is available."
+}

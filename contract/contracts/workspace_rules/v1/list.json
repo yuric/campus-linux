@@ -1,0 +1,881 @@
+{
+  "items": [
+    {
+      "id": "campus.review.new_task_draft",
+      "current_revision_id": null,
+      "revision": 1,
+      "name": "Review new task drafts",
+      "kind": "review",
+      "origin": "campus",
+      "protected": true,
+      "enabled": true,
+      "trigger": {
+        "id": "task_draft_created",
+        "label": "When a task draft is created",
+        "supported": true,
+        "authorable": false,
+        "state": "Always on",
+        "explanation": null
+      },
+      "project_scope": {
+        "mode": "all",
+        "project_ids": []
+      },
+      "conditions": {
+        "version": 1,
+        "items": []
+      },
+      "execution_principal": null,
+      "execution_profile": {
+        "id": "hardened_exact_pr",
+        "capability_digest": "sha256:0d35fb53638ae727edefb2afb9dccf40f272a2f9d44852fc5ccf0cf1903d36ec",
+        "response_deadline_minutes": 30,
+        "team_child_timeout_minutes": 22,
+        "team_aggregator_timeout_minutes": 8
+      },
+      "review_plan": null,
+      "activation_required": false,
+      "allowed_actions": [],
+      "actions": [],
+      "summary": "Review every new task draft.",
+      "source_label": "Task creation service",
+      "details": {},
+      "status": {
+        "id": "always_on",
+        "label": "Always on",
+        "severity": "message"
+      },
+      "lock": {
+        "locked": true,
+        "label": "Campus default",
+        "explanation": "Campus owns this behavior and it cannot be edited."
+      },
+      "archived": false
+    },
+    {
+      "id": "campus.review.agent_idea_triage",
+      "current_revision_id": null,
+      "revision": 1,
+      "name": "Triage agent-proposed ideas",
+      "kind": "review",
+      "origin": "campus",
+      "protected": true,
+      "enabled": true,
+      "trigger": {
+        "id": "agent_idea_created",
+        "label": "When an agent idea is created",
+        "supported": true,
+        "authorable": false,
+        "state": "Always on",
+        "explanation": null
+      },
+      "project_scope": {
+        "mode": "all",
+        "project_ids": []
+      },
+      "conditions": {
+        "version": 1,
+        "items": []
+      },
+      "execution_principal": null,
+      "execution_profile": {
+        "id": "hardened_exact_pr",
+        "capability_digest": "sha256:0d35fb53638ae727edefb2afb9dccf40f272a2f9d44852fc5ccf0cf1903d36ec",
+        "response_deadline_minutes": 30,
+        "team_child_timeout_minutes": 22,
+        "team_aggregator_timeout_minutes": 8
+      },
+      "review_plan": null,
+      "activation_required": false,
+      "allowed_actions": [],
+      "actions": [],
+      "summary": "Triage agent-proposed ideas for clarity and duplicates.",
+      "source_label": "Task creation service",
+      "details": {},
+      "status": {
+        "id": "always_on",
+        "label": "Always on",
+        "severity": "message"
+      },
+      "lock": {
+        "locked": true,
+        "label": "Campus default",
+        "explanation": "Campus owns this behavior and it cannot be edited."
+      },
+      "archived": false
+    },
+    {
+      "id": "campus.review.pr_cross_model",
+      "current_revision_id": null,
+      "revision": 1,
+      "name": "Cross-model pull request review",
+      "kind": "review",
+      "origin": "campus",
+      "protected": true,
+      "enabled": true,
+      "trigger": {
+        "id": "pr_attached",
+        "label": "When a pull request is attached or its head changes",
+        "supported": true,
+        "authorable": false,
+        "state": "Always on",
+        "explanation": null
+      },
+      "project_scope": {
+        "mode": "all",
+        "project_ids": []
+      },
+      "conditions": {
+        "version": 1,
+        "items": []
+      },
+      "execution_principal": null,
+      "execution_profile": {
+        "id": "hardened_exact_pr",
+        "capability_digest": "sha256:0d35fb53638ae727edefb2afb9dccf40f272a2f9d44852fc5ccf0cf1903d36ec",
+        "response_deadline_minutes": 30,
+        "team_child_timeout_minutes": 22,
+        "team_aggregator_timeout_minutes": 8
+      },
+      "review_plan": null,
+      "activation_required": false,
+      "allowed_actions": [],
+      "actions": [],
+      "summary": "Review each agent-attached PR head with a different provider and model.",
+      "source_label": "Workspace Rule review",
+      "details": {
+        "require_cross_model": true
+      },
+      "status": {
+        "id": "always_on",
+        "label": "Always on",
+        "severity": "message"
+      },
+      "lock": {
+        "locked": true,
+        "label": "Campus default",
+        "explanation": "Campus owns this behavior and it cannot be edited."
+      },
+      "archived": false
+    },
+    {
+      "id": "campus.workflow.transitions",
+      "current_revision_id": null,
+      "revision": 1,
+      "name": "Legal workflow transitions",
+      "kind": "transition",
+      "origin": "campus",
+      "protected": true,
+      "enabled": true,
+      "trigger": {
+        "id": "task_transition_requested",
+        "label": "When a task transition is requested",
+        "supported": true,
+        "authorable": false,
+        "state": "Always on",
+        "explanation": null
+      },
+      "project_scope": {
+        "mode": "all",
+        "project_ids": []
+      },
+      "conditions": {
+        "version": 1,
+        "items": []
+      },
+      "execution_principal": null,
+      "execution_profile": {
+        "id": "hardened_exact_pr",
+        "capability_digest": "sha256:0d35fb53638ae727edefb2afb9dccf40f272a2f9d44852fc5ccf0cf1903d36ec",
+        "response_deadline_minutes": 30,
+        "team_child_timeout_minutes": 22,
+        "team_aggregator_timeout_minutes": 8
+      },
+      "review_plan": null,
+      "activation_required": false,
+      "allowed_actions": [],
+      "actions": [],
+      "summary": "Campus enforces the published task state machine.",
+      "source_label": "TaskWorkflow / Task",
+      "details": {
+        "stages": [
+          {
+            "id": "imaginarium",
+            "transitions": [
+              {
+                "to": "seashore",
+                "workflow_action_ids": [
+                  "send_to_seashore"
+                ]
+              },
+              {
+                "to": "closed",
+                "workflow_action_ids": [
+                  "close"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "seashore",
+            "transitions": [
+              {
+                "to": "in_progress",
+                "workflow_action_ids": [
+                  "start_work"
+                ]
+              },
+              {
+                "to": "blocked",
+                "workflow_action_ids": [
+                  "block_for_review"
+                ]
+              },
+              {
+                "to": "imaginarium",
+                "workflow_action_ids": [
+                  "return_to_ideas",
+                  "request_approval"
+                ]
+              },
+              {
+                "to": "closed",
+                "workflow_action_ids": [
+                  "close"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "in_progress",
+            "transitions": [
+              {
+                "to": "blocked",
+                "workflow_action_ids": [
+                  "block_for_review"
+                ]
+              },
+              {
+                "to": "department",
+                "workflow_action_ids": []
+              },
+              {
+                "to": "done",
+                "workflow_action_ids": [
+                  "complete"
+                ]
+              },
+              {
+                "to": "closed",
+                "workflow_action_ids": [
+                  "close"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "department",
+            "transitions": [
+              {
+                "to": "in_progress",
+                "workflow_action_ids": [
+                  "resume"
+                ]
+              },
+              {
+                "to": "blocked",
+                "workflow_action_ids": []
+              },
+              {
+                "to": "closed",
+                "workflow_action_ids": [
+                  "close"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "blocked",
+            "transitions": [
+              {
+                "to": "in_progress",
+                "workflow_action_ids": [
+                  "unblock",
+                  "reassign"
+                ]
+              },
+              {
+                "to": "seashore",
+                "workflow_action_ids": [
+                  "return_to_ready"
+                ]
+              },
+              {
+                "to": "imaginarium",
+                "workflow_action_ids": [
+                  "return_to_ideas",
+                  "request_approval"
+                ]
+              },
+              {
+                "to": "closed",
+                "workflow_action_ids": [
+                  "close"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "done",
+            "transitions": [
+              {
+                "to": "imaginarium",
+                "workflow_action_ids": [
+                  "reopen"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "closed",
+            "transitions": [
+              {
+                "to": "imaginarium",
+                "workflow_action_ids": [
+                  "reopen"
+                ]
+              }
+            ]
+          }
+        ],
+        "labels": {
+          "imaginarium": "Imaginarium",
+          "approval": "Awaiting your approval",
+          "blocked": "Blocked",
+          "seashore": "Ready",
+          "in_progress": "In progress",
+          "done": "Done"
+        }
+      },
+      "status": {
+        "id": "always_on",
+        "label": "Always on",
+        "severity": "message"
+      },
+      "lock": {
+        "locked": true,
+        "label": "Campus default",
+        "explanation": "Campus owns this behavior and it cannot be edited."
+      },
+      "archived": false
+    },
+    {
+      "id": "campus.workflow.blocked_done",
+      "current_revision_id": null,
+      "revision": 1,
+      "name": "Blocked work cannot jump directly to Done",
+      "kind": "transition",
+      "origin": "campus",
+      "protected": true,
+      "enabled": true,
+      "trigger": {
+        "id": "blocked_done_refused",
+        "label": "When blocked work attempts to jump to Done",
+        "supported": true,
+        "authorable": false,
+        "state": "Always on",
+        "explanation": null
+      },
+      "project_scope": {
+        "mode": "all",
+        "project_ids": []
+      },
+      "conditions": {
+        "version": 1,
+        "items": []
+      },
+      "execution_principal": null,
+      "execution_profile": {
+        "id": "hardened_exact_pr",
+        "capability_digest": "sha256:0d35fb53638ae727edefb2afb9dccf40f272a2f9d44852fc5ccf0cf1903d36ec",
+        "response_deadline_minutes": 30,
+        "team_child_timeout_minutes": 22,
+        "team_aggregator_timeout_minutes": 8
+      },
+      "review_plan": null,
+      "activation_required": false,
+      "allowed_actions": [],
+      "actions": [],
+      "summary": "Blocked work returns to an allowed recovery stage before it can be completed.",
+      "source_label": "Task::TRANSITIONS / TaskWorkflow",
+      "details": {
+        "from": "blocked",
+        "forbidden_to": "done",
+        "allowed_to": [
+          "in_progress",
+          "seashore",
+          "imaginarium",
+          "closed"
+        ]
+      },
+      "status": {
+        "id": "always_on",
+        "label": "Always on",
+        "severity": "message"
+      },
+      "lock": {
+        "locked": true,
+        "label": "Campus default",
+        "explanation": "Campus owns this behavior and it cannot be edited."
+      },
+      "archived": false
+    },
+    {
+      "id": "campus.workflow.reopen",
+      "current_revision_id": null,
+      "revision": 1,
+      "name": "Reopening Done or Closed work is human-only",
+      "kind": "transition",
+      "origin": "campus",
+      "protected": true,
+      "enabled": true,
+      "trigger": {
+        "id": "terminal_reopen",
+        "label": "When terminal work is reopened",
+        "supported": true,
+        "authorable": false,
+        "state": "Always on",
+        "explanation": null
+      },
+      "project_scope": {
+        "mode": "all",
+        "project_ids": []
+      },
+      "conditions": {
+        "version": 1,
+        "items": []
+      },
+      "execution_principal": null,
+      "execution_profile": {
+        "id": "hardened_exact_pr",
+        "capability_digest": "sha256:0d35fb53638ae727edefb2afb9dccf40f272a2f9d44852fc5ccf0cf1903d36ec",
+        "response_deadline_minutes": 30,
+        "team_child_timeout_minutes": 22,
+        "team_aggregator_timeout_minutes": 8
+      },
+      "review_plan": null,
+      "activation_required": false,
+      "allowed_actions": [],
+      "actions": [],
+      "summary": "Reopening terminal work returns it to the Imaginarium and restarts vetting.",
+      "source_label": "Task#transition! / TaskWorkflow",
+      "details": {
+        "from": [
+          "done",
+          "closed"
+        ],
+        "to": "imaginarium",
+        "actor_kind": "human"
+      },
+      "status": {
+        "id": "always_on",
+        "label": "Always on",
+        "severity": "message"
+      },
+      "lock": {
+        "locked": true,
+        "label": "Campus default",
+        "explanation": "Campus owns this behavior and it cannot be edited."
+      },
+      "archived": false
+    },
+    {
+      "id": "campus.task_creation.defaults",
+      "current_revision_id": null,
+      "revision": 1,
+      "name": "Task creation defaults",
+      "kind": "task_creation",
+      "origin": "campus",
+      "protected": true,
+      "enabled": true,
+      "trigger": {
+        "id": "task_created",
+        "label": "When a task is created",
+        "supported": true,
+        "authorable": false,
+        "state": "Always on",
+        "explanation": null
+      },
+      "project_scope": {
+        "mode": "all",
+        "project_ids": []
+      },
+      "conditions": {
+        "version": 1,
+        "items": []
+      },
+      "execution_principal": null,
+      "execution_profile": {
+        "id": "hardened_exact_pr",
+        "capability_digest": "sha256:0d35fb53638ae727edefb2afb9dccf40f272a2f9d44852fc5ccf0cf1903d36ec",
+        "response_deadline_minutes": 30,
+        "team_child_timeout_minutes": 22,
+        "team_aggregator_timeout_minutes": 8
+      },
+      "review_plan": null,
+      "activation_required": false,
+      "allowed_actions": [],
+      "actions": [],
+      "summary": "Unassigned work starts in Imaginarium with P3 priority and auto-triage enabled.",
+      "source_label": "Task",
+      "details": {},
+      "status": {
+        "id": "always_on",
+        "label": "Always on",
+        "severity": "message"
+      },
+      "lock": {
+        "locked": true,
+        "label": "Campus default",
+        "explanation": "Campus owns this behavior and it cannot be edited."
+      },
+      "archived": false
+    },
+    {
+      "id": "campus.assignment.auto",
+      "current_revision_id": null,
+      "revision": 1,
+      "name": "Auto-assign Ready work",
+      "kind": "assignment",
+      "origin": "campus",
+      "protected": true,
+      "enabled": true,
+      "trigger": {
+        "id": "task_ready",
+        "label": "When a task is Ready",
+        "supported": true,
+        "authorable": false,
+        "state": "Always on",
+        "explanation": null
+      },
+      "project_scope": {
+        "mode": "all",
+        "project_ids": []
+      },
+      "conditions": {
+        "version": 1,
+        "items": []
+      },
+      "execution_principal": null,
+      "execution_profile": {
+        "id": "hardened_exact_pr",
+        "capability_digest": "sha256:0d35fb53638ae727edefb2afb9dccf40f272a2f9d44852fc5ccf0cf1903d36ec",
+        "response_deadline_minutes": 30,
+        "team_child_timeout_minutes": 22,
+        "team_aggregator_timeout_minutes": 8
+      },
+      "review_plan": null,
+      "activation_required": false,
+      "allowed_actions": [],
+      "actions": [],
+      "summary": "Auto-assign Ready work through the existing reviewer.",
+      "source_label": "TaskAssignment / AutoAssigner",
+      "details": {},
+      "status": {
+        "id": "always_on",
+        "label": "Always on",
+        "severity": "message"
+      },
+      "lock": {
+        "locked": true,
+        "label": "Campus default",
+        "explanation": "Campus owns this behavior and it cannot be edited."
+      },
+      "archived": false
+    },
+    {
+      "id": "campus.assignment.recovery",
+      "current_revision_id": null,
+      "revision": 1,
+      "name": "Assignment recovery",
+      "kind": "assignment",
+      "origin": "campus",
+      "protected": true,
+      "enabled": true,
+      "trigger": {
+        "id": "assignment_failed",
+        "label": "When assignment fails",
+        "supported": true,
+        "authorable": false,
+        "state": "Always on",
+        "explanation": null
+      },
+      "project_scope": {
+        "mode": "all",
+        "project_ids": []
+      },
+      "conditions": {
+        "version": 1,
+        "items": []
+      },
+      "execution_principal": null,
+      "execution_profile": {
+        "id": "hardened_exact_pr",
+        "capability_digest": "sha256:0d35fb53638ae727edefb2afb9dccf40f272a2f9d44852fc5ccf0cf1903d36ec",
+        "response_deadline_minutes": 30,
+        "team_child_timeout_minutes": 22,
+        "team_aggregator_timeout_minutes": 8
+      },
+      "review_plan": null,
+      "activation_required": false,
+      "allowed_actions": [],
+      "actions": [],
+      "summary": "Retry and recover failed or stale assignment before returning work to Ready.",
+      "source_label": "TaskAssignment",
+      "details": {},
+      "status": {
+        "id": "always_on",
+        "label": "Always on",
+        "severity": "message"
+      },
+      "lock": {
+        "locked": true,
+        "label": "Campus default",
+        "explanation": "Campus owns this behavior and it cannot be edited."
+      },
+      "archived": false
+    },
+    {
+      "id": "campus.escalation.run_start_failures",
+      "current_revision_id": null,
+      "revision": 1,
+      "name": "Repeated run-start failures",
+      "kind": "escalation",
+      "origin": "campus",
+      "protected": true,
+      "enabled": true,
+      "trigger": {
+        "id": "run_start_failed",
+        "label": "When a run fails to start",
+        "supported": true,
+        "authorable": false,
+        "state": "Always on",
+        "explanation": null
+      },
+      "project_scope": {
+        "mode": "all",
+        "project_ids": []
+      },
+      "conditions": {
+        "version": 1,
+        "items": []
+      },
+      "execution_principal": null,
+      "execution_profile": {
+        "id": "hardened_exact_pr",
+        "capability_digest": "sha256:0d35fb53638ae727edefb2afb9dccf40f272a2f9d44852fc5ccf0cf1903d36ec",
+        "response_deadline_minutes": 30,
+        "team_child_timeout_minutes": 22,
+        "team_aggregator_timeout_minutes": 8
+      },
+      "review_plan": null,
+      "activation_required": false,
+      "allowed_actions": [],
+      "actions": [],
+      "summary": "Stop auto-assignment after three run-start failures in seven days.",
+      "source_label": "TaskAssignment",
+      "details": {
+        "max_failures": 3,
+        "window_days": 7
+      },
+      "status": {
+        "id": "always_on",
+        "label": "Always on",
+        "severity": "message"
+      },
+      "lock": {
+        "locked": true,
+        "label": "Campus default",
+        "explanation": "Campus owns this behavior and it cannot be edited."
+      },
+      "archived": false
+    },
+    {
+      "id": "campus.escalation.claim_expiry",
+      "current_revision_id": null,
+      "revision": 1,
+      "name": "Expire silent task claims",
+      "kind": "escalation",
+      "origin": "campus",
+      "protected": true,
+      "enabled": true,
+      "trigger": {
+        "id": "claim_silence",
+        "label": "When a task claim goes silent",
+        "supported": true,
+        "authorable": false,
+        "state": "Always on",
+        "explanation": null
+      },
+      "project_scope": {
+        "mode": "all",
+        "project_ids": []
+      },
+      "conditions": {
+        "version": 1,
+        "items": []
+      },
+      "execution_principal": null,
+      "execution_profile": {
+        "id": "hardened_exact_pr",
+        "capability_digest": "sha256:0d35fb53638ae727edefb2afb9dccf40f272a2f9d44852fc5ccf0cf1903d36ec",
+        "response_deadline_minutes": 30,
+        "team_child_timeout_minutes": 22,
+        "team_aggregator_timeout_minutes": 8
+      },
+      "review_plan": null,
+      "activation_required": false,
+      "allowed_actions": [],
+      "actions": [],
+      "summary": "Expire silent task claims after the current lease.",
+      "source_label": "Task",
+      "details": {
+        "lease_minutes": 15
+      },
+      "status": {
+        "id": "always_on",
+        "label": "Always on",
+        "severity": "message"
+      },
+      "lock": {
+        "locked": true,
+        "label": "Campus default",
+        "explanation": "Campus owns this behavior and it cannot be edited."
+      },
+      "archived": false
+    },
+    {
+      "id": "campus.escalation.department_unstaffed",
+      "current_revision_id": null,
+      "revision": 1,
+      "name": "Unstaffed department work",
+      "kind": "escalation",
+      "origin": "campus",
+      "protected": true,
+      "enabled": true,
+      "trigger": {
+        "id": "department_unstaffed",
+        "label": "When a department cannot be staffed",
+        "supported": true,
+        "authorable": false,
+        "state": "Always on",
+        "explanation": null
+      },
+      "project_scope": {
+        "mode": "all",
+        "project_ids": []
+      },
+      "conditions": {
+        "version": 1,
+        "items": []
+      },
+      "execution_principal": null,
+      "execution_profile": {
+        "id": "hardened_exact_pr",
+        "capability_digest": "sha256:0d35fb53638ae727edefb2afb9dccf40f272a2f9d44852fc5ccf0cf1903d36ec",
+        "response_deadline_minutes": 30,
+        "team_child_timeout_minutes": 22,
+        "team_aggregator_timeout_minutes": 8
+      },
+      "review_plan": null,
+      "activation_required": false,
+      "allowed_actions": [],
+      "actions": [],
+      "summary": "Block specialist work when a department cannot staff it.",
+      "source_label": "TaskAssignment",
+      "details": {},
+      "status": {
+        "id": "always_on",
+        "label": "Always on",
+        "severity": "message"
+      },
+      "lock": {
+        "locked": true,
+        "label": "Campus default",
+        "explanation": "Campus owns this behavior and it cannot be edited."
+      },
+      "archived": false
+    },
+    {
+      "id": "campus.review.pr_review_triage",
+      "current_revision_id": null,
+      "revision": 1,
+      "name": "Coordinator PR review triage",
+      "kind": "review",
+      "origin": "campus",
+      "protected": false,
+      "enabled": true,
+      "trigger": {
+        "id": "review_completed",
+        "label": "After a Campus PR review completes",
+        "supported": true,
+        "authorable": false,
+        "state": "available",
+        "explanation": null
+      },
+      "project_scope": {
+        "mode": "all",
+        "project_ids": []
+      },
+      "execution_principal": null,
+      "execution_profile": null,
+      "review_plan": null,
+      "activation_required": false,
+      "allowed_actions": [
+        "disable"
+      ],
+      "actions": [
+        {
+          "id": "disable",
+          "label": "Disable",
+          "intent": "default",
+          "confirmation": null
+        }
+      ],
+      "summary": "After each PR review, Campus Coordinator marks which findings must be fixed and which are optional.",
+      "source_label": "Campus default",
+      "details": {},
+      "status": {
+        "id": "enabled",
+        "label": "Enabled",
+        "severity": "message"
+      },
+      "lock": {
+        "locked": false,
+        "label": "Campus default",
+        "explanation": "Campus ships this on by default. Turning it off stops the Coordinator's triage and its merge check only; the PR review itself keeps running."
+      },
+      "archived": false
+    }
+  ],
+  "counts": {
+    "all": 13,
+    "active": 13,
+    "archived": 0,
+    "by_kind": {
+      "review": 4,
+      "transition": 3,
+      "task_creation": 1,
+      "assignment": 2,
+      "escalation": 3
+    }
+  },
+  "empty_state": {
+    "label": "No protected Rules are available on this Island."
+  },
+  "pagination": {
+    "limit": 25,
+    "next_cursor": null,
+    "has_more": false
+  }
+}

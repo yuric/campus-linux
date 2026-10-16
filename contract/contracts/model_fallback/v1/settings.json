@@ -1,0 +1,5 @@
+{
+  "model_fallback_enabled": false,
+  "model_fallback_label": "Continue on another model",
+  "model_fallback_note": "When one model reaches its limit, continue the same work on the next eligible model on the same account, keeping the workspace. The Office keeps its name, stays on the new model and uses Automatic reasoning effort until you change them. Off by default. When off or no model remains, wait for the model to reset; this never switches accounts or providers."
+}

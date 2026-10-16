@@ -17,8 +17,8 @@ trade-offs are in [PRD.md section 4](PRD.md#4-architecture-and-decisions).
 - [Feature PRD directory](TODO/README.md)
 - [Architecture](ARCHITECTURE.md)
 - [Contributing](CONTRIBUTING.md)
-- [API snapshot](docs/api/openapi.yaml), imported from `yuric/campus-server`;
-  current provenance must be verified before implementation
+- [API snapshot](contract/api/docs/openapi.yaml), imported from `yuric/campus-server`;
+  see the [import receipt](docs/acceptance/contract-import.md) for the pinned source and checks
 
 The API decides product behavior; this client renders it. The reference implementation
 and Island renderer live in [campus-macos](https://github.com/yuric/campus-macos).

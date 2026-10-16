@@ -1,0 +1,37 @@
+{
+  "error": "Coordinator could not start: the Claude Fable usage limit has been reached for Coordinator account. No answer or work will arrive from this attempt. Choose another available model or account, manage usage credits in that provider account, or wait for the provider limit to reset before sending again.",
+  "code": "probe_refused",
+  "readiness": {
+    "version": 1,
+    "state": "unavailable",
+    "reason": "probe_refused",
+    "severity": "warning",
+    "title": "Signed in, but the provider refused the check",
+    "message": "Coordinator could not start: the Claude Fable usage limit has been reached for Coordinator account. No answer or work will arrive from this attempt. Choose another available model or account, manage usage credits in that provider account, or wait for the provider limit to reset before sending again.",
+    "actions": [
+      {
+        "id": "retry_verification",
+        "label": "Retry verification"
+      }
+    ]
+  },
+  "coordinator_start_failure": {
+    "version": 1,
+    "state": "not_started",
+    "reason": "usage_limit",
+    "severity": "error",
+    "title": "Coordinator could not start: the Claude Fable usage limit has been reached for Coordinator account.",
+    "message": "Coordinator could not start: the Claude Fable usage limit has been reached for Coordinator account. No answer or work will arrive from this attempt. Choose another available model or account, manage usage credits in that provider account, or wait for the provider limit to reset before sending again.",
+    "login_state": "signed_in",
+    "actions": [
+      {
+        "id": "choose_model_or_account",
+        "label": "Choose another model or account"
+      },
+      {
+        "id": "wait_for_provider_reset",
+        "label": "Wait for the provider limit to reset"
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "workspace_rule": {
+    "name": "Creation policy",
+    "kind": "task_creation",
+    "trigger_id": "task_created",
+    "project_scope": {
+      "mode": "all",
+      "project_ids": []
+    },
+    "task_creation": {
+      "defaults": {
+        "priority": "P2",
+        "review_on_create": false
+      },
+      "validations": [
+        {
+          "field": "description",
+          "operator": "present"
+        }
+      ]
+    }
+  }
+}
