@@ -120,11 +120,12 @@ delivery instead of replaying blindly. Queued, running and completed remain dist
 Tauri with a React board (D1); Rust for the host and the executor (D2); Secret Service for
 Campus-owned tokens and provider files isolated but plaintext (D3); deb and AppImage with
 Tauri's signed updater and one production channel (D4); Docker, public hosted CI and a Lima
-VM for verification (D5); five named campus-server prerequisites (D6); the boundary gate
+VM for verification (D5); five named campus-server requirements with approved PR consolidation (D6); the boundary gate
 (D7). Each is recorded with its trade-offs in [PRD.md section 4](PRD.md#4-architecture-and-decisions).
 Broad Linux support is verified per runtime, architecture and desktop combination, not
 inferred from one Ubuntu build.
-The existing workflow checks docs and boundary tooling only. D5's Docker/product CI and
-Lima verification are L0 work after implementation is authorized. Section 8 labels
+The bootstrap workflows verify docs, boundary tooling and exact-head architecture receipts
+in the pinned Docker image. Product CI and Lima acceptance remain L0/product-owner work;
+implementation is authorized. See [verification](docs/acceptance/verification.md). Section 8 labels
 x86_64 headless-tested previews separately from desktop-verified combinations, without
 adding a product channel or weakening the P01–P18 parity target.

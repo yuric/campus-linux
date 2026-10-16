@@ -11,7 +11,7 @@ there. Planned Island renderer artifacts come from pinned merged `campus-macos` 
 renderer changes remain producer-owned rather than maintained as a Linux fork.
 
 The product specification is [PRD.md](PRD.md). Its section 4 holds the owner's decisions;
-implementation has not started and begins only on the owner's explicit request.
+implementation was explicitly authorized on 2026-10-16 under LINUX-20261016.
 
 Open an issue first for substantial unsolicited work. An explicit owner-requested
 planning PR can proceed directly; it does not authorize implementation or task import.
@@ -42,7 +42,7 @@ so in the issue and it can be routed properly.
 
 ## Getting set up
 
-There is no application build or runtime test suite yet. This planning repository defines
+There is no application build or runtime test suite yet. This repository defines
 a desktop client and local execution service, with macOS feature parity and remote control.
 It does not host Rails. Read [PRD.md](PRD.md) for the parity baseline, the decided stack
 and the L0 gates before adding a dependency.
@@ -51,7 +51,7 @@ Feature PRDs belong at `TODO/<feature-name>/PRD.md`; follow [TODO/README.md](TOD
 The root placeholder PRD has been replaced. Shared renderer changes belong in
 `campus-macos`; API changes belong in `campus-server`, merged before Linux consumers.
 The [implementation gates](docs/implementation-gates.md) record the remaining evidence
-required after implementation is authorized. S2 owns the post-S1 contract import and
+required during implementation. S2 owns the post-S1 contract import and
 the exporter's path migration, including updates to documentation and CI in the same PR;
 the existing snapshot is not refreshed by this planning work.
 
@@ -96,3 +96,9 @@ Covenant 3.0.
 
 By contributing you agree that your contribution is licensed under the Apache License 2.0,
 the same terms as this repository. See [LICENSE](LICENSE).
+
+## Linux implementation delivery
+
+Follow [AGENTS.md](AGENTS.md) for draft-only worker handoff and coordinator review/merge.
+[Verification](docs/acceptance/verification.md) names the bounded Docker commands, required
+checks and fail-closed admission; [inventory](docs/acceptance/inventory.md) tracks action gaps.

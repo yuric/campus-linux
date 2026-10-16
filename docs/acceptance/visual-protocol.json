@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "criteria_recorded": "2026-10-16 before any Linux candidate measurement",
+  "p95_frame_ms_max": 33.3,
+  "duration_seconds": 60,
+  "warmup_seconds": 30,
+  "repeats": 5,
+  "seed": 98120261016,
+  "viewport_css": [
+    1440,
+    900
+  ],
+  "device_scale": 1,
+  "render_scale": 1,
+  "appearance": "light primary; dark visual repeat",
+  "vm": {
+    "arch": "arm64",
+    "os": "Ubuntu 24.04",
+    "cpus": 4,
+    "memory_gib": 6,
+    "disk_gib": 28,
+    "renderer": "Mesa llvmpipe; LIBGL_ALWAYS_SOFTWARE=1; exact Mesa/LLVM/WebKit/kernel package versions required in each receipt; unobserved"
+  },
+  "scene": {
+    "projects": 12,
+    "agents": 48,
+    "tasks": 180,
+    "seed_contract": "synthetic deterministic presentation snapshot; owner #982 freezes JSON bytes/hash and producer manifest before first measurement; actions stubbed only for rendering probe"
+  },
+  "sequence": [
+    {
+      "duration_seconds": 10,
+      "action": "pan horizontal center x=0 to +400 CSS px linearly; y=0; zoom=1"
+    },
+    {
+      "duration_seconds": 10,
+      "action": "pan x=+400 to -400 CSS px linearly; y=0; zoom=1"
+    },
+    {
+      "duration_seconds": 10,
+      "action": "pan x=-400 to 0 and y=0 to +300 CSS px linearly; zoom=1"
+    },
+    {
+      "duration_seconds": 10,
+      "action": "zoom linearly 1 to 1.5 about viewport center; pan fixed at (0,+300)"
+    },
+    {
+      "duration_seconds": 10,
+      "action": "zoom linearly 1.5 to 0.75 about viewport center; pan fixed"
+    },
+    {
+      "duration_seconds": 10,
+      "action": "zoom linearly 0.75 to 1 and pan y=+300 to 0; x=0"
+    }
+  ],
+  "visual": {
+    "geometry_max_css_px": 2,
+    "artwork_changed_pixel_fraction_max": 0.01,
+    "artwork_channel_delta_threshold": 8,
+    "text_wrap_and_truncation": "same visible content and line count; no clipped actionable text",
+    "font_rasterization": "mask glyph interiors only; preserve baseline/bounds comparison",
+    "motion_states": [
+      "normal-visible",
+      "reduced-motion-visible",
+      "hidden-paused",
+      "visible-resumed"
+    ],
+    "scales": [
+      1,
+      1.25,
+      2
+    ]
+  }
+}

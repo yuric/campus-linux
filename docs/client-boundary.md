@@ -13,8 +13,8 @@ python3 -B -m unittest discover -s scripts/tests -v
 scripts/check-client-boundary.sh
 ```
 
-The existing Docs workflow runs both commands where its public-repository condition
-permits. An empty product tree is reported explicitly. A green policy job is not evidence
+The Docs and Linux verification workflows run both commands where their public-repository
+conditions permit. An empty product tree is reported explicitly. A green policy job is not evidence
 of Linux runtime verification.
 
 ## What the checker covers

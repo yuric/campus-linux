@@ -22,6 +22,6 @@
       or anywhere outside the platform credential store.
 - [ ] Documentation updated if behaviour or setup changed.
 
-> **Heads up:** pull requests here are merged into `main`, but this client has not been
-> started, so open an issue first for anything substantial. API changes start in
+> **Heads up:** pull requests here are merged into `main`, with Linux implementation authorized under LINUX-20261016.
+> Workers hand off draft PRs to that coordinator; unsolicited substantial work starts with an issue. API changes start in
 > `yuric/campus-server`, not here; see [CONTRIBUTING.md](../CONTRIBUTING.md).

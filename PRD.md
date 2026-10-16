@@ -1,12 +1,11 @@
 # PRD: Campus for Linux
 
-**Revision:** 2026-10-16. **Status:** decided; no implementation started.
+**Revision:** 2026-10-16. **Status:** implementation authorized 2026-10-16; bootstrap in progress.
 **Product:** a Linux desktop client and per-user local execution service.
 
 The seven decisions in [section 4](#4-architecture-and-decisions) were made by the owner on
 2026-10-15, one at a time, with the trade-offs recorded beside each. They are not proposals.
-L0 proves the residual risks each one names; it does not reopen the choices. Implementation
-starts only on an explicit owner request after this document merges.
+L0 proves the residual risks each one names; it does not reopen the choices. The owner explicitly started implementation on 2026-10-16, coordinated by LINUX-20261016.
 Engineering clarifications below preserve D1–D7; repository policy tooling is not app
 implementation. No runtime, app scaffold or product build is introduced by this revision.
 The [implementation gates](docs/implementation-gates.md) define the remaining contract
@@ -15,8 +14,8 @@ and acceptance evidence. They refine execution of these decisions without reopen
 ## 1. Owner requirements and outcome
 
 The owner requests macOS feature parity, both local and remote agents, and broad Linux
-compatibility. The first user's distribution is Ubuntu. This planning PR does not
-authorize implementation, production task import, deployment, credentials or paid services.
+compatibility. The first user's distribution is Ubuntu. The owner authorized implementation and cards #981–#999. Credentials, paid services and
+release publication remain subject to the specific authority recorded on those cards.
 
 A Linux-only user can onboard, connect provider accounts, bind local repositories,
 run coding agents on Linux, and manage their island and authorized remote agents.
@@ -64,7 +63,8 @@ migration before L1 generates bindings. This documentation revision does not ref
 
 ## 3. Feature parity inventory
 
-All rows are **not implemented**. Each needs an owner, exact API operation/schema references,
+All rows are **not implemented**. The action-level [acceptance inventory](docs/acceptance/inventory.md)
+and [fixed visual/renderer protocol](docs/acceptance/visual-protocol.md) track bootstrap evidence. Each needs an owner, exact API operation/schema references,
 action-level acceptance cases, source/build identity and passing receipts. L0 expands these
 groups into every offered action; this table is not permission to omit unnamed buttons.
 
@@ -319,11 +319,13 @@ is settled before the first line of code.
    Rust crates and React bundle, runs unit and contract tests, and runs WebKitGTK smoke
    tests under a virtual display. The implementing agent runs it on every change, from any
    host, with no GitHub involvement. L0 pins the image digest/toolchains and separates verification from the
-   release build baseline below; this image and these product tests do not exist yet.
+   release build baseline below. #981 supplies the repository-policy image/commands; real
+   product builds/tests are added at their owning seams, not claimed by bootstrap CI.
 2. **Hosted CI, layer 2 (planned).** Today `.github/workflows/docs.yml` checks Markdown links,
    OpenAPI parsing and the boundary policy (including its regression tests), gated on public
-   visibility. It does not build a Docker image or test a Linux app. During L0, after
-   implementation is authorized, add required hosted jobs that run the same checked-in
+   visibility. #981 adds `.github/workflows/linux-verification.yml` with architecture and
+   receipt admission jobs for repository policy; a Linux app test is still pending. L0
+   extends required hosted jobs to run the same checked-in
    image/commands as layer 1 for x86_64 and arm64, record image digest, source SHA,
    architecture, commands/results and artifact checksums, and fail on a skipped required
    job or missing receipt. Record the required check names and branch-protection setup in
@@ -371,10 +373,12 @@ maturity labels on the single production channel, not a second product or update
 Section 8 defines which evidence each label requires; it adds no paid infrastructure or
 human-run prerelease QA requirement.
 
-### D6. Server prerequisites: S1 is five named campus-server PRs
+### D6. Server prerequisites: five requirements, consolidated delivery
 
-**Decided.** Each is one PR in `yuric/campus-server` with one card on that building, in this
-order, so the client never waits on wording. Retain execution protocol v2 and the existing
+**Decided; owner consolidation approved 2026-10-16.** Keep S1-1–S1-5 and their
+internal review order in one server product PR (#984); policy/export/release tooling stays
+in a separate server PR (#983). The real hosted round trip remains #986, after #985 imports
+the merged contract. Consolidating PRs does not waive any requirement or evidence. Retain execution protocol v2 and the existing
 claim/lease/heartbeat/report flow; Linux readiness is not proven by registration alone.
 The pinned server requires Mac-shaped workspace roots and some paths call a local Mac
 broker. S1 must close those platform gaps before L2. Existing capability fields such as
@@ -392,8 +396,7 @@ The five workstreams below, their order and the five-executor cap per account st
 
 The [G1 contract ledger](docs/implementation-gates.md#g1-server-contracts-and-snapshot-handoff)
 maps detailed evidence into these five prerequisites. S1-5 remains open until its
-end-to-end proof passes. S2 is the Linux-owned snapshot handoff. No server PR or production
-task is created by this document.
+end-to-end proof passes. S2 is the Linux-owned snapshot handoff. The coordinator created the native dependency graph; a Ready card does not waive evidence.
 
 ### D7. The boundary is a failing build, not a principle
 
@@ -494,7 +497,7 @@ have been created by this document.
 | Milestone | Dependencies | Outcome and gate |
 |---|---|---|
 | L0: inventory/spikes | This document merged; owner starts implementation | Expand P01–P18 and G1–G8 into action cases; fix G8's performance/visual criteria before measuring; capture references; wire D5 layers 1–3; pin the release build baseline; prove D1/D4 risks and G2–G7 platform mechanisms. One supervised CLI end to end after its S1 dependencies merge. No ADRs: the decisions are in section 4. |
-| S1: API prerequisites | None; opens in parallel with L0 | The five campus-server PRs in D6, merged with contract tests, in order S1-1 to S1-5 |
+| S1: API prerequisites | None; opens in parallel with L0 | The consolidated D6 product PR (#984), separate policy PR (#983), and hosted proof (#986), preserving S1-1–S1-5 |
 | S2: verified contract import | Required S1 changes merged | Linux-owned export PR from a recorded merged server SHA containing those changes; verify provenance/fixtures and move snapshot references/checks with the export layout. G1 defines receipts; no handwritten schema edits. |
 | M1: renderer export | L0; S1 if needed | Mac-owned platform-neutral host/export changes where needed; exact merged-source artifact/manifest; no renderer fork |
 | L1: foundation | L0, S2 for required S1 contracts | Snapshot/generator checks, shell, secure sessions, endpoint isolation and the build-time local-endpoint override, refresh/unknown-version behavior; P01–P03 |
@@ -586,5 +589,4 @@ evidence; Antigravity storage/identity scope, Linux speech and G1–G8's other p
 and the outcome of S1-5. These are engineering proofs of the chosen design, not
 new product decisions. Everything else that was open at the
 2026-10-13 revision is decided in section 4. Ask the owner only for product, spend,
-credential or trust decisions that those sections do not already answer. Implementation
-starts on the owner's explicit request, not on merge.
+credential or trust decisions that those sections do not already answer. Implementation is now authorized; unresolved evidence still gates dependent work.

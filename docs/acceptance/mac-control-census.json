@@ -1,0 +1,930 @@
+{
+  "mac_sha": "8e39806c5b1fb2ffeda6e55718a4fd2a4d2890da",
+  "purpose": "control-location audit aid; not proof every dynamic server action is enumerated",
+  "files": [
+    {
+      "path": "CampusApp/Sources/CampusApp/ActivityScreen.swift",
+      "sha256": "0e8d269f71f02f805acd1f29e4f07db890e6d8a0de704051bc2962d79aa9e600",
+      "control_lines": [
+        77,
+        114,
+        136,
+        173,
+        295
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/AgentDeskView.swift",
+      "sha256": "8f606873880532a7800377050af6d5db0fc4d936163a889dafe1072866090d38",
+      "control_lines": [
+        388,
+        705,
+        734,
+        793,
+        808,
+        953,
+        1261,
+        1306,
+        1766,
+        1786,
+        1791,
+        1806
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/AgentsScreen.swift",
+      "sha256": "1468603beecbd48c64b4a44c681e48e85836a2383cf7effedc27fee6f20ec8c5",
+      "control_lines": [
+        58,
+        67,
+        153,
+        158,
+        163,
+        173,
+        181,
+        189,
+        196,
+        199,
+        214,
+        221,
+        226,
+        228,
+        374,
+        552,
+        557,
+        568,
+        570,
+        582,
+        584,
+        595,
+        606,
+        618,
+        622,
+        627,
+        633,
+        637,
+        641,
+        679,
+        802,
+        836
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/AssistantAuthoritySection.swift",
+      "sha256": "099ed36fc29640f0aae47974a1bc04b2aedf5c31d33be1f3b48810dd1ad9c59c",
+      "control_lines": [
+        60,
+        92,
+        108,
+        115,
+        122,
+        130,
+        147,
+        154,
+        166
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/AssistantConfirmCardView.swift",
+      "sha256": "8f5da7f198afdc0995b9d705c3088188b015275cdc13ad12415b4033971d89a5",
+      "control_lines": [
+        73,
+        82,
+        86,
+        112,
+        146,
+        159
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/AssistantOrb.swift",
+      "sha256": "2a073f01b8cab2e1a12f1c3e26a1a749e8679b5f2b19dc7ce6aeb06dee0ad254",
+      "control_lines": [
+        246,
+        368,
+        375,
+        385,
+        450,
+        452,
+        462,
+        497,
+        501,
+        505,
+        543,
+        549,
+        573,
+        582,
+        601,
+        651
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/BoardScreen.swift",
+      "sha256": "737f43ff921891a7b1882e7e8c9827af39942b3b6b954c60b146d69899e35f9b",
+      "control_lines": [
+        107,
+        113,
+        125,
+        170,
+        191,
+        277,
+        428,
+        514,
+        518,
+        530,
+        807,
+        887,
+        920,
+        970,
+        971,
+        974,
+        976,
+        981,
+        985,
+        987,
+        1068,
+        1074,
+        1175
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/BuildingScreen.swift",
+      "sha256": "5261fe3568bebfb2e6a178f46cc218af163a6a43d62b5f12250b6ec5246fdf7e",
+      "control_lines": [
+        530,
+        537,
+        538,
+        565,
+        570,
+        579,
+        584,
+        585,
+        685,
+        739,
+        869
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/CredentialsScreen.swift",
+      "sha256": "fbb8a613af1fc96253962a5160891aef7e0b8353c1ba45f8380e66e42daa35c8",
+      "control_lines": [
+        192,
+        196,
+        270,
+        334,
+        476,
+        687,
+        746,
+        912,
+        1104,
+        1120,
+        1255,
+        1467,
+        1468,
+        1475,
+        1476,
+        1529,
+        1559,
+        1564,
+        1568,
+        1609,
+        1634,
+        1646,
+        1656,
+        1677,
+        1689,
+        1698,
+        1705,
+        1728,
+        1738,
+        1765,
+        1769,
+        1806,
+        1814,
+        1830,
+        1864,
+        1907,
+        1958
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/DelegatedAuthorizationConsentSheet.swift",
+      "sha256": "232057578f75e050733b69b1e70dee8ea27035b2ff03e19dc8ee9eb91e132a1f",
+      "control_lines": [
+        68
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/DemoPreviewScreen.swift",
+      "sha256": "3b66267cd8b01350a1f460a893d46ce91724b1e48f178b62fe63d0db2b28bc11",
+      "control_lines": [
+        33,
+        79,
+        98
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/DesignSystem.swift",
+      "sha256": "693c2927d553c9ee149785a5cb2daa54f3d572c5ee4a2ebdd50fa567283f8de8",
+      "control_lines": [
+        380,
+        414,
+        728
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/DeveloperToolsPanel.swift",
+      "sha256": "af5008ed9be0152a7c3969f06ebfcb396d13c31e77991cc2a707943e163214ce",
+      "control_lines": [
+        53,
+        57,
+        63
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/DiagnosticRemedyView.swift",
+      "sha256": "8cdda4808421e6287ddf7221f6f73288687a89554ac0c72eb02cf66c4e356462",
+      "control_lines": [
+        39
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/EditProjectSheet.swift",
+      "sha256": "92fc9c38e24b76b0c411ddec1d2bd0763db987503b74d29b2239f796f46bb3e4",
+      "control_lines": [
+        135,
+        151,
+        166,
+        233,
+        309,
+        336,
+        338
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/FeedbackSheet.swift",
+      "sha256": "7ea98fda455290a0c044a26c8ff834e5ddcc2843aa493f0d4e4da630e1a6bad4",
+      "control_lines": [
+        24,
+        46,
+        131,
+        134,
+        144,
+        210,
+        230,
+        234,
+        240,
+        249,
+        300
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/FirstRunScreen.swift",
+      "sha256": "d6ef500eb60f835d99d1f908570b0ed1e9459af3adaf68fe1ad1ce46ae143959",
+      "control_lines": [
+        158,
+        177,
+        214,
+        219,
+        257,
+        276,
+        284,
+        331,
+        351,
+        415
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/InboxScreen.swift",
+      "sha256": "62b31f100c6dd47e564299af3129038cac9be1873c15545f4bc1c42b936541a7",
+      "control_lines": [
+        499,
+        614,
+        632,
+        768,
+        772,
+        1126,
+        1131,
+        1137,
+        1149,
+        1155,
+        1170,
+        1175,
+        1180
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/InlineNameEditor.swift",
+      "sha256": "8295b88085aed6900a2580eab3dd4246af6cc6406ecac90a855784d62b9501c7",
+      "control_lines": [
+        40,
+        53,
+        71
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/IslandScreen.swift",
+      "sha256": "b94b38ed469ee8541221736d36f1afb2c9a53b51233b9497495fd2818fa322f1",
+      "control_lines": [
+        131,
+        136,
+        143,
+        337,
+        348,
+        355,
+        362,
+        367,
+        1447
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/LandAgentSheet.swift",
+      "sha256": "5481ccd80a2cc7e489e029e88582e0aec08a1b5460720c2c0e4455fb8c5a6041",
+      "control_lines": [
+        111,
+        124,
+        127,
+        131,
+        205,
+        213,
+        288,
+        320,
+        363,
+        377,
+        381,
+        392,
+        420,
+        424,
+        432,
+        436,
+        489,
+        543,
+        603,
+        715,
+        736,
+        747,
+        773,
+        797,
+        862,
+        877,
+        892,
+        938,
+        1022,
+        1045,
+        1077,
+        1092,
+        1129,
+        1152,
+        1184
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/LaneFeedScreen.swift",
+      "sha256": "ae31cca9ea023115df779a510ff48232dc5d6de17107e91cb11ba238d9f4129c",
+      "control_lines": [
+        58,
+        65,
+        82,
+        91,
+        131,
+        136,
+        141,
+        148,
+        192,
+        197,
+        206,
+        218,
+        220,
+        228,
+        241,
+        355,
+        445,
+        448,
+        456,
+        545,
+        554,
+        578,
+        596
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/MacHelperDiagnosticsSheet.swift",
+      "sha256": "61cd0d0f31acfa3977b8e9139eb6bc8513469a41616f2101c66e38457a862dc4",
+      "control_lines": [
+        40,
+        45,
+        58,
+        72,
+        76
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/NativeSessionAttachSheet.swift",
+      "sha256": "53b4827677705e7e26a3c35e21e7bfd232c6ae54e92be845b8c00c2435b1ddcc",
+      "control_lines": [
+        28,
+        40,
+        49,
+        53,
+        65
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/NewProjectSheet.swift",
+      "sha256": "276a43d1a98ce9434e075a76aecf9e951219391ee96a9b2142e8604046b12aaa",
+      "control_lines": [
+        72,
+        156,
+        182,
+        188,
+        227,
+        229,
+        294,
+        412,
+        424,
+        433,
+        436,
+        443,
+        627,
+        643,
+        659,
+        739,
+        779,
+        795,
+        803,
+        813,
+        817
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/NewTaskSheet.swift",
+      "sha256": "f2b85ae72e1f25ec63ac423293ed8f98e6b1e015b5b5319bb5b3224c2c603378",
+      "control_lines": [
+        119,
+        157,
+        210,
+        231,
+        244,
+        272,
+        298,
+        307,
+        343,
+        349,
+        357,
+        382,
+        456,
+        468,
+        469,
+        580,
+        584,
+        585,
+        633,
+        635,
+        644,
+        669,
+        674,
+        711,
+        713,
+        717,
+        746
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/OnboardingCardView.swift",
+      "sha256": "4f39487de32257fcfd9c534600508576f2163abdf86d13670dc14f4e1929f389",
+      "control_lines": [
+        22,
+        35,
+        41,
+        59
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/RootView.swift",
+      "sha256": "3c920b671cce4dcb9a41858bdbb54fb3922e603b414ae7ddcfb4cc0b960010bb",
+      "control_lines": [
+        66,
+        73,
+        80,
+        84,
+        290,
+        292,
+        294,
+        296,
+        298,
+        300,
+        323,
+        343,
+        346,
+        362,
+        379,
+        502,
+        506,
+        736,
+        741,
+        746,
+        861,
+        938,
+        939,
+        1148,
+        1159,
+        1209,
+        1267,
+        1287,
+        1293,
+        1355,
+        1397,
+        1414,
+        1432,
+        1435
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/SearchPalette.swift",
+      "sha256": "80c372549c0229b58a63def3a8394a98be0222f3ac7d7de2390576eb97721d37",
+      "control_lines": [
+        83,
+        88
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/SettingsScreen.swift",
+      "sha256": "10cb9491d1bd2159c1d08372a9f32c0a2958c3b156b8bab2d69150adedb54bf9",
+      "control_lines": [
+        92,
+        199,
+        209,
+        215,
+        351,
+        363,
+        367,
+        386,
+        416,
+        459,
+        466,
+        482,
+        490,
+        547,
+        552,
+        627,
+        649,
+        680,
+        693,
+        725,
+        795,
+        825,
+        842,
+        848,
+        878,
+        888,
+        904,
+        928,
+        975,
+        995,
+        1017,
+        1031,
+        1046,
+        1055,
+        1086,
+        1100,
+        1107,
+        1121,
+        1208,
+        1219,
+        1251,
+        1276,
+        1326,
+        1361,
+        1478,
+        1543,
+        1558,
+        1568
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/TaskDetailView.swift",
+      "sha256": "ee882fa5648f87d9ff0c556da946223a46ceea7c8d2b8bd9ddcb94f6178bd48c",
+      "control_lines": [
+        188,
+        189,
+        306,
+        313,
+        437,
+        481,
+        500,
+        503,
+        505,
+        531,
+        555,
+        618,
+        652,
+        681,
+        738,
+        755,
+        899,
+        1083,
+        1086,
+        1092,
+        1097,
+        1106,
+        1130,
+        1142,
+        1148,
+        1152,
+        1159,
+        1176,
+        1185,
+        1218,
+        1223,
+        1226,
+        1261,
+        1358,
+        1405,
+        1471
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/TaskWorkspaceScreen.swift",
+      "sha256": "2dd6f00f997c7df621e6de5d24b41c468689278f44e17661a7f14d64de268b3d",
+      "control_lines": [
+        13,
+        66,
+        67,
+        127,
+        136,
+        141,
+        147,
+        161,
+        166,
+        174,
+        179,
+        181
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/WorkspaceRulesPanel.swift",
+      "sha256": "3454e5e9522f3d46bc5eba720a59023f0d9c70042746ad2b4012ad70d188f8e3",
+      "control_lines": [
+        47,
+        56,
+        60,
+        91,
+        99,
+        110,
+        124,
+        149,
+        158,
+        163,
+        169,
+        192,
+        197,
+        202,
+        212,
+        215,
+        226,
+        232,
+        236,
+        240,
+        297,
+        411,
+        451,
+        453,
+        473,
+        491,
+        512,
+        549,
+        561,
+        582,
+        597,
+        615,
+        633,
+        644,
+        645,
+        646,
+        664,
+        684,
+        685,
+        687,
+        709,
+        717,
+        719,
+        756,
+        780,
+        788,
+        801,
+        813,
+        866,
+        879,
+        905,
+        913,
+        921,
+        936,
+        947,
+        967,
+        1009,
+        1011,
+        1108,
+        1215,
+        1246,
+        1274,
+        1291,
+        1300,
+        1306,
+        1367,
+        1388,
+        1395,
+        1407,
+        1418,
+        1420,
+        1423,
+        1440,
+        1442,
+        1445,
+        1671,
+        1712,
+        1718,
+        1830
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusApp/main.swift",
+      "sha256": "e6334e8dc94d147b50409ed2d2bc78f6ac3f0ca27a333d6bd9beac041fb1be46",
+      "control_lines": [
+        914,
+        918,
+        920
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusUI/AgentConversationExecutionView.swift",
+      "sha256": "593b96f0e9bcaa5450eb7c8b8c3a13b3820209dcc7e7255f3eb6799b1a01c03f",
+      "control_lines": [
+        22
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusUI/ComposerTextView.swift",
+      "sha256": "4a414db43fb94ebd26c4168e5e32a8bc7a2eab3fc4e93990a2a346e83cf26772",
+      "control_lines": [
+        227
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusUI/ConversationJumpToLatestControl.swift",
+      "sha256": "5d260cfdf2717bb45203bc0252851ae60d4b023cdcac20e4f05260c4c1635e6d",
+      "control_lines": [
+        28
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusUI/CoordinatorComposerCompletion.swift",
+      "sha256": "7cd694581e70f70307f61415d0b0a860eea98f50748e84fa60f21fd2849a3356",
+      "control_lines": [
+        104
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusUI/CoordinatorComposerPill.swift",
+      "sha256": "9ecb38522df9013f7c88dc8e8966848e544ac59ef154d71ca46040de5d03435d",
+      "control_lines": [
+        201,
+        327
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusUI/CoordinatorLivenessLine.swift",
+      "sha256": "9c5bc39ce26384d08042ba43b770ce18bcf2acb06a4d2cf7c1d6bc2809f84652",
+      "control_lines": [
+        26
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusUI/CoordinatorPanel.swift",
+      "sha256": "7465ff823034aa94f6efc037488bfe22f4999631ac99a89ef9c2639602a962e6",
+      "control_lines": [
+        183,
+        184,
+        185
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusUI/CoordinatorSessionViews.swift",
+      "sha256": "8e8af3dfedf7c76a9fde3f436892fa681cd820fd6da7b6a7c7c46d73ab31fa3a",
+      "control_lines": [
+        75,
+        176
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusUI/CoordinatorTranscriptView.swift",
+      "sha256": "c6e226a499148b5abdbf9c25b29ceda4421ba3671ffa9b10ab5d34aca5e57cc7",
+      "control_lines": [
+        344
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusUI/CoordinatorTurnActionsBar.swift",
+      "sha256": "e13af3ae76f0c7a9348b58a4c169ea173db3a5a476379ce2fcb0be8a7f8d019b",
+      "control_lines": [
+        27
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusUI/HomeControls.swift",
+      "sha256": "71eccb0b832ba06e8de532448a26fbeeb7c77260bbeaef141a47cca73de1b911",
+      "control_lines": [
+        123,
+        159
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusUI/HomeCredentialsGrid.swift",
+      "sha256": "41d60c0e4b09f46a2b7568ad262bbb2fe0841fe6dd8457e862e9978370b7ba6a",
+      "control_lines": [
+        37
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusUI/HomeFooter.swift",
+      "sha256": "2fc6275f63e36a74089e11e09ca04a182c7b20a8430665bbd7c8feab63654b5b",
+      "control_lines": [
+        35,
+        55
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusUI/HomeStatsTiles.swift",
+      "sha256": "13a4c178d24d05c5c80bcae42f6b1f9a50176f881e2dfe909dc4fc9cf2bcad6e",
+      "control_lines": [
+        37
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusUI/HomeWaitingTable.swift",
+      "sha256": "d4a1e012d9817ce92efee6e138c10f319ae96750f8d17f4747f3b04bb9c6ad3e",
+      "control_lines": [
+        79
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusUI/IslandPortalControl.swift",
+      "sha256": "15c010d4e3554ea15231d924539f47de43a54072478bb823848783a1b459f90f",
+      "control_lines": [
+        23
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusUI/KanbanNavigationControl.swift",
+      "sha256": "4284a6d9a754839f606ae4917bd09f8032d49b16e48b981e380d3b94554853ad",
+      "control_lines": [
+        38
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusUI/NativeExecutionTranscriptView.swift",
+      "sha256": "cdc56613b5013210209dff02657c0a3d63c2b08b9f7b3c09b6e21a05ad2c0919",
+      "control_lines": [
+        75
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusUI/PulseControls.swift",
+      "sha256": "df47be8b488f29fb28724ca64b03fde4f917281779b8d4c7487c51ccdc3cad75",
+      "control_lines": [
+        39,
+        241,
+        267
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusUI/RecommendationControls.swift",
+      "sha256": "f0233600d194ab393174d9a91ca53604f4016388880e366ceb539ae0574ce3f0",
+      "control_lines": [
+        114,
+        139,
+        193,
+        230,
+        249
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusUI/TaskAttachmentViews.swift",
+      "sha256": "f49e50ee303b920b467fd979b1a192d922d01829ecaecde7ddf04a115e933030",
+      "control_lines": [
+        69,
+        103,
+        150
+      ]
+    },
+    {
+      "path": "CampusApp/Sources/CampusUI/TaskSpeechRecoveryPanel.swift",
+      "sha256": "1e229daef35708b7f2de597ce00bb056497e3189c79d330446b289f5210e9357",
+      "control_lines": [
+        28,
+        32,
+        37,
+        51
+      ]
+    }
+  ]
+}
