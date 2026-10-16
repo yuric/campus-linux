@@ -16,6 +16,7 @@ spec = importlib.util.spec_from_file_location("authority_marker_window", Path(__
 authority = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(authority)
 
+NONCE = "0123456789abcdef0123456789abcdef"
 LOGGER_PREFIX = ["/usr/bin/logger", "--socket-errors=on", "--priority", "user.notice",
                  "--tag", "campus-updater-1057", "--"]
 NODE_HARNESS = r"""
@@ -70,9 +71,9 @@ class MarkerBridgeTests(unittest.TestCase):
             raise RuntimeError("marker source regressions require an existing Node executable; do not install dependencies")
 
     def execute(self, *, user="fixture-user", lease="lease:1057.1", pid=None,
-                session="c3", subject=None, action=None, **options):
+                session="c3", nonce=NONCE, subject=None, action=None, **options):
         payload = {
-            "source": authority.deny_rule(user, lease, pid=pid, session=session).decode(),
+            "source": authority.deny_rule(user, lease, pid=pid, session=session, nonce=nonce).decode(),
             "subject": subject,
             "action": action or {"id": authority.ACTION, "program": authority.PROGRAM, "user": "root"},
             **options,
@@ -93,8 +94,8 @@ class MarkerBridgeTests(unittest.TestCase):
         result = self.execute(subject=self.subject())
         self.assertEqual(result["events"], ["register", "spawn", "spawn"])
         self.assertEqual(result["attempted"], [
-            LOGGER_PREFIX + ["campus1057-deny-loaded lease=lease:1057.1"],
-            LOGGER_PREFIX + ["campus1057-deny lease=lease:1057.1 pid=123 user=fixture-user session=c3 active=true"],
+            LOGGER_PREFIX + ["campus1057-deny-loaded lease=lease:1057.1 nonce=0123456789abcdef0123456789abcdef"],
+            LOGGER_PREFIX + ["campus1057-deny lease=lease:1057.1 nonce=0123456789abcdef0123456789abcdef pid=123 user=fixture-user session=c3 active=true"],
         ])
         self.assertEqual(result["delivered"], result["attempted"])
         self.assertEqual(result["answer"], "NO")
@@ -108,7 +109,7 @@ class MarkerBridgeTests(unittest.TestCase):
                               subject=self.subject(user=user, session=session))
         self.assertEqual(result["answer"], "NO")
         self.assertEqual(result["delivered"][-1], LOGGER_PREFIX + [
-            f"campus1057-deny lease={lease} pid=123 user={user} session={session} active=true"])
+            f"campus1057-deny lease={lease} nonce={NONCE} pid=123 user={user} session={session} active=true"])
 
     def test_untrusted_marker_values_rejected_before_javascript_generation(self):
         for field, values in {
@@ -119,11 +120,12 @@ class MarkerBridgeTests(unittest.TestCase):
             "session": [None, "", "-session", "session name", "session\nforged",
                         'session";throw 1;//', "session$(id)", "session`id`",
                         "session\\escape", "s" * 65],
+            "nonce": [None, "", "0" * 31, "0" * 33, "A" * 32, [NONCE]],
             "pid": [True, False, 0, 1, -1, 2.5, "123", 2147483648],
         }.items():
             for value in values:
                 with self.subTest(field=field, value=value):
-                    arguments = {"user": "fixture-user", "lease": "lease:1057.1", "session": "c3"}
+                    arguments = {"user": "fixture-user", "lease": "lease:1057.1", "session": "c3", "nonce": NONCE}
                     arguments[field] = value
                     with self.assertRaises(RuntimeError):
                         authority.deny_rule(**arguments)
@@ -147,7 +149,7 @@ class MarkerBridgeTests(unittest.TestCase):
         self.assertNotIn("callbackError", result)
         self.assertEqual(len(result["attempted"]), 2)
         self.assertEqual(result["delivered"], [LOGGER_PREFIX + [
-            "campus1057-deny-loaded lease=lease:1057.1"]])
+            "campus1057-deny-loaded lease=lease:1057.1 nonce=0123456789abcdef0123456789abcdef"]])
 
     def test_scope_mismatch_has_no_deny_or_rejecting_marker(self):
         for change in ({"user": "other-user"}, {"session": "c4"},
@@ -177,7 +179,7 @@ class MarkerBridgeTests(unittest.TestCase):
                 result = self.execute(pid=pid, subject=self.subject(pid=pid))
                 self.assertEqual(result["answer"], "NO")
                 self.assertEqual(result["delivered"][-1], LOGGER_PREFIX + [
-                    f"campus1057-deny lease=lease:1057.1 pid={pid} user=fixture-user session=c3 active=true"])
+                    f"campus1057-deny lease=lease:1057.1 nonce=0123456789abcdef0123456789abcdef pid={pid} user=fixture-user session=c3 active=true"])
 
 
 if __name__ == "__main__":

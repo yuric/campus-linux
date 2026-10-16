@@ -4,6 +4,56 @@ LINUX-20261016 owns acceptance, independent review, Council and merge. This is d
 D4/G5 evidence for L0, not L0 completion or a production package. The only merged build
 dependency is bootstrap #981 at `37ef5d622da09cd7ba113dc0d1119e62e7378f84`.
 
+## Source-only marker correction under direction 1269
+
+Direction 1269 authorizes source and mocked tests from evidence head 333d59b only. The
+VM lease is returned to Office 400; this correction authorizes no guest access or runtime.
+The failed 7383449 attempt and all historical raw evidence below remain failed or incomplete
+at their original scope. Actual denial and missing-authority refusal remain unproven;
+the independently checked missing-authority case must run first under a future lease.
+Changed helpers require fresh hashes and coordinator review before any execution.
+
+The bounded marker contract retains the fixed logger argv and root-owned source/rule
+boundary, and binds the actual service MainPID, process starttime, executable, cgroup
+and real UID/GID to the verified dedicated polkit account before mutation. It rejects
+unexplained same-UID processes and changed service context, rechecking identity before
+acceptance and restoration. Each denial window creates a fresh 128-bit nonce before
+rule creation. Loaded readiness and rejecting-event evidence require the exact
+lease/nonce/event/payload, kernel sender `_UID`/`_GID`/`_PID`, `_TRANSPORT=syslog`, boot
+and journal receipt time window. Sender PID is distinct from the actual app subject's
+PID/starttime/session. No observed UID, GID or PID is a constant for later boots.
+
+`_EXE` and `_SYSTEMD_UNIT` are optional process metadata: absent fields are recorded;
+present fields must have the exact expected value. Malformed or contradictory current-
+nonce candidates fail visibly even if another candidate is valid. Full accepted and
+rejected rows are preserved. The conclusion is attribution to the trusted dedicated
+polkit account and owned rule in this controlled guest. Without optional metadata it
+is not direct kernel proof of the sender executable or parent service, nor proof against
+malicious root or same-account compromise. The nonce is correlation, not a secret.
+
+The total 45 / recorder 20 / restore 10-second limits and loaded wait of at most five seconds
+remain. This changes evidence collection only; app authorization, denial scope,
+privilege acquisition and permissions are unchanged. Source-only allocation is limited
+to 32 MiB with an 18 GiB host floor; no package, build, download, dependency, provider or
+paid operation is authorized. LINUX-20261016 owns fresh independent review and the next
+execution lease, with no worker CI/Council watcher or readiness/merge action.
+
+Fresh source hashes for independent review:
+
+| Helper | SHA-256 |
+|---|---|
+| `probe/authority-window.py` | `970a146124f1bc85a1651aa624c60853c9b5a97356f910c090828d22ac0a8c7a` |
+| `probe/desktop.py` | `b42d4f199efce7c24f956d8bc464b46db655306dd7ee736650d2466c66938b12` |
+
+The desktop's separate post-run validator binds the completed desktop/root/journal
+exports and exact recorder/helper source hashes, preserving the originals. A valid
+correlation stays pending coordinator review; incomplete app/session evidence and
+contradictory rows fail closed. All 209 historical receipt files remain unchanged.
+Of each original 31-file build map, 29 files remain byte-identical; only the adapter
+README and hosted test entry changed. Bootstrap, installed adapter, app and Rust
+verifier source bytes are unchanged. No current-head package build or guest execution
+is claimed.
+
 ## Authorized authority continuation at source 7383449
 
 Human 10715 / direction 1263 granted the bounded continuation on 2026-10-16. The
@@ -66,8 +116,8 @@ The [conservative allocation accounting](receipts/installed-updater-1057/authori
 counts the entire worktree, own temporary files, disk growth and 4 MiB publication
 reserve: 29,966,336 bytes, below 64 MiB. The 20 GiB host / 2 GiB guest floors remain unchanged.
 
-LINUX-20261016 must disposition the observed missing daemon metadata before another
-runtime lease. Both actual denial and missing-authority refusal remain unproven;
+Direction 1269 addresses the observed missing daemon metadata through the source-only
+contract above; it grants no runtime lease. Both denial and missing authority remain unproven;
 cleanup and root logger delivery do not qualify either case. The coordinator owns
 independent evidence review, exact-head CI/Council and merge. No worker watcher,
 ready/auto-merge/done action or production acceptance follows from this handoff.
@@ -122,7 +172,7 @@ job conclusions, source, archive digests and sizes. The complete
 [amd64 smoke](receipts/installed-updater-1057/verified-run/amd64/installed-smoke.json)
 include the tightened negatives and direct privileged signature rejection.
 
-The subsequent evidence/handoff commit leaves every file recorded in those builds'
+The subsequent evidence/handoff commits through 333d59b left every file recorded in those builds'
 `fixture-inputs.json` unchanged, including the app, adapter, hosted smoke and dedicated
 workflow. The original canonical file-map SHA-256 is
 `f775791c6e1080b60297b859e2f029109f5b10965eb928770ba78dadc05585ee`.
@@ -131,6 +181,36 @@ distinct. The later desktop recorder, authority-window helper and runbook are ne
 preparation requested by the coordinator and are outside that fingerprint. Phase B below
 records their later actual guest execution separately. No claim is made that new receipts
 or harnesses existed during their own earlier build.
+
+For review 6219678713 / triage 6219708082 Blocking 2, the
+[coordinator's exact-head disposition](https://github.com/yuric/campus-linux/pull/13#issuecomment-6219984266)
+independently verifies both receipt sets from
+[run 38927091673](https://github.com/yuric/campus-linux/actions/runs/38927091673) at
+`7383449c76baedcb0e762bc288345605cb0d4150`: 27/27 installed cases on each architecture,
+all 37 fixture-input hashes, fixture-tree digest and admission digest match. This is
+installed integration evidence for that head, not unit or exhaustive branch coverage.
+The real `deb/v1-to-v2` case records adapter `phase=complete`, `status=accepted`,
+`dpkg_exit=0` and changed v2 app/helper hashes after relaunch. The real
+`deb/privileged-bad-signature` case reaches `phase=signature_and_schema`,
+`reason=signature_verification_failed` and preserves installed v1 bytes.
+
+Those cases exercise the actual
+[`install-deb.py:main`](https://github.com/yuric/campus-linux/blob/7383449c76baedcb0e762bc288345605cb0d4150/spikes/1057/installed-updater/adapter/install-deb.py#L290),
+including authenticated-caller parsing, both installation locks and successful
+post-install identity/hash checks. Its
+[`verify_staged`](https://github.com/yuric/campus-linux/blob/7383449c76baedcb0e762bc288345605cb0d4150/spikes/1057/installed-updater/adapter/install-deb.py#L242)
+invokes the root-owned Rust
+[`verify-signature.rs:verify`](https://github.com/yuric/campus-linux/blob/7383449c76baedcb0e762bc288345605cb0d4150/spikes/1057/installed-updater/src-tauri/src/bin/verify-signature.rs#L18),
+including actual `key.verify` at line 28. The smoke's
+[`update`](https://github.com/yuric/campus-linux/blob/7383449c76baedcb0e762bc288345605cb0d4150/spikes/1057/installed-updater/probe/smoke.py#L444)
+uses the installed updater and relaunches it; its
+[`privileged_bad_signature`](https://github.com/yuric/campus-linux/blob/7383449c76baedcb0e762bc288345605cb0d4150/spikes/1057/installed-updater/probe/smoke.py#L423)
+submits admitted v2 bytes with the genuine v1 signature through pkexec. These passing
+paths do not prove every refusal branch, lock contention, or malformed `PKEXEC_UID`.
+The existing ten mocked adapter tests now run alongside probe discovery in hosted CI.
+Direction 1269 changes the hosted test entry and fixture documentation as well as the
+helpers, so it requires fresh source hashes. That source is not retroactively covered
+by the 7383449 run.
 
 | Evidence | arm64 | x86_64 | Acceptance scope |
 |---|---|---|---|
@@ -288,7 +368,7 @@ exact-head checks/Council/merge. D5 x86 desktop and the downstream production/li
 matrix remain open. This attempt is **incomplete**, with clean restoration and an
 explicit human/coordinator handoff.
 
-## Source-only marker bridge handoff
+## Historical source-only marker bridge handoff
 
 Human10665 / direction1242 permits a narrow change to the fixture authority helper on
 draft PR13. The bridge invokes fixed `/usr/bin/logger --socket-errors=on --priority
@@ -318,12 +398,14 @@ fixed interface, and a real unique journal message with the execution UID/contex
 recorded **before any authority window**. It proves only that preflight context. The
 later denial window must observe its exact post-registration loaded marker within five
 seconds before readiness, inside the unchanged total deadline. Loaded and rejecting
-messages require trusted journal provenance: `_SYSTEMD_UNIT=polkit.service`, the actual
+messages at that historical head required trusted provenance: `_SYSTEMD_UNIT=polkit.service`, the actual
 `polkitd` `_UID`, `_EXE=/usr/bin/logger`, current `_BOOT_ID` and timestamps within the
 recorded window; a tag alone is insufficient. An absent
 loaded marker visibly fails the helper and restores its exact owned rule. Source-only
 permission does not assert that this executable or interface is present or usable in
 the guest, and preflight exit-zero alone cannot establish real delivery or daemon context.
+Direction 1269 supersedes only that historical mandatory executable/unit predicate with
+the complete credential/nonce/context contract above; the failed attempt is preserved.
 
 Human10677 / direction1247 records Office400's returned lease and root's Lima Stopped
 verification. This permits no guest reads, access or boot; UTM stays stopped. The
@@ -409,6 +491,12 @@ The hosted source receipts retain byte-for-byte copies of `admission.json` and
 actual control/data members, ownership, permissions and measured bounds without
 downloading the package archive. The admission digest must match the root bootstrap and
 installed-smoke receipt.
+
+The fixed `dpkg --no-triggers --install` invocation can leave desktop/icon interest
+triggers pending on a real desktop. Later `dpkg --audit` observations must distinguish
+that state from fixture acceptance. No trigger-processing or runtime change is part of
+this documentation correction. The adapter also requires the existing dpkg frontend
+lock; initial provisioning precedes updates, and absence still fails closed.
 
 ## Installed execution sequence
 
@@ -553,8 +641,9 @@ headless updater pass closes those gates.
 
 Worker verification uses `python3 -B scripts/verify_repository.py` (30 policy regressions,
 boundary, acceptance inventory, links and legacy OpenAPI), the adapter's ten stdlib
-tests, and the probe's 34 source regressions (six smoke, eleven desktop, eight
-authority-window and nine marker-bridge tests), for 74 tests total. The earlier
+tests, and the probe's 60 source regressions (six smoke, twenty-one desktop, twenty-four
+authority-window and nine marker-bridge tests), for 100 tests total. Source 7383449
+passed the then-current 74 tests (34 probe); that historical result is unchanged. The earlier
 59-test checks at368809e/3697b28 included nineteen probe tests and two authority-window
 tests; those historical counts and raw receipts remain unchanged. Current commands:
 

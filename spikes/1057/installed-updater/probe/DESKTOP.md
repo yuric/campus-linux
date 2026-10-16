@@ -1,5 +1,16 @@
 # Arm64 GDM lease handoff — #1057
 
+Current direction1269 / human10741 authorizes source and mocked tests only, from
+`333d59b`, with at most 32 MiB new allocation and 18 GiB host reserve. Office400 owns
+Lima; neither VM may be accessed for this source task. The actual333 attempt remains
+failed before readiness: two daemon rows carried UID/GID 989, kernel sender PIDs 3263
+and 3274, syslog transport, current boot and journal timestamps, but lacked `_EXE`
+and `_SYSTEMD_UNIT`. Those observed numeric IDs are historical, never future inputs.
+No updater invocation occurred. Missing authority remains independently unproven;
+the next separately granted lease runs that case first after its own checks. It does
+not depend on denial logger readiness. Changed helper bytes require fresh hashes and
+coordinator/different-family source review before execution.
+
 Phase B direction1233 / human10643 authorized exact368809e execution with approved113a
 packages. The [actual attempt](../../../../docs/acceptance/receipts/installed-updater-1057/phase-b/run.json)
 is incomplete and Lima was returned stopped. Human10665 / direction1242 records that
@@ -19,7 +30,9 @@ source correction.
 Direction1242 authorizes only the narrow fixture marker bridge and source regressions
 on draft PR13. Actual Duktape polkit124 runs `--no-debug` with stderr at `/dev/null`,
 where `polkit.log()` writes; the bridge instead uses a fixed `/usr/bin/logger` argv
-through `polkit.spawn`. Its real guest availability and logging are **unverified**.
+through `polkit.spawn`. Availability and delivery were unverified at that source
+handoff; the later333 root-context preflight delivered, while actual daemon readiness
+failed as recorded above.
 Human10677 / direction1247 records Office400's returned Lima lease and root's Stopped
 verification; this grants no guest read, access or boot. UTM stays stopped. Small
 source/docs/evidence work and focused Python checks may use the existing 128 MiB
@@ -112,8 +125,9 @@ the phase A baseline cannot certify subsequently changed authority state.
 
 ### Required logger preflight for the next lease
 
-The next explicit execution lease must satisfy all of these before **any** denial or
-missing-authority window. Source tests and current host inspection cannot satisfy them.
+The next explicit execution lease must satisfy all of these before a **denial**
+window. Missing authority has its own independent mask/activation/readiness checks
+and runs first under the next lease. Source tests cannot satisfy guest prerequisites.
 
 1. From the separately authorized root observation, inspect the actual guest
    `/usr/bin/logger`: record its literal and resolved canonical paths, symlink status,
@@ -137,14 +151,41 @@ missing-authority window. Source tests and current host inspection cannot satisf
    and grants no app authority. Its result establishes only that recorded context:
    it does not assert successful execution by the polkit daemon.
 
-The later denial window must separately prove the actual daemon-context invocation:
-after successful rule registration, the helper waits at most five seconds within the
-unchanged 45-second total for the exact loaded marker before it reports ready. The
-journal entry must carry trusted `_SYSTEMD_UNIT=polkit.service`, the actual `polkitd`
-`_UID`, `_EXE=/usr/bin/logger`, the current `_BOOT_ID` and a timestamp no earlier than
-window start; the tag alone does not establish provenance. The
-actual rejecting marker must meet the same provenance and subject/session correlation
-requirements. No separate marker-only rule or authority window is part of preflight.
+The denial helper binds the actual active `polkit.service` MainPID, starttime,
+executable, cgroup and real UID/GID before mutation. It cross-checks the dedicated
+`polkitd` NSS account, requires a different fixture UID and rejects unexplained
+same-UID processes. Record and recheck the complete identity before readiness and
+restoration; missing reliable fields or context changes invalidate correlation.
+The helper generates a fresh 128-bit OS-random nonce, stores it in the root receipt
+before creating the rule, and embeds it with the bounded lease in both marker events.
+The nonce correlates the attempt; it is not a secret or an authentication credential.
+
+After successful rule registration, the helper waits at most five seconds within the
+unchanged 45-second total. Each loaded/rejecting row must contain the exact event,
+lease, nonce and payload, the expected tag, verified service `_UID` and `_GID`, a
+valid kernel sender `_PID`, `_TRANSPORT=syslog`, current `_BOOT_ID` and trusted
+journal reception time inside the relevant window. Preserve monotonic timestamps
+when available. The rejecting payload binds the actual app PID, user, session and active state;
+correlate the separately observed app starttime and session with the invocation. The logger sender PID is not the
+app subject PID; loaded and rejecting logger invocations may have different PIDs.
+
+`_EXE` and `_SYSTEMD_UNIT` are optional journal process metadata. If present they
+must be exactly `/usr/bin/logger` and `polkit.service`; empty, array-valued,
+malformed or contradictory values fail visibly. Absence is permitted only under
+the complete credential/nonce/context contract and is explicitly recorded. Preserve
+full accepted and rejected rows; a bad current-nonce candidate cannot be hidden by
+a later good row. Message, tag, `_COMM` or `SYSLOG_PID` alone never qualifies.
+No separate marker-only rule, sleep to manufacture metadata, alternate transport,
+fake PID or widened authority window is permitted.
+
+This evidence attributes an exact fresh marker to the verified dedicated polkit
+service account and owned rule in this controlled guest. When process metadata is
+absent it does not directly prove the sender executable, parent service or cgroup.
+The trusted dedicated-account assumption excludes malicious root and same-account
+compromise; before/after inventories cannot exclude a transient hostile process.
+If that assumption cannot be established, fail closed. Loaded evidence permits
+readiness only; exact rejecting evidence, unchanged bytes, no adapter entry, actual
+app/session/time correlation and clean restoration remain independently required.
 
 If the executable/interface or real preflight logging check fails, record the
 failure visibly and stop before an authority window. No observed marker means no
@@ -187,8 +228,16 @@ printf '%s  %s\n' "$authority_sha256" "$stage_root/authority-window.py" | /usr/b
 Record the actual staging paths, owners, modes, expected and observed SHA-256s in
 the lease receipt, and stop if any comparison fails. Prepare the bootstrap staging
 directory by the same copy/compare/lock procedure. Execute the verified staged copy
-using `/usr/bin/python3 -I -B /root/ACTUAL_STAGE/bootstrap/bootstrap.py --bundle
-/root/ACTUAL_STAGE/bootstrap`, then install the exact v1 deb as initial provisioning.
+in an explicit subshell, then install the exact v1 deb as initial provisioning:
+
+```sh
+(umask 022; /usr/bin/python3 -I -B /root/ACTUAL_STAGE/bootstrap/bootstrap.py \
+  --bundle /root/ACTUAL_STAGE/bootstrap)
+```
+
+The subshell leaves private staging's `umask 077` intact. Bootstrap's exact directory
+mode checks remain unchanged: unexpected existing permissions still refuse. Do not
+chmod shared or pre-existing system directories to make provisioning pass.
 Both root Python invocations use `-I -B`: this excludes user-controlled module paths
 (including a neighboring or working-directory `json.py`) and avoids bytecode writes.
 Initial `dpkg --install` is separate from the updater; every update invokes the real
@@ -253,8 +302,11 @@ The helper prints readiness; the root operator then starts the pre-staged GDM
 recorder promptly. Up to ten seconds of the requested 15–45 second duration is
 reserved for restoration, so use `--timeout 20` for the refusal recorder. For denial,
 also require the matching `campus1057-deny-loaded` and actual `campus1057-deny` journal
-markers: rule-file creation is not proof of denial. Preserve journal lines only for
-this lease's marker and subject PID, not an unrelated session log dump.
+markers: rule-file creation is not proof of denial. Preserve the bounded current-window
+candidate rows, including wrong-PID/event/identity contradictions. Do not filter those
+out by the expected subject PID. Use a 65-row sentinel and refuse an export with 65
+or more rows; silently retaining only a tail could hide a contradictory candidate.
+Do not capture an unrelated session log dump.
 The fixture bridge emits the loaded marker only after successful `polkit.addRule`
 registration. Its fixed executable/options use `polkit.spawn` argument vectors with
 validated bounded lease/user/session/PID values; no shell or app-authority fallback
@@ -275,6 +327,34 @@ proof that the update occurred while denial or missing authority was effective.
 For denial, also establish that the matching loaded marker preceded that invocation.
 Do not prefilter the rule by a PID that does not exist yet; bind the actual session
 and correlate the logged rejecting subject PID to the observed app child afterward.
+
+After restoration, export the final root authority receipt and full bounded journal
+JSONL rows through the existing authorized control channel. The coordinator binds
+their SHA-256s and the completed desktop receipt's SHA-256. Preserve the full rows,
+including contradictions and missing optional fields; never export only the rows
+that appear to pass. Run the unprivileged post-run validator with the exact reviewed
+`authority-window.py` adjacent to `desktop.py`:
+
+```sh
+/usr/bin/python3 -I -B /approved/source/desktop.py \
+  --validate-denial /approved/evidence/deny.json \
+  --desktop-receipt-sha256 'COORDINATOR_VERIFIED_DESKTOP_SHA256' \
+  --authority-receipt /approved/evidence/final-deny-window.json \
+  --authority-receipt-sha256 'COORDINATOR_VERIFIED_AUTHORITY_SHA256' \
+  --journal /approved/evidence/deny-journal.jsonl \
+  --journal-sha256 'COORDINATOR_VERIFIED_JOURNAL_SHA256' \
+  --authority-helper-sha256 'REVIEWED_AUTHORITY_HELPER_SHA256' \
+  --validation-receipt /approved/evidence/denial-correlation.json
+```
+
+This writes a new private correlation receipt and never modifies the original
+observations. The reviewed helper source is hash-checked before its pure validator
+is loaded; no authority operation runs during validation. Both loaded readiness and
+actual rejection use the same marker predicate. Incomplete or ambiguous app session
+binding, changed service identity, missing reliable fields, a contradictory current
+nonce or failed restoration yields `incomplete`. A successful correlation remains
+`correlated_pending_coordinator_review`, never final acceptance. Prior failures and
+missing-authority evidence cannot be promoted by this denial-only validator.
 
 Elapsed overruns or failed restoration remain failures even if the command eventually
 restores authority. An abrupt process kill can prevent in-process restoration; the

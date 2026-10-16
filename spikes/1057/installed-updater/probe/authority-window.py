@@ -22,6 +22,7 @@ import os
 from pathlib import Path
 import pwd
 import re
+import secrets
 import shlex
 import signal
 import stat
@@ -40,6 +41,7 @@ LOGGER_TAG = "campus-updater-1057"
 LOGGER_ARGV = [LOGGER, "--socket-errors=on", "--priority", "user.notice",
                "--tag", LOGGER_TAG, "--"]
 PROPERTIES = "Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths"
+SERVICE_PROPERTIES = PROPERTIES + ",MainPID,ControlGroup"
 
 
 def require(condition, message):
@@ -74,7 +76,137 @@ def staged_source(path, expected_sha256):
             "bytecode_disabled": True}
 
 
-def deny_rule(user, lease, pid=None, session=None):
+def decimal(value, minimum=0, maximum=2**63 - 1):
+    return (type(value) is str and len(value) <= len(str(maximum))
+            and re.fullmatch(r"0|[1-9][0-9]*", value) is not None
+            and minimum <= int(value) <= maximum)
+
+
+def require_service_binding(binding):
+    require(type(binding) is dict and decimal(binding.get("uid"), 1)
+            and decimal(binding.get("gid"), 1) and binding.get("account") == "polkitd"
+            and binding.get("nss_users") == ["polkitd"]
+            and binding.get("logger_exe") == LOGGER and binding.get("unit") == "polkit.service",
+            "missing reliable service binding")
+    uid, gid = binding["uid"], binding["gid"]
+    require(type(binding.get("account_primary_gid")) is int and binding["account_primary_gid"] > 0
+            and type(binding.get("account_groups")) is list
+            and all(type(value) is int and value > 0 for value in binding["account_groups"])
+            and int(gid) in binding["account_groups"], "missing dedicated account GID membership")
+    process, state = binding.get("process"), binding.get("service_state")
+    require(type(process) is dict and type(state) is dict, "missing service process context")
+    require(type(binding.get("main_pid")) is int and 1 < binding["main_pid"] <= 2147483647
+            and decimal(binding.get("starttime"), 1) and process.get("pid") == binding["main_pid"]
+            and process.get("starttime") == binding["starttime"]
+            and process.get("uids") == [uid] * 4 and process.get("gids") == [gid] * 4
+            and binding.get("same_uid_processes") == [process], "invalid dedicated service process identity")
+    require(type(binding.get("exe")) is str and binding["exe"].startswith("/")
+            and process.get("exe") == binding["exe"] and type(binding.get("cgroup")) is str
+            and process.get("cgroup") == binding["cgroup"]
+            and state.get("Id") == "polkit.service" and state.get("LoadState") == "loaded"
+            and state.get("ActiveState") == "active" and state.get("SubState") == "running"
+            and not state.get("DropInPaths") and state.get("MainPID") == str(binding["main_pid"])
+            and type(state.get("ControlGroup")) is str and state["ControlGroup"].startswith("/")
+            and any(len(parts) == 3 and parts[2] == state["ControlGroup"]
+                    for parts in (line.split(":", 2) for line in binding["cgroup"].splitlines())),
+            "invalid service executable/cgroup context")
+    for name, path in (("logger", LOGGER), ("executable", binding["exe"])):
+        receipt = binding.get(name)
+        require(type(receipt) is dict and receipt.get("path") == path and receipt.get("uid") == 0
+                and type(receipt.get("mode")) is int and not receipt["mode"] & 0o6022
+                and receipt["mode"] & 0o111 and type(receipt.get("sha256")) is str
+                and re.fullmatch(r"[0-9a-f]{64}", receipt["sha256"]), "missing trusted " + name + " receipt")
+    require(type(binding.get("boot_id")) is str and re.fullmatch(r"[0-9a-f]{32}", binding["boot_id"]),
+            "missing service boot identity")
+
+
+def validate_marker_rows(rows, expected_message, nonce, lease, binding, boot_id, start_ns, end_ns):
+    """Pure receipt validation. The nonce correlates an attempt; it is not secret.
+
+    Missing optional process metadata establishes account attribution only, not
+    kernel proof of executable/parent service. Root and the dedicated service
+    account remain trusted in this controlled disposable guest.
+    """
+    require(type(nonce) is str and re.fullmatch(r"[0-9a-f]{32}", nonce), "invalid marker nonce")
+    require(type(lease) is str and re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}", lease),
+            "invalid marker lease")
+    require(type(expected_message) is str and " lease=" + lease + " nonce=" + nonce in expected_message,
+            "expected marker does not bind lease and nonce")
+    require_service_binding(binding)
+    require(type(boot_id) is str and re.fullmatch(r"[0-9a-f]{32}", boot_id), "invalid boot binding")
+    require(binding["boot_id"] == boot_id, "service boot disagrees with journal window")
+    require(type(start_ns) is int and type(end_ns) is int and 0 < start_ns <= end_ns,
+            "invalid marker receipt time window")
+    evidence = {"accepted": [], "rejected": [], "missing_optional_fields": [], "anomalies": []}
+    for index, row in enumerate(rows):
+        reasons = []
+        candidate = nonce in json.dumps(row.get("MESSAGE") if type(row) is dict else row)
+        if type(row) is not dict:
+            reasons.append("journal row is not an object")
+        else:
+            for field, expected in (("MESSAGE", expected_message), ("SYSLOG_IDENTIFIER", LOGGER_TAG),
+                                    ("_UID", binding["uid"]), ("_GID", binding["gid"]),
+                                    ("_TRANSPORT", "syslog"), ("_BOOT_ID", boot_id)):
+                if type(row.get(field)) is not str or row[field] != expected:
+                    reasons.append("missing/malformed/mismatched " + field)
+            if not decimal(row.get("_PID"), 2, 2147483647):
+                reasons.append("missing/malformed kernel sender _PID")
+            # Realtime reception clocks are bounded; boot-bound monotonic time
+            # is retained for independent correlation when available.
+            if not decimal(row.get("__REALTIME_TIMESTAMP"), 1):
+                reasons.append("missing/malformed __REALTIME_TIMESTAMP")
+            elif not start_ns <= int(row["__REALTIME_TIMESTAMP"]) * 1000 <= end_ns:
+                reasons.append("journal reception time outside window")
+            for field in ("__MONOTONIC_TIMESTAMP", "_SOURCE_REALTIME_TIMESTAMP"):
+                if field in row:
+                    if not decimal(row[field], 1):
+                        reasons.append("malformed " + field)
+                    elif field == "_SOURCE_REALTIME_TIMESTAMP" and not start_ns <= int(row[field]) * 1000 <= end_ns:
+                        reasons.append("source reception time outside window")
+            missing = []
+            for field, expected in (("_EXE", binding["logger_exe"]), ("_SYSTEMD_UNIT", binding["unit"])):
+                if field not in row:
+                    missing.append(field)
+                elif type(row[field]) is not str or row[field] != expected:
+                    reasons.append("contradictory/malformed optional " + field)
+            evidence["missing_optional_fields"].append({"row_index": index, "fields": missing})
+        if reasons:
+            rejection = {"row": row, "reasons": reasons, "current_nonce": candidate}
+            evidence["rejected"].append(rejection)
+            if candidate:
+                evidence["anomalies"].append(rejection)
+        else:
+            evidence["accepted"].append(row)
+    return evidence
+
+
+def root_executable(path):
+    require(path.is_absolute() and path.resolve(strict=True) == path, "noncanonical service executable")
+    safe_root_parent(path.parent)
+    info = path.stat()
+    require(stat.S_ISREG(info.st_mode) and info.st_uid == 0 and not info.st_mode & 0o6022
+            and info.st_mode & 0o111, "service executable is not root-controlled")
+    return {"path": str(path), "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+            "uid": info.st_uid, "mode": stat.S_IMODE(info.st_mode)}
+
+
+def process_identity(pid):
+    proc = Path("/proc") / str(pid)
+    status = dict(line.split(":", 1) for line in (proc / "status").read_text().splitlines() if ":" in line)
+    ids = {name: status.get(name, "").split() for name in ("Uid", "Gid")}
+    require(all(len(values) == 4 and all(decimal(v) for v in values) for values in ids.values()),
+            "missing process real/effective/saved/filesystem credentials")
+    raw_stat = (proc / "stat").read_text()
+    tail = raw_stat.rsplit(")", 1)[1].split()
+    require(len(tail) > 19 and decimal(tail[19], 1), "missing process starttime")
+    exe = os.readlink(proc / "exe")
+    cgroup = (proc / "cgroup").read_text()
+    require(cgroup.strip(), "missing process cgroup")
+    return {"pid": pid, "starttime": tail[19], "exe": exe, "cgroup": cgroup,
+            "uids": ids["Uid"], "gids": ids["Gid"]}
+
+
+def deny_rule(user, lease, pid=None, session=None, *, nonce):
     # Restrict each diagnostic operand independently; JSON serialization remains
     # mandatory for JavaScript literals. No shell or caller-selected executable.
     require(isinstance(user, str) and re.fullmatch(r"[A-Za-z_][A-Za-z0-9_.-]{0,63}", user),
@@ -84,6 +216,7 @@ def deny_rule(user, lease, pid=None, session=None):
     require(isinstance(session, str) and re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.:-]{0,63}", session),
             "deny requires a bounded explicit subject session")
     require(pid is None or (type(pid) is int and 1 < pid <= 2147483647), "invalid subject PID")
+    require(type(nonce) is str and re.fullmatch(r"[0-9a-f]{32}", nonce), "invalid marker nonce")
     # Polkit 124 exposes subject.user, not subject.uid. The caller validates the
     # exact UID/name mapping through NSS before creating this deny-only rule.
     checks = [f"action.id === {json.dumps(ACTION)}",
@@ -94,8 +227,8 @@ def deny_rule(user, lease, pid=None, session=None):
               f"subject.session === {json.dumps(session)}"]
     if pid is not None:
         checks.append(f"subject.pid === {pid}")
-    marker = json.dumps("campus1057-deny lease=" + lease)
-    loaded = json.dumps("campus1057-deny-loaded lease=" + lease)
+    marker = json.dumps("campus1057-deny lease=" + lease + " nonce=" + nonce)
+    loaded = json.dumps("campus1057-deny-loaded lease=" + lease + " nonce=" + nonce)
     prefix = json.dumps(LOGGER_ARGV)
     return ("polkit.addRule(function(action, subject) {\n"
             "  if (" + " && ".join(checks) + ") {\n"
@@ -184,38 +317,140 @@ class Window:
         require(result.stdout.strip() in ("b true", "b false"), "unexpected bus owner response")
         return result.stdout.strip() == "b true"
 
+    def bind_service(self, restoring=False):
+        context_deadline = time.monotonic() + (2 if restoring else 5)
+        if self.total_deadline is not None:
+            context_deadline = min(context_deadline, self.total_deadline if restoring else self.deadline)
+        result = self.run(["/usr/bin/systemctl", "show", "polkit.service",
+                           "--property=" + SERVICE_PROPERTIES], restoring=restoring)
+        state = dict(line.split("=", 1) for line in result.stdout.splitlines() if "=" in line)
+        observed = {"restoring": restoring, "state": state}
+        self.record.setdefault("service_context_observations", []).append(observed)
+        require(state.get("Id") == "polkit.service" and state.get("LoadState") == "loaded"
+                and state.get("ActiveState") == "active" and state.get("SubState") == "running"
+                and not state.get("DropInPaths") and decimal(state.get("MainPID"), 2, 2147483647)
+                and state.get("ControlGroup", "").startswith("/"), "unreliable polkit service context")
+        account = pwd.getpwnam("polkitd")
+        require(account.pw_name == "polkitd" and account.pw_uid > 0
+                and account.pw_uid != self.args.uid
+                and pwd.getpwuid(account.pw_uid).pw_name == account.pw_name,
+                "polkit requires a distinct dedicated NSS identity")
+        nss_users = [entry.pw_name for entry in pwd.getpwall() if entry.pw_uid == account.pw_uid]
+        require(nss_users == [account.pw_name], "polkit UID has another NSS identity")
+        process = process_identity(int(state["MainPID"]))
+        observed["process"] = process
+        require(process["uids"] == [str(account.pw_uid)] * 4,
+                "polkit process credentials disagree with dedicated NSS account")
+        gid = process["gids"][0]
+        account_groups = sorted(os.getgrouplist(account.pw_name, account.pw_gid))
+        require(decimal(gid, 1) and process["gids"] == [gid] * 4
+                and int(gid) in account_groups,
+                "polkit process real GID is not a dedicated account group")
+        groups = [line.split(":", 2) for line in process["cgroup"].splitlines()]
+        require(any(len(row) == 3 and row[2] == state["ControlGroup"] for row in groups),
+                "polkit MainPID cgroup does not match service")
+        executable = root_executable(Path(process["exe"]))
+        logger = root_executable(Path(LOGGER))
+        inventory = []
+        observed["same_uid_processes"] = inventory
+        for count, proc in enumerate(Path("/proc").iterdir(), 1):
+            require(count <= 4096, "service process inventory exceeds controlled-guest bound")
+            require(time.monotonic() < context_deadline, "service identity collection deadline reached")
+            if not proc.name.isdecimal():
+                continue
+            if self.deadline is not None and not restoring:
+                require(time.monotonic() < self.deadline, "service inventory deadline reached")
+            try:
+                raw = (proc / "status").read_text()
+            except FileNotFoundError:
+                continue  # A vanished unrelated PID cannot supply a marker.
+            status = dict(line.split(":", 1) for line in raw.splitlines() if ":" in line)
+            if str(account.pw_uid) in status.get("Uid", "").split():
+                inventory.append(process_identity(int(proc.name)))
+        inventory.sort(key=lambda row: row["pid"])
+        require(inventory == [process], "unexplained same-UID process or changing polkit identity")
+        require(process_identity(process["pid"]) == process, "polkit process changed during binding")
+        require(time.monotonic() < context_deadline, "service identity collection deadline reached")
+        boot_id = Path("/proc/sys/kernel/random/boot_id").read_text().strip().replace("-", "")
+        require(re.fullmatch(r"[0-9a-f]{32}", boot_id), "missing service boot identity")
+        binding = {"uid": str(account.pw_uid), "gid": gid, "account": account.pw_name,
+                "account_primary_gid": account.pw_gid, "unit": "polkit.service", "logger_exe": LOGGER,
+                "account_groups": account_groups, "nss_users": nss_users,
+                "main_pid": process["pid"], "starttime": process["starttime"],
+                "exe": process["exe"], "cgroup": process["cgroup"], "process": process,
+                "same_uid_processes": inventory, "service_state": state, "boot_id": boot_id,
+                "executable": executable, "logger": logger}
+        require_service_binding(binding)
+        return binding
+
+    def recheck_service(self, label, restoring=False):
+        try:
+            binding = self.bind_service(restoring=restoring)
+            self.record[label] = binding
+            require(binding == self.record.get("service_binding"), "polkit service identity changed")
+        except Exception as error:
+            self.record["service_identity_valid"] = False
+            self.record[label + "_error"] = str(error)
+            self.save()
+            raise
+        self.save()
+
+    def check_owned_rule(self):
+        info = RULE.lstat()
+        require((info.st_dev, info.st_ino) == self.owned and not stat.S_ISLNK(info.st_mode),
+                "owned rule identity changed; refusing removal/acceptance")
+        require(RULE.read_bytes() == self.rule_bytes, "deny rule changed; refusing removal/acceptance")
+
     def wait_loaded_marker(self):
         # Read actual journal evidence, not polkit.log's discarded stderr or a
         # rule count. This wait consumes the existing observation budget.
-        expected = "campus1057-deny-loaded lease=" + self.args.lease
-        daemon_uid = str(pwd.getpwnam("polkitd").pw_uid)
-        boot_id = Path("/proc/sys/kernel/random/boot_id").read_text().strip().replace("-", "")
+        nonce = self.record["marker_nonce"]
+        expected = "campus1057-deny-loaded lease=" + self.args.lease + " nonce=" + nonce
+        binding, boot_id = self.record["service_binding"], self.record["boot_id"]
         self.record["marker_bridge"] = {
             "argv_prefix": LOGGER_ARGV, "expected_loaded_message": expected,
-            "daemon_uid": daemon_uid, "boot_id": boot_id,
+            "daemon_uid": binding["uid"], "daemon_gid": binding["gid"], "boot_id": boot_id,
             "systemd_unit": "polkit.service", "loaded_wait_max_seconds": 5,
             "rejecting_marker_required_for_case_acceptance": True,
+            "attribution": "trusted dedicated polkit account and owned rule in controlled guest; "
+                           "no executable/parent proof when optional metadata is absent; "
+                           "no claim against root or same-account compromise",
         }
+        self.record["loaded_marker_observations"] = []
         self.save()
         until = min(self.deadline, time.monotonic() + 5)
-        argv = ["/usr/bin/journalctl", "--no-pager", "--output=json", "--lines=64",
+        argv = ["/usr/bin/journalctl", "--no-pager", "--output=json", "--lines=65",
                 "--since=@" + str(self.record["window_started_unix_ns"] // 1_000_000_000),
-                "SYSLOG_IDENTIFIER=" + LOGGER_TAG, "_EXE=" + LOGGER,
-                "_SYSTEMD_UNIT=polkit.service", "_UID=" + daemon_uid, "_BOOT_ID=" + boot_id]
+                "_UID=" + binding["uid"], "_GID=" + binding["gid"],
+                "_TRANSPORT=syslog", "_BOOT_ID=" + boot_id,
+                # Also retain tag candidates with missing/contradictory trusted
+                # fields, so a good row cannot conceal a current-nonce anomaly.
+                "+", "SYSLOG_IDENTIFIER=" + LOGGER_TAG]
         while time.monotonic() < until:
             result = self.run(argv, timeout_seconds=until - time.monotonic())
+            observed = time.time_ns()
+            rows = []
             for line in result.stdout.splitlines():
-                row = json.loads(line)
-                if (row.get("MESSAGE") == expected
-                        and row.get("SYSLOG_IDENTIFIER") == LOGGER_TAG
-                        and row.get("_EXE") == LOGGER and row.get("_UID") == daemon_uid
-                        and row.get("_SYSTEMD_UNIT") == "polkit.service"
-                        and row.get("_BOOT_ID") == boot_id
-                        and int(row.get("__REALTIME_TIMESTAMP", "0")) * 1000
-                        >= self.record["window_started_unix_ns"]):
-                    self.record["loaded_marker"] = row
-                    self.save()
-                    return
+                try:
+                    rows.append(json.loads(line))
+                except json.JSONDecodeError:
+                    rows.append(line)  # Preserve malformed current-nonce candidates too.
+            evidence = validate_marker_rows(rows, expected, nonce, self.args.lease, binding, boot_id,
+                                            self.record["window_started_unix_ns"], observed)
+            self.record["loaded_marker_observations"].append({"observed_unix_ns": observed,
+                                                              "evidence": evidence})
+            self.record["loaded_marker_evidence"] = evidence
+            self.save()
+            require(len(json.dumps(self.record).encode()) < 768 * 1024,
+                    "loaded marker receipt exceeds bounded evidence budget")
+            require(len(rows) < 65, "loaded journal candidate limit reached; complete evidence unavailable")
+            require(time.monotonic() <= until, "loaded marker observation exceeded bounded wait")
+            require(not evidence["anomalies"], "contradictory current-nonce loaded marker candidate")
+            if evidence["accepted"]:
+                self.record["loaded_marker"] = evidence["accepted"][0]
+                self.record["loaded_marker_observed_unix_ns"] = observed
+                self.save()
+                return
             time.sleep(max(0, min(0.1, until - time.monotonic())))
         raise RuntimeError("required exact loaded logger marker absent; logging/registration prerequisite failed")
 
@@ -232,9 +467,19 @@ class Window:
         if self.args.mode == "deny":
             safe_root_parent(RULE.parent)
             require(not os.path.lexists(RULE), "fixture deny rule already exists")
-            self.rule_bytes = deny_rule(account.pw_name, self.args.lease,
-                                        self.args.subject_pid, self.args.session_id)
             self.arm_deadline()
+            self.record["service_binding"] = self.bind_service()
+            require_service_binding(self.record["service_binding"])
+            self.record["boot_id"] = self.record["service_binding"]["boot_id"]
+            require(re.fullmatch(r"[0-9a-f]{32}", self.record["boot_id"]), "invalid current boot")
+            self.record["marker_nonce"] = secrets.token_hex(16)
+            self.record["service_identity_valid"] = False
+            # Persist the fresh helper-generated nonce and binding before the
+            # first owned rule byte can become visible to polkit.
+            self.save()
+            self.rule_bytes = deny_rule(account.pw_name, self.args.lease,
+                                        self.args.subject_pid, self.args.session_id,
+                                        nonce=self.record["marker_nonce"])
             fd = os.open(RULE, os.O_CREAT | os.O_EXCL | os.O_WRONLY | os.O_NOFOLLOW, 0o644)
             try:
                 os.fchmod(fd, 0o644)
@@ -248,6 +493,8 @@ class Window:
             finally:
                 os.close(fd)
             self.wait_loaded_marker()
+            self.recheck_service("service_binding_before_ready")
+            self.check_owned_rule()
             self.record["ready_caveat"] = "Loaded marker verified; require exact rejecting subject/session logger marker for actual refusal evidence"
         else:
             require(self.args.allow_shared_authority_window,
@@ -305,6 +552,7 @@ class Window:
             require(activation.returncode != 0 and "polkit.service" in activation.stderr
                     and "masked" in activation.stderr, "activation was not rejected at the runtime mask")
             require(not self.owner(), "authority appeared after activation attempt")
+        require(time.monotonic() < self.deadline, "authority observation deadline reached before readiness")
         self.record["status"] = "ready"
         self.record["ready_unix_ns"] = time.time_ns()
         self.record["remaining_seconds"] = max(0, self.deadline - time.monotonic())
@@ -327,8 +575,25 @@ class Window:
         info = path.lstat()
         require((info.st_dev, info.st_ino) == self.owned, "owned path changed; manual recovery required")
         if self.args.mode == "deny":
-            require(path.read_bytes() == self.rule_bytes, "deny rule changed; refusing removal")
+            identity_error = None
+            try:
+                self.recheck_service("service_binding_before_restore", restoring=True)
+            except Exception as error:
+                # Context failure invalidates evidence, never restoration of
+                # this exact owned unchanged rule.
+                identity_error = error
+            self.check_owned_rule()
             path.unlink()
+            self.record["cleanup"] = "restored"
+            try:
+                self.recheck_service("service_binding_after_restore", restoring=True)
+            except Exception as error:
+                identity_error = identity_error or error
+            if identity_error is not None:
+                self.record["status"] = "failed"
+                self.record["error"] = "polkit identity changed; owned rule restored: " + str(identity_error)
+            else:
+                self.record["service_identity_valid"] = True
         else:
             require(path.is_symlink() and os.readlink(path) == "/dev/null", "runtime mask changed")
             self.run(["/usr/bin/systemctl", "--runtime", "unmask", "polkit.service"], restoring=True)

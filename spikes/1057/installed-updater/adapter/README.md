@@ -3,6 +3,8 @@
 This is a narrow #1057 experiment, not a production installer. Its fixed package is
 `campus-updater-1057`; admitted versions are exactly `1.0.0`, `2.0.0`, and `3.0.0`.
 The verifier and public key are provisioned independently of the deb payload.
+The [acceptance record](../../../../docs/acceptance/installed-updater-1057.md) separates
+installed hosted evidence, failed desktop attempts and remaining acceptance gaps.
 
 `make-admission.py --architecture arm64 --output admission.json v1.deb v2.deb v3.deb`
 measures the actual Tauri packages. It records exact package hashes and sizes, control
@@ -16,11 +18,17 @@ root installer. The generated admission must be reviewed with the hosted receipt
 provisioning. This deliberate exact-hash restriction is appropriate only to a disposable
 three-release experiment.
 
-In an explicitly authorized disposable Linux root provisioning session, run:
+In an explicitly authorized disposable Linux root provisioning session, first use the
+[reviewed staging procedure](../probe/DESKTOP.md#staged-provisioning-and-recorder), then run:
 
 ```sh
-python3 adapter/bootstrap.py --bundle /absolute/hosted-output/bootstrap
+(umask 022; /usr/bin/python3 -I -B /root/ACTUAL_STAGE/bootstrap/bootstrap.py \
+  --bundle /root/ACTUAL_STAGE/bootstrap)
 ```
+
+The subshell gives newly created bootstrap directories their required modes without
+changing the caller's private staging umask 077. Bootstrap still refuses unexpected
+existing permissions; do not chmod shared or pre-existing system directories to bypass it.
 
 The bundle contains `install-deb.py`, `verify-signature`, `public-key.txt`,
 `admission.json`, and `dev.projectcampus.updater1057.policy`. Verify its hosted artifact
@@ -47,6 +55,8 @@ and dpkg's frontend lock across version comparison and installation. Its dpkg ch
 the [documented frontend lock protocol](https://manpages.debian.org/trixie/dpkg/dpkg.1.en.html#DPKG_FRONTEND_LOCKED),
 a fixed environment and `--no-triggers --install` on that same root-staged path. Same/lower
 signed versions are refused; signed higher v3 can carry deliberately reverted behavior.
+Desktop/icon interest triggers can consequently remain pending in dpkg; record that
+state separately from fixture acceptance. The adapter does not process them.
 The trusted installer, verifier, key, policy and admission paths are forbidden in package
 payloads. A caller cannot configure these paths or substitute another executable.
 
@@ -67,3 +77,8 @@ These tests exercise copy confinement, measured bounds, schema rejection and aut
 ordering with synthetic archives and injected verifier/comparison results. They are not
 installed-artifact, cryptographic, polkit or desktop evidence. Hosted actual packages and
 the later leased GDM session must supply those separate receipts.
+
+The retained [tauri-cli.Cargo.lock](../toolchain/tauri-cli.Cargo.lock) is upstream source
+provenance for the pinned prebuilt CLI, whose download is hash-checked by
+[`hosted/install-tools.py`](../hosted/install-tools.py); it is not consumed as a CLI
+source-build input.

@@ -88,6 +88,167 @@ def hosted_rule_observation(verified_preflight=None):
     raise RuntimeError("hosted automatic-allow rule must not exist during GDM evidence")
 
 
+def bound_export(path, digest):
+    """Read the bytes the coordinator actually bound, without privileged reads."""
+    require(isinstance(digest, str) and re.fullmatch(r"[0-9a-f]{64}", digest),
+            "export requires a coordinator-verified SHA-256")
+    record = file_record(path, RECEIPT_LIMIT)
+    with path.open("rb") as stream:
+        content = stream.read(RECEIPT_LIMIT + 1)
+    require(len(content) <= RECEIPT_LIMIT and record["sha256"] == digest
+            and hashlib.sha256(content).hexdigest() == digest,
+            "export differs from coordinator binding or changed while reading")
+    return record, content
+
+
+def validate_denial_evidence(desktop, authority, rows, validate_rows, derive_rule):
+    """Pure post-run correlation. A pass remains subject to coordinator review."""
+    result = {"status": "incomplete", "acceptance": "pending_coordinator_review",
+              "journal_rows": rows,
+              "trust_boundary": "Exact fresh marker from the verified dedicated polkit service account, "
+              "correlated with the owned rule and controlled guest service context. Absent optional metadata "
+              "does not prove executable or parent service; no protection against malicious root or "
+              "same-account compromise. Nonce is correlation, not a secret."}
+    try:
+        require(desktop.get("schema") == 1 and desktop.get("case") == "deny"
+                and desktop.get("status") == "observation_recorded"
+                and desktop.get("session_binding") == "exact_logind_session",
+                "only a completed exact-session deny observation can be correlated")
+        require(authority.get("mode") == "deny" and authority.get("status") == "window_elapsed"
+                and authority.get("cleanup") == "restored" and authority.get("deadline_exceeded") is False,
+                "authority window did not finish with clean bounded restoration")
+        require(authority.get("lease") == desktop.get("lease_reference"), "authority lease differs")
+        binding = authority.get("service_binding")
+        require(isinstance(binding, dict) and authority.get("service_identity_valid") is True
+                and all(authority.get(key) == binding for key in
+                        ("service_binding_before_ready", "service_binding_before_restore", "service_binding_after_restore")),
+                "dedicated polkit service context was not stable through restoration")
+        require(binding.get("uid") != str(authority.get("uid")), "fixture and daemon account must differ")
+        nonce = authority.get("marker_nonce")
+        require(isinstance(nonce, str) and re.fullmatch(r"[0-9a-f]{32}", nonce), "missing fresh helper nonce")
+        require(desktop.get("boot_id") == desktop.get("boot_id_after") == authority.get("boot_id")
+                and isinstance(desktop.get("boot_id"), str)
+                and re.fullmatch(r"[0-9a-f]{32}", desktop["boot_id"]), "actual app and authority boot binding differs")
+        expected_rule = derive_rule(authority.get("user"), authority.get("lease"), authority.get("subject_pid"),
+                                    authority.get("subject_session"), nonce=nonce)
+        result["expected_rule_sha256"] = hashlib.sha256(expected_rule).hexdigest()
+        inode = authority.get("owned_device_inode")
+        require(authority.get("rule_sha256") == result["expected_rule_sha256"]
+                and authority.get("owned_path") == "/etc/polkit-1/rules.d/00-campus-updater-1057-deny.rules"
+                and isinstance(inode, list) and len(inode) == 2
+                and all(type(value) is int and value > 0 for value in inode),
+                "missing exact helper-derived owned rule hash/path/inode provenance")
+        commands = [row for row in desktop.get("commands", []) if row.get("argv", [])[:2] == [APP, "--update"]]
+        require(len(commands) == 1, "requires one actual updater invocation")
+        update = commands[0]
+        process, session = update.get("process", {}), desktop.get("session", {})
+        pid, uid = process.get("pid"), authority.get("uid")
+        require(type(pid) is int and 1 < pid <= 2147483647
+                and type(process.get("starttime_ticks")) is int and process["starttime_ticks"] > 0
+                and process.get("uids", [])[:2] == [uid, uid] and type(uid) is int and uid > 0
+                and process.get("logind_owner_uid") == uid
+                and process.get("session") == session.get("Id") == authority.get("subject_session")
+                and session.get("User") == str(uid) and session.get("Active") == "yes"
+                and session.get("Remote") == "no", "actual app PID/starttime/user/session binding is incomplete")
+        require(authority.get("subject_pid") in (None, pid), "rule subject differs from actual app PID")
+        if authority.get("subject_pid") is not None:
+            subject_stat = authority.get("subject_stat", "").rsplit(")", 1)[-1].split()
+            require(len(subject_stat) > 19 and subject_stat[19] == str(process["starttime_ticks"]),
+                    "root subject starttime differs from actual app lifetime")
+        require(all(desktop.get("session_after", {}).get(key) == session.get(key) for key in
+                    ("Id", "User", "Leader", "Type", "Class", "Service", "Remote", "Active", "State", "Scope", "Seat")),
+                "actual app session changed")
+        times = [authority.get("window_started_unix_ns"), authority.get("loaded_marker_observed_unix_ns"),
+                 authority.get("ready_unix_ns"), update.get("started_ns"), update.get("finished_ns"),
+                 authority.get("restore_started_unix_ns"), authority.get("window_finished_unix_ns")]
+        require(all(type(value) is int and value > 0 for value in times)
+                and times == sorted(times), "invocation was outside loaded, effective authority window")
+        require(times[-1] - times[0] <= 45_000_000_000
+                and times[4] - times[3] <= 20_000_000_000
+                and times[-1] - times[-2] <= 10_000_000_000,
+                "45-second window, 20-second invocation or 10-second restoration budget exceeded")
+        events = desktop.get("updater_events", [])
+        require([event.get("event") for event in events] == ["installed_identity", "selected", "verified_download",
+                "polkit_adapter_result", "refusal_bytes", "refused"]
+                and type(update.get("returncode")) is int and update["returncode"] != 0,
+                "observation does not contain the actual refused updater path")
+        require(events[3].get("success") is False and events[3].get("stdout", "").strip() == ""
+                and events[4].get("app_unchanged") is True and events[4].get("helper_unchanged") is True
+                and events[-1].get("error") == "polkit adapter did not install the fixture; inspect its receipt"
+                and isinstance(desktop.get("before"), dict) and desktop["before"] == desktop.get("after")
+                and events[0] == desktop["before"], "adapter entry or changed bytes prevents denial evidence")
+        require(isinstance(rows, list) and 0 < len(rows) <= 64, "journal export must contain 1..64 full rows")
+        loaded, rejecting, other = [], [], []
+        for row in rows:
+            message = row.get("MESSAGE") if isinstance(row, dict) else None
+            if isinstance(message, str) and message.startswith("campus1057-deny-loaded "):
+                loaded.append(row)
+            elif isinstance(message, str) and message.startswith("campus1057-deny "):
+                rejecting.append(row)
+            else:
+                other.append(row)
+        common = {"nonce": nonce, "lease": authority["lease"], "binding": binding, "boot_id": authority.get("boot_id")}
+        result["loaded"] = validate_rows(loaded,
+            "campus1057-deny-loaded lease=" + authority["lease"] + " nonce=" + nonce,
+            start_ns=times[0], end_ns=times[1], **common)
+        result["rejecting"] = validate_rows(rejecting,
+            "campus1057-deny lease=" + authority["lease"] + " nonce=" + nonce + " pid=" + str(pid)
+            + " user=" + authority.get("user", "") + " session=" + session["Id"] + " active=true",
+            start_ns=times[3], end_ns=times[4], **common)
+        result["other_rows"] = other
+        require(not any(nonce in json.dumps(row) for row in other), "unrecognized current-nonce journal candidate")
+        require(all(result[key]["accepted"] and not result[key]["anomalies"] for key in ("loaded", "rejecting")),
+                "loaded or rejecting marker lacks complete provenance, or has contradictory current-nonce rows")
+        require(all(int(row["_PID"]) != pid for row in result["rejecting"]["accepted"]),
+                "logger sender PID cannot be the actual app subject PID")
+        result.update(status="correlated_pending_coordinator_review",
+                      app_subject={"pid": pid, "starttime_ticks": process["starttime_ticks"], "session": session["Id"]},
+                      logger_sender_pids=[row["_PID"] for row in result["rejecting"]["accepted"]])
+    except (RuntimeError, ValueError, TypeError, KeyError) as error:
+        result["error"] = str(error)
+    return result
+
+
+def validate_denial_exports(args):
+    """Create new evidence; never rewrite or promote the original observation."""
+    output = {"schema": 1, "kind": "campus1057-denial-correlation", "status": "incomplete",
+              "acceptance": "pending_coordinator_review", "exports": {}}
+    descriptor = os.open(args.validation_receipt, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600)
+    with os.fdopen(descriptor, "w") as stream:
+        try:
+            values = {}
+            for key, path, digest in (("desktop", args.validate_denial, args.desktop_receipt_sha256),
+                                      ("authority", args.authority_receipt, args.authority_receipt_sha256),
+                                      ("journal", args.journal, args.journal_sha256)):
+                record, content = bound_export(path, digest)
+                output["exports"][key] = record
+                values[key] = ([json.loads(line) for line in content.splitlines() if line.strip()]
+                               if key == "journal" else json.loads(content))
+                if key == "journal":
+                    output["journal_rows"] = values[key]
+            output["recorder_source"] = file_record(__file__, RECEIPT_LIMIT)
+            output["observed_recorder_source"] = values["desktop"].get("recorder")
+            require(isinstance(output["observed_recorder_source"], dict)
+                    and output["observed_recorder_source"].get("sha256") == output["recorder_source"]["sha256"],
+                    "desktop invocation did not use these reviewed recorder bytes")
+            helper = Path(__file__).with_name("authority-window.py")
+            record, source = bound_export(helper, args.authority_helper_sha256)
+            output["validator_source"] = record
+            require(values["authority"].get("authority_helper", {}).get("sha256") == args.authority_helper_sha256,
+                    "authority window did not run these reviewed helper bytes")
+            namespace = {"__name__": "campus1057_marker_validation", "__file__": str(helper)}
+            exec(compile(source, str(helper), "exec"), namespace)
+            output.update(validate_denial_evidence(values["desktop"], values["authority"], values["journal"],
+                                                   namespace["validate_marker_rows"], namespace["deny_rule"]))
+        except Exception as error:
+            output["error"] = str(error)
+        json.dump(output, stream, indent=2)
+        stream.write("\n")
+        stream.flush()
+        os.fsync(stream.fileno())
+    return 0 if output["status"] == "correlated_pending_coordinator_review" else 1
+
+
 def record_outcome(path, observer, observation):
     """Attach an actual human observation only after the recorded invocation ends."""
     descriptor = os.open(path, os.O_RDWR | os.O_NOFOLLOW)
@@ -144,6 +305,12 @@ def logind_process(pid):
             "starttime_ticks": int(proc_stat[19]), "cgroup": Path(f"/proc/{pid}/cgroup").read_text(),
             "session": session, "session_api_result": result,
             "logind_owner_uid": owner.value if owner_result >= 0 else None, "owner_api_result": owner_result}
+
+
+def boot_id():
+    value = Path("/proc/sys/kernel/random/boot_id").read_text().strip().replace("-", "")
+    require(re.fullmatch(r"[0-9a-f]{32}", value), "missing actual boot identity")
+    return value
 
 
 class Recorder:
@@ -283,6 +450,7 @@ class Recorder:
     def bind_session(self):
         require(platform.system() == "Linux" and platform.machine() == "aarch64", "recorder requires the leased native arm64 Linux guest")
         require(os.getuid() == os.geteuid() != 0, "recorder must be the unprivileged desktop user")
+        self.receipt["boot_id"] = boot_id()
         preflight = None
         if self.args.root_preflight is not None:
             preflight = root_preflight(self.args.root_preflight, self.args.root_preflight_sha256,
@@ -419,6 +587,8 @@ class Recorder:
             self.receipt["before"] = before
             self.save()
             update = self.command([APP, "--update", self.args.endpoint], timeout=self.args.timeout, bind=True)
+            self.receipt["boot_id_after"] = boot_id()
+            require(self.receipt["boot_id_after"] == self.receipt["boot_id"], "boot identity changed during invocation")
             after = self.identity("2.0.0" if self.args.case == "prompt" else "1.0.0", "after")
             self.receipt["after"] = after
             events = [json.loads(line) for line in update["stdout"].splitlines() if line.startswith("{")]
@@ -491,6 +661,14 @@ def main():
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--case", choices=("prompt", "cancel", "deny", "missing-authority"))
     mode.add_argument("--record-outcome", type=Path, help="completed receipt to append the actual observation to, after the recorder exits")
+    mode.add_argument("--validate-denial", type=Path, help="post-run completed deny receipt; produces a separate correlation receipt")
+    parser.add_argument("--desktop-receipt-sha256", help="coordinator binding for the completed desktop receipt")
+    parser.add_argument("--authority-receipt", type=Path, help="exported final root authority receipt, after restoration")
+    parser.add_argument("--authority-receipt-sha256", help="coordinator binding for the final root receipt")
+    parser.add_argument("--journal", type=Path, help="exported full journal JSONL rows from the bounded authority window")
+    parser.add_argument("--journal-sha256", help="coordinator binding for the exported full journal rows")
+    parser.add_argument("--authority-helper-sha256", help="reviewed SHA-256 of adjacent authority-window.py and actual root helper")
+    parser.add_argument("--validation-receipt", type=Path, help="new private post-run correlation receipt; originals stay unchanged")
     parser.add_argument("--lease-reference", help="explicit coordinator lease comment/receipt reference; not a grant of authority")
     parser.add_argument("--authority-reference", help="coordinator's actual authority-window preparation receipt")
     parser.add_argument("--source-head", help="full reviewed source SHA; recorder hash is independently retained")
@@ -499,14 +677,21 @@ def main():
     parser.add_argument("--root-preflight", type=Path, help="exported root rule inventory/absence receipt refreshed after provisioning")
     parser.add_argument("--root-preflight-sha256", help="coordinator-verified SHA-256 binding for the exported root receipt")
     parser.add_argument("--endpoint", default="http://127.0.0.1:17857/stable/linux.json")
-    parser.add_argument("--observer", required=True)
+    parser.add_argument("--observer")
     parser.add_argument("--planned-observation", help="planned scenario only; not a claim about an outcome")
     parser.add_argument("--observation", help="actual observed GUI outcome, only with --record-outcome; never enter any password or secret")
     parser.add_argument("--screenshot", type=Path, help="fresh compositor PNG captured during this invocation; mandatory for prompt/cancel")
     parser.add_argument("--receipt", type=Path, help="new receipt path in an existing user-owned evidence directory")
     parser.add_argument("--timeout", type=int, default=180)
     args = parser.parse_args()
-    if not args.observer.strip() or len(args.observer) > 2048:
+    if args.validate_denial is not None:
+        if any(getattr(args, name) is None for name in ("desktop_receipt_sha256", "authority_receipt",
+                "authority_receipt_sha256", "journal", "journal_sha256", "authority_helper_sha256", "validation_receipt")):
+            parser.error("--validate-denial requires desktop/authority/journal SHA-256 bindings, helper SHA-256 and new validation receipt")
+        if args.validation_receipt.parent.stat().st_uid != os.getuid():
+            parser.error("validation receipt requires this user's existing evidence directory")
+        raise SystemExit(validate_denial_exports(args))
+    if not args.observer or not args.observer.strip() or len(args.observer) > 2048:
         parser.error("observer must be nonempty and bounded")
     if args.record_outcome is not None:
         if not args.observation or not args.observation.strip() or len(args.observation) > 2048:

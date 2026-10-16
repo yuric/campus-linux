@@ -3,6 +3,7 @@ set -euo pipefail
 test "${GITHUB_ACTIONS:-}" = true
 test "$(git rev-parse HEAD)" = "$EXACT_HEAD"
 spike=spikes/1057/installed-updater
+python3 -B -m unittest discover -s "$spike/adapter" -p 'test_*.py' -v
 python3 -B -m unittest discover -s "$spike/probe" -p 'test_*.py' -v
 mkdir -p updater-output/receipts
 work=$(mktemp -d "$RUNNER_TEMP/updater1057.XXXXXX")
