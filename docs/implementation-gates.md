@@ -1,7 +1,6 @@
 # Linux implementation gates
 
-These are required evidence for [the PRD](../PRD.md), not completed tests or permission to
-start implementation. D1–D7, P01–P18, the five S1 prerequisites and D5's accepted x86_64
+These are required evidence for [the PRD](../PRD.md), not completed tests. Implementation was explicitly authorized on 2026-10-16. D1–D7, P01–P18, the five S1 prerequisites and D5's accepted x86_64
 desktop-evidence gap remain in force. L0 may investigate mechanisms after the owner starts
 implementation; later milestones must supply passing receipts before claiming the outcome.
 
@@ -230,4 +229,4 @@ The L0 handoff must include a reproducible Lima configuration and automation for
 graphical login/logout, keyring unlock/lock and polkit interaction, with disposable guest
 credentials supplied securely rather than committed. Test each D5 session/package tuple.
 Failures and unavailable mechanisms remain explicit; the x86_64 preview does not inherit
-arm64 desktop results. Implementation starts only on the owner's separate request.
+arm64 desktop results. Implementation is authorized; these receipts remain required.

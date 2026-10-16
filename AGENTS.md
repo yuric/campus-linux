@@ -3,20 +3,39 @@
 Instructions for AI coding agents working in this repository. Humans want `README.md` and
 `CONTRIBUTING.md`.
 
-## Read this first: there is no code here
+## Read this first: implementation is authorized
 
-This client **has not been started**. There is no app source, build or runtime test suite.
+The owner explicitly started Linux implementation on 2026-10-16 under coordinator
+**LINUX-20261016**, cards #981–#999. This bootstrap contains no app source or runtime test suite.
 Repository policy tooling and its regression command are documented in
 [docs/client-boundary.md](docs/client-boundary.md). The
 stack **is decided**: Tauri with a React board, Rust for the host and the executor, Secret
 Service for secrets, deb and AppImage with Tauri's updater, one production channel. The
 decisions and their trade-offs are in [PRD.md section 4](PRD.md#4-architecture-and-decisions).
 
-If you have been asked to implement something here, check that the owner has explicitly
-started implementation. Until then, changes are documentation and explicitly owner-requested
-maintenance of existing repository policy tooling; neither authorizes app scaffolding.
-When implementation starts, build what section 4 says; do not reopen a decision, substitute
-a framework, or add a dependency section 4 does not imply.
+Implement only the assigned card and its verified merged dependencies. Build what section 4
+says; do not reopen a decision, substitute a framework, or add an unrelated dependency.
+The approved D6 consolidation preserves all five server requirements.
+
+## Delivery ownership
+
+Workers deliver draft PRs with title prefix `Campus Linux: `, body marker `LINUX-20261016`
+and the actual card ID. Start from merged main; record source/contract/producer SHAs and
+verify merged producer evidence rather than accepting closed cards or open PRs. Review the
+full diff, run required checks on the exact head, and record PR/branch/head, commands,
+observed results, risks and remaining evidence on the card. Never mark ready, merge or
+arm auto-merge. Next owner is **LINUX-20261016**, which independently verifies, obtains a
+different-family review, observes Council, and owns merge/release. A worker handoff is not
+dependency completion. Do not mark the card done before coordinator acceptance.
+
+On publish/check failure preserve commits/workspace and post the exact failed operation,
+actionable error and remaining step. Hand off to LINUX-20261016 on the card; identify an
+actual coordinator watcher or explicit human handoff, never assume another run is scheduled.
+If human input is required, use a question plus blocked/needs_input with a concrete
+recommended direction. Do not change visibility/settings, use self-hosted runners or pay
+for private hosted minutes to bypass a failure. The coordinator owns those settings.
+Do not touch dirty reference trees, umbrella pointers, release keys or public release uploads.
+See [verification and admission](docs/acceptance/verification.md) for exact commands/checks.
 
 ## Repository routing
 
@@ -27,7 +46,8 @@ edits, whatever building the card sits on and whatever folder your shell started
 |---|---|---|
 | `yuric/campus-server` | Rails API (`api/`), the OpenAPI spec and `contracts/`, deploy and release (`deploy/`, `changes/`, `VERSION`), AWS (`infrastructure/`), CI and policy (`.github/`, `scripts/`, `config/`), Campus skills (`.agents/skills`, `api/app/skills`) | Swift, the Mac app, the island renderer, any client UI |
 | `yuric/campus-macos` | The Mac app (`CampusApp/`, `Sources/`, `Package.swift`), the island renderer (`island/`), the contract snapshot (`contract/`, moved only by a snapshot PR) | Rails, migrations, OpenAPI edits, deploy and release, client pins |
-| `yuric/campus-ios`, `campus-android`, `campus-linux`, `campus-windows` | Scaffolds: PRDs and docs, until the owner starts the client | Product code, frameworks, dependencies |
+| `yuric/campus-linux` | Authorized Linux client, executor, packages and repository tooling | Rails/API edits, renderer producer source |
+| `yuric/campus-ios`, `campus-android`, `campus-windows` | Scaffolds: PRDs and docs, until the owner starts the client | Product code, frameworks, dependencies |
 | `yuric/campus-cli`, `yuric/campus-web` | Retired on 2026-10-05 (`campus-web` is archived) | Any new work |
 | `yuric/campus` | The umbrella: submodule pointers and its own scaffold docs | Product code of any kind |
 | `yuric/campus-marketing-page` | The public marketing site | API or client code |
@@ -45,9 +65,8 @@ edits, whatever building the card sits on and whatever folder your shell started
 
 ### In this repository
 
-- You are in a scaffold. PRDs, docs and explicitly requested repository policy maintenance
-  are useful here until the owner starts this client; product or API work goes to the
-  repository the table names.
+- Linux implementation is authorized in this repository. API and renderer-producer work
+  still goes to the repository the table names; other client scaffolds remain unstarted.
 
 ## What you can usefully do
 
@@ -125,8 +144,8 @@ memory/environment and never go on disk.
 
 ## Source of truth
 
-This repository is the source of truth for Campus on Linux. Work on it has not started; when it
-does, development happens here, through pull requests to `main`. API snapshots come from `yuric/campus-server` and are never edited here by hand.
+This repository is the source of truth for Campus on Linux. Implementation was authorized on 2026-10-16;
+development happens here, through pull requests to `main`. API snapshots come from `yuric/campus-server` and are never edited here by hand.
 The planned renderer artifact comes from a pinned merged `campus-macos` producer;
 its implementation remains producer-owned. See `CONTRIBUTING.md`.
 

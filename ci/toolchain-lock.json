@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rust": "1.99.1",
+  "node": "24.22.0",
+  "tauri": "2.12.4",
+  "tauri_cli": "2.12.3",
+  "tauri_bundler": "2.10.3",
+  "tauri_plugin_updater": "2.14.0",
+  "vite": "8.3.4",
+  "verification_base": "ubuntu:24.04@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55",
+  "release_base": "ubuntu:22.04@sha256:5ec03bb3441e8b0bf3b4f9cd4629a1ae763010dc3035bb8da3ae6cf026486401",
+  "release_glibc_max": "2.35",
+  "verification_glibc": "2.39",
+  "webkitgtk_abi": "4.1",
+  "product_commands": {},
+  "product_status": "unimplemented; product owners add real build/test seams and lockfiles before claiming runtime evidence"
+}
