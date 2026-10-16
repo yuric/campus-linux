@@ -19,8 +19,8 @@ The later comment 10517 removes exact Ubuntu register-note source retrieval as a
 admission requirement. Upstream 6.8 layout plus actual runtime facts can support
 practical one-shot budgeting; 14 MiB is an estimate, not a formal distribution
 bound or acceptance threshold. Earlier source-unavailable language in raw runner
-records describes the earlier direction and is superseded here. The **actual
-metadata preflight still failed**, so the explicitly permitted SIGQUIT fallback
+records describes the earlier direction and is superseded here. The **original
+metadata preflight failed**, so the explicitly permitted SIGQUIT fallback
 was used. No global Apport/kernel/service settings, dependencies or VM sizes changed.
 
 ## Results and source binding
@@ -73,11 +73,18 @@ a decoded marker match or absence of all possible userspace secret persistence.
 
 The [metadata attempt](receipts/apport-activation-1196/run2/metadata.json) passed
 all stopped-ELF/namespace/size predicates, then raised `ValueError: not accessible`
-while collecting metadata under the fixture's effective UID. The earlier
+while collecting metadata with effective UID 1000 but the wrong effective GID
+1000 (the stopped target and actual handler used GID 1001). The earlier
 [run1 metadata failure](receipts/apport-activation-1196/run1/metadata.json) is also
 retained. There is no serialized metadata byte count, and no claim that the
 proposed 1 MiB metadata check passed. The exact failing internal metadata method
-was not captured; its cause remains undiagnosed.
+was not captured. These were **non-equivalent harness failures**: supplementary
+groups were retained, the proc descriptor was not pre-opened as root, and
+ExecutablePath was not established before the drop. These mismatches are proven,
+but no single one is established as the sole cause. Both old failures remain
+unchanged. The separately authorized [direction 1200 repair](repair-1200.md)
+subsequently passed non-crashing metadata collection; it grants no full-report
+or SIGABRT admission.
 
 The [first activation attempt](receipts/apport-activation-1196/run1/host-runner.json)
 failed to return its final JSON because cleanup tried to stop an already collected
@@ -89,8 +96,8 @@ The corrected complete matched run is `run2`; no old raw capture was overwritten
 Commit `26f6909f0e491145e383b666c913bdc92cab7c46` and its prior namespace/floor
 failures are preserved through [the original preflight](apport-positive-preflight.md).
 
-A future full matched SIGABRT pair still needs successful bounded metadata
-collection, all repeated runtime/source/ownership predicates, attributed collector
+A future full matched SIGABRT pair still needs separately authorized collector-stop
+proof and repeated bounded metadata collection plus all runtime/source/ownership predicates, attributed collector
 and report monitoring with the existing 60-second/output budgets, a complete
 exact-owned report, measured encoded/decoded sizes, capped streaming decoded
 CoreDump marker/hash verification without saving raw core, identity-checked own

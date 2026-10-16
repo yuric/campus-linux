@@ -1,0 +1,100 @@
+{
+  "utc": "2026-10-16T13:43:14.077901+00:00",
+  "host_runner_sha256": "2ca966061301695896a92a1476afa36552b0afcd456f31c4091bc6ba7b15afc3",
+  "sources": {
+    "apport-positive-preflight.py": "98d600ae98bb4501edba643b62094b94570aa2659f85a91ec8bb6439813a53fb",
+    "apport-metadata-preflight.py": "d622cb18709df9ce0987b745e340d9790a3ad000b3ff2e77aab0b84993f0971a"
+  },
+  "guest_directory": "/home/campusqa/spike982/apport-metadata-1200-run2",
+  "mode": "non-crashing metadata only; no crash authorized",
+  "commands": [
+    {
+      "argv": [
+        "/opt/homebrew/bin/limactl",
+        "shell",
+        "campus-linux-d5-noble-arm64",
+        "sudo",
+        "mkdir",
+        "-m",
+        "755",
+        "/home/campusqa/spike982/apport-metadata-1200-run2"
+      ],
+      "returncode": 0,
+      "host_free_before": 26523680768,
+      "host_free_after": 26523656192
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/limactl",
+        "shell",
+        "campus-linux-d5-noble-arm64",
+        "sudo",
+        "tee",
+        "/home/campusqa/spike982/apport-metadata-1200-run2/apport-positive-preflight.py"
+      ],
+      "returncode": 0,
+      "host_free_before": 26523627520,
+      "host_free_after": 26523549696
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/limactl",
+        "shell",
+        "campus-linux-d5-noble-arm64",
+        "sudo",
+        "tee",
+        "/home/campusqa/spike982/apport-metadata-1200-run2/apport-metadata-preflight.py"
+      ],
+      "returncode": 0,
+      "host_free_before": 26523549696,
+      "host_free_after": 26523537408
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/limactl",
+        "shell",
+        "campus-linux-d5-noble-arm64",
+        "sudo",
+        "sha256sum",
+        "/home/campusqa/spike982/apport-metadata-1200-run2/apport-positive-preflight.py",
+        "/home/campusqa/spike982/apport-metadata-1200-run2/apport-metadata-preflight.py"
+      ],
+      "returncode": 0,
+      "host_free_before": 26523537408,
+      "host_free_after": 26523402240
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/limactl",
+        "shell",
+        "campus-linux-d5-noble-arm64",
+        "sudo",
+        "/usr/bin/python3",
+        "-B",
+        "/home/campusqa/spike982/apport-metadata-1200-run2/apport-positive-preflight.py"
+      ],
+      "returncode": 0,
+      "host_free_before": 26523398144,
+      "host_free_after": 26523398144
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/limactl",
+        "shell",
+        "campus-linux-d5-noble-arm64",
+        "sudo",
+        "/usr/bin/python3",
+        "-B",
+        "/home/campusqa/spike982/apport-metadata-1200-run2/apport-metadata-preflight.py"
+      ],
+      "returncode": 0,
+      "host_free_before": 26523389952,
+      "host_free_after": 26798682112
+    }
+  ],
+  "guest_identity_and_floor_pass": true,
+  "metadata_preflight_pass": true,
+  "noncrashing_preflight_pass": true,
+  "host_free_final": 26799112192,
+  "explicit_receipt_bytes": 10136
+}

@@ -1,0 +1,13 @@
+{
+  "utc": "2026-10-16T13:46:28.215460+00:00",
+  "host_free_bytes": 24882446336,
+  "lima_status": "campus-linux-d5-noble-arm64 Stopped",
+  "guest_owned_source_directories_allocated_bytes": {
+    "/home/campusqa/spike982/apport-metadata-1200": 24576,
+    "/home/campusqa/spike982/apport-metadata-1200-run2": 24576
+  },
+  "guest_allocation_command": "limactl shell campus-linux-d5-noble-arm64 sudo du -sk /home/campusqa/spike982/apport-metadata-1200 /home/campusqa/spike982/apport-metadata-1200-run2",
+  "accounting_limit": "Operational accounting only; whole-host free-space changes are not attributed owned VM/journal growth.",
+  "crash_launched": false,
+  "lease_returned": true
+}

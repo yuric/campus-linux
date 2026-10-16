@@ -204,7 +204,7 @@
       if (dragging) pointer('pointercancel',previous[0],previous[1],false);
       dragging=false;
     };
-    const apply = (seconds,phase) => {
+    const apply = (seconds,phase,sampledAt) => {
       const current=pose(seconds);
       const panChanged=current[0]!==previous[0] || current[1]!==previous[1];
       const zoomChanged=current[2]!==previous[2];
@@ -219,7 +219,7 @@
         if (!dragging) {pointer('pointerdown',previous[0],previous[1],true);dragging=true;}
         pointer('pointermove',current[0],current[1],true);
       } else if (dragging) endDrag();
-      traces.inputs.push({at:performance.now(),phase,seconds,requested:current});
+      traces.inputs.push({at:performance.now(),sampled_at:sampledAt,phase,seconds,requested:current});
       previous=current;
     };
     const waitProjection = (predicate,deadline,after,settled=false) => new Promise((resolve,reject)=>{
@@ -289,7 +289,7 @@
     if(projectionCapture.active) throw Error('Projection observer must be removed before warmup');
     started=true;
     const start=performance.now();
-    apply(0,'warmup');
+    apply(0,'warmup',start);
     let measurementStart;
     let measurementReset;
     let resetting=false;
@@ -305,21 +305,22 @@
       if(resetting||failed) return;
       const now=performance.now();
       if(measurementStart===undefined) {
-        if(now-start<30000) {apply((now-start)/500,'warmup');return;}
-        apply(60,'warmup');
+        if(now-start<30000) {apply((now-start)/500,'warmup',now);return;}
+        apply(60,'warmup',now);
         warmupElapsed=performance.now()-start;
         resetting=true;
         reset().then(receipt=>{
           measurementReset=receipt;
           if(projectionCapture.active) throw Error('Projection observer must be removed before measurement');
           measurementStart=performance.now();
-          apply(0,'measurement');
+          apply(0,'measurement',measurementStart);
           resetting=false;
         }).catch(fail);
         return;
       }
-      const seconds=(performance.now()-measurementStart)/1000;
-      apply(seconds,'measurement');
+      const sampledAt=performance.now();
+      const seconds=(sampledAt-measurementStart)/1000;
+      apply(seconds,'measurement',sampledAt);
       const index=Math.min(6,Math.floor(seconds/10));
       if(motionProof&&index>checkpoint) {
         checkpoint=index;
@@ -338,13 +339,13 @@
       }
       lastFrame=now;
       if(measurementStart!==undefined&&now-measurementStart>=60000) {
-        apply(60,'measurement');
+        apply(60,'measurement',performance.now());
         endDrag();
         clearInterval(timer);
         report({kind:motionProof?'motion_proof':'measurement',renderer,
           viewport:[innerWidth,innerHeight],scale:devicePixelRatio,initialReset,measurementReset,absoluteZoomChecks,
           zoom_units:"absolute producer camera zoom",projection_observer_active:projectionCapture.active,
-          warmup_ms:warmupElapsed,reset_between_clocks_ms:measurementStart-start-warmupElapsed,duration_ms:now-measurementStart,
+          warmup_start_ms:start,warmup_ms:warmupElapsed,reset_between_clocks_ms:measurementStart-start-warmupElapsed,duration_ms:now-measurementStart,
           measurement_start_ms:measurementStart,measurement_end_ms:measurementStart+60000,...traces});
         return;
       }

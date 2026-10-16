@@ -108,8 +108,8 @@
     },
     {
       "path": "spikes/982/security/apport-metadata-preflight.py",
-      "bytes": 7302,
-      "sha256": "546369384ead546cd4b79ecaaeb892d2a85a8c019b472fc122afc8e36ec921af"
+      "bytes": 9433,
+      "sha256": "d622cb18709df9ce0987b745e340d9790a3ad000b3ff2e77aab0b84993f0971a"
     },
     {
       "path": "spikes/982/security/run-apport-activation.py",

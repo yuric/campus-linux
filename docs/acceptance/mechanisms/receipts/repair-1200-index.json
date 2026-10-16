@@ -1,0 +1,110 @@
+{
+  "scope": "Direction1200 non-crashing metadata and admission repairs; no full-report/timing/product acceptance",
+  "files": [
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-metadata-1200-run1/guest-source-hashes.txt",
+      "bytes": 280,
+      "sha256": "50c2581dba557a398883dec15ed310bf85413d400d97573e9d584c66de15381a"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-metadata-1200-run1/host-runner.json",
+      "bytes": 2974,
+      "sha256": "8dc4a0132c3a91c294680e78fc9841869dc21da73274ae8b3bd6c46022ed0edf"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-metadata-1200-run1/identity.json",
+      "bytes": 3351,
+      "sha256": "cd0f04f7864e3ff06dfc95f67480f7978354fb4f4a8e6a7074df610a093d2d29"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-metadata-1200-run1/metadata-output.txt",
+      "bytes": 3679,
+      "sha256": "e61468fdc3441567ffb61bdc11ca74f62c4a75a1f3581a2dcf8659dd262b89dd"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-metadata-1200-run1/sources/apport-metadata-preflight.py",
+      "bytes": 9433,
+      "sha256": "d622cb18709df9ce0987b745e340d9790a3ad000b3ff2e77aab0b84993f0971a"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-metadata-1200-run1/sources/run-apport-metadata.py",
+      "bytes": 4401,
+      "sha256": "81182771efad664d4c3f3beb6573e7bcb0c0fbccc08e90226c289655f235cc1e"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-metadata-1200-run2/guest-source-hashes.txt",
+      "bytes": 290,
+      "sha256": "3937c52effb5a61db35a3a9474ab7184d523d59eee13702517c4b142217c049e"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-metadata-1200-run2/host-runner.json",
+      "bytes": 2957,
+      "sha256": "74cdb9b91520444cba0f2cfec33f28b37c31de310673f843d419d46301950b44"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-metadata-1200-run2/identity.json",
+      "bytes": 3351,
+      "sha256": "0a644456b08c93cd75a4885078f6df67b6a98ff8426409454bfa14c9cfe6a15a"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-metadata-1200-run2/metadata.json",
+      "bytes": 3582,
+      "sha256": "876fb198ec1e04d0f22ffddc5272669d3d2acb961860de2293eb2bc8cf627986"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-metadata-1200-run2/stderr-6.txt",
+      "bytes": 98,
+      "sha256": "c375d41c14b9384570cef6296e43b8827fe54f64ec2ff4b76d024fa58b6b3d59"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/repair-1200/historical-a975/apport-metadata-preflight.py",
+      "bytes": 7302,
+      "sha256": "546369384ead546cd4b79ecaaeb892d2a85a8c019b472fc122afc8e36ec921af"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/repair-1200/historical-a975/measure.js",
+      "bytes": 19207,
+      "sha256": "0b252839b5c6b6f485cf5c735aa4bcee1e662f6ac2a423032bc8c36d223c86e0"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/repair-1200/historical-a975/motion_evidence.py",
+      "bytes": 6402,
+      "sha256": "ec3a984d6bb3edbaddff1a3e0ea26fba492e0c8cdd33201aec6e5d00282d9901"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/repair-1200/historical-a975/summarize.py",
+      "bytes": 6281,
+      "sha256": "ffa41f7e7e8d78ab824d79a39b4bf4d1910a04e403ec1c4d2b267e147f4d1080"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/repair-1200/private-input-static-check.json",
+      "bytes": 321,
+      "sha256": "3c49e3511bb1eba49ee1422b59d063bbee879a265aa4fb316088710b4f107a76"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/repair-1200/renderer-source-freeze.json",
+      "bytes": 2975,
+      "sha256": "f237f36260fb2c5e253294dda07c1d9162aa7ff22d1402f3025a0f3e49d49825"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/repair-1200/shutdown-accounting.json",
+      "bytes": 682,
+      "sha256": "26ed9e7eca397efb1567be14e75393c914ae7709c2390cb5fcd4b6ad174af281"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/repair-1200/start.txt",
+      "bytes": 3126,
+      "sha256": "535868ada97f34b67e00619dfeaca3e5d5cf0b7de24a6e247906bfb11e98054c"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/repair-1200/stop.txt",
+      "bytes": 1063,
+      "sha256": "5ae15df17137f8851dd76f842e4f8f8f461a425a1a0f47927c15143e4c31c541"
+    },
+    {
+      "path": "spikes/982/security/run-apport-metadata.py",
+      "bytes": 4729,
+      "sha256": "2ca966061301695896a92a1476afa36552b0afcd456f31c4091bc6ba7b15afc3"
+    }
+  ]
+}

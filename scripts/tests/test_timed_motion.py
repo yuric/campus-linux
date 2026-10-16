@@ -1,6 +1,7 @@
 """Timed admission regressions. Synthetic frames are never benchmark evidence."""
 import importlib.util
 import json
+import math
 from pathlib import Path
 import subprocess
 import sys
@@ -16,13 +17,55 @@ spec.loader.exec_module(summary)
 
 
 def complete_synthetic(tuple_name='wayland'):
-    # Keep real full driver traces as a positive control, replacing only the
-    # receipt kind and frame timings with explicitly synthetic performance data.
+    # Preserve historical pose/gesture coverage; synthesize performance and new
+    # sample clocks in memory only. These are not recaptured browser receipts.
     raw = json.loads((ROOT / f'docs/acceptance/mechanisms/receipts/motion-proof-{tuple_name}-v7.json').read_text())
     raw['kind'] = 'measurement'
+    raw['warmup_start_ms'] = raw['inputs'][0]['at']
+    for phase, scale in (('warmup', 500), ('measurement', 1000)):
+        rows = [row for row in raw['inputs'] if row['phase'] == phase]
+        origin = raw['warmup_start_ms'] if phase == 'warmup' else raw['measurement_start_ms']
+        for i, row in enumerate(rows):
+            row['sampled_at'] = origin + row['seconds'] * scale if i < len(rows)-1 else row['at']
+
     start = raw['measurement_start_ms']
     finish = start + raw['duration_ms']
     raw['frames'] = [start - 1] + [start + n * 16 for n in range(int(raw['duration_ms'] // 16) + 1)]
+    if raw['frames'][-1] < finish:
+        raw['frames'].append(finish)
+    return raw
+
+
+def clock_synthetic(start=49374.0, delay=0.001):
+    raw = dict(kind='measurement', warmup_start_ms=0, warmup_ms=30000,
+               measurement_start_ms=start, measurement_end_ms=start+60000,
+               duration_ms=60000+delay, invalid=[], errors=[], inputs=[], gestures=[])
+    for phase, origin, scale in (('warmup', 0, 500), ('measurement', start, 1000)):
+        previous, dragging = [0, 0, 1], False
+        for seconds in (0, 5, 15, 25, 35, 45, 55, 60):
+            from motion_evidence import pose as protocol_pose
+            pose = protocol_pose(seconds)
+            sampled = origin + seconds*scale
+            at = (origin + delay) + seconds*scale
+            if seconds == 60 and phase == 'warmup' and delay:
+                at = math.nextafter(at, -math.inf)
+            def event(kind, xy):
+                raw['gestures'].append(dict(at=at, type=kind, x=xy[0], y=xy[1]))
+            pan, zoom = pose[:2] != previous[:2], pose[2] != previous[2]
+            if zoom and dragging:
+                event('pointercancel', previous); dragging = False
+            if pan:
+                if not dragging:
+                    event('pointerdown', previous); dragging = True
+                event('pointermove', pose)
+            elif dragging:
+                event('pointercancel', previous); dragging = False
+            raw['inputs'].append(dict(at=at, sampled_at=sampled, phase=phase, seconds=seconds, requested=pose))
+            previous = pose
+        if dragging: event('pointercancel', previous)
+    finish = raw['inputs'][-1]['at']
+    raw['duration_ms'] = finish-start
+    raw['frames'] = [start-1] + [start+n*16 for n in range(3751)]
     if raw['frames'][-1] < finish:
         raw['frames'].append(finish)
     return raw
@@ -49,16 +92,68 @@ class TimedMotionTests(unittest.TestCase):
     def test_valid_fractional_clock_start(self):
         raw = complete_synthetic()
         delta = 49374.001 - raw['measurement_start_ms']
-        for key in ('measurement_start_ms', 'measurement_end_ms'):
+        for key in ('warmup_start_ms', 'measurement_start_ms', 'measurement_end_ms'):
             raw[key] += delta
         raw['measurement_end_ms'] = raw['measurement_start_ms'] + 60000
         raw['frames'] = [value + delta for value in raw['frames']]
         for row in raw['inputs'] + raw['gestures']:
             row['at'] += delta
+            if 'sampled_at' in row:
+                row['sampled_at'] += delta
         self.assertNotEqual(raw['measurement_end_ms'] - raw['measurement_start_ms'], 60000)
         result = summary.summarize(raw, 'synthetic-fractional-start')
         self.assertTrue(result['pass_run'], result)
         self.assertAlmostEqual(result['p95_ms'], 16, places=6)
+
+    def test_fractional_first_input_span_boundary_both_phases(self):
+        raw = clock_synthetic()
+        self.assertEqual(raw['inputs'][-1]['at'], 109374.00099999999)
+        measurement = [r for r in raw['inputs'] if r['phase']=='measurement']
+        self.assertLess(measurement[-1]['at']-measurement[0]['at'], 60000)
+        self.assertTrue(summary.summarize(raw, 'fractional-input-span')['pass_run'])
+        # A real shortfall remains invalid, rather than broadening the duration.
+        raw['inputs'][-1]['at'] -= .01
+        self.assertFalse(summary.summarize(raw, 'short-span')['valid'])
+
+    def test_fractional_span_untimed_checker(self):
+        from motion_evidence import verified_trace
+        raw = clock_synthetic()
+        historical = json.loads((ROOT / 'docs/acceptance/mechanisms/receipts/motion-proof-wayland-v7.json').read_text())
+        raw['checkpoints'] = historical['checkpoints']
+        raw['frames'] = []
+        verified_trace(raw)
+        raw['inputs'][-1]['at'] -= .01
+        with self.assertRaisesRegex(ValueError, 'span'):
+            verified_trace(raw)
+
+    def test_sample_clock_and_dispatch_causality(self):
+        raw = clock_synthetic(delay=0)
+        self.assertTrue(summary.summarize(raw, 'control')['pass_run'])
+        # Complete logical poses, coherent gestures, ordered/spanning post clocks;
+        # only the old unchecked relationship to the computation clock is false.
+        for row in raw['inputs']:
+            if row['phase']=='measurement' and 0 < row['seconds'] < 60:
+                old = row['at']
+                row['at'] = raw['measurement_start_ms']+59000+row['seconds']*10
+                for event in raw['gestures']:
+                    if event['at']==old: event['at']=row['at']
+        result = summary.summarize(raw, 'inconsistent-clock')
+        self.assertFalse(result['valid'])
+        self.assertIn('causality', result['workload_error'])
+        raw = clock_synthetic(delay=0)
+        raw['inputs'][2]['sampled_at'] -= 1
+        result = summary.summarize(raw, 'wrong-sample')
+        self.assertFalse(result['valid'])
+        self.assertIn('Logical seconds', result['workload_error'])
+        raw = clock_synthetic(delay=0)
+        # 4 seconds inside synchronous dispatch is legal: next sample is later.
+        row = raw['inputs'][9]
+        old = row['at']; row['at'] += 4000
+        for event in raw['gestures']:
+            if event['at']==old: event['at']=row['at']
+        self.assertTrue(summary.summarize(raw, 'legitimate-dispatch-stall')['pass_run'])
+        raw['inputs'][9]['sampled_at'] = float('nan')
+        self.assertFalse(summary.summarize(raw, 'nonfinite-sample')['valid'])
 
     def test_coordinator_stall_rejected(self):
         result = summary.summarize(stalled_synthetic(), 'synthetic')

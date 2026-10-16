@@ -11,7 +11,7 @@ def verified_timed_trace(raw):
     """Validate timed workload coverage, without introducing a max-stall bar."""
     if raw.get('kind') != 'measurement':
         raise ValueError('Timed measurement receipt required')
-    for key in ('warmup_ms', 'duration_ms', 'measurement_start_ms', 'measurement_end_ms'):
+    for key in ('warmup_start_ms', 'warmup_ms', 'duration_ms', 'measurement_start_ms', 'measurement_end_ms'):
         if not finite(raw.get(key)):
             raise ValueError('Finite timing clocks required')
     start, end = raw['measurement_start_ms'], raw['measurement_end_ms']
@@ -28,6 +28,9 @@ def verified_timed_trace(raw):
         requested_pose(row)
         if not finite(row.get('at')) or row['at'] < prior_at or row['seconds'] < 0:
             raise ValueError('Finite ordered input clocks required')
+        sampled = row.get('sampled_at')
+        if not finite(sampled) or sampled + 1e-6 < prior_at or sampled > row['at'] + 1e-6:
+            raise ValueError('Input sampling/dispatch causality violated')
         prior_at = row['at']
     phases = [row['phase'] for row in inputs]
     if phases != sorted(phases, key=lambda phase: phase == 'measurement'):
@@ -40,9 +43,22 @@ def verified_timed_trace(raw):
             raise ValueError('Ordered protocol poses required')
         if any(not any(n * 10 < row['seconds'] < (n + 1) * 10 for row in rows) for n in range(6)):
             raise ValueError('Missing exercised timed input segment')
-        if rows[-1]['at'] - rows[0]['at'] < duration:
+        if rows[-1]['at'] - rows[0]['at'] + 1e-6 < duration:
             raise ValueError('Input trace does not span its required clock')
-        if phase == 'measurement' and (rows[0]['at'] < start or rows[-1]['at'] < end):
+        origin = raw['warmup_start_ms'] if phase == 'warmup' else start
+        scale = duration / 60
+        for index, row in enumerate(rows):
+            sampled = row.get('sampled_at')
+            if index == 0:
+                consistent = abs(sampled - origin) <= 1e-6
+            elif index == len(rows) - 1:
+                # The final explicit pose is clamped after the stop predicate.
+                consistent = sampled + 1e-6 >= origin + duration
+            else:
+                consistent = abs(sampled - origin - row['seconds'] * scale) <= 1e-6
+            if not consistent:
+                raise ValueError('Logical seconds disagree with phase sample clock')
+        if phase == 'measurement' and (rows[0]['at'] + 1e-6 < start or rows[-1]['at'] + 1e-6 < end):
             raise ValueError('Measurement input clocks disagree with timing window')
 
     # Replay the driver's pan/cancel state machine. Each gesture must belong to

@@ -1,0 +1,12 @@
+{
+  "command": [
+    "git",
+    "check-ignore",
+    "-v",
+    "spikes/982/environment/private/campusqa.password"
+  ],
+  "returncode": 0,
+  "stdout": ".gitignore:97:/spikes/982/environment/private/\tspikes/982/environment/private/campusqa.password\n",
+  "tracked_paths": [],
+  "credential_file_opened_or_created": false
+}

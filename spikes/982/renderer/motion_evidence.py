@@ -37,7 +37,7 @@ def verified_trace(raw):
             raise ValueError('Full monotonic six-segment input trace required')
         if any(not any(segment*10<row['seconds']<(segment+1)*10 for row in rows) for segment in range(6)):
             raise ValueError('Missing exercised input segment')
-        if rows[-1]['at']-rows[0]['at']<(30000 if phase=='warmup' else 60000):
+        if rows[-1]['at']-rows[0]['at']+1e-6<(30000 if phase=='warmup' else 60000):
             raise ValueError('Input trace does not span its required clock')
     phases=[row['phase'] for row in inputs]
     if phases!=sorted(phases,key=lambda phase:0 if phase=='warmup' else 1):

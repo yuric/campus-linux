@@ -1637,13 +1637,13 @@
     },
     {
       "path": "spikes/982/renderer/measure.js",
-      "bytes": 19207,
-      "sha256": "0b252839b5c6b6f485cf5c735aa4bcee1e662f6ac2a423032bc8c36d223c86e0"
+      "bytes": 19352,
+      "sha256": "0d87b9cd2bb1e3e79f0bbd54c7508c23d3e8660e9cece03338bf708d31941465"
     },
     {
       "path": "spikes/982/renderer/motion_evidence.py",
-      "bytes": 6402,
-      "sha256": "ec3a984d6bb3edbaddff1a3e0ea26fba492e0c8cdd33201aec6e5d00282d9901"
+      "bytes": 6407,
+      "sha256": "9f369d1770cae5914029e58559cb1ce0f9d1bf9e46cb5c35152f4877d17944f2"
     },
     {
       "path": "spikes/982/renderer/native_evidence.py",
@@ -1677,8 +1677,8 @@
     },
     {
       "path": "spikes/982/renderer/summarize.py",
-      "bytes": 6281,
-      "sha256": "ffa41f7e7e8d78ab824d79a39b4bf4d1910a04e403ec1c4d2b267e147f4d1080"
+      "bytes": 7205,
+      "sha256": "fd635892185d0fd6fda90a495beebbde42a693d489ef9f877f7874926b14f179"
     },
     {
       "path": "spikes/982/renderer/webkit-source-receipt.json",

@@ -10,6 +10,7 @@ import json
 import os
 from pathlib import Path
 import resource
+import pwd
 import signal
 import subprocess
 import time
@@ -71,7 +72,9 @@ def main():
     result = {'source_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(), 'kind': 'non-crashing-sleep-preflight', 'utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
               'command': command, 'collector_tested': False, 'unit_manager': 'system',
               'launch_source_sha256': hashlib.sha256(LAUNCH.encode()).hexdigest()}
-    pidfd = None
+    pidfd = procfd = None
+    stage = "launch"
+    original_groups = os.getgroups()
     try:
         cmd(command)
         deadline = time.monotonic() + 5
@@ -83,7 +86,9 @@ def main():
             if time.monotonic() > deadline:
                 raise RuntimeError('sleep failed to exec within five seconds')
             time.sleep(.05)
+        stage = 'stop-and-identify'
         pidfd = os.pidfd_open(pid)
+        procfd = os.open(p, os.O_RDONLY | os.O_PATH | os.O_DIRECTORY)
         signal.pidfd_send_signal(pidfd, signal.SIGSTOP)
         for _ in range(100):
             status = dict(line.split(':', 1) for line in (p/'status').read_text().splitlines())
@@ -114,19 +119,47 @@ def main():
                       predicates=predicates,executable_sha256=hashlib.sha256((p/'exe').read_bytes()).hexdigest())
         if not all(predicates.values()):
             raise RuntimeError('stopped ELF preflight predicates failed')
+        stage = 'target-credentials'
+        account = pwd.getpwnam('campusqa')
+        uids = list(map(int, status['Uid'].split()))
+        gids = list(map(int, status['Gid'].split()))
+        target_uid, target_gid = uids[0], gids[0]
+        result['target_credentials'] = dict(uids=uids, gids=gids,
+            account_uid=account.pw_uid, account_gid=account.pw_gid)
+        if uids != [account.pw_uid]*4 or gids != [account.pw_gid]*4:
+            raise RuntimeError('target credentials differ from disposable account')
+        stage = 'root-executable-path'
+        executable = os.readlink('exe', dir_fd=procfd)
+        if executable != '/usr/bin/sleep':
+            raise RuntimeError('stopped target executable changed')
+        if (p/'stat').read_text().rsplit(')',1)[1].split()[19] != result['start_ticks']:
+            raise RuntimeError('target start identity changed')
         report = apport.report.Report('Crash')
         report.pid = pid
         report['Signal']='6'
         report['SignalName']='SIGABRT'
-        # Match the handler's dropped effective-UID metadata path. No core exists.
-        os.setegid(1000)
-        os.seteuid(1000)
+        # Apport 2.28.3 seeds this as root and retains the proc descriptor.
+        report['ExecutablePath'] = executable
+        stage = 'drop-credentials'
         try:
-            report.add_proc_info(pid)
+            os.setgroups([])
+            os.setregid(-1, target_gid)
+            os.setreuid(-1, target_uid)
+            result['metadata_credentials'] = dict(euid=os.geteuid(), egid=os.getegid(),
+                supplementary_groups=os.getgroups(), root_open_procfd=True,
+                root_established_executable=executable)
+            if os.getgroups() or os.geteuid()!=target_uid or os.getegid()!=target_gid:
+                raise RuntimeError('metadata credential context mismatch')
+            stage = 'add_proc_info'
+            report.add_proc_info(proc_pid_fd=procfd)
+            stage = 'add_user_info'
             report.add_user_info()
+            stage = 'add_os_info'
             report.add_os_info()
+            stage = 'add_package_info'
             report.add_package_info()
             report['_HooksRun']='no'
+            stage = 'serialize-metadata'
             counter = Counter()
             report.write(counter)
             result['metadata']={'serialized_bytes':counter.size,'sha256':counter.digest.hexdigest(),
@@ -135,9 +168,14 @@ def main():
         finally:
             os.seteuid(0)
             os.setegid(0)
+            os.setgroups(original_groups)
+        stage = 'verify-target-identity'
+        if (p/'stat').read_text().rsplit(')',1)[1].split()[19] != result['start_ticks']:
+            raise RuntimeError('target start identity changed during metadata')
         result['preflight_pass']=True
     except Exception as exc:
         result['preflight_pass']=False
+        result['failure_stage']=stage
         result['error_type']=type(exc).__name__
         result['error']=str(exc)
     finally:
@@ -147,6 +185,8 @@ def main():
             except ProcessLookupError:
                 pass
             os.close(pidfd)
+        if procfd is not None:
+            os.close(procfd)
         subprocess.run(['systemctl','stop',unit],capture_output=True,timeout=5)
         result['unit_cgroup_remaining']=(Path('/sys/fs/cgroup/system.slice')/(unit+'.service')).exists()
     print(json.dumps(result,indent=2))
