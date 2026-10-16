@@ -1,11 +1,12 @@
 # G8 source preparation and next authorized run
 
-LINUX-20261016 / #982 / direction1229. Source preparation only; **no guest access,
-new runtime proof, timing admission or performance result**. Office377 retains the Ubuntu
-lease. The coordinator must explicitly hand back the lease and observe a suitable shared-host
-window before the guest steps below. No CI/Council watcher is assigned to this worker.
-This prepares existing G8, not a new gate. Source preparation is capped at128MiB new files
-with20GiB host free; it authorizes no install, build, download or provider/account use.
+LINUX-20261016 / #982. Direction1229 prepared this plan. Direction1240 subsequently
+returned the existing Lima lease to Office400 for native preflight, fresh untimed motion
+proof and proof-bound freeze only. **Timing, optimization and Electron remain withheld.**
+The current slice allows64MiB new allocated source/export/receipts inside the earlier
+256MiB aggregate guest budget, with20GiB host and2GiB guest free. No install, build,
+download, provider/account use or CI/Council watcher is authorized. The separate35GiB
+large-growth guard remains. See the [returned evidence](receipts/g8-native-1240/REPORT.md).
 
 ## Inputs and reconciliation
 
@@ -77,7 +78,8 @@ to repeat renderer proofs. Historical failed/aborted traces remain immutable and
 
 ## Executable sequence for the later guest window
 
-Set `REPO`, `EXPORT`, `OUT`, `GPU`, and `ENVIRONMENT` to absolute owned guest paths.
+Set `REPO`, `EXPORT`, `OUT`, and `ENVIRONMENT` to absolute owned guest paths.
+`GPU` is generated below under the fresh `OUT`; it is not an existing host input.
 `EXPORT` must be a mode-preserving transfer of the already verified complete desktop export;
 `OUT` must be new for this session/candidate. `ENVIRONMENT` is a newly observed JSON with
 `webkit`, `mesa`, `llvm`, `kernel`, `architecture`, `os`, `session`, `graphics`,
@@ -90,6 +92,8 @@ On the host, before transfer, use the existing clean merged producer checkout's 
 (no export/build/install command):
 
 ```sh
+PRODUCER=/Users/yuri/.campus/coordinate/linux-20261016/fixes/macos-pr114
+EXISTING_EXPORT=/Users/yuri/.campus/coordinate/linux-20261016/reviews/macos-pr114-final-exports/desktop-first
 node "$PRODUCER/island/scripts/verify-desktop-export.mjs" \
   --input "$EXISTING_EXPORT" \
   --source 3e3d4bcd64fd1504c4546b2f7a063b55e2eea783 \
@@ -112,7 +116,15 @@ GPU="$OUT/gpu.json"
 python3 -B "$R/capture-gpu.py" > "$GPU"
 python3 -B "$R/run-webkit.py" --preflight --compositing-policy "$POLICY" \
   --native-gpu-receipt "$GPU" "$EXPORT" ignored "$OUT/preflight.json"
-# Complete ENVIRONMENT from the fresh observations described above, then:
+```
+
+**Stop here.** Inspect the successful preflight and fresh session/package/display/native
+observations, then write `ENVIRONMENT` with those actual values. This is a manual observation
+step; a shell comment does not collect evidence. A viewport refusal requires preserving
+that output and a fresh preflight at1440x900scale1, not changing the expected dimensions.
+Only after this step, in the same authenticated graphical session:
+
+```sh
 python3 -B "$R/freeze.py" --native-gpu-receipt "$GPU" \
   "$ENVIRONMENT" "$OUT/diagnostic-freeze.json"
 python3 -B "$R/run-webkit.py" --motion-proof --compositing-policy "$POLICY" \
@@ -145,8 +157,8 @@ producer/threshold change or renderer optimization fork. If it still misses, fol
 [Electron fallback sequence](../../../spikes/982/renderer/electron/README.md) with the same
 new desktop pin and fixed scene/bars. Its44.8.0 archive/extraction is currently absent;
 426,442,476bytes must be separately budgeted/scheduled by root before acquisition.
-Direction1229 does not authorize that allocation/download or any fallback launch.
+Neither direction1229 nor1240 authorizes that allocation/download or any fallback launch.
 
-Remaining next owner: explicit human handoff to LINUX-20261016 for returned-source review,
-exact-head hosted checks/admission/Council, lease return and observed guest/timing scheduling.
+Remaining next owner: explicit human handoff to LINUX-20261016 for returned-evidence review,
+exact-head hosted checks/admission/Council and separately observed guest/timing scheduling.
 No worker wakeup is assumed. G8 and all downstream product/package gates stay open.

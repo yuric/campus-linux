@@ -24,16 +24,22 @@ Once the coordinator schedules this candidate and the host reserve remains at le
 this size-limited command. `prepare.py` verifies the recorded SHA-256 before extraction;
 no checksum or sandbox downgrade is permitted.
 
+The example export below is the verified merged desktop export from MacPR114
+`3e3d4bcd64fd1504c4546b2f7a063b55e2eea783`, manifest
+`7b5fabefd830d3cd3d3577da1c4cb4ba55217de0f7eb5b5bbfc9501443428f09`.
+Verify it externally as in the [G8 plan](../../../../docs/acceptance/mechanisms/g8-run-plan.md)
+and preserve its modes. Direction1240 authorizes no Electron launch or allocation.
+
 ```sh
 curl -fL --max-time 180 --max-filesize 124393671 \
   --output /path/to/electron-v44.8.0-linux-arm64.zip \
   https://github.com/electron/electron/releases/download/v44.8.0/electron-v44.8.0-linux-arm64.zip
 python3 spikes/982/renderer/electron/prepare.py /path/to/electron-v44.8.0-linux-arm64.zip /path/to/new-disposable-electron
-LIBGL_ALWAYS_SOFTWARE=1 /path/to/new-disposable-electron/electron spikes/982/renderer/electron/main.cjs --preflight /path/to/unchanged-export ignored /path/to/electron-preflight.json
+LIBGL_ALWAYS_SOFTWARE=1 /path/to/new-disposable-electron/electron spikes/982/renderer/electron/main.cjs --preflight /path/to/verified-desktop-export ignored /path/to/electron-preflight.json
 python3 spikes/982/renderer/electron/freeze.py /path/to/electron-preflight.json /path/to/observed-environment.json /path/to/electron-freeze.json
-LIBGL_ALWAYS_SOFTWARE=1 /path/to/new-disposable-electron/electron spikes/982/renderer/electron/main.cjs --motion-proof /path/to/unchanged-export /path/to/electron-freeze.json /path/to/electron-motion.json
+LIBGL_ALWAYS_SOFTWARE=1 /path/to/new-disposable-electron/electron spikes/982/renderer/electron/main.cjs --motion-proof /path/to/verified-desktop-export /path/to/electron-freeze.json /path/to/electron-motion.json
 python3 spikes/982/renderer/electron/freeze.py --motion-proof /path/to/electron-motion.json /path/to/electron-preflight.json /path/to/observed-environment.json /path/to/electron-timing-freeze.json
-python3 spikes/982/renderer/electron/run-five.py /path/to/new-disposable-electron/electron /path/to/unchanged-export /path/to/electron-timing-freeze.json /path/to/new-five-runs
+python3 spikes/982/renderer/electron/run-five.py /path/to/new-disposable-electron/electron /path/to/verified-desktop-export /path/to/electron-timing-freeze.json /path/to/new-five-runs
 ```
 
 The environment file records actual kernel/architecture/OS/session/Mesa/LLVM/graphics,

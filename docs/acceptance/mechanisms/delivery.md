@@ -186,3 +186,10 @@ checks count committed membership/bytes/hashes, not product acceptance. The acti
 human coordinator LINUX-20261016 (comments10512/10517) is the explicit next owner
 for exact-head independent review, CI/admission, Council and remaining probes.
 No worker wakeup, readiness, merge or task completion is assumed.
+
+## Direction1240 native handback
+
+[Fresh G8 functional evidence and cleanup](receipts/g8-native-1240/REPORT.md) records actual
+GDM Wayland/X11 native preflight, unchanged-harness untimed proofs and proof-bound freezes.
+No timing, optimization, Electron or final acceptance is claimed. Lima is stopped; root
+LINUX-20261016 owns independent review and separate observed timing scheduling.

@@ -1,0 +1,132 @@
+{
+  "protected_files_unchanged_during_probe": true,
+  "coordinator_prior_snapshot_matches": [
+    {
+      "path": "/usr/share/polkit-1/rules.d/49-ubuntu-admin.rules",
+      "same_sha256": true,
+      "same_uid_mode": true
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/50-default.rules",
+      "same_sha256": true,
+      "same_uid_mode": true
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/gnome-control-center.rules",
+      "same_sha256": true,
+      "same_uid_mode": true
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/org.freedesktop.GeoClue2.rules",
+      "same_sha256": true,
+      "same_uid_mode": true
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/org.freedesktop.bolt.rules",
+      "same_sha256": true,
+      "same_uid_mode": true
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/org.freedesktop.fwupd.rules",
+      "same_sha256": true,
+      "same_uid_mode": true
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/org.freedesktop.packagekit.rules",
+      "same_sha256": true,
+      "same_uid_mode": true
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/systemd-networkd.rules",
+      "same_sha256": true,
+      "same_uid_mode": true
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/49-ubuntu-admin.rules",
+      "same_sha256": true,
+      "same_uid_mode": true
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/50-default.rules",
+      "same_sha256": true,
+      "same_uid_mode": true
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/gnome-control-center.rules",
+      "same_sha256": true,
+      "same_uid_mode": true
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/org.freedesktop.GeoClue2.rules",
+      "same_sha256": true,
+      "same_uid_mode": true
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/org.freedesktop.bolt.rules",
+      "same_sha256": true,
+      "same_uid_mode": true
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/org.freedesktop.fwupd.rules",
+      "same_sha256": true,
+      "same_uid_mode": true
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/org.freedesktop.packagekit.rules",
+      "same_sha256": true,
+      "same_uid_mode": true
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/systemd-networkd.rules",
+      "same_sha256": true,
+      "same_uid_mode": true
+    },
+    {
+      "path": "/usr/share/polkit-1/actions/dev.projectcampus.updater1057.policy",
+      "same_sha256": true,
+      "same_uid_mode": true
+    },
+    {
+      "path": "/etc/gdm3/custom.conf",
+      "same_sha256": true,
+      "same_uid_mode": true
+    },
+    {
+      "path": "/usr/bin/campus-updater-1057",
+      "same_sha256": true,
+      "same_uid_mode": true
+    },
+    {
+      "path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+      "same_sha256": true,
+      "same_uid_mode": true
+    },
+    {
+      "path": "/usr/lib/campus-updater-1057/install-deb.py",
+      "same_sha256": true,
+      "same_uid_mode": true
+    },
+    {
+      "path": "/usr/lib/campus-updater-1057/verify-signature",
+      "same_sha256": true,
+      "same_uid_mode": true
+    },
+    {
+      "path": "/etc/campus-updater-1057/admission.json",
+      "same_sha256": true,
+      "same_uid_mode": true
+    },
+    {
+      "path": "/etc/campus-updater-1057/public-key.txt",
+      "same_sha256": true,
+      "same_uid_mode": true
+    }
+  ],
+  "export_final_inventory_bytes_modes_match_host": true,
+  "guest_owned_new_bytes": 3440640,
+  "aggregate_conservative_consumed_bytes": 169119744,
+  "aggregate_remaining_bytes": 99315712,
+  "guest_free_bytes": 20223381504,
+  "source_and_receipts_allocated_host_bytes": 3473408,
+  "timing_authorized": false
+}

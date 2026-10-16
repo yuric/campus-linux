@@ -421,3 +421,12 @@ acceptance remains blocked until real availability, denial/interruption, limits,
 cost/offline behavior and editable results have observed receipts and any changed
 product/privacy/spend/trust trade-off has explicit owner disposition. Human 10427 does not
 require separate owner approval merely to evaluate a library as an engineering choice.
+
+## Fresh desktop-producer functional evidence (direction1240)
+
+[Fresh GDM Wayland/X11 native preflight and untimed motion proofs](receipts/g8-native-1240/REPORT.md)
+now bind accepted803ab214 and merged desktop producer3e3d4bcd. Both proof-bound freezes
+exist, with zero performance frames. Timing/optimization/Electron remain withheld; old
+relative-zoom/v7 evidence is unchanged. The report preserves actual launch-attribution
+limits, requested/effective compositing policy, failed preflight and transfer/accounting
+corrections, protected updater state and stopped-guest receipts.

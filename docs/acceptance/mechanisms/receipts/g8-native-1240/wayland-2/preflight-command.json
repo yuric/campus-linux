@@ -1,0 +1,36 @@
+{
+  "argv": [
+    "python3",
+    "-B",
+    "/home/campusqa/spike982/g8-native-1240/repo/spikes/982/renderer/run-webkit.py",
+    "--preflight",
+    "--compositing-policy",
+    "on-demand",
+    "--native-gpu-receipt",
+    "/home/campusqa/spike982/g8-native-1240/wayland-2/gpu.json",
+    "/home/campusqa/spike982/g8-native-1240/desktop-first",
+    "ignored",
+    "/home/campusqa/spike982/g8-native-1240/wayland-2/preflight.json"
+  ],
+  "utc": "2026-10-16T15:29:21.906192+00:00",
+  "timeout_seconds": 125,
+  "launch": {
+    "pid": 3356,
+    "stat": "3356 (python3) R 3272 3356 3356 0 -1 4194304 490 0 0 0 0 0 0 0 20 0 1 0 28097 16318464 1312 18446744073709551615 4194304 10541512 281474913775952 0 0 0 0 0 0 0 0 0 17 2 0 0 0 0 0 10616216 12102016 956157952 281474913777819 281474913778155 281474913778155 281474913779687 0\n",
+    "starttime": 28097,
+    "ppid": 3272,
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-python3-3272.scope\n",
+    "uid": 1000,
+    "comm": "python3",
+    "sd_pid_get_session": {
+      "returncode": -61,
+      "session": null
+    }
+  },
+  "returncode": 0,
+  "after": {
+    "pid": 3356,
+    "error": "[Errno 2] No such file or directory: '/proc/3356/stat'"
+  },
+  "finished_utc": "2026-10-16T15:29:29.064271+00:00"
+}

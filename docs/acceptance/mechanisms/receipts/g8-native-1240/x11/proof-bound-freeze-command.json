@@ -1,0 +1,34 @@
+{
+  "argv": [
+    "python3",
+    "-B",
+    "/home/campusqa/spike982/g8-native-1240/repo/spikes/982/renderer/freeze.py",
+    "--native-gpu-receipt",
+    "/home/campusqa/spike982/g8-native-1240/x11/gpu.json",
+    "--motion-proof",
+    "/home/campusqa/spike982/g8-native-1240/x11/motion.json",
+    "/home/campusqa/spike982/g8-native-1240/x11/environment.json",
+    "/home/campusqa/spike982/g8-native-1240/x11/timing-freeze.json"
+  ],
+  "utc": "2026-10-16T15:37:05.454171+00:00",
+  "timeout_seconds": 15,
+  "launch": {
+    "pid": 5146,
+    "stat": "5146 (python3) R 5038 5146 5146 0 -1 4194304 203 0 0 0 0 0 0 0 20 0 1 0 74483 16183296 1056 18446744073709551615 4194304 10541512 281474607507456 0 0 0 0 0 0 0 0 0 17 2 0 0 0 0 0 10616216 12102016 876941312 281474607511698 281474607512048 281474607512048 281474607513575 0\n",
+    "starttime": 74483,
+    "ppid": 5038,
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-python3-5038.scope\n",
+    "uid": 1000,
+    "comm": "python3",
+    "sd_pid_get_session": {
+      "returncode": -61,
+      "session": null
+    }
+  },
+  "returncode": 0,
+  "after": {
+    "pid": 5146,
+    "error": "[Errno 2] No such file or directory: '/proc/5146/stat'"
+  },
+  "finished_utc": "2026-10-16T15:37:05.524259+00:00"
+}

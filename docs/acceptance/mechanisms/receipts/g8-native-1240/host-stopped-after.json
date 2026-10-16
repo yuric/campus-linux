@@ -1,0 +1,13 @@
+{
+  "utc": "2026-10-16T15:38:12.996456+00:00",
+  "disk": {
+    "logical_bytes": 7017725952,
+    "allocated_bytes": 6890979328
+  },
+  "host_free_bytes": 21560815616,
+  "lima_status": "Stopped",
+  "qemu_processes": "",
+  "uptime": " 8:38  up 6 days, 32 mins, 1 user, load averages: 21.02 26.77 26.95\n",
+  "vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                   158206.\nPages active:                                1695199.\nPages inactive:                              1715510.\nPages speculative:                             75840.\nPages throttled:                                   0.\nPages wired down:                             656061.\nPages purgeable:                               16364.\n\"Translation faults\":                    38356742749.\nPages copy-on-write:                      3521822432.\nPages zero filled:                       11992390386.\nPages reactivated:                         876861775.\nPages purged:                              117693567.\nFile-backed pages:                           1353020.\nAnonymous pages:                             2133529.\nPages stored in compressor:                  3921410.\nPages occupied by compressor:                1933306.\nDecompressions:                            793582677.\nCompressions:                              875401899.\nPageins:                                   470354847.\nPageouts:                                    2659242.\nSwapins:                                    59254345.\nSwapouts:                                   62086597.\n",
+  "disk_allocation_growth": 20054016
+}

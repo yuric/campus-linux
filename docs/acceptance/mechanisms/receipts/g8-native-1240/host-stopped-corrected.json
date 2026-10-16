@@ -1,0 +1,11 @@
+{
+  "utc": "2026-10-16T15:24:26.657420+00:00",
+  "disk": {
+    "path": "~/.lima/campus-linux-d5-noble-arm64/disk",
+    "logical_bytes": 7017725952,
+    "allocated_bytes": 6870925312
+  },
+  "host_free_bytes": 25967390720,
+  "lima_status": "Stopped",
+  "qualification": "Corrected stopped baseline after aborted accounting-only boot. Initial boot allocation was not captured."
+}

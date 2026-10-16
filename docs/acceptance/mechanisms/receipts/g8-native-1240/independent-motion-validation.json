@@ -1,0 +1,50 @@
+[
+  {
+    "session": "wayland-2",
+    "motion_sha256": "29a27639443b4bd0eb9b4bf676678d8b3eb487c65eb3a68f34a300a0a9724403",
+    "freeze_sha256": "95464e1028e5ea102326ae75560d7333e4b79ccdb850144f1080fb6bfbdc230b",
+    "inputs": 1270,
+    "checkpoints": 7,
+    "frames": 0,
+    "errors": [],
+    "invalid": [],
+    "requested_compositing_policy": "on-demand",
+    "actual_hardware_acceleration_policy": "<enum WEBKIT_HARDWARE_ACCELERATION_POLICY_ALWAYS of type WebKit2.HardwareAccelerationPolicy>",
+    "native": {
+      "sha256": "dcd45cc68814e1623a17dfab901f534ac1eafe9bfe0548f359bfffd17e8b8155",
+      "renderer": "llvmpipe (LLVM 20.1.2, 128 bits)",
+      "vendor": "Mesa",
+      "gl_version": "OpenGL ES 3.2 Mesa 25.2.8-0ubuntu0.24.04.4",
+      "webkit_runtime": "2.52.6",
+      "display_type": "Wayland",
+      "webkit_source": "4fb33923db2f945803df49546f75867980365c08",
+      "webgl_api_renderer": "Apple GPU",
+      "webgl_api_vendor": "Apple Inc."
+    },
+    "validator_result": "verified_motion passed; timing still withheld"
+  },
+  {
+    "session": "x11",
+    "motion_sha256": "6006bf1762255fea3f2242ec6197a577139a9665ac3b9799b98967ba7b4146f5",
+    "freeze_sha256": "1fad6568371edd10dc0bbf8c80921a3571930d9dde27e178c4db7d9cf954cdc1",
+    "inputs": 1363,
+    "checkpoints": 7,
+    "frames": 0,
+    "errors": [],
+    "invalid": [],
+    "requested_compositing_policy": "on-demand",
+    "actual_hardware_acceleration_policy": "<enum WEBKIT_HARDWARE_ACCELERATION_POLICY_ALWAYS of type WebKit2.HardwareAccelerationPolicy>",
+    "native": {
+      "sha256": "fd511977dc231a61339c84d17a6c72ca8a7bfe7286ee2c022d109fb4313df119",
+      "renderer": "llvmpipe (LLVM 20.1.2, 128 bits)",
+      "vendor": "Mesa",
+      "gl_version": "OpenGL ES 3.2 Mesa 25.2.8-0ubuntu0.24.04.4",
+      "webkit_runtime": "2.52.6",
+      "display_type": "X11",
+      "webkit_source": "4fb33923db2f945803df49546f75867980365c08",
+      "webgl_api_renderer": "Apple GPU",
+      "webgl_api_vendor": "Apple Inc."
+    },
+    "validator_result": "verified_motion passed; timing still withheld"
+  }
+]

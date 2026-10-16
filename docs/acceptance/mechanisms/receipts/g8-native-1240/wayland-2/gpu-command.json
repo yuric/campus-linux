@@ -1,0 +1,28 @@
+{
+  "argv": [
+    "python3",
+    "-B",
+    "/home/campusqa/spike982/g8-native-1240/repo/spikes/982/renderer/capture-gpu.py"
+  ],
+  "utc": "2026-10-16T15:29:16.877066+00:00",
+  "timeout_seconds": 25,
+  "launch": {
+    "pid": 3287,
+    "stat": "3287 (python3) R 3272 3287 3287 0 -1 4194304 18 0 0 0 0 0 0 0 20 0 1 0 27594 8183808 64 18446744073709551615 4194304 10541512 281474277780624 0 0 0 0 0 0 0 0 0 17 0 0 0 0 0 0 10616216 12102016 740143104 281474277783953 281474277784043 281474277784043 281474277785575 0\n",
+    "starttime": 27594,
+    "ppid": 3272,
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-python3-3272.scope\n",
+    "uid": 1000,
+    "comm": "python3",
+    "sd_pid_get_session": {
+      "returncode": -61,
+      "session": null
+    }
+  },
+  "returncode": 0,
+  "after": {
+    "pid": 3287,
+    "error": "[Errno 2] No such file or directory: '/proc/3287/stat'"
+  },
+  "finished_utc": "2026-10-16T15:29:21.905705+00:00"
+}

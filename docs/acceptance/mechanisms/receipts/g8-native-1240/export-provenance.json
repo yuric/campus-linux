@@ -1,0 +1,123 @@
+{
+  "source": "3e3d4bcd64fd1504c4546b2f7a063b55e2eea783",
+  "manifest_sha256": "7b5fabefd830d3cd3d3577da1c4cb4ba55217de0f7eb5b5bbfc9501443428f09",
+  "host_producer": "/Users/yuri/.campus/coordinate/linux-20261016/fixes/macos-pr114",
+  "host_export": "/Users/yuri/.campus/coordinate/linux-20261016/reviews/macos-pr114-final-exports/desktop-first",
+  "verifier_sha256": "91a921d75976ed53ed4c346ec1162fab6807daedd209462f442b48a0e4dfc9a0",
+  "matched_files": [
+    "Island/assets/island-B3jZU801.js",
+    "Island/assets/island-BKmEIAej.css",
+    "Island/island.html",
+    "Island/licenses/Campus-LICENSE",
+    "Island/licenses/Campus-NOTICE",
+    "Island/licenses/react-19.3.0-LICENSE",
+    "Island/licenses/react-dom-19.3.0-LICENSE",
+    "Island/licenses/rolldown-1.2.8-LICENSE",
+    "Island/licenses/rolldown-1.2.8-THIRD-PARTY-LICENSE",
+    "Island/licenses/scheduler-0.28.0-LICENSE",
+    "Island/licenses/three-0.186.0-LICENSE",
+    "bridge.schema.json",
+    "manifest.json"
+  ],
+  "guest_host_payload_bytes_modes_match": true,
+  "extra_guest_files": [
+    {
+      "path": "._Island",
+      "mode": "0o755",
+      "bytes": 163,
+      "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+    },
+    {
+      "path": "._bridge.schema.json",
+      "mode": "0o600",
+      "bytes": 163,
+      "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+    },
+    {
+      "path": "._manifest.json",
+      "mode": "0o600",
+      "bytes": 163,
+      "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+    },
+    {
+      "path": "Island/._assets",
+      "mode": "0o755",
+      "bytes": 163,
+      "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+    },
+    {
+      "path": "Island/._island.html",
+      "mode": "0o644",
+      "bytes": 163,
+      "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+    },
+    {
+      "path": "Island/._licenses",
+      "mode": "0o755",
+      "bytes": 163,
+      "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+    },
+    {
+      "path": "Island/assets/._island-B3jZU801.js",
+      "mode": "0o644",
+      "bytes": 163,
+      "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+    },
+    {
+      "path": "Island/assets/._island-BKmEIAej.css",
+      "mode": "0o644",
+      "bytes": 163,
+      "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+    },
+    {
+      "path": "Island/licenses/._Campus-LICENSE",
+      "mode": "0o644",
+      "bytes": 163,
+      "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+    },
+    {
+      "path": "Island/licenses/._Campus-NOTICE",
+      "mode": "0o644",
+      "bytes": 163,
+      "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+    },
+    {
+      "path": "Island/licenses/._react-19.3.0-LICENSE",
+      "mode": "0o644",
+      "bytes": 163,
+      "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+    },
+    {
+      "path": "Island/licenses/._react-dom-19.3.0-LICENSE",
+      "mode": "0o644",
+      "bytes": 163,
+      "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+    },
+    {
+      "path": "Island/licenses/._rolldown-1.2.8-LICENSE",
+      "mode": "0o644",
+      "bytes": 163,
+      "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+    },
+    {
+      "path": "Island/licenses/._rolldown-1.2.8-THIRD-PARTY-LICENSE",
+      "mode": "0o644",
+      "bytes": 163,
+      "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+    },
+    {
+      "path": "Island/licenses/._scheduler-0.28.0-LICENSE",
+      "mode": "0o644",
+      "bytes": 163,
+      "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+    },
+    {
+      "path": "Island/licenses/._three-0.186.0-LICENSE",
+      "mode": "0o644",
+      "bytes": 163,
+      "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+    }
+  ],
+  "qualification": "Original full-inventory equality audit failed on AppleDouble transfer metadata. Every original export file matches bytes/mode. Extra files are outside manifest and never served by run-webkit.py resources allowlist. Retained discrepancy; no silent full-inventory claim.",
+  "runtime_sources_unchanged_from": "803ab21430aa1cee014d9d0132f35b7087f48a3d"
+}
