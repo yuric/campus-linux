@@ -1,0 +1,27 @@
+[
+  {
+    "path": "AppRun-aarch64",
+    "bytes": 35360,
+    "sha256": "072f17c0895a85c490282fe5395c5007e5fc75da727e553b3b8fb680feb11578"
+  },
+  {
+    "path": "linuxdeploy-07333c6-aarch64.AppImage",
+    "bytes": 19048968,
+    "sha256": "c42ddaece32fccb249d653f6cffa7cd05a0e38f8c257aff62a8ea2dcf681915f"
+  },
+  {
+    "path": "linuxdeploy-plugin-appimage.AppImage",
+    "bytes": 15981064,
+    "sha256": "518f4b49a561c157b23fd1ba4e857b8fa2271a038ac711bdedab6f018acbe7e5"
+  },
+  {
+    "path": "linuxdeploy-plugin-gstreamer.sh",
+    "bytes": 4858,
+    "sha256": "2a15ce9da8de6e20159e1ab27861a7a5ef8758c81a6278ba4ab30cefa1d74c9f"
+  },
+  {
+    "path": "linuxdeploy-plugin-gtk.sh",
+    "bytes": 14640,
+    "sha256": "ef6b9a980417243bc62e0241b51dc49876032afd1bab9b4762389f961b406d9b"
+  }
+]

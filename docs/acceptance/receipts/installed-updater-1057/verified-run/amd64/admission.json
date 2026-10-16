@@ -1,0 +1,462 @@
+{
+  "architecture": "amd64",
+  "max_expanded_data_bytes": 15868807,
+  "max_package_bytes": 4604616,
+  "package": "campus-updater-1057",
+  "packages": [
+    {
+      "ar_members": [
+        "control.tar.gz",
+        "data.tar.gz",
+        "debian-binary"
+      ],
+      "architecture": "amd64",
+      "control": [
+        {
+          "gid": 0,
+          "mode": 420,
+          "path": "control",
+          "sha256": "ecf36b96bfb5d9e1d98964ee7bbc3f6fd76b9f963b08e598eac7cb3f0f701628",
+          "size": 292,
+          "type": "file",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 420,
+          "path": "md5sums",
+          "sha256": "882e8fcb3a3ffb6289cd01a5472cbf0513b2b668c7feb47e68a955f6f27417a4",
+          "size": 319,
+          "type": "file",
+          "uid": 0
+        }
+      ],
+      "data": [
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/bin",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/bin/campus-updater-1057",
+          "sha256": "bda7d3058bfa64e1de8e53ef7cadcd39638ebea54be744d1537c18fc9cc4d44d",
+          "size": 15867232,
+          "type": "file",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/lib",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/lib/campus-updater-1057",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 420,
+          "path": "usr/lib/campus-updater-1057/inert-helper.txt",
+          "sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+          "size": 63,
+          "type": "file",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/share",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/share/applications",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 420,
+          "path": "usr/share/applications/campus-updater-1057.desktop",
+          "sha256": "b8441e830c485f0f30266c23a69ac46e0a06272b109e0dd96679d62cc415d043",
+          "size": 224,
+          "type": "file",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/share/icons",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/share/icons/hicolor",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/share/icons/hicolor/32x32",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/share/icons/hicolor/32x32/apps",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 420,
+          "path": "usr/share/icons/hicolor/32x32/apps/campus-updater-1057.png",
+          "sha256": "09d03970ec2390dcaece2d0018f36b4c59271f2a1306e829c753751c49f664c7",
+          "size": 105,
+          "type": "file",
+          "uid": 0
+        }
+      ],
+      "expanded_control_bytes": 611,
+      "expanded_data_bytes": 15867624,
+      "sha256": "b127ec6fb4578cc03b73197b5ca3897eea040587def00a282ef5fca6d1a09801",
+      "size": 4604590,
+      "version": "1.0.0"
+    },
+    {
+      "ar_members": [
+        "control.tar.gz",
+        "data.tar.gz",
+        "debian-binary"
+      ],
+      "architecture": "amd64",
+      "control": [
+        {
+          "gid": 0,
+          "mode": 420,
+          "path": "control",
+          "sha256": "54010ca864119ba117aabe8ef7a07b30260cb30a553e517e3d14eebbd389cec8",
+          "size": 292,
+          "type": "file",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 420,
+          "path": "md5sums",
+          "sha256": "cf23c1ce0e9024f55b18bbe259299d2885407d8314bd4a3ef1610e6dd5c3bee7",
+          "size": 319,
+          "type": "file",
+          "uid": 0
+        }
+      ],
+      "data": [
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/bin",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/bin/campus-updater-1057",
+          "sha256": "444c845330a0a3e139a23af5d3ada95253c70628c11c1c4f28aca8be6c98d616",
+          "size": 15868416,
+          "type": "file",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/lib",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/lib/campus-updater-1057",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 420,
+          "path": "usr/lib/campus-updater-1057/inert-helper.txt",
+          "sha256": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625",
+          "size": 62,
+          "type": "file",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/share",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/share/applications",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 420,
+          "path": "usr/share/applications/campus-updater-1057.desktop",
+          "sha256": "b8441e830c485f0f30266c23a69ac46e0a06272b109e0dd96679d62cc415d043",
+          "size": 224,
+          "type": "file",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/share/icons",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/share/icons/hicolor",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/share/icons/hicolor/32x32",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/share/icons/hicolor/32x32/apps",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 420,
+          "path": "usr/share/icons/hicolor/32x32/apps/campus-updater-1057.png",
+          "sha256": "09d03970ec2390dcaece2d0018f36b4c59271f2a1306e829c753751c49f664c7",
+          "size": 105,
+          "type": "file",
+          "uid": 0
+        }
+      ],
+      "expanded_control_bytes": 611,
+      "expanded_data_bytes": 15868807,
+      "sha256": "26c3a242ef06258f773e7af68559d5081147bdee6ea6505f195d6090ec94bf3e",
+      "size": 4604616,
+      "version": "2.0.0"
+    },
+    {
+      "ar_members": [
+        "control.tar.gz",
+        "data.tar.gz",
+        "debian-binary"
+      ],
+      "architecture": "amd64",
+      "control": [
+        {
+          "gid": 0,
+          "mode": 420,
+          "path": "control",
+          "sha256": "c29afef73cf4d2e4486d689183fd7df25c768ba34e9652be2018a89af8006120",
+          "size": 292,
+          "type": "file",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 420,
+          "path": "md5sums",
+          "sha256": "68ac5be9a0b5674565b814f3367651bad1c03de9e6a2187442af952f5db80058",
+          "size": 319,
+          "type": "file",
+          "uid": 0
+        }
+      ],
+      "data": [
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/bin",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/bin/campus-updater-1057",
+          "sha256": "ed43e4b0e9fda65201bf62a08c20d3145b08c0e702359cbd1e4702bb38401132",
+          "size": 15868152,
+          "type": "file",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/lib",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/lib/campus-updater-1057",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 420,
+          "path": "usr/lib/campus-updater-1057/inert-helper.txt",
+          "sha256": "d9956334b2711f021df2bb5d79a8407c7b720fa1a15045dbf19e7f579824a2fc",
+          "size": 63,
+          "type": "file",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/share",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/share/applications",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 420,
+          "path": "usr/share/applications/campus-updater-1057.desktop",
+          "sha256": "b8441e830c485f0f30266c23a69ac46e0a06272b109e0dd96679d62cc415d043",
+          "size": 224,
+          "type": "file",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/share/icons",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/share/icons/hicolor",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/share/icons/hicolor/32x32",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 493,
+          "path": "usr/share/icons/hicolor/32x32/apps",
+          "size": 0,
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": 420,
+          "path": "usr/share/icons/hicolor/32x32/apps/campus-updater-1057.png",
+          "sha256": "09d03970ec2390dcaece2d0018f36b4c59271f2a1306e829c753751c49f664c7",
+          "size": 105,
+          "type": "file",
+          "uid": 0
+        }
+      ],
+      "expanded_control_bytes": 611,
+      "expanded_data_bytes": 15868544,
+      "sha256": "e7f12c2b4a44ab460dd87d606ce641747cd88b70f825965b2e45232cb3332da0",
+      "size": 4604550,
+      "version": "3.0.0"
+    }
+  ],
+  "schema": 1
+}

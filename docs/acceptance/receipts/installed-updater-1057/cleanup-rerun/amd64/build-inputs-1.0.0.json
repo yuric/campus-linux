@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0",
+  "behavior": "v1-baseline",
+  "source_head": "3de5ab666a84f0a29bb80844219a0c4509ff2238",
+  "command": "cargo tauri build --ci --bundles deb,appimage -- --locked",
+  "inputs": {
+    "src-tauri/Cargo.toml": "346f0a17fdeb8067343134e57ace6c32258ca7bc51d808596cb604597121d8d7",
+    "src-tauri/Cargo.lock": "36ce58e103553e14de36c041d245922935d5c59528f325cff2f83cda331d3b34",
+    "src-tauri/tauri.conf.json": "d9f20fecb4e266117a9471c5fd532307dff1c32a6a18a42d3a4a37350f62d5ab",
+    "src-tauri/resources/inert-helper.txt": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2"
+  }
+}

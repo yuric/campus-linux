@@ -1,0 +1,93 @@
+{
+  "source_head": "3de5ab666a84f0a29bb80844219a0c4509ff2238",
+  "run": "https://github.com/yuric/campus-linux/actions/runs/38912107928",
+  "workflow_conclusion": "success",
+  "headless_cases": {
+    "arm64": 26,
+    "amd64": 26
+  },
+  "artifacts": [
+    {
+      "id": 12051805704,
+      "node_id": "MDg6QXJ0aWZhY3QxMjA1MTgwNTcwNA==",
+      "name": "updater-source-receipts-arm64",
+      "size_in_bytes": 126191,
+      "url": "https://api.github.com/repos/yuric/campus-linux/actions/artifacts/12051805704",
+      "archive_download_url": "https://api.github.com/repos/yuric/campus-linux/actions/artifacts/12051805704/zip",
+      "expired": false,
+      "digest": "sha256:f09af98a6141646d183c5114bc8e023d391c4b92b9c5a4c1158b34211911bd29",
+      "created_at": "2026-10-16T14:10:11Z",
+      "updated_at": "2026-10-16T14:10:11Z",
+      "expires_at": "2026-10-23T14:10:11Z",
+      "workflow_run": {
+        "id": 38912107928,
+        "repository_id": 1337851940,
+        "head_repository_id": 1337851940,
+        "head_branch": "campus-linux/1057-installed-updater",
+        "head_sha": "3de5ab666a84f0a29bb80844219a0c4509ff2238"
+      }
+    },
+    {
+      "id": 12051591097,
+      "node_id": "MDg6QXJ0aWZhY3QxMjA1MTU5MTA5Nw==",
+      "name": "updater-source-receipts-amd64",
+      "size_in_bytes": 128020,
+      "url": "https://api.github.com/repos/yuric/campus-linux/actions/artifacts/12051591097",
+      "archive_download_url": "https://api.github.com/repos/yuric/campus-linux/actions/artifacts/12051591097/zip",
+      "expired": false,
+      "digest": "sha256:908747ce9180dd83945f37c3a139dfb11925321aefc526a42b6a5d4fe8d62c7b",
+      "created_at": "2026-10-16T14:10:08Z",
+      "updated_at": "2026-10-16T14:10:08Z",
+      "expires_at": "2026-10-23T14:10:07Z",
+      "workflow_run": {
+        "id": 38912107928,
+        "repository_id": 1337851940,
+        "head_repository_id": 1337851940,
+        "head_branch": "campus-linux/1057-installed-updater",
+        "head_sha": "3de5ab666a84f0a29bb80844219a0c4509ff2238"
+      }
+    },
+    {
+      "id": 12051546230,
+      "node_id": "MDg6QXJ0aWZhY3QxMjA1MTU0NjIzMA==",
+      "name": "updater-packages-amd64",
+      "size_in_bytes": 262897891,
+      "url": "https://api.github.com/repos/yuric/campus-linux/actions/artifacts/12051546230",
+      "archive_download_url": "https://api.github.com/repos/yuric/campus-linux/actions/artifacts/12051546230/zip",
+      "expired": false,
+      "digest": "sha256:86525669c320c0e33450d258cba9af2c92432483153ba56eb655945a7d8816b1",
+      "created_at": "2026-10-16T14:10:11Z",
+      "updated_at": "2026-10-16T14:10:11Z",
+      "expires_at": "2026-10-23T14:10:09Z",
+      "workflow_run": {
+        "id": 38912107928,
+        "repository_id": 1337851940,
+        "head_repository_id": 1337851940,
+        "head_branch": "campus-linux/1057-installed-updater",
+        "head_sha": "3de5ab666a84f0a29bb80844219a0c4509ff2238"
+      }
+    },
+    {
+      "id": 12050424726,
+      "node_id": "MDg6QXJ0aWZhY3QxMjA1MDQyNDcyNg==",
+      "name": "updater-packages-arm64",
+      "size_in_bytes": 257740693,
+      "url": "https://api.github.com/repos/yuric/campus-linux/actions/artifacts/12050424726",
+      "archive_download_url": "https://api.github.com/repos/yuric/campus-linux/actions/artifacts/12050424726/zip",
+      "expired": false,
+      "digest": "sha256:344c75ff222ccb2d17e9b1496c4401aff715ebfac25b1eab9471810d7d3c0863",
+      "created_at": "2026-10-16T14:10:14Z",
+      "updated_at": "2026-10-16T14:10:14Z",
+      "expires_at": "2026-10-23T14:10:12Z",
+      "workflow_run": {
+        "id": 38912107928,
+        "repository_id": 1337851940,
+        "head_repository_id": 1337851940,
+        "head_branch": "campus-linux/1057-installed-updater",
+        "head_sha": "3de5ab666a84f0a29bb80844219a0c4509ff2238"
+      }
+    }
+  ],
+  "local_download_scope": "only source/receipt ZIPs; no package ZIP downloaded",
+  "limitation": "original negative validators; strengthened on subsequent113a53e run; GDM not run"
+}

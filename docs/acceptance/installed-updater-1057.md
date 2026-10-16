@@ -22,33 +22,81 @@ runner cleanup: root-owned exported build directories prevented host `rm`. The
 [failure receipt](receipts/installed-updater-1057/first-build/run.json), complete native
 [arm64 smoke](receipts/installed-updater-1057/first-build/arm64/installed-smoke.json) and
 [amd64 smoke](receipts/installed-updater-1057/first-build/amd64/installed-smoke.json) preserve
-that distinction. A corrected rerun is required; these jobs are not reported green.
+that distinction. Those original jobs remain failed even after the cleanup correction.
 First-run package ZIP sizes are 257,737,151 bytes arm64 and 262,889,749 bytes amd64.
 Only text/source receipt archives were retrieved locally. These sizes inform the later
 coordinator download budget, not a VM lease or download authorization.
 
 Review found that the original negative-case validator could accept an unrelated early
 failure. The real first-run receipts show the intended requests and rejecting boundaries;
-the validator is being strengthened independently of those preserved observations.
+the validator was strengthened independently of those preserved observations.
 Negative checks now require the expected request sequence, pinned diagnostic events and
 specific rejecting boundary, no downstream installation, and unchanged installed bytes.
 Small regression tests reject unrelated GTK/startup failures and zero-request results.
 They do not substitute for the subsequent real installed hosted run.
 
-This document initially records the implementation and execution contract. Pending rows
-must be replaced with observed commands, exact source head and linked receipts before a
-pass is claimed. Repository-policy checks, unit tests and extracted-source tests do not
-prove installed artifacts.
+The cleanup [run 38912107928](https://github.com/yuric/campus-linux/actions/runs/38912107928)
+at `3de5ab666a84f0a29bb80844219a0c4509ff2238` completed successfully on both native
+architectures, with 26 installed cases each. Its [raw receipts](receipts/installed-updater-1057/cleanup-rerun/run.json)
+include real caller substitution and signed wrong-architecture AppImage rejection.
+All nine negative cases per architecture also pass the later strengthened assertions on
+receipt re-audit. The inotify queue records replacement before original reader close on both architectures;
+its timestamps are userspace observation times, not kernel operation durations. These
+ordered observations fall inside the privileged invocation.
+This re-audit does not cover the subsequently added direct privileged signature case.
+
+The final source [run 38913791148](https://github.com/yuric/campus-linux/actions/runs/38913791148)
+at `113a53e4eea44b6d80a8ee3edb55d186d11f3ba6` completed **successfully on both native
+runners**, with **27 passing cases per architecture**. The
+[run/artifact receipt](receipts/installed-updater-1057/verified-run/run.json) binds actual
+job conclusions, source, archive digests and sizes. The complete
+[arm64 smoke](receipts/installed-updater-1057/verified-run/arm64/installed-smoke.json) and
+[amd64 smoke](receipts/installed-updater-1057/verified-run/amd64/installed-smoke.json)
+include the tightened negatives and direct privileged signature rejection.
+
+The subsequent evidence/handoff commit leaves every file recorded in those builds'
+`fixture-inputs.json` unchanged, including the app, adapter, hosted smoke and dedicated
+workflow. The original canonical file-map SHA-256 is
+`f775791c6e1080b60297b859e2f029109f5b10965eb928770ba78dadc05585ee`.
+This binds the tested implementation while keeping build source and later evidence head
+distinct. The later desktop recorder, authority-window helper and runbook are new source
+preparation requested by the coordinator; they have not run in a guest and are outside
+that fingerprint. No claim is made that new receipts or harnesses existed during their
+own earlier build.
 
 | Evidence | arm64 | x86_64 | Acceptance scope |
 |---|---|---|---|
-| Public hosted eligibility and actual execution | Pending | Pending | Skipped, absent or unavailable jobs are not passes |
-| Ubuntu 22.04 native build; deb and AppImage from one bundler invocation per version | Pending | Pending | Build logs, lockfiles, output sizes and SHA-256s |
-| Ubuntu 24.04 installed deb/full AppImage runtime under virtual display | Pending | Pending | Headless smoke only; record actual runtime and package identities |
-| Exact format/architecture target and missing-key refusal | Pending | Pending | Full pinned updater HTTP/check/download/signature path |
-| Signed v1 → v2 and higher v3 with reverted fixture behavior | Pending | Pending | AppImage replacement/relaunch and privileged deb verification |
-| Lower/same signed deb replay refused at privileged seam | Pending | Pending | Installed app/helper hashes unchanged |
-| GDM polkit prompt, cancellation, denial and missing authority | Awaiting explicit VM lease | Downstream desktop gap | Actual graphical session; hosted allow rules cannot satisfy this row |
+| Public hosted eligibility and actual execution | Pass | Pass | Both native jobs actually executed and succeeded |
+| Ubuntu 22.04 native build; deb and AppImage from one bundler invocation per version | Pass | Pass | v1/v2/v3; exact locks and package hashes retained |
+| Ubuntu 24.04 installed deb/full AppImage runtime under virtual display | Pass | Pass | Actual dpkg and read-only FUSE identity; headless only |
+| Exact format/architecture target and missing-key refusal | Pass | Pass | Full pinned updater HTTP/check/download/signature path |
+| Signed v1 → v2 and higher v3 with reverted fixture behavior | Pass | Pass | AppImage replacement/relaunch and privileged deb verification |
+| Lower/same signed deb replay refused at privileged seam | Pass | Pass | App/helper hashes unchanged; live caller substitution also passed |
+| Privileged bad signature and signed wrong-architecture AppImage | Pass | Pass | Intended rejecting boundaries; no installation/replacement |
+| GDM polkit prompt, cancellation, denial and missing authority | Awaiting explicit VM lease | Downstream desktop gap | Hosted allow rules cannot satisfy graphical acceptance |
+
+| Final artifact budget | arm64 | x86_64 |
+|---|---:|---:|
+| Package/public-bootstrap ZIP bytes | 257,745,483 | 262,893,831 |
+| Six package files, uncompressed bytes | 257,074,004 | 262,215,140 |
+| Small source/receipt ZIP bytes | 128,142 | 129,992 |
+| Largest admitted deb bytes | 4,706,052 | 4,604,616 |
+| Largest admitted expanded data bytes | 15,087,544 | 15,868,807 |
+
+All twelve package hashes, sizes, signatures and exact manifest targets are in the final
+[arm64 package index](receipts/installed-updater-1057/verified-run/arm64/package-index.json)
+and [x86_64 package index](receipts/installed-updater-1057/verified-run/amd64/package-index.json).
+Full admission schemas and public keys are retained alongside them and match the root
+bootstrap and smoke hashes. Package ZIP retention is seven days. Only the two small
+source/receipt ZIPs were downloaded locally. A later approved download needs both the
+package ZIP and its small receipt ZIP, extracted into the same output root.
+
+Worker schema review found exactly two control files (`control`, `md5sums`, 611 bytes
+total), four payload files (app, inert helper, desktop entry and icon) and ten directories
+in each deb. All have root ownership; directories/app are `0755`, other files `0644`.
+No scripts, links, special files or adapter/key/verifier/policy paths are admitted.
+Admission, package index and extracted payload hashes agree for all three versions on
+both architectures. This is review of these exact fixture packages, not a general installer.
 
 The worker has no VM lease. Office400/#982 exclusively owns Lima until LINUX-20261016
 explicitly transfers it. Do not boot, install, change sessions or run guest probes before
@@ -57,6 +105,11 @@ dependency installation, Docker startup or artifact download. Small source/lock/
 preparation is bounded to 128 MiB new allocation while preserving 20 GiB free. Before the
 later arm64 download, report exact hosted artifact bytes and obtain the coordinator's
 resource allocation. No second VM or x86_64 graphical prerequisite is introduced.
+The concrete [arm64 GDM handoff](../../spikes/1057/installed-updater/probe/DESKTOP.md)
+records exact artifacts and extraction/install/storage bounds, graphical PID/session
+binding, genuine prompt observation and bounded authority restoration. It reserves
+1.25 GiB additional guest storage and, only if the coordinator chooses Mac staging,
+260 MiB for ZIP transfer. Neither allocation nor guest access has been granted here.
 
 ## Fixture and trust boundaries
 
@@ -71,8 +124,11 @@ record package/source checksums and the actual resolved bundler version. The sta
 does not require Node or Vite. Build on the pinned Ubuntu 22.04
 [release baseline](../../ci/Dockerfile.release-baseline), whose glibc ceiling is 2.35;
 run those exact packages on Ubuntu 24.04. Record the derived image ID, installed package
-inventory, every ELF's ABI requirements, and per-format runtime/SBOM inventory. A build
+inventory, every regular ELF in each extracted package payload, and per-format runtime/SBOM inventory. A build
 on 22.04 alone does not establish installed 22.04 compatibility.
+The recorded payload ABI ceiling does not inspect the outer AppImage ELF launcher or
+the separately provisioned bootstrap verifier; their bytes are hashed, and their actual
+24.04 execution is observed, but their ABI symbol inventories remain outside this receipt.
 
 Generate one disposable signing keypair per hosted build in private ephemeral storage.
 Only its public key, signatures and fingerprints may enter uploaded output. Delete private
@@ -228,6 +284,14 @@ commands/results; and an explicit `passed`, `failed` or `not_run` outcome with r
 Expected hashes must come from the built package inventory, independently of the later
 observed installed files. A missing receipt or skipped hosted job remains missing evidence.
 
+`phase.json` is the build-time snapshot emitted before smoke and therefore says pending;
+the actual `installed-smoke.json` and observed GitHub job conclusion record final results.
+The strict caller-substitution timing check can fail on a late scheduler wakeup. Hosted
+timeout/cancellation can preempt the container ownership cleanup and receipt upload;
+such runs remain failed or missing evidence, never inferred passes. Successful runs do
+not certify those interrupted hosted paths. These limitations were dispositioned in
+[the worker review response](https://github.com/yuric/campus-linux/pull/13#issuecomment-6217429422).
+
 Public hosted jobs use `ubuntu-24.04` / `ubuntu-24.04-arm`, pinned actions, read-only
 contents permission, public-visibility guards, timeouts and cancellation. No repository
 setting change, private-minute workaround, self-hosted runner or release publication is
@@ -243,6 +307,15 @@ Production key custody, final packages, helper lease/outbox/lifecycle behavior,
 interrupted-`dpkg` recovery, external package replacement during work and the complete
 product/session matrix remain #989/#990/#996/#997/#999. Neither an inert helper nor a
 headless updater pass closes those gates.
+
+Worker verification uses `python3 -B scripts/verify_repository.py` (30 policy regressions,
+boundary, acceptance inventory, links and legacy OpenAPI), the adapter's ten stdlib
+tests, the smoke validator's six regression tests, Python AST and shell syntax checks,
+and `git diff --check`. At source113a53e, the live `check-linux-admission.py --pr 13
+--head 113a53e4eea44b6d80a8ee3edb55d186d11f3ba6` accepted all six required checks.
+The coordinator takes sole CI/Council observation for the later handoff head, as directed
+in card comment10584; its outcomes must be read independently rather than inherited.
+The new desktop helpers have source/mocked validation only, never a graphical pass.
 
 Deliver one draft PR with `Campus Linux: ` title prefix and `LINUX-20261016`, #1057,
 source/build/package hashes, exact-head checks, self-review, failures and remaining evidence
