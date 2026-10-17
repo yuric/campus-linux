@@ -3797,8 +3797,8 @@
     },
     {
       "path": "spikes/982/renderer/electron/README.md",
-      "bytes": 17157,
-      "sha256": "6f868d6c8314e1c6bcc8a6ca33626aab052722a98a3ba0eaaf0b2df34ce7bab4"
+      "bytes": 19151,
+      "sha256": "11035ddd74069e2a775b954cc7810bba1167bb97d2960a3e96531a0f28350014"
     },
     {
       "path": "spikes/982/renderer/electron/bounded_stderr.py",
@@ -3807,13 +3807,13 @@
     },
     {
       "path": "spikes/982/renderer/electron/freeze.py",
-      "bytes": 2755,
-      "sha256": "76a228d25fc57959f6135f966ff389a4a9576a371a0a8b0d14b547dc91a77fba"
+      "bytes": 2789,
+      "sha256": "e207d83ff355f3e92825164b92f26f88491ec53cb6c8761764219a5a999f671e"
     },
     {
       "path": "spikes/982/renderer/electron/main.cjs",
-      "bytes": 13841,
-      "sha256": "86ccc24771c8d896058ec0b930e74ef65eac80cf3068ac987ad611b0b345064a"
+      "bytes": 14478,
+      "sha256": "920b36fbdd9338f6663a4cc951a2b7093f8c7c4be3e06339fca33b5ed268cc6e"
     },
     {
       "path": "spikes/982/renderer/electron/preload.cjs",
@@ -3837,13 +3837,13 @@
     },
     {
       "path": "spikes/982/renderer/electron/test-deadline.cjs",
-      "bytes": 20866,
-      "sha256": "3a6fecf6a0336b4830b189f17cb038103b4049c441fc044468ca7a7da44403a3"
+      "bytes": 24000,
+      "sha256": "0d6bee9242d7ee7f1fc7bca57e05192b8c12847ce20a752727d473054722d63f"
     },
     {
       "path": "spikes/982/renderer/electron/test_bounded_stderr.py",
-      "bytes": 7253,
-      "sha256": "6f4eb6307e4ea0e25ecf60a229f2ec095cd404799c31df29f8a2b4f715b74816"
+      "bytes": 8013,
+      "sha256": "9ff5e73c4c2e9e637522086aa616f9e819e25a2d888f4b359ded6dfb113ea542"
     },
     {
       "path": "spikes/982/renderer/export-receipt.json",

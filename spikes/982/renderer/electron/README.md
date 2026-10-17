@@ -246,3 +246,31 @@ preflight, pin the exact changed source map, preserve its failed control and sto
 any failure. No wrapper or guest activation is included here. Even a successful arm
 cannot seed motion/timing or relax the full30-second warmup/60-second measurement.
 The source tests are not evidence of successful backend initialization or performance.
+
+### Software compositor diagnostic arm (not performance evidence)
+
+`--disable-gpu-compositing` is accepted only as an exact valueless switch together
+with `--preflight --gpu-diagnostic --ignore-gpu-blocklist`. Motion, lifecycle and
+timing use are rejected. The existing compatibility arm remains unchanged when
+this additional switch is absent.
+
+The retained Mesa compatibility attempt reached renderer startup but recorded
+GBM/KMS scanout allocation failures and GPU process exits, with no native GPU
+acceptance. The Vulkan initialization warning alone does not establish the cause.
+This new arm tests a narrower hypothesis: Chromium's software compositor selects
+a software output surface, whose Wayland canvas uses shared-memory buffers, while
+WebGL remains subject to the existing ANGLE/OpenGL, native llvmpipe and actual
+owned-descendant checks. This has not yet been tested in the Linux VM. It does not
+change device permissions, sandbox policy, renderer gates or measurement periods.
+
+Primary implementation references at the pinned Chromium version:
+[GPU compositing switch handling](https://chromium.googlesource.com/chromium/src/+/152.0.7977.167/content/browser/gpu/gpu_data_manager_impl_private.cc),
+[software output surface selection](https://chromium.googlesource.com/chromium/src/+/152.0.7977.167/components/viz/service/display_embedder/output_surface_provider_impl.cc),
+and [Wayland shared-memory canvas](https://chromium.googlesource.com/chromium/src/+/152.0.7977.167/ui/ozone/platform/wayland/gpu/wayland_canvas_surface.cc).
+
+Every terminal receipt from this arm carries `diagnostic_only: software-compositor`
+and `software_compositor` with the exact switch, empty value and
+`timing_eligible: false`, alongside the existing whole-list compatibility marker.
+`freeze.py` rejects even a receipt retaining only the software-compositor marker.
+A successful diagnostic would establish only its reported preflight facts; it
+cannot supply freeze, timing or D5 performance acceptance.

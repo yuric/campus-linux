@@ -6,7 +6,7 @@ const vm=require('node:vm');
 const test=require('node:test');
 const candidate=fs.readFileSync(path.join(__dirname,'main.cjs'),'utf8');
 const flush=async()=>{for(let i=0;i<50;i++)await Promise.resolve();};
-async function harness(source,{point,mode='pending',native=true,threads=native,receiptKind='preflight',writeFailure=false,stderrFailure=false,navigationDependent=false,bootstrapURL='about:blank',gpuDiagnostic=false,compatibility=false}={}){
+async function harness(source,{point,mode='pending',native=true,threads=native,receiptKind='preflight',writeFailure=false,stderrFailure=false,navigationDependent=false,bootstrapURL='about:blank',gpuDiagnostic=false,compatibility=false,softwareCompositor=false}={}){
  let now=0,next=0,window,releasePending,navigated=false,instrumented=false,currentURL='',blankCallback=false;
  const timers=new Map(),writes=[],exits=[],logs=[],calls=[],listeners={},ipc={};
  const guards={switches:[],appEvents:{}};
@@ -59,7 +59,7 @@ async function harness(source,{point,mode='pending',native=true,threads=native,r
   ipcMain:{handle(name,fn){ipc[name]=fn;},on(name,fn){ipc[name]=fn;}},nativeTheme:{}
  };
  const context={require(name){if(name==='electron')return electron;if(name==='node:fs')return mockFs;if(name==='node:crypto')return {createHash(){return {update(){return this;},digest(){return 'H';}};}};return require(name);},
-  process:{argv:['electron','main','--preflight',...(gpuDiagnostic?['--gpu-diagnostic']:[]),...(compatibility?['--ignore-gpu-blocklist']:[]),'/export','ignored','/output.json'],platform:'linux',arch:'arm64',versions,env:{LIBGL_ALWAYS_SOFTWARE:'1'},execPath:'/electron',pid:10},
+  process:{argv:['electron','main','--preflight',...(gpuDiagnostic?['--gpu-diagnostic']:[]),...(compatibility?['--ignore-gpu-blocklist']:[]),...(softwareCompositor?['--disable-gpu-compositing']:[]),'/export','ignored','/output.json'],platform:'linux',arch:'arm64',versions,env:{LIBGL_ALWAYS_SOFTWARE:'1'},execPath:'/electron',pid:10},
   __dirname:'/repo/electron',setTimeout,clearTimeout,console:{log(){}},URL,Response,Buffer,
   Date:class extends Date{constructor(...args){super(...(args.length?args:[now]));}static now(){return now;}}
  };
@@ -254,4 +254,33 @@ test('compatibility permission requests and checks remain denied',async()=>{
  const h=await harness(candidate,{gpuDiagnostic:true,compatibility:true});
  let allowed;h.guards.permissionRequest(null,'media',value=>{allowed=value;});
  assert.equal(allowed,false);assert.equal(h.guards.permissionCheck(),false);
+});
+
+test('software compositor adds exactly one switch and marks diagnostic receipts',async()=>{
+ const control=await harness(candidate,{gpuDiagnostic:true,compatibility:true});
+ const arm=await harness(candidate,{gpuDiagnostic:true,compatibility:true,softwareCompositor:true});
+ assert.deepEqual(arm.guards.switches.filter(x=>x[0]!=='disable-gpu-compositing'),control.guards.switches);
+ assert.deepEqual(arm.guards.switches.filter(x=>x[0]==='disable-gpu-compositing'),[['disable-gpu-compositing']]);
+ for(const key of ['sandbox','nodeIntegration','contextIsolation','webSecurity','backgroundThrottling','preload'])assert.equal(arm.guards.preferences[key],control.guards.preferences[key]);
+ await arm.advance(5000);const p=arm.writes[0].payload;
+ assert.deepEqual(arm.exits,[0]);assert.equal(p.diagnostic_only,'software-compositor');
+ assert.deepEqual(JSON.parse(JSON.stringify(p.software_compositor)),{switch:'disable-gpu-compositing',value:'',timing_eligible:false});
+ await control.advance(5000);assert.equal(control.writes[0].payload.software_compositor,undefined);
+});
+for(const flags of [[],['--preflight'],['--preflight','--gpu-diagnostic'],['--gpu-diagnostic'],['--preflight','--gpu-diagnostic','--ignore-gpu-blocklist','--motion-proof'],['--preflight','--gpu-diagnostic','--ignore-gpu-blocklist','--lifecycle-proof']]){
+ test('software compositor rejects unsupported mode '+JSON.stringify(flags),()=>{
+  const effects=[];const electron={app:{on(){effects.push('hook');},commandLine:{appendSwitch(){effects.push('switch');}}}};
+  const context={__dirname:'/repo/electron',require(name){return name==='electron'?electron:require(name);},process:{argv:['electron','main','--disable-gpu-compositing',...flags,'/export','/freeze','/output']}};
+  assert.throws(()=>vm.runInNewContext(candidate,context),/requires|require/);assert.deepEqual(effects,[]);
+ });
+}
+for(const flag of ['--disable-gpu-compositing=','--disable-gpu-compositing=true'])test('software compositor rejects valued switch '+flag,()=>{
+ const effects=[];const electron={app:{on(){effects.push('hook');},commandLine:{appendSwitch(){effects.push('switch');}}}};
+ const context={__dirname:'/repo/electron',require(name){return name==='electron'?electron:require(name);},process:{argv:['electron','main','--preflight','--gpu-diagnostic','--ignore-gpu-blocklist',flag,'/export','/freeze','/output']}};
+ assert.throws(()=>vm.runInNewContext(candidate,context),/exact valueless switch/);assert.deepEqual(effects,[]);
+});
+for(const settings of [{native:false},{threads:false},{point:'gpu',mode:'reject'},{point:'gpu',mode:'pending'},{point:'readiness',mode:'pending'}])test('software compositor retains failure gate '+JSON.stringify(settings),async()=>{
+ const h=await harness(candidate,{gpuDiagnostic:true,compatibility:true,softwareCompositor:true,...settings});await h.advance(115000);
+ assert.deepEqual(h.exits,[1]);assert.equal(h.writes.length,1);assert.equal(h.writes[0].payload.kind,'preflight_failure');
+ assert.equal(h.writes[0].payload.software_compositor.timing_eligible,false);
 });

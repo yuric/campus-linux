@@ -108,6 +108,18 @@ class CaptureTest(unittest.TestCase):
                 self.assertIn(b'not freeze or timing evidence', result.stderr)
                 self.assertFalse((root/'out').exists())
 
+    def test_software_compositor_marker_alone_cannot_freeze(self):
+        import json
+        with tempfile.TemporaryDirectory() as folder:
+            root = pathlib.Path(folder)
+            (root/'raw.json').write_text(json.dumps({'kind': 'preflight', 'software_compositor': {'timing_eligible': False}}))
+            result = subprocess.run([sys.executable, str(pathlib.Path(__file__).with_name('freeze.py')),
+                                     str(root/'raw.json'), str(root/'unused'), str(root/'out')],
+                                    capture_output=True, timeout=3)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn(b'not freeze or timing evidence', result.stderr)
+            self.assertFalse((root/'out').exists())
+
     def test_signal_error_still_attempts_wait_and_preserves_original_failure(self):
         from types import SimpleNamespace
         child = SimpleNamespace(pid=123, returncode=None, stderr=io.BytesIO())
