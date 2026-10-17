@@ -1,0 +1,1 @@
+{"case": "absent-service", "owner_present": false, "persistent_fallback_created": false, "scope": "isolated D-Bus without activation services; no product registration tested"}

@@ -1,0 +1,109 @@
+{
+  "case": "descendants",
+  "command": [
+    "/opt/homebrew/bin/limactl",
+    "shell",
+    "campus-linux-d5-noble-arm64",
+    "sudo",
+    "systemd-run",
+    "--unit=campus982-core-10470-final2-descendants",
+    "--wait",
+    "--pipe",
+    "--collect",
+    "-p",
+    "User=campusqa",
+    "-p",
+    "Group=campusqa",
+    "-p",
+    "LimitCORE=infinity",
+    "-p",
+    "MemoryMax=64M",
+    "-p",
+    "MemorySwapMax=0",
+    "-p",
+    "TasksMax=8",
+    "-p",
+    "RuntimeMaxSec=20",
+    "-p",
+    "TimeoutStopSec=2",
+    "-p",
+    "PrivateNetwork=yes",
+    "-p",
+    "CPUQuota=100%",
+    "-p",
+    "UMask=0077",
+    "-p",
+    "WorkingDirectory=/home/campusqa/spike982/core-sentinel-10470",
+    "/usr/bin/python3",
+    "-I",
+    "-S",
+    "/home/campusqa/spike982/core-sentinel-10470/probe.py",
+    "descendants"
+  ],
+  "host_free_bytes_before": 35877015552,
+  "before": {
+    "metadata": {
+      "/var/crash": [
+        {
+          "name": "_usr_share_netplan_netplan.script.0.crash",
+          "size": 31462,
+          "mtime_ns": 1792148210723000117,
+          "inode": 87894
+        }
+      ],
+      "/var/lib/systemd/coredump": [],
+      "/home/campusqa/spike982/core-sentinel-10470": [
+        {
+          "name": "probe.py",
+          "size": 8909,
+          "mtime_ns": 1792154568253922760,
+          "inode": 1066157
+        }
+      ]
+    },
+    "apport_log_size": 0,
+    "apport_log_inode": 87909,
+    "utc": "2026-10-16 12:44:09 UTC"
+  },
+  "returncode": 0,
+  "stdout": "{\"case\": \"descendants\", \"initial\": {\"boot_id\": \"f47cb6c7-dcc4-4492-9b27-29f1e8033dc2\", \"cgroup\": \"0::/system.slice/campus982-core-10470-final2-descendants.service\", \"core_limit\": [-1, -1], \"dumpable\": 1, \"label\": \"before-secret\", \"marker_admitted\": false, \"monotonic\": 337.738283825, \"no_new_privs\": \"0\", \"pid\": 2758, \"ppid\": 1, \"seccomp\": \"0\", \"seccomp_filters\": \"0\", \"sid\": 2758, \"start_ticks\": 33771}, \"launcher_sha256\": \"3aca30e49471b4c12cbcd5c6abcccf9a9f1006262beb4eaedb3e36e03d3ba22d\"}\n{\"boot_id\": \"f47cb6c7-dcc4-4492-9b27-29f1e8033dc2\", \"cgroup\": \"0::/system.slice/campus982-core-10470-final2-descendants.service\", \"core_limit\": [1, 1], \"dumpable\": 1, \"label\": \"after-exec-depth-0\", \"marker_admitted\": true, \"monotonic\": 337.754411913, \"no_new_privs\": \"1\", \"pid\": 2758, \"ppid\": 1, \"seccomp\": \"2\", \"seccomp_filters\": \"1\", \"sid\": 2758, \"start_ticks\": 33771}\n{\"core_query\": {\"errno\": 0, \"return\": 0}, \"high_pointer\": {\"errno\": 1, \"return\": -1}, \"mutations\": [{\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 164, \"value\": 0}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 164, \"value\": 0}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 164, \"value\": 1}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 164, \"value\": 1}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 164, \"value\": 18446744073709551615}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 164, \"value\": 18446744073709551615}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 261, \"value\": 0}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 261, \"value\": 0}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 261, \"value\": 1}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 261, \"value\": 1}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 261, \"value\": 18446744073709551615}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 261, \"value\": 18446744073709551615}], \"noncore_same_value\": [{\"errno\": 0, \"return\": 0}, {\"errno\": 0, \"return\": 0}]}\n{\"boot_id\": \"f47cb6c7-dcc4-4492-9b27-29f1e8033dc2\", \"cgroup\": \"0::/system.slice/campus982-core-10470-final2-descendants.service\", \"core_limit\": [1, 1], \"dumpable\": 1, \"label\": \"after-exec-depth-1\", \"marker_admitted\": true, \"monotonic\": 337.769945542, \"no_new_privs\": \"1\", \"pid\": 2759, \"ppid\": 2758, \"seccomp\": \"2\", \"seccomp_filters\": \"1\", \"sid\": 2758, \"start_ticks\": 33775}\n{\"core_query\": {\"errno\": 0, \"return\": 0}, \"high_pointer\": {\"errno\": 1, \"return\": -1}, \"mutations\": [{\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 164, \"value\": 0}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 164, \"value\": 0}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 164, \"value\": 1}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 164, \"value\": 1}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 164, \"value\": 18446744073709551615}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 164, \"value\": 18446744073709551615}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 261, \"value\": 0}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 261, \"value\": 0}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 261, \"value\": 1}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 261, \"value\": 1}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 261, \"value\": 18446744073709551615}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 261, \"value\": 18446744073709551615}], \"noncore_same_value\": [{\"errno\": 0, \"return\": 0}, {\"errno\": 0, \"return\": 0}]}\n{\"boot_id\": \"f47cb6c7-dcc4-4492-9b27-29f1e8033dc2\", \"cgroup\": \"0::/system.slice/campus982-core-10470-final2-descendants.service\", \"core_limit\": [1, 1], \"dumpable\": 1, \"label\": \"after-exec-depth-2\", \"marker_admitted\": true, \"monotonic\": 337.785606344, \"no_new_privs\": \"1\", \"pid\": 2760, \"ppid\": 2759, \"seccomp\": \"2\", \"seccomp_filters\": \"1\", \"sid\": 2760, \"start_ticks\": 33777}\n{\"core_query\": {\"errno\": 0, \"return\": 0}, \"high_pointer\": {\"errno\": 1, \"return\": -1}, \"mutations\": [{\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 164, \"value\": 0}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 164, \"value\": 0}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 164, \"value\": 1}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 164, \"value\": 1}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 164, \"value\": 18446744073709551615}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 164, \"value\": 18446744073709551615}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 261, \"value\": 0}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 261, \"value\": 0}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 261, \"value\": 1}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 261, \"value\": 1}, {\"errno\": 1, \"resource\": 4, \"return\": -1, \"syscall\": 261, \"value\": 18446744073709551615}, {\"errno\": 1, \"resource\": 4294967300, \"return\": -1, \"syscall\": 261, \"value\": 18446744073709551615}], \"noncore_same_value\": [{\"errno\": 0, \"return\": 0}, {\"errno\": 0, \"return\": 0}]}\n{\"wait_status\": 0, \"waited_pid\": 2760}\n{\"wait_status\": 0, \"waited_pid\": 2759}\n",
+  "stderr": "Running as unit: campus982-core-10470-final2-descendants.service; invocation ID: a6c3809db94f456295403c28d691feaf\nFinished with result: success\nMain processes terminated with: code=exited/status=0\nService runtime: 83ms\nCPU time consumed: 80ms\nMemory peak: 1.7M\nMemory swap peak: 0B\n",
+  "observations": {
+    "kernel_command_returncode": 0,
+    "kernel_command_stderr": "",
+    "kernel_pid_lines": [],
+    "matched_collector_pids": [],
+    "observation_seconds": 3,
+    "apport_new_bytes": 0,
+    "apport_rotated": false,
+    "apport_pid_lines": [],
+    "cgroup_exists": false,
+    "cgroup_procs": "",
+    "original_pids_still_present": []
+  },
+  "after": {
+    "metadata": {
+      "/var/crash": [
+        {
+          "name": "_usr_share_netplan_netplan.script.0.crash",
+          "size": 31462,
+          "mtime_ns": 1792148210723000117,
+          "inode": 87894
+        }
+      ],
+      "/var/lib/systemd/coredump": [],
+      "/home/campusqa/spike982/core-sentinel-10470": [
+        {
+          "name": "probe.py",
+          "size": 8909,
+          "mtime_ns": 1792154568253922760,
+          "inode": 1066157
+        }
+      ]
+    },
+    "apport_log_size": 0,
+    "apport_log_inode": 87909,
+    "utc": "2026-10-16 12:44:12 UTC"
+  },
+  "wall_seconds": 3.655205042043235
+}

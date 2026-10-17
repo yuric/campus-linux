@@ -1,0 +1,16 @@
+{
+  "utc": "2026-10-16T18:28:30.735959+00:00",
+  "argv": [
+    "limactl",
+    "shell",
+    "campus-linux-d5-noble-arm64",
+    "sudo",
+    "/usr/bin/env",
+    "-i",
+    "PATH=/usr/sbin:/usr/bin:/sbin:/bin",
+    "/bin/sh",
+    "-c",
+    "sha256sum /root/campus982-runtime-1329-fee59815/electron-sandbox-operator.py; stat -c \"%d %i %h %s %a %U %G %n\" /root/campus982-runtime-1329-fee59815/electron-sandbox-operator.py; loginctl list-sessions; test -z \"$(pgrep -u 1000)\""
+  ],
+  "returncode": 0
+}

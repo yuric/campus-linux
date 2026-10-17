@@ -1,0 +1,9 @@
+{
+  "utc": "2026-10-16T18:28:45.316910+00:00",
+  "status": "Stopped",
+  "host_free": 24314380288,
+  "disk_allocated": 7890403328,
+  "disk_inode": 944391844,
+  "cpus": 4,
+  "memory": 6442450944
+}

@@ -1,0 +1,195 @@
+{
+  "scope": "Direction1213 bounded mechanism source/receipts; no product acceptance",
+  "files": [
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/REPORT.md",
+      "bytes": 11509,
+      "sha256": "82fb337203b35a4cbfc24446cec15a57c613fef41c77930104cdad01698545d5"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/allocation-baseline.json",
+      "bytes": 601,
+      "sha256": "b50eb1e493dac6dbe793657629e7e12bf200301dca9ef5b4e7cd72b5b1e6ebe5"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/apport-positive-preflight.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/apport-positive-preflight.stdout",
+      "bytes": 3351,
+      "sha256": "3c18172bf5729c7fa470d8303d59bb64a572320e0c627da98e5121b13adee063"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/collection.json",
+      "bytes": 4428,
+      "sha256": "96d1a7b8f4ccbcac9b46c16c450c50d1e0a4ab9dd40081abf2b14ee8742bba08"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/collection.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/drill.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/drill.stdout",
+      "bytes": 564,
+      "sha256": "3897bd49c18e902b4a4107b1497962e9b946a976a97857d926165e0409447be2"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/host-after.json",
+      "bytes": 230,
+      "sha256": "81600957d934748c80f91ae1493b57f39a1fe2c8e493bdc31766035dff8c4378"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/host-before.json",
+      "bytes": 477,
+      "sha256": "f927de73932d28eb40a28b7194db49ab0c6bb0650b905cd81d9258e67dc2d4cf"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/host-negative.json",
+      "bytes": 1321,
+      "sha256": "e1e1c8cf50ea5a450e39747d8a19bc2a65131953a04e2072a334e4158dd81fd2"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/host-pair.json",
+      "bytes": 2395,
+      "sha256": "e5029ab3de71f51b8e0454727f6c18847c36861526b30f2fcddf832506b8e84f"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/metadata.stderr",
+      "bytes": 98,
+      "sha256": "c375d41c14b9384570cef6296e43b8827fe54f64ec2ff4b76d024fa58b6b3d59"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/metadata.stdout",
+      "bytes": 3820,
+      "sha256": "d752e331a8c5b199c06bc213f20f4b333f3e48ee1de7e14fb93a7bceb07350a7"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/negative.json",
+      "bytes": 5361,
+      "sha256": "2a82706709f3dc570691528bd496bd3412b5bda2b1d6b0d6b7d7dd9284200237"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/positive.json",
+      "bytes": 6629,
+      "sha256": "f29dac694f7ee05904cc452609924af37372c732ae57445b93dd4740ee0310d0"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/reinspection.json",
+      "bytes": 2279,
+      "sha256": "f1873d2f584c9f9dad7672e69ed0e2dbc8852e60bd65e82601bd26546462aac3"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/reinspection.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/source-bindings.json",
+      "bytes": 12928,
+      "sha256": "c24b99160dbd37453f2c7b4362ebab0978723c6a891917e0ebb4ac7aead942f0"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/source-pair1/host.py",
+      "bytes": 5497,
+      "sha256": "8be1d8c7f30b582bf9c93034fb2545d527e694b47e49daf7277929916b026b15"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/source-pair1/pair.py",
+      "bytes": 17978,
+      "sha256": "405a7b5af9b47b007ddf1c944f73df4b175f97b91335282f349fac1dbd578d55"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/source-pair1/watchdog.py",
+      "bytes": 3784,
+      "sha256": "0d5f7b5c2a7c5fa37e5e933d3a485c7166d6bce90962071fc4f2a403cc583302"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/start.txt",
+      "bytes": 3126,
+      "sha256": "a81040377cc0706fb53e72168f489413f77735dc7b40fce6a8500066fd129962"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/stop.txt",
+      "bytes": 1063,
+      "sha256": "9c97c7d04d446cafa0b6f1ae47035d6ed9f2e40343899e1b8088f28a0ca6872e"
+    },
+    {
+      "path": "scripts/tests/test_apport_full_report.py",
+      "bytes": 4843,
+      "sha256": "924a84076eea359c941b2e595c0b28bd484db07ca5205e1f464ad18d9c510d09"
+    },
+    {
+      "path": "spikes/982/security/full-report/collect.py",
+      "bytes": 2487,
+      "sha256": "633d3246d225de9874d2adaedab79ca42c02ae8ff21c68eaef0e3a36570bab35"
+    },
+    {
+      "path": "spikes/982/security/full-report/drill.py",
+      "bytes": 1665,
+      "sha256": "82ff0ef4d8c5f5bed0aa9ff460b8009ba805f07947969230ab75e2e9b41e5326"
+    },
+    {
+      "path": "spikes/982/security/full-report/host.py",
+      "bytes": 5497,
+      "sha256": "8be1d8c7f30b582bf9c93034fb2545d527e694b47e49daf7277929916b026b15"
+    },
+    {
+      "path": "spikes/982/security/full-report/metadata.py",
+      "bytes": 10156,
+      "sha256": "d32d54c0c2431a3496217e82d70b88e0e5e45b5dbe8d70f919981c3b10f92036"
+    },
+    {
+      "path": "spikes/982/security/full-report/pair.py",
+      "bytes": 18104,
+      "sha256": "1a5ca036e317be6d8d351ae0b5f92bb190362295d59b2f61b5a10e83d30b25c9"
+    },
+    {
+      "path": "spikes/982/security/full-report/preflight_host.py",
+      "bytes": 1271,
+      "sha256": "06b346e46c65f8445bdd81da3b145cde0b84d04094d3debd4010a716fd1cc183"
+    },
+    {
+      "path": "spikes/982/security/full-report/recover.py",
+      "bytes": 3843,
+      "sha256": "3285d52e94a48efe7945eb7c279f73c5a281b0650aeb72bf874b7d9b6fc74211"
+    },
+    {
+      "path": "spikes/982/security/full-report/report_scan.py",
+      "bytes": 3063,
+      "sha256": "bfda61e431f365e083bd88007fe51151eea429192f71439ea1f514a3e2163041"
+    },
+    {
+      "path": "spikes/982/security/full-report/resume_negative.py",
+      "bytes": 2965,
+      "sha256": "0008d32a7e16758c978e915836d95447f37759a41f805a90969dd078b1c859f3"
+    },
+    {
+      "path": "spikes/982/security/full-report/test_report_scan.py",
+      "bytes": 1443,
+      "sha256": "55181180adaa555e407907d73b952b2aa93fdc050e6d802a8ebf6f144666cd2f"
+    },
+    {
+      "path": "spikes/982/security/full-report/watchdog.py",
+      "bytes": 5163,
+      "sha256": "ab362bf7d11d98c29e4e04a8c3c1ad32d1be87b02335c15b19b62c34fb9aa424"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/source-pair2/pair.py",
+      "bytes": 18014,
+      "sha256": "2ec67954f53e805a18f5f353977da8d34a43898315211b1805b49afe686726cd"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-full-1213/source-pair1/drill.py",
+      "bytes": 1510,
+      "sha256": "9f3f9f49ac6dffa620045a867dc8b5ce30179bb419f59a362c4c8f0ef928ca54"
+    }
+  ]
+}

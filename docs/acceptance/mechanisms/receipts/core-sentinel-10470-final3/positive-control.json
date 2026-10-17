@@ -1,0 +1,5 @@
+{
+  "case": "A",
+  "status": "inconclusive-not-run",
+  "reason": "Installed Apport bounds CoreDump by 3/4 usable RAM, not the required 16 MiB. No adequate complete report footprint bound was established for this Python fixture. No normal zero-limit SIGABRT was launched. Exact-PID kernel sentinel diagnostics are separate evidence; missing reports alone are not a collector-positive-control pass."
+}

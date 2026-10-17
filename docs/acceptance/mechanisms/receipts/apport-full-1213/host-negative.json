@@ -1,0 +1,51 @@
+{
+  "kind": "negative-only-after-confirmed-positive-cleanup",
+  "source_sha256": "0008d32a7e16758c978e915836d95447f37759a41f805a90969dd078b1c859f3",
+  "pair_sha256": "2ec67954f53e805a18f5f353977da8d34a43898315211b1805b49afe686726cd",
+  "reinspection_sha256": "f1873d2f584c9f9dad7672e69ed0e2dbc8852e60bd65e82601bd26546462aac3",
+  "samples": [
+    {
+      "monotonic": 516123.3579335,
+      "host_free": 33625784320,
+      "image_growth": 0,
+      "local_allocated": 69632
+    },
+    {
+      "monotonic": 516123.979090333,
+      "host_free": 33626173440,
+      "image_growth": 0,
+      "local_allocated": 69632
+    },
+    {
+      "monotonic": 516124.593876125,
+      "host_free": 33626124288,
+      "image_growth": 0,
+      "local_allocated": 69632
+    },
+    {
+      "monotonic": 516125.238443333,
+      "host_free": 33626071040,
+      "image_growth": 0,
+      "local_allocated": 69632
+    },
+    {
+      "monotonic": 516125.8729425,
+      "host_free": 33632743424,
+      "image_growth": 0,
+      "local_allocated": 69632
+    },
+    {
+      "monotonic": 516126.507677375,
+      "host_free": 33631641600,
+      "image_growth": 0,
+      "local_allocated": 69632
+    },
+    {
+      "monotonic": 516127.14862,
+      "host_free": 33632190464,
+      "image_growth": 0,
+      "local_allocated": 69632
+    }
+  ],
+  "pass": true
+}

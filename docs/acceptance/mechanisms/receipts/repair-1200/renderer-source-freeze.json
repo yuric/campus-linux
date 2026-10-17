@@ -1,0 +1,87 @@
+{
+  "utc": "2026-10-16T13:46:28.098593+00:00",
+  "direction": 1200,
+  "scope": "Producing/checking source freeze only; no browser run or timing admission. Fresh untimed motion proof and freeze.py environment binding required before future timing.",
+  "source_base": "a975d6747fe0d29932182bb07ad3b7fb01da7e3c",
+  "warmup_seconds": 30,
+  "duration_seconds": 60,
+  "p95_ms_max": 33.3,
+  "repeats": 5,
+  "files": [
+    {
+      "path": "spikes/982/renderer/capture-gpu.py",
+      "bytes": 1488,
+      "sha256": "da3ab0cb316bb4fb803c7a00d7f359a41486bd6337806243ee21ba49901b3d6d"
+    },
+    {
+      "path": "spikes/982/renderer/export-receipt.json",
+      "bytes": 1874,
+      "sha256": "3e273eec97693fe60be0e8fa06f7000e2ebff2f2901cdddfe8bdab10a0a8f90e"
+    },
+    {
+      "path": "spikes/982/renderer/fixture.json",
+      "bytes": 183198,
+      "sha256": "16dc931ccaa50a62d350beba44bc64a5a858ed655eb47637f5fda7fedf97d074"
+    },
+    {
+      "path": "spikes/982/renderer/freeze.py",
+      "bytes": 3341,
+      "sha256": "37e99c8b3494be361e4991a8b6a916b997c1075db93328249a6dfe9445ddf0ad"
+    },
+    {
+      "path": "spikes/982/renderer/lifecycle.js",
+      "bytes": 1799,
+      "sha256": "3d6aa2989e3c0af57b947129866a9852a7371d975fcc1c855722c2d7ff1b8fe5"
+    },
+    {
+      "path": "spikes/982/renderer/measure.js",
+      "bytes": 19352,
+      "sha256": "0d87b9cd2bb1e3e79f0bbd54c7508c23d3e8660e9cece03338bf708d31941465"
+    },
+    {
+      "path": "spikes/982/renderer/motion_evidence.py",
+      "bytes": 6407,
+      "sha256": "9f369d1770cae5914029e58559cb1ce0f9d1bf9e46cb5c35152f4877d17944f2"
+    },
+    {
+      "path": "spikes/982/renderer/native_evidence.py",
+      "bytes": 1741,
+      "sha256": "5eb2280b454af226d2809ef8ad1cf5b620877e401746507d5216052f79db95e8"
+    },
+    {
+      "path": "spikes/982/renderer/probe-speech.py",
+      "bytes": 1501,
+      "sha256": "32a75f6127b258ec6a20c37ef30a684e2deac8419b09806d8f37088155285002"
+    },
+    {
+      "path": "spikes/982/renderer/producer-manifest.json",
+      "bytes": 3450,
+      "sha256": "badcfcde2012ab1aef610f7a955c231b230580730d4d66ccdc6d4c187d6ef120"
+    },
+    {
+      "path": "spikes/982/renderer/run-five.py",
+      "bytes": 1780,
+      "sha256": "702a0ac8dbe2a422bb6ed7450e9bd52a6706ac047528ae119a5756db52ca54e8"
+    },
+    {
+      "path": "spikes/982/renderer/run-webkit.py",
+      "bytes": 12553,
+      "sha256": "19111e1b9b374c159333d7174a0986b6761a9cb72fdf60ef3085b89b39ec674d"
+    },
+    {
+      "path": "spikes/982/renderer/source-receipt.json",
+      "bytes": 1422,
+      "sha256": "da413988bfc14ed36d94549cc92d5ab8a874d767212f5ee239185480d25fd766"
+    },
+    {
+      "path": "spikes/982/renderer/summarize.py",
+      "bytes": 7205,
+      "sha256": "fd635892185d0fd6fda90a495beebbde42a693d489ef9f877f7874926b14f179"
+    },
+    {
+      "path": "spikes/982/renderer/webkit-source-receipt.json",
+      "bytes": 1232,
+      "sha256": "803121cc4ac5c55b5c7f27dc01a5c5228fd4cd9958bd1d62501b1c35d35f1f8c"
+    }
+  ]
+}

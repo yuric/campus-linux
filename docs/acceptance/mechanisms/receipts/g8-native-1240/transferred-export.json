@@ -1,0 +1,176 @@
+[
+  {
+    "path": "._Island",
+    "mode": "0o755",
+    "bytes": 163,
+    "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+  },
+  {
+    "path": "._bridge.schema.json",
+    "mode": "0o600",
+    "bytes": 163,
+    "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+  },
+  {
+    "path": "._manifest.json",
+    "mode": "0o600",
+    "bytes": 163,
+    "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+  },
+  {
+    "path": "Island/._assets",
+    "mode": "0o755",
+    "bytes": 163,
+    "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+  },
+  {
+    "path": "Island/._island.html",
+    "mode": "0o644",
+    "bytes": 163,
+    "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+  },
+  {
+    "path": "Island/._licenses",
+    "mode": "0o755",
+    "bytes": 163,
+    "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+  },
+  {
+    "path": "Island/assets/._island-B3jZU801.js",
+    "mode": "0o644",
+    "bytes": 163,
+    "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+  },
+  {
+    "path": "Island/assets/._island-BKmEIAej.css",
+    "mode": "0o644",
+    "bytes": 163,
+    "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+  },
+  {
+    "path": "Island/assets/island-B3jZU801.js",
+    "mode": "0o644",
+    "bytes": 1034883,
+    "sha256": "1a409b8e7bb93bd3bed44b430b347708518010a03f00ae56f99c89448ebeefcf"
+  },
+  {
+    "path": "Island/assets/island-BKmEIAej.css",
+    "mode": "0o644",
+    "bytes": 38196,
+    "sha256": "0d14030367618221d904e075d4a2d5e48039c61dcd1c0b1dbf73a289781d79c6"
+  },
+  {
+    "path": "Island/island.html",
+    "mode": "0o644",
+    "bytes": 719,
+    "sha256": "eadbb3b349a470e1ea5e0b022dd86432136c7f9b17ced055f646062425d8e0ed"
+  },
+  {
+    "path": "Island/licenses/._Campus-LICENSE",
+    "mode": "0o644",
+    "bytes": 163,
+    "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+  },
+  {
+    "path": "Island/licenses/._Campus-NOTICE",
+    "mode": "0o644",
+    "bytes": 163,
+    "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+  },
+  {
+    "path": "Island/licenses/._react-19.3.0-LICENSE",
+    "mode": "0o644",
+    "bytes": 163,
+    "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+  },
+  {
+    "path": "Island/licenses/._react-dom-19.3.0-LICENSE",
+    "mode": "0o644",
+    "bytes": 163,
+    "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+  },
+  {
+    "path": "Island/licenses/._rolldown-1.2.8-LICENSE",
+    "mode": "0o644",
+    "bytes": 163,
+    "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+  },
+  {
+    "path": "Island/licenses/._rolldown-1.2.8-THIRD-PARTY-LICENSE",
+    "mode": "0o644",
+    "bytes": 163,
+    "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+  },
+  {
+    "path": "Island/licenses/._scheduler-0.28.0-LICENSE",
+    "mode": "0o644",
+    "bytes": 163,
+    "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+  },
+  {
+    "path": "Island/licenses/._three-0.186.0-LICENSE",
+    "mode": "0o644",
+    "bytes": 163,
+    "sha256": "312c7cdf05184e18c1de8fc3517fd3e35ee04492411239c3e48e9d5ff37dcbe6"
+  },
+  {
+    "path": "Island/licenses/Campus-LICENSE",
+    "mode": "0o644",
+    "bytes": 11357,
+    "sha256": "33c10090cfdaf84eec1fa300a30619d34a1c2283f21410d085778096265d0b7c"
+  },
+  {
+    "path": "Island/licenses/Campus-NOTICE",
+    "mode": "0o644",
+    "bytes": 647,
+    "sha256": "2fbc7cb83c241b4711fdef1f153d9107d2d83e1810fd85db4706ff6a66a2bbe9"
+  },
+  {
+    "path": "Island/licenses/react-19.3.0-LICENSE",
+    "mode": "0o644",
+    "bytes": 1088,
+    "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+  },
+  {
+    "path": "Island/licenses/react-dom-19.3.0-LICENSE",
+    "mode": "0o644",
+    "bytes": 1088,
+    "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+  },
+  {
+    "path": "Island/licenses/rolldown-1.2.8-LICENSE",
+    "mode": "0o644",
+    "bytes": 1302,
+    "sha256": "23ecfff35a5a2e80d92142f75228912c3b1abc4b5a8337a821ff4397e2f9f734"
+  },
+  {
+    "path": "Island/licenses/rolldown-1.2.8-THIRD-PARTY-LICENSE",
+    "mode": "0o644",
+    "bytes": 2209,
+    "sha256": "a877291d800ed43692f3f9ae09d8e01cc6f7293ad39d43896059c188ffbb8b7c"
+  },
+  {
+    "path": "Island/licenses/scheduler-0.28.0-LICENSE",
+    "mode": "0o644",
+    "bytes": 1088,
+    "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+  },
+  {
+    "path": "Island/licenses/three-0.186.0-LICENSE",
+    "mode": "0o644",
+    "bytes": 1081,
+    "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+  },
+  {
+    "path": "bridge.schema.json",
+    "mode": "0o600",
+    "bytes": 15458,
+    "sha256": "4d73eea8fb118df341bd98600ee0c06aba4f33018cc0f01ab586918a8e0fa91c"
+  },
+  {
+    "path": "manifest.json",
+    "mode": "0o600",
+    "bytes": 5720,
+    "sha256": "7b5fabefd830d3cd3d3577da1c4cb4ba55217de0f7eb5b5bbfc9501443428f09"
+  }
+]

@@ -1,0 +1,250 @@
+{
+  "kind": "preflight_failure",
+  "renderer": "Apple GPU",
+  "unmasked_vendor": "Apple Inc.",
+  "masked_renderer": "WebKit WebGL",
+  "vendor": "WebKit",
+  "version": "WebGL 2.0",
+  "debug_extension": true,
+  "extensions": [
+    "EXT_clip_control",
+    "EXT_color_buffer_float",
+    "EXT_color_buffer_half_float",
+    "EXT_conservative_depth",
+    "EXT_depth_clamp",
+    "EXT_float_blend",
+    "EXT_polygon_offset_clamp",
+    "EXT_render_snorm",
+    "EXT_texture_compression_bptc",
+    "EXT_texture_compression_rgtc",
+    "EXT_texture_filter_anisotropic",
+    "EXT_texture_mirror_clamp_to_edge",
+    "EXT_texture_norm16",
+    "KHR_parallel_shader_compile",
+    "NV_shader_noperspective_interpolation",
+    "OES_draw_buffers_indexed",
+    "OES_sample_variables",
+    "OES_shader_multisample_interpolation",
+    "OES_texture_float_linear",
+    "WEBGL_blend_func_extended",
+    "WEBGL_clip_cull_distance",
+    "WEBGL_compressed_texture_astc",
+    "WEBGL_compressed_texture_etc",
+    "WEBGL_compressed_texture_etc1",
+    "WEBGL_compressed_texture_s3tc",
+    "WEBGL_compressed_texture_s3tc_srgb",
+    "WEBGL_debug_renderer_info",
+    "WEBGL_debug_shaders",
+    "WEBGL_lose_context",
+    "WEBGL_multi_draw",
+    "WEBGL_stencil_texturing"
+  ],
+  "context_lost": false,
+  "context_attempts": [
+    {
+      "kind": "webgl2",
+      "attributes": [],
+      "created": true,
+      "context_id": 1,
+      "canvas_connected": false,
+      "canvas_size": [
+        300,
+        150
+      ]
+    },
+    {
+      "kind": "webgl2",
+      "attributes": [
+        {
+          "alpha": true,
+          "depth": true,
+          "stencil": false,
+          "antialias": true,
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "powerPreference": "high-performance",
+          "failIfMajorPerformanceCaveat": false
+        }
+      ],
+      "created": true,
+      "context_id": 2,
+      "canvas_connected": true,
+      "canvas_size": [
+        300,
+        150
+      ]
+    }
+  ],
+  "canvas_count": 1,
+  "live_fixture": {
+    "source": "mounted canvas React ancestor snapshot",
+    "projects": 12,
+    "agents": 48,
+    "tasks": 180,
+    "unique_projects": 12,
+    "unique_agents": 48,
+    "unique_tasks": 180
+  },
+  "main_projection": {
+    "at": 5156,
+    "m0": 0.006108472123742104,
+    "m5": 0.01014457643032074,
+    "m10": -0.001818181830458343,
+    "m14": -0.6363636255264282,
+    "absolute_zoom": 0.46665051579475403
+  },
+  "projection_observer_active": true,
+  "projection_observer_debug": {
+    "context_id": 2,
+    "draw_calls": 3810,
+    "program_queries": 888,
+    "location_hits": 796,
+    "uniform_values": 796,
+    "candidates": [
+      {
+        "length": 16,
+        "m0": 0.007877427153289318,
+        "m5": 0.008598600514233112,
+        "m10": -0.005426672287285328,
+        "m14": -1.2222222089767456,
+        "m15": 1
+      },
+      {
+        "length": 16,
+        "m0": 0.006108472123742104,
+        "m5": 0.01014457643032074,
+        "m10": -0.001818181830458343,
+        "m14": -0.6363636255264282,
+        "m15": 1
+      }
+    ]
+  },
+  "observer_matches_current_context": true,
+  "initialization": {
+    "reset": 0,
+    "phase": "bootstrap",
+    "wheel": null
+  },
+  "synthetic_page_text": "\ud83d\udeb6 Incarnatedrag to pan \u00b7 right-drag or shift-drag to orbit \u00b7 scroll to zoom \u00b7 click a window to enter an office \u00b7 esc to pull back",
+  "resources": [
+    "Island/island.html",
+    "Island/assets/island-B3jZU801.js",
+    "Island/assets/island-BKmEIAej.css"
+  ],
+  "scripts": [
+    {
+      "src": "campus-spike://renderer/Island/assets/island-B3jZU801.js",
+      "type": "module"
+    }
+  ],
+  "viewport": [
+    1214,
+    731
+  ],
+  "scale": 1,
+  "visibility": "visible",
+  "focus": true,
+  "island_state": {
+    "version": 1,
+    "live": true,
+    "focus": null,
+    "walking": false
+  },
+  "lifecycle": {
+    "version": 1,
+    "visible": true,
+    "reducedMotion": false,
+    "applied": true
+  },
+  "errors": [
+    "Error: Viewport/scale mismatch"
+  ],
+  "freeze": {},
+  "process_graphics": [
+    {
+      "pid": 3155,
+      "comm": "python3",
+      "children": [
+        3164,
+        3190
+      ],
+      "software_threads": [
+        "llvmpipe-0",
+        "llvmpipe-1",
+        "llvmpipe-2",
+        "llvmpipe-3"
+      ],
+      "graphics_libraries": [
+        "/usr/lib/aarch64-linux-gnu/libEGL.so.1.1.0",
+        "/usr/lib/aarch64-linux-gnu/libEGL_mesa.so.0.0.0",
+        "/usr/lib/aarch64-linux-gnu/libGL.so.1.7.0",
+        "/usr/lib/aarch64-linux-gnu/libGLX.so.0.0.0",
+        "/usr/lib/aarch64-linux-gnu/libGLdispatch.so.0.0.0",
+        "/usr/lib/aarch64-linux-gnu/libLLVM.so.20.1",
+        "/usr/lib/aarch64-linux-gnu/libgallium-25.2.8-0ubuntu0.24.04.4.so"
+      ]
+    },
+    {
+      "pid": 3190,
+      "comm": "WebKitWebProces",
+      "children": [],
+      "software_threads": [
+        "llvmpipe-0",
+        "llvmpipe-1",
+        "llvmpipe-2",
+        "llvmpipe-3"
+      ],
+      "graphics_libraries": [
+        "/usr/lib/aarch64-linux-gnu/libEGL.so.1.1.0",
+        "/usr/lib/aarch64-linux-gnu/libEGL_mesa.so.0.0.0",
+        "/usr/lib/aarch64-linux-gnu/libGL.so.1.7.0",
+        "/usr/lib/aarch64-linux-gnu/libGLESv2.so.2.1.0",
+        "/usr/lib/aarch64-linux-gnu/libGLX.so.0.0.0",
+        "/usr/lib/aarch64-linux-gnu/libGLdispatch.so.0.0.0",
+        "/usr/lib/aarch64-linux-gnu/libLLVM.so.20.1",
+        "/usr/lib/aarch64-linux-gnu/libgallium-25.2.8-0ubuntu0.24.04.4.so"
+      ]
+    },
+    {
+      "pid": 3164,
+      "comm": "WebKitNetworkPr",
+      "children": [],
+      "software_threads": [],
+      "graphics_libraries": [
+        "/usr/lib/aarch64-linux-gnu/libEGL.so.1.1.0",
+        "/usr/lib/aarch64-linux-gnu/libGL.so.1.7.0",
+        "/usr/lib/aarch64-linux-gnu/libGLX.so.0.0.0",
+        "/usr/lib/aarch64-linux-gnu/libGLdispatch.so.0.0.0"
+      ]
+    }
+  ],
+  "native_evidence": {
+    "sha256": "8909c23791719b7ef8902bfa86f19d6e89ff8a8e0c58f370263f236b54aeae12",
+    "renderer": "llvmpipe (LLVM 20.1.2, 128 bits)",
+    "vendor": "Mesa",
+    "gl_version": "OpenGL ES 3.2 Mesa 25.2.8-0ubuntu0.24.04.4",
+    "webkit_runtime": "2.52.6",
+    "display_type": "Wayland",
+    "webkit_source": "4fb33923db2f945803df49546f75867980365c08",
+    "webgl_api_renderer": "Apple GPU",
+    "webgl_api_vendor": "Apple Inc."
+  },
+  "native_software_process_ids": [
+    3190
+  ],
+  "rendering_env": {
+    "LIBGL_ALWAYS_SOFTWARE": "1",
+    "GDK_BACKEND": null,
+    "WEBKIT_DISABLE_COMPOSITING_MODE": null,
+    "WEBKIT_DISABLE_DMABUF_RENDERER": null,
+    "WEBKIT_SKIA_ENABLE_CPU_RENDERING": null,
+    "GSK_RENDERER": null,
+    "MESA_LOADER_DRIVER_OVERRIDE": null,
+    "GALLIUM_DRIVER": null,
+    "EGL_PLATFORM": null
+  },
+  "compositing_policy": "on-demand",
+  "webgl_enabled": true,
+  "hardware_acceleration_policy": "<enum WEBKIT_HARDWARE_ACCELERATION_POLICY_ALWAYS of type WebKit2.HardwareAccelerationPolicy>",
+  "webkit_runtime": "2.52.6"
+}

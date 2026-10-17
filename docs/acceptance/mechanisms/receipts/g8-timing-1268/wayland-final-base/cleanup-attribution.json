@@ -1,0 +1,71 @@
+{
+  "utc": "2026-10-16T17:05:18.166360+00:00",
+  "label": "wayland-final-base",
+  "observed_pids": [
+    3762,
+    3784,
+    3801,
+    3871,
+    3880,
+    3906,
+    3954,
+    3970,
+    3971,
+    3980,
+    4006,
+    4063,
+    4069,
+    4087,
+    4088,
+    4097,
+    4123,
+    4183,
+    4192,
+    4218,
+    4272,
+    4281,
+    4307,
+    4394,
+    4403,
+    4429,
+    4540,
+    4549,
+    4575
+  ],
+  "remaining": [],
+  "scopes": [
+    {
+      "cgroup": "/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service",
+      "parent_cgroup": "/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service",
+      "shared_graphical_parent": true,
+      "exists": true
+    },
+    {
+      "cgroup": "/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service",
+      "parent_cgroup": "/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service",
+      "shared_graphical_parent": true,
+      "exists": true
+    },
+    {
+      "cgroup": "/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service",
+      "parent_cgroup": "/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service",
+      "shared_graphical_parent": true,
+      "exists": true
+    },
+    {
+      "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-python3-3762.scope",
+      "holder": true,
+      "shared_graphical_parent": false,
+      "exists": false
+    }
+  ],
+  "process_scan": {
+    "returncode": 1,
+    "stdout": "",
+    "stderr": ""
+  },
+  "signals_sent": [],
+  "owned_processes_absent": true,
+  "owned_scopes_absent": true,
+  "shared_parent_cgroup_not_owned": true
+}

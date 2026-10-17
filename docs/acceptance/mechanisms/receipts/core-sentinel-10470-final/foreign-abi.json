@@ -1,0 +1,108 @@
+{
+  "case": "foreign-abi",
+  "command": [
+    "/opt/homebrew/bin/limactl",
+    "shell",
+    "campus-linux-d5-noble-arm64",
+    "sudo",
+    "systemd-run",
+    "--unit=campus982-core-10470-final-foreign-abi",
+    "--wait",
+    "--pipe",
+    "--collect",
+    "-p",
+    "User=campusqa",
+    "-p",
+    "Group=campusqa",
+    "-p",
+    "LimitCORE=infinity",
+    "-p",
+    "MemoryMax=64M",
+    "-p",
+    "MemorySwapMax=0",
+    "-p",
+    "TasksMax=8",
+    "-p",
+    "RuntimeMaxSec=20",
+    "-p",
+    "TimeoutStopSec=2",
+    "-p",
+    "PrivateNetwork=yes",
+    "-p",
+    "CPUQuota=100%",
+    "-p",
+    "UMask=0077",
+    "-p",
+    "WorkingDirectory=/home/campusqa/spike982/core-sentinel-10470",
+    "/usr/bin/python3",
+    "-I",
+    "-S",
+    "/home/campusqa/spike982/core-sentinel-10470/probe.py",
+    "foreign-abi"
+  ],
+  "host_free_bytes_before": 34850148352,
+  "before": {
+    "metadata": {
+      "/var/crash": [
+        {
+          "name": "_usr_share_netplan_netplan.script.0.crash",
+          "size": 31462,
+          "mtime_ns": 1792148210723000117,
+          "inode": 87894
+        }
+      ],
+      "/var/lib/systemd/coredump": [],
+      "/home/campusqa/spike982/core-sentinel-10470": [
+        {
+          "name": "probe.py",
+          "size": 8909,
+          "mtime_ns": 1792154568253922760,
+          "inode": 1066157
+        }
+      ]
+    },
+    "apport_log_size": 0,
+    "apport_log_inode": 87909,
+    "utc": "2026-10-16T05:43:14,132394858-07:00"
+  },
+  "returncode": 255,
+  "stdout": "{\"case\": \"foreign-abi\", \"initial\": {\"boot_id\": \"f47cb6c7-dcc4-4492-9b27-29f1e8033dc2\", \"cgroup\": \"0::/system.slice/campus982-core-10470-final-foreign-abi.service\", \"core_limit\": [-1, -1], \"dumpable\": 1, \"label\": \"before-secret\", \"marker_admitted\": false, \"monotonic\": 282.76304371, \"no_new_privs\": \"0\", \"pid\": 2582, \"ppid\": 1, \"seccomp\": \"0\", \"seccomp_filters\": \"0\", \"sid\": 2582, \"start_ticks\": 28273}, \"launcher_sha256\": \"3aca30e49471b4c12cbcd5c6abcccf9a9f1006262beb4eaedb3e36e03d3ba22d\"}\n",
+  "stderr": "Running as unit: campus982-core-10470-final-foreign-abi.service; invocation ID: 6f8b55463d264d5f99b020924cd15cbe\nFinished with result: signal\nMain processes terminated with: code=killed/status=SYS\nService runtime: 24ms\nCPU time consumed: 21ms\nMemory peak: 1.5M\nMemory swap peak: 0B\n",
+  "observations": {
+    "kernel_command_returncode": 1,
+    "kernel_pid_lines": [],
+    "matched_collector_pids": [],
+    "observation_seconds": 3,
+    "apport_new_bytes": 0,
+    "apport_rotated": false,
+    "apport_pid_lines": [],
+    "cgroup_exists": false,
+    "cgroup_procs": "",
+    "original_pids_still_present": []
+  },
+  "after": {
+    "metadata": {
+      "/var/crash": [
+        {
+          "name": "_usr_share_netplan_netplan.script.0.crash",
+          "size": 31462,
+          "mtime_ns": 1792148210723000117,
+          "inode": 87894
+        }
+      ],
+      "/var/lib/systemd/coredump": [],
+      "/home/campusqa/spike982/core-sentinel-10470": [
+        {
+          "name": "probe.py",
+          "size": 8909,
+          "mtime_ns": 1792154568253922760,
+          "inode": 1066157
+        }
+      ]
+    },
+    "apport_log_size": 0,
+    "apport_log_inode": 87909,
+    "utc": "2026-10-16T05:43:17,738019086-07:00"
+  },
+  "wall_seconds": 3.6074946660082787
+}

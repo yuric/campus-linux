@@ -1,0 +1,1 @@
+{"name": "campus-982-disposable-gemini", "version": "0.0.0", "private": true, "dependencies": {"@google/gemini-cli": "0.64.0"}}

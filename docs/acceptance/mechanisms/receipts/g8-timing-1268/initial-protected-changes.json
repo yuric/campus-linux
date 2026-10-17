@@ -1,0 +1,32 @@
+{
+  "note": "Initial snapshot after boot precedes expanded pre-graphical snapshot; compare all common paths without ignoring inode changes.",
+  "changes": [
+    {
+      "path": "/usr/share/polkit-1/rules.d/systemd-networkd.rules",
+      "before": {
+        "path": "/usr/share/polkit-1/rules.d/systemd-networkd.rules",
+        "exists": true,
+        "uid": 0,
+        "gid": 0,
+        "inode": 39046,
+        "device": 64769,
+        "mode": "0o644",
+        "link": null,
+        "bytes": 527,
+        "sha256": "f199e386a9297858331b00df07ed0b0ee5fcf4bea67f6c0bccc8a92b7e310bbd"
+      },
+      "later": {
+        "path": "/usr/share/polkit-1/rules.d/systemd-networkd.rules",
+        "exists": true,
+        "uid": 0,
+        "gid": 0,
+        "inode": 93103,
+        "device": 64769,
+        "mode": "0o644",
+        "link": null,
+        "bytes": 527,
+        "sha256": "f199e386a9297858331b00df07ed0b0ee5fcf4bea67f6c0bccc8a92b7e310bbd"
+      }
+    }
+  ]
+}

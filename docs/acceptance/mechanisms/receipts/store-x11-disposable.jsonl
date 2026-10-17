@@ -1,0 +1,10 @@
+{"phase": "awaiting-desktop-create-disposable-collection-prompt"}
+{"phase": "collection-create", "pass": true, "collection": "/org/freedesktop/secrets/collection/Campus_5f982_5fdisposable_5fsynthetic_5fcollection", "alias": "", "default_login_aliases_preserved": true, "prompt": {"needed": true, "timeout": false, "dismissed": false, "result_path": "/org/freedesktop/secrets/collection/Campus_5f982_5fdisposable_5fsynthetic_5fcollection"}, "scope": "new disposable collection; not PAM login keyring unlock evidence", "script_sha256": "4e0eb5d7723d070a367f0c815a0fcdff37e5f350fb0ad8095f04ede6cef62f04"}
+{"phase": "store-unlocked", "initial_locked": false, "item_created": true, "script_sha256": "4e0eb5d7723d070a367f0c815a0fcdff37e5f350fb0ad8095f04ede6cef62f04"}
+{"same_uid_separate_process_read": true, "script_sha256": "4e0eb5d7723d070a367f0c815a0fcdff37e5f350fb0ad8095f04ede6cef62f04"}
+{"phase": "store-locked", "locked": true, "read_refused": true}
+{"phase": "awaiting-desktop-unlock-prompt"}
+{"phase": "store-unlock", "unlocked": true, "prompt": {"needed": true, "timeout": false, "dismissed": false}}
+{"phase": "cleanup", "synthetic_item_deleted": true, "item_missing_from_lookup": true, "prompt": {"needed": false, "dismissed": false}}
+{"phase": "collection-cleanup", "collection": "/org/freedesktop/secrets/collection/Campus_5f982_5fdisposable_5fsynthetic_5fcollection", "disposable_collection_deleted": true, "prompt": {"needed": false, "dismissed": false}}
+{"phase": "result", "pass": true, "script_sha256": "4e0eb5d7723d070a367f0c815a0fcdff37e5f350fb0ad8095f04ede6cef62f04", "collection_mode": "disposable-unaliased", "default_login_aliases_preserved": true, "preexisting_collection_paths_preserved": true, "disposable_collection_deleted": true, "pam_autounlock_proven": false}

@@ -1,0 +1,14 @@
+{
+  "original_count": 62,
+  "additional_count": 22,
+  "checks": {
+    "after-install": {
+      "original_equal": true,
+      "additional_equal": true
+    },
+    "after-rollback": {
+      "original_equal": true,
+      "additional_equal": true
+    }
+  }
+}

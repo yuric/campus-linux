@@ -1,0 +1,12 @@
+[
+  {
+    "file": "idle-holder.py",
+    "sha256": "2b9f198db2ae7ba533ef79c16627a1a2c228db549cd1d29f59d46796f8777abd",
+    "transferred_only_not_executed": true
+  },
+  {
+    "file": "graphical-probe.py",
+    "sha256": "e0e86a08e952e99f2cad7aedb0a2bdae986aec15f500ccf1984877f23abbf002",
+    "transferred_only_not_executed": true
+  }
+]

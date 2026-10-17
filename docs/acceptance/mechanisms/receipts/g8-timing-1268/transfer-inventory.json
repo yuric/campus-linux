@@ -1,0 +1,363 @@
+{
+  "files": [
+    {
+      "path": "cleanup-observe.py",
+      "mode": "0o644",
+      "bytes": 1207,
+      "allocated": 4096,
+      "sha256": "c61fe4162ce4b924ed21e03a90365d937cd5657e39e0719017dff0aa40048093"
+    },
+    {
+      "path": "desktop-first",
+      "mode": "0o700",
+      "bytes": 4096,
+      "allocated": 4096,
+      "sha256": null
+    },
+    {
+      "path": "desktop-first/Island",
+      "mode": "0o755",
+      "bytes": 4096,
+      "allocated": 4096,
+      "sha256": null
+    },
+    {
+      "path": "desktop-first/Island/assets",
+      "mode": "0o755",
+      "bytes": 4096,
+      "allocated": 4096,
+      "sha256": null
+    },
+    {
+      "path": "desktop-first/Island/assets/island-B3jZU801.js",
+      "mode": "0o644",
+      "bytes": 1034883,
+      "allocated": 1036288,
+      "sha256": "1a409b8e7bb93bd3bed44b430b347708518010a03f00ae56f99c89448ebeefcf"
+    },
+    {
+      "path": "desktop-first/Island/assets/island-BKmEIAej.css",
+      "mode": "0o644",
+      "bytes": 38196,
+      "allocated": 40960,
+      "sha256": "0d14030367618221d904e075d4a2d5e48039c61dcd1c0b1dbf73a289781d79c6"
+    },
+    {
+      "path": "desktop-first/Island/island.html",
+      "mode": "0o644",
+      "bytes": 719,
+      "allocated": 4096,
+      "sha256": "eadbb3b349a470e1ea5e0b022dd86432136c7f9b17ced055f646062425d8e0ed"
+    },
+    {
+      "path": "desktop-first/Island/licenses",
+      "mode": "0o755",
+      "bytes": 4096,
+      "allocated": 4096,
+      "sha256": null
+    },
+    {
+      "path": "desktop-first/Island/licenses/Campus-LICENSE",
+      "mode": "0o644",
+      "bytes": 11357,
+      "allocated": 12288,
+      "sha256": "33c10090cfdaf84eec1fa300a30619d34a1c2283f21410d085778096265d0b7c"
+    },
+    {
+      "path": "desktop-first/Island/licenses/Campus-NOTICE",
+      "mode": "0o644",
+      "bytes": 647,
+      "allocated": 4096,
+      "sha256": "2fbc7cb83c241b4711fdef1f153d9107d2d83e1810fd85db4706ff6a66a2bbe9"
+    },
+    {
+      "path": "desktop-first/Island/licenses/react-19.3.0-LICENSE",
+      "mode": "0o644",
+      "bytes": 1088,
+      "allocated": 4096,
+      "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+    },
+    {
+      "path": "desktop-first/Island/licenses/react-dom-19.3.0-LICENSE",
+      "mode": "0o644",
+      "bytes": 1088,
+      "allocated": 4096,
+      "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+    },
+    {
+      "path": "desktop-first/Island/licenses/rolldown-1.2.8-LICENSE",
+      "mode": "0o644",
+      "bytes": 1302,
+      "allocated": 4096,
+      "sha256": "23ecfff35a5a2e80d92142f75228912c3b1abc4b5a8337a821ff4397e2f9f734"
+    },
+    {
+      "path": "desktop-first/Island/licenses/rolldown-1.2.8-THIRD-PARTY-LICENSE",
+      "mode": "0o644",
+      "bytes": 2209,
+      "allocated": 4096,
+      "sha256": "a877291d800ed43692f3f9ae09d8e01cc6f7293ad39d43896059c188ffbb8b7c"
+    },
+    {
+      "path": "desktop-first/Island/licenses/scheduler-0.28.0-LICENSE",
+      "mode": "0o644",
+      "bytes": 1088,
+      "allocated": 4096,
+      "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+    },
+    {
+      "path": "desktop-first/Island/licenses/three-0.186.0-LICENSE",
+      "mode": "0o644",
+      "bytes": 1081,
+      "allocated": 4096,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+    },
+    {
+      "path": "desktop-first/bridge.schema.json",
+      "mode": "0o600",
+      "bytes": 15458,
+      "allocated": 16384,
+      "sha256": "4d73eea8fb118df341bd98600ee0c06aba4f33018cc0f01ab586918a8e0fa91c"
+    },
+    {
+      "path": "desktop-first/manifest.json",
+      "mode": "0o600",
+      "bytes": 5720,
+      "allocated": 8192,
+      "sha256": "7b5fabefd830d3cd3d3577da1c4cb4ba55217de0f7eb5b5bbfc9501443428f09"
+    },
+    {
+      "path": "display.py",
+      "mode": "0o644",
+      "bytes": 949,
+      "allocated": 4096,
+      "sha256": "a32362b247ad55e65f20c6628f46f55c60c514028b8052010b06686633a92f79"
+    },
+    {
+      "path": "graphical-probe.py",
+      "mode": "0o644",
+      "bytes": 5742,
+      "allocated": 8192,
+      "sha256": "daa69fb3ea8b6facc65dbde251017ea6679526f22fcf2cd00d6448a36deacc60"
+    },
+    {
+      "path": "repo",
+      "mode": "0o775",
+      "bytes": 4096,
+      "allocated": 4096,
+      "sha256": null
+    },
+    {
+      "path": "repo/docs",
+      "mode": "0o775",
+      "bytes": 4096,
+      "allocated": 4096,
+      "sha256": null
+    },
+    {
+      "path": "repo/docs/acceptance",
+      "mode": "0o775",
+      "bytes": 4096,
+      "allocated": 4096,
+      "sha256": null
+    },
+    {
+      "path": "repo/docs/acceptance/visual-protocol.json",
+      "mode": "0o644",
+      "bytes": 2121,
+      "allocated": 4096,
+      "sha256": "e8347c17e7c86a8d84dbb6f0954f522a7ce2a903a972b9720dca0950e39b8eb7"
+    },
+    {
+      "path": "repo/spikes",
+      "mode": "0o775",
+      "bytes": 4096,
+      "allocated": 4096,
+      "sha256": null
+    },
+    {
+      "path": "repo/spikes/982",
+      "mode": "0o775",
+      "bytes": 4096,
+      "allocated": 4096,
+      "sha256": null
+    },
+    {
+      "path": "repo/spikes/982/renderer",
+      "mode": "0o755",
+      "bytes": 4096,
+      "allocated": 4096,
+      "sha256": null
+    },
+    {
+      "path": "repo/spikes/982/renderer/capture-gpu.py",
+      "mode": "0o644",
+      "bytes": 1488,
+      "allocated": 4096,
+      "sha256": "da3ab0cb316bb4fb803c7a00d7f359a41486bd6337806243ee21ba49901b3d6d"
+    },
+    {
+      "path": "repo/spikes/982/renderer/desktop-producer-manifest.json",
+      "mode": "0o644",
+      "bytes": 5720,
+      "allocated": 8192,
+      "sha256": "7b5fabefd830d3cd3d3577da1c4cb4ba55217de0f7eb5b5bbfc9501443428f09"
+    },
+    {
+      "path": "repo/spikes/982/renderer/electron",
+      "mode": "0o755",
+      "bytes": 4096,
+      "allocated": 4096,
+      "sha256": null
+    },
+    {
+      "path": "repo/spikes/982/renderer/electron/README.md",
+      "mode": "0o644",
+      "bytes": 6315,
+      "allocated": 8192,
+      "sha256": "4391c2877052e54d6e81f7ed75d6626cbd72f2da1a50e1324ec5276f0a254a08"
+    },
+    {
+      "path": "repo/spikes/982/renderer/electron/freeze.py",
+      "mode": "0o644",
+      "bytes": 2602,
+      "allocated": 4096,
+      "sha256": "8574ae97a587b4c53e7fca83e1fe03ec45528f7124ae98380b2cd6c29e1505d7"
+    },
+    {
+      "path": "repo/spikes/982/renderer/electron/main.cjs",
+      "mode": "0o644",
+      "bytes": 10214,
+      "allocated": 12288,
+      "sha256": "70cd2f44e6dcf8f91c30a438ac829e2b26fa0fc32ad2e99a83eeb6fd8cd10d84"
+    },
+    {
+      "path": "repo/spikes/982/renderer/electron/preload.cjs",
+      "mode": "0o644",
+      "bytes": 369,
+      "allocated": 4096,
+      "sha256": "41af414ea948ebf3dde61115a4204347527d90884e64bd367c56b6c670beb08e"
+    },
+    {
+      "path": "repo/spikes/982/renderer/electron/prepare.py",
+      "mode": "0o644",
+      "bytes": 1807,
+      "allocated": 4096,
+      "sha256": "fe39cf335e9d7693265d5425eae0c120d04d404d20b97e8948ea7e70d45e84a9"
+    },
+    {
+      "path": "repo/spikes/982/renderer/electron/run-five.py",
+      "mode": "0o644",
+      "bytes": 1292,
+      "allocated": 4096,
+      "sha256": "6b3c6dceb7dd90b8a07bbde4a113f961748ef52ac06238cdea5abbe87a5cc4e7"
+    },
+    {
+      "path": "repo/spikes/982/renderer/electron/source.json",
+      "mode": "0o644",
+      "bytes": 1576,
+      "allocated": 4096,
+      "sha256": "add54d17a7efe6d9714cb11d36f175fcd3988e24c0ef6c67d24a6544f92c10fc"
+    },
+    {
+      "path": "repo/spikes/982/renderer/export-receipt.json",
+      "mode": "0o644",
+      "bytes": 1874,
+      "allocated": 4096,
+      "sha256": "3e273eec97693fe60be0e8fa06f7000e2ebff2f2901cdddfe8bdab10a0a8f90e"
+    },
+    {
+      "path": "repo/spikes/982/renderer/fixture.json",
+      "mode": "0o644",
+      "bytes": 183198,
+      "allocated": 184320,
+      "sha256": "16dc931ccaa50a62d350beba44bc64a5a858ed655eb47637f5fda7fedf97d074"
+    },
+    {
+      "path": "repo/spikes/982/renderer/freeze.py",
+      "mode": "0o644",
+      "bytes": 3357,
+      "allocated": 4096,
+      "sha256": "7049a6c260841c336f5c33570ce5cedf85ba644c04c63941a92b2b30e37ff1e3"
+    },
+    {
+      "path": "repo/spikes/982/renderer/lifecycle.js",
+      "mode": "0o644",
+      "bytes": 1799,
+      "allocated": 4096,
+      "sha256": "3d6aa2989e3c0af57b947129866a9852a7371d975fcc1c855722c2d7ff1b8fe5"
+    },
+    {
+      "path": "repo/spikes/982/renderer/measure.js",
+      "mode": "0o644",
+      "bytes": 19352,
+      "allocated": 20480,
+      "sha256": "0d87b9cd2bb1e3e79f0bbd54c7508c23d3e8660e9cece03338bf708d31941465"
+    },
+    {
+      "path": "repo/spikes/982/renderer/motion_evidence.py",
+      "mode": "0o644",
+      "bytes": 6407,
+      "allocated": 8192,
+      "sha256": "9f369d1770cae5914029e58559cb1ce0f9d1bf9e46cb5c35152f4877d17944f2"
+    },
+    {
+      "path": "repo/spikes/982/renderer/native_evidence.py",
+      "mode": "0o644",
+      "bytes": 1741,
+      "allocated": 4096,
+      "sha256": "5eb2280b454af226d2809ef8ad1cf5b620877e401746507d5216052f79db95e8"
+    },
+    {
+      "path": "repo/spikes/982/renderer/probe-speech.py",
+      "mode": "0o644",
+      "bytes": 1501,
+      "allocated": 4096,
+      "sha256": "32a75f6127b258ec6a20c37ef30a684e2deac8419b09806d8f37088155285002"
+    },
+    {
+      "path": "repo/spikes/982/renderer/producer-manifest.json",
+      "mode": "0o644",
+      "bytes": 3450,
+      "allocated": 4096,
+      "sha256": "badcfcde2012ab1aef610f7a955c231b230580730d4d66ccdc6d4c187d6ef120"
+    },
+    {
+      "path": "repo/spikes/982/renderer/run-five.py",
+      "mode": "0o644",
+      "bytes": 1780,
+      "allocated": 4096,
+      "sha256": "702a0ac8dbe2a422bb6ed7450e9bd52a6706ac047528ae119a5756db52ca54e8"
+    },
+    {
+      "path": "repo/spikes/982/renderer/run-webkit.py",
+      "mode": "0o644",
+      "bytes": 12569,
+      "allocated": 16384,
+      "sha256": "5f6956d9b7a68e40ef558c9926a8909c634a8fed8c4bb7179e3b4af87856efdb"
+    },
+    {
+      "path": "repo/spikes/982/renderer/source-receipt.json",
+      "mode": "0o644",
+      "bytes": 1422,
+      "allocated": 4096,
+      "sha256": "da413988bfc14ed36d94549cc92d5ab8a874d767212f5ee239185480d25fd766"
+    },
+    {
+      "path": "repo/spikes/982/renderer/summarize.py",
+      "mode": "0o644",
+      "bytes": 7205,
+      "allocated": 8192,
+      "sha256": "fd635892185d0fd6fda90a495beebbde42a693d489ef9f877f7874926b14f179"
+    },
+    {
+      "path": "repo/spikes/982/renderer/webkit-source-receipt.json",
+      "mode": "0o644",
+      "bytes": 1232,
+      "allocated": 4096,
+      "sha256": "803121cc4ac5c55b5c7f27dc01a5c5228fd4cd9958bd1d62501b1c35d35f1f8c"
+    }
+  ],
+  "services": "Id=polkit.service\nActiveState=active\nSubState=running\nUnitFileState=static\n\nId=gdm.service\nActiveState=active\nSubState=running\nUnitFileState=static\n",
+  "bus": "PID=7006\nPPID=1\nTTY=n/a\nUID=989\nEUID=989\nSUID=989\nFSUID=989\nGID=989\nEGID=989\nSGID=989\nFSGID=989\nSupplementaryGIDs=989\nComm=polkitd\nExe=/usr/lib/polkit-1/polkitd\nCommandLine=/usr/lib/polkit-1/polkitd --no-debug\nLabel=unconfined\nCGroup=/system.slice/polkit.service\nUnit=polkit.service\nSlice=system.slice\nUserUnit=n/a\nUserSlice=n/a\nSession=n/a\nAuditLoginUID=n/a\nAuditSessionID=n/a\nUniqueName=:1.85\nEffectiveCapabilities=\nPermittedCapabilities=\nInheritableCapabilities=\nBoundingCapabilities=cap_setgid cap_setuid\n"
+}

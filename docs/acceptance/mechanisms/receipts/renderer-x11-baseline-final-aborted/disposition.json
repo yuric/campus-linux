@@ -1,0 +1,6 @@
+{
+  "status": "invalid-incomplete-diagnostic-series",
+  "reason": "Harness used overview-relative rather than prescribed absolute zoom; stopped under coordinator resource/timing hold before completion. No G8 acceptance; retained original bytes.",
+  "runs_complete": 2,
+  "third_run_receipt_absent": true
+}

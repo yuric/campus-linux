@@ -1,0 +1,29 @@
+{
+  "wayland-2": {
+    "source_native_environment_session_ordering_checked": true,
+    "commands": 5,
+    "raw_effective_policy": "<enum WEBKIT_HARDWARE_ACCELERATION_POLICY_ALWAYS of type WebKit2.HardwareAccelerationPolicy>"
+  },
+  "x11": {
+    "source_native_environment_session_ordering_checked": true,
+    "commands": 5,
+    "raw_effective_policy": "<enum WEBKIT_HARDWARE_ACCELERATION_POLICY_ALWAYS of type WebKit2.HardwareAccelerationPolicy>"
+  },
+  "old_receipts_unchanged": 469,
+  "changed_files_secret_scan": 102,
+  "utc": "2026-10-16T15:42:44.197220+00:00",
+  "current_host_free_bytes": 20625027072,
+  "post_shutdown_floor_note": "Later shared-host free space fell below20GiB after guest was stopped. No further guest work; publication only of already collected evidence.",
+  "host_workspace_allocated_bytes": 22069248,
+  "host_temp_allocated_bytes": 3100672,
+  "publication_resource_update": {
+    "direction_comment": 10676,
+    "utc": "2026-10-16T15:46:40.556354+00:00",
+    "host_free_bytes": 27450470400,
+    "host_floor_bytes": 19327352832,
+    "source_budget_bytes": 134217728,
+    "workspace_allocated_bytes": 22056960,
+    "temp_allocated_bytes": 3362816,
+    "guest_operations_since_shutdown": 0
+  }
+}

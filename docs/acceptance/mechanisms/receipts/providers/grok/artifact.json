@@ -1,0 +1,26 @@
+{
+  "engine": "grok",
+  "version": "1.0.60",
+  "architecture": "aarch64",
+  "metadata_url": "https://registry.npmjs.org/@xai-official/grok-linux-arm64/1.0.60",
+  "metadata_sha256": "824fe2a0c31d5eca5736b8558cd963d405352d89456da6f9957fdd33a57497ad",
+  "url": "https://registry.npmjs.org/@xai-official/grok-linux-arm64/-/grok-linux-arm64-1.0.60.tgz",
+  "integrity": "sha512-x2VUxBHL3/J5uym+/qY1yvPPNFFvdxfnRKaRWZS1NTHH0Jr1KOjmRjeo0IUawPE1PCK7pn4MDtHBauXpMwslIw==",
+  "registry_signatures": [
+    {
+      "sig": "MEYCIQCv6sNqyZ4GgTRJmIdp9bl6UtqJXfiglL5uKQ94uj/ADwIhAKsdZWBVJ74uXoneONnL0TlY47mUfQIjrYAB0Z4x+8H2",
+      "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+    },
+    {
+      "sig": "MEYCIQCf33YtiMT9OC0aPepzQ8NFz/qjRLb/jARpc4AEqg/kcwIhAIKqGg2pbe+7tWPZi12bZMcLIle1A2hINIHm29Z9Sjbb",
+      "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+    }
+  ],
+  "kind": "tar-brotli",
+  "member_basename": "grok.br",
+  "verification": "npm SRI digest; registry signatures recorded but not verified; no publisher identity claim",
+  "artifact_sha256": "dd19452ea0c4483ef85708ae846de58e214dca9698ff6f407665f2cab2735ee8",
+  "binary_sha256": "665c286b66760eb1a5e7199f60fb8028a5a0d290cc8e9cdecba6c9b24af7b862",
+  "member": "package/bin/grok.br",
+  "binary_size": 163114168
+}

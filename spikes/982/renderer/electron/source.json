@@ -1,0 +1,20 @@
+{
+  "purpose": "Disposable D1 fallback candidate only after measured WebKit miss and permitted optimization; no product selection or acceptance",
+  "version": "44.8.0",
+  "published_at": "2026-10-16T01:50:20Z",
+  "architecture": "linux-arm64",
+  "release": "https://github.com/electron/electron/releases/tag/v44.8.0",
+  "archive": "https://github.com/electron/electron/releases/download/v44.8.0/electron-v44.8.0-linux-arm64.zip",
+  "checksums": "https://github.com/electron/electron/releases/download/v44.8.0/SHASUMS256.txt",
+  "archive_sha256": "502296281cab3c333bd5193e2eaed11c3bb28eabd7a451a49776a3e5a9468f8c",
+  "archive_bytes": 124393671,
+  "uncompressed_bytes": 302048805,
+  "combined_bytes": 426442476,
+  "files": 72,
+  "integrity": "Download SHA-256 matches vendor SHASUMS256 fetched over GitHub HTTPS; no detached signature or independent release-key validation claimed",
+  "source_tag_resolution": "Followup GitHub API source-tag query blocked by shared authenticated rate limit403 at2026-10-16T11:24:43Z; binary version/archive digest pinned",
+  "licenses": "Official archive retains LICENSE and LICENSES.chromium.html; renderer licenses remain in unchanged producer export",
+  "sandbox": "Renderer Node disabled; context isolation and sandbox enabled; no no-sandbox fallback. Any Ubuntu sandbox launch refusal is a blocked probe until disposable guest prerequisite resolved.",
+  "checksums_file_sha256": "d4a9bbb9e4353382f1c7617ebd65bf568f652558b6edce1f655bb4500f8656c3",
+  "executable_sha256": "730d44d5aefb6a969b209cf8ee3e843bd873a06c297bf2c409fbb1cebcb3e6bc"
+}

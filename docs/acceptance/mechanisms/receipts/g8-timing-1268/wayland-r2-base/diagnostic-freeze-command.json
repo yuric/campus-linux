@@ -1,0 +1,32 @@
+{
+  "argv": [
+    "python3",
+    "-B",
+    "/home/campusqa/spike982/g8-timing-1268/repo/spikes/982/renderer/freeze.py",
+    "--native-gpu-receipt",
+    "/home/campusqa/spike982/g8-timing-1268/wayland-r2-base/gpu.json",
+    "/home/campusqa/spike982/g8-timing-1268/wayland-r2-base/environment.json",
+    "/home/campusqa/spike982/g8-timing-1268/wayland-r2-base/diagnostic-freeze.json"
+  ],
+  "utc": "2026-10-16T16:37:03.441502+00:00",
+  "timeout_seconds": 15,
+  "launch": {
+    "pid": 3193,
+    "stat": "3193 (python3) R 3178 3193 3193 0 -1 4194304 12 0 0 0 0 0 0 0 20 0 1 0 15732 8175616 32 18446744073709551615 4194304 10541512 281473959289440 0 0 0 0 0 0 0 0 0 17 3 0 0 0 0 0 10616216 12102016 97677312 281473959291051 281473959291371 281473959291371 281473959292903 0\n",
+    "starttime": 15732,
+    "ppid": 3178,
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-python3-3178.scope\n",
+    "uid": 1000,
+    "comm": "python3",
+    "sd_pid_get_session": {
+      "returncode": -61,
+      "session": null
+    }
+  },
+  "returncode": 0,
+  "after": {
+    "pid": 3193,
+    "error": "[Errno 2] No such file or directory: '/proc/3193/stat'"
+  },
+  "finished_utc": "2026-10-16T16:37:03.474250+00:00"
+}

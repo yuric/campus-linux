@@ -1,0 +1,634 @@
+{
+  "events": [
+    {
+      "event": "inference_start",
+      "monotonic": 497.782095937,
+      "label": "observation-en",
+      "pid": 3908,
+      "samples": [
+        0,
+        64074
+      ]
+    },
+    {
+      "event": "inference_collected",
+      "monotonic": 498.758396799,
+      "label": "observation-en",
+      "returncode": 0
+    },
+    {
+      "event": "inference_start",
+      "monotonic": 498.759147387,
+      "label": "observation-es",
+      "pid": 3964,
+      "samples": [
+        0,
+        70915
+      ]
+    },
+    {
+      "event": "inference_collected",
+      "monotonic": 500.1116153,
+      "label": "observation-es",
+      "returncode": 0
+    },
+    {
+      "event": "capture_started",
+      "monotonic": 500.240321111,
+      "label": "prefix",
+      "recorder_pid": 4151,
+      "playback_pid": 4153,
+      "recorder_argv": [
+        "/usr/bin/python3",
+        "/home/campusqa/spike982/speech-next-1203/recorder.py",
+        "/run/user/1000/pulse/native",
+        "campus982_synthetic_46e26c9b.monitor"
+      ],
+      "playback_argv": [
+        "paplay",
+        "--device=campus982_synthetic_46e26c9b",
+        "--raw",
+        "--rate=16000",
+        "--channels=1",
+        "--format=s16le"
+      ]
+    },
+    {
+      "event": "inference_start",
+      "monotonic": 503.310487776,
+      "label": "prefix1",
+      "pid": 4155,
+      "samples": [
+        0,
+        48000
+      ]
+    },
+    {
+      "event": "inference_collected",
+      "monotonic": 504.2491192,
+      "label": "prefix1",
+      "returncode": 0
+    },
+    {
+      "event": "provisional_collected",
+      "monotonic": 504.249127616,
+      "capture_active": true,
+      "label": "prefix1"
+    },
+    {
+      "event": "inference_start",
+      "monotonic": 506.258298632,
+      "label": "prefix2",
+      "pid": 4202,
+      "samples": [
+        0,
+        96000
+      ]
+    },
+    {
+      "event": "inference_collected",
+      "monotonic": 507.299717229,
+      "label": "prefix2",
+      "returncode": 0
+    },
+    {
+      "event": "provisional_collected",
+      "monotonic": 507.299730479,
+      "capture_active": true,
+      "label": "prefix2"
+    },
+    {
+      "event": "Stop",
+      "monotonic": 507.299742436,
+      "workers_running": {
+        "4151": true,
+        "4153": true
+      }
+    },
+    {
+      "event": "Stop_reaped",
+      "monotonic": 507.300949378,
+      "elapsed": 0.0012014839999778815,
+      "returncodes": {
+        "4151": -15,
+        "4153": 0
+      }
+    },
+    {
+      "event": "input_sealed",
+      "monotonic": 507.300954461,
+      "samples": 112640
+    },
+    {
+      "event": "inference_start",
+      "monotonic": 507.302743542,
+      "label": "final",
+      "pid": 4282,
+      "samples": [
+        0,
+        112640
+      ]
+    },
+    {
+      "event": "inference_collected",
+      "monotonic": 508.425334979,
+      "label": "final",
+      "returncode": 0
+    },
+    {
+      "event": "capture_started",
+      "monotonic": 508.523181165,
+      "label": "cancel",
+      "recorder_pid": 4374,
+      "playback_pid": 4376,
+      "recorder_argv": [
+        "/usr/bin/python3",
+        "/home/campusqa/spike982/speech-next-1203/recorder.py",
+        "/run/user/1000/pulse/native",
+        "campus982_synthetic_46e26c9b.monitor"
+      ],
+      "playback_argv": [
+        "paplay",
+        "--device=campus982_synthetic_46e26c9b",
+        "--raw",
+        "--rate=16000",
+        "--channels=1",
+        "--format=s16le"
+      ]
+    },
+    {
+      "event": "inference_start",
+      "monotonic": 511.601854522,
+      "label": "cancel1",
+      "pid": 4383,
+      "samples": [
+        0,
+        48000
+      ]
+    },
+    {
+      "event": "cancel_requested",
+      "monotonic": 511.698523166,
+      "workers_running": {
+        "4374": true,
+        "4376": true,
+        "4383": true
+      }
+    },
+    {
+      "event": "cancel_requested_reaped",
+      "monotonic": 511.703175986,
+      "elapsed": 0.004644362000021829,
+      "returncodes": {
+        "4374": -15,
+        "4376": 0,
+        "4383": -15
+      }
+    },
+    {
+      "event": "inference_collected",
+      "monotonic": 511.704147189,
+      "label": "cancel1",
+      "returncode": -15
+    },
+    {
+      "event": "cancel_output_discarded",
+      "monotonic": 511.704156314
+    },
+    {
+      "event": "cleanup_complete",
+      "monotonic": 511.716533974
+    }
+  ],
+  "inferences": [
+    {
+      "label": "observation-en",
+      "argv": [
+        "/home/campusqa/spike982/speech-offline2/build/bin/whisper-cli",
+        "-m",
+        "/home/campusqa/spike982/speech-next-1203/ggml-tiny.bin",
+        "-f",
+        "-",
+        "-t",
+        "2",
+        "-ng",
+        "-l",
+        "en",
+        "-nt",
+        "-otxt",
+        "-of",
+        "-"
+      ],
+      "pid": 3908,
+      "start": 497.780930161,
+      "samples": [
+        0,
+        64074
+      ],
+      "language_selection": "explicit forced-language observation",
+      "translation": false,
+      "max_rss_sampled_kib": 177040,
+      "returncode": 0,
+      "wall_seconds": 0.9772932299999866,
+      "cpu_seconds": 1.7985169999999997,
+      "stdout": "If you know book is beside the window, please keep these words never draft.\n",
+      "stderr_sha256": "cf0479aeac04859f763ae19a6407ac8e2232d2c5fe8f58206c3670ccaf831993"
+    },
+    {
+      "label": "observation-es",
+      "argv": [
+        "/home/campusqa/spike982/speech-offline2/build/bin/whisper-cli",
+        "-m",
+        "/home/campusqa/spike982/speech-next-1203/ggml-tiny.bin",
+        "-f",
+        "-",
+        "-t",
+        "2",
+        "-ng",
+        "-l",
+        "es",
+        "-nt",
+        "-otxt",
+        "-of",
+        "-"
+      ],
+      "pid": 3964,
+      "start": 498.758544,
+      "samples": [
+        0,
+        70915
+      ],
+      "language_selection": "explicit forced-language observation",
+      "translation": false,
+      "max_rss_sampled_kib": 177156,
+      "returncode": 0,
+      "wall_seconds": 1.3529188910000016,
+      "cpu_seconds": 2.4911939999999992,
+      "stdout": "el cuané en la turista junto a la ventana, o a la estaspalá en la scoma o la mód.\n",
+      "stderr_sha256": "0c7095929111f28950a03081b20bdeba92b92836e752add930c624a146abcb21"
+    },
+    {
+      "label": "prefix1",
+      "argv": [
+        "/home/campusqa/spike982/speech-offline2/build/bin/whisper-cli",
+        "-m",
+        "/home/campusqa/spike982/speech-next-1203/ggml-tiny.bin",
+        "-f",
+        "-",
+        "-t",
+        "2",
+        "-ng",
+        "-l",
+        "en",
+        "-nt",
+        "-otxt",
+        "-of",
+        "-"
+      ],
+      "pid": 4155,
+      "start": 503.306701251,
+      "samples": [
+        0,
+        48000
+      ],
+      "language_selection": "explicit forced-language observation",
+      "translation": false,
+      "max_rss_sampled_kib": 176920,
+      "returncode": 0,
+      "wall_seconds": 0.9421987929999887,
+      "cpu_seconds": 1.7477009999999997,
+      "stdout": "If you know book is beside the window, please keep the\n",
+      "stderr_sha256": "a07e26f9db2181b7384ba5bba387350152657fad59cd5754892026ea2e8a7f47"
+    },
+    {
+      "label": "prefix2",
+      "argv": [
+        "/home/campusqa/spike982/speech-offline2/build/bin/whisper-cli",
+        "-m",
+        "/home/campusqa/spike982/speech-next-1203/ggml-tiny.bin",
+        "-f",
+        "-",
+        "-t",
+        "2",
+        "-ng",
+        "-l",
+        "en",
+        "-nt",
+        "-otxt",
+        "-of",
+        "-"
+      ],
+      "pid": 4202,
+      "start": 506.255064329,
+      "samples": [
+        0,
+        96000
+      ],
+      "language_selection": "explicit forced-language observation",
+      "translation": false,
+      "max_rss_sampled_kib": 177264,
+      "returncode": 0,
+      "wall_seconds": 1.044154381999988,
+      "cpu_seconds": 1.9428100000000006,
+      "stdout": "The new notebook is beside the window. Please keep these words and a draft. The new notebook is beside the window.\n",
+      "stderr_sha256": "a3dc873ed7948855e3d0bb71bf95acb3356f40b06c7ce904e1bdf3dc344ef277"
+    },
+    {
+      "label": "final",
+      "argv": [
+        "/home/campusqa/spike982/speech-offline2/build/bin/whisper-cli",
+        "-m",
+        "/home/campusqa/spike982/speech-next-1203/ggml-tiny.bin",
+        "-f",
+        "-",
+        "-t",
+        "2",
+        "-ng",
+        "-l",
+        "en",
+        "-nt",
+        "-otxt",
+        "-of",
+        "-"
+      ],
+      "pid": 4282,
+      "start": 507.30130382,
+      "samples": [
+        0,
+        112640
+      ],
+      "language_selection": "explicit forced-language observation",
+      "translation": false,
+      "max_rss_sampled_kib": 177436,
+      "returncode": 0,
+      "wall_seconds": 1.1237972119999995,
+      "cpu_seconds": 2.0907620000000007,
+      "stdout": "The blue notebook is beside the window. Please keep these words and a draft. The blue notebook is beside the window. Please keep these\n",
+      "stderr_sha256": "8c23d670b7eb5477359fac50b77399240d3b506e477a5f5ecc109b90761c3c54"
+    },
+    {
+      "label": "cancel1",
+      "argv": [
+        "/home/campusqa/spike982/speech-offline2/build/bin/whisper-cli",
+        "-m",
+        "/home/campusqa/spike982/speech-next-1203/ggml-tiny.bin",
+        "-f",
+        "-",
+        "-t",
+        "2",
+        "-ng",
+        "-l",
+        "en",
+        "-nt",
+        "-otxt",
+        "-of",
+        "-"
+      ],
+      "pid": 4383,
+      "start": 511.598416727,
+      "samples": [
+        0,
+        48000
+      ],
+      "language_selection": "explicit forced-language observation",
+      "translation": false,
+      "max_rss_sampled_kib": 127416,
+      "returncode": -15,
+      "wall_seconds": 0.10554717900004107,
+      "cpu_seconds": 0.21520600000000006,
+      "stderr_sha256": "07964c62d55086c96a3030e047675cab248d24e31f6256d65d7e73cf5e3dbb20"
+    }
+  ],
+  "fixtures": {
+    "en": {
+      "reference": "The blue notebook is beside the window. Please keep these words as a draft.",
+      "license": "CC0-1.0",
+      "voice": "en-us",
+      "source_rate": 22050,
+      "source_samples": 88302,
+      "samples": 64074,
+      "resampling": "linear interpolation to mono PCM16 LE 16000Hz",
+      "wav_sha256": "134b930bee2e09cee3eab34f750b1ce62e00c1046fe0e3b92e41a29f9c9ca484"
+    },
+    "es": {
+      "reference": "El cuaderno azul está junto a la ventana. Guarda estas palabras como borrador.",
+      "license": "CC0-1.0",
+      "voice": "es",
+      "source_rate": 22050,
+      "source_samples": 97731,
+      "samples": 70915,
+      "resampling": "linear interpolation to mono PCM16 LE 16000Hz",
+      "wav_sha256": "108cfe9bc0aed94b1af43a2afbba031755977e3386958d30dfbbb14db9fc64d2"
+    }
+  },
+  "scope": "public synthetic offline mechanism only; prefix-batch, not native streaming",
+  "runner_sha256": "f29d00ae892b536d354a42247538d2283bc55813becc76c860d5889913b33afd",
+  "cgroup": "/sys/fs/cgroup/system.slice/campus982-speech-1203-run4.service",
+  "memory_max": "536870912",
+  "swap_max": "0",
+  "interfaces": [
+    "lo"
+  ],
+  "net_namespace": "net:[4026532478]",
+  "binary_sha256": "50712621452d3ab5f0d7b2a2c5dbaad5100c8d9b86538da1e1a192074b3ec2a2",
+  "model_sha256": "be07e048e1e599ad46341c8d2a135645097a538221678b7acdd1b1919c6e1b21",
+  "recorder_sha256": "b8ed625c69cce8ceb04cc592eb9dd0dc8d3ac3a3c4cabb5e7c052d76fb2ef595",
+  "graphical_locale_observation": {
+    "launch_origin": "GNOME Run dialog -> gnome-terminal -> session.py",
+    "pid": 3022,
+    "ppid": 3012,
+    "monotonic": 323.55034111,
+    "environment": {
+      "LANG": "C.UTF-8"
+    },
+    "session_id": "7",
+    "session": "Id=7\nUser=1000\nRemote=no\nService=gdm-password\nType=wayland\nClass=user\nActive=yes\n",
+    "effective": {
+      "LC_MESSAGES": "C.UTF-8",
+      "LC_CTYPE": "C.UTF-8"
+    }
+  },
+  "locale_mapping": {
+    "input": "effective LC_MESSAGES in graphical session observer",
+    "effective": "C.UTF-8",
+    "language": null,
+    "observed_language_tested": false
+  },
+  "process_local_locale_tests": [
+    {
+      "input": "en_US.UTF-8",
+      "initialized": true,
+      "LC_MESSAGES": "en_US.UTF-8",
+      "LC_CTYPE": "en_US.UTF-8"
+    },
+    {
+      "input": "es_ES.UTF-8",
+      "initialized": false,
+      "error": "unsupported locale setting"
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "dpkg-query",
+        "-W",
+        "-f=${binary:Package} ${Version} ${Architecture}\n",
+        "libespeak-ng1",
+        "espeak-ng-data",
+        "libpulse0",
+        "pulseaudio-utils"
+      ],
+      "returncode": 0,
+      "stdout": "espeak-ng-data:arm64 1.51+dfsg-12build1 arm64\nlibespeak-ng1:arm64 1.51+dfsg-12build1 arm64\nlibpulse0:arm64 1:16.1+dfsg1-2ubuntu10.1 arm64\npulseaudio-utils 1:16.1+dfsg1-2ubuntu10.1 arm64\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "pactl",
+        "load-module",
+        "module-null-sink",
+        "sink_name=campus982_synthetic_46e26c9b",
+        "sink_properties=device.description=Campus982SyntheticOnly"
+      ],
+      "returncode": 0,
+      "stdout": "536870913\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "pactl",
+        "--format=json",
+        "list",
+        "sources"
+      ],
+      "returncode": 0,
+      "stdout": "[{\"index\":83,\"state\":\"SUSPENDED\",\"name\":\"campus982_synthetic_46e26c9b.monitor\",\"description\":\"Monitor of Campus982SyntheticOnly\",\"driver\":\"PipeWire\",\"sample_specification\":\"float32le 2ch 48000Hz\",\"channel_map\":\"front-left,front-right\",\"owner_module\":536870913,\"mute\":false,\"volume\":{\"front-left\":{\"value\":65536,\"value_percent\":\"100%\",\"db\":\"0.00 dB\"},\"front-right\":{\"value\":65536,\"value_percent\":\"100%\",\"db\":\"0.00 dB\"}},\"balance\":0.00,\"base_volume\":{\"value\":65536,\"value_percent\":\"100%\",\"db\":\"0.00 dB\"},\"monitor_source\":\"campus982_synthetic_46e26c9b\",\"latency\":{\"actual\":0.00,\"configured\":0.00},\"flags\":[\"HARDWARE\",\"DECIBEL_VOLUME\",\"LATENCY\"],\"properties\":{\"node.name\":\"campus982_synthetic_46e26c9b\",\"device.description\":\"Campus982SyntheticOnly\",\"audio.channels\":\"2\",\"audio.position\":\"[ FL, FR ]\",\"media.class\":\"Audio/Sink\",\"factory.name\":\"support.null-audio-sink\",\"monitor.channel-volumes\":\"true\",\"monitor.passthrough\":\"true\",\"pulse.module.id\":\"536870913\",\"factory.id\":\"18\",\"clock.quantum-limit\":\"8192\",\"client.id\":\"41\",\"node.driver\":\"true\",\"factory.mode\":\"merge\",\"audio.adapt.follower\":\"\",\"library.name\":\"audioconvert/libspa-audioconvert\",\"object.id\":\"52\",\"object.serial\":\"83\",\"device.class\":\"monitor\"},\"ports\":[],\"active_port\":null,\"formats\":[\"pcm\"]}]",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "pactl",
+        "--format=json",
+        "list",
+        "modules"
+      ],
+      "returncode": 0,
+      "stdout": "[omitted unrelated module metadata; exact synthetic module recorded separately]",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "pactl",
+        "unload-module",
+        "536870913"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "pactl",
+        "--format=json",
+        "list",
+        "sources"
+      ],
+      "returncode": 0,
+      "stdout": "[{\"index\":119,\"state\":\"SUSPENDED\",\"name\":\"auto_null.monitor\",\"description\":\"Monitor of Dummy Output\",\"driver\":\"PipeWire\",\"sample_specification\":\"float32le 2ch 48000Hz\",\"channel_map\":\"front-left,front-right\",\"owner_module\":4294967295,\"mute\":false,\"volume\":{\"front-left\":{\"value\":65536,\"value_percent\":\"100%\",\"db\":\"0.00 dB\"},\"front-right\":{\"value\":65536,\"value_percent\":\"100%\",\"db\":\"0.00 dB\"}},\"balance\":0.00,\"base_volume\":{\"value\":65536,\"value_percent\":\"100%\",\"db\":\"0.00 dB\"},\"monitor_source\":\"auto_null\",\"latency\":{\"actual\":0.00,\"configured\":0.00},\"flags\":[\"DECIBEL_VOLUME\",\"LATENCY\"],\"properties\":{\"node.name\":\"auto_null\",\"device.description\":\"Dummy Output\",\"audio.rate\":\"48000\",\"audio.channels\":\"2\",\"audio.position\":\"FL,FR\",\"media.class\":\"Audio/Sink\",\"factory.name\":\"support.null-audio-sink\",\"node.virtual\":\"true\",\"monitor.channel-volumes\":\"true\",\"factory.id\":\"18\",\"clock.quantum-limit\":\"8192\",\"client.id\":\"32\",\"node.driver\":\"true\",\"factory.mode\":\"merge\",\"audio.adapt.follower\":\"\",\"library.name\":\"audioconvert/libspa-audioconvert\",\"object.id\":\"41\",\"object.serial\":\"119\",\"device.class\":\"monitor\"},\"ports\":[],\"active_port\":null,\"formats\":[\"pcm\"]}]",
+      "stderr": ""
+    }
+  ],
+  "packages": "espeak-ng-data:arm64 1.51+dfsg-12build1 arm64\nlibespeak-ng1:arm64 1.51+dfsg-12build1 arm64\nlibpulse0:arm64 1:16.1+dfsg1-2ubuntu10.1 arm64\npulseaudio-utils 1:16.1+dfsg1-2ubuntu10.1 arm64\n",
+  "synthesizer_files": {
+    "/usr/lib/aarch64-linux-gnu/libespeak-ng.so.1.1.51": "1c9e3ef95292bccae8049f8c97289a50519beb57dd571d719477f8b8568b6d42",
+    "/var/lib/dpkg/info/espeak-ng-data:arm64.md5sums": "e24390439ec82bdc7babbb27678348f53e9c39763460d883fb9a1d06060e3c90"
+  },
+  "source_identity": {
+    "index": 83,
+    "state": "SUSPENDED",
+    "name": "campus982_synthetic_46e26c9b.monitor",
+    "description": "Monitor of Campus982SyntheticOnly",
+    "driver": "PipeWire",
+    "sample_specification": "float32le 2ch 48000Hz",
+    "channel_map": "front-left,front-right",
+    "owner_module": 536870913,
+    "mute": false,
+    "volume": {
+      "front-left": {
+        "value": 65536,
+        "value_percent": "100%",
+        "db": "0.00 dB"
+      },
+      "front-right": {
+        "value": 65536,
+        "value_percent": "100%",
+        "db": "0.00 dB"
+      }
+    },
+    "balance": 0.0,
+    "base_volume": {
+      "value": 65536,
+      "value_percent": "100%",
+      "db": "0.00 dB"
+    },
+    "monitor_source": "campus982_synthetic_46e26c9b",
+    "latency": {
+      "actual": 0.0,
+      "configured": 0.0
+    },
+    "flags": [
+      "HARDWARE",
+      "DECIBEL_VOLUME",
+      "LATENCY"
+    ],
+    "properties": {
+      "node.name": "campus982_synthetic_46e26c9b",
+      "device.description": "Campus982SyntheticOnly",
+      "audio.channels": "2",
+      "audio.position": "[ FL, FR ]",
+      "media.class": "Audio/Sink",
+      "factory.name": "support.null-audio-sink",
+      "monitor.channel-volumes": "true",
+      "monitor.passthrough": "true",
+      "pulse.module.id": "536870913",
+      "factory.id": "18",
+      "clock.quantum-limit": "8192",
+      "client.id": "41",
+      "node.driver": "true",
+      "factory.mode": "merge",
+      "audio.adapt.follower": "",
+      "library.name": "audioconvert/libspa-audioconvert",
+      "object.id": "52",
+      "object.serial": "83",
+      "device.class": "monitor"
+    },
+    "ports": [],
+    "active_port": null,
+    "formats": [
+      "pcm"
+    ]
+  },
+  "module_identity": {
+    "name": "module-null-sink",
+    "argument": "sink_name=campus982_synthetic_46e26c9b sink_properties=device.description=Campus982SyntheticOnly"
+  },
+  "capture": {
+    "samples": 112640,
+    "pcm_sha256": "5d91d9fce3a5378414f45d0e01e4912655df426040a578205495dacff50a3430",
+    "nonzero": true,
+    "prefix_count": 2,
+    "language": "forced en; independent of current locale"
+  },
+  "cancellation": {
+    "all_three_actually_running": true,
+    "ignored_output_bytes": 0,
+    "observed_returncode": -15
+  },
+  "completed": true,
+  "owned_workers_remaining": [],
+  "source_absent_after_cleanup": true,
+  "tree_memory_peak_bytes": 198529024,
+  "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+  "memory_swap_peak": "0\n",
+  "output_allocated_bytes": 372736
+}

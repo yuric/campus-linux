@@ -1,0 +1,158 @@
+{
+  "pass": true,
+  "script_sha256": "197d33bc002830548794cec37121545643a37149902fdd521108cd1814971c20",
+  "scope": "disposable polkit/root exact-byte installer using exact upstream Tauri2.14.0 verification functions and signed-version requirement; NOT full installed Tauri updater or release acceptance",
+  "signature_scheme": "Tauri base64-wrapped minisign",
+  "require_signed_version": true,
+  "cases": [
+    {
+      "case": "tauri-native-v1-authenticated-version",
+      "result": "PASS",
+      "exit": 0,
+      "before_helper_sha256": "9dbb4f543be0e07f5292e7262de69cd8db64b0283502edf196ea74482ca129c0",
+      "expected_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "after_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "stdout": "{\"phase\": \"verified-root-owned-bytes\", \"sha256\": \"76d69d46f8c136a1baa1ee498059abfeee35d8e44fe9d7fd597697d7cffbe554\", \"verification\": \"upstream-tauri-minisign-signed-version-required\"}\n{\"phase\": \"installed\", \"sha256\": \"76d69d46f8c136a1baa1ee498059abfeee35d8e44fe9d7fd597697d7cffbe554\", \"version\": \"0.982.1\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "tauri-package-bytes-tamper-rejected",
+      "result": "PASS",
+      "exit": 1,
+      "before_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "expected_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "after_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "stdout": "{\"phase\": \"rejected\", \"error_type\": \"CalledProcessError\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "tauri-wrong-key-rejected",
+      "result": "PASS",
+      "exit": 1,
+      "before_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "expected_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "after_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "stdout": "{\"phase\": \"rejected\", \"error_type\": \"CalledProcessError\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "tauri-unsigned-version-downgrade-rejected",
+      "result": "PASS",
+      "exit": 1,
+      "before_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "expected_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "after_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "stdout": "{\"phase\": \"rejected\", \"error_type\": \"CalledProcessError\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "tauri-announced-signed-version-mismatch-rejected",
+      "result": "PASS",
+      "exit": 1,
+      "before_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "expected_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "after_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "stdout": "{\"phase\": \"rejected\", \"error_type\": \"CalledProcessError\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "tauri-authenticated-comment-tamper-rejected",
+      "result": "PASS",
+      "exit": 1,
+      "before_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "expected_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "after_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "stdout": "{\"phase\": \"rejected\", \"error_type\": \"CalledProcessError\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "openssl-signature-no-format-fallback",
+      "result": "PASS",
+      "exit": 1,
+      "before_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "expected_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "after_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "stdout": "{\"phase\": \"rejected\", \"error_type\": \"UnicodeDecodeError\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "tauri-wrong-name-intact",
+      "result": "PASS",
+      "exit": 1,
+      "before_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "expected_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "after_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "stdout": "{\"phase\": \"rejected\", \"error_type\": \"AssertionError\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "tauri-wrong-arch-intact",
+      "result": "PASS",
+      "exit": 1,
+      "before_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "expected_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "after_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "stdout": "{\"phase\": \"rejected\", \"error_type\": \"AssertionError\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "tauri-maintainer-script-intact",
+      "result": "PASS",
+      "exit": 1,
+      "before_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "expected_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "after_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "stdout": "{\"phase\": \"rejected\", \"error_type\": \"AssertionError\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "tauri-symlink-payload-intact",
+      "result": "PASS",
+      "exit": 1,
+      "before_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "expected_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "after_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "stdout": "{\"phase\": \"rejected\", \"error_type\": \"AssertionError\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "tauri-arbitrary-path-intact",
+      "result": "PASS",
+      "exit": 1,
+      "before_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "expected_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "after_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "stdout": "{\"phase\": \"rejected\", \"error_type\": \"AssertionError\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "tauri-setuid-helper-intact",
+      "result": "PASS",
+      "exit": 1,
+      "before_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "expected_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "after_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "stdout": "{\"phase\": \"rejected\", \"error_type\": \"AssertionError\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "tauri-oversized-expanded-payload-intact",
+      "result": "PASS",
+      "exit": 1,
+      "before_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "expected_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "after_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "stdout": "{\"phase\": \"rejected\", \"error_type\": \"ValueError\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "tauri-substituted-original-after-verification",
+      "result": "PASS",
+      "exit": 0,
+      "expected_helper_sha256": "9dbb4f543be0e07f5292e7262de69cd8db64b0283502edf196ea74482ca129c0",
+      "installed_helper_sha256": "9dbb4f543be0e07f5292e7262de69cd8db64b0283502edf196ea74482ca129c0",
+      "stdout": "{\"phase\": \"verified-root-owned-bytes\", \"sha256\": \"7dda546a3dd1cda6c5cc72434f57c8205c62c4b709a2720e41809b53f39bea11\", \"verification\": \"upstream-tauri-minisign-signed-version-required\"}\n{\"phase\": \"installed\", \"sha256\": \"7dda546a3dd1cda6c5cc72434f57c8205c62c4b709a2720e41809b53f39bea11\", \"version\": \"0.982.2\"}\n",
+      "stderr": ""
+    }
+  ]
+}

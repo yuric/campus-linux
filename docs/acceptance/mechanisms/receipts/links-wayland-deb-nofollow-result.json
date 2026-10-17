@@ -1,0 +1,177 @@
+{
+  "script_sha256": "a59d69833f46b76106d67036ab5ffc30bdf04b80a3ab336098d6bfa8024f6cd1",
+  "focus_result": "PASS",
+  "scope": "actual disposable desktop package activation; synthetic principal/navigation only; no localhost HTTP bridge or API fetch",
+  "format": "deb",
+  "session": "wayland",
+  "display": ":0",
+  "wayland_display": "wayland-0",
+  "architecture": "aarch64",
+  "handler_default": "campus-982-links-deb.desktop",
+  "executable_sha256": "2e6a7c664c278af271ec90ce12315ead673e71afb7c728c8d5cd14a17054b20e",
+  "singleton_window": {
+    "kind": "window_created",
+    "pid": 8240,
+    "monotonic": 757.721994513,
+    "format": "deb",
+    "mountinfo": [],
+    "script_path": "/usr/lib/campus-982-links-disposable/handler.py",
+    "appimage": null,
+    "architecture": "aarch64",
+    "session": "wayland",
+    "principal": "https://fixture.example.invalid"
+  },
+  "window_observations": [
+    {
+      "kind": "window_observation",
+      "pid": 8240,
+      "monotonic": 758.048462134,
+      "format": "deb",
+      "active": true,
+      "visible": true
+    },
+    {
+      "kind": "window_observation",
+      "pid": 8240,
+      "monotonic": 758.684204391,
+      "format": "deb",
+      "active": true,
+      "visible": true
+    }
+  ],
+  "cases": [
+    {
+      "case": "cold-start",
+      "result": "PASS",
+      "event": {
+        "kind": "accepted",
+        "pid": 8240,
+        "monotonic": 757.714688526,
+        "format": "deb",
+        "task": 982
+      }
+    },
+    {
+      "case": "existing-window",
+      "result": "PASS",
+      "event": {
+        "kind": "accepted",
+        "pid": 8240,
+        "monotonic": 758.379768805,
+        "format": "deb",
+        "task": 983
+      }
+    },
+    {
+      "case": "empty-id",
+      "result": "PASS",
+      "event": {
+        "kind": "rejected",
+        "pid": 8240,
+        "monotonic": 758.994160017,
+        "format": "deb",
+        "reason": "invalid-navigation-or-instance"
+      }
+    },
+    {
+      "case": "unicode-id",
+      "result": "PASS",
+      "event": {
+        "kind": "rejected",
+        "pid": 8240,
+        "monotonic": 759.08268246,
+        "format": "deb",
+        "reason": "invalid-navigation-or-instance"
+      }
+    },
+    {
+      "case": "overflow-id",
+      "result": "PASS",
+      "event": {
+        "kind": "rejected",
+        "pid": 8240,
+        "monotonic": 759.184547473,
+        "format": "deb",
+        "reason": "invalid-navigation-or-instance"
+      }
+    },
+    {
+      "case": "encoded-separator",
+      "result": "PASS",
+      "event": {
+        "kind": "rejected",
+        "pid": 8240,
+        "monotonic": 759.287725179,
+        "format": "deb",
+        "reason": "invalid-navigation-or-instance"
+      }
+    },
+    {
+      "case": "foreign-principal",
+      "result": "PASS",
+      "event": {
+        "kind": "rejected",
+        "pid": 8240,
+        "monotonic": 759.388216796,
+        "format": "deb",
+        "reason": "invalid-navigation-or-instance"
+      }
+    },
+    {
+      "case": "userinfo-principal",
+      "result": "PASS",
+      "event": {
+        "kind": "rejected",
+        "pid": 8240,
+        "monotonic": 759.489016891,
+        "format": "deb",
+        "reason": "invalid-navigation-or-instance"
+      }
+    },
+    {
+      "case": "fragment",
+      "result": "PASS",
+      "event": {
+        "kind": "rejected",
+        "pid": 8240,
+        "monotonic": 759.588472045,
+        "format": "deb",
+        "reason": "invalid-navigation-or-instance"
+      }
+    },
+    {
+      "case": "duplicate-query",
+      "result": "PASS",
+      "event": {
+        "kind": "rejected",
+        "pid": 8240,
+        "monotonic": 759.690865227,
+        "format": "deb",
+        "reason": "invalid-navigation-or-instance"
+      }
+    },
+    {
+      "case": "unknown-query",
+      "result": "PASS",
+      "event": {
+        "kind": "rejected",
+        "pid": 8240,
+        "monotonic": 759.791697735,
+        "format": "deb",
+        "reason": "invalid-navigation-or-instance"
+      }
+    },
+    {
+      "case": "missing-principal",
+      "result": "PASS",
+      "event": {
+        "kind": "rejected",
+        "pid": 8240,
+        "monotonic": 759.897379167,
+        "format": "deb",
+        "reason": "invalid-navigation-or-instance"
+      }
+    }
+  ],
+  "cleanup": "REQUIRED after screenshot: rerun --root SAME --cleanup"
+}

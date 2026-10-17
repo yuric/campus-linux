@@ -1,0 +1,127 @@
+{
+  "utc": "2026-10-16T17:26:47.892330+00:00",
+  "boot_id": "d4cb2166-533b-4911-9ee8-96398f32773e",
+  "files": [
+    {
+      "path": "/home/campusqa/spike982/g8-electron-1288/electron-v44.8.0-linux-arm64.zip",
+      "uid": 1000,
+      "gid": 1001,
+      "mode": "0o664",
+      "inode": 1102098,
+      "bytes": 124393671,
+      "allocated": 124395520,
+      "sha256": "502296281cab3c333bd5193e2eaed11c3bb28eabd7a451a49776a3e5a9468f8c"
+    },
+    {
+      "path": "/home/campusqa/spike982/g8-electron-1288/electron/electron",
+      "uid": 1000,
+      "gid": 1001,
+      "mode": "0o755",
+      "inode": 1102183,
+      "bytes": 221580680,
+      "allocated": 221581312,
+      "sha256": "730d44d5aefb6a969b209cf8ee3e843bd873a06c297bf2c409fbb1cebcb3e6bc"
+    },
+    {
+      "path": "/home/campusqa/spike982/g8-electron-1288/electron/chrome-sandbox",
+      "uid": 1000,
+      "gid": 1001,
+      "mode": "0o755",
+      "inode": 1102139,
+      "bytes": 17048,
+      "allocated": 20480,
+      "sha256": "243acfa0e6bab02b34580c2f426704dcd256c4072f494192c02b2256ea7740bb"
+    },
+    {
+      "path": "/home/campusqa/spike982/g8-electron-1288/electron/version",
+      "uid": 1000,
+      "gid": 1001,
+      "mode": "0o644",
+      "inode": 1102176,
+      "bytes": 6,
+      "allocated": 4096,
+      "sha256": "afc7dca2c2eeb1e1395b1ad6612cde12d991d28bd7cbf4e5fdfd65934447324a"
+    },
+    {
+      "path": "/home/campusqa/spike982/g8-electron-1288/electron/LICENSE",
+      "uid": 1000,
+      "gid": 1001,
+      "mode": "0o644",
+      "inode": 1102126,
+      "bytes": 1096,
+      "allocated": 4096,
+      "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d"
+    },
+    {
+      "path": "/home/campusqa/spike982/g8-electron-1288/electron/LICENSES.chromium.html",
+      "uid": 1000,
+      "gid": 1001,
+      "mode": "0o644",
+      "inode": 1102140,
+      "bytes": 20115518,
+      "allocated": 20119552,
+      "sha256": "3375e2a9bd7bc631738fde10be6548a76efe8cf5e4b8826b8140ba8b0c4d6353"
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "uname",
+        "-a"
+      ],
+      "returncode": 0,
+      "stdout": "Linux lima-campus-linux-d5-noble-arm64 6.8.0-147-generic #147-Ubuntu SMP PREEMPT_DYNAMIC Thu Sep 24 11:39:52 UTC 2026 aarch64 aarch64 aarch64 GNU/Linux\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "dpkg-query",
+        "-W",
+        "-f=${Package}\t${Version}\t${Architecture}\n",
+        "libwebkit2gtk-4.1-0",
+        "libegl-mesa0",
+        "libgl1-mesa-dri",
+        "libllvm20",
+        "mutter-common",
+        "gnome-shell",
+        "gdm3"
+      ],
+      "returncode": 0,
+      "stdout": "gdm3\t46.2-1ubuntu1~24.04.9\tarm64\ngnome-shell\t46.0-0ubuntu6~24.04.16\tarm64\nlibegl-mesa0\t25.2.8-0ubuntu0.24.04.4\tarm64\nlibgl1-mesa-dri\t25.2.8-0ubuntu0.24.04.4\tarm64\nlibllvm20\t1:20.1.2-0ubuntu1~24.04.3\tarm64\nlibwebkit2gtk-4.1-0\t2.52.6-0ubuntu0.24.04.1\tarm64\nmutter-common\t46.2-1ubuntu0.24.04.18\tall\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "loginctl",
+        "show-session",
+        "7"
+      ],
+      "returncode": 0,
+      "stdout": "Id=7\nUser=1000\nName=campusqa\nTimestamp=Fri 2026-10-16 10:25:20 MST\nTimestampMonotonic=102071264\nVTNr=2\nSeat=seat0\nTTY=tty2\nRemote=no\nService=gdm-password\nScope=session-7.scope\nLeader=2301\nAudit=7\nType=wayland\nClass=user\nActive=yes\nState=active\nIdleHint=no\nIdleSinceHint=0\nIdleSinceHintMonotonic=0\nLockedHint=no\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "systemctl",
+        "is-active",
+        "apt-daily.service",
+        "apt-daily-upgrade.service"
+      ],
+      "returncode": 3,
+      "stdout": "inactive\ninactive\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "sysctl",
+        "kernel.unprivileged_userns_clone",
+        "kernel.apparmor_restrict_unprivileged_userns"
+      ],
+      "returncode": 0,
+      "stdout": "kernel.unprivileged_userns_clone = 1\nkernel.apparmor_restrict_unprivileged_userns = 1\n",
+      "stderr": ""
+    }
+  ],
+  "guest_free": 19454590976,
+  "owned_allocated": 426639360
+}

@@ -1,0 +1,68 @@
+[
+  {
+    "path": "command-00.txt",
+    "mode": "0o600",
+    "bytes": 295,
+    "symlink": false
+  },
+  {
+    "path": "command-01.txt",
+    "mode": "0o600",
+    "bytes": 6046,
+    "symlink": false
+  },
+  {
+    "path": "command-02.txt",
+    "mode": "0o600",
+    "bytes": 1503,
+    "symlink": false
+  },
+  {
+    "path": "command-03.txt",
+    "mode": "0o600",
+    "bytes": 330,
+    "symlink": false
+  },
+  {
+    "path": "command-04.txt",
+    "mode": "0o600",
+    "bytes": 323,
+    "symlink": false
+  },
+  {
+    "path": "command-05.txt",
+    "mode": "0o600",
+    "bytes": 301,
+    "symlink": false
+  },
+  {
+    "path": "command-06.txt",
+    "mode": "0o600",
+    "bytes": 1104,
+    "symlink": false
+  },
+  {
+    "path": "scope",
+    "mode": "0o700",
+    "bytes": 4096,
+    "symlink": false
+  },
+  {
+    "path": "scope/config.toml",
+    "mode": "0o600",
+    "bytes": 36,
+    "symlink": false
+  },
+  {
+    "path": "scope/log",
+    "mode": "0o700",
+    "bytes": 4096,
+    "symlink": false
+  },
+  {
+    "path": "scope/log/codex-login.log",
+    "mode": "0o600",
+    "bytes": 80,
+    "symlink": false
+  }
+]

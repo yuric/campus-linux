@@ -1,0 +1,4 @@
+Initial host accounting: selected diffdisk/basedisk, observed files=[], but boot proceeded. Immediately stopped and measured actual disk before the probe boot. Initial boot allocation unmeasured.
+First Wayland preflight: exit1, Error: Viewport/scale mismatch, observed1214x731scale1; full raw output retained in wayland/.
+Host full export inventory audit: FileNotFoundError: [Errno 2] No such file or directory: desktop-first/._Island. Original inventory and extra-file hashes retained; listed payload matches, metadata removed only after process exit.
+Read-only Campus endpoint attempts /tasks/982/activities and /tasks/982/activity returned HTTP404. Correct /tasks/982/log returned147 events through creation, read in full.

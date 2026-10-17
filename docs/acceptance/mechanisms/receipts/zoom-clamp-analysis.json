@@ -1,0 +1,118 @@
+{
+  "status": "G8 unaccepted; coordinator10405 requires read-only protocol/producer/preflight review before further benchmark",
+  "kind": "source and retained-capture analysis; not new guest execution or direct camera.zoom telemetry",
+  "producer": "yuric/campus-macos@8e39806c5b1fb2ffeda6e55718a4fd2a4d2890da",
+  "fixture_sha256": "16dc931ccaa50a62d350beba44bc64a5a858ed655eb47637f5fda7fedf97d074",
+  "producer_manifest_sha256": "badcfcde2012ab1aef610f7a955c231b230580730d4d66ccdc6d4c187d6ef120",
+  "protocol_sha256": "e8347c17e7c86a8d84dbb6f0954f522a7ce2a903a972b9720dca0950e39b8eb7",
+  "source_files": [
+    {
+      "path": "island/src/world3d/scene.ts",
+      "sha256": "b702f39700580e7b12dd7c2c2c8dd8a04c20e99117b8290a1eb5786e3956a8e1"
+    },
+    {
+      "path": "island/src/world3d/index.tsx",
+      "sha256": "08a782405b23f0338db1dba654f5e28fc109d3740a015bdbe8902f0d7173832d"
+    },
+    {
+      "path": "island/src/world3d/contract.ts",
+      "sha256": "0e31fa4cf4ea5dcf89b1c690982df7fd2cdb87272f428c3cecf578389c4453fc"
+    }
+  ],
+  "source_locations": {
+    "scene.ts": [
+      "68 HALF_H=46",
+      "71 OVERVIEW_SLACK=1.1",
+      "73 OVERVIEW_FRAMING=1.02",
+      "444 OUTER_K",
+      "445 overviewZoom",
+      "448 minZoom=overviewZoom()*0.94",
+      "450 orthographic camera extents",
+      "508 controls.minZoom",
+      "985 overview refit",
+      "1000 radius rebuild floor",
+      "1075 zoomForRadius",
+      "1131 frame",
+      "1189 resize floor"
+    ],
+    "index.tsx": [
+      "144 overviewRadius=ISLAND_RADIUS*1.02",
+      "875 focus",
+      "1201 legsFor(null)"
+    ],
+    "contract.ts": [
+      "207 islandOuterRadius",
+      "493 campusDemandOf",
+      "538 islandRadiusForCampus"
+    ]
+  },
+  "source_calculation": {
+    "method": "Node experimental-strip-types imports unmodified contract.ts locally; fixture.snapshot.projects passed to campusDemandOf/islandRadiusForCampus; scene.ts arithmetic applied read-only",
+    "projects": 12,
+    "plots": 12,
+    "radius": 81.9,
+    "outer_k": 1.1808741561613398,
+    "half_h": 46,
+    "overview_zoom": 0.43239197668642054,
+    "min_zoom": 0.4064484580852353,
+    "canonical_focus_zoom": 0.4666505165009651,
+    "floor_to_canonical_ratio": 0.870991124434756,
+    "requested_075_canonical_zoom": 0.34998788737572384,
+    "formulas": [
+      "overview=46/(radius*outer_k*1.1)",
+      "floor=overview*0.94",
+      "canonical=46/(radius*1.02*1.18)",
+      "required=canonical*0.75"
+    ]
+  },
+  "retained_observation": {
+    "path": "docs/acceptance/mechanisms/receipts/motion-proof-x11.json",
+    "sha256": "9552d8ac8af4dfd34e1be9e7dd2a5f1fd2b8cc3a1e04881ba3f4cc75d9dd10bd",
+    "matrix_entry": 2,
+    "matrix_name": "projectionMatrix",
+    "baseline_checkpoint": {
+      "index": 1,
+      "seconds": 10.01,
+      "requested": [
+        399.20000000000005,
+        0,
+        1
+      ],
+      "P00": 0.006340360268950462,
+      "P11": 0.01014457643032074
+    },
+    "near_floor_checkpoint": {
+      "index": 5,
+      "seconds": 50.038,
+      "requested": [
+        0,
+        298.8600000000001,
+        0.7509499999999999
+      ],
+      "P00": 0.005522397346794605,
+      "P11": 0.008835836313664913
+    }
+  },
+  "inference": {
+    "basis": "For producer orthographic vertical extents +/-46 and fixed viewport, P11=zoom/46. Float32 shader-upload values approximate source doubles. Entry2 changes with scene camera; entries0/1 are static shadow projections.",
+    "P00_floor_to_baseline_ratio": 0.8709910971208491,
+    "P11_floor_to_baseline_ratio": 0.8709911522038335,
+    "baseline_zoom_from_P11": 0.46665051579475403,
+    "floor_zoom_from_P11": 0.406448470428586,
+    "direct_runtime_camera_zoom_captured": false,
+    "checkpoint_zero_caveat": "Immediate reset checkpoint can retain previous frame uniform uploads; not used as settled baseline."
+  },
+  "conclusion": "Required0.75 of canonical overview is below unmodified producer floor. Requested input execution and successful mounting/native driver preflight do not satisfy G8 actual trajectory. No input-only reinterpretation or threshold relaxation accepted.",
+  "review_paths": {
+    "protocol": "docs/acceptance/visual-protocol.json sequence indices3-5",
+    "preflight_code": [
+      "spikes/982/renderer/measure.js:108",
+      "spikes/982/renderer/measure.js:121",
+      "spikes/982/renderer/run-webkit.py:167"
+    ],
+    "preflight_limitation": "Checks native driver, mounted fixture, viewport/scale, focus/visibility and lifecycle; does not establish camera trajectory.",
+    "preflight_receipt": "docs/acceptance/mechanisms/receipts/renderer-preflight5-x11.json",
+    "corrected_driver_freeze": "docs/acceptance/mechanisms/receipts/renderer-freeze-x11-v2.json",
+    "motion_receipt": "docs/acceptance/mechanisms/receipts/motion-proof-x11.json"
+  }
+}

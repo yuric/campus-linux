@@ -1,0 +1,120 @@
+{
+  "scope": "Direction1196 activation-only SIGQUIT pair and retained failures; no full-report/product acceptance",
+  "files": [
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-activation-1196/host-final.json",
+      "bytes": 3245,
+      "sha256": "dbb0010e2f1881576fa1544c1b3239fc1cc4404cdcf1b8ba5a05fa2b26a2e176"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-activation-1196/mac-pr114-merged.json",
+      "bytes": 229,
+      "sha256": "100a0d8d2003584e1b801afb93f58d8d497107ea436e5f21bd9b7b37f8b427cd"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-activation-1196/run1/failed-command.txt",
+      "bytes": 890,
+      "sha256": "5bdf3de53ab90475af0fb69ae3b41efc892c1b4857f3f4113e95614226685cff"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-activation-1196/run1/guest-source-hashes.txt",
+      "bytes": 700,
+      "sha256": "85c28451a4930a7676659b598edaa1f13a1cba72f8011b11ea75c51bb450b6c5"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-activation-1196/run1/host-runner.json",
+      "bytes": 5111,
+      "sha256": "53f22dc0242a4e966367b7e583a0c256d2b89426ab5d50431ea3575c89101fc5"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-activation-1196/run1/identity.json",
+      "bytes": 3351,
+      "sha256": "6b5ed25cd9fb9ea714148fd5b929bb322840fa101ccfbf229c5c08f7c7affdab"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-activation-1196/run1/metadata.json",
+      "bytes": 2517,
+      "sha256": "06ad5e7c3dc9bd125cc0e496bf2353e5a9aea3c540d37c05ebff14866b525ae3"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-activation-1196/run1/sources/apport-activation-launch.py",
+      "bytes": 1400,
+      "sha256": "a82ac897227291bfa4a6cf25afe50a03ff54f4953f197f1b5edae10e24c797b3"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-activation-1196/run1/sources/apport-activation-pair.py",
+      "bytes": 11409,
+      "sha256": "5d1e9d2f301f6507f7507cae7625b9a32cefbaa8d123e51cb8884c9fdcd94029"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-activation-1196/run1/sources/run-apport-activation.py",
+      "bytes": 4588,
+      "sha256": "1c92fdf47f47548b9f26353654d5eb3d6b32f909ba5af9d668a7dfd7d990089c"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-activation-1196/run1/unit-recovery.txt",
+      "bytes": 347,
+      "sha256": "f11c4e3d906a4cd52b6ca60cafe3b921fe1474878382e7342442b73d671851cd"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-activation-1196/run2/guest-source-hashes.txt",
+      "bytes": 725,
+      "sha256": "76dfbc839992f273ad69dc1358d5c87685665c2be032c8824be8e86d40d53545"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-activation-1196/run2/host-runner.json",
+      "bytes": 5488,
+      "sha256": "9aea2c5857766a228d8fe5f203aade2a71aadfac1c540e459d94a042a49587f6"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-activation-1196/run2/identity.json",
+      "bytes": 3351,
+      "sha256": "39e77cefe0ed045bcd4259410ae1616b3482fb7296af44adbde66c582b0ebeeb"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-activation-1196/run2/metadata.json",
+      "bytes": 2517,
+      "sha256": "8a82d8b06d200547cea8266a77866c3d55a02bd9d2d0a807032f5585cfb4ea91"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-activation-1196/run2/negative.json",
+      "bytes": 3457,
+      "sha256": "1d4f66fcb8e6a465532e7943a04ed5a6a3b30af83fdbc6a513ddde879c6efcb4"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-activation-1196/run2/positive.json",
+      "bytes": 3837,
+      "sha256": "81d17f12b0f6a2c3ad869c3156601b17cbe6bf580bb22cb733c541bda705194a"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-activation-1196/start.txt",
+      "bytes": 3126,
+      "sha256": "458ae6b7cd38b92cb88f4405f756f352577d4fa63fd022c38178adf4f5c0dd0a"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/apport-activation-1196/stop.txt",
+      "bytes": 1063,
+      "sha256": "b98cdee90f859916ace65ec5826607f88b55e5f018f3ba61923d5bce5491e88a"
+    },
+    {
+      "path": "spikes/982/security/apport-activation-launch.py",
+      "bytes": 1400,
+      "sha256": "a82ac897227291bfa4a6cf25afe50a03ff54f4953f197f1b5edae10e24c797b3"
+    },
+    {
+      "path": "spikes/982/security/apport-activation-pair.py",
+      "bytes": 11602,
+      "sha256": "95a65dd9a77f0cf8775455ee7d282f7d4ecc3049cfa40e009bc086db5e179cb9"
+    },
+    {
+      "path": "spikes/982/security/apport-metadata-preflight.py",
+      "bytes": 9433,
+      "sha256": "d622cb18709df9ce0987b745e340d9790a3ad000b3ff2e77aab0b84993f0971a"
+    },
+    {
+      "path": "spikes/982/security/run-apport-activation.py",
+      "bytes": 4593,
+      "sha256": "3c6def4cab5f958e5bff46d4d575a1bfcb92f956861817e52726a44031634aa4"
+    }
+  ]
+}

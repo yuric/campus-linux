@@ -1,0 +1,30 @@
+{
+  "utc": "2026-10-16T17:57:35.982887+00:00",
+  "source_sha256": "91e983738a53e2d28c798ec80a748b29ee0a57cf94b415a7565feb3a3fd6ab84",
+  "test_source_sha256": "c94856c26b9d7f546992c05cc8d498a16c32fe3d1f805c3aec34047335b7d0e4",
+  "command": [
+    "python3",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "scripts/tests",
+    "-p",
+    "test_electron_sandbox_proposal.py",
+    "-v"
+  ],
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "test_archive_refuses_traversal_symlink_privilege_and_duplicate (test_electron_sandbox_proposal.SandboxProposalInputs.test_archive_refuses_traversal_symlink_privilege_and_duplicate) ... /Users/yuri/.pyenv/versions/3.11.15/lib/python3.11/zipfile.py:1580: UserWarning: Duplicate name: 'electron'\n  return self._open_to_write(zinfo, force_zip64=force_zip64)\nok\ntest_authenticated_manifest_preserves_licenses_and_exact_helper (test_electron_sandbox_proposal.SandboxProposalInputs.test_authenticated_manifest_preserves_licenses_and_exact_helper) ... ok\ntest_full_manifest_refuses_missing_or_wrong_member_digest (test_electron_sandbox_proposal.SandboxProposalInputs.test_full_manifest_refuses_missing_or_wrong_member_digest) ... ok\ntest_install_uses_same_buffer_and_verifies_before_privilege (test_electron_sandbox_proposal.SandboxProposalInputs.test_install_uses_same_buffer_and_verifies_before_privilege) ... ok\ntest_pinned_archive_rejects_untrusted_bytes_before_zip_parsing (test_electron_sandbox_proposal.SandboxProposalInputs.test_pinned_archive_rejects_untrusted_bytes_before_zip_parsing) ... ok\ntest_post_privilege_failure_revokes_through_retained_descriptor (test_electron_sandbox_proposal.SandboxProposalInputs.test_post_privilege_failure_revokes_through_retained_descriptor) ... ok\ntest_regular_rejects_symlinks_hardlinks_and_oversize (test_electron_sandbox_proposal.SandboxProposalInputs.test_regular_rejects_symlinks_hardlinks_and_oversize) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.014s\n\nOK\n",
+  "scope": "Host input validation, tiny disposable regular-file fixture, mocked installer order and privilege-clear failure. No real installer/extraction/rollback or guest calls.",
+  "not_run": [
+    "real fresh extraction",
+    "real installer and rollback",
+    "full repository verifier",
+    "architecture wrappers",
+    "guest/runtime"
+  ],
+  "host_free_before_bytes": 23893319680,
+  "fixture_allocation_upper_bound_bytes": 65536
+}

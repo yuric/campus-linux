@@ -1,0 +1,248 @@
+{
+  "uname": {
+    "system": "Linux",
+    "node": "lima-campus-linux-d5-noble-arm64",
+    "release": "6.8.0-142-generic",
+    "version": "#142-Ubuntu SMP PREEMPT_DYNAMIC Wed Sep  2 14:30:29 UTC 2026",
+    "machine": "aarch64",
+    "processor": "aarch64"
+  },
+  "uid": 1000,
+  "network_interfaces": [
+    "lo"
+  ],
+  "records": [
+    {
+      "engine": "claude",
+      "argv": [
+        "--version"
+      ],
+      "returncode": 0,
+      "timeout": false,
+      "seconds": 0.022,
+      "capture": "captures/claude/command-00.txt",
+      "truncated": false,
+      "interpretation": "raw observation only; no domain-success inference"
+    },
+    {
+      "engine": "claude",
+      "argv": [
+        "--help"
+      ],
+      "returncode": 0,
+      "timeout": false,
+      "seconds": 0.12,
+      "capture": "captures/claude/command-01.txt",
+      "truncated": false,
+      "interpretation": "raw observation only; no domain-success inference"
+    },
+    {
+      "engine": "claude",
+      "argv": [
+        "auth",
+        "status"
+      ],
+      "returncode": 1,
+      "timeout": false,
+      "seconds": 0.167,
+      "capture": "captures/claude/command-02.txt",
+      "truncated": false,
+      "interpretation": "raw observation only; no domain-success inference"
+    },
+    {
+      "engine": "claude",
+      "argv": [
+        "update",
+        "--help"
+      ],
+      "returncode": 0,
+      "timeout": false,
+      "seconds": 0.118,
+      "capture": "captures/claude/command-03.txt",
+      "truncated": false,
+      "interpretation": "raw observation only; no domain-success inference"
+    },
+    {
+      "engine": "codex",
+      "argv": [
+        "--version"
+      ],
+      "returncode": 0,
+      "timeout": false,
+      "seconds": 0.011,
+      "capture": "captures/codex/command-00.txt",
+      "truncated": false,
+      "interpretation": "raw observation only; no domain-success inference"
+    },
+    {
+      "engine": "codex",
+      "argv": [
+        "--help"
+      ],
+      "returncode": 0,
+      "timeout": false,
+      "seconds": 0.01,
+      "capture": "captures/codex/command-01.txt",
+      "truncated": false,
+      "interpretation": "raw observation only; no domain-success inference"
+    },
+    {
+      "engine": "codex",
+      "argv": [
+        "login",
+        "--help"
+      ],
+      "returncode": 0,
+      "timeout": false,
+      "seconds": 0.005,
+      "capture": "captures/codex/command-02.txt",
+      "truncated": false,
+      "interpretation": "raw observation only; no domain-success inference"
+    },
+    {
+      "engine": "codex",
+      "argv": [
+        "login",
+        "--with-api-key"
+      ],
+      "returncode": 0,
+      "timeout": false,
+      "seconds": 0.019,
+      "capture": "captures/codex/command-03.txt",
+      "truncated": false,
+      "interpretation": "raw observation only; no domain-success inference"
+    },
+    {
+      "engine": "codex",
+      "argv": [
+        "login",
+        "status"
+      ],
+      "returncode": 0,
+      "timeout": false,
+      "seconds": 0.011,
+      "capture": "captures/codex/command-04.txt",
+      "truncated": false,
+      "interpretation": "raw observation only; no domain-success inference"
+    },
+    {
+      "engine": "codex",
+      "argv": [
+        "logout"
+      ],
+      "returncode": 0,
+      "timeout": false,
+      "seconds": 0.018,
+      "capture": "captures/codex/command-05.txt",
+      "truncated": false,
+      "interpretation": "raw observation only; no domain-success inference"
+    },
+    {
+      "engine": "codex",
+      "argv": [
+        "update",
+        "--help"
+      ],
+      "returncode": 0,
+      "timeout": false,
+      "seconds": 0.006,
+      "capture": "captures/codex/command-06.txt",
+      "truncated": false,
+      "interpretation": "raw observation only; no domain-success inference"
+    },
+    {
+      "engine": "grok",
+      "argv": [
+        "--version"
+      ],
+      "returncode": 0,
+      "timeout": false,
+      "seconds": 0.006,
+      "capture": "captures/grok/command-00.txt",
+      "truncated": false,
+      "interpretation": "raw observation only; no domain-success inference"
+    },
+    {
+      "engine": "grok",
+      "argv": [
+        "--help"
+      ],
+      "returncode": 0,
+      "timeout": false,
+      "seconds": 0.004,
+      "capture": "captures/grok/command-01.txt",
+      "truncated": false,
+      "interpretation": "raw observation only; no domain-success inference"
+    },
+    {
+      "engine": "grok",
+      "argv": [
+        "login",
+        "--help"
+      ],
+      "returncode": 0,
+      "timeout": false,
+      "seconds": 0.004,
+      "capture": "captures/grok/command-02.txt",
+      "truncated": false,
+      "interpretation": "raw observation only; no domain-success inference"
+    },
+    {
+      "engine": "grok",
+      "argv": [
+        "update",
+        "--help"
+      ],
+      "returncode": 0,
+      "timeout": false,
+      "seconds": 0.003,
+      "capture": "captures/grok/command-03.txt",
+      "truncated": false,
+      "interpretation": "raw observation only; no domain-success inference"
+    },
+    {
+      "engine": "agy",
+      "argv": [
+        "--version"
+      ],
+      "returncode": 0,
+      "timeout": false,
+      "seconds": 0.12,
+      "capture": "captures/agy/command-00.txt",
+      "truncated": false,
+      "interpretation": "raw observation only; no domain-success inference"
+    },
+    {
+      "engine": "agy",
+      "argv": [
+        "--help"
+      ],
+      "returncode": 0,
+      "timeout": false,
+      "seconds": 0.068,
+      "capture": "captures/agy/command-01.txt",
+      "truncated": false,
+      "interpretation": "raw observation only; no domain-success inference"
+    },
+    {
+      "engine": "agy",
+      "argv": [
+        "update",
+        "--help"
+      ],
+      "returncode": 2,
+      "timeout": false,
+      "seconds": 0.067,
+      "capture": "captures/agy/command-02.txt",
+      "truncated": false,
+      "interpretation": "raw observation only; no domain-success inference"
+    }
+  ],
+  "unproven": [
+    "real OAuth login/refresh/cancel/account isolation",
+    "vendor update and previous-version recovery",
+    "active-run concurrency",
+    "Gemini runtime",
+    "provider identity authenticity beyond recorded integrity"
+  ]
+}

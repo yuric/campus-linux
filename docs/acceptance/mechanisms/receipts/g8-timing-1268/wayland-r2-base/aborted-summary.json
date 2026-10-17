@@ -1,0 +1,45 @@
+{
+  "complete_five_run_series": false,
+  "runs": [
+    {
+      "file": "run-1.json",
+      "valid": true,
+      "workload_error": null,
+      "frames": 453,
+      "p50_ms": 128,
+      "p95_ms": 179,
+      "max_ms": 374,
+      "intervals_over_33_3_ms": 452,
+      "missed_60hz_frames": 2924,
+      "errors": [],
+      "pass_run": false
+    },
+    {
+      "file": "run-2.json",
+      "valid": true,
+      "workload_error": null,
+      "frames": 502,
+      "p50_ms": 119,
+      "p95_ms": 127,
+      "max_ms": 148,
+      "intervals_over_33_3_ms": 501,
+      "missed_60hz_frames": 2882,
+      "errors": [],
+      "pass_run": false
+    },
+    {
+      "file": "run-3.json",
+      "valid": false,
+      "workload_error": null,
+      "frames": 499,
+      "p50_ms": 120,
+      "p95_ms": 128,
+      "max_ms": 165,
+      "intervals_over_33_3_ms": 498,
+      "missed_60hz_frames": 2928,
+      "errors": [],
+      "pass_run": false
+    }
+  ],
+  "reason": "Native GNOME idle lock during run3; series aborted, all outputs retained"
+}

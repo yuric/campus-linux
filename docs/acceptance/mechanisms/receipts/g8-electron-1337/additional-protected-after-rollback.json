@@ -1,0 +1,17 @@
+{
+  "utc": "2026-10-16T18:28:31.401885+00:00",
+  "argv": [
+    "limactl",
+    "shell",
+    "campus-linux-d5-noble-arm64",
+    "sudo",
+    "/usr/bin/env",
+    "-i",
+    "PATH=/usr/sbin:/usr/bin:/sbin:/bin",
+    "/usr/bin/python3",
+    "-I",
+    "-B",
+    "-"
+  ],
+  "returncode": 0
+}

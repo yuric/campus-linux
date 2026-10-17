@@ -1,0 +1,8 @@
+{
+  "utc": "2026-10-16T14:03:36.548998+00:00",
+  "host_free_bytes": 22763724800,
+  "disk_apparent_bytes": 6925058048,
+  "disk_allocated_bytes": 6823215104,
+  "status": "campus-linux-d5-noble-arm64 Stopped\n",
+  "lease_returned": true
+}

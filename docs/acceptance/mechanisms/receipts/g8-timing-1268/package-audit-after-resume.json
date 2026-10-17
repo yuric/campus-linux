@@ -1,0 +1,178 @@
+{
+  "utc": "2026-10-16T16:35:03.018280+00:00",
+  "elapsed_seconds": 0.09702351299999634,
+  "boot_id": "ee95b746-c664-4b55-b133-a94764726e74",
+  "commands": [
+    {
+      "argv": [
+        "du",
+        "-sx",
+        "-B1",
+        "/var/log"
+      ],
+      "returncode": 0,
+      "stdout": "217116672\t/var/log\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "du",
+        "-sx",
+        "-B1",
+        "/var/cache"
+      ],
+      "returncode": 0,
+      "stdout": "616017920\t/var/cache\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "du",
+        "-sx",
+        "-B1",
+        "/var/lib"
+      ],
+      "returncode": 0,
+      "stdout": "293646336\t/var/lib\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "du",
+        "-sx",
+        "-B1",
+        "/home/campusqa/.cache"
+      ],
+      "returncode": 0,
+      "stdout": "15245312\t/home/campusqa/.cache\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "du",
+        "-sx",
+        "-B1",
+        "/home/campusqa/spike982/g8-timing-1268"
+      ],
+      "returncode": 0,
+      "stdout": "1609728\t/home/campusqa/spike982/g8-timing-1268\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "tail",
+        "-n",
+        "60",
+        "/var/log/apt/history.log"
+      ],
+      "returncode": 0,
+      "stdout": "\nStart-Date: 2026-10-16  09:28:28\nCommandline: /usr/bin/unattended-upgrade\nUpgrade: libxpm4:arm64 (1:3.5.17-1ubuntu0.24.04.1, 1:3.5.17-1ubuntu0.24.04.2)\nEnd-Date: 2026-10-16  09:28:28\n\nStart-Date: 2026-10-16  09:28:33\nCommandline: /usr/bin/unattended-upgrade\nUpgrade: python3-urllib3:arm64 (2.0.7-1ubuntu0.7, 2.0.7-1ubuntu0.8)\nEnd-Date: 2026-10-16  09:28:33\n\nStart-Date: 2026-10-16  09:28:37\nCommandline: /usr/bin/unattended-upgrade\nUpgrade: bind9-host:arm64 (1:9.18.39-0ubuntu0.24.04.7, 1:9.18.39-0ubuntu0.24.04.8), bind9-dnsutils:arm64 (1:9.18.39-0ubuntu0.24.04.7, 1:9.18.39-0ubuntu0.24.04.8), bind9-libs:arm64 (1:9.18.39-0ubuntu0.24.04.7, 1:9.18.39-0ubuntu0.24.04.8)\nEnd-Date: 2026-10-16  09:28:37\n\nStart-Date: 2026-10-16  09:28:41\nCommandline: /usr/bin/unattended-upgrade\nUpgrade: libssl3t64:arm64 (3.0.13-0ubuntu3.15, 3.0.13-0ubuntu3.16), openssl:arm64 (3.0.13-0ubuntu3.15, 3.0.13-0ubuntu3.16)\nEnd-Date: 2026-10-16  09:28:42\n\nStart-Date: 2026-10-16  09:28:46\nCommandline: /usr/bin/unattended-upgrade\nUpgrade: libevent-core-2.1-7t64:arm64 (2.1.12-stable-9ubuntu2.1, 2.1.12-stable-9ubuntu2.2)\nEnd-Date: 2026-10-16  09:28:46\n\nStart-Date: 2026-10-16  09:28:50\nCommandline: /usr/bin/unattended-upgrade\nUpgrade: sudo:arm64 (1.9.15p5-3ubuntu5.24.04.3, 1.9.15p5-3ubuntu5.24.04.4)\nEnd-Date: 2026-10-16  09:28:51\n\nStart-Date: 2026-10-16  09:28:54\nCommandline: /usr/bin/unattended-upgrade\nUpgrade: python3-requests:arm64 (2.31.0+dfsg-1ubuntu1.1, 2.31.0+dfsg-1ubuntu1.2)\nEnd-Date: 2026-10-16  09:28:55\n\nStart-Date: 2026-10-16  09:28:58\nCommandline: /usr/bin/unattended-upgrade\nUpgrade: libfreetype6:arm64 (2.13.2+dfsg-1ubuntu0.1, 2.13.2+dfsg-1ubuntu0.2)\nEnd-Date: 2026-10-16  09:28:58\n\nStart-Date: 2026-10-16  09:29:02\nCommandline: /usr/bin/unattended-upgrade\nUpgrade: libxml2:arm64 (2.9.14+dfsg-1.3ubuntu3.9, 2.9.14+dfsg-1.3ubuntu3.10)\nEnd-Date: 2026-10-16  09:29:02\n\nStart-Date: 2026-10-16  09:29:06\nCommandline: /usr/bin/unattended-upgrade\nUpgrade: dracut-install:arm64 (060+5-1ubuntu3.3, 060+5-1ubuntu3.4)\nEnd-Date: 2026-10-16  09:29:06\n\nStart-Date: 2026-10-16  09:29:10\nCommandline: /usr/bin/unattended-upgrade\nUpgrade: python3-jwt:arm64 (2.7.0-1ubuntu0.1, 2.7.0-1ubuntu0.3)\nEnd-Date: 2026-10-16  09:29:10\n\nStart-Date: 2026-10-16  09:29:14\nCommandline: /usr/bin/unattended-upgrade\nUpgrade: libarchive13t64:arm64 (3.7.2-2ubuntu0.8, 3.7.2-2ubuntu0.9)\nEnd-Date: 2026-10-16  09:29:14\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "tail",
+        "-n",
+        "60",
+        "/var/log/dpkg.log"
+      ],
+      "returncode": 0,
+      "stdout": "2026-10-16 09:28:58 startup packages configure\n2026-10-16 09:28:58 configure libfreetype6:arm64 2.13.2+dfsg-1ubuntu0.2 <none>\n2026-10-16 09:28:58 status unpacked libfreetype6:arm64 2.13.2+dfsg-1ubuntu0.2\n2026-10-16 09:28:58 status half-configured libfreetype6:arm64 2.13.2+dfsg-1ubuntu0.2\n2026-10-16 09:28:58 status installed libfreetype6:arm64 2.13.2+dfsg-1ubuntu0.2\n2026-10-16 09:28:58 trigproc libc-bin:arm64 2.39-0ubuntu8.9 <none>\n2026-10-16 09:28:58 status half-configured libc-bin:arm64 2.39-0ubuntu8.9\n2026-10-16 09:28:58 status installed libc-bin:arm64 2.39-0ubuntu8.9\n2026-10-16 09:29:02 startup archives unpack\n2026-10-16 09:29:02 upgrade libxml2:arm64 2.9.14+dfsg-1.3ubuntu3.9 2.9.14+dfsg-1.3ubuntu3.10\n2026-10-16 09:29:02 status triggers-pending libc-bin:arm64 2.39-0ubuntu8.9\n2026-10-16 09:29:02 status half-configured libxml2:arm64 2.9.14+dfsg-1.3ubuntu3.9\n2026-10-16 09:29:02 status unpacked libxml2:arm64 2.9.14+dfsg-1.3ubuntu3.9\n2026-10-16 09:29:02 status half-installed libxml2:arm64 2.9.14+dfsg-1.3ubuntu3.9\n2026-10-16 09:29:02 status unpacked libxml2:arm64 2.9.14+dfsg-1.3ubuntu3.10\n2026-10-16 09:29:02 startup packages configure\n2026-10-16 09:29:02 configure libxml2:arm64 2.9.14+dfsg-1.3ubuntu3.10 <none>\n2026-10-16 09:29:02 status unpacked libxml2:arm64 2.9.14+dfsg-1.3ubuntu3.10\n2026-10-16 09:29:02 status half-configured libxml2:arm64 2.9.14+dfsg-1.3ubuntu3.10\n2026-10-16 09:29:02 status installed libxml2:arm64 2.9.14+dfsg-1.3ubuntu3.10\n2026-10-16 09:29:02 trigproc libc-bin:arm64 2.39-0ubuntu8.9 <none>\n2026-10-16 09:29:02 status half-configured libc-bin:arm64 2.39-0ubuntu8.9\n2026-10-16 09:29:02 status installed libc-bin:arm64 2.39-0ubuntu8.9\n2026-10-16 09:29:06 startup archives unpack\n2026-10-16 09:29:06 upgrade dracut-install:arm64 060+5-1ubuntu3.3 060+5-1ubuntu3.4\n2026-10-16 09:29:06 status half-configured dracut-install:arm64 060+5-1ubuntu3.3\n2026-10-16 09:29:06 status unpacked dracut-install:arm64 060+5-1ubuntu3.3\n2026-10-16 09:29:06 status half-installed dracut-install:arm64 060+5-1ubuntu3.3\n2026-10-16 09:29:06 status unpacked dracut-install:arm64 060+5-1ubuntu3.4\n2026-10-16 09:29:06 startup packages configure\n2026-10-16 09:29:06 configure dracut-install:arm64 060+5-1ubuntu3.4 <none>\n2026-10-16 09:29:06 status unpacked dracut-install:arm64 060+5-1ubuntu3.4\n2026-10-16 09:29:06 status half-configured dracut-install:arm64 060+5-1ubuntu3.4\n2026-10-16 09:29:06 status installed dracut-install:arm64 060+5-1ubuntu3.4\n2026-10-16 09:29:10 startup archives unpack\n2026-10-16 09:29:10 upgrade python3-jwt:all 2.7.0-1ubuntu0.1 2.7.0-1ubuntu0.3\n2026-10-16 09:29:10 status half-configured python3-jwt:all 2.7.0-1ubuntu0.1\n2026-10-16 09:29:10 status unpacked python3-jwt:all 2.7.0-1ubuntu0.1\n2026-10-16 09:29:10 status half-installed python3-jwt:all 2.7.0-1ubuntu0.1\n2026-10-16 09:29:10 status unpacked python3-jwt:all 2.7.0-1ubuntu0.3\n2026-10-16 09:29:10 startup packages configure\n2026-10-16 09:29:10 configure python3-jwt:all 2.7.0-1ubuntu0.3 <none>\n2026-10-16 09:29:10 status unpacked python3-jwt:all 2.7.0-1ubuntu0.3\n2026-10-16 09:29:10 status half-configured python3-jwt:all 2.7.0-1ubuntu0.3\n2026-10-16 09:29:10 status installed python3-jwt:all 2.7.0-1ubuntu0.3\n2026-10-16 09:29:14 startup archives unpack\n2026-10-16 09:29:14 upgrade libarchive13t64:arm64 3.7.2-2ubuntu0.8 3.7.2-2ubuntu0.9\n2026-10-16 09:29:14 status triggers-pending libc-bin:arm64 2.39-0ubuntu8.9\n2026-10-16 09:29:14 status half-configured libarchive13t64:arm64 3.7.2-2ubuntu0.8\n2026-10-16 09:29:14 status unpacked libarchive13t64:arm64 3.7.2-2ubuntu0.8\n2026-10-16 09:29:14 status half-installed libarchive13t64:arm64 3.7.2-2ubuntu0.8\n2026-10-16 09:29:14 status unpacked libarchive13t64:arm64 3.7.2-2ubuntu0.9\n2026-10-16 09:29:14 startup packages configure\n2026-10-16 09:29:14 configure libarchive13t64:arm64 3.7.2-2ubuntu0.9 <none>\n2026-10-16 09:29:14 status unpacked libarchive13t64:arm64 3.7.2-2ubuntu0.9\n2026-10-16 09:29:14 status half-configured libarchive13t64:arm64 3.7.2-2ubuntu0.9\n2026-10-16 09:29:14 status installed libarchive13t64:arm64 3.7.2-2ubuntu0.9\n2026-10-16 09:29:14 trigproc libc-bin:arm64 2.39-0ubuntu8.9 <none>\n2026-10-16 09:29:14 status half-configured libc-bin:arm64 2.39-0ubuntu8.9\n2026-10-16 09:29:14 status installed libc-bin:arm64 2.39-0ubuntu8.9\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "tail",
+        "-n",
+        "60",
+        "/var/log/unattended-upgrades/unattended-upgrades.log"
+      ],
+      "returncode": 0,
+      "stdout": "2026-10-16 09:27:17,984 WARNING Could not figure out development release: Distribution data outdated. Please check for an update for distro-info-data. See /usr/share/doc/distro-info-data/README.Debian for details.\n2026-10-16 09:27:17,984 INFO Starting unattended upgrades script\n2026-10-16 09:27:17,984 INFO Allowed origins are: o=Ubuntu,a=noble, o=Ubuntu,a=noble-security, o=UbuntuESMApps,a=noble-apps-security, o=UbuntuESM,a=noble-infra-security\n2026-10-16 09:27:17,984 INFO Initial blacklist: \n2026-10-16 09:27:17,985 INFO Initial whitelist (not strict): \n2026-10-16 09:27:39,895 INFO Packages that will be upgraded: bind9-dnsutils bind9-host bind9-libs curl dracut-install libarchive13t64 libcurl3t64-gnutls libcurl4t64 libevent-core-2.1-7t64 libfreetype6 libnss-systemd libpam-systemd libpng16-16t64 libsgutils2-1.46-2 libssl3t64 libsystemd-shared libsystemd0 libudev1 libxml2 libxpm4 linux-headers-generic linux-headers-virtual linux-image-virtual linux-libc-dev linux-tools-common linux-virtual openssh-client openssh-server openssh-sftp-server openssl python3-jwt python3-requests python3-urllib3 sg3-utils sg3-utils-udev sudo systemd systemd-dev systemd-resolved systemd-sysv systemd-timesyncd u-boot-tools udev\n2026-10-16 09:27:39,895 INFO Writing dpkg log to /var/log/unattended-upgrades/unattended-upgrades-dpkg.log\n2026-10-16 09:29:17,847 INFO All upgrades installed\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "tail",
+        "-n",
+        "60",
+        "/var/log/unattended-upgrades/unattended-upgrades-dpkg.log"
+      ],
+      "returncode": 0,
+      "stdout": " yuri @ user manager service: systemd[819]\n\nNo VM guests are running outdated hypervisor (qemu) binaries on this host.\nLog ended: 2026-10-16  09:29:09\n\nLog started: 2026-10-16  09:29:10\n(Reading database ... \n(Reading database ... 5%\n(Reading database ... 10%\n(Reading database ... 15%\n(Reading database ... 20%\n(Reading database ... 25%\n(Reading database ... 30%\n(Reading database ... 35%\n(Reading database ... 40%\n(Reading database ... 45%\n(Reading database ... 50%\n(Reading database ... 55%\n(Reading database ... 60%\n(Reading database ... 65%\n(Reading database ... 70%\n(Reading database ... 75%\n(Reading database ... 80%\n(Reading database ... 85%\n(Reading database ... 90%\n(Reading database ... 95%\n(Reading database ... 100%\n(Reading database ... 144088 files and directories currently installed.)\nPreparing to unpack .../python3-jwt_2.7.0-1ubuntu0.3_all.deb ...\nUnpacking python3-jwt (2.7.0-1ubuntu0.3) over (2.7.0-1ubuntu0.1) ...\nSetting up python3-jwt (2.7.0-1ubuntu0.3) ...\n\nRestarting services...\n\nService restarts being deferred:\n systemctl restart apt-daily-upgrade.service\n /etc/needrestart/restart.d/dbus.service\n systemctl restart gdm.service\n systemctl restart systemd-logind.service\n systemctl restart unattended-upgrades.service\n systemctl restart wpa_supplicant.service\n\nNo containers need to be restarted.\n\nUser sessions running outdated binaries:\n campusqa @ session #6: gdm-wayland-ses[17861]\n campusqa @ user manager service: gnome-shell[17956], systemd[17760]\n yuri @ session #4: sshd[1436]\n yuri @ user manager service: systemd[819]\n\nNo VM guests are running outdated hypervisor (qemu) binaries on this host.\nLog ended: 2026-10-16  09:29:13\n\nLog started: 2026-10-16  09:29:14\n(Reading database ... \n(Reading database ... 5%\n(Reading database ... 10%\n(Reading database ... 15%\n(Reading database ... 20%\n(Reading database ... 25%\n(Reading database ... 30%\n(Reading database ... 35%\n(Reading database ... 40%\n(Reading database ... 45%\n(Reading database ... 50%\n(Reading database ... 55%\n(Reading database ... 60%\n(Reading database ... 65%\n(Reading database ... 70%\n(Reading database ... 75%\n(Reading database ... 80%\n(Reading database ... 85%\n(Reading database ... 90%\n(Reading database ... 95%\n(Reading database ... 100%\n(Reading database ... 144088 files and directories currently installed.)\nPreparing to unpack .../libarchive13t64_3.7.2-2ubuntu0.9_arm64.deb ...\nUnpacking libarchive13t64:arm64 (3.7.2-2ubuntu0.9) over (3.7.2-2ubuntu0.8) ...\nSetting up libarchive13t64:arm64 (3.7.2-2ubuntu0.9) ...\nProcessing triggers for libc-bin (2.39-0ubuntu8.9) ...\n\nRestarting services...\n\nService restarts being deferred:\n systemctl restart apt-daily-upgrade.service\n /etc/needrestart/restart.d/dbus.service\n systemctl restart gdm.service\n systemctl restart systemd-logind.service\n systemctl restart unattended-upgrades.service\n systemctl restart wpa_supplicant.service\n\nNo containers need to be restarted.\n\nUser sessions running outdated binaries:\n campusqa @ session #6: gdm-wayland-ses[17861]\n campusqa @ user manager service: gnome-shell[17956], systemd[17760]\n yuri @ session #4: sshd[1436]\n yuri @ user manager service: systemd[819]\n\nNo VM guests are running outdated hypervisor (qemu) binaries on this host.\nLog ended: 2026-10-16  09:29:17\n\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "systemctl",
+        "show",
+        "apt-daily.service",
+        "apt-daily-upgrade.service",
+        "unattended-upgrades.service",
+        "-p",
+        "Id",
+        "-p",
+        "ActiveState",
+        "-p",
+        "SubState",
+        "-p",
+        "ExecMainStartTimestamp",
+        "-p",
+        "ExecMainExitTimestamp"
+      ],
+      "returncode": 0,
+      "stdout": "ExecMainStartTimestamp=\nExecMainExitTimestamp=\nId=apt-daily.service\nActiveState=inactive\nSubState=dead\n\nExecMainStartTimestamp=\nExecMainExitTimestamp=\nId=apt-daily-upgrade.service\nActiveState=inactive\nSubState=dead\n\nExecMainStartTimestamp=Fri 2026-10-16 09:34:30 MST\nExecMainExitTimestamp=\nId=unattended-upgrades.service\nActiveState=active\nSubState=running\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "dpkg-query",
+        "-W",
+        "-f=${Package}\t${Version}\t${Architecture}\n",
+        "libwebkit2gtk-4.1-0",
+        "libegl-mesa0",
+        "libgl1-mesa-dri",
+        "libllvm20",
+        "mutter-common",
+        "gnome-shell",
+        "gdm3",
+        "systemd",
+        "systemd-resolved",
+        "systemd-timesyncd",
+        "libsystemd0",
+        "linux-image-6.8.0-142-generic"
+      ],
+      "returncode": 0,
+      "stdout": "gdm3\t46.2-1ubuntu1~24.04.9\tarm64\ngnome-shell\t46.0-0ubuntu6~24.04.16\tarm64\nlibegl-mesa0\t25.2.8-0ubuntu0.24.04.4\tarm64\nlibgl1-mesa-dri\t25.2.8-0ubuntu0.24.04.4\tarm64\nlibllvm20\t1:20.1.2-0ubuntu1~24.04.3\tarm64\nlibsystemd0\t255.4-1ubuntu8.18\tarm64\nlibwebkit2gtk-4.1-0\t2.52.6-0ubuntu0.24.04.1\tarm64\nlinux-image-6.8.0-142-generic\t6.8.0-142.142\tarm64\nmutter-common\t46.2-1ubuntu0.24.04.18\tall\nsystemd\t255.4-1ubuntu8.18\tarm64\nsystemd-resolved\t255.4-1ubuntu8.18\tarm64\nsystemd-timesyncd\t255.4-1ubuntu8.18\tarm64\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "uname",
+        "-a"
+      ],
+      "returncode": 0,
+      "stdout": "Linux lima-campus-linux-d5-noble-arm64 6.8.0-147-generic #147-Ubuntu SMP PREEMPT_DYNAMIC Thu Sep 24 11:39:52 UTC 2026 aarch64 aarch64 aarch64 GNU/Linux\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "df",
+        "-B1",
+        "/"
+      ],
+      "returncode": 0,
+      "stdout": "Filesystem       1B-blocks       Used   Available Use% Mounted on\n/dev/vda1      28003532800 8061894656 19924860928  29% /\n",
+      "stderr": ""
+    }
+  ],
+  "package_processes": [
+    {
+      "pid": 796,
+      "comm": "unattended-upgr",
+      "exe": "/usr/bin/python3.12",
+      "stat": "796 (unattended-upgr) S 1 796 796 0 -1 4194560 3104 0 21 0 2 1 0 0 20 0 2 0 383 113549312 5408 18446744073709551615 4194304 10541512 281474745706192 0 0 0 0 16781312 16387 0 0 0 17 1 0 0 0 0 0 10616216 12102016 331603968 281474745708060 281474745708154 281474745708154 281474745708477 0\n",
+      "cgroup": "0::/system.slice/unattended-upgrades.service\n"
+    }
+  ]
+}

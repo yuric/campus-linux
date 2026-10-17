@@ -1,0 +1,57 @@
+[
+  {
+    "path": "Island/assets/island-B3jZU801.js",
+    "sha256": "1a409b8e7bb93bd3bed44b430b347708518010a03f00ae56f99c89448ebeefcf",
+    "mode": "0o644"
+  },
+  {
+    "path": "Island/assets/island-BKmEIAej.css",
+    "sha256": "0d14030367618221d904e075d4a2d5e48039c61dcd1c0b1dbf73a289781d79c6",
+    "mode": "0o644"
+  },
+  {
+    "path": "Island/island.html",
+    "sha256": "eadbb3b349a470e1ea5e0b022dd86432136c7f9b17ced055f646062425d8e0ed",
+    "mode": "0o644"
+  },
+  {
+    "path": "Island/licenses/Campus-LICENSE",
+    "sha256": "33c10090cfdaf84eec1fa300a30619d34a1c2283f21410d085778096265d0b7c",
+    "mode": "0o644"
+  },
+  {
+    "path": "Island/licenses/Campus-NOTICE",
+    "sha256": "2fbc7cb83c241b4711fdef1f153d9107d2d83e1810fd85db4706ff6a66a2bbe9",
+    "mode": "0o644"
+  },
+  {
+    "path": "Island/licenses/react-19.3.0-LICENSE",
+    "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "mode": "0o644"
+  },
+  {
+    "path": "Island/licenses/react-dom-19.3.0-LICENSE",
+    "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "mode": "0o644"
+  },
+  {
+    "path": "Island/licenses/rolldown-1.2.8-LICENSE",
+    "sha256": "23ecfff35a5a2e80d92142f75228912c3b1abc4b5a8337a821ff4397e2f9f734",
+    "mode": "0o644"
+  },
+  {
+    "path": "Island/licenses/rolldown-1.2.8-THIRD-PARTY-LICENSE",
+    "sha256": "a877291d800ed43692f3f9ae09d8e01cc6f7293ad39d43896059c188ffbb8b7c",
+    "mode": "0o644"
+  },
+  {
+    "path": "Island/licenses/scheduler-0.28.0-LICENSE",
+    "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "mode": "0o644"
+  },
+  {
+    "path": "Island/licenses/three-0.186.0-LICENSE",
+    "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+    "mode": "0o644"
+  }
+]

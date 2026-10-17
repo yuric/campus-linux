@@ -92,3 +92,6 @@ pids
 *.tgz
 .yarn-integrity
 lib-cov
+
+# Disposable guest credential input; never stage private support material.
+/spikes/982/environment/private/

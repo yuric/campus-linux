@@ -1,0 +1,31 @@
+{
+  "observed_at": "2026-10-16T10:59:39.104332+00:00",
+  "source": "yuric/campus-macos@8e39806c5b1fb2ffeda6e55718a4fd2a4d2890da",
+  "command": "npm run verify:ios-export -- --input /private/tmp/campus-982-renderer-export --source 8e39806c5b1fb2ffeda6e55718a4fd2a4d2890da",
+  "observed_exit": 0,
+  "observed_stdout": "iOS Island export verified",
+  "manifest_sha256": "badcfcde2012ab1aef610f7a955c231b230580730d4d66ccdc6d4c187d6ef120",
+  "artifact_sha256": {
+    "Island/assets/island-1R8T8TpV.js": "366363e59aad9e84f52fcbcd49384efdea67d4952c0b019c2e9961db80bd5da2",
+    "Island/assets/island-BKmEIAej.css": "0d14030367618221d904e075d4a2d5e48039c61dcd1c0b1dbf73a289781d79c6",
+    "Island/island.html": "c7a702dad8e4478a72a6fedf4bb1b607794e2d0ca896ae7d0a3cb1754158b374",
+    "Island/licenses/Campus-LICENSE": "33c10090cfdaf84eec1fa300a30619d34a1c2283f21410d085778096265d0b7c",
+    "Island/licenses/Campus-NOTICE": "2fbc7cb83c241b4711fdef1f153d9107d2d83e1810fd85db4706ff6a66a2bbe9",
+    "Island/licenses/react-19.3.0-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "Island/licenses/react-dom-19.3.0-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "Island/licenses/rolldown-1.2.8-LICENSE": "23ecfff35a5a2e80d92142f75228912c3b1abc4b5a8337a821ff4397e2f9f734",
+    "Island/licenses/rolldown-1.2.8-THIRD-PARTY-LICENSE": "a877291d800ed43692f3f9ae09d8e01cc6f7293ad39d43896059c188ffbb8b7c",
+    "Island/licenses/scheduler-0.28.0-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "Island/licenses/three-0.186.0-LICENSE": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+  },
+  "claims": [
+    "provisional producer byte/license export only"
+  ],
+  "unproven": [
+    "Linux runtime",
+    "performance",
+    "desktop bridge parity",
+    "speech",
+    "task links"
+  ]
+}

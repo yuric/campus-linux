@@ -1,0 +1,54 @@
+{
+	"systeminfo": "WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CPU : NEON = 1 | ARM_FMA = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "tiny",
+		"multilingual": false,
+		"vocab": 51864,
+		"audio": {
+			"ctx": 1500,
+			"state": 384,
+			"head": 6,
+			"layer": 4
+		},
+		"text": {
+			"ctx": 448,
+			"state": 384,
+			"head": 6,
+			"layer": 4
+		},
+		"mels": 80,
+		"ftype": 1
+	},
+	"params": {
+		"model": "/home/campusqa/spike982/speech-offline2/tiny.en.bin",
+		"language": "en",
+		"translate": false
+	},
+	"result": {
+		"language": "en"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:04,040"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 4040
+			},
+			"text": " The Blue Notebook is beside the window. This is a synthetic speech test."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:04,040",
+				"to": "00:00:06,200"
+			},
+			"offsets": {
+				"from": 4040,
+				"to": 6200
+			},
+			"text": " Please edit the words before saving."
+		}
+	]
+}

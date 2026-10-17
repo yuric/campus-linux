@@ -1,0 +1,115 @@
+{
+  "scope": "real guest PulseAudio/PipeWire access and cancel using dedicated synthetic source only",
+  "probe_sha256": "5256cafe60bc33b4928831189c9c3b6db2d7459ee0bb30d9c17125e58961aad0",
+  "recorder_sha256": "e1af7155f3763b26c3158f8686af9fb76e7b6c17246615cfb84081f64b80d6f5",
+  "source": "campus982_synthetic_400b1518.monitor",
+  "sink": "campus982_synthetic_400b1518",
+  "server": "/run/user/1000/pulse/native",
+  "microphone_or_default_source_used": false,
+  "fixture_sha256": "5652875067982ca45b0aba111e247a186168f89a03a4ec80680ae2ed7bb688a2",
+  "requested_session": "wayland",
+  "commands": [
+    {
+      "argv": [
+        "loginctl",
+        "show-user",
+        "campusqa",
+        "-p",
+        "Display",
+        "--value"
+      ],
+      "uid": 1000,
+      "returncode": 0,
+      "stdout": "11\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "loginctl",
+        "show-session",
+        "11",
+        "-p",
+        "Type",
+        "-p",
+        "Class",
+        "-p",
+        "Active",
+        "-p",
+        "Service",
+        "-p",
+        "Remote"
+      ],
+      "uid": 1000,
+      "returncode": 0,
+      "stdout": "Remote=no\nService=gdm-password\nType=wayland\nClass=user\nActive=yes\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "pactl",
+        "info"
+      ],
+      "uid": 65534,
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Connection failure: Connection refused\npa_context_connect() failed: Connection refused\n"
+    },
+    {
+      "argv": [
+        "pactl",
+        "info"
+      ],
+      "uid": 1000,
+      "returncode": 0,
+      "stdout": "Server String: unix:/run/user/1000/pulse/native\nLibrary Protocol Version: 35\nServer Protocol Version: 35\nIs Local: yes\nClient Index: 50\nTile Size: 65472\nUser Name: campusqa\nHost Name: lima-campus-linux-d5-noble-arm64\nServer Name: PulseAudio (on PipeWire 1.0.5)\nServer Version: 15.0.0\nDefault Sample Specification: float32le 2ch 48000Hz\nDefault Channel Map: front-left,front-right\nDefault Sink: auto_null\nDefault Source: auto_null.monitor\nCookie: 1b48:0750\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "pactl",
+        "load-module",
+        "module-null-sink",
+        "sink_name=campus982_synthetic_400b1518",
+        "sink_properties=device.description=Campus982SyntheticOnly"
+      ],
+      "uid": 1000,
+      "returncode": 0,
+      "stdout": "536870913\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "pactl",
+        "unload-module",
+        "536870913"
+      ],
+      "uid": 1000,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "limits": "No product microphone consent UI, portal permission grant/deny, physical-device removal, or host microphone was tested.",
+  "session": {
+    "Remote": "no",
+    "Service": "gdm-password",
+    "Type": "wayland",
+    "Class": "user",
+    "Active": "yes"
+  },
+  "other_uid_server_access_denied": true,
+  "same_uid_server_access_allowed": true,
+  "cancellation": {
+    "recorder_was_running": true,
+    "stop_seconds": 0.0012027550000084375,
+    "returncode": -15
+  },
+  "synthetic_capture": {
+    "bytes": 53248,
+    "nonzero_samples_present": true,
+    "sha256": "ce68a2f4a406fd594f7a196043f13f2e0afd721d71c7d16dd78b1759b6c6da41"
+  },
+  "completed": true,
+  "synthetic_source_cleanup_completed": true,
+  "checks_passed": true
+}

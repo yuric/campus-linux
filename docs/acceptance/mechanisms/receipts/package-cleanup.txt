@@ -1,0 +1,7 @@
+(Reading database ... 109497 files and directories currently installed.)
+Removing campus-982-disposable-spike (0.982.2) ...
+removed test-only root fixture; user repositories/provider files untouched
+dpkg: warning: ignoring request to remove campus-982-disposable-spike which isn't installed
+removed test-only root fixture; user repositories/provider files untouched
+(Reading database ... 109495 files and directories currently installed.)
+Removing campus-982-links-disposable (0.982.1) ...

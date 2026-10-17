@@ -1,0 +1,34 @@
+{
+  "utc": "2026-10-16T17:05:18.237739+00:00",
+  "label": "wayland-final-always",
+  "observed_pids": [
+    4713,
+    4735,
+    4751,
+    4804
+  ],
+  "remaining": [],
+  "scopes": [
+    {
+      "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-env-4735.scope",
+      "parent_cgroup": "/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service",
+      "shared_graphical_parent": false,
+      "exists": false
+    },
+    {
+      "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-python3-4713.scope",
+      "holder": true,
+      "shared_graphical_parent": false,
+      "exists": false
+    }
+  ],
+  "process_scan": {
+    "returncode": 1,
+    "stdout": "",
+    "stderr": ""
+  },
+  "signals_sent": [],
+  "owned_processes_absent": true,
+  "owned_scopes_absent": true,
+  "shared_parent_cgroup_not_owned": false
+}

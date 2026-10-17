@@ -1,0 +1,47 @@
+{
+  "utc": "2026-10-16T17:30:16.479596+00:00",
+  "observed_pids": [
+    2999,
+    3036,
+    3054
+  ],
+  "remaining": [],
+  "scopes": [
+    {
+      "path": "/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-python3-2999.scope",
+      "exists": false
+    },
+    {
+      "path": "/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-python3-3036.scope",
+      "exists": false
+    },
+    {
+      "path": "/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service",
+      "exists": true
+    }
+  ],
+  "candidate_collector_processes": [],
+  "signals_sent": [],
+  "inhibitor_release": {
+    "utc": "2026-10-16T17:29:54.446112+00:00",
+    "reason": "owned stop file",
+    "elapsed_seconds": 54.87069029199995,
+    "holder_pid": 2999,
+    "cookie": 520663147,
+    "after": [],
+    "idle_inhibited": false,
+    "owned_inhibitor_absent": true
+  },
+  "crash_metadata": [
+    {
+      "path": "/var/crash/_usr_share_netplan_netplan.script.0.crash",
+      "bytes": 31462,
+      "mtime": 1792148210.723,
+      "inode": 87894
+    }
+  ],
+  "shared_parent_cgroup": "/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service",
+  "owned_scopes_absent": true,
+  "classification_utc": "2026-10-16T17:30:41.507202+00:00",
+  "derived_from": "cleanup-observation.json; exact launch parent/cgroup comparison"
+}

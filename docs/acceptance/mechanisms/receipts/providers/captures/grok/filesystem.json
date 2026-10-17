@@ -1,0 +1,32 @@
+[
+  {
+    "path": "command-00.txt",
+    "mode": "0o600",
+    "bytes": 27,
+    "symlink": false
+  },
+  {
+    "path": "command-01.txt",
+    "mode": "0o600",
+    "bytes": 7653,
+    "symlink": false
+  },
+  {
+    "path": "command-02.txt",
+    "mode": "0o600",
+    "bytes": 746,
+    "symlink": false
+  },
+  {
+    "path": "command-03.txt",
+    "mode": "0o600",
+    "bytes": 1116,
+    "symlink": false
+  },
+  {
+    "path": "scope",
+    "mode": "0o700",
+    "bytes": 4096,
+    "symlink": false
+  }
+]

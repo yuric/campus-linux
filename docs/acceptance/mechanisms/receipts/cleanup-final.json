@@ -1,0 +1,32 @@
+{
+  "scope": "Owned disposable fixture cleanup only; provider/user data and original login keyring preserved",
+  "removed_synthetic_private_key_paths": [
+    "fixtures-v2/private.pem",
+    "fixtures-v2/tauri-minisign/synthetic.key",
+    "fixtures-v2/tauri-minisign/wrong-key.key",
+    "package-fixtures/private.pem"
+  ],
+  "removed_disposable_ssh_key_lines": 1,
+  "other_authorized_key_bytes_preserved": true,
+  "fixture_paths_verified_absent": [
+    "/var/lib/campus-982-spike",
+    "/var/lib/campus-982-tauri-spike",
+    "/usr/local/libexec/campus-982-spike-install",
+    "/usr/local/libexec/campus-982-tauri-spike-install",
+    "/usr/local/libexec/campus-982-tauri-signature-verify",
+    "/etc/polkit-1/rules.d/00-campus-982-spike.rules",
+    "/etc/polkit-1/rules.d/00-campus-982-tauri-spike.rules",
+    "/usr/share/polkit-1/actions/dev.projectcampus.spike982.install.policy",
+    "/usr/share/polkit-1/actions/dev.projectcampus.spike982.tauriinstall.policy",
+    "/usr/lib/campus-982-disposable-spike/helper",
+    "/usr/lib/campus-982-links-disposable/handler.py",
+    "/home/campusqa/.config/systemd/user/campus-982-session-spike.service",
+    "/home/campusqa/.local/share/campus-982-spike/session"
+  ],
+  "polkit_state": "active",
+  "receipts_and_public_artifacts_preserved": true,
+  "utm_operated": false,
+  "host_disposable_ssh_key_directory_removed": true,
+  "lima_stopped_normally": true,
+  "gnome_idle_delay_restored_seconds": 300
+}

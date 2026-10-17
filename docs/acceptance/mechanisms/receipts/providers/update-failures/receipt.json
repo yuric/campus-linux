@@ -1,0 +1,188 @@
+{
+  "uname": [
+    "Linux",
+    "lima-campus-linux-d5-noble-arm64",
+    "6.8.0-142-generic",
+    "#142-Ubuntu SMP PREEMPT_DYNAMIC Wed Sep  2 14:30:29 UTC 2026",
+    "aarch64"
+  ],
+  "uid": 1000,
+  "network_interfaces": [
+    "lo"
+  ],
+  "records": [
+    {
+      "engine": "claude",
+      "version": "2.1.301",
+      "layout": "native-shaped extracted binary, not vendor installer-created",
+      "launcher": "/home/campusqa/spike982/provider-binaries/update-failures/claude/.local/bin/claude",
+      "resolved_after": "/home/campusqa/spike982/provider-binaries/update-failures/claude/.local/share/claude/versions/2.1.301",
+      "resolved_inside_layout": true,
+      "binary_sha256_before": "1e119036a802d359ba5f9886428e031586e8796f7a858d5a8ee179ac7b8604f0",
+      "binary_sha256_after": "1e119036a802d359ba5f9886428e031586e8796f7a858d5a8ee179ac7b8604f0",
+      "binary_unchanged": true,
+      "sentinel_unchanged": true,
+      "source_unchanged": true,
+      "concurrent_attempts": [
+        {
+          "argv": [
+            "/home/campusqa/spike982/provider-binaries/update-failures/claude/.local/bin/claude",
+            "update"
+          ],
+          "pid": 8048,
+          "returncode": 1,
+          "timeout": false,
+          "seconds": 2.405,
+          "capture": "update-failures/claude/update-0.txt",
+          "output_bytes": 749
+        },
+        {
+          "argv": [
+            "/home/campusqa/spike982/provider-binaries/update-failures/claude/.local/bin/claude",
+            "update"
+          ],
+          "pid": 8049,
+          "returncode": 1,
+          "timeout": false,
+          "seconds": 2.623,
+          "capture": "update-failures/claude/update-1.txt",
+          "output_bytes": 534
+        }
+      ],
+      "interpretation": "Only offline updater invocation and failure preservation measured; no successful update, rollback or active provider run proved."
+    },
+    {
+      "engine": "codex",
+      "version": "0.163.0-linux-arm64",
+      "layout": "standalone extracted binary; reference npm tree not tested",
+      "launcher": "/home/campusqa/spike982/provider-binaries/update-failures/codex/.local/bin/codex",
+      "resolved_after": "/home/campusqa/spike982/provider-binaries/update-failures/codex/.local/bin/codex",
+      "resolved_inside_layout": true,
+      "binary_sha256_before": "8a96f66d059d653e68bfd5f3c79337e6f1d7d170d80bf705eb7d0249b34c0ece",
+      "binary_sha256_after": "8a96f66d059d653e68bfd5f3c79337e6f1d7d170d80bf705eb7d0249b34c0ece",
+      "binary_unchanged": true,
+      "sentinel_unchanged": true,
+      "source_unchanged": true,
+      "concurrent_attempts": [
+        {
+          "argv": [
+            "/home/campusqa/spike982/provider-binaries/update-failures/codex/.local/bin/codex",
+            "update"
+          ],
+          "pid": 8100,
+          "returncode": 1,
+          "timeout": false,
+          "seconds": 0.03,
+          "capture": "update-failures/codex/update-0.txt",
+          "output_bytes": 419
+        },
+        {
+          "argv": [
+            "/home/campusqa/spike982/provider-binaries/update-failures/codex/.local/bin/codex",
+            "update"
+          ],
+          "pid": 8101,
+          "returncode": 1,
+          "timeout": false,
+          "seconds": 0.025,
+          "capture": "update-failures/codex/update-1.txt",
+          "output_bytes": 419
+        }
+      ],
+      "interpretation": "Only offline updater invocation and failure preservation measured; no successful update, rollback or active provider run proved."
+    },
+    {
+      "engine": "grok",
+      "version": "1.0.60",
+      "layout": "native-shaped extracted binary; requested older version unavailable offline",
+      "launcher": "/home/campusqa/spike982/provider-binaries/update-failures/grok/.grok/bin/grok",
+      "resolved_after": "/home/campusqa/spike982/provider-binaries/update-failures/grok/.grok/downloads/grok-linux-aarch64",
+      "resolved_inside_layout": true,
+      "binary_sha256_before": "665c286b66760eb1a5e7199f60fb8028a5a0d290cc8e9cdecba6c9b24af7b862",
+      "binary_sha256_after": "665c286b66760eb1a5e7199f60fb8028a5a0d290cc8e9cdecba6c9b24af7b862",
+      "binary_unchanged": true,
+      "sentinel_unchanged": true,
+      "source_unchanged": true,
+      "concurrent_attempts": [
+        {
+          "argv": [
+            "/home/campusqa/spike982/provider-binaries/update-failures/grok/.grok/bin/grok",
+            "update",
+            "--version",
+            "1.0.59"
+          ],
+          "pid": 8112,
+          "returncode": -9,
+          "timeout": true,
+          "seconds": 20.011,
+          "capture": "update-failures/grok/update-0.txt",
+          "output_bytes": 91
+        },
+        {
+          "argv": [
+            "/home/campusqa/spike982/provider-binaries/update-failures/grok/.grok/bin/grok",
+            "update",
+            "--version",
+            "1.0.59"
+          ],
+          "pid": 8113,
+          "returncode": -9,
+          "timeout": true,
+          "seconds": 20.121,
+          "capture": "update-failures/grok/update-1.txt",
+          "output_bytes": 91
+        }
+      ],
+      "interpretation": "Only offline updater invocation and failure preservation measured; no successful update, rollback or active provider run proved."
+    },
+    {
+      "engine": "agy",
+      "version": "1.4.0",
+      "layout": "native-shaped extracted binary, not vendor installer-created",
+      "launcher": "/home/campusqa/spike982/provider-binaries/update-failures/agy/.local/bin/agy",
+      "resolved_after": "/home/campusqa/spike982/provider-binaries/update-failures/agy/.local/bin/agy",
+      "resolved_inside_layout": true,
+      "binary_sha256_before": "51a1839c1055a9c80bbab0494e3adad38d4b83af9762166443438742e90651ca",
+      "binary_sha256_after": "51a1839c1055a9c80bbab0494e3adad38d4b83af9762166443438742e90651ca",
+      "binary_unchanged": true,
+      "sentinel_unchanged": true,
+      "source_unchanged": true,
+      "concurrent_attempts": [
+        {
+          "argv": [
+            "/home/campusqa/spike982/provider-binaries/update-failures/agy/.local/bin/agy",
+            "update"
+          ],
+          "pid": 8763,
+          "returncode": 1,
+          "timeout": false,
+          "seconds": 0.425,
+          "capture": "update-failures/agy/update-0.txt",
+          "output_bytes": 769
+        },
+        {
+          "argv": [
+            "/home/campusqa/spike982/provider-binaries/update-failures/agy/.local/bin/agy",
+            "update"
+          ],
+          "pid": 8764,
+          "returncode": 1,
+          "timeout": false,
+          "seconds": 0.422,
+          "capture": "update-failures/agy/update-1.txt",
+          "output_bytes": 769
+        }
+      ],
+      "interpretation": "Only offline updater invocation and failure preservation measured; no successful update, rollback or active provider run proved."
+    }
+  ],
+  "not_proven": [
+    "successful vendor update",
+    "previous-version recovery",
+    "authenticity after update",
+    "active provider run/install concurrency",
+    "reference Codex npm layout",
+    "vendor-created installation layouts",
+    "disk-full or interruption during successful promotion"
+  ]
+}

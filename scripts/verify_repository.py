@@ -11,6 +11,7 @@ COMMANDS = [
     ["python3", "-B", "-m", "unittest", "discover", "-s", "scripts/tests", "-v"],
     ["scripts/check-client-boundary.sh"],
     ["python3", "-B", "scripts/check_acceptance.py"],
+    ["python3", "-B", "scripts/check_mechanism_evidence.py"],
 ]
 
 

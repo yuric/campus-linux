@@ -1,0 +1,5 @@
+gpg: keybox '/home/campusqa/spike982/gemini-api-key/gpg/pubring.kbx' created
+gpg: /home/campusqa/spike982/gemini-api-key/gpg/trustdb.gpg: trustdb created
+gpg: key C43CEC45C17AB93C: public key "Richard Lau <richard.lau@ibm.com>" imported
+gpg: Total number processed: 1
+gpg:               imported: 1

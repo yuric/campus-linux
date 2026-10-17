@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/campusqa/spike982/apport-activation-1196/apport-activation-pair.py", line 217, in <module>
+    main()
+  File "/home/campusqa/spike982/apport-activation-1196/apport-activation-pair.py", line 210, in main
+    result['cgroup_absent_after_cleanup']=cleanup(unit,pidfd)
+                                          ^^^^^^^^^^^^^^^^^^^
+  File "/home/campusqa/spike982/apport-activation-1196/apport-activation-pair.py", line 80, in cleanup
+    command(['systemctl', 'stop', unit], timeout=5)
+  File "/home/campusqa/spike982/apport-activation-1196/apport-activation-pair.py", line 49, in command
+    raise RuntimeError('fixed command failed: ' + output.decode(errors='replace')[:1000])
+RuntimeError: fixed command failed: Failed to stop campus982-activation-1196-positive-2356.service: Unit campus982-activation-1196-positive-2356.service not loaded.
+

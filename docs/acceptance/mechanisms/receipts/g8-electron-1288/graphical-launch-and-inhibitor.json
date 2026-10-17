@@ -1,0 +1,225 @@
+{
+  "preflight-launch.json": {
+    "utc": "2026-10-16T17:29:32.029291+00:00",
+    "boot_id": "d4cb2166-533b-4911-9ee8-96398f32773e",
+    "uid": 1000,
+    "pid": {
+      "pid": 3036,
+      "stat": "3036 (python3) R 2458 2458 2458 0 -1 4194304 2148 371 0 0 1 0 0 0 20 0 1 0 35380 27066368 4096 18446744073709551615 4194304 10541512 281474349040832 0 0 0 0 16781312 2 0 0 0 17 2 0 0 0 0 0 10616216 12102016 567558144 281474349042067 281474349042179 281474349042179 281474349043687 0\n",
+      "starttime": 35380,
+      "ppid": 2458,
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service\n",
+      "uid": 1000,
+      "comm": "python3",
+      "sd_pid_get_session": {
+        "returncode": -61,
+        "session": null
+      }
+    },
+    "parent": {
+      "pid": 2458,
+      "stat": "2458 (gnome-shell) S 2325 2458 2458 0 -1 4194304 368666 128 49 0 389 112 0 0 20 0 23 0 10297 5029113856 101863 18446744073709551615 207338406805504 207338406823996 281474350885856 0 0 0 0 16781312 17656 0 0 0 17 1 0 0 0 0 0 207338406934976 207338406936928 207339105136640 281474350889610 281474350889631 281474350889631 281474350890979 0\n",
+      "starttime": 10297,
+      "ppid": 2325,
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service\n",
+      "uid": 1000,
+      "comm": "gnome-shell",
+      "sd_pid_get_session": {
+        "returncode": -61,
+        "session": null
+      }
+    },
+    "environment": {
+      "DISPLAY": ":0",
+      "WAYLAND_DISPLAY": "wayland-0",
+      "XDG_RUNTIME_DIR": "/run/user/1000",
+      "XDG_SESSION_ID": null,
+      "XDG_SESSION_TYPE": "wayland",
+      "GDK_BACKEND": null,
+      "LIBGL_ALWAYS_SOFTWARE": "1",
+      "XDG_CURRENT_DESKTOP": "ubuntu:GNOME",
+      "XDG_SESSION_DESKTOP": "ubuntu"
+    },
+    "active_session": {
+      "argv": [
+        "loginctl",
+        "show-session",
+        "7"
+      ],
+      "returncode": 0,
+      "stdout": "Id=7\nUser=1000\nName=campusqa\nTimestamp=Fri 2026-10-16 10:25:20 MST\nTimestampMonotonic=102071264\nVTNr=2\nSeat=seat0\nTTY=tty2\nRemote=no\nService=gdm-password\nScope=session-7.scope\nLeader=2301\nAudit=7\nType=wayland\nClass=user\nActive=yes\nState=active\nIdleHint=no\nIdleSinceHint=0\nIdleSinceHintMonotonic=0\nLockedHint=no\n",
+      "stderr": ""
+    },
+    "sessions": {
+      "argv": [
+        "loginctl",
+        "list-sessions"
+      ],
+      "returncode": 0,
+      "stdout": "SESSION  UID USER     SEAT  TTY  STATE  IDLE SINCE\n      4  501 yuri     -     -    active no   -\n      7 1000 campusqa seat0 tty2 active no   -\n\n2 sessions listed.\n",
+      "stderr": ""
+    },
+    "uname": {
+      "argv": [
+        "uname",
+        "-a"
+      ],
+      "returncode": 0,
+      "stdout": "Linux lima-campus-linux-d5-noble-arm64 6.8.0-147-generic #147-Ubuntu SMP PREEMPT_DYNAMIC Thu Sep 24 11:39:52 UTC 2026 aarch64 aarch64 aarch64 GNU/Linux\n",
+      "stderr": ""
+    },
+    "os_release": "PRETTY_NAME=\"Ubuntu 24.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.5 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo\n",
+    "packages": {
+      "argv": [
+        "dpkg-query",
+        "-W",
+        "-f=${Package}\t${Version}\t${Architecture}\n",
+        "libwebkit2gtk-4.1-0",
+        "libegl-mesa0",
+        "libgl1-mesa-dri",
+        "libllvm20",
+        "mutter-common",
+        "gnome-shell",
+        "gdm3"
+      ],
+      "returncode": 0,
+      "stdout": "gdm3\t46.2-1ubuntu1~24.04.9\tarm64\ngnome-shell\t46.0-0ubuntu6~24.04.16\tarm64\nlibegl-mesa0\t25.2.8-0ubuntu0.24.04.4\tarm64\nlibgl1-mesa-dri\t25.2.8-0ubuntu0.24.04.4\tarm64\nlibllvm20\t1:20.1.2-0ubuntu1~24.04.3\tarm64\nlibwebkit2gtk-4.1-0\t2.52.6-0ubuntu0.24.04.1\tarm64\nmutter-common\t46.2-1ubuntu0.24.04.18\tall\n",
+      "stderr": ""
+    },
+    "cpu_count": 4,
+    "meminfo": "MemTotal:        6048824 kB\nMemFree:         3974152 kB\nMemAvailable:    5193656 kB\nBuffers:           25556 kB\nCached:          1355148 kB\nSwapCached:            0 kB\nActive:           926432 kB\nInactive:         889916 kB\nActive(anon):     484932 kB\nInactive(anon):        0 kB\nActive(file):     441500 kB\nInactive(file):   889916 kB\nUnevictable:       52668 kB\nMlocked:           26252 kB\nSwapTotal:             0 kB\nSwapFree:              0 kB\nZswap:                 0 kB\nZswapped:              0 kB\nDirty:                76 kB\nWriteback:             0 kB\nAnonPages:        488184 kB\nMapped:           235716 kB\nShmem:             41820 kB\nKReclaimable:      47524 kB\nSlab:             123124 kB\nSReclaimable:      47524 kB\nSUnreclaim:        75600 kB\nKernelStack:        6872 kB\nShadowCallStack:    1744 kB\nPageTables:        12180 kB\nSecPageTables:         0 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:     3024412 kB\nCommitted_AS:    3197840 kB\nVmallocTotal:   133141626880 kB\nVmallocUsed:       21628 kB\nVmallocChunk:          0 kB\nPercpu:             2480 kB\nHardwareCorrupted:     0 kB\nAnonHugePages:         0 kB\nShmemHugePages:        0 kB\nShmemPmdMapped:        0 kB\nFileHugePages:         0 kB\nFilePmdMapped:         0 kB\nCmaTotal:          32768 kB\nCmaFree:           29696 kB\nHugePages_Total:       0\nHugePages_Free:        0\nHugePages_Rsvd:        0\nHugePages_Surp:        0\nHugepagesize:       2048 kB\nHugetlb:               0 kB\n",
+    "display_state": {
+      "argv": [
+        "gdbus",
+        "call",
+        "--session",
+        "--dest",
+        "org.gnome.Mutter.DisplayConfig",
+        "--object-path",
+        "/org/gnome/Mutter/DisplayConfig",
+        "--method",
+        "org.gnome.Mutter.DisplayConfig.GetCurrentState"
+      ],
+      "returncode": 0,
+      "stdout": "(uint32 1, [(('Virtual-1', 'RHT', 'QEMU Monitor', '0x00000000'), [('5120x2160@50.000', 5120, 2160, 50.0, 3.0, [1.0, 2.0, 3.0, 4.0], @a{sv} {}), ('4096x2160@50.000', 4096, 2160, 50.0, 3.0, [1.0, 2.0, 3.0, 4.0], {}), ('3840x2160@60.000', 3840, 2160, 60.0, 2.0, [1.0, 2.0, 3.0, 4.0], {}), ('3840x2160@59.940', 3840, 2160, 59.940101623535156, 2.0, [1.0, 2.0, 3.0, 4.0], {}), ('3840x2160@50.000', 3840, 2160, 50.0, 2.0, [1.0, 2.0, 3.0, 4.0], {}), ('2560x1080@50.000', 2560, 1080, 50.0, 1.0, [1.0, 2.0], {}), ('2048x1152@60.000', 2048, 1152, 60.0, 1.0, [1.0, 2.0], {}), ('1920x1440@60.000', 1920, 1440, 60.0, 1.0, [1.0, 2.0], {}), ('1920x1200@59.885', 1920, 1200, 59.884601593017578, 1.0, [1.0, 2.0], {'is-current': <true>}), ('1920x1080@60.000', 1920, 1080, 60.0, 1.0, [1.0, 2.0], {}), ('1920x1080@50.000', 1920, 1080, 50.0, 1.0, [1.0, 2.0], {}), ('1856x1392@59.995', 1856, 1392, 59.995182037353516, 1.0, [1.0, 2.0], {}), ('1792x1344@60.000', 1792, 1344, 59.999790191650391, 1.0, [1.0, 2.0], {}), ('1680x1050@59.954', 1680, 1050, 59.954250335693359, 1.0, [1.0, 2.0], {}), ('1600x1200@60.000', 1600, 1200, 60.0, 1.0, [1.0, 2.0], {}), ('1440x900@59.887', 1440, 900, 59.887443542480469, 1.0, [1.0], {}), ('1400x1050@59.978', 1400, 1050, 59.978443145751953, 1.0, [1.0], {}), ('1360x768@60.015', 1360, 768, 60.015163421630859, 1.0, [1.0], {}), ('1280x1024@60.020', 1280, 1024, 60.019741058349609, 1.0, [1.0], {}), ('1280x960@60.000', 1280, 960, 60.0, 1.0, [1.0], {}), ('1280x800@74.994', 1280, 800, 74.993850708007812, 1.0, [1.0], {'is-preferred': <true>}), ('1280x768@59.870', 1280, 768, 59.870227813720703, 1.0, [1.0], {}), ('1024x768@60.004', 1024, 768, 60.003841400146484, 1.0, [1.0], {}), ('800x600@60.317', 800, 600, 60.316539764404297, 1.0, [1.0], {})], {'is-builtin': <false>, 'display-name': <'Red Hat, Inc. 15\"'>})], [(0, 0, 1.0, uint32 0, true, [('Virtual-1', 'RHT', 'QEMU Monitor', '0x00000000')], @a{sv} {})], {'renderer': <'native'>, 'layout-mode': <uint32 2>, 'legacy-ui-scaling-factor': <1>})\n",
+      "stderr": ""
+    },
+    "animations": {
+      "argv": [
+        "gsettings",
+        "get",
+        "org.gnome.desktop.interface",
+        "enable-animations"
+      ],
+      "returncode": 0,
+      "stdout": "true\n",
+      "stderr": ""
+    },
+    "guest_free_bytes": 19454504960,
+    "wrapper_sha256": "e0e86a08e952e99f2cad7aedb0a2bdae986aec15f500ccf1984877f23abbf002",
+    "display_peers": {
+      "wayland": {
+        "pid": 2458,
+        "uid": 1000,
+        "gid": 1001,
+        "process": {
+          "pid": 2458,
+          "stat": "2458 (gnome-shell) R 2325 2458 2458 0 -1 4194304 368878 128 49 0 389 112 0 0 20 0 23 0 10297 5029113856 101863 18446744073709551615 207338406805504 207338406823996 281474350885856 0 0 0 0 16781312 17656 0 0 0 17 1 0 0 0 0 0 207338406934976 207338406936928 207339105136640 281474350889610 281474350889631 281474350889631 281474350890979 0\n",
+          "starttime": 10297,
+          "ppid": 2325,
+          "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service\n",
+          "uid": 1000,
+          "comm": "gnome-shell",
+          "sd_pid_get_session": {
+            "returncode": -61,
+            "session": null
+          }
+        }
+      },
+      "x11": {
+        "pid": 2458,
+        "uid": 1000,
+        "gid": 1001,
+        "process": {
+          "pid": 2458,
+          "stat": "2458 (gnome-shell) R 2325 2458 2458 0 -1 4194304 368880 128 49 0 389 112 0 0 20 0 23 0 10297 5029113856 101863 18446744073709551615 207338406805504 207338406823996 281474350885856 0 0 0 0 16781312 17656 0 0 0 17 1 0 0 0 0 0 207338406934976 207338406936928 207339105136640 281474350889610 281474350889631 281474350889631 281474350890979 0\n",
+          "starttime": 10297,
+          "ppid": 2325,
+          "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service\n",
+          "uid": 1000,
+          "comm": "gnome-shell",
+          "sd_pid_get_session": {
+            "returncode": -61,
+            "session": null
+          }
+        }
+      }
+    },
+    "session_leader": {
+      "pid": 2301,
+      "stat": "2301 (gdm-session-wor) S 935 935 935 0 -1 4194560 8962 413 1 0 2 1 0 0 20 0 4 0 6790 248741888 2205 18446744073709551615 1 1 0 0 0 0 0 4096 16897 0 0 0 17 1 0 0 0 0 0 0 0 0 0 0 0 0 0\n",
+      "starttime": 6790,
+      "ppid": 935,
+      "cgroup": "0::/user.slice/user-1000.slice/session-7.scope\n",
+      "uid": 0,
+      "comm": "gdm-session-wor",
+      "sd_pid_get_session": {
+        "returncode": 0,
+        "session": "7"
+      }
+    }
+  },
+  "inhibitor-start.json": {
+    "utc": "2026-10-16T17:28:59.579830+00:00",
+    "boot_id": "d4cb2166-533b-4911-9ee8-96398f32773e",
+    "holder": {
+      "pid": 2999,
+      "starttime": 32132,
+      "stat": "2999 (python3) R 2458 2458 2458 0 -1 4194304 2767 371 0 0 3 1 0 0 20 0 4 0 32132 262692864 5663 18446744073709551615 4194304 10541512 281474864035472 0 0 0 0 16781312 24578 0 0 0 17 0 0 0 0 0 0 10616216 12102016 159907840 281474864036265 281474864036355 281474864036355 281474864037863 0\n",
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-python3-2999.scope\n",
+      "sd_pid_get_session": {
+        "returncode": -61,
+        "session": null
+      }
+    },
+    "parent": {
+      "pid": 2458,
+      "starttime": 10297,
+      "stat": "2458 (gnome-shell) S 2325 2458 2458 0 -1 4194304 307127 128 49 0 292 82 0 0 20 0 23 0 10297 5029105664 101799 18446744073709551615 207338406805504 207338406823996 281474350885856 0 0 0 0 16781312 17656 0 0 0 17 3 0 0 0 0 0 207338406934976 207338406936928 207339105136640 281474350889610 281474350889631 281474350889631 281474350890979 0\n",
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service\n",
+      "sd_pid_get_session": {
+        "returncode": -61,
+        "session": null
+      }
+    },
+    "session": "Id=7\nUser=1000\nName=campusqa\nTimestamp=Fri 2026-10-16 10:25:20 MST\nTimestampMonotonic=102071264\nVTNr=2\nSeat=seat0\nTTY=tty2\nRemote=no\nService=gdm-password\nScope=session-7.scope\nLeader=2301\nAudit=7\nType=wayland\nClass=user\nActive=yes\nState=active\nIdleHint=no\nIdleSinceHint=0\nIdleSinceHintMonotonic=0\nLockedHint=no",
+    "connection_unique_name": ":1.80",
+    "idle_delay": "uint32 300",
+    "lock_enabled": "true",
+    "source_sha256": "2b9f198db2ae7ba533ef79c16627a1a2c228db549cd1d29f59d46796f8777abd",
+    "before": [],
+    "flags": 8,
+    "absolute_lifetime_bound_seconds": 1200,
+    "normal_deadline_seconds": 1170,
+    "api_documentation": "https://gnome.pages.gitlab.gnome.org/gnome-session/re04.html",
+    "cookie": 520663147,
+    "after": [
+      {
+        "path": "/org/gnome/SessionManager/Inhibitor1",
+        "app_id": "campus-g8-982-wayland-electron",
+        "flags": 8
+      }
+    ],
+    "idle_inhibited": true
+  },
+  "inhibitor-release.json": {
+    "utc": "2026-10-16T17:29:54.446112+00:00",
+    "reason": "owned stop file",
+    "elapsed_seconds": 54.87069029199995,
+    "holder_pid": 2999,
+    "cookie": 520663147,
+    "after": [],
+    "idle_inhibited": false,
+    "owned_inhibitor_absent": true
+  }
+}

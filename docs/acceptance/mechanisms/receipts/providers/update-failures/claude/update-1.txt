@@ -1,0 +1,8 @@
+Current version: 2.1.301
+Checking for updates to latest version...
+
+Warning: Native installation exists but ~/.local/bin is not in your PATH
+Fix: Run: echo 'export PATH="$HOME/.local/bin:$PATH"' >> your shell config file then open a new terminal or run: source your shell config file
+Error: Failed to install native update
+TelemetrySafeError: Failed to fetch version from https://downloads.claude.ai/claude-code-releases/latest after 3 attempt(s): getaddrinfo EAI_AGAIN downloads.claude.ai
+Try running "claude doctor" for diagnostics

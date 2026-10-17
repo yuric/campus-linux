@@ -1,0 +1,28 @@
+{
+  "argv": [
+    "python3",
+    "-B",
+    "/home/campusqa/spike982/g8-timing-1268/repo/spikes/982/renderer/capture-gpu.py"
+  ],
+  "utc": "2026-10-16T17:04:17.439457+00:00",
+  "timeout_seconds": 25,
+  "launch": {
+    "pid": 4751,
+    "stat": "4751 (python3) R 4735 4751 4751 0 -1 4194304 18 0 0 0 0 0 0 0 20 0 1 0 179152 8228864 96 18446744073709551615 4194304 10541512 281474780336912 0 0 0 0 0 0 0 0 0 17 2 0 0 0 0 0 10616216 12102016 459595776 281474780338544 281474780338634 281474780338634 281474780340199 0\n",
+    "starttime": 179152,
+    "ppid": 4735,
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-env-4735.scope\n",
+    "uid": 1000,
+    "comm": "python3",
+    "sd_pid_get_session": {
+      "returncode": -61,
+      "session": null
+    }
+  },
+  "returncode": 0,
+  "after": {
+    "pid": 4751,
+    "error": "[Errno 2] No such file or directory: '/proc/4751/stat'"
+  },
+  "finished_utc": "2026-10-16T17:04:21.900183+00:00"
+}

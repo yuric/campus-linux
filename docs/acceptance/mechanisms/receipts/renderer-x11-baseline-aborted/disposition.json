@@ -1,0 +1,5 @@
+{
+  "status": "aborted by operator for disposable credential remediation",
+  "reason": "Serial recovery prompt self-review found echo ambiguity; whole series is not accepted or compared. All completed runs retained; no slow run discarded for performance.",
+  "next": "Fresh complete five-run series after remediation"
+}

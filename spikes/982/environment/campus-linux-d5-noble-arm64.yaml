@@ -1,0 +1,42 @@
+minimumLimaVersion: 2.0.0
+vmType: qemu
+arch: aarch64
+cpus: 4
+memory: 6GiB
+disk: 28GiB
+images:
+  - location: https://cloud-images.ubuntu.com/releases/noble/release-20260926/ubuntu-24.04-server-cloudimg-arm64.img
+    arch: aarch64
+    digest: sha256:1d6bffe64b848468ac97f821d369a4846d983de1800ccf6b5ec8853e85cefc55
+mounts: []
+ssh:
+  forwardAgent: false
+  loadDotSSHPubKeys: false
+  forwardX11: false
+containerd:
+  system: false
+  user: false
+video:
+  display: vnc
+  vnc:
+    display: "127.0.0.1:15"
+portForwards:
+  - guestIP: "0.0.0.0"
+    proto: any
+    ignore: true
+provision:
+  - mode: system
+    script: |
+      #!/bin/bash
+      set -eu
+      export DEBIAN_FRONTEND=noninteractive
+      apt-get update
+      apt-get install -y --no-install-recommends ubuntu-desktop-minimal gdm3 \
+        gnome-keyring libpam-gnome-keyring libsecret-tools seahorse \
+        dbus-user-session polkitd pkexec gnome-terminal mesa-utils
+      id campusqa >/dev/null 2>&1 || useradd -m -s /bin/bash -G sudo campusqa
+      netplan set --origin-hint campus-982 renderer=networkd
+      netplan set --origin-hint campus-982 ethernets.eth0.renderer=networkd
+      netplan apply
+      systemctl set-default graphical.target
+      systemctl enable gdm3

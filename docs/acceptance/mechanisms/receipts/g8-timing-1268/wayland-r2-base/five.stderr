@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/campusqa/spike982/g8-timing-1268/repo/spikes/982/renderer/run-five.py", line 23, in <module>
+    subprocess.run([sys.executable,str(base/'run-webkit.py'),'--native-gpu-receipt',str(a.native_gpu_receipt),'--compositing-policy',freeze['compositing_policy'],str(a.export),str(a.frozen),str(out)],env=env,stdout=log,stderr=subprocess.STDOUT,timeout=125,check=True)
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/usr/bin/python3', '/home/campusqa/spike982/g8-timing-1268/repo/spikes/982/renderer/run-webkit.py', '--native-gpu-receipt', '/home/campusqa/spike982/g8-timing-1268/wayland-r2-base/gpu.json', '--compositing-policy', 'on-demand', '/home/campusqa/spike982/g8-timing-1268/desktop-first', '/home/campusqa/spike982/g8-timing-1268/wayland-r2-base/timing-freeze.json', '/home/campusqa/spike982/g8-timing-1268/wayland-r2-base/five/run-3.json']' returned non-zero exit status 1.

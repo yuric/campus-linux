@@ -1,0 +1,145 @@
+{
+  "kind": "preflight_failure",
+  "errors": [
+    "No complete capture in 115 seconds",
+    "Actual candidate native llvmpipe evidence absent"
+  ],
+  "freeze": {},
+  "input_hashes": {
+    "measure.js": "0d87b9cd2bb1e3e79f0bbd54c7508c23d3e8660e9cece03338bf708d31941465",
+    "fixture.json": "16dc931ccaa50a62d350beba44bc64a5a858ed655eb47637f5fda7fedf97d074",
+    "desktop-producer-manifest.json": "7b5fabefd830d3cd3d3577da1c4cb4ba55217de0f7eb5b5bbfc9501443428f09",
+    "summarize.py": "fd635892185d0fd6fda90a495beebbde42a693d489ef9f877f7874926b14f179",
+    "electron/main.cjs": "7725df63d064728c3dffd131e52af8e87f76ac40983a6ea4574d4b59744b4d62",
+    "electron/preload.cjs": "41af414ea948ebf3dde61115a4204347527d90884e64bd367c56b6c670beb08e",
+    "electron/run-five.py": "6b3c6dceb7dd90b8a07bbde4a113f961748ef52ac06238cdea5abbe87a5cc4e7",
+    "electron/freeze.py": "8574ae97a587b4c53e7fca83e1fe03ec45528f7124ae98380b2cd6c29e1505d7",
+    "electron/source.json": "add54d17a7efe6d9714cb11d36f175fcd3988e24c0ef6c67d24a6544f92c10fc",
+    "motion_evidence.py": "9f369d1770cae5914029e58559cb1ce0f9d1bf9e46cb5c35152f4877d17944f2",
+    "executable": "730d44d5aefb6a969b209cf8ee3e843bd873a06c297bf2c409fbb1cebcb3e6bc"
+  },
+  "rendering_env": {
+    "LIBGL_ALWAYS_SOFTWARE": "1",
+    "GDK_BACKEND": null,
+    "MESA_LOADER_DRIVER_OVERRIDE": null,
+    "GALLIUM_DRIVER": null,
+    "EGL_PLATFORM": "wayland"
+  },
+  "runtime": {
+    "node": "24.22.0",
+    "acorn": "8.18.0",
+    "ada": "4.0.0",
+    "amaro": "1.1.11",
+    "ares": "1.34.8",
+    "brotli": "1.2.0",
+    "cldr": "48.0",
+    "icu": "78.2",
+    "llhttp": "9.4.3",
+    "merve": "1.2.2",
+    "modules": "149",
+    "napi": "10",
+    "nbytes": "0.1.4",
+    "ncrypto": "0.0.1",
+    "nghttp2": "1.70.0",
+    "nghttp3": "",
+    "ngtcp2": "",
+    "openssl": "0.0.0",
+    "simdjson": "4.6.11",
+    "simdutf": "7.7.0",
+    "sqlite": "3.53.4",
+    "tz": "2026d",
+    "undici": "7.29.1",
+    "unicode": "17.0",
+    "uv": "1.52.1",
+    "uvwasi": "0.0.23",
+    "v8": "15.2.124.43-electron.0",
+    "zlib": "1.3.2.1-motley",
+    "zstd": "1.6.0",
+    "electron": "44.8.0",
+    "chrome": "152.0.7977.167"
+  },
+  "native_gpu": null,
+  "gpu_feature_status": {
+    "2d_canvas": "disabled_software",
+    "direct_rendering_display_compositor": "disabled_off_ok",
+    "gpu_compositing": "disabled_software",
+    "multiple_raster_threads": "disabled_off",
+    "opengl": "disabled_off",
+    "rasterization": "disabled_software",
+    "raw_draw": "disabled_off_ok",
+    "skia_graphite": "disabled_off",
+    "trees_in_viz": "disabled_off",
+    "video_decode": "disabled_software",
+    "video_encode": "disabled_software",
+    "vulkan": "disabled_off",
+    "webgl": "disabled_off",
+    "webgpu": "disabled_off",
+    "webgpu_on_vk_via_gl_interop": "disabled_off",
+    "webnn": "disabled_off"
+  },
+  "process_graphics": [
+    {
+      "pid": 5620,
+      "comm": "electron",
+      "children": [
+        5630,
+        5631,
+        5709
+      ],
+      "software_threads": []
+    },
+    {
+      "pid": 5709,
+      "comm": "electron",
+      "children": [],
+      "software_threads": []
+    },
+    {
+      "pid": 5631,
+      "comm": "chrome-sandbox",
+      "children": [
+        5632
+      ],
+      "software_threads": []
+    },
+    {
+      "pid": 5632,
+      "comm": "electron",
+      "children": [
+        5634
+      ],
+      "software_threads": []
+    },
+    {
+      "pid": 5634,
+      "comm": "electron",
+      "children": [],
+      "software_threads": []
+    },
+    {
+      "pid": 5630,
+      "comm": "electron",
+      "children": [
+        5705
+      ],
+      "software_threads": []
+    },
+    {
+      "pid": 5705,
+      "comm": "electron",
+      "children": [],
+      "software_threads": [
+        "llvmpipe-0",
+        "llvmpipe-1",
+        "llvmpipe-2",
+        "llvmpipe-3"
+      ]
+    }
+  ],
+  "resources": [],
+  "blocked_requests": [],
+  "diagnostics": {
+    "last_phase": "debugger-enable",
+    "utc": "2026-10-17T04:11:11.008Z"
+  }
+}

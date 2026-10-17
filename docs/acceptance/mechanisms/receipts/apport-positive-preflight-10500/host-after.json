@@ -1,0 +1,7 @@
+{
+  "utc": "2026-10-16T13:11:31.537077+00:00",
+  "host_free_bytes": 23624073216,
+  "lima": "Stopped",
+  "cleanup": "Only owned transient unit/process stopped; no artifact/cache deletion",
+  "published_head_unchanged": "04e0fb1229c808008d8ec61cddcfc8dc9d4f5fae"
+}

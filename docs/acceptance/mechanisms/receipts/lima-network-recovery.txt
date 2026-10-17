@@ -1,0 +1,43 @@
+sudo -n sh -c 'netplan set --origin-hint campus-982 ethernets.eth0.renderer=networkd; netplan apply; systemctl restart ssh; ip -br address; netplan get'; printf '\nCAMPUS982_DONE\n'
+[?2004l[0;1;31mFailed to start NetworkManager.service: Unit NetworkManager.service not found.[0m
+Traceback (most recent call last):
+  File "/usr/sbin/netplan", line 23, in <module>
+    netplan.main()
+  File "/usr/share/netplan/netplan_cli/cli/core.py", line 59, in main
+    self.run_command()
+  File "/usr/share/netplan/netplan_cli/cli/utils.py", line 332, in run_command
+    self.func()
+  File "/usr/share/netplan/netplan_cli/cli/commands/apply.py", line 62, in run
+    self.run_command()
+  File "/usr/share/netplan/netplan_cli/cli/utils.py", line 332, in run_command
+    self.func()
+  File "/usr/share/netplan/netplan_cli/cli/commands/apply.py", line 297, in command_apply
+    utils.systemctl_network_manager('start', sync=sync)
+  File "/usr/share/netplan/netplan_cli/cli/utils.py", line 106, in systemctl_network_manager
+    return systemctl(action, [NM_SERVICE_NAME], sync)  # pragma: nocover (covered in autopkgtest)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/share/netplan/netplan_cli/cli/utils.py", line 118, in systemctl
+    subprocess.check_call(command)
+  File "/usr/lib/python3.12/subprocess.py", line 413, in check_call
+    raise CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command '['systemctl', 'start', '--no-block', 'NetworkManager.service']' returned non-zero exit status 5.
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+eth0             UP             192.168.5.15/24 metric 200 fe80::5055:55ff:fe03:92cd/64 
+network:
+  version: 2
+  renderer: NetworkManager
+  ethernets:
+    eth0:
+      renderer: networkd
+      match:
+        macaddress: "52:55:55:03:92:cd"
+      nameservers:
+        addresses:
+        - 192.168.5.3
+      dhcp-identifier: "mac"
+      dhcp4: true
+      dhcp4-overrides:
+        route-metric: 200
+      set-name: "eth0"
+
+CAMPUS982_DONE

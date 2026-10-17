@@ -1,0 +1,53 @@
+{
+  "kind": "authoritative correction of invalid harness interpretation",
+  "authority": {
+    "task": 982,
+    "comment": 10413,
+    "created_at": "2026-10-16T11:38:43.084Z",
+    "author": "human coordinator; identity retained on Campus task #982"
+  },
+  "superseded_receipt": {
+    "path": "docs/acceptance/mechanisms/receipts/zoom-clamp-analysis.json",
+    "sha256": "d023a10bb529bbda7e009b4fcd1ea5e44251679f11c1e1a3c1a0313126823b5c",
+    "preserved_unchanged": true
+  },
+  "decision": "Absolute0.75/1/1.5 are reachable; v2 initialized relative wheel state to1 while actual focus overview was0.46665. Harness units bug, not producer defect. Keep producer/protocol/thresholds unchanged.",
+  "replacement": "absolute-zoom-v3 initializes actualzoom1 through production wheel and freshly rendered mainprojection before both clocks; untimed motionproof required before timing freeze.",
+  "repaired_guest_proof": "unobserved; only local control-flow simulation and syntax/boundary checks completed",
+  "source_unchanged": "yuric/campus-macos@8e39806c5b1fb2ffeda6e55718a4fd2a4d2890da",
+  "files": {
+    "spikes/982/renderer/measure.js": "0b252839b5c6b6f485cf5c735aa4bcee1e662f6ac2a423032bc8c36d223c86e0",
+    "spikes/982/renderer/run-webkit.py": "543548f2d362e3307fa62636ef666d6a9ee71e5206e62b62bf6cff040e8db352",
+    "spikes/982/renderer/freeze.py": "07241b4a466153128e20750be78b836ca3b802ee9cc5fcdb181744caa3ade0f1",
+    "spikes/982/renderer/motion_evidence.py": "32a5a5fb1d3fab262f46224448ce597c0b5aefdac475f8acae940894332b9696",
+    "spikes/982/renderer/run-five.py": "702a0ac8dbe2a422bb6ed7450e9bd52a6706ac047528ae119a5756db52ca54e8",
+    "docs/acceptance/visual-protocol.json": "e8347c17e7c86a8d84dbb6f0954f522a7ce2a903a972b9720dca0950e39b8eb7",
+    "spikes/982/renderer/fixture.json": "16dc931ccaa50a62d350beba44bc64a5a858ed655eb47637f5fda7fedf97d074"
+  },
+  "initial_files": {
+    "spikes/982/renderer/measure.js": "1bcc3b259dd609bf1d9936bcc47dd9e87da8de906f13cfe38fb37d832dd4652f",
+    "spikes/982/renderer/run-webkit.py": "44962411e6b247627f59d3a96fccc253d094ef33be6724c333e3b03b0f973dff",
+    "spikes/982/renderer/freeze.py": "07241b4a466153128e20750be78b836ca3b802ee9cc5fcdb181744caa3ade0f1",
+    "spikes/982/renderer/motion_evidence.py": "32a5a5fb1d3fab262f46224448ce597c0b5aefdac475f8acae940894332b9696",
+    "spikes/982/renderer/run-five.py": "702a0ac8dbe2a422bb6ed7450e9bd52a6706ac047528ae119a5756db52ca54e8",
+    "docs/acceptance/visual-protocol.json": "e8347c17e7c86a8d84dbb6f0954f522a7ce2a903a972b9720dca0950e39b8eb7",
+    "spikes/982/renderer/fixture.json": "16dc931ccaa50a62d350beba44bc64a5a858ed655eb47637f5fda7fedf97d074"
+  },
+  "observer_correction": {
+    "source": "island/src/world3d/index.tsx:2470 webglAvailable",
+    "cause": "Producer deliberately loses first feature-test WebGL context. Global observer active flag latched disposed context, so real context drew with no observer.",
+    "change": "Restore old context hooks and attach observer to actual current renderer context; record context IDs and identity match.",
+    "retained_failures": [
+      "motion-proof-x11-v3-attempt1.json",
+      "motion-proof-x11-v4.json"
+    ],
+    "local_validation": "Two-context control-flow simulation passed both modes, correct absolute targets and both hook sets restored. Not guest evidence.",
+    "guest_status": "Corrected observer awaits real untimed proof; no timing acceptance."
+  },
+  "runner_status_correction": "Failed probe kind/errors/invalid foreground/lifecycle checks now exit1; valid numerical timing miss remains a captured measurement with failing summary gate.",
+  "public_redaction": {
+    "field": "/authority/author",
+    "reason": "Personal email omitted; comment identity, time and observations unchanged",
+    "original_sha256": "f182cc248072aa6dea39b2e67af9e81c7ec177e306a14e3c5b58bd889d6ad6ce"
+  }
+}

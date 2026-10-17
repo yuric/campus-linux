@@ -1,0 +1,270 @@
+{
+  "fresh_expanded_before_after_all_25_equal": true,
+  "entire_boot_protected_equality": false,
+  "coordinator_baseline_sha256": "f02dc95c81ec49cd92f666c085f3dbc0335729f49a5171910d1e8e51d84a4582",
+  "coordinator_baseline_source": "yuric/campus-linux@333d59bc7aec6ea192a3c4b17d9c709e328f0275:docs/acceptance/receipts/installed-updater-1057/authority-continuation/root-cleanup.json",
+  "coordinator_matching_paths": [
+    {
+      "path": "/usr/share/polkit-1/rules.d/49-ubuntu-admin.rules",
+      "equal_fields": [
+        "exists",
+        "uid",
+        "gid",
+        "mode",
+        "inode",
+        "device",
+        "bytes",
+        "sha256"
+      ]
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/50-default.rules",
+      "equal_fields": [
+        "exists",
+        "uid",
+        "gid",
+        "mode",
+        "inode",
+        "device",
+        "bytes",
+        "sha256"
+      ]
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/gnome-control-center.rules",
+      "equal_fields": [
+        "exists",
+        "uid",
+        "gid",
+        "mode",
+        "inode",
+        "device",
+        "bytes",
+        "sha256"
+      ]
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/org.freedesktop.GeoClue2.rules",
+      "equal_fields": [
+        "exists",
+        "uid",
+        "gid",
+        "mode",
+        "inode",
+        "device",
+        "bytes",
+        "sha256"
+      ]
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/org.freedesktop.bolt.rules",
+      "equal_fields": [
+        "exists",
+        "uid",
+        "gid",
+        "mode",
+        "inode",
+        "device",
+        "bytes",
+        "sha256"
+      ]
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/org.freedesktop.fwupd.rules",
+      "equal_fields": [
+        "exists",
+        "uid",
+        "gid",
+        "mode",
+        "inode",
+        "device",
+        "bytes",
+        "sha256"
+      ]
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/org.freedesktop.packagekit.rules",
+      "equal_fields": [
+        "exists",
+        "uid",
+        "gid",
+        "mode",
+        "inode",
+        "device",
+        "bytes",
+        "sha256"
+      ]
+    },
+    {
+      "path": "/etc/polkit-1/rules.d",
+      "equal_fields": [
+        "exists",
+        "uid",
+        "gid",
+        "mode",
+        "inode",
+        "device"
+      ]
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d",
+      "equal_fields": [
+        "exists",
+        "uid",
+        "gid",
+        "mode",
+        "inode",
+        "device"
+      ]
+    },
+    {
+      "path": "/run/systemd/system/polkit.service",
+      "equal_fields": [
+        "exists"
+      ]
+    },
+    {
+      "path": "/etc/systemd/system/polkit.service",
+      "equal_fields": [
+        "exists"
+      ]
+    },
+    {
+      "path": "/etc/polkit-1/rules.d/00-campus-updater-1057-deny.rules",
+      "equal_fields": [
+        "exists"
+      ]
+    },
+    {
+      "path": "/usr/share/polkit-1/actions/dev.projectcampus.updater1057.policy",
+      "equal_fields": [
+        "exists",
+        "uid",
+        "gid",
+        "mode",
+        "inode",
+        "device",
+        "bytes",
+        "sha256"
+      ]
+    },
+    {
+      "path": "/etc/gdm3/custom.conf",
+      "equal_fields": [
+        "exists",
+        "uid",
+        "gid",
+        "mode",
+        "inode",
+        "device",
+        "bytes",
+        "sha256"
+      ]
+    },
+    {
+      "path": "/usr/bin/campus-updater-1057",
+      "equal_fields": [
+        "exists",
+        "uid",
+        "gid",
+        "mode",
+        "inode",
+        "device",
+        "bytes",
+        "sha256"
+      ]
+    },
+    {
+      "path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+      "equal_fields": [
+        "exists",
+        "uid",
+        "gid",
+        "mode",
+        "inode",
+        "device",
+        "bytes",
+        "sha256"
+      ]
+    },
+    {
+      "path": "/usr/lib/campus-updater-1057/install-deb.py",
+      "equal_fields": [
+        "exists",
+        "uid",
+        "gid",
+        "mode",
+        "inode",
+        "device",
+        "bytes",
+        "sha256"
+      ]
+    },
+    {
+      "path": "/usr/lib/campus-updater-1057/verify-signature",
+      "equal_fields": [
+        "exists",
+        "uid",
+        "gid",
+        "mode",
+        "inode",
+        "device",
+        "bytes",
+        "sha256"
+      ]
+    },
+    {
+      "path": "/etc/campus-updater-1057/admission.json",
+      "equal_fields": [
+        "exists",
+        "uid",
+        "gid",
+        "mode",
+        "inode",
+        "device",
+        "bytes",
+        "sha256"
+      ]
+    },
+    {
+      "path": "/etc/campus-updater-1057/public-key.txt",
+      "equal_fields": [
+        "exists",
+        "uid",
+        "gid",
+        "mode",
+        "inode",
+        "device",
+        "bytes",
+        "sha256"
+      ]
+    },
+    {
+      "path": "/etc/polkit-1/rules.d/49-campus-updater-1057-headless.rules",
+      "equal_fields": [
+        "exists"
+      ]
+    }
+  ],
+  "coordinator_mismatches": [
+    {
+      "path": "/usr/share/polkit-1/rules.d/systemd-networkd.rules",
+      "differences": {
+        "inode": {
+          "coordinator": 39046,
+          "fresh": 93103
+        }
+      }
+    }
+  ],
+  "coordinator_extra_paths_not_freshly_observed": [
+    "/root/campus1057-10643-5176b9d7",
+    "/root/campus1057-10643-5176b9d7/bootstrap",
+    "/root/campus1057-10643-5176b9d7/authority-window.py",
+    "/root/campus1057-1263-ea7d6086",
+    "/root/campus1057-1263-ea7d6086/authority-window.py",
+    "/usr/bin/logger",
+    "/home/campusqa/campus1057-10643-5176b9d7/probe/desktop.py"
+  ],
+  "scope_note": "No complete resampling of updater root staging/driver/logger files. Fresh25-entry equality does not establish entire coordinator baseline equality."
+}

@@ -1,0 +1,8 @@
+{
+  "utc": "2026-10-16T16:39:47.077023+00:00",
+  "motion_sha256": "a6682a8027f4c7e3b5cbbb5c1c4554fd225e8cfeb3020bbfff536185c0b5c6ec",
+  "timing_freeze_sha256": "40dd7a38b81b328fc9b6028ddc6ae6b92d778fe09d36513739b846fa6670602e",
+  "source": "9d7743a25f4ce15c5fbad4932d3a7c37d9a29617",
+  "validation": "verified_motion passed1352 inputs/7checkpoints/0frames",
+  "phase": "before first timed launch"
+}

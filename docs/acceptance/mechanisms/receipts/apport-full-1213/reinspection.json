@@ -1,0 +1,90 @@
+{
+  "kind": "same-report-reinspection-no-new-crash",
+  "source_sha256": {
+    "recover.py": "3285d52e94a48efe7945eb7c279f73c5a281b0650aeb72bf874b7d9b6fc74211",
+    "report_scan.py": "bfda61e431f365e083bd88007fe51151eea429192f71439ea1f514a3e2163041",
+    "watchdog.py": "0d5f7b5c2a7c5fa37e5e933d3a485c7166d6bce90962071fc4f2a403cc583302"
+  },
+  "original_receipt_sha256": "f29dac694f7ee05904cc452609924af37372c732ae57445b93dd4740ee0310d0",
+  "crash_sent": false,
+  "pass": true,
+  "report_scan": {
+    "input_bytes": 19026,
+    "input_sha256": "6ac2648f4b04efcd039a4a06e47cb75afbcdf498d14f954ebbb2278be74a4135",
+    "decoded_bytes": 393216,
+    "decoded_sha256": "e8dd95b035d527558befeed8636c96c87fffb79609e4f6b6b456f51f300decd0",
+    "marker_count": 1,
+    "marker_offsets": [
+      393163
+    ],
+    "field_bytes": {
+      "ProblemType": 5,
+      "Architecture": 5,
+      "Date": 24,
+      "Dependencies": 318,
+      "DistroRelease": 12,
+      "ExecutablePath": 14,
+      "ExecutableTimestamp": 10,
+      "Package": 24,
+      "PackageArchitecture": 5,
+      "ProcCmdline": 17,
+      "ProcCwd": 40,
+      "ProcEnviron": 30,
+      "ProcMaps": 1489,
+      "ProcStatus": 1155,
+      "Signal": 1,
+      "SignalName": 7,
+      "SourcePackage": 9,
+      "Uname": 31,
+      "UserGroups": 4,
+      "_HooksRun": 2,
+      "CoreDump": 6
+    }
+  },
+  "report_binding_verified": true,
+  "report_identity": {
+    "device": 64769,
+    "inode": 92386,
+    "uid": 1000
+  },
+  "exact_collector": [
+    {
+      "pid": 2465,
+      "start_ticks": 33048,
+      "argv": [
+        "/usr/bin/python3",
+        "/usr/share/apport/apport",
+        "-p2445",
+        "-s6",
+        "-c0",
+        "-d1",
+        "-P2445",
+        "-u1000",
+        "-g1001",
+        "-F",
+        "--",
+        "!usr!bin!sleep"
+      ],
+      "executable_sha256": "c86f21d0da9290ece2d7d49a3f7ed52aed59cb029abdf0ea25c79634f6cbe960",
+      "namespaces": {
+        "pid": "pid:[4026531836]",
+        "mnt": "mnt:[4026531841]"
+      }
+    }
+  ],
+  "prior_retained_identities_exited": [
+    {
+      "pid": 2445,
+      "start_ticks": 33006,
+      "parent": null,
+      "exited": true
+    },
+    {
+      "pid": 2465,
+      "start_ticks": 33048,
+      "parent": null,
+      "exited": true
+    }
+  ],
+  "owned_report_removed": true
+}

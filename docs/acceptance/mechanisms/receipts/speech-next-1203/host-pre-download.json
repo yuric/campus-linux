@@ -1,0 +1,7 @@
+{
+  "utc": "2026-10-16T13:54:57.854991+00:00",
+  "host_free_bytes": 29342081024,
+  "disk_apparent_bytes": 6925058048,
+  "disk_allocated_bytes": 6739525632,
+  "limitation": "Initial image-name filter found no images (Lima uses disk). This corrected baseline is after normal boot, before download; boot image growth unmeasured."
+}

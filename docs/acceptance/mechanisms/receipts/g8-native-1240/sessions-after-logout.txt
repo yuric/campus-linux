@@ -1,0 +1,5 @@
+SESSION UID USER SEAT  TTY  STATE  IDLE SINCE
+      4 501 yuri -     -    active no   -
+     c3 110 gdm  seat0 tty1 active no   -
+
+2 sessions listed.

@@ -1,0 +1,62 @@
+{
+  "scope": "DISPOSABLE synthetic minisign; no release key; Tauri full-text base64 wrapper",
+  "minisign_version": "minisign 0.11",
+  "public_key_sha256": "c944d79ccb6a899635a7c0d979726ef43e8771a362aa3ca7da8a80c7e5f3ee0c",
+  "signatures": {
+    "arbitrary-path": {
+      "package_sha256": "fe3fba172f3ed7ab95861ec6e636b5b80c1d864dd7b06223e0de5723ce9dd6f6",
+      "minisig_sha256": "752c3f5cd79ac2b4013fdff0da65cd2226d67f6c1e235a464162790582461731",
+      "version": "0.982.2"
+    },
+    "maintainer-script": {
+      "package_sha256": "55062e8ca5d0237e49ba9fddf7c866ae8b491da8e4481db5da060e70b553eb93",
+      "minisig_sha256": "b7534bb0746e442aa73a0bd59b251d73191cef395a71d6bd6f15041f05bda960",
+      "version": "0.982.2"
+    },
+    "setuid-helper": {
+      "package_sha256": "140f5700abc8637cafa231c325ec7ac7db0671de194cbf6e91a2379089bb0c41",
+      "minisig_sha256": "f3a0e7bbfc697e9592869367584f87a770dfeba8d4e301a2e41c483580861ba5",
+      "version": "0.982.2"
+    },
+    "symlink-payload": {
+      "package_sha256": "3d55b6ebc83f9e8e6301f7f4f991cdc05285fa6f02473d4c1f5f0ab3dc036a42",
+      "minisig_sha256": "61089e06e7b7f2a5b4bdef8b41b0c93d25095658038087101de1a1bfd4979610",
+      "version": "0.982.2"
+    },
+    "v1": {
+      "package_sha256": "76d69d46f8c136a1baa1ee498059abfeee35d8e44fe9d7fd597697d7cffbe554",
+      "minisig_sha256": "9da61d77e7de9dda8e035dbd705181a2d5a8670c333a7775789d281ad3d12f3b",
+      "version": "0.982.1"
+    },
+    "v2": {
+      "package_sha256": "7dda546a3dd1cda6c5cc72434f57c8205c62c4b709a2720e41809b53f39bea11",
+      "minisig_sha256": "567379c20b56b5439eb3a43a64d179c75a9ced26890851ffd6a0ed21687edc46",
+      "version": "0.982.2"
+    },
+    "wrong-arch": {
+      "package_sha256": "11462fbe71dc695f4fd44990ebccc67ba3fcea5806d3bdf17f31a8308b1cccbb",
+      "minisig_sha256": "16e28ae3215d9a9928ebba229cf263aa227552531b316e6559145481050bfb3c",
+      "version": "0.982.2"
+    },
+    "wrong-name": {
+      "package_sha256": "fe6c6bc6ae9425e0f897b3bc600fabf934f778f9ed647059560b87cb870d2917",
+      "minisig_sha256": "8410c9e09f786798ff735696572ce16419c6648437aa7ac06492391c0a081786",
+      "version": "0.982.2"
+    },
+    "oversized-expanded-payload": {
+      "package_sha256": "33962c77723c6abc41262e5f4811ca0d5708bea1fe97b395bf0b60264701adee",
+      "minisig_sha256": "594cdb3e3d6c0034a53f0494c2c6505866b5ad5835fefe89b588584ac056b5f4",
+      "version": "0.982.2"
+    },
+    "wrong-owner": {
+      "package_sha256": "231ba14609b55d00910ee7c72ebd16f3f1e34349790d9b747f4a614ca91b75c6",
+      "minisig_sha256": "b08a41bd8eee9ee762169368d33db76361af1e3639618b0706816a74932b8828",
+      "version": "0.982.2"
+    },
+    "writable-helper": {
+      "package_sha256": "c57a6059d9a74d55300be84649ded5a25c6f2c6d613a946e21511f3ae28d9b16",
+      "minisig_sha256": "136521a68e563b634513c83f70ff4f4547042c02de84db81dad2042e0aa6b69b",
+      "version": "0.982.2"
+    }
+  }
+}

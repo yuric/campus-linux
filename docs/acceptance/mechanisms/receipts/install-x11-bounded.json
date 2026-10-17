@@ -1,0 +1,96 @@
+{
+  "scope": "disposable root-owned staging and polkit routing; not Tauri signature or interactive prompt acceptance",
+  "cases": [
+    {
+      "case": "valid-native-v1",
+      "result": "PASS",
+      "exit": 0,
+      "before_helper_sha256": "9dbb4f543be0e07f5292e7262de69cd8db64b0283502edf196ea74482ca129c0",
+      "after_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "stdout": "{\"phase\": \"verified-root-owned-bytes\", \"sha256\": \"76d69d46f8c136a1baa1ee498059abfeee35d8e44fe9d7fd597697d7cffbe554\"}\n{\"phase\": \"installed\", \"sha256\": \"76d69d46f8c136a1baa1ee498059abfeee35d8e44fe9d7fd597697d7cffbe554\", \"version\": \"0.982.1\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "bad-signature-intact-install",
+      "result": "PASS",
+      "exit": 1,
+      "before_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "after_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "stdout": "{\"phase\": \"rejected\", \"error_type\": \"CalledProcessError\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "wrong-package-intact-install",
+      "result": "PASS",
+      "exit": 1,
+      "before_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "after_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "stdout": "{\"phase\": \"rejected\", \"error_type\": \"AssertionError\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "wrong-arch-intact-install",
+      "result": "PASS",
+      "exit": 1,
+      "before_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "after_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "stdout": "{\"phase\": \"rejected\", \"error_type\": \"AssertionError\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "maintainer-script-intact-install",
+      "result": "PASS",
+      "exit": 1,
+      "before_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "after_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "stdout": "{\"phase\": \"rejected\", \"error_type\": \"AssertionError\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "symlink-payload-intact-install",
+      "result": "PASS",
+      "exit": 1,
+      "before_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "after_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "stdout": "{\"phase\": \"rejected\", \"error_type\": \"AssertionError\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "arbitrary-path-intact-install",
+      "result": "PASS",
+      "exit": 1,
+      "before_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "after_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "stdout": "{\"phase\": \"rejected\", \"error_type\": \"AssertionError\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "setuid-helper-intact-install",
+      "result": "PASS",
+      "exit": 1,
+      "before_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "after_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "stdout": "{\"phase\": \"rejected\", \"error_type\": \"AssertionError\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "oversized-expanded-payload-intact-install",
+      "result": "PASS",
+      "exit": 1,
+      "before_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "after_helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28",
+      "stdout": "{\"phase\": \"rejected\", \"error_type\": \"ValueError\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "substitute-original-after-root-verification",
+      "result": "PASS",
+      "exit": 0,
+      "installed_helper_sha256": "9dbb4f543be0e07f5292e7262de69cd8db64b0283502edf196ea74482ca129c0",
+      "expected_helper_sha256": "9dbb4f543be0e07f5292e7262de69cd8db64b0283502edf196ea74482ca129c0",
+      "stdout": "{\"phase\": \"verified-root-owned-bytes\", \"sha256\": \"7dda546a3dd1cda6c5cc72434f57c8205c62c4b709a2720e41809b53f39bea11\"}\n{\"phase\": \"installed\", \"sha256\": \"7dda546a3dd1cda6c5cc72434f57c8205c62c4b709a2720e41809b53f39bea11\", \"version\": \"0.982.2\"}\n",
+      "stderr": ""
+    }
+  ]
+}
+

@@ -1,0 +1,103 @@
+{
+  "probe_sha256": "bc23fcef63f5b2aa9e1b74d67d1f93230da5ed54237cace07697abe901e1f614",
+  "uname": [
+    "Linux",
+    "lima-campus-linux-d5-noble-arm64",
+    "6.8.0-142-generic",
+    "#142-Ubuntu SMP PREEMPT_DYNAMIC Wed Sep  2 14:30:29 UTC 2026",
+    "aarch64"
+  ],
+  "uid": 1000,
+  "operation": "download",
+  "commands": [
+    {
+      "argv": [
+        "gpg",
+        "--homedir",
+        "/home/campusqa/spike982/gemini-api-key/gpg",
+        "--batch",
+        "--import",
+        "/home/campusqa/spike982/gemini-api-key/node-key.asc"
+      ],
+      "returncode": 0,
+      "seconds": 0.10125058899998862,
+      "capture": "node-key-import"
+    },
+    {
+      "argv": [
+        "gpg",
+        "--homedir",
+        "/home/campusqa/spike982/gemini-api-key/gpg",
+        "--batch",
+        "--with-colons",
+        "--fingerprint"
+      ],
+      "returncode": 0,
+      "seconds": 0.10070474099998705,
+      "capture": "node-fingerprint"
+    },
+    {
+      "argv": [
+        "gpg",
+        "--homedir",
+        "/home/campusqa/spike982/gemini-api-key/gpg",
+        "--batch",
+        "--status-fd",
+        "1",
+        "--verify",
+        "/home/campusqa/spike982/gemini-api-key/SHASUMS256.txt.sig",
+        "/home/campusqa/spike982/gemini-api-key/SHASUMS256.txt"
+      ],
+      "returncode": 0,
+      "seconds": 0.10064281700002198,
+      "capture": "node-signature"
+    }
+  ],
+  "budget_bytes": 600000000,
+  "scope": "Disposable Gemini0.64.0 availability only, no login/API call, optional native addons omitted",
+  "peak_file_size_sum": 30962503,
+  "downloads": [
+    {
+      "url": "https://nodejs.org/dist/v24.22.0/SHASUMS256.txt",
+      "file": "SHASUMS256.txt",
+      "bytes": 3171,
+      "sha256": "8912ada1431af8390bb3e30328d30bca701b59c7a6d5396b491293515c092c46"
+    },
+    {
+      "url": "https://nodejs.org/dist/v24.22.0/SHASUMS256.txt.sig",
+      "file": "SHASUMS256.txt.sig",
+      "bytes": 566,
+      "sha256": "e59640b2e5b7cbcb5951ba2d6fee5921a349070c2a6163dc15dff4bd3404ad42"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/nodejs/release-keys/main/keys/C82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C.asc",
+      "file": "node-key.asc",
+      "bytes": 5613,
+      "sha256": "84b1ca614406f341cb86e72920f5a64687a13ab67ab84038bcf2abba97898a84"
+    },
+    {
+      "url": "https://nodejs.org/dist/v24.22.0/node-v24.22.0-linux-arm64.tar.xz",
+      "file": "node-v24.22.0-linux-arm64.tar.xz",
+      "bytes": 30943704,
+      "sha256": "fef00bb4d36e1c50104a9775a10359beee98f162b4104dd12472c75065c6a143"
+    },
+    {
+      "url": "https://registry.npmjs.org/@google/gemini-cli/0.64.0",
+      "file": "gemini-metadata.json",
+      "bytes": 2092,
+      "sha256": "34d9eb206a2880c17361c68e751279e30a91f372ec17443ba5bc08ce4d69abee"
+    },
+    {
+      "url": "https://registry.npmjs.org/-/npm/v1/keys",
+      "file": "npm-keys.json",
+      "bytes": 580,
+      "sha256": "faf23d8753d5bb79df250f10391ac89b63ecf7743e48487a544a99c847f9c8df"
+    }
+  ],
+  "completed": false,
+  "failure": {
+    "type": "RuntimeError",
+    "message": "registry public key fingerprint mismatch"
+  },
+  "final_file_size_sum": 30963083
+}

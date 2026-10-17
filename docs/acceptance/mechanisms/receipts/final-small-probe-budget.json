@@ -1,0 +1,18 @@
+{
+  "scope": "Coordinator10448 bounded short functional probe batch; actual owned allocated blocks, not global free-space delta",
+  "at_unix": 1792152388.98625,
+  "host_free_bytes_before": 33344851968,
+  "maximum_additional_bytes": 268435456,
+  "vm_allocated_before": 6708981760,
+  "workspace_allocated_before": 14643200,
+  "global_free_is_only_guard": true,
+  "finished_at_unix": 1792153482.360497,
+  "vm_allocated_after": 6715846656,
+  "workspace_allocated_after": 16990208,
+  "owned_vm_workspace_additional_bytes": 9211904,
+  "conservative_all_matching_task_temp_bytes": 92049408,
+  "conservative_total_charge_bytes": 101261312,
+  "host_free_bytes_after": 27811266560,
+  "global_free_delta_used_as_owned_allocation": false,
+  "vm_stopped_normally": true
+}

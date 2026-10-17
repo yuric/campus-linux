@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "python3",
+    "-B",
+    "/home/campusqa/spike982/g8-timing-1268/repo/spikes/982/renderer/electron/prepare.py",
+    "/home/campusqa/spike982/g8-electron-1288/electron-v44.8.0-linux-arm64.zip",
+    "/home/campusqa/spike982/g8-electron-1288/electron"
+  ],
+  "returncode": 0,
+  "utc": "2026-10-16T17:24:50.159620+00:00"
+}

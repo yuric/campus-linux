@@ -1,0 +1,105 @@
+{
+  "argv": [
+    "limactl",
+    "shell",
+    "campus-linux-d5-noble-arm64",
+    "sudo",
+    "-u",
+    "campusqa",
+    "tar",
+    "-C",
+    "/home/campusqa/spike982/g8-electron-1288",
+    "--exclude=./electron",
+    "--exclude=./electron-v44.8.0-linux-arm64.zip",
+    "-cf",
+    "-",
+    "."
+  ],
+  "files": [
+    {
+      "path": "./prepare.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "./acquisition.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "./prepare.stdout",
+      "bytes": 197,
+      "sha256": "98c8b4ad0363ac9aaa4a897de9c4cdbb52dc0ae99c7edf660133679646374dc7"
+    },
+    {
+      "path": "./idle-holder.py",
+      "bytes": 4250,
+      "sha256": "2b9f198db2ae7ba533ef79c16627a1a2c228db549cd1d29f59d46796f8777abd"
+    },
+    {
+      "path": "./wayland-electron/inhibitor-release.json",
+      "bytes": 240,
+      "sha256": "65b718ce8ace28dddac1a8bec78925637309f4c08a1b635c3bb91dee62ca9503"
+    },
+    {
+      "path": "./wayland-electron/inhibitor.stop",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "./wayland-electron/preflight.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "./wayland-electron/preflight-launch.json",
+      "bytes": 10257,
+      "sha256": "729790836bd8346d9950ac6328febdf5ab80c609d4ebaee8503e1f75d3d4a626"
+    },
+    {
+      "path": "./wayland-electron/inhibitor-samples.jsonl",
+      "bytes": 444,
+      "sha256": "8dfe01ae18b33b7dfbffa593e33371582664ed14d9217409d91b4ec0ef784f8a"
+    },
+    {
+      "path": "./wayland-electron/preflight-command.json",
+      "bytes": 1230,
+      "sha256": "869577035535dbed9585866dd62519af881741ab5409f8326d0e8e2892451855"
+    },
+    {
+      "path": "./wayland-electron/inhibitor-start.json",
+      "bytes": 2185,
+      "sha256": "56482732df2b8af877c81bb4e50708a08820c4c030ce2203433152d23e2d6952"
+    },
+    {
+      "path": "./wayland-electron/preflight.stderr",
+      "bytes": 341,
+      "sha256": "bf719b27410d16718c71d3103fd10edca15324bb04f52b9350c893d91be840c8"
+    },
+    {
+      "path": "./prepare-command.json",
+      "bytes": 336,
+      "sha256": "231ba231d6a69545da16c71efdc0e46a0943909da281c57815bff958a76219a6"
+    },
+    {
+      "path": "./acquisition.stderr",
+      "bytes": 1266,
+      "sha256": "0bb539054f5ef7270a9db21770f82d0c8d6871c9a33cc0dd75ae719e4a62c852"
+    },
+    {
+      "path": "./acquisition-command.json",
+      "bytes": 469,
+      "sha256": "8633ce675d542b0fa8125e782548847e926d6daa4a31f1a41edfa85fcadd9e48"
+    },
+    {
+      "path": "./graphical-probe.py",
+      "bytes": 5536,
+      "sha256": "e0e86a08e952e99f2cad7aedb0a2bdae986aec15f500ccf1984877f23abbf002"
+    },
+    {
+      "path": "./export-verification.json",
+      "bytes": 1782,
+      "sha256": "d4af24b671d2d89652f913f79cf5dbd6b80adc5bf302fb579f9400bd3cce3920"
+    }
+  ]
+}

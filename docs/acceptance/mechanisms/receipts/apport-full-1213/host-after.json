@@ -1,0 +1,8 @@
+{
+  "utc": "2026-10-16T14:29:23.386016+00:00",
+  "lima_status": "Stopped",
+  "host_free_bytes": 33420546048,
+  "disk_allocated": 6828851200,
+  "disk_logical": 6976241664,
+  "image_allocated_delta_from_postboot_baseline": 327680
+}

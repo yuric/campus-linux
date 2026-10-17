@@ -1,0 +1,32 @@
+{
+  "command": "python3 spikes/982/providers/verify_claude_signature.py",
+  "public_key_fingerprints": [
+    "31DDDE24DDFAB679F42D7BD2BAA929FF1A7ECACE"
+  ],
+  "returncode": 0,
+  "stdout": "[GNUPG:] NEWSIG\n[GNUPG:] KEY_CONSIDERED 31DDDE24DDFAB679F42D7BD2BAA929FF1A7ECACE 0\n[GNUPG:] SIG_ID ifl2vEyb5oCEeo3GQEztfv5lqjo 2026-10-15 1792072975\n[GNUPG:] GOODSIG BAA929FF1A7ECACE Anthropic Claude Code Release Signing <security@anthropic.com>\n[GNUPG:] VALIDSIG 31DDDE24DDFAB679F42D7BD2BAA929FF1A7ECACE 2026-10-15 1792072975 0 4 0 1 10 00 31DDDE24DDFAB679F42D7BD2BAA929FF1A7ECACE\n[GNUPG:] TRUST_UNDEFINED 0 pgp\n",
+  "stderr": "gpg: Signature made Thu Oct 15 07:02:55 2026 MST\ngpg:                using RSA key 31DDDE24DDFAB679F42D7BD2BAA929FF1A7ECACE\ngpg: Good signature from \"Anthropic Claude Code Release Signing <security@anthropic.com>\" [unknown]\ngpg: WARNING: This key is not certified with a trusted signature!\ngpg:          There is no indication that the signature belongs to the owner.\n      31DDDE24DDFAB679F42D7BD2BAA929FF1A7ECACE\n",
+  "sources": [
+    {
+      "file": "claude-key.asc",
+      "url": "https://downloads.claude.ai/keys/claude-code.asc",
+      "sha256": "bd70a5e4a268002704024ceba7f8446024114e94f3f0bdd11c23a9e592be81c6",
+      "bytes": 1688
+    },
+    {
+      "file": "manifest.json",
+      "url": "https://downloads.claude.ai/claude-code-releases/2.1.301/manifest.json",
+      "sha256": "8517444f8515ccb572272d6dd666999aa7115fd14ae4207631edaa25d4dfce40",
+      "bytes": 1897
+    },
+    {
+      "file": "manifest.json.sig",
+      "url": "https://downloads.claude.ai/claude-code-releases/2.1.301/manifest.json.sig",
+      "sha256": "d98450e26c5b134e869d6b0aefc1db3418085bffbb85f3736ef4b30c88dc6d5f",
+      "bytes": 833
+    }
+  ],
+  "manifest_version": "2.1.301",
+  "expected_arm64_binary_sha256": "1e119036a802d359ba5f9886428e031586e8796f7a858d5a8ee179ac7b8604f0",
+  "scope": "Public vendor-key verification only; no private/release key generated; not a Linux runtime receipt"
+}

@@ -1,0 +1,255 @@
+{
+  "scope": "Human direction10361: bounded offline candidate only; no product adoption",
+  "uname": [
+    "Linux",
+    "lima-campus-linux-d5-noble-arm64",
+    "6.8.0-142-generic",
+    "#142-Ubuntu SMP PREEMPT_DYNAMIC Wed Sep  2 14:30:29 UTC 2026",
+    "aarch64"
+  ],
+  "uid": 1000,
+  "interfaces": [
+    "lo"
+  ],
+  "pins": {
+    "whisper_cpp": {
+      "release": "v1.9.5",
+      "commit": "d1be6fde11ac6e0407606b4e42fe72d34add8037",
+      "url": "https://codeload.github.com/ggml-org/whisper.cpp/tar.gz/d1be6fde11ac6e0407606b4e42fe72d34add8037",
+      "sha256": "645445da884df6dbd52b30f82d7be7c01d1767c938714e477e786b88d529e9f4",
+      "download_bytes": 9631456,
+      "license": "MIT"
+    },
+    "model": {
+      "name": "tiny.en",
+      "repository": "ggerganov/whisper.cpp",
+      "revision": "5359861c739e955e79d9a303bcbc70fb988958b1",
+      "url": "https://huggingface.co/ggerganov/whisper.cpp/resolve/5359861c739e955e79d9a303bcbc70fb988958b1/ggml-tiny.en.bin",
+      "sha256": "921e4cf8686fdd993dcd081a5da5b6c365bfde1162e72b08d75ac75289920b1f",
+      "download_bytes": 77704715,
+      "license": "MIT (OpenAI Whisper model weights)"
+    },
+    "fixture": {
+      "text": "The blue notebook is beside the window. This is a synthetic speech test. Please edit the words before saving.",
+      "license": "CC0-1.0 dedication for this generated test sentence",
+      "synthesizer": "Ubuntu espeak-ng; exact package version/binary digest recorded by setup",
+      "private_audio": false
+    }
+  },
+  "commands": [
+    {
+      "argv": [
+        "dpkg-query",
+        "-W",
+        "-f=${binary:Package}\t${Version}\t${Architecture}\n",
+        "libespeak-ng1",
+        "cmake",
+        "g++"
+      ],
+      "returncode": 0,
+      "capture": "toolchain-packages"
+    },
+    {
+      "argv": [
+        "cmake",
+        "--version"
+      ],
+      "returncode": 0,
+      "capture": "cmake-version"
+    },
+    {
+      "argv": [
+        "g++",
+        "--version"
+      ],
+      "returncode": 0,
+      "capture": "compiler-version"
+    },
+    {
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/campusqa/spike982/speech-offline2/source",
+        "-B",
+        "/home/campusqa/spike982/speech-offline2/build",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DBUILD_SHARED_LIBS=OFF",
+        "-DGGML_NATIVE=OFF",
+        "-DGGML_OPENMP=OFF",
+        "-DGGML_CPU_KLEIDIAI=OFF",
+        "-DGGML_CCACHE=OFF",
+        "-DWHISPER_BUILD_TESTS=OFF",
+        "-DWHISPER_BUILD_SERVER=OFF",
+        "-DWHISPER_CURL=OFF",
+        "-DWHISPER_SDL2=OFF",
+        "-DFETCHCONTENT_FULLY_DISCONNECTED=ON"
+      ],
+      "returncode": 0,
+      "capture": "configure"
+    },
+    {
+      "argv": [
+        "cmake",
+        "--build",
+        "/home/campusqa/spike982/speech-offline2/build",
+        "--target",
+        "whisper-cli",
+        "-j2"
+      ],
+      "returncode": 0,
+      "capture": "build"
+    },
+    {
+      "argv": [
+        "/home/campusqa/spike982/speech-offline2/build/bin/whisper-cli",
+        "--help"
+      ],
+      "returncode": 0,
+      "capture": "cli-help"
+    }
+  ],
+  "measurements": [
+    {
+      "label": "cold",
+      "argv": [
+        "/home/campusqa/spike982/speech-offline2/build/bin/whisper-cli",
+        "-m",
+        "/home/campusqa/spike982/speech-offline2/tiny.en.bin",
+        "-f",
+        "/home/campusqa/spike982/speech-offline2/synthetic.wav",
+        "-t",
+        "2",
+        "-ng",
+        "-l",
+        "en",
+        "-otxt",
+        "-oj",
+        "-of",
+        "/home/campusqa/spike982/speech-offline2/captures/cold"
+      ],
+      "returncode": 0,
+      "wall_seconds": 2.45421057700014,
+      "cpu_seconds": 3.401673999999997,
+      "max_rss_sampled_kib": 177404,
+      "cancel_requested_while_running": false,
+      "cancel_stop_seconds": null
+    },
+    {
+      "label": "warm1",
+      "argv": [
+        "/home/campusqa/spike982/speech-offline2/build/bin/whisper-cli",
+        "-m",
+        "/home/campusqa/spike982/speech-offline2/tiny.en.bin",
+        "-f",
+        "/home/campusqa/spike982/speech-offline2/synthetic.wav",
+        "-t",
+        "2",
+        "-ng",
+        "-l",
+        "en",
+        "-otxt",
+        "-oj",
+        "-of",
+        "/home/campusqa/spike982/speech-offline2/captures/warm1"
+      ],
+      "returncode": 0,
+      "wall_seconds": 1.4084646729997985,
+      "cpu_seconds": 2.557448000000001,
+      "max_rss_sampled_kib": 177380,
+      "cancel_requested_while_running": false,
+      "cancel_stop_seconds": null
+    },
+    {
+      "label": "warm2",
+      "argv": [
+        "/home/campusqa/spike982/speech-offline2/build/bin/whisper-cli",
+        "-m",
+        "/home/campusqa/spike982/speech-offline2/tiny.en.bin",
+        "-f",
+        "/home/campusqa/spike982/speech-offline2/synthetic.wav",
+        "-t",
+        "2",
+        "-ng",
+        "-l",
+        "en",
+        "-otxt",
+        "-oj",
+        "-of",
+        "/home/campusqa/spike982/speech-offline2/captures/warm2"
+      ],
+      "returncode": 0,
+      "wall_seconds": 1.5377501589996427,
+      "cpu_seconds": 2.7926590000000004,
+      "max_rss_sampled_kib": 177360,
+      "cancel_requested_while_running": false,
+      "cancel_stop_seconds": null
+    },
+    {
+      "label": "cancel",
+      "argv": [
+        "/home/campusqa/spike982/speech-offline2/build/bin/whisper-cli",
+        "-m",
+        "/home/campusqa/spike982/speech-offline2/tiny.en.bin",
+        "-f",
+        "/home/campusqa/spike982/speech-offline2/synthetic-50s.wav",
+        "-t",
+        "2",
+        "-ng",
+        "-l",
+        "en",
+        "-otxt",
+        "-oj",
+        "-of",
+        "/home/campusqa/spike982/speech-offline2/captures/cancel"
+      ],
+      "returncode": -15,
+      "wall_seconds": 0.5168095260000882,
+      "cpu_seconds": 0.9179329999999899,
+      "max_rss_sampled_kib": 152136,
+      "cancel_requested_while_running": true,
+      "cancel_stop_seconds": 0.013982821000354306
+    }
+  ],
+  "microphone_used": false,
+  "runtime_data_destination": "local disposable guest files only; no network interface except loopback",
+  "cost": "No API/cloud fees; local CPU/RAM/storage and initial public download bandwidth",
+  "limits": {
+    "probe_max_seconds": 60,
+    "probe_max_bytes": 10485760,
+    "languages_tested": [
+      "English synthetic sentence only"
+    ],
+    "product_limits": "not selected"
+  },
+  "binary_sha256": "50712621452d3ab5f0d7b2a2c5dbaad5100c8d9b86538da1e1a192074b3ec2a2",
+  "source_license_sha256": "94f29bbed6a22c35b992c5c6ebf0e7c92f13b836b90f36f461c9cf2f0f1d010d",
+  "audio": {
+    "sha256": "5652875067982ca45b0aba111e247a186168f89a03a4ec80680ae2ed7bb688a2",
+    "bytes": 197190,
+    "seconds": 6.1608125,
+    "synthesis_rate": 22050,
+    "format": "mono PCM16 16000Hz",
+    "text": "The blue notebook is beside the window. This is a synthetic speech test. Please edit the words before saving."
+  },
+  "editable_plaintext_result": {
+    "available": true,
+    "content": "The Blue Notebook is beside the window. This is a synthetic speech test.\nPlease edit the words before saving.\n",
+    "original_sha256": "a9a2d827271256df892eff446a5607fb6f023e74da6db621d77dded660928b69",
+    "edited_sha256": "685e3b4878a5a16ca47da2a9b0db6996944aec092df4a1bc88d886b98aad55d6",
+    "limit": "Editable backend file only; no product text editor/consent flow tested"
+  },
+  "probe_bounds": [
+    {
+      "file": "empty.wav",
+      "withheld": true,
+      "probe_reason": "probe_duration_bound"
+    },
+    {
+      "file": "too-long.wav",
+      "withheld": true,
+      "probe_reason": "probe_duration_bound"
+    }
+  ],
+  "completed": true,
+  "disk_bytes": 145560225
+}

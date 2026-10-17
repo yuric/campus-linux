@@ -1,0 +1,3 @@
+{"utc": "2026-10-16T17:03:43.286893+00:00", "elapsed": 0.01932131299986395, "inhibitors": [{"path": "/org/gnome/SessionManager/Inhibitor2", "app_id": "campus-g8-982-wayland-final-always", "flags": 8}], "idle_inhibited": true}
+{"utc": "2026-10-16T17:04:13.360142+00:00", "elapsed": 30.092575359999955, "inhibitors": [{"path": "/org/gnome/SessionManager/Inhibitor2", "app_id": "campus-g8-982-wayland-final-always", "flags": 8}], "idle_inhibited": true}
+{"utc": "2026-10-16T17:04:43.476751+00:00", "elapsed": 60.20918809199998, "inhibitors": [{"path": "/org/gnome/SessionManager/Inhibitor2", "app_id": "campus-g8-982-wayland-final-always", "flags": 8}], "idle_inhibited": true}

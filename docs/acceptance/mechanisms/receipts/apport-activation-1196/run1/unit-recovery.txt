@@ -1,0 +1,3 @@
+Started campus982-activation-1196-positive-2356.service - /usr/bin/python3 -B -I -S /home/campusqa/spike982/apport-activation-1196/apport-activation-launch.py positive.
+campus982-activation-1196-positive-2356.service: Main process exited, code=dumped, status=3/QUIT
+campus982-activation-1196-positive-2356.service: Failed with result 'core-dump'.

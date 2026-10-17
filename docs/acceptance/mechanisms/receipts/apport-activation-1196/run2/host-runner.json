@@ -1,0 +1,175 @@
+{
+  "utc": "2026-10-16T13:19:25.779146+00:00",
+  "host_runner_sha256": "3c6def4cab5f958e5bff46d4d575a1bfcb92f956861817e52726a44031634aa4",
+  "sources": {
+    "apport-activation-pair.py": "95a65dd9a77f0cf8775455ee7d282f7d4ecc3049cfa40e009bc086db5e179cb9",
+    "apport-activation-launch.py": "a82ac897227291bfa4a6cf25afe50a03ff54f4953f197f1b5edae10e24c797b3",
+    "core-sentinel-probe.py": "3aca30e49471b4c12cbcd5c6abcccf9a9f1006262beb4eaedb3e36e03d3ba22d",
+    "apport-positive-preflight.py": "98d600ae98bb4501edba643b62094b94570aa2659f85a91ec8bb6439813a53fb",
+    "apport-metadata-preflight.py": "546369384ead546cd4b79ecaaeb892d2a85a8c019b472fc122afc8e36ec921af"
+  },
+  "guest_directory": "/home/campusqa/spike982/apport-activation-1196-run2",
+  "mode": "activation-only SIGQUIT",
+  "commands": [
+    {
+      "argv": [
+        "/opt/homebrew/bin/limactl",
+        "shell",
+        "campus-linux-d5-noble-arm64",
+        "sudo",
+        "mkdir",
+        "-m",
+        "755",
+        "/home/campusqa/spike982/apport-activation-1196-run2"
+      ],
+      "returncode": 0,
+      "host_free_before": 25422684160,
+      "host_free_after": 25422671872
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/limactl",
+        "shell",
+        "campus-linux-d5-noble-arm64",
+        "sudo",
+        "tee",
+        "/home/campusqa/spike982/apport-activation-1196-run2/apport-activation-pair.py"
+      ],
+      "returncode": 0,
+      "host_free_before": 25422667776,
+      "host_free_after": 25422655488
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/limactl",
+        "shell",
+        "campus-linux-d5-noble-arm64",
+        "sudo",
+        "tee",
+        "/home/campusqa/spike982/apport-activation-1196-run2/apport-activation-launch.py"
+      ],
+      "returncode": 0,
+      "host_free_before": 25422655488,
+      "host_free_after": 25422651392
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/limactl",
+        "shell",
+        "campus-linux-d5-noble-arm64",
+        "sudo",
+        "tee",
+        "/home/campusqa/spike982/apport-activation-1196-run2/core-sentinel-probe.py"
+      ],
+      "returncode": 0,
+      "host_free_before": 25422651392,
+      "host_free_after": 25422651392
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/limactl",
+        "shell",
+        "campus-linux-d5-noble-arm64",
+        "sudo",
+        "tee",
+        "/home/campusqa/spike982/apport-activation-1196-run2/apport-positive-preflight.py"
+      ],
+      "returncode": 0,
+      "host_free_before": 25422651392,
+      "host_free_after": 25422614528
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/limactl",
+        "shell",
+        "campus-linux-d5-noble-arm64",
+        "sudo",
+        "tee",
+        "/home/campusqa/spike982/apport-activation-1196-run2/apport-metadata-preflight.py"
+      ],
+      "returncode": 0,
+      "host_free_before": 25422614528,
+      "host_free_after": 25421557760
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/limactl",
+        "shell",
+        "campus-linux-d5-noble-arm64",
+        "sudo",
+        "sha256sum",
+        "/home/campusqa/spike982/apport-activation-1196-run2/apport-activation-pair.py",
+        "/home/campusqa/spike982/apport-activation-1196-run2/apport-activation-launch.py",
+        "/home/campusqa/spike982/apport-activation-1196-run2/core-sentinel-probe.py",
+        "/home/campusqa/spike982/apport-activation-1196-run2/apport-positive-preflight.py",
+        "/home/campusqa/spike982/apport-activation-1196-run2/apport-metadata-preflight.py"
+      ],
+      "returncode": 0,
+      "host_free_before": 25421557760,
+      "host_free_after": 25421541376
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/limactl",
+        "shell",
+        "campus-linux-d5-noble-arm64",
+        "sudo",
+        "/usr/bin/python3",
+        "-B",
+        "/home/campusqa/spike982/apport-activation-1196-run2/apport-positive-preflight.py"
+      ],
+      "returncode": 0,
+      "host_free_before": 25421537280,
+      "host_free_after": 25421533184
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/limactl",
+        "shell",
+        "campus-linux-d5-noble-arm64",
+        "sudo",
+        "/usr/bin/python3",
+        "-B",
+        "/home/campusqa/spike982/apport-activation-1196-run2/apport-metadata-preflight.py"
+      ],
+      "returncode": 0,
+      "host_free_before": 25421529088,
+      "host_free_after": 25421459456
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/limactl",
+        "shell",
+        "campus-linux-d5-noble-arm64",
+        "sudo",
+        "/usr/bin/python3",
+        "-B",
+        "/home/campusqa/spike982/apport-activation-1196-run2/apport-activation-pair.py",
+        "positive"
+      ],
+      "returncode": 0,
+      "host_free_before": 25421443072,
+      "host_free_after": 25416708096
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/limactl",
+        "shell",
+        "campus-linux-d5-noble-arm64",
+        "sudo",
+        "/usr/bin/python3",
+        "-B",
+        "/home/campusqa/spike982/apport-activation-1196-run2/apport-activation-pair.py",
+        "negative"
+      ],
+      "returncode": 0,
+      "host_free_before": 25416704000,
+      "host_free_after": 25581973504
+    }
+  ],
+  "installed_kernel_note_bound": "UNVERIFIED: installed /usr/src contains headers only; no full Ubuntu ptrace.c source. No source downloads authorized. SIGABRT not run.",
+  "metadata_preflight_pass": false,
+  "matched_activation_pair_pass": true,
+  "host_free_final": 25581965312,
+  "explicit_receipt_bytes": 19266
+}

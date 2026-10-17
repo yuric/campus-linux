@@ -13,6 +13,7 @@ changes are deliberately not tested). Both hosted architectures run exactly thes
 python3 -B -m unittest discover -s scripts/tests -v
 scripts/check-client-boundary.sh
 python3 -B scripts/check_acceptance.py
+python3 -B scripts/check_mechanism_evidence.py
 python3 -B scripts/verify_repository.py
 python3 scripts/verify-linux.py --arch arm64 --output /tmp/campus-linux-receipts
 python3 scripts/verify-linux.py --arch amd64 --output /tmp/campus-linux-receipts
@@ -33,6 +34,13 @@ upstream source or prove merged-main ancestry. For every refresh, run
 to compare all leaves against the merged server Git objects and a fresh server-owned export.
 Update the pin only with those independently reviewed source/re-export receipts, never merely
 to silence a mismatch. The [S2 receipt](contract-import.md) records the explicit comparisons.
+
+`verify_repository.py` also verifies the mechanism inventories' exact file sizes and hashes. In a checkout,
+indexed files and manifests must be Git-tracked, so present-but-ignored logs cannot
+pass as delivered evidence. In an exported verification tree, committed membership
+comes from the separately admitted `git archive`; byte checks still run. These
+inventory checks establish delivery integrity, not mechanism success.
+
 The Docker wrapper builds [Dockerfile.verify](../../ci/Dockerfile.verify), exports only
 committed files, and mounts that export read-only with no credentials, network or Docker
 socket in the test container. Limits: build timeout 900s, run timeout 600s, 2 CPU/2 GiB,

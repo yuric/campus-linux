@@ -1,0 +1,13 @@
+{
+  "capture_granted": false,
+  "audio_recorded": false,
+  "network_recognition_attempted": false,
+  "permissions": [],
+  "capability": {
+    "speechRecognition": "undefined",
+    "webkitSpeechRecognition": "undefined",
+    "mediaDevices": true,
+    "getUserMedia": "function",
+    "isSecureContext": true
+  }
+}

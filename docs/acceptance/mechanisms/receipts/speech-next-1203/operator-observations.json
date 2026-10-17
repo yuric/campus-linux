@@ -1,0 +1,15 @@
+{
+  "direction": 1203,
+  "task": 982,
+  "source_base_sha": "0e7c6b57aa88340b22ad49e4cdf6966a03f37e25",
+  "execution_source_state": "New uncommitted speech-only files atop source base; exact executed file hashes captured by launch.json before each run. Delivery commit does not purport to be the execution-time HEAD.",
+  "early_failures": [
+    {"operation": "git switch -c campus-linux/982-speech-1203 origin/campus-linux/982-mechanism-proofs", "error": "fatal: invalid reference: origin/campus-linux/982-mechanism-proofs", "resolution": "Fetch succeeded to FETCH_HEAD. Switched using verified published full SHA 0e7c6b57 instead; no history rewrite."},
+    {"operation": "Initial limactl shell during normal boot", "error": "kex_exchange_identification: read: Connection reset by peer", "resolution": "Read-only retry after boot succeeded."},
+    {"operation": "sudo runuser -u campusqa -- unshare --user --map-current-user --net /usr/bin/true", "error": "unshare: write failed /proc/self/uid_map: Operation not permitted", "resolution": "Existing system-manager PrivateNetwork mechanism verified instead. Graphical locale observer and inference supervisor are distinct; no user namespace policy change."},
+    {"operation": "Initial host image stat filter", "error": "Filter expected diffdisk/basedisk but existing Lima image is named disk", "resolution": "Preserved empty initial result; corrected post-boot/pre-download baseline. Boot image allocation is not measured."}
+  ],
+  "graphical_launch": "QMP Alt+F2, public command gnome-terminal -- /usr/bin/python3 /home/campusqa/spike982/speech-next-1203/session.py. Authenticated using existing disposable guest-only private input helper; no password bytes recorded.",
+  "scope": "No owner credentials, paid calls, default/physical microphone, updater work, G8 timed stress, intentional crash, UTM or CI observation. First pactl exited with SIGXFSZ from harness RLIMIT_FSIZE; no SIGABRT/full-report probe was invoked.",
+  "handoff": "Normal Lima shutdown completed; exclusive lease returned to active human coordinator LINUX-20261016. No future worker wake assumed."
+}

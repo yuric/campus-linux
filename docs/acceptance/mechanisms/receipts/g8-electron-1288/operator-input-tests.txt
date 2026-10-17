@@ -1,0 +1,11 @@
+test_archive_refuses_traversal_symlink_privilege_and_duplicate (test_electron_sandbox_proposal.SandboxProposalInputs.test_archive_refuses_traversal_symlink_privilege_and_duplicate) ... /Users/yuri/.pyenv/versions/3.11.15/lib/python3.11/zipfile.py:1580: UserWarning: Duplicate name: 'electron'
+  return self._open_to_write(zinfo, force_zip64=force_zip64)
+ok
+test_authenticated_manifest_preserves_licenses_and_exact_helper (test_electron_sandbox_proposal.SandboxProposalInputs.test_authenticated_manifest_preserves_licenses_and_exact_helper) ... ok
+test_pinned_archive_rejects_untrusted_bytes_before_zip_parsing (test_electron_sandbox_proposal.SandboxProposalInputs.test_pinned_archive_rejects_untrusted_bytes_before_zip_parsing) ... ok
+test_regular_rejects_symlinks_hardlinks_and_oversize (test_electron_sandbox_proposal.SandboxProposalInputs.test_regular_rejects_symlinks_hardlinks_and_oversize) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.010s
+
+OK

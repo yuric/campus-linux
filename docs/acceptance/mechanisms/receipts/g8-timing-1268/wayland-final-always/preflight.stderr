@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/campusqa/spike982/g8-timing-1268/repo/spikes/982/renderer/run-webkit.py", line 28, in <module>
+    native=native_receipt(a.native_gpu_receipt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/campusqa/spike982/g8-timing-1268/repo/spikes/982/renderer/native_evidence.py", line 14, in native_receipt
+    start=next(i for i,line in enumerate(lines) if line.lower()=='hardware acceleration information (render process)')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+StopIteration

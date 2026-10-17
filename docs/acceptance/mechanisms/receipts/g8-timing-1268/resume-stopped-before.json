@@ -1,0 +1,15 @@
+{
+  "utc": "2026-10-16T16:34:24.193371+00:00",
+  "lima_status": "Stopped",
+  "disk": {
+    "path": "/Users/yuri/.lima/campus-linux-d5-noble-arm64/disk",
+    "allocated_bytes": 7388856320,
+    "size": 7818510336,
+    "inode": 944391844
+  },
+  "free_bytes": 27300876288,
+  "authority": "task982 human10757",
+  "new_growth_budget_bytes": 1073741824,
+  "cumulative_g8_budget_bytes": 2147483648,
+  "prior_aggregate_bytes": 652316672
+}

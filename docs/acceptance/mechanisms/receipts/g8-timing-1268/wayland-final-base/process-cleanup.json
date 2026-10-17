@@ -1,0 +1,50 @@
+{
+  "utc": "2026-10-16T17:02:52.488817+00:00",
+  "observed_pids": [
+    3784,
+    3801,
+    3871,
+    3880,
+    3906,
+    3954,
+    3970,
+    3971,
+    3980,
+    4006,
+    4063,
+    4069,
+    4087,
+    4088,
+    4097,
+    4123,
+    4183,
+    4192,
+    4218,
+    4272,
+    4281,
+    4307,
+    4394,
+    4403,
+    4429,
+    4540,
+    4549,
+    4575
+  ],
+  "remaining": [],
+  "scopes": [
+    {
+      "cgroup": "/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service",
+      "exists": true
+    },
+    {
+      "cgroup": "/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service",
+      "exists": true
+    },
+    {
+      "cgroup": "/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service",
+      "exists": true
+    }
+  ],
+  "cleanup_confirmed": false,
+  "signals_sent": []
+}

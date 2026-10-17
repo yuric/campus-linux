@@ -1,0 +1,60 @@
+import base64, datetime, hashlib, json, os, pathlib, subprocess, sys
+RECEIPTS=pathlib.Path.cwd()/'docs/acceptance/mechanisms/receipts/g8-electron-1337'
+PLAN=pathlib.Path('/Users/yuri/.campus/coordinate/linux-20261016/planning/office400-next-runtime')
+ROOT='/root/campus982-runtime-1329-fee59815'
+OPS='/opt/campus-linux-spike982/operators-1329-fee59815'
+PREFIX=['limactl','shell','campus-linux-d5-noble-arm64','sudo','/usr/bin/env','-i','PATH=/usr/sbin:/usr/bin:/sbin:/bin']
+def run(label,args,data=None,timeout=60):
+    assert not (RECEIPTS/(label+'.json')).exists()
+    start=datetime.datetime.now(datetime.timezone.utc).isoformat()
+    p=subprocess.run(PREFIX+args,input=data,capture_output=True,timeout=timeout)
+    for suffix,value in [('stdout',p.stdout),('stderr',p.stderr)]:
+        with (RECEIPTS/(label+'.'+suffix)).open('xb') as f:f.write(value)
+    with (RECEIPTS/(label+'.json')).open('x') as f:json.dump(dict(utc=start,argv=PREFIX+args,returncode=p.returncode),f,indent=2)
+    print(label,p.returncode,p.stdout.decode()[:1500],p.stderr.decode()[:1500])
+    assert p.returncode==0,label
+    return p.stdout
+def capacity(label):
+    v=os.statvfs('.');s=os.stat('/Users/yuri/.lima/campus-linux-d5-noble-arm64/disk')
+    free=v.f_bavail*v.f_frsize
+    r=dict(utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),host_free=free,after_full_reserve=free-536870912,disk_allocated=s.st_blocks*512,disk_inode=s.st_ino,growth=s.st_blocks*512-7871332352)
+    with (RECEIPTS/(label+'.json')).open('x') as f:json.dump(r,f,indent=2)
+    assert free-536870912>=20*1024**3,r
+    assert r['growth']+16*1024**2<=536870912,r
+    print(r)
+if __name__=='__main__':
+    capacity('host-before-staging')
+    sources={ROOT+'/electron-sandbox-operator.py':pathlib.Path('spikes/982/environment/electron-sandbox-operator.py'),ROOT+'/protected-snapshot.py':PLAN/'protected-snapshot.reference.py',OPS+'/graphical-probe.py':PLAN/'graphical-probe.proposed.py',OPS+'/idle-holder.py':PLAN/'idle-holder.proposed.py'}
+    pinned=['91e983738a53e2d28c798ec80a748b29ee0a57cf94b415a7565feb3a3fd6ab84','c59dd96636fe417008f0dc89862a82400f0a07989b96762fd183325d348bb750','c33ec39afda2be4f4d2005d2bf25ef82ee8af5aa2b3a4e2617df9d3a4e3e320f','565b1ecb0ad57c0b8e00b0bfbe2cb913f84c117b3c5b5eb4ed22b532af05b719']
+    payload=[]
+    for (dest,p),digest in zip(sources.items(),pinned):
+        data=p.read_bytes();assert hashlib.sha256(data).hexdigest()==digest
+        payload.append((dest,base64.b64encode(data).decode(),digest))
+    code='''import os,pathlib,stat,base64,hashlib,json,subprocess
+os.umask(0o077)
+def chain(p):
+ for x in [*reversed(p.parents),p]:
+  s=x.lstat();assert stat.S_ISDIR(s.st_mode) and s.st_uid==s.st_gid==0 and not s.st_mode&0o022,str(x)
+  acl=subprocess.check_output(['/usr/bin/getfacl','-cp',str(x)],text=True)
+  assert all(not l or l.startswith(('user::','group::','other::')) for l in acl.splitlines()),acl
+chain(pathlib.Path('/root'));chain(pathlib.Path('/opt'))
+for p in ('/root/campus982-runtime-1329-fee59815','/opt/campus-linux-spike982/operators-1329-fee59815','/home/campusqa/spike982/g8-electron-root-1329-fee59815'):
+ assert not os.path.lexists(p),p
+parent=pathlib.Path('/opt/campus-linux-spike982')
+if not parent.exists():parent.mkdir(mode=0o755);parent.chmod(0o755)
+chain(parent)
+root=pathlib.Path('/root/campus982-runtime-1329-fee59815');root.mkdir(mode=0o700)
+ops=pathlib.Path('/opt/campus-linux-spike982/operators-1329-fee59815');ops.mkdir(mode=0o700)
+rows=[]
+for dest,encoded,digest in PAYLOAD:
+ data=base64.b64decode(encoded);assert hashlib.sha256(data).hexdigest()==digest
+ fd=os.open(dest,os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW|os.O_WRONLY,0o600)
+ with os.fdopen(fd,'wb') as f:
+  f.write(data);f.flush();os.fsync(f.fileno());os.fchmod(f.fileno(),0o444)
+ s=os.lstat(dest);assert s.st_uid==s.st_gid==0 and s.st_nlink==1 and stat.S_ISREG(s.st_mode)
+ actual=subprocess.check_output(['/usr/bin/sha256sum',dest],text=True).split()[0];assert actual==digest
+ rows.append(dict(path=dest,sha256=actual,device=s.st_dev,inode=s.st_ino,nlink=s.st_nlink,mode=oct(s.st_mode&0o7777),size=s.st_size,uid=s.st_uid,gid=s.st_gid))
+root.chmod(0o500);ops.chmod(0o555);chain(root);chain(ops)
+print(json.dumps(rows,indent=2))
+'''.replace('PAYLOAD',repr(payload))
+    run('fresh-source-custody',['/usr/bin/python3','-I','-B','-'],code.encode())

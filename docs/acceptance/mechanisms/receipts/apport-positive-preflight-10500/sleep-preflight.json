@@ -1,0 +1,18 @@
+{
+  "utc": "2026-10-16T13:09:28.037684+00:00",
+  "source_sha256": "74bca535ebef3b4cfe7852456fb8e573c5666a606619de70dc7c2bdc13fa4920",
+  "source_path": "spikes/982/security/apport-sleep-preflight.py",
+  "command": [
+    "/opt/homebrew/bin/limactl",
+    "shell",
+    "campus-linux-d5-noble-arm64",
+    "sudo",
+    "/usr/bin/python3",
+    "-B",
+    "-"
+  ],
+  "returncode": 0,
+  "stdout": "{\n  \"kind\": \"non-crashing-sleep-preflight\",\n  \"utc\": \"2026-10-16T13:09:27.926887+00:00\",\n  \"command\": [\n    \"systemd-run\",\n    \"--unit=campus982-sleep-preflight-10500-2314\",\n    \"--collect\",\n    \"-p\",\n    \"User=campusqa\",\n    \"-p\",\n    \"Group=campusqa\",\n    \"-p\",\n    \"NoNewPrivileges=yes\",\n    \"-p\",\n    \"LimitCORE=infinity\",\n    \"-p\",\n    \"MemoryMax=64M\",\n    \"-p\",\n    \"MemorySwapMax=0\",\n    \"-p\",\n    \"TasksMax=8\",\n    \"-p\",\n    \"RuntimeMaxSec=20\",\n    \"-p\",\n    \"TimeoutStopSec=2\",\n    \"-p\",\n    \"PrivateNetwork=yes\",\n    \"-p\",\n    \"CPUQuota=100%\",\n    \"-p\",\n    \"UMask=0077\",\n    \"-p\",\n    \"WorkingDirectory=/home/campusqa/spike982/core-sentinel-10470\",\n    \"/usr/bin/python3\",\n    \"-B\",\n    \"-I\",\n    \"-S\",\n    \"-c\",\n    \"\\nimport ctypes,os,resource\\nif os.uname().nodename != 'lima-campus-linux-d5-noble-arm64' or os.getuid()!=1000:\\n    raise SystemExit('wrong disposable host/user')\\nlibc=ctypes.CDLL(None,use_errno=True)\\nlibc.execve.argtypes=[ctypes.c_char_p,ctypes.POINTER(ctypes.c_char_p),ctypes.POINTER(ctypes.c_char_p)]\\nargv=(ctypes.c_char_p*3)(b'/usr/bin/sleep',b'20',None)\\nenv=(ctypes.c_char_p*4)(b'LANG=C',b'PATH=/usr/bin:/bin',b'CAMPUS982_SYNTHETIC=public-apport-positive-10500',None)\\nwith open('/proc/self/coredump_filter','w') as f:f.write('1')\\nresource.setrlimit(resource.RLIMIT_CORE,(0,0))\\nresource.setrlimit(resource.RLIMIT_AS,(8388608,8388608))\\nlibc.execve(b'/usr/bin/sleep',argv,env)\\nos._exit(24)\\n\"\n  ],\n  \"collector_tested\": false,\n  \"unit_manager\": \"system\",\n  \"launch_source_sha256\": \"8257c2eb526d66cc18daa674b1b9971af4bbfd4dbe5a362e0f090e0154650b39\",\n  \"pid\": 2316,\n  \"start_ticks\": \"24331\",\n  \"boot_id\": \"c5e3e5df-c86c-4413-af92-336a7ba87c76\",\n  \"mapped_bytes\": 2322432,\n  \"vmas\": 16,\n  \"pathname_bytes\": 369,\n  \"environment_bytes\": 75,\n  \"predicates\": {\n    \"stopped\": true,\n    \"single_thread\": true,\n    \"address_limit_8mib\": true,\n    \"core_limit_zero\": true,\n    \"mapped_under_8mib\": true,\n    \"at_most_64_vmas\": true,\n    \"pathnames_under_64kib\": true,\n    \"allowlisted_environment\": true,\n    \"environment_under_4kib\": true,\n    \"fixed_argv\": true,\n    \"filter_one\": true,\n    \"no_new_privileges\": true,\n    \"same_mount_namespace\": false,\n    \"same_pid_namespace\": true\n  },\n  \"executable_sha256\": \"5b814cc93d7f2110d40c936f5f86a6135de783ae2a28afe25eabac4ecc25bf10\",\n  \"preflight_pass\": false,\n  \"error_type\": \"RuntimeError\",\n  \"error\": \"stopped ELF preflight predicates failed\",\n  \"unit_cgroup_remaining\": false\n}\n",
+  "stderr": "",
+  "host_free_bytes_after": 26937847808
+}

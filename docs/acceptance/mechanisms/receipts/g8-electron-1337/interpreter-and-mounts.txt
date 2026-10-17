@@ -1,0 +1,67 @@
+user::rwx
+group::r-x
+other::r-x
+
+user::rwx
+group::---
+other::---
+
+user::rwx
+group::r-x
+other::r-x
+
+user::rwx
+group::r-x
+other::r-x
+
+user::rwx
+group::r-x
+other::r-x
+
+user::rwx
+group::r-x
+other::r-x
+
+user::rwx
+group::r-x
+other::r-x
+
+user::rwx
+group::r-x
+other::r-x
+
+/usr/lib/python3.12/config-3.12-aarch64-linux-gnu/libpython3.12.so
+/usr/lib/python3.12/_sysconfigdata__linux_aarch64-linux-gnu.py
+/usr/lib/python3.12/sitecustomize.py
+/sys sysfs sysfs
+/proc proc proc
+/dev udev devtmpfs
+/dev/pts devpts devpts
+/run tmpfs tmpfs
+/sys/firmware/efi/efivars efivarfs efivarfs
+/ /dev/vda1 ext4
+/sys/kernel/security securityfs securityfs
+/dev/shm tmpfs tmpfs
+/run/lock tmpfs tmpfs
+/sys/fs/cgroup cgroup2 cgroup2
+/sys/fs/pstore pstore pstore
+/sys/fs/bpf bpf bpf
+/proc/sys/fs/binfmt_misc systemd-1 autofs
+/dev/hugepages hugetlbfs hugetlbfs
+/dev/mqueue mqueue mqueue
+/sys/kernel/debug debugfs debugfs
+/sys/kernel/tracing tracefs tracefs
+/sys/fs/fuse/connections fusectl fusectl
+/sys/kernel/config configfs configfs
+/boot /dev/vda16 ext4
+/boot/efi /dev/vda15 vfat
+/proc/sys/fs/binfmt_misc binfmt_misc binfmt_misc
+/run/user/501 tmpfs tmpfs
+/mnt/lima-cidata /dev/sr0 iso9660
+/run/user/110 tmpfs tmpfs
+active
+SESSION UID USER SEAT  TTY  STATE  IDLE SINCE
+      4 501 yuri -     -    active no   -
+     c1 110 gdm  seat0 tty1 active no   -
+
+2 sessions listed.

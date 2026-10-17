@@ -1,0 +1,46 @@
+[
+  {
+    "path": "/root/campus982-runtime-1329-fee59815/electron-sandbox-operator.py",
+    "sha256": "91e983738a53e2d28c798ec80a748b29ee0a57cf94b415a7565feb3a3fd6ab84",
+    "device": 64769,
+    "inode": 1102291,
+    "nlink": 1,
+    "mode": "0o444",
+    "size": 22821,
+    "uid": 0,
+    "gid": 0
+  },
+  {
+    "path": "/root/campus982-runtime-1329-fee59815/protected-snapshot.py",
+    "sha256": "c59dd96636fe417008f0dc89862a82400f0a07989b96762fd183325d348bb750",
+    "device": 64769,
+    "inode": 1102311,
+    "nlink": 1,
+    "mode": "0o444",
+    "size": 3124,
+    "uid": 0,
+    "gid": 0
+  },
+  {
+    "path": "/opt/campus-linux-spike982/operators-1329-fee59815/graphical-probe.py",
+    "sha256": "c33ec39afda2be4f4d2005d2bf25ef82ee8af5aa2b3a4e2617df9d3a4e3e320f",
+    "device": 64769,
+    "inode": 1102312,
+    "nlink": 1,
+    "mode": "0o444",
+    "size": 5666,
+    "uid": 0,
+    "gid": 0
+  },
+  {
+    "path": "/opt/campus-linux-spike982/operators-1329-fee59815/idle-holder.py",
+    "sha256": "565b1ecb0ad57c0b8e00b0bfbe2cb913f84c117b3c5b5eb4ed22b532af05b719",
+    "device": 64769,
+    "inode": 1102313,
+    "nlink": 1,
+    "mode": "0o444",
+    "size": 4264,
+    "uid": 0,
+    "gid": 0
+  }
+]

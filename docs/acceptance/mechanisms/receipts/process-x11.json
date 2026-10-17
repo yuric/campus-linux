@@ -1,0 +1,162 @@
+{
+  "schema": 1,
+  "scope": "disposable OS mechanism only; no product acceptance",
+  "started_at": "2026-10-16T11:12:02.335098+00:00",
+  "uname": [
+    "Linux",
+    "lima-campus-linux-d5-noble-arm64",
+    "6.8.0-142-generic",
+    "#142-Ubuntu SMP PREEMPT_DYNAMIC Wed Sep  2 14:30:29 UTC 2026",
+    "aarch64"
+  ],
+  "uid": 1000,
+  "unit": "campus982-attempt-0a1aeee837b1",
+  "scratch": "/var/tmp/campus982-process-r9dl9r_8",
+  "cgroup_stop": {
+    "before": [
+      {
+        "pid": 9206,
+        "state": "R",
+        "start_ticks": 116690,
+        "boot_id": "38cdc922-802f-43cb-9b5b-35dc98164ad5",
+        "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/campus982-attempt-0a1aeee837b1.service"
+      },
+      {
+        "pid": 9202,
+        "state": "R",
+        "start_ticks": 116687,
+        "boot_id": "38cdc922-802f-43cb-9b5b-35dc98164ad5",
+        "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/campus982-attempt-0a1aeee837b1.service"
+      }
+    ],
+    "after": [
+      null,
+      null
+    ],
+    "seconds": 2.2181631070000094,
+    "detached_grandchild_observed": true,
+    "same_attempt_cgroup": true,
+    "stop_returncode": 0,
+    "survivors": [],
+    "pidfd_exit_readable": [
+      true,
+      true
+    ],
+    "pass": true
+  },
+  "dumpability": {
+    "returncode": 0,
+    "observation": {
+      "after_exec": 1,
+      "set_result": 0,
+      "after_child_set": 0
+    },
+    "stderr": ""
+  },
+  "ipc_peers": [
+    {
+      "requested_uid": 65534,
+      "peer_pid": 9272,
+      "peer_uid": 65534,
+      "peer_gid": 65534,
+      "token_read": false,
+      "token_match": null,
+      "pass": true
+    },
+    {
+      "requested_uid": 1000,
+      "peer_pid": 9273,
+      "peer_uid": 1000,
+      "peer_gid": 1001,
+      "token_read": true,
+      "token_match": true,
+      "pass": true
+    }
+  ],
+  "crash_collector": {
+    "core_pattern": "|/usr/share/apport/apport -p%p -s%s -c%c -d%d -P%P -u%u -g%g -F%F -- %E",
+    "returncode": -6,
+    "core_limit": 0,
+    "child_dumpable": 0,
+    "new_var_crash_paths": [],
+    "new_local_core_paths": [],
+    "new_systemd_coredump_paths": [],
+    "marker_in_child_output": false,
+    "pass": true,
+    "limits": "Observed 3-second window under recorded collector only. No claim for enabled dumpability or all collectors; no unrelated crash contents read."
+  },
+  "process_identity_limits": "boot_id + pid + /proc start_ticks + attempt cgroup recorded; PID reuse was not forced. Production must use pidfd/cgroup handles, never PID alone.",
+  "commands": [
+    {
+      "argv": [
+        "systemd-run",
+        "--user",
+        "--unit=campus982-attempt-0a1aeee837b1",
+        "--property=KillMode=control-group",
+        "--property=TimeoutStopSec=2s",
+        "--property=SendSIGKILL=yes",
+        "--property=Restart=no",
+        "--property=RuntimeMaxSec=30s",
+        "/usr/bin/env",
+        "-i",
+        "PATH=/usr/bin:/bin",
+        "LANG=C.UTF-8",
+        "/usr/bin/python3",
+        "/var/tmp/campus982-process-r9dl9r_8/probe.py",
+        "--service-child",
+        "/var/tmp/campus982-process-r9dl9r_8/children"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "Running as unit: campus982-attempt-0a1aeee837b1.service; invocation ID: 5fd2f6eac8a74a25bba19ea9bed0587f\n"
+    },
+    {
+      "argv": [
+        "systemctl",
+        "--user",
+        "show",
+        "campus982-attempt-0a1aeee837b1",
+        "--property=ControlGroup",
+        "--property=MainPID",
+        "--property=KillMode",
+        "--property=TimeoutStopUSec"
+      ],
+      "returncode": 0,
+      "stdout": "TimeoutStopUSec=2s\nMainPID=9202\nControlGroup=/user.slice/user-1000.slice/user@1000.service/app.slice/campus982-attempt-0a1aeee837b1.service\nKillMode=control-group\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "systemctl",
+        "--user",
+        "stop",
+        "campus982-attempt-0a1aeee837b1"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "systemctl",
+        "--user",
+        "stop",
+        "campus982-attempt-0a1aeee837b1"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "systemctl",
+        "--user",
+        "reset-failed",
+        "campus982-attempt-0a1aeee837b1"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

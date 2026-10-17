@@ -1,0 +1,491 @@
+{
+  "total_counted_bytes": 727920640,
+  "filesystem_free_space_charge": 727924736,
+  "charged_bytes": 727924736,
+  "original_device_inode": [
+    64769,
+    533911
+  ],
+  "paths": [
+    {
+      "path": "home",
+      "device": 64769,
+      "inode": 1048590,
+      "nlink": 6,
+      "size": 4096,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "upgrade-2.1.301-0.txt",
+      "device": 64769,
+      "inode": 1048611,
+      "nlink": 1,
+      "size": 666,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "keyring",
+      "device": 64769,
+      "inode": 1048595,
+      "nlink": 3,
+      "size": 4096,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "install-2.1.300-0.txt",
+      "device": 64769,
+      "inode": 1048609,
+      "nlink": 1,
+      "size": 666,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "history",
+      "device": 64769,
+      "inode": 1048630,
+      "nlink": 2,
+      "size": 4096,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "verification",
+      "device": 64769,
+      "inode": 1048594,
+      "nlink": 2,
+      "size": 4096,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "concurrent-install-2.1.301-0.txt",
+      "device": 64769,
+      "inode": 1048647,
+      "nlink": 1,
+      "size": 666,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "allocation-before.json",
+      "device": 64769,
+      "inode": 1048640,
+      "nlink": 1,
+      "size": 9855,
+      "allocated_bytes": 12288,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "receipt.json",
+      "device": 64769,
+      "inode": 1048628,
+      "nlink": 1,
+      "size": 4772,
+      "allocated_bytes": 8192,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "recover-2.1.300-0.txt",
+      "device": 64769,
+      "inode": 1048624,
+      "nlink": 1,
+      "size": 666,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "concurrent-install-2.1.301-1.txt",
+      "device": 64769,
+      "inode": 1048648,
+      "nlink": 1,
+      "size": 666,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "home/.cache",
+      "device": 64769,
+      "inode": 1048618,
+      "nlink": 3,
+      "size": 4096,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "home/.local",
+      "device": 64769,
+      "inode": 1048605,
+      "nlink": 5,
+      "size": 4096,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "home/isolated-auth",
+      "device": 64769,
+      "inode": 1048591,
+      "nlink": 4,
+      "size": 4096,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "home/tmp",
+      "device": 64769,
+      "inode": 1048593,
+      "nlink": 2,
+      "size": 4096,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "keyring/private-keys-v1.d",
+      "device": 64769,
+      "inode": 1048602,
+      "nlink": 2,
+      "size": 4096,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "keyring/trustdb.gpg",
+      "device": 64769,
+      "inode": 1048600,
+      "nlink": 1,
+      "size": 1200,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "keyring/pubring.kbx",
+      "device": 64769,
+      "inode": 1048599,
+      "nlink": 1,
+      "size": 1370,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "keyring/pubring.kbx~",
+      "device": 64769,
+      "inode": 1048598,
+      "nlink": 1,
+      "size": 32,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "history/receipt-1792149423032141106.json",
+      "device": 64769,
+      "inode": 1048638,
+      "nlink": 1,
+      "size": 4772,
+      "allocated_bytes": 8192,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "history/1792149423032141106-install-2.1.300-0.txt",
+      "device": 64769,
+      "inode": 1048639,
+      "nlink": 1,
+      "size": 79,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "verification/key.asc",
+      "device": 64769,
+      "inode": 1048596,
+      "nlink": 1,
+      "size": 1688,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "verification/2.1.301.json",
+      "device": 64769,
+      "inode": 1048603,
+      "nlink": 1,
+      "size": 1897,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "verification/2.1.300.json",
+      "device": 64769,
+      "inode": 1048597,
+      "nlink": 1,
+      "size": 1897,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "verification/2.1.300.sig",
+      "device": 64769,
+      "inode": 1048601,
+      "nlink": 1,
+      "size": 833,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "verification/2.1.301.sig",
+      "device": 64769,
+      "inode": 1048604,
+      "nlink": 1,
+      "size": 833,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "home/.cache/claude",
+      "device": 64769,
+      "inode": 1048619,
+      "nlink": 3,
+      "size": 4096,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "home/.local/share",
+      "device": 64769,
+      "inode": 1048606,
+      "nlink": 3,
+      "size": 4096,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "home/.local/state",
+      "device": 64769,
+      "inode": 1048617,
+      "nlink": 3,
+      "size": 4096,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "home/.local/bin",
+      "device": 64769,
+      "inode": 1048623,
+      "nlink": 2,
+      "size": 4096,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "home/isolated-auth/synthetic-user-data.keep",
+      "device": 64769,
+      "inode": 1048592,
+      "nlink": 1,
+      "size": 42,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "home/isolated-auth/sessions",
+      "device": 64769,
+      "inode": 1048615,
+      "nlink": 2,
+      "size": 4096,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "home/isolated-auth/.claude.json",
+      "device": 64769,
+      "inode": 1048646,
+      "nlink": 1,
+      "size": 437,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "home/isolated-auth/backups",
+      "device": 64769,
+      "inode": 1048612,
+      "nlink": 2,
+      "size": 4096,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "home/.cache/claude/staging",
+      "device": 64769,
+      "inode": 1048620,
+      "nlink": 3,
+      "size": 4096,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "home/.cache/claude/staging/2.1.300.9542.1792149224985.e25c9a83",
+      "device": 64769,
+      "inode": 1048625,
+      "nlink": 2,
+      "size": 4096,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "home/.cache/claude/staging/2.1.300.9542.1792149224985.e25c9a83/claude",
+      "device": 64769,
+      "inode": 1048626,
+      "nlink": 1,
+      "size": 266264568,
+      "allocated_bytes": 266268672,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "home/.local/share/claude",
+      "device": 64769,
+      "inode": 1048607,
+      "nlink": 3,
+      "size": 4096,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "home/.local/state/claude",
+      "device": 64769,
+      "inode": 1048621,
+      "nlink": 3,
+      "size": 4096,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "home/.local/bin/claude",
+      "device": 64769,
+      "inode": 1048650,
+      "nlink": 1,
+      "size": 102,
+      "allocated_bytes": 4096,
+      "counted": false,
+      "original_shared_inode": false
+    },
+    {
+      "path": "home/.local/share/claude/versions",
+      "device": 64769,
+      "inode": 1048608,
+      "nlink": 2,
+      "size": 4096,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "home/.local/share/claude/versions/2.1.301",
+      "device": 64769,
+      "inode": 533911,
+      "nlink": 2,
+      "size": 267247608,
+      "allocated_bytes": 267251712,
+      "counted": false,
+      "original_shared_inode": true
+    },
+    {
+      "path": "home/.local/share/claude/versions/2.1.300.tmp.9542.1792149229909.1",
+      "device": 64769,
+      "inode": 1048627,
+      "nlink": 1,
+      "size": 195190784,
+      "allocated_bytes": 195194880,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "home/.local/share/claude/versions/2.1.300",
+      "device": 64769,
+      "inode": 1048645,
+      "nlink": 1,
+      "size": 266264568,
+      "allocated_bytes": 266264576,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "home/.local/state/claude/locks",
+      "device": 64769,
+      "inode": 1048622,
+      "nlink": 2,
+      "size": 4096,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "home/isolated-auth/sessions/9542.70b9d1fd5914c83f71f1728d70b1bb7276c6098e68f8c8dede67d825518fb048.key",
+      "device": 64769,
+      "inode": 1048616,
+      "nlink": 1,
+      "size": 139,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "home/isolated-auth/backups/.claude.json.backup.1792149430414",
+      "device": 64769,
+      "inode": 1048644,
+      "nlink": 1,
+      "size": 343,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    },
+    {
+      "path": "home/isolated-auth/backups/.claude.json.backup.1792149224907",
+      "device": 64769,
+      "inode": 1048613,
+      "nlink": 1,
+      "size": 84,
+      "allocated_bytes": 4096,
+      "counted": true,
+      "original_shared_inode": false
+    }
+  ]
+}

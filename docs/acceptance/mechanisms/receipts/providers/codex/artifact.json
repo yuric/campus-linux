@@ -1,0 +1,26 @@
+{
+  "engine": "codex",
+  "version": "0.163.0-linux-arm64",
+  "architecture": "aarch64",
+  "metadata_url": "https://registry.npmjs.org/@openai/codex/0.163.0-linux-arm64",
+  "metadata_sha256": "42249423488f237063adc564bd2e6017b1b17fba08015aa4bb4bb920f72c1df2",
+  "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.163.0-linux-arm64.tgz",
+  "integrity": "sha512-IH2/R+4OarjGvsAf1ll3fdyLwrPgYLl3uzp6u9CyD9sj2Lw+ViDSe3QBZVHdcHJs0eIiZFg6Wprcuy4CRZaUGw==",
+  "registry_signatures": [
+    {
+      "sig": "MEYCIQDEJ4Uc/MQpyl0L8fEvR8dgSXU5/1eZqQbl3ZgiLlNHnQIhAL2/egnRRUae4YvhmTbDZasV6LRlD75lGpww89ejNa0D",
+      "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+    },
+    {
+      "sig": "MEYCIQCcUBU7Icgdz8+DvhTsNcuqpK/foeC40U8WrzTA0vPd3gIhAIN5Hsa+yisQoa31LsUZFDVj4W3DYTx2DqAknn2TFpD7",
+      "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+    }
+  ],
+  "kind": "tar",
+  "member_basename": "codex",
+  "verification": "npm SRI digest; registry signatures recorded but not verified; no publisher identity claim",
+  "artifact_sha256": "dc6e7c4d6de71c23a0f60d05e2577ff7eef615b76f22630d58ad384b84763522",
+  "binary_sha256": "8a96f66d059d653e68bfd5f3c79337e6f1d7d170d80bf705eb7d0249b34c0ece",
+  "member": "package/vendor/aarch64-unknown-linux-musl/bin/codex",
+  "binary_size": 257816200
+}

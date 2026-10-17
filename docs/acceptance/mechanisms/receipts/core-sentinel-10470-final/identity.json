@@ -1,0 +1,31 @@
+{
+  "uname": [
+    "Linux",
+    "lima-campus-linux-d5-noble-arm64",
+    "6.8.0-142-generic",
+    "#142-Ubuntu SMP PREEMPT_DYNAMIC Wed Sep  2 14:30:29 UTC 2026",
+    "aarch64"
+  ],
+  "packages": {
+    "argv": [
+      "dpkg-query",
+      "-W",
+      "-f=${binary:Package} ${Version} ${Architecture}\n",
+      "apport",
+      "systemd",
+      "linux-image-6.8.0-142-generic"
+    ],
+    "returncode": 0,
+    "stdout": "apport 2.28.3-0ubuntu0.1 all\nlinux-image-6.8.0-142-generic 6.8.0-142.142 arm64\nsystemd 255.4-1ubuntu8.17 arm64\n",
+    "stderr": ""
+  },
+  "files": {
+    "/usr/share/apport/apport": "1b8b5e2c53e8970dd2f47c9a0892030d1ebad57cae1f7242c43a6252f1f6dff2",
+    "/usr/bin/python3.12": "c86f21d0da9290ece2d7d49a3f7ed52aed59cb029abdf0ea25c79634f6cbe960",
+    "/home/campusqa/spike982/core-sentinel-10470/probe.py": "3aca30e49471b4c12cbcd5c6abcccf9a9f1006262beb4eaedb3e36e03d3ba22d"
+  },
+  "core_pattern": "|/usr/share/apport/apport -p%p -s%s -c%c -d%d -P%P -u%u -g%g -F%F -- %E\n",
+  "core_pipe_limit": "10\n",
+  "apport_enabled": "# set this to 0 to disable apport, or to 1 to enable it\n# you can temporarily override this with\n# sudo service apport start force_start=1\nenabled=1\n",
+  "user_bus_present": false
+}

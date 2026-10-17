@@ -1,0 +1,5 @@
+import subprocess,pathlib,sys,tarfile,io,json,hashlib
+label=sys.argv[1];root=pathlib.Path('/tmp/campus982-1268');data=subprocess.check_output(['limactl','shell','campus-linux-d5-noble-arm64','sudo','tar','-cf','-','-C','/home/campusqa/spike982/g8-timing-1268',label]);tf=tarfile.open(fileobj=io.BytesIO(data));tf.extractall(root)
+p=root/label;pre=json.loads((p/'preflight.json').read_text());obs=json.loads((p/'preflight-launch.json').read_text());cmd=json.loads((p/'preflight-command.json').read_text());assert cmd['returncode']==0
+print(json.dumps({'kind':pre['kind'],'viewport':pre['viewport'],'scale':pre['scale'],'native':pre['native_evidence'],'policy_requested':pre['compositing_policy'],'effective':pre['hardware_acceleration_policy'],'errors':pre['errors'],'session':obs['active_session']['stdout'],'uname':obs['uname']['stdout'],'packages':obs['packages']['stdout'],'parent':obs['parent']['pid'],'peers':{k:v.get('pid') for k,v in obs['display_peers'].items()},'guest_free_bytes':obs['guest_free_bytes']},indent=2))
+assert pre['viewport']==[1440,900] and pre['scale']==1 and pre['errors']==[] and obs['guest_free_bytes']>=2*1024**3

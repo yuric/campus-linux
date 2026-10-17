@@ -1,0 +1,18 @@
+{
+  "source_url": "https://static.crates.io/crates/tauri-plugin-updater/tauri-plugin-updater-2.14.0.crate",
+  "crate_sha256": "7259989d4fe11b2bf51f7d671642249b1837c4ae2da1430dc713ae38f98ceeec",
+  "source_sha256": "79ed11ecdb3d22410f71d7adb9f7bcbcab00f888cd8892e2268639085df044ce",
+  "vcs": {
+    "git": {
+      "sha1": "44293a5722efcaf27060504e63b17aeba721b40f"
+    },
+    "path_in_vcs": "plugins/updater"
+  },
+  "selection_scope": "exact extracted get_urls method, fake RemoteRelease and installer/arch inputs; NOT installed artifact selection",
+  "elevation_has_pkexec": true,
+  "elevation_has_gui_password": true,
+  "elevation_has_sudo_stdin_password": true,
+  "g5_stock_deb_result": "FAIL: password fallback and no privileged independent signature verification",
+  "selection_execution": "PASS: six source-extracted cases; not product end-to-end",
+  "rustc": "rustc 1.75.0 (82e1608df 2023-12-21) (built from a source tarball)"
+}

@@ -1,0 +1,70 @@
+{
+  "scope": "DISPOSABLE #982 fixtures; not Tauri build/product/release acceptance",
+  "arch": "arm64",
+  "packages": {
+    "v1": {
+      "sha256": "76d69d46f8c136a1baa1ee498059abfeee35d8e44fe9d7fd597697d7cffbe554",
+      "version": "0.982.1",
+      "name": "campus-982-disposable-spike",
+      "arch": "arm64",
+      "helper_sha256": "ac4b38e317c5baf8c5b7c376987a9021f396644216368ad6c9ef420021b3dc28"
+    },
+    "v2": {
+      "sha256": "7dda546a3dd1cda6c5cc72434f57c8205c62c4b709a2720e41809b53f39bea11",
+      "version": "0.982.2",
+      "name": "campus-982-disposable-spike",
+      "arch": "arm64",
+      "helper_sha256": "9dbb4f543be0e07f5292e7262de69cd8db64b0283502edf196ea74482ca129c0"
+    },
+    "wrong-name": {
+      "sha256": "fe6c6bc6ae9425e0f897b3bc600fabf934f778f9ed647059560b87cb870d2917",
+      "version": "0.982.2",
+      "name": "campus-982-wrong-name",
+      "arch": "arm64",
+      "helper_sha256": "9dbb4f543be0e07f5292e7262de69cd8db64b0283502edf196ea74482ca129c0"
+    },
+    "wrong-arch": {
+      "sha256": "11462fbe71dc695f4fd44990ebccc67ba3fcea5806d3bdf17f31a8308b1cccbb",
+      "version": "0.982.2",
+      "name": "campus-982-disposable-spike",
+      "arch": "amd64",
+      "helper_sha256": "9dbb4f543be0e07f5292e7262de69cd8db64b0283502edf196ea74482ca129c0"
+    },
+    "maintainer-script": {
+      "sha256": "55062e8ca5d0237e49ba9fddf7c866ae8b491da8e4481db5da060e70b553eb93",
+      "purpose": "signed archive-shape rejection; must never install"
+    },
+    "symlink-payload": {
+      "sha256": "3d55b6ebc83f9e8e6301f7f4f991cdc05285fa6f02473d4c1f5f0ab3dc036a42",
+      "purpose": "signed archive-shape rejection; must never install"
+    },
+    "arbitrary-path": {
+      "sha256": "fe3fba172f3ed7ab95861ec6e636b5b80c1d864dd7b06223e0de5723ce9dd6f6",
+      "purpose": "signed archive-shape rejection; must never install"
+    },
+    "setuid-helper": {
+      "sha256": "140f5700abc8637cafa231c325ec7ac7db0671de194cbf6e91a2379089bb0c41",
+      "purpose": "signed archive-shape rejection; must never install"
+    },
+    "oversized-expanded-payload": {
+      "sha256": "33962c77723c6abc41262e5f4811ca0d5708bea1fe97b395bf0b60264701adee",
+      "purpose": "signed archive-shape rejection; must never install"
+    },
+    "wrong-owner": {
+      "sha256": "231ba14609b55d00910ee7c72ebd16f3f1e34349790d9b747f4a614ca91b75c6",
+      "purpose": "signed archive-shape rejection; must never install"
+    },
+    "writable-helper": {
+      "sha256": "c57a6059d9a74d55300be84649ded5a25c6f2c6d613a946e21511f3ae28d9b16",
+      "purpose": "signed archive-shape rejection; must never install"
+    }
+  },
+  "appimage": {
+    "sha256": "02e7e87eab88758ac26d9846f5f78bb63addc99861cae8d3845bfdc77c4e47ad",
+    "runtime_sha256": "b4ff0030242d0c3bb12ce40541828303cf167493f4793456f0436edd6255c39d",
+    "runtime_commit": "8f39b89e2ac31e1640b3d3f7e9a5108e6ce805fa",
+    "runtime_asset_id": 596077442,
+    "webview": "NONE: lifecycle mechanism fixture only",
+    "signature": "UNSIGNED disposable fixture; not updater trust evidence"
+  }
+}

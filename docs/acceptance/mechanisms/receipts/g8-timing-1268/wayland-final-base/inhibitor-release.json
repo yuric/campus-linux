@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-16T17:02:49.302184+00:00",
+  "reason": "owned stop file",
+  "elapsed_seconds": 705.996757604,
+  "holder_pid": 3762,
+  "cookie": 734655386,
+  "after": [],
+  "idle_inhibited": false,
+  "owned_inhibitor_absent": true
+}

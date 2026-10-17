@@ -1,0 +1,120 @@
+{
+  "probe_sha256": "aac48fe9a35eaddb030adcc550b0f2271f45f483d4a8c2d22d2e0fa2e3467898",
+  "uname": [
+    "Linux",
+    "lima-campus-linux-d5-noble-arm64",
+    "6.8.0-142-generic",
+    "#142-Ubuntu SMP PREEMPT_DYNAMIC Wed Sep  2 14:30:29 UTC 2026",
+    "aarch64"
+  ],
+  "uid": 1000,
+  "operation": "offline",
+  "commands": [
+    {
+      "argv": [
+        "/home/campusqa/spike982/gemini-api-key/node-v24.22.0-linux-arm64/bin/node",
+        "--version"
+      ],
+      "returncode": 0,
+      "seconds": 0.16311076699997784,
+      "capture": "node-version"
+    },
+    {
+      "argv": [
+        "/home/campusqa/spike982/gemini-api-key/node-v24.22.0-linux-arm64/bin/node",
+        "/home/campusqa/spike982/gemini-api-key/node-v24.22.0-linux-arm64/lib/node_modules/npm/bin/npm-cli.js",
+        "--version"
+      ],
+      "returncode": 0,
+      "seconds": 0.15152915100003383,
+      "capture": "npm-version"
+    },
+    {
+      "argv": [
+        "/home/campusqa/spike982/gemini-api-key/node-v24.22.0-linux-arm64/bin/node",
+        "/home/campusqa/spike982/gemini-api-key/node-v24.22.0-linux-arm64/lib/node_modules/npm/bin/npm-cli.js",
+        "cache",
+        "add",
+        "/home/campusqa/spike982/gemini-api-key/gemini.tgz",
+        "--offline",
+        "--ignore-scripts"
+      ],
+      "returncode": 0,
+      "seconds": 3.9210070020000103,
+      "capture": "npm-cache"
+    },
+    {
+      "argv": [
+        "/home/campusqa/spike982/gemini-api-key/node-v24.22.0-linux-arm64/bin/node",
+        "/home/campusqa/spike982/gemini-api-key/node-v24.22.0-linux-arm64/lib/node_modules/npm/bin/npm-cli.js",
+        "ci",
+        "--offline",
+        "--ignore-scripts",
+        "--omit=optional",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "returncode": 0,
+      "seconds": 2.770176939999942,
+      "capture": "npm-ci"
+    },
+    {
+      "argv": [
+        "/home/campusqa/spike982/gemini-api-key/node-v24.22.0-linux-arm64/bin/node",
+        "/home/campusqa/spike982/gemini-api-key/attempt-offline-1792151496029677060/installation/node_modules/@google/gemini-cli/bundle/gemini.js",
+        "--version"
+      ],
+      "returncode": 0,
+      "seconds": 1.0666770770000085,
+      "capture": "gemini-version"
+    },
+    {
+      "argv": [
+        "/home/campusqa/spike982/gemini-api-key/node-v24.22.0-linux-arm64/bin/node",
+        "/home/campusqa/spike982/gemini-api-key/attempt-offline-1792151496029677060/installation/node_modules/@google/gemini-cli/bundle/gemini.js",
+        "--help"
+      ],
+      "returncode": 0,
+      "seconds": 1.0566816289999679,
+      "capture": "gemini-help"
+    }
+  ],
+  "budget_bytes": 600000000,
+  "scope": "Disposable Gemini0.64.0 availability only, no login/API call, optional native addons omitted",
+  "prior_failed_captures": "captures-offline-failed-1792151496029361731",
+  "prior_probe_sha256": "fe3de4052094b03491e54b375d14445dd88f9b664d7dcda00ac6c6961783d8a0",
+  "private_attempt_directory": "attempt-offline-1792151496029677060",
+  "interfaces": [
+    "lo"
+  ],
+  "node_extraction_verification": {
+    "reused": true,
+    "regular_files_verified": 4797,
+    "symlinks_verified": 3,
+    "archive_sha256": "fef00bb4d36e1c50104a9775a10359beee98f162b4104dd12472c75065c6a143"
+  },
+  "node_binary_sha256": "719a43d185f3b6a59d8fcbba1ff06b93c75f76fb0bb9916f81d33921615d4cb5",
+  "npm_entry_sha256": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7",
+  "peak_file_size_sum": 371098036,
+  "entry_sha256": "ab113d84c8f1692fd6c95081366718897876d8664328c7bf0ccf9437d688145f",
+  "installed_packages": [
+    "attempt-offline-1792151496029677060/installation/node_modules/@google/gemini-cli/bundle/examples/mcp-server/package.json",
+    "attempt-offline-1792151496029677060/installation/node_modules/@google/gemini-cli/package.json"
+  ],
+  "credential_files": [
+    "attempt-offline-1792151496029677060/scope/.gemini/projects.json.007009db-cd40-4c7d-b42a-12e27cd11db8.tmp",
+    "attempt-offline-1792151496029677060/scope/.gemini/projects.json.2987df78-df1a-4ab1-88dd-7ee9926cef03.tmp",
+    "attempt-offline-1792151496029677060/scope/.gemini/projects.json.3d3ccd2c-d978-4de0-9869-2a133b463a81.tmp",
+    "attempt-offline-1792151496029677060/scope/.gemini/projects.json.3de05c68-8a63-4325-92a7-f676a086f5d8.tmp"
+  ],
+  "not_proven": [
+    "API-key authentication/model execution",
+    "OAuth/native keytar",
+    "refresh/cancel",
+    "two-account isolation",
+    "fixed update/rollback",
+    "publisher provenance"
+  ],
+  "completed": true,
+  "final_file_size_sum": 371098036
+}

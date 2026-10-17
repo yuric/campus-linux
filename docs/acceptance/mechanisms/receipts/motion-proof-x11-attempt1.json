@@ -1,0 +1,257 @@
+{
+  "kind": "preflight_failure",
+  "renderer": "Apple GPU",
+  "unmasked_vendor": "Apple Inc.",
+  "masked_renderer": "WebKit WebGL",
+  "vendor": "WebKit",
+  "version": "WebGL 2.0",
+  "debug_extension": true,
+  "extensions": [
+    "EXT_clip_control",
+    "EXT_color_buffer_float",
+    "EXT_color_buffer_half_float",
+    "EXT_conservative_depth",
+    "EXT_depth_clamp",
+    "EXT_float_blend",
+    "EXT_polygon_offset_clamp",
+    "EXT_render_snorm",
+    "EXT_texture_compression_bptc",
+    "EXT_texture_compression_rgtc",
+    "EXT_texture_filter_anisotropic",
+    "EXT_texture_mirror_clamp_to_edge",
+    "EXT_texture_norm16",
+    "KHR_parallel_shader_compile",
+    "NV_shader_noperspective_interpolation",
+    "OES_draw_buffers_indexed",
+    "OES_sample_variables",
+    "OES_shader_multisample_interpolation",
+    "OES_texture_float_linear",
+    "WEBGL_blend_func_extended",
+    "WEBGL_clip_cull_distance",
+    "WEBGL_compressed_texture_astc",
+    "WEBGL_compressed_texture_etc",
+    "WEBGL_compressed_texture_etc1",
+    "WEBGL_compressed_texture_s3tc",
+    "WEBGL_compressed_texture_s3tc_srgb",
+    "WEBGL_debug_renderer_info",
+    "WEBGL_debug_shaders",
+    "WEBGL_lose_context",
+    "WEBGL_multi_draw",
+    "WEBGL_stencil_texturing"
+  ],
+  "context_lost": false,
+  "context_attempts": [
+    {
+      "kind": "webgl2",
+      "attributes": [],
+      "created": true
+    },
+    {
+      "kind": "webgl2",
+      "attributes": [
+        {
+          "alpha": true,
+          "depth": true,
+          "stencil": false,
+          "antialias": true,
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "powerPreference": "high-performance",
+          "failIfMajorPerformanceCaveat": false
+        }
+      ],
+      "created": true
+    }
+  ],
+  "canvas_count": 1,
+  "live_fixture": null,
+  "synthetic_page_text": "\ud83d\udeb6 Incarnatedrag to pan \u00b7 right-drag or shift-drag to orbit \u00b7 scroll to zoom \u00b7 click a window to enter an office \u00b7 esc to pull back",
+  "resources": [
+    "Island/island.html",
+    "Island/assets/island-1R8T8TpV.js",
+    "Island/assets/island-BKmEIAej.css"
+  ],
+  "scripts": [
+    {
+      "src": "campus-spike://renderer/Island/assets/island-1R8T8TpV.js",
+      "type": "module"
+    }
+  ],
+  "viewport": [
+    1440,
+    900
+  ],
+  "scale": 1,
+  "visibility": "visible",
+  "focus": false,
+  "island_state": {
+    "version": 1,
+    "live": true,
+    "focus": null,
+    "walking": false
+  },
+  "lifecycle": {
+    "version": 1,
+    "visible": true,
+    "reducedMotion": false,
+    "applied": true
+  },
+  "errors": [
+    "Error: Mounted scene fixture counts do not match freeze"
+  ],
+  "freeze": {
+    "webkit": "2.52.6-0ubuntu0.24.04.1",
+    "mesa": "25.2.8-0ubuntu0.24.04.4",
+    "llvm": "20.1.2",
+    "kernel": "6.8.0-142-generic",
+    "architecture": "aarch64",
+    "os": "Ubuntu 24.04.5 LTS",
+    "session": "GDM gdm-password X11 seat0 campusqa UID1000 session17",
+    "graphics": "native WebKit render process llvmpipe LLVM20.1.2; same scene WebKit child llvmpipe threads; software Mesa",
+    "webgl_api_renderer": "Apple GPU",
+    "compositing_policy": "on-demand",
+    "rendering_env": {
+      "LIBGL_ALWAYS_SOFTWARE": "1",
+      "GDK_BACKEND": null,
+      "WEBKIT_DISABLE_COMPOSITING_MODE": null,
+      "WEBKIT_DISABLE_DMABUF_RENDERER": null,
+      "WEBKIT_SKIA_ENABLE_CPU_RENDERING": null,
+      "GSK_RENDERER": null,
+      "MESA_LOADER_DRIVER_OVERRIDE": null,
+      "GALLIUM_DRIVER": null,
+      "EGL_PLATFORM": null
+    },
+    "vm": {
+      "cpus": 4,
+      "memory_gib": 6,
+      "disk_gib": 28
+    },
+    "source_base": "37ef5d622da09cd7ba113dc0d1119e62e7378f84",
+    "contract": "none; stubbed presentation only",
+    "native_evidence": {
+      "sha256": "ddf24313a533aef11ebad7a939cf98fb0057742d2cc842ea529f7ec2269711c0",
+      "renderer": "llvmpipe (LLVM 20.1.2, 128 bits)",
+      "vendor": "Mesa",
+      "gl_version": "OpenGL ES 3.2 Mesa 25.2.8-0ubuntu0.24.04.4",
+      "webkit_runtime": "2.52.6",
+      "display_type": "X11",
+      "webkit_source": "4fb33923db2f945803df49546f75867980365c08",
+      "webgl_api_renderer": "Apple GPU",
+      "webgl_api_vendor": "Apple Inc."
+    },
+    "native_evidence_code_sha256": "5eb2280b454af226d2809ef8ad1cf5b620877e401746507d5216052f79db95e8",
+    "producer_sha": "8e39806c5b1fb2ffeda6e55718a4fd2a4d2890da",
+    "manifest_sha256": "badcfcde2012ab1aef610f7a955c231b230580730d4d66ccdc6d4c187d6ef120",
+    "fixture_sha256": "16dc931ccaa50a62d350beba44bc64a5a858ed655eb47637f5fda7fedf97d074",
+    "measure_sha256": "80e785645001bfeb3268c94d7ee87fad405c9f94556d16900609ff6e4e41aab9",
+    "runner_sha256": "f4b464cf94b31f81d01b4c5f5ec94536830abf89fede1b4050ec6605a8496b35",
+    "run_five_sha256": "5734bd1fbf60931df8b535efd4485bb8053493eb3305fa130ea3624a943feb62",
+    "summarizer_sha256": "58b2db84e7f8fd3c2515fcd1a663ed4b1bf7a60f7bbddd62f9fe5a73a90df20a",
+    "protocol_sha256": "e8347c17e7c86a8d84dbb6f0954f522a7ce2a903a972b9720dca0950e39b8eb7",
+    "seed": 98120261016,
+    "repeats": 5,
+    "duration_seconds": 60,
+    "warmup_seconds": 30,
+    "p95_ms_max": 33.3,
+    "viewport": [
+      1440,
+      900
+    ],
+    "device_scale": 1,
+    "render_scale": 1,
+    "appearance": "light",
+    "projects": 12,
+    "agents": 48,
+    "tasks": 180,
+    "frozen_at": "2026-10-16T11:22:22.700513+00:00"
+  },
+  "process_graphics": [
+    {
+      "pid": 9758,
+      "comm": "python3",
+      "children": [
+        9765,
+        9795
+      ],
+      "software_threads": [
+        "llvmpipe-0",
+        "llvmpipe-1",
+        "llvmpipe-2",
+        "llvmpipe-3"
+      ],
+      "graphics_libraries": [
+        "/usr/lib/aarch64-linux-gnu/libEGL.so.1.1.0",
+        "/usr/lib/aarch64-linux-gnu/libEGL_mesa.so.0.0.0",
+        "/usr/lib/aarch64-linux-gnu/libGL.so.1.7.0",
+        "/usr/lib/aarch64-linux-gnu/libGLESv2.so.2.1.0",
+        "/usr/lib/aarch64-linux-gnu/libGLX.so.0.0.0",
+        "/usr/lib/aarch64-linux-gnu/libGLX_mesa.so.0.0.0",
+        "/usr/lib/aarch64-linux-gnu/libGLdispatch.so.0.0.0",
+        "/usr/lib/aarch64-linux-gnu/libLLVM.so.20.1",
+        "/usr/lib/aarch64-linux-gnu/libgallium-25.2.8-0ubuntu0.24.04.4.so"
+      ]
+    },
+    {
+      "pid": 9795,
+      "comm": "WebKitWebProces",
+      "children": [],
+      "software_threads": [
+        "llvmpipe-0",
+        "llvmpipe-1",
+        "llvmpipe-2",
+        "llvmpipe-3"
+      ],
+      "graphics_libraries": [
+        "/usr/lib/aarch64-linux-gnu/libEGL.so.1.1.0",
+        "/usr/lib/aarch64-linux-gnu/libEGL_mesa.so.0.0.0",
+        "/usr/lib/aarch64-linux-gnu/libGL.so.1.7.0",
+        "/usr/lib/aarch64-linux-gnu/libGLESv2.so.2.1.0",
+        "/usr/lib/aarch64-linux-gnu/libGLX.so.0.0.0",
+        "/usr/lib/aarch64-linux-gnu/libGLdispatch.so.0.0.0",
+        "/usr/lib/aarch64-linux-gnu/libLLVM.so.20.1",
+        "/usr/lib/aarch64-linux-gnu/libgallium-25.2.8-0ubuntu0.24.04.4.so"
+      ]
+    },
+    {
+      "pid": 9765,
+      "comm": "WebKitNetworkPr",
+      "children": [],
+      "software_threads": [],
+      "graphics_libraries": [
+        "/usr/lib/aarch64-linux-gnu/libEGL.so.1.1.0",
+        "/usr/lib/aarch64-linux-gnu/libGL.so.1.7.0",
+        "/usr/lib/aarch64-linux-gnu/libGLX.so.0.0.0",
+        "/usr/lib/aarch64-linux-gnu/libGLdispatch.so.0.0.0"
+      ]
+    }
+  ],
+  "native_evidence": {
+    "sha256": "ddf24313a533aef11ebad7a939cf98fb0057742d2cc842ea529f7ec2269711c0",
+    "renderer": "llvmpipe (LLVM 20.1.2, 128 bits)",
+    "vendor": "Mesa",
+    "gl_version": "OpenGL ES 3.2 Mesa 25.2.8-0ubuntu0.24.04.4",
+    "webkit_runtime": "2.52.6",
+    "display_type": "X11",
+    "webkit_source": "4fb33923db2f945803df49546f75867980365c08",
+    "webgl_api_renderer": "Apple GPU",
+    "webgl_api_vendor": "Apple Inc."
+  },
+  "native_software_process_ids": [
+    9795
+  ],
+  "rendering_env": {
+    "LIBGL_ALWAYS_SOFTWARE": "1",
+    "GDK_BACKEND": null,
+    "WEBKIT_DISABLE_COMPOSITING_MODE": null,
+    "WEBKIT_DISABLE_DMABUF_RENDERER": null,
+    "WEBKIT_SKIA_ENABLE_CPU_RENDERING": null,
+    "GSK_RENDERER": null,
+    "MESA_LOADER_DRIVER_OVERRIDE": null,
+    "GALLIUM_DRIVER": null,
+    "EGL_PLATFORM": null
+  },
+  "compositing_policy": "on-demand",
+  "webgl_enabled": true,
+  "hardware_acceleration_policy": "<enum WEBKIT_HARDWARE_ACCELERATION_POLICY_ALWAYS of type WebKit2.HardwareAccelerationPolicy>",
+  "webkit_runtime": "2.52.6"
+}

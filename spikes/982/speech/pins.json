@@ -1,0 +1,25 @@
+{
+  "whisper_cpp": {
+    "release": "v1.9.5",
+    "commit": "d1be6fde11ac6e0407606b4e42fe72d34add8037",
+    "url": "https://codeload.github.com/ggml-org/whisper.cpp/tar.gz/d1be6fde11ac6e0407606b4e42fe72d34add8037",
+    "sha256": "645445da884df6dbd52b30f82d7be7c01d1767c938714e477e786b88d529e9f4",
+    "download_bytes": 9631456,
+    "license": "MIT"
+  },
+  "model": {
+    "name": "tiny.en",
+    "repository": "ggerganov/whisper.cpp",
+    "revision": "5359861c739e955e79d9a303bcbc70fb988958b1",
+    "url": "https://huggingface.co/ggerganov/whisper.cpp/resolve/5359861c739e955e79d9a303bcbc70fb988958b1/ggml-tiny.en.bin",
+    "sha256": "921e4cf8686fdd993dcd081a5da5b6c365bfde1162e72b08d75ac75289920b1f",
+    "download_bytes": 77704715,
+    "license": "MIT (OpenAI Whisper model weights)"
+  },
+  "fixture": {
+    "text": "The blue notebook is beside the window. This is a synthetic speech test. Please edit the words before saving.",
+    "license": "CC0-1.0 dedication for this generated test sentence",
+    "synthesizer": "Ubuntu espeak-ng; exact package version/binary digest recorded by setup",
+    "private_audio": false
+  }
+}
