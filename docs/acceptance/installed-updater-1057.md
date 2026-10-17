@@ -4,6 +4,15 @@ LINUX-20261016 owns acceptance, independent review, Council and merge. This is d
 D4/G5 evidence for L0, not L0 completion or a production package. The only merged build
 dependency is bootstrap #981 at `37ef5d622da09cd7ba113dc0d1119e62e7378f84`.
 
+## Supplemental review evidence
+
+A [source-complete supplemental AI review](updater-review-coverage-1057.md) addresses the
+eight standard Council evidence requests and two separate red-team requests at2c4839.
+It inspected current execution boundaries and all38 receipt screenshots plus the icon,
+carried explicitly matched earlier source reviews, and found one historical documentation
+clarification, now applied below. Its exact read coverage, raw response, source bindings
+and limitations are published. This is not human approval or Council clearance.
+
 ## Accepted startup5 denial evidence
 
 The coordinator accepted the controlled arm64 installed-deb denial observed in a normal
@@ -1106,10 +1115,13 @@ python3 -B -m unittest discover -s spikes/1057/installed-updater/probe -p 'test_
 git diff --check origin/main...HEAD
 ```
 
-The docs-only follow-up under direction1316 changes no source, helper, validator or raw
-receipt bytes. The 110-test result above belongs to source4001; those tests were not rerun
-for the documentation-only head. Its read-only committed-tree link/hash and whitespace
-checks are recorded separately on the card under the bounded publication exception.
+The historical docs-only follow-up `5c1cf8c` under direction1316 changed no source, helper,
+validator or raw receipt bytes. Its 110-test reference belongs to source4001; those suites
+were not rerun for that documentation-only commit. Its committed-tree link/hash and
+whitespace checks are recorded separately on the card. Later source work at1329e154
+passed 108 probe, 10 adapter and 49 repository tests, 167 total. The startup5 evidence
+publication at2c4839 preserved those executable bytes and separately reran the repository
+verifier and frozen exported-evidence correlation.
 
 Python AST and shell syntax checks also passed at4001. Marker tests use existing host Node to
 evaluate generated JavaScript with mocked polkit, without a real logger or guest call.
