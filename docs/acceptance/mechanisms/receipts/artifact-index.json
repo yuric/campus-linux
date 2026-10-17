@@ -1146,6 +1146,21 @@
       "sha256": "4a79b962f91ee909ffe500deac2f2fec6e269aaf2f536d131e671a0292c35fd9"
     },
     {
+      "path": "docs/acceptance/mechanisms/receipts/g8-preflight-bootstrap-r1/raw-preflight-command.json",
+      "bytes": 1369,
+      "sha256": "34ebcf3ebf6f0c34506a83a96e4ca4cc5a0c730a728542a16cf8cec80954dd85"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-preflight-bootstrap-r1/raw-preflight.json",
+      "bytes": 4241,
+      "sha256": "1b69a444ee4148f11d96866ff9f130c7439691a56c4ec8ff2c787b40ac7d74c5"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-preflight-bootstrap-r1/raw-preflight.stderr",
+      "bytes": 1473,
+      "sha256": "cacf5baa537df7a61da7fe05215855fd8a01625d553e0280b1c319faa32d8ca3"
+    },
+    {
       "path": "docs/acceptance/mechanisms/receipts/g8-preflight-deadline-r1/raw-preflight-command.json",
       "bytes": 1366,
       "sha256": "f50eb70b593aa2576d1201b50199b5d2fa1de9b05ef9c3933249d25f4bf3461a"
@@ -3782,18 +3797,23 @@
     },
     {
       "path": "spikes/982/renderer/electron/README.md",
-      "bytes": 12407,
-      "sha256": "d1f8a978930264f5bb877fc6ab7c36bff53276d37185a0d45c113cf139fc1af5"
+      "bytes": 15189,
+      "sha256": "0059e0fbab2e1edb315c3b77254481c8b0eeb06c28d7b9c0ed108608e2d9bb6e"
+    },
+    {
+      "path": "spikes/982/renderer/electron/bounded_stderr.py",
+      "bytes": 3806,
+      "sha256": "7c07b12fc536d79d9bc341098daf4ce7244dc0d9e37bd7936e6845ae153b2440"
     },
     {
       "path": "spikes/982/renderer/electron/freeze.py",
-      "bytes": 2602,
-      "sha256": "8574ae97a587b4c53e7fca83e1fe03ec45528f7124ae98380b2cd6c29e1505d7"
+      "bytes": 2709,
+      "sha256": "927d5710774445aa2423f281b36ae49f55eeaabf8ea6be49d6cb2f2f980e62c4"
     },
     {
       "path": "spikes/982/renderer/electron/main.cjs",
-      "bytes": 12231,
-      "sha256": "b6725d77f0b2df6d86601d8958d833d8a899e46c21a52111f6967efc717498bf"
+      "bytes": 13155,
+      "sha256": "068adf2a56abfb4a702360de1e958bbd063c4c617898a1b199252b55eef09448"
     },
     {
       "path": "spikes/982/renderer/electron/preload.cjs",
@@ -3817,8 +3837,13 @@
     },
     {
       "path": "spikes/982/renderer/electron/test-deadline.cjs",
-      "bytes": 12794,
-      "sha256": "a4e1dc40753ac898ed6515aa38a839a44cf2fc907782df0538eb76385fca7b71"
+      "bytes": 15963,
+      "sha256": "4b590668f55694f7f2e4e95b39ee213815832624690d5e617326088260f3b6cf"
+    },
+    {
+      "path": "spikes/982/renderer/electron/test_bounded_stderr.py",
+      "bytes": 6232,
+      "sha256": "246ca74aa4943f13f5fbcc711f5a7872b3725bdcd90457bfa748afe5dcae8398"
     },
     {
       "path": "spikes/982/renderer/export-receipt.json",

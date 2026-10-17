@@ -12,6 +12,8 @@ if(positionals.length!==3) throw Error('Usage: electron main.cjs [--preflight|--
 const [exportPath,freezePath,outputPath]=positionals.map(p=>path.resolve(p));
 const base=path.resolve(__dirname,'..');
 const preflight=options.has('--preflight');
+const gpuDiagnostic=options.has('--gpu-diagnostic');
+if(gpuDiagnostic&&!preflight)throw Error('GPU diagnostics require preflight; never timing evidence');
 const diagnostic=options.has('--motion-proof')||options.has('--lifecycle-proof');
 const timeoutSeconds=diagnostic?180:115;
 const digest=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
@@ -39,6 +41,18 @@ const islandURI='campus-spike://renderer/Island/island.html';
 const temporary=fs.mkdtempSync(path.join(os.tmpdir(),'campus-982-electron-'));
 app.setPath('userData',temporary);
 app.setPath('crashDumps',path.join(temporary,'crashes'));
+if(gpuDiagnostic){
+ app.commandLine.appendSwitch('enable-logging','stderr');
+ app.commandLine.appendSwitch('log-level','2');
+ let gpuEvents=0;
+ const reasons=new Set(['clean-exit','abnormal-exit','killed','crashed','oom','launch-failed','integrity-failure']);
+ app.on('child-process-gone',(_event,details)=>{
+  if(details?.type!=='GPU'||gpuEvents>16)return;
+  const record=gpuEvents++===16?{kind:'gpu-process-overflow',utc:new Date().toISOString()}:
+   {kind:'gpu-process',utc:new Date().toISOString(),type:'GPU',reason:reasons.has(details.reason)?details.reason:'unknown',exitCode:Number.isSafeInteger(details.exitCode)?details.exitCode:null};
+  try{fs.writeSync(2,JSON.stringify(record)+'\n');}catch{}
+ });
+}
 app.commandLine.appendSwitch('use-gl','angle');
 app.commandLine.appendSwitch('use-angle','gl');
 app.commandLine.appendSwitch('force-device-scale-factor','1');
@@ -99,6 +113,7 @@ function finish(payload){
  phase('receipt');
  let status=1;
  try{
+  if(gpuDiagnostic)payload.diagnostic_only='gpu-startup';
   payload.freeze=freeze;payload.input_hashes=hashes;payload.rendering_env=renderingEnv;
   // Never await GPU enrichment on any terminal path. Unknown stays unknown.
   payload.runtime=process.versions;payload.native_gpu=GPU??null;

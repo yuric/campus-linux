@@ -1,0 +1,18 @@
+{"kind":"phase","utc":"2026-10-17T04:49:47.795Z","phase":"readiness"}
+{"kind":"phase","utc":"2026-10-17T04:49:47.836Z","phase":"readiness-complete"}
+{"kind":"phase","utc":"2026-10-17T04:49:47.840Z","phase":"proxy"}
+{"kind":"phase","utc":"2026-10-17T04:49:47.847Z","phase":"proxy-complete"}
+{"kind":"phase","utc":"2026-10-17T04:49:47.872Z","phase":"bootstrap-load"}
+{"kind":"phase","utc":"2026-10-17T04:49:47.895Z","phase":"bootstrap-load-complete"}
+{"kind":"phase","utc":"2026-10-17T04:49:47.895Z","phase":"debugger-attach"}
+{"kind":"phase","utc":"2026-10-17T04:49:47.895Z","phase":"debugger-enable"}
+{"kind":"phase","utc":"2026-10-17T04:49:47.897Z","phase":"debugger-enable-complete"}
+{"kind":"phase","utc":"2026-10-17T04:49:47.898Z","phase":"debugger-instrument"}
+{"kind":"phase","utc":"2026-10-17T04:49:47.899Z","phase":"debugger-instrument-complete"}
+{"kind":"phase","utc":"2026-10-17T04:49:47.899Z","phase":"load-url"}
+{"kind":"phase","utc":"2026-10-17T04:49:48.118Z","phase":"load-url-complete"}
+[5720:1016/214948.130398:ERROR:gpu/command_buffer/service/context_group.cc:148] ContextResult::kFatalFailure: WebGL2 blocklisted
+[5720:1016/214948.131722:ERROR:gpu/command_buffer/service/context_group.cc:140] ContextResult::kFatalFailure: WebGL1 blocklisted
+{"kind":"phase","utc":"2026-10-17T04:49:53.125Z","phase":"native-gpu"}
+{"kind":"phase","utc":"2026-10-17T04:49:53.126Z","phase":"receipt"}
+{"kind":"phase","utc":"2026-10-17T04:49:53.127Z","phase":"failure-write"}

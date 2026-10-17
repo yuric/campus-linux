@@ -6,10 +6,10 @@ const vm=require('node:vm');
 const test=require('node:test');
 const candidate=fs.readFileSync(path.join(__dirname,'main.cjs'),'utf8');
 const flush=async()=>{for(let i=0;i<50;i++)await Promise.resolve();};
-async function harness(source,{point,mode='pending',native=true,threads=native,receiptKind='preflight',writeFailure=false,stderrFailure=false,navigationDependent=false,bootstrapURL='about:blank'}={}){
+async function harness(source,{point,mode='pending',native=true,threads=native,receiptKind='preflight',writeFailure=false,stderrFailure=false,navigationDependent=false,bootstrapURL='about:blank',gpuDiagnostic=false}={}){
  let now=0,next=0,window,releasePending,navigated=false,instrumented=false,currentURL='',blankCallback=false;
  const timers=new Map(),writes=[],exits=[],logs=[],calls=[],listeners={},ipc={};
- const guards={};
+ const guards={switches:[],appEvents:{}};
  const versions={electron:'44.8.0',node:'mock'};
  const event={sender:null,senderFrame:{url:'campus-spike://renderer/Island/island.html'}};
  const operation=(name)=>{
@@ -50,7 +50,7 @@ async function harness(source,{point,mode='pending',native=true,threads=native,r
  };
  event.sender=webContents;
  const electron={
-  app:{setPath(){},commandLine:{appendSwitch(){}},on(){},whenReady(){return operation('readiness');},
+  app:{setPath(){},commandLine:{appendSwitch(...args){guards.switches.push(args);}},on(name,fn){guards.appEvents[name]=fn;},whenReady(){return operation('readiness');},
    getGPUInfo(){return operation('gpu');},getGPUFeatureStatus(){return {gpu:'mock'};},exit(code){exits.push(code);}},
   BrowserWindow:class{constructor(options){guards.preferences=options.webPreferences;calls.push('window');assert.equal(options.webPreferences.sandbox,true);assert.equal(options.width,1440);assert.equal(options.height,900);this.webContents=webContents;window=this;}removeMenu(){}setContentSize(){}on(){}show(){}focus(){}
    async loadURL(url){const blank=url==='about:blank';await operation(blank?'bootstrap':'load');navigated=true;currentURL=blank?bootstrapURL:url;if(!blank)assert.equal(instrumented,true,'producer scripts require prior instrumentation');if(listeners['did-finish-load']){if(blank)blankCallback=true;listeners['did-finish-load']();}}},
@@ -59,7 +59,7 @@ async function harness(source,{point,mode='pending',native=true,threads=native,r
   ipcMain:{handle(name,fn){ipc[name]=fn;},on(name,fn){ipc[name]=fn;}},nativeTheme:{}
  };
  const context={require(name){if(name==='electron')return electron;if(name==='node:fs')return mockFs;if(name==='node:crypto')return {createHash(){return {update(){return this;},digest(){return 'H';}};}};return require(name);},
-  process:{argv:['electron','main','--preflight','/export','ignored','/output.json'],platform:'linux',arch:'arm64',versions,env:{LIBGL_ALWAYS_SOFTWARE:'1'},execPath:'/electron',pid:10},
+  process:{argv:['electron','main','--preflight',...(gpuDiagnostic?['--gpu-diagnostic']:[]),'/export','ignored','/output.json'],platform:'linux',arch:'arm64',versions,env:{LIBGL_ALWAYS_SOFTWARE:'1'},execPath:'/electron',pid:10},
   __dirname:'/repo/electron',setTimeout,clearTimeout,console:{log(){}},URL,Response,Buffer,
   Date:class extends Date{constructor(...args){super(...(args.length?args:[now]));}static now(){return now;}}
  };
@@ -150,3 +150,48 @@ test('bootstrap retains navigation, network, IPC, sandbox and instrumentation bo
  assert.equal(h.guards.instrument,'const SPIKE_DIAGNOSTICS=false;const SPIKE_NATIVE_LLVMPIPE_PROVEN=false;const SPIKE_EXPECTED_RENDERER=null;\nmock bytes');
  assert.equal([...h.timers.values()].some(t=>t.at===115000),true);
 });
+
+ test('GPU diagnostic events are filtered, bounded and do not alter terminal evidence',async()=>{
+ const h=await harness(candidate,{point:'readiness',gpuDiagnostic:true});
+ const emit=d=>h.guards.appEvents['child-process-gone']({},d);
+ emit({type:'Utility',reason:'crashed',exitCode:8,secret:'excluded'});
+ for(const reason of ['crashed','launch-failed','oom','clean-exit'])emit({type:'GPU',reason,exitCode:9,secret:'excluded'});
+ emit({type:'GPU',reason:'x'.repeat(100000),exitCode:NaN});
+ for(let i=0;i<50;i++)emit({type:'GPU',reason:'crashed',exitCode:1});
+ const events=h.logs.filter(x=>x.kind==='gpu-process');
+ assert.equal(events.length,16);assert.equal(h.logs.filter(x=>x.kind==='gpu-process-overflow').length,1);
+ assert.deepEqual(events.slice(0,4).map(x=>x.reason),['crashed','launch-failed','oom','clean-exit']);
+ assert.equal(events[4].reason,'unknown');assert.equal(events[4].exitCode,null);
+ for(const row of events){assert.deepEqual(Object.keys(row).sort(),['exitCode','kind','reason','type','utc']);assert.ok(JSON.stringify(row).length<200);}
+ assert.ok(h.guards.switches.some(x=>x[0]==='enable-logging'&&x[1]==='stderr'));
+ assert.ok(h.guards.switches.some(x=>x[0]==='log-level'&&x[1]==='2'));
+ await h.advance(115000);assert.equal(h.writes.length,1);assert.equal(h.writes[0].payload.native_gpu,null);
+ assert.equal(h.writes[0].payload.diagnostics.last_phase,'readiness');assert.deepEqual(h.exits,[1]);
+ });
+ test('GPU diagnostic stderr errors do not obstruct terminal failure',async()=>{
+ const h=await harness(candidate,{point:'readiness',gpuDiagnostic:true,stderrFailure:true});
+ h.guards.appEvents['child-process-gone']({},{type:'GPU',reason:'oom',exitCode:7});
+ await h.advance(115000);assert.equal(h.writes.length,1);assert.deepEqual(h.exits,[1]);
+ });
+ test('ordinary preflight has no GPU logging switches or event hook',async()=>{
+ const h=await harness(candidate);assert.equal(h.guards.appEvents['child-process-gone'],undefined);
+ assert.ok(!h.guards.switches.some(x=>['enable-logging','log-level'].includes(x[0])));
+ });
+
+test('successful GPU diagnostic stays explicitly ineligible for freeze',async()=>{
+ const h=await harness(candidate,{gpuDiagnostic:true});await h.advance(5000);
+ assert.equal(h.writes[0].payload.kind,'preflight');
+ assert.equal(h.writes[0].payload.diagnostic_only,'gpu-startup');
+ assert.deepEqual(h.exits,[0]);
+});
+
+for(const [mode,flags] of [['timing',[]],['motion',['--motion-proof']]]){
+ test(`GPU diagnostic rejects ${mode} before installing hooks or switches`,()=>{
+  const effects=[];
+  const electron={app:{on(){effects.push('hook');},commandLine:{appendSwitch(){effects.push('switch');}}}};
+  const context={__dirname:'/repo/electron',require(name){return name==='electron'?electron:require(name);},
+   process:{argv:['electron','main','--gpu-diagnostic',...flags,'/export','/freeze','/output']}};
+  assert.throws(()=>vm.runInNewContext(candidate,context),/GPU diagnostics require preflight; never timing evidence/);
+  assert.deepEqual(effects,[]);
+ });
+}

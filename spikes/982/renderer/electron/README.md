@@ -171,3 +171,48 @@ verify bootstrap/registration/producer ordering, and cover pending, rejected, la
 and unexpected-URL bootstrap outcomes. Existing19 regression cases remain. These
 mocks do not establish that the pinned Linux runtime now passes; a new reviewed
 source map and separately admitted preflight are still required.
+
+### GPU startup diagnostics after the bootstrap repair
+
+The one normal Wayland preflight of published `a9d7c50b` reached bootstrap,
+CDP enablement, producer navigation and the native GPU query. Its
+[receipt](../../../../docs/acceptance/mechanisms/receipts/g8-preflight-bootstrap-r1/raw-preflight.json),
+[stderr](../../../../docs/acceptance/mechanisms/receipts/g8-preflight-bootstrap-r1/raw-preflight.stderr)
+and [command result](../../../../docs/acceptance/mechanisms/receipts/g8-preflight-bootstrap-r1/raw-preflight-command.json)
+are verbatim failed evidence. WebGL was blocklisted and the native query rejected
+GPU access due to frequent crashes. The first GPU crash cause is not present in
+those logs. No renderer acceptance or performance result follows from this failure.
+
+The proposed `--gpu-diagnostic` preflight records at most16 GPU-only
+`child-process-gone` events with fixed UTC/type/reason/exitCode fields, followed by
+one overflow marker. It adds error-level Chromium stderr logging; ordinary
+preflight, motion and timing do not enable that logging. The
+[Electron event contract](https://www.electronjs.org/docs/latest/api/app#event-child-process-gone)
+provides crash, OOM and launch-failure distinctions;
+[logging switches](https://www.electronjs.org/docs/latest/api/command-line-switches#--enable-loggingfile)
+provide diagnostics without changing rendering or sandbox policy.
+
+This option must run through the reviewed diagnostic wrapper using
+`bounded_stderr.py`: its stderr file contains at most256KiB including one truncation
+marker, excess bytes are drained, and inherited pipes cannot extend the existing
+125-second outer deadline. The helper retains process ownership until reap and
+never signals a known reaped leader. Signal failures still allow a bounded reap
+attempt; the command receipt retains the original failure and cleanup errors.
+Timeout, overflow or unknown reap fails the wrapper even if the leader exited0.
+Its launch callback and stdout policy come
+from the wrapper. The proposed wrapper remains outside this repository pending
+separate source-map and runtime admission; direct invocation without a bounded
+stderr sink is not the admitted diagnostic procedure.
+
+Diagnostic receipts carry `diagnostic_only: gpu-startup`, and `freeze.py` rejects
+them even if native checks succeed. Ordinary success schema, rendering flags,
+sandbox, native llvmpipe evidence,115/180-second inner deadlines,10-second GPU
+query,30-second warmup and60-second measurement are unchanged. This patch has
+only offline verification; it does not establish a GPU root cause or a runtime pass.
+
+Offline commands:
+
+```sh
+node --test spikes/982/renderer/electron/test-deadline.cjs
+python3 -B -m unittest discover -s spikes/982/renderer/electron -p 'test_bounded_stderr.py'
+```
