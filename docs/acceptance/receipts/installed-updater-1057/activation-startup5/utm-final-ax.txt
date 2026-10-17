@@ -1,0 +1,50 @@
+Window: "UTM", App: UTM.
+0 standard window UTM – Campus Linux Tryout Ubuntu 24.04 ARM64, ID: home, Secondary Actions: Raise
+	1 split group home, SidebarNavigationSplitView
+		2 scroll area
+			3 list Sidebar
+				4 row (selected) Description: Run, Secondary Actions: Delete, Value: Campus Linux Tryout Ubuntu 24.04 ARM64
+QEMU 10.0 ARM Virtual Machine (alias of virt-10.0) (virt)
+		5 splitter (disabled, settable, float) 258
+		6 scroll area Secondary Actions: Scroll Up, Scroll Down
+			7 button Description: Run, ID: play.circle.fill
+			8 image
+			9 tab group
+				10 tab Description: Details, Value: 1
+				11 tab Description: Snapshots, Value: 0
+				12 container
+					13 text Status Stopped Architecture ARM64 (aarch64) Machine QEMU 10.0 ARM Virtual Machine (alias of virt-10.0) (virt) Memory 4 GB Size 1.85 GB Network Emulated VLAN (virtio-net-pci) MAC Address F2:AF:05:92:60:F5 Port Forward TCP 127.0.0.1:2225 : *:22 Serial (TTY) /dev/ttys004 Shared Directory
+					14 button Browse…
+					15 menu button CD/DVD, ID: opticaldiscdrive.fill
+					16 text utm-seed-networkd.iso
+			17 scroll bar (settable, float) 0
+				18 value indicator (settable, float) 0
+				19 increment arrow button
+				20 decrement arrow button
+				21 increment page button
+				22 decrement page button
+	23 toolbar
+		24 button Description: New VM, ID: plus, Secondary Actions: Increment, Decrement, Delete, Cancel, Move previous, Move next, Remove from toolbar
+		25 button Description: Hide Sidebar, Secondary Actions: Increment, Decrement, Delete, Cancel
+		26 button Description: Delete, ID: trash, Secondary Actions: Increment, Decrement, Delete, Cancel, Move previous, Move next, Remove from toolbar
+		27 button Description: Clone, ID: doc.on.doc, Secondary Actions: Increment, Decrement, Delete, Cancel, Move previous, Move next, Remove from toolbar
+		28 button Description: Move, ID: arrow.down.doc, Secondary Actions: Increment, Decrement, Delete, Cancel, Move previous, Move next, Remove from toolbar
+		29 button Description: Share, ID: square.and.arrow.up, Secondary Actions: Increment, Decrement, Delete, Cancel, Move previous, Move next, Remove from toolbar
+		30 button Description: Run, ID: play, Secondary Actions: Increment, Decrement, Delete, Cancel, Move previous, Move next, Remove from toolbar
+		31 button Description: Edit, ID: slider.horizontal.3, Secondary Actions: Increment, Decrement, Delete, Cancel, Move previous, Remove from toolbar
+	32 close button
+	33 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	34 minimize button
+	35 text UTM Campus Linux Tryout Ubuntu 24.04 ARM64
+36 menu bar
+	37 UTM
+	38 File
+	39 Edit
+	40 View
+	41 Window
+	42 Help
+
+Selected:
+	4 row (selected) Secondary Actions: Delete
+
+Note: Pay special attention to the content selected by the user. If the user asks a question or refers to the content they are looking at on-screen, they might be referring to the selected content (but they might be referring to something else that's visible, too).

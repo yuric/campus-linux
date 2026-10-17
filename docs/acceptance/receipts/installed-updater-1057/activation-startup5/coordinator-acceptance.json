@@ -1,0 +1,28 @@
+{
+  "scope": "LINUX-20261016",
+  "task": 1057,
+  "recorded_utc": "2026-10-17T01:43:42.336222+00:00",
+  "disposition": "accepted_narrow_normal_gdm_root_correlated_user_manager_denial",
+  "source_head": "1329e154930bf671848c25f688c5d72371dd685b",
+  "lease": "1057-gated1329-startup5",
+  "raw_status_preserved": "not_certified",
+  "exact_logind_session": false,
+  "evidence": "environment/1057-gated1329-startup5",
+  "independent_review": "reviews/updater-startup5-actual/REPORT.md",
+  "verification": [
+    "Frozen validator exit0; raw source/export hashes bound",
+    "Independent actual evidence review agrees",
+    "89/89 final handback hashes verified by root",
+    "161 protected rows, full packages and seven fixtures equal through postlogout",
+    "Root viewed GDM logout screenshot; actual selected_session null",
+    "Normal systemctl poweroff return0; root fresh Lima Stopped observation",
+    "No production credential input or installed payload changes"
+  ],
+  "limitations": [
+    "Only controlled arm64 deb fixture denial in observed normal GDM Wayland user-manager custody",
+    "Direct app/recorder logind session remains null; no exact-session certification",
+    "Prior startup4 unclean shutdown preserved; no full filesystem consistency claim",
+    "No broader product updater, provider or release acceptance; PR evidence publication and exact-head CI/Council remain"
+  ],
+  "handback_sha256": "e0871e6a1adc840ebe997230c6fd876c0d38d7e3c77752124e30f4807b94a7c9"
+}

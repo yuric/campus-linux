@@ -4,6 +4,44 @@ LINUX-20261016 owns acceptance, independent review, Council and merge. This is d
 D4/G5 evidence for L0, not L0 completion or a production package. The only merged build
 dependency is bootstrap #981 at `37ef5d622da09cd7ba113dc0d1119e62e7378f84`.
 
+## Accepted startup5 denial evidence
+
+The coordinator accepted the controlled arm64 installed-deb denial observed in a normal
+GDM Wayland session, correlated through root-observed user-manager process custody.
+This is the [separate coordinator disposition](receipts/installed-updater-1057/activation-startup5/coordinator-acceptance.json),
+not a change to the raw recorder result: `not_certified` and `exact_logind_session=false`
+remain explicit. The app and recorder still have no direct logind session mapping.
+Source `1329e154930bf671848c25f688c5d72371dd685b` supplied the recorder/validator;
+the unchanged fixture build source is `113a53e4eea44b6d80a8ee3edb55d186d11f3ba6`.
+
+The [complete index](receipts/installed-updater-1057/activation-startup5/run.json)
+publishes all 89 original observations unchanged, plus the disposition, independent
+review and final handback. The [raw desktop receipt](receipts/installed-updater-1057/activation-startup5/desktop-final.json),
+[authority receipt](receipts/installed-updater-1057/activation-startup5/authority-final.json),
+[journal](receipts/installed-updater-1057/activation-startup5/journal-final.jsonl) and
+[correlation](receipts/installed-updater-1057/activation-startup5/root-correlation.json)
+bind the actual app lifetime, released manifest and rejecting polkit marker. The installed
+adapter returned 127/Not authorized, no adapter entry was recorded, and the installed
+app/helper stayed unchanged. Exit 127 alone is not the basis for acceptance.
+
+The [independent review](receipts/installed-updater-1057/activation-startup5/independent-review.md)
+records the raw null-session limitation and inspected process/journal correlation.
+Its then-pending handback is resolved by the later coordinator disposition and
+[final handback](receipts/installed-updater-1057/activation-startup5/final-handback.json):
+161 protected rows, full package records and seven fixture identities match through
+postlogout; the temporary denial authority is restored, normal logout is observed,
+and normal poweroff is followed by a fresh Lima Stopped observation.
+The [captured terminal frame](receipts/installed-updater-1057/activation-startup5/attempt-visible-a.png)
+has no authentication dialog visible; one frame does not prove continuous absence.
+The [logout frame](receipts/installed-updater-1057/activation-startup5/logout-gdm.png)
+shows the GDM account selector.
+
+Earlier denial1285/10908 failures remain failed historical attempts. The prior startup4
+unclean shutdown also remains recorded; this successful normal shutdown does not prove
+filesystem consistency. This evidence does not establish production signing, provider
+authentication, other desktops or product-wide updater acceptance. Publication still
+requires independent review and fresh exact-head CI/Council before normal merge.
+
 ## Focused gate repair under direction1352
 
 This source-only repair follows the coordinator's [six grouped findings](https://github.com/yuric/campus-linux/pull/13#pullrequestreview-5552390764)
@@ -632,7 +670,7 @@ by the 7383449 run.
 | Signed v1 → v2 and higher v3 with reverted fixture behavior | Pass | Pass | AppImage replacement/relaunch and privileged deb verification |
 | Lower/same signed deb replay refused at privileged seam | Pass | Pass | App/helper hashes unchanged; live caller substitution also passed |
 | Privileged bad signature and signed wrong-architecture AppImage | Pass | Pass | Intended rejecting boundaries; no installation/replacement |
-| GDM polkit prompt, cancellation, denial and missing authority | Cancellation tuple manually accepted under10670; activation1285 missing-authority arm64 deb/GDM Wayland tuple separately accepted under10841; denial1285 and10908 timed out after20 seconds, `incomplete`, with no rejecting marker;10908 observed actual null-session callback and prompt | Downstream desktop gap | Partial desktop evidence only; missing-authority raw `not_certified` / `pending_coordinator_review` retained, no direct app/logind mapping or sampled pkexec child; denial remains failed |
+| GDM polkit prompt, cancellation, denial and missing authority | Cancellation tuple manually accepted under10670; activation1285 missing-authority arm64 deb/GDM Wayland tuple separately accepted under10841; startup5 controlled denial separately accepted with root-correlated user-manager custody | Downstream desktop gap | Narrow desktop fixture evidence only; raw `not_certified` and `exact_logind_session=false` retained. Historical denial1285/10908 remain failed; no direct app/logind certification or broader product acceptance |
 
 | Final artifact budget | arm64 | x86_64 |
 |---|---:|---:|

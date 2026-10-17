@@ -1,0 +1,1 @@
+{"start": 1792200951.539105, "returncode": 0, "stdout": "{\"events\": 0, \"input_requests\": 2, \"key_requests\": 1, \"mode\": \"return\", \"payload_sha256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\", \"received_bytes\": 196, \"release_status\": \"acknowledged\"}\n", "stderr": "", "full_visual_match": true}

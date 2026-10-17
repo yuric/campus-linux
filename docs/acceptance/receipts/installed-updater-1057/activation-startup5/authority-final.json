@@ -1,0 +1,2650 @@
+{
+  "scope": "leased GDM negative preparation only",
+  "mode": "deny",
+  "lease": "1057-gated1329-startup5",
+  "uid": 1000,
+  "authority_helper": {
+    "path": "/root/campus1057-gated1329-startup5/source/authority-window.py",
+    "sha256": "a6901ad047245612b4f9d1a570825085f7e254db5a394643b7a10db1d03b644d",
+    "uid": 0,
+    "mode": "0o400",
+    "isolated_python": true,
+    "bytecode_disabled": true
+  },
+  "shared_authority_window_acknowledged": false,
+  "requested_seconds": 45,
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/systemctl",
+        "show",
+        "polkit.service",
+        "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths,MainPID,ControlGroup"
+      ],
+      "exit": 0,
+      "stdout": "MainPID=716\nControlGroup=/system.slice/polkit.service\nId=polkit.service\nLoadState=loaded\nActiveState=active\nSubState=running\nFragmentPath=/usr/lib/systemd/system/polkit.service\nDropInPaths=\nUnitFileState=static\n",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=65",
+        "--since=@1792200965",
+        "_UID=989",
+        "_GID=989",
+        "_TRANSPORT=syslog",
+        "_BOOT_ID=5894ac063b3a47bca91331011af4743d",
+        "+",
+        "SYSLOG_IDENTIFIER=campus-updater-1057"
+      ],
+      "exit": 0,
+      "stdout": "{\"__SEQNUM_ID\":\"205c6888ffac4a228ee35e49be1f5db2\",\"_HOSTNAME\":\"lima-campus-linux-d5-noble-arm64\",\"_BOOT_ID\":\"5894ac063b3a47bca91331011af4743d\",\"_SYSTEMD_INVOCATION_ID\":\"9b66fa20e4c74bc08297ab87c97f5c67\",\"_SYSTEMD_SLICE\":\"system.slice\",\"_EXE\":\"/usr/lib/polkit-1/polkitd\",\"__MONOTONIC_TIMESTAMP\":\"462812711\",\"_SYSTEMD_CGROUP\":\"/system.slice/polkit.service\",\"_CAP_EFFECTIVE\":\"0\",\"SYSLOG_PID\":\"716\",\"_GID\":\"989\",\"_TRANSPORT\":\"syslog\",\"SYSLOG_FACILITY\":\"10\",\"__REALTIME_TIMESTAMP\":\"1792200966040509\",\"_UID\":\"989\",\"_SYSTEMD_UNIT\":\"polkit.service\",\"MESSAGE\":\"Reloading rules\",\"_CMDLINE\":\"/usr/lib/polkit-1/polkitd --no-debug\",\"_SOURCE_REALTIME_TIMESTAMP\":\"1792200966040433\",\"PRIORITY\":\"5\",\"_SELINUX_CONTEXT\":\"unconfined\\n\",\"SYSLOG_IDENTIFIER\":\"polkitd\",\"_MACHINE_ID\":\"107ca6093f7f4313ae45e0b20c4d493f\",\"_RUNTIME_SCOPE\":\"system\",\"_PID\":\"716\",\"_COMM\":\"polkitd\",\"SYSLOG_TIMESTAMP\":\"Oct 16 18:36:06 \",\"__CURSOR\":\"s=205c6888ffac4a228ee35e49be1f5db2;i=14582;b=5894ac063b3a47bca91331011af4743d;m=1b95f627;t=65dff4df26bbd;x=cbcdbdc8ccf0ef37\",\"__SEQNUM\":\"83330\"}\n{\"_SOURCE_REALTIME_TIMESTAMP\":\"1792200966042820\",\"_SYSTEMD_UNIT\":\"polkit.service\",\"__MONOTONIC_TIMESTAMP\":\"462815072\",\"_SYSTEMD_INVOCATION_ID\":\"9b66fa20e4c74bc08297ab87c97f5c67\",\"__REALTIME_TIMESTAMP\":\"1792200966042869\",\"__SEQNUM_ID\":\"205c6888ffac4a228ee35e49be1f5db2\",\"_CMDLINE\":\"/usr/lib/polkit-1/polkitd --no-debug\",\"SYSLOG_PID\":\"716\",\"_GID\":\"989\",\"_SELINUX_CONTEXT\":\"unconfined\\n\",\"_HOSTNAME\":\"lima-campus-linux-d5-noble-arm64\",\"_MACHINE_ID\":\"107ca6093f7f4313ae45e0b20c4d493f\",\"_TRANSPORT\":\"syslog\",\"_RUNTIME_SCOPE\":\"system\",\"__CURSOR\":\"s=205c6888ffac4a228ee35e49be1f5db2;i=14583;b=5894ac063b3a47bca91331011af4743d;m=1b95ff60;t=65dff4df274f5;x=20999ce7f15ce1d1\",\"PRIORITY\":\"5\",\"SYSLOG_FACILITY\":\"10\",\"SYSLOG_TIMESTAMP\":\"Oct 16 18:36:06 \",\"SYSLOG_IDENTIFIER\":\"polkitd\",\"_COMM\":\"polkitd\",\"_PID\":\"716\",\"_BOOT_ID\":\"5894ac063b3a47bca91331011af4743d\",\"MESSAGE\":\"Collecting garbage unconditionally...\",\"__SEQNUM\":\"83331\",\"_EXE\":\"/usr/lib/polkit-1/polkitd\",\"_SYSTEMD_SLICE\":\"system.slice\",\"_CAP_EFFECTIVE\":\"0\",\"_SYSTEMD_CGROUP\":\"/system.slice/polkit.service\",\"_UID\":\"989\"}\n{\"_MACHINE_ID\":\"107ca6093f7f4313ae45e0b20c4d493f\",\"PRIORITY\":\"5\",\"_HOSTNAME\":\"lima-campus-linux-d5-noble-arm64\",\"__REALTIME_TIMESTAMP\":\"1792200966042997\",\"_CAP_EFFECTIVE\":\"0\",\"_CMDLINE\":\"/usr/lib/polkit-1/polkitd --no-debug\",\"_BOOT_ID\":\"5894ac063b3a47bca91331011af4743d\",\"_SYSTEMD_SLICE\":\"system.slice\",\"_COMM\":\"polkitd\",\"SYSLOG_IDENTIFIER\":\"polkitd\",\"_EXE\":\"/usr/lib/polkit-1/polkitd\",\"_SYSTEMD_UNIT\":\"polkit.service\",\"__SEQNUM_ID\":\"205c6888ffac4a228ee35e49be1f5db2\",\"MESSAGE\":\"Loading rules from directory /etc/polkit-1/rules.d\",\"_SYSTEMD_INVOCATION_ID\":\"9b66fa20e4c74bc08297ab87c97f5c67\",\"_RUNTIME_SCOPE\":\"system\",\"_SELINUX_CONTEXT\":\"unconfined\\n\",\"SYSLOG_PID\":\"716\",\"SYSLOG_FACILITY\":\"10\",\"SYSLOG_TIMESTAMP\":\"Oct 16 18:36:06 \",\"_UID\":\"989\",\"__MONOTONIC_TIMESTAMP\":\"462815199\",\"__SEQNUM\":\"83332\",\"_GID\":\"989\",\"_TRANSPORT\":\"syslog\",\"__CURSOR\":\"s=205c6888ffac4a228ee35e49be1f5db2;i=14584;b=5894ac063b3a47bca91331011af4743d;m=1b95ffdf;t=65dff4df27575;x=6b847b8503fd7b60\",\"_PID\":\"716\",\"_SOURCE_REALTIME_TIMESTAMP\":\"1792200966042848\",\"_SYSTEMD_CGROUP\":\"/system.slice/polkit.service\"}\n{\"_RUNTIME_SCOPE\":\"system\",\"_CMDLINE\":\"/usr/lib/polkit-1/polkitd --no-debug\",\"_COMM\":\"polkitd\",\"__CURSOR\":\"s=205c6888ffac4a228ee35e49be1f5db2;i=14585;b=5894ac063b3a47bca91331011af4743d;m=1b960019;t=65dff4df275af;x=e3e64e898e7ee573\",\"SYSLOG_TIMESTAMP\":\"Oct 16 18:36:06 \",\"_UID\":\"989\",\"_SELINUX_CONTEXT\":\"unconfined\\n\",\"SYSLOG_FACILITY\":\"10\",\"SYSLOG_PID\":\"716\",\"_SYSTEMD_CGROUP\":\"/system.slice/polkit.service\",\"__REALTIME_TIMESTAMP\":\"1792200966043055\",\"_EXE\":\"/usr/lib/polkit-1/polkitd\",\"_SYSTEMD_INVOCATION_ID\":\"9b66fa20e4c74bc08297ab87c97f5c67\",\"MESSAGE\":\"Loading rules from directory /usr/share/polkit-1/rules.d\",\"_BOOT_ID\":\"5894ac063b3a47bca91331011af4743d\",\"_PID\":\"716\",\"_TRANSPORT\":\"syslog\",\"_MACHINE_ID\":\"107ca6093f7f4313ae45e0b20c4d493f\",\"__SEQNUM_ID\":\"205c6888ffac4a228ee35e49be1f5db2\",\"PRIORITY\":\"5\",\"SYSLOG_IDENTIFIER\":\"polkitd\",\"__SEQNUM\":\"83333\",\"_GID\":\"989\",\"_SOURCE_REALTIME_TIMESTAMP\":\"1792200966043051\",\"_CAP_EFFECTIVE\":\"0\",\"_HOSTNAME\":\"lima-campus-linux-d5-noble-arm64\",\"_SYSTEMD_SLICE\":\"system.slice\",\"__MONOTONIC_TIMESTAMP\":\"462815257\",\"_SYSTEMD_UNIT\":\"polkit.service\"}\n{\"SYSLOG_IDENTIFIER\":\"campus-updater-1057\",\"_HOSTNAME\":\"lima-campus-linux-d5-noble-arm64\",\"__CURSOR\":\"s=205c6888ffac4a228ee35e49be1f5db2;i=14586;b=5894ac063b3a47bca91331011af4743d;m=1b960f8d;t=65dff4df28522;x=3276bb511a9e9a85\",\"SYSLOG_TIMESTAMP\":\"Oct 16 18:36:06 \",\"_TRANSPORT\":\"syslog\",\"__REALTIME_TIMESTAMP\":\"1792200966047010\",\"_UID\":\"989\",\"PRIORITY\":\"5\",\"MESSAGE\":\"campus1057-deny-loaded lease=1057-gated1329-startup5 nonce=10d81bceb64381d009952f758df93828\",\"_SOURCE_REALTIME_TIMESTAMP\":\"1792200966046894\",\"_BOOT_ID\":\"5894ac063b3a47bca91331011af4743d\",\"__SEQNUM\":\"83334\",\"_RUNTIME_SCOPE\":\"system\",\"SYSLOG_FACILITY\":\"1\",\"__SEQNUM_ID\":\"205c6888ffac4a228ee35e49be1f5db2\",\"_MACHINE_ID\":\"107ca6093f7f4313ae45e0b20c4d493f\",\"_GID\":\"989\",\"_PID\":\"5176\",\"__MONOTONIC_TIMESTAMP\":\"462819213\"}\n{\"_EXE\":\"/usr/lib/polkit-1/polkitd\",\"_COMM\":\"polkitd\",\"PRIORITY\":\"5\",\"_UID\":\"989\",\"SYSLOG_PID\":\"716\",\"_SELINUX_CONTEXT\":\"unconfined\\n\",\"SYSLOG_FACILITY\":\"10\",\"MESSAGE\":\"Finished loading, compiling and executing 9 rules\",\"_MACHINE_ID\":\"107ca6093f7f4313ae45e0b20c4d493f\",\"__CURSOR\":\"s=205c6888ffac4a228ee35e49be1f5db2;i=14587;b=5894ac063b3a47bca91331011af4743d;m=1b96199a;t=65dff4df28f2f;x=a709824dae5394e1\",\"_GID\":\"989\",\"__SEQNUM_ID\":\"205c6888ffac4a228ee35e49be1f5db2\",\"__MONOTONIC_TIMESTAMP\":\"462821786\",\"_SYSTEMD_INVOCATION_ID\":\"9b66fa20e4c74bc08297ab87c97f5c67\",\"_RUNTIME_SCOPE\":\"system\",\"__REALTIME_TIMESTAMP\":\"1792200966049583\",\"__SEQNUM\":\"83335\",\"SYSLOG_IDENTIFIER\":\"polkitd\",\"_PID\":\"716\",\"_TRANSPORT\":\"syslog\",\"_SOURCE_REALTIME_TIMESTAMP\":\"1792200966049508\",\"_CAP_EFFECTIVE\":\"0\",\"_CMDLINE\":\"/usr/lib/polkit-1/polkitd --no-debug\",\"_HOSTNAME\":\"lima-campus-linux-d5-noble-arm64\",\"_SYSTEMD_SLICE\":\"system.slice\",\"_SYSTEMD_CGROUP\":\"/system.slice/polkit.service\",\"SYSLOG_TIMESTAMP\":\"Oct 16 18:36:06 \",\"_SYSTEMD_UNIT\":\"polkit.service\",\"_BOOT_ID\":\"5894ac063b3a47bca91331011af4743d\"}\n{\"__SEQNUM_ID\":\"205c6888ffac4a228ee35e49be1f5db2\",\"__CURSOR\":\"s=205c6888ffac4a228ee35e49be1f5db2;i=14588;b=5894ac063b3a47bca91331011af4743d;m=1b961a5e;t=65dff4df28ff4;x=ae844cee05ac8fc5\",\"_MACHINE_ID\":\"107ca6093f7f4313ae45e0b20c4d493f\",\"SYSLOG_TIMESTAMP\":\"Oct 16 18:36:06 \",\"_SYSTEMD_UNIT\":\"polkit.service\",\"_CAP_EFFECTIVE\":\"0\",\"_SYSTEMD_CGROUP\":\"/system.slice/polkit.service\",\"_COMM\":\"polkitd\",\"__MONOTONIC_TIMESTAMP\":\"462821982\",\"_UID\":\"989\",\"__SEQNUM\":\"83336\",\"_RUNTIME_SCOPE\":\"system\",\"__REALTIME_TIMESTAMP\":\"1792200966049780\",\"_TRANSPORT\":\"syslog\",\"_EXE\":\"/usr/lib/polkit-1/polkitd\",\"_PID\":\"716\",\"SYSLOG_IDENTIFIER\":\"polkitd\",\"_SOURCE_REALTIME_TIMESTAMP\":\"1792200966049669\",\"_BOOT_ID\":\"5894ac063b3a47bca91331011af4743d\",\"SYSLOG_PID\":\"716\",\"_CMDLINE\":\"/usr/lib/polkit-1/polkitd --no-debug\",\"_HOSTNAME\":\"lima-campus-linux-d5-noble-arm64\",\"_GID\":\"989\",\"_SYSTEMD_SLICE\":\"system.slice\",\"PRIORITY\":\"5\",\"_SYSTEMD_INVOCATION_ID\":\"9b66fa20e4c74bc08297ab87c97f5c67\",\"MESSAGE\":\"Reloading rules\",\"SYSLOG_FACILITY\":\"10\",\"_SELINUX_CONTEXT\":\"unconfined\\n\"}\n{\"_HOSTNAME\":\"lima-campus-linux-d5-noble-arm64\",\"_EXE\":\"/usr/lib/polkit-1/polkitd\",\"MESSAGE\":\"Collecting garbage unconditionally...\",\"__MONOTONIC_TIMESTAMP\":\"462822077\",\"_TRANSPORT\":\"syslog\",\"__REALTIME_TIMESTAMP\":\"1792200966049875\",\"_BOOT_ID\":\"5894ac063b3a47bca91331011af4743d\",\"_SELINUX_CONTEXT\":\"unconfined\\n\",\"_UID\":\"989\",\"_COMM\":\"polkitd\",\"_PID\":\"716\",\"PRIORITY\":\"5\",\"_MACHINE_ID\":\"107ca6093f7f4313ae45e0b20c4d493f\",\"_SYSTEMD_SLICE\":\"system.slice\",\"SYSLOG_TIMESTAMP\":\"Oct 16 18:36:06 \",\"_SYSTEMD_UNIT\":\"polkit.service\",\"_CAP_EFFECTIVE\":\"0\",\"SYSLOG_IDENTIFIER\":\"polkitd\",\"_SYSTEMD_INVOCATION_ID\":\"9b66fa20e4c74bc08297ab87c97f5c67\",\"_SOURCE_REALTIME_TIMESTAMP\":\"1792200966049683\",\"__SEQNUM_ID\":\"205c6888ffac4a228ee35e49be1f5db2\",\"__SEQNUM\":\"83337\",\"_GID\":\"989\",\"_SYSTEMD_CGROUP\":\"/system.slice/polkit.service\",\"__CURSOR\":\"s=205c6888ffac4a228ee35e49be1f5db2;i=14589;b=5894ac063b3a47bca91331011af4743d;m=1b961abd;t=65dff4df29053;x=b824ed989330c97b\",\"SYSLOG_PID\":\"716\",\"_RUNTIME_SCOPE\":\"system\"",
+      "stderr": "",
+      "output_truncated": true
+    },
+    {
+      "argv": [
+        "/usr/bin/systemctl",
+        "show",
+        "polkit.service",
+        "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths,MainPID,ControlGroup"
+      ],
+      "exit": 0,
+      "stdout": "MainPID=716\nControlGroup=/system.slice/polkit.service\nId=polkit.service\nLoadState=loaded\nActiveState=active\nSubState=running\nFragmentPath=/usr/lib/systemd/system/polkit.service\nDropInPaths=\nUnitFileState=static\n",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/systemctl",
+        "show",
+        "polkit.service",
+        "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths,MainPID,ControlGroup"
+      ],
+      "exit": 0,
+      "stdout": "MainPID=716\nControlGroup=/system.slice/polkit.service\nId=polkit.service\nLoadState=loaded\nActiveState=active\nSubState=running\nFragmentPath=/usr/lib/systemd/system/polkit.service\nDropInPaths=\nUnitFileState=static\n",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/systemctl",
+        "show",
+        "polkit.service",
+        "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths,MainPID,ControlGroup"
+      ],
+      "exit": 0,
+      "stdout": "MainPID=716\nControlGroup=/system.slice/polkit.service\nId=polkit.service\nLoadState=loaded\nActiveState=active\nSubState=running\nFragmentPath=/usr/lib/systemd/system/polkit.service\nDropInPaths=\nUnitFileState=static\n",
+      "stderr": "",
+      "output_truncated": false
+    }
+  ],
+  "status": "app_completed_pending_coordinator_review",
+  "cleanup": "restored",
+  "gated_control_sources": {
+    "controller_sha256": "4dfb8039e62633172b663a2076870dc7f674846c6c3795a257c59d39da815110",
+    "gate_sha256": "bf630dfc35dc577dcac52d60f58c6d53fd3ddbbc745d19417c27a9c361c3e5b5",
+    "gui_sources": {
+      "desktop.py": {
+        "path": "/opt/campus1057-gated1329-startup5/source/desktop.py",
+        "sha256": "166f323caeba384b80aa5a49591c08ab77209787f5d65f5f6360e76b4e136c11"
+      },
+      "gated-driver.py": {
+        "path": "/opt/campus1057-gated1329-startup5/source/gated-driver.py",
+        "sha256": "fb027cdfc7fc706577dc2e0cb82e2f71e5e6b257e685c9e11b88361170895755"
+      },
+      "gated.py": {
+        "path": "/opt/campus1057-gated1329-startup5/source/gated.py",
+        "sha256": "bf630dfc35dc577dcac52d60f58c6d53fd3ddbbc745d19417c27a9c361c3e5b5"
+      },
+      "serve.py": {
+        "path": "/opt/campus1057-gated1329-startup5/source/serve.py",
+        "sha256": "a4deeb4d9d13cf5388421645c4b6281e44f19ff268fb1e0e9be863b3c694c3a3"
+      }
+    }
+  },
+  "user_manager_binding": {
+    "mode": "root-correlated-user-manager",
+    "lease": "1057-gated1329-startup5",
+    "nonce": "10d81bceb64381d009952f758df93828",
+    "boot_id": "5894ac063b3a47bca91331011af4743d",
+    "app": {
+      "pid": 5156,
+      "ppid": 5151,
+      "starttime": "46237",
+      "uids": [
+        "1000",
+        "1000",
+        "1000",
+        "1000"
+      ],
+      "gids": [
+        "1001",
+        "1001",
+        "1001",
+        "1001"
+      ],
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-d73f7c2e-6c78-4362-9e8b-66c03031d201.scope\n",
+      "exe": "/usr/bin/campus-updater-1057",
+      "exe_identity": [
+        64769,
+        92397,
+        15087152,
+        1792160222000000000
+      ],
+      "state": "S"
+    },
+    "recorder": {
+      "pid": 5151,
+      "ppid": 5116,
+      "starttime": "46127",
+      "uids": [
+        "1000",
+        "1000",
+        "1000",
+        "1000"
+      ],
+      "gids": [
+        "1001",
+        "1001",
+        "1001",
+        "1001"
+      ],
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-d73f7c2e-6c78-4362-9e8b-66c03031d201.scope\n",
+      "exe": "/usr/bin/python3.12",
+      "exe_identity": [
+        64769,
+        2088,
+        7845048,
+        1788171506000000000
+      ],
+      "state": "R"
+    },
+    "driver": {
+      "pid": 5116,
+      "ppid": 4249,
+      "starttime": "44835",
+      "uids": [
+        "1000",
+        "1000",
+        "1000",
+        "1000"
+      ],
+      "gids": [
+        "1001",
+        "1001",
+        "1001",
+        "1001"
+      ],
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-d73f7c2e-6c78-4362-9e8b-66c03031d201.scope\n",
+      "exe": "/usr/bin/python3.12",
+      "exe_identity": [
+        64769,
+        2088,
+        7845048,
+        1788171506000000000
+      ],
+      "state": "S"
+    },
+    "server": {
+      "pid": 5150,
+      "ppid": 5116,
+      "starttime": "46121",
+      "uids": [
+        "1000",
+        "1000",
+        "1000",
+        "1000"
+      ],
+      "gids": [
+        "1001",
+        "1001",
+        "1001",
+        "1001"
+      ],
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-d73f7c2e-6c78-4362-9e8b-66c03031d201.scope\n",
+      "exe": "/usr/bin/python3.12",
+      "exe_identity": [
+        64769,
+        2088,
+        7845048,
+        1788171506000000000
+      ],
+      "state": "S"
+    },
+    "ancestry": [
+      {
+        "pid": 4249,
+        "ppid": 4242,
+        "starttime": "9489",
+        "uids": [
+          "1000",
+          "1000",
+          "1000",
+          "1000"
+        ],
+        "gids": [
+          "1001",
+          "1001",
+          "1001",
+          "1001"
+        ],
+        "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-d73f7c2e-6c78-4362-9e8b-66c03031d201.scope\n",
+        "exe": "/usr/bin/bash",
+        "exe_identity": [
+          64769,
+          1755,
+          1543048,
+          1711874463000000000
+        ],
+        "state": "S"
+      },
+      {
+        "pid": 4242,
+        "ppid": 3254,
+        "starttime": "9473",
+        "uids": [
+          "1000",
+          "1000",
+          "1000",
+          "1000"
+        ],
+        "gids": [
+          "1001",
+          "1001",
+          "1001",
+          "1001"
+        ],
+        "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/gnome-terminal-server.service\n",
+        "exe": "/usr/libexec/gnome-terminal-server",
+        "exe_identity": [
+          64769,
+          90052,
+          334512,
+          1711865589000000000
+        ],
+        "state": "S"
+      }
+    ],
+    "terminal": {
+      "pid": 4242,
+      "ppid": 3254,
+      "starttime": "9473",
+      "uids": [
+        "1000",
+        "1000",
+        "1000",
+        "1000"
+      ],
+      "gids": [
+        "1001",
+        "1001",
+        "1001",
+        "1001"
+      ],
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/gnome-terminal-server.service\n",
+      "exe": "/usr/libexec/gnome-terminal-server",
+      "exe_identity": [
+        64769,
+        90052,
+        334512,
+        1711865589000000000
+      ],
+      "state": "S"
+    },
+    "custody": {
+      "session": {
+        "Id": "6",
+        "User": "1000",
+        "Leader": "2345",
+        "Type": "wayland",
+        "Class": "user",
+        "Service": "gdm-password",
+        "Remote": "no",
+        "Active": "yes",
+        "State": "active",
+        "Scope": "session-6.scope",
+        "Seat": "seat0"
+      },
+      "leader": {
+        "pid": 2345,
+        "ppid": 967,
+        "starttime": "6067",
+        "uids": [
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "gids": [
+          "1001",
+          "1001",
+          "1001",
+          "1001"
+        ],
+        "cgroup": "0::/user.slice/user-1000.slice/session-6.scope\n",
+        "exe": "/usr/libexec/gdm-session-worker",
+        "exe_identity": [
+          64769,
+          90421,
+          264456,
+          1778152597000000000
+        ]
+      },
+      "leader_logind": {
+        "session": "6",
+        "session_result": 0,
+        "owner_uid": 1000,
+        "owner_result": 0
+      },
+      "user": {
+        "Sessions": "6",
+        "Display": "6",
+        "RuntimePath": "/run/user/1000"
+      }
+    },
+    "direct_logind": {
+      "session": null,
+      "session_result": -61,
+      "owner_uid": 1000,
+      "owner_result": 0
+    },
+    "app_started_ns": 462370000000,
+    "app_deadline_ns": 482370000000,
+    "gate_deadline_ns": 470370000000,
+    "request": {
+      "lease": "1057-gated1329-startup5",
+      "nonce": "10d81bceb64381d009952f758df93828",
+      "waiting_ns": 462720885648,
+      "waiting_unix_ns": 1792200965948711924
+    },
+    "bound_ns": 462766904961,
+    "bound_unix_ns": 1792200965994703437,
+    "app_sha256": "b56a92b93f3c0fb72f01b40e03528d0e966595bc59a23168f184045e23210f1e",
+    "sources": {
+      "desktop.py": {
+        "path": "/opt/campus1057-gated1329-startup5/source/desktop.py",
+        "sha256": "166f323caeba384b80aa5a49591c08ab77209787f5d65f5f6360e76b4e136c11"
+      },
+      "gated-driver.py": {
+        "path": "/opt/campus1057-gated1329-startup5/source/gated-driver.py",
+        "sha256": "fb027cdfc7fc706577dc2e0cb82e2f71e5e6b257e685c9e11b88361170895755"
+      },
+      "gated.py": {
+        "path": "/opt/campus1057-gated1329-startup5/source/gated.py",
+        "sha256": "bf630dfc35dc577dcac52d60f58c6d53fd3ddbbc745d19417c27a9c361c3e5b5"
+      },
+      "serve.py": {
+        "path": "/opt/campus1057-gated1329-startup5/source/serve.py",
+        "sha256": "a4deeb4d9d13cf5388421645c4b6281e44f19ff268fb1e0e9be863b3c694c3a3"
+      }
+    }
+  },
+  "user": "campusqa",
+  "subject_pid": 5156,
+  "subject_stat": "5156 (campus-updater-) S 5151 5156 5156 0 -1 4194304 3610 1566 0 0 12 8 0 2 20 0 11 0 46237 974266368 12224 18446744073709551615 205334867673088 205334876760952 281474628556928 0 0 0 0 4096 1088 0 0 0 17 1 0 0 0 0 0 205334876827752 205334877040928 205335578451968 281474628559382 281474628559461 281474628559461 281474628562907 0\n",
+  "subject_session": "6",
+  "cleanup_reserve_seconds": 10,
+  "window_started_unix_ns": 1792200965994879098,
+  "service_context_observations": [
+    {
+      "restoring": false,
+      "state": {
+        "MainPID": "716",
+        "ControlGroup": "/system.slice/polkit.service",
+        "Id": "polkit.service",
+        "LoadState": "loaded",
+        "ActiveState": "active",
+        "SubState": "running",
+        "FragmentPath": "/usr/lib/systemd/system/polkit.service",
+        "DropInPaths": "",
+        "UnitFileState": "static"
+      },
+      "process": {
+        "pid": 716,
+        "starttime": "589",
+        "exe": "/usr/lib/polkit-1/polkitd",
+        "cgroup": "0::/system.slice/polkit.service\n",
+        "uids": [
+          "989",
+          "989",
+          "989",
+          "989"
+        ],
+        "gids": [
+          "989",
+          "989",
+          "989",
+          "989"
+        ]
+      },
+      "same_uid_processes": [
+        {
+          "pid": 716,
+          "starttime": "589",
+          "exe": "/usr/lib/polkit-1/polkitd",
+          "cgroup": "0::/system.slice/polkit.service\n",
+          "uids": [
+            "989",
+            "989",
+            "989",
+            "989"
+          ],
+          "gids": [
+            "989",
+            "989",
+            "989",
+            "989"
+          ]
+        }
+      ]
+    },
+    {
+      "restoring": false,
+      "state": {
+        "MainPID": "716",
+        "ControlGroup": "/system.slice/polkit.service",
+        "Id": "polkit.service",
+        "LoadState": "loaded",
+        "ActiveState": "active",
+        "SubState": "running",
+        "FragmentPath": "/usr/lib/systemd/system/polkit.service",
+        "DropInPaths": "",
+        "UnitFileState": "static"
+      },
+      "process": {
+        "pid": 716,
+        "starttime": "589",
+        "exe": "/usr/lib/polkit-1/polkitd",
+        "cgroup": "0::/system.slice/polkit.service\n",
+        "uids": [
+          "989",
+          "989",
+          "989",
+          "989"
+        ],
+        "gids": [
+          "989",
+          "989",
+          "989",
+          "989"
+        ]
+      },
+      "same_uid_processes": [
+        {
+          "pid": 716,
+          "starttime": "589",
+          "exe": "/usr/lib/polkit-1/polkitd",
+          "cgroup": "0::/system.slice/polkit.service\n",
+          "uids": [
+            "989",
+            "989",
+            "989",
+            "989"
+          ],
+          "gids": [
+            "989",
+            "989",
+            "989",
+            "989"
+          ]
+        }
+      ]
+    },
+    {
+      "restoring": true,
+      "state": {
+        "MainPID": "716",
+        "ControlGroup": "/system.slice/polkit.service",
+        "Id": "polkit.service",
+        "LoadState": "loaded",
+        "ActiveState": "active",
+        "SubState": "running",
+        "FragmentPath": "/usr/lib/systemd/system/polkit.service",
+        "DropInPaths": "",
+        "UnitFileState": "static"
+      },
+      "process": {
+        "pid": 716,
+        "starttime": "589",
+        "exe": "/usr/lib/polkit-1/polkitd",
+        "cgroup": "0::/system.slice/polkit.service\n",
+        "uids": [
+          "989",
+          "989",
+          "989",
+          "989"
+        ],
+        "gids": [
+          "989",
+          "989",
+          "989",
+          "989"
+        ]
+      },
+      "same_uid_processes": [
+        {
+          "pid": 716,
+          "starttime": "589",
+          "exe": "/usr/lib/polkit-1/polkitd",
+          "cgroup": "0::/system.slice/polkit.service\n",
+          "uids": [
+            "989",
+            "989",
+            "989",
+            "989"
+          ],
+          "gids": [
+            "989",
+            "989",
+            "989",
+            "989"
+          ]
+        }
+      ]
+    },
+    {
+      "restoring": true,
+      "state": {
+        "MainPID": "716",
+        "ControlGroup": "/system.slice/polkit.service",
+        "Id": "polkit.service",
+        "LoadState": "loaded",
+        "ActiveState": "active",
+        "SubState": "running",
+        "FragmentPath": "/usr/lib/systemd/system/polkit.service",
+        "DropInPaths": "",
+        "UnitFileState": "static"
+      },
+      "process": {
+        "pid": 716,
+        "starttime": "589",
+        "exe": "/usr/lib/polkit-1/polkitd",
+        "cgroup": "0::/system.slice/polkit.service\n",
+        "uids": [
+          "989",
+          "989",
+          "989",
+          "989"
+        ],
+        "gids": [
+          "989",
+          "989",
+          "989",
+          "989"
+        ]
+      },
+      "same_uid_processes": [
+        {
+          "pid": 716,
+          "starttime": "589",
+          "exe": "/usr/lib/polkit-1/polkitd",
+          "cgroup": "0::/system.slice/polkit.service\n",
+          "uids": [
+            "989",
+            "989",
+            "989",
+            "989"
+          ],
+          "gids": [
+            "989",
+            "989",
+            "989",
+            "989"
+          ]
+        }
+      ]
+    }
+  ],
+  "service_binding": {
+    "uid": "989",
+    "gid": "989",
+    "account": "polkitd",
+    "account_primary_gid": 989,
+    "unit": "polkit.service",
+    "logger_exe": "/usr/bin/logger",
+    "account_groups": [
+      989
+    ],
+    "nss_users": [
+      "polkitd"
+    ],
+    "main_pid": 716,
+    "starttime": "589",
+    "exe": "/usr/lib/polkit-1/polkitd",
+    "cgroup": "0::/system.slice/polkit.service\n",
+    "process": {
+      "pid": 716,
+      "starttime": "589",
+      "exe": "/usr/lib/polkit-1/polkitd",
+      "cgroup": "0::/system.slice/polkit.service\n",
+      "uids": [
+        "989",
+        "989",
+        "989",
+        "989"
+      ],
+      "gids": [
+        "989",
+        "989",
+        "989",
+        "989"
+      ]
+    },
+    "same_uid_processes": [
+      {
+        "pid": 716,
+        "starttime": "589",
+        "exe": "/usr/lib/polkit-1/polkitd",
+        "cgroup": "0::/system.slice/polkit.service\n",
+        "uids": [
+          "989",
+          "989",
+          "989",
+          "989"
+        ],
+        "gids": [
+          "989",
+          "989",
+          "989",
+          "989"
+        ]
+      }
+    ],
+    "service_state": {
+      "MainPID": "716",
+      "ControlGroup": "/system.slice/polkit.service",
+      "Id": "polkit.service",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/polkit.service",
+      "DropInPaths": "",
+      "UnitFileState": "static"
+    },
+    "boot_id": "5894ac063b3a47bca91331011af4743d",
+    "executable": {
+      "path": "/usr/lib/polkit-1/polkitd",
+      "sha256": "3af05957118bbf6749d0dc88866b8705225c5935807d4bdb28c069711e90a93a",
+      "uid": 0,
+      "mode": 493
+    },
+    "logger": {
+      "path": "/usr/bin/logger",
+      "sha256": "613c4c47d05aee29ad4e3879377ca44bb1144308aec0cdf828dc39580eeae1f6",
+      "uid": 0,
+      "mode": 493
+    }
+  },
+  "boot_id": "5894ac063b3a47bca91331011af4743d",
+  "marker_nonce": "10d81bceb64381d009952f758df93828",
+  "service_identity_valid": true,
+  "owned_device_inode": [
+    64769,
+    3689
+  ],
+  "owned_path": "/etc/polkit-1/rules.d/00-campus-updater-1057-deny.rules",
+  "rule_sha256": "ea54eb31444afcbd55972291adbe58debe29bed7d3a1884cd090d531e38040dd",
+  "marker_bridge": {
+    "argv_prefix": [
+      "/usr/bin/logger",
+      "--socket-errors=on",
+      "--priority",
+      "user.notice",
+      "--tag",
+      "campus-updater-1057",
+      "--"
+    ],
+    "expected_loaded_message": "campus1057-deny-loaded lease=1057-gated1329-startup5 nonce=10d81bceb64381d009952f758df93828",
+    "daemon_uid": "989",
+    "daemon_gid": "989",
+    "boot_id": "5894ac063b3a47bca91331011af4743d",
+    "systemd_unit": "polkit.service",
+    "loaded_wait_max_seconds": 5,
+    "rejecting_marker_required_for_case_acceptance": true,
+    "attribution": "trusted dedicated polkit account and owned rule in controlled guest; no executable/parent proof when optional metadata is absent; no claim against root or same-account compromise"
+  },
+  "loaded_marker_observations": [
+    {
+      "observed_unix_ns": 1792200966075530641,
+      "evidence": {
+        "accepted": [
+          {
+            "SYSLOG_IDENTIFIER": "campus-updater-1057",
+            "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+            "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=14586;b=5894ac063b3a47bca91331011af4743d;m=1b960f8d;t=65dff4df28522;x=3276bb511a9e9a85",
+            "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+            "_TRANSPORT": "syslog",
+            "__REALTIME_TIMESTAMP": "1792200966047010",
+            "_UID": "989",
+            "PRIORITY": "5",
+            "MESSAGE": "campus1057-deny-loaded lease=1057-gated1329-startup5 nonce=10d81bceb64381d009952f758df93828",
+            "_SOURCE_REALTIME_TIMESTAMP": "1792200966046894",
+            "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+            "__SEQNUM": "83334",
+            "_RUNTIME_SCOPE": "system",
+            "SYSLOG_FACILITY": "1",
+            "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+            "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+            "_GID": "989",
+            "_PID": "5176",
+            "__MONOTONIC_TIMESTAMP": "462819213"
+          },
+          {
+            "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+            "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+            "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+            "SYSLOG_FACILITY": "1",
+            "_SOURCE_REALTIME_TIMESTAMP": "1792200966052061",
+            "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+            "_PID": "5187",
+            "__SEQNUM": "83340",
+            "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+            "SYSLOG_IDENTIFIER": "campus-updater-1057",
+            "_UID": "989",
+            "PRIORITY": "5",
+            "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+            "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=1458c;b=5894ac063b3a47bca91331011af4743d;m=1b9623c0;t=65dff4df29956;x=30433bf76a1f15b",
+            "_TRANSPORT": "syslog",
+            "_CAP_EFFECTIVE": "0",
+            "_COMM": "logger",
+            "_RUNTIME_SCOPE": "system",
+            "__MONOTONIC_TIMESTAMP": "462824384",
+            "_GID": "989",
+            "_SYSTEMD_SLICE": "system.slice",
+            "MESSAGE": "campus1057-deny-loaded lease=1057-gated1329-startup5 nonce=10d81bceb64381d009952f758df93828",
+            "_SELINUX_CONTEXT": "unconfined\n",
+            "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+            "__REALTIME_TIMESTAMP": "1792200966052182",
+            "_SYSTEMD_UNIT": "polkit.service"
+          },
+          {
+            "PRIORITY": "5",
+            "_UID": "989",
+            "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+            "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+            "_RUNTIME_SCOPE": "system",
+            "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+            "_GID": "989",
+            "_TRANSPORT": "syslog",
+            "_COMM": "logger",
+            "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+            "_SOURCE_REALTIME_TIMESTAMP": "1792200966057131",
+            "MESSAGE": "campus1057-deny-loaded lease=1057-gated1329-startup5 nonce=10d81bceb64381d009952f758df93828",
+            "SYSLOG_FACILITY": "1",
+            "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+            "SYSLOG_IDENTIFIER": "campus-updater-1057",
+            "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=14592;b=5894ac063b3a47bca91331011af4743d;m=1b963741;t=65dff4df2acd7;x=ffe6f1df56aa28f2",
+            "__SEQNUM": "83346",
+            "__MONOTONIC_TIMESTAMP": "462829377",
+            "__REALTIME_TIMESTAMP": "1792200966057175",
+            "_PID": "5197"
+          }
+        ],
+        "rejected": [
+          {
+            "row": {
+              "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+              "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+              "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+              "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+              "_SYSTEMD_SLICE": "system.slice",
+              "_EXE": "/usr/lib/polkit-1/polkitd",
+              "__MONOTONIC_TIMESTAMP": "462812711",
+              "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+              "_CAP_EFFECTIVE": "0",
+              "SYSLOG_PID": "716",
+              "_GID": "989",
+              "_TRANSPORT": "syslog",
+              "SYSLOG_FACILITY": "10",
+              "__REALTIME_TIMESTAMP": "1792200966040509",
+              "_UID": "989",
+              "_SYSTEMD_UNIT": "polkit.service",
+              "MESSAGE": "Reloading rules",
+              "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug",
+              "_SOURCE_REALTIME_TIMESTAMP": "1792200966040433",
+              "PRIORITY": "5",
+              "_SELINUX_CONTEXT": "unconfined\n",
+              "SYSLOG_IDENTIFIER": "polkitd",
+              "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+              "_RUNTIME_SCOPE": "system",
+              "_PID": "716",
+              "_COMM": "polkitd",
+              "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+              "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=14582;b=5894ac063b3a47bca91331011af4743d;m=1b95f627;t=65dff4df26bbd;x=cbcdbdc8ccf0ef37",
+              "__SEQNUM": "83330"
+            },
+            "reasons": [
+              "missing/malformed/mismatched MESSAGE",
+              "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+              "contradictory/malformed optional _EXE"
+            ],
+            "current_nonce": false
+          },
+          {
+            "row": {
+              "_SOURCE_REALTIME_TIMESTAMP": "1792200966042820",
+              "_SYSTEMD_UNIT": "polkit.service",
+              "__MONOTONIC_TIMESTAMP": "462815072",
+              "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+              "__REALTIME_TIMESTAMP": "1792200966042869",
+              "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+              "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug",
+              "SYSLOG_PID": "716",
+              "_GID": "989",
+              "_SELINUX_CONTEXT": "unconfined\n",
+              "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+              "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+              "_TRANSPORT": "syslog",
+              "_RUNTIME_SCOPE": "system",
+              "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=14583;b=5894ac063b3a47bca91331011af4743d;m=1b95ff60;t=65dff4df274f5;x=20999ce7f15ce1d1",
+              "PRIORITY": "5",
+              "SYSLOG_FACILITY": "10",
+              "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+              "SYSLOG_IDENTIFIER": "polkitd",
+              "_COMM": "polkitd",
+              "_PID": "716",
+              "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+              "MESSAGE": "Collecting garbage unconditionally...",
+              "__SEQNUM": "83331",
+              "_EXE": "/usr/lib/polkit-1/polkitd",
+              "_SYSTEMD_SLICE": "system.slice",
+              "_CAP_EFFECTIVE": "0",
+              "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+              "_UID": "989"
+            },
+            "reasons": [
+              "missing/malformed/mismatched MESSAGE",
+              "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+              "contradictory/malformed optional _EXE"
+            ],
+            "current_nonce": false
+          },
+          {
+            "row": {
+              "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+              "PRIORITY": "5",
+              "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+              "__REALTIME_TIMESTAMP": "1792200966042997",
+              "_CAP_EFFECTIVE": "0",
+              "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug",
+              "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+              "_SYSTEMD_SLICE": "system.slice",
+              "_COMM": "polkitd",
+              "SYSLOG_IDENTIFIER": "polkitd",
+              "_EXE": "/usr/lib/polkit-1/polkitd",
+              "_SYSTEMD_UNIT": "polkit.service",
+              "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+              "MESSAGE": "Loading rules from directory /etc/polkit-1/rules.d",
+              "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+              "_RUNTIME_SCOPE": "system",
+              "_SELINUX_CONTEXT": "unconfined\n",
+              "SYSLOG_PID": "716",
+              "SYSLOG_FACILITY": "10",
+              "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+              "_UID": "989",
+              "__MONOTONIC_TIMESTAMP": "462815199",
+              "__SEQNUM": "83332",
+              "_GID": "989",
+              "_TRANSPORT": "syslog",
+              "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=14584;b=5894ac063b3a47bca91331011af4743d;m=1b95ffdf;t=65dff4df27575;x=6b847b8503fd7b60",
+              "_PID": "716",
+              "_SOURCE_REALTIME_TIMESTAMP": "1792200966042848",
+              "_SYSTEMD_CGROUP": "/system.slice/polkit.service"
+            },
+            "reasons": [
+              "missing/malformed/mismatched MESSAGE",
+              "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+              "contradictory/malformed optional _EXE"
+            ],
+            "current_nonce": false
+          },
+          {
+            "row": {
+              "_RUNTIME_SCOPE": "system",
+              "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug",
+              "_COMM": "polkitd",
+              "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=14585;b=5894ac063b3a47bca91331011af4743d;m=1b960019;t=65dff4df275af;x=e3e64e898e7ee573",
+              "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+              "_UID": "989",
+              "_SELINUX_CONTEXT": "unconfined\n",
+              "SYSLOG_FACILITY": "10",
+              "SYSLOG_PID": "716",
+              "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+              "__REALTIME_TIMESTAMP": "1792200966043055",
+              "_EXE": "/usr/lib/polkit-1/polkitd",
+              "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+              "MESSAGE": "Loading rules from directory /usr/share/polkit-1/rules.d",
+              "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+              "_PID": "716",
+              "_TRANSPORT": "syslog",
+              "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+              "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+              "PRIORITY": "5",
+              "SYSLOG_IDENTIFIER": "polkitd",
+              "__SEQNUM": "83333",
+              "_GID": "989",
+              "_SOURCE_REALTIME_TIMESTAMP": "1792200966043051",
+              "_CAP_EFFECTIVE": "0",
+              "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+              "_SYSTEMD_SLICE": "system.slice",
+              "__MONOTONIC_TIMESTAMP": "462815257",
+              "_SYSTEMD_UNIT": "polkit.service"
+            },
+            "reasons": [
+              "missing/malformed/mismatched MESSAGE",
+              "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+              "contradictory/malformed optional _EXE"
+            ],
+            "current_nonce": false
+          },
+          {
+            "row": {
+              "_EXE": "/usr/lib/polkit-1/polkitd",
+              "_COMM": "polkitd",
+              "PRIORITY": "5",
+              "_UID": "989",
+              "SYSLOG_PID": "716",
+              "_SELINUX_CONTEXT": "unconfined\n",
+              "SYSLOG_FACILITY": "10",
+              "MESSAGE": "Finished loading, compiling and executing 9 rules",
+              "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+              "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=14587;b=5894ac063b3a47bca91331011af4743d;m=1b96199a;t=65dff4df28f2f;x=a709824dae5394e1",
+              "_GID": "989",
+              "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+              "__MONOTONIC_TIMESTAMP": "462821786",
+              "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+              "_RUNTIME_SCOPE": "system",
+              "__REALTIME_TIMESTAMP": "1792200966049583",
+              "__SEQNUM": "83335",
+              "SYSLOG_IDENTIFIER": "polkitd",
+              "_PID": "716",
+              "_TRANSPORT": "syslog",
+              "_SOURCE_REALTIME_TIMESTAMP": "1792200966049508",
+              "_CAP_EFFECTIVE": "0",
+              "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug",
+              "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+              "_SYSTEMD_SLICE": "system.slice",
+              "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+              "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+              "_SYSTEMD_UNIT": "polkit.service",
+              "_BOOT_ID": "5894ac063b3a47bca91331011af4743d"
+            },
+            "reasons": [
+              "missing/malformed/mismatched MESSAGE",
+              "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+              "contradictory/malformed optional _EXE"
+            ],
+            "current_nonce": false
+          },
+          {
+            "row": {
+              "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+              "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=14588;b=5894ac063b3a47bca91331011af4743d;m=1b961a5e;t=65dff4df28ff4;x=ae844cee05ac8fc5",
+              "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+              "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+              "_SYSTEMD_UNIT": "polkit.service",
+              "_CAP_EFFECTIVE": "0",
+              "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+              "_COMM": "polkitd",
+              "__MONOTONIC_TIMESTAMP": "462821982",
+              "_UID": "989",
+              "__SEQNUM": "83336",
+              "_RUNTIME_SCOPE": "system",
+              "__REALTIME_TIMESTAMP": "1792200966049780",
+              "_TRANSPORT": "syslog",
+              "_EXE": "/usr/lib/polkit-1/polkitd",
+              "_PID": "716",
+              "SYSLOG_IDENTIFIER": "polkitd",
+              "_SOURCE_REALTIME_TIMESTAMP": "1792200966049669",
+              "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+              "SYSLOG_PID": "716",
+              "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug",
+              "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+              "_GID": "989",
+              "_SYSTEMD_SLICE": "system.slice",
+              "PRIORITY": "5",
+              "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+              "MESSAGE": "Reloading rules",
+              "SYSLOG_FACILITY": "10",
+              "_SELINUX_CONTEXT": "unconfined\n"
+            },
+            "reasons": [
+              "missing/malformed/mismatched MESSAGE",
+              "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+              "contradictory/malformed optional _EXE"
+            ],
+            "current_nonce": false
+          },
+          {
+            "row": {
+              "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+              "_EXE": "/usr/lib/polkit-1/polkitd",
+              "MESSAGE": "Collecting garbage unconditionally...",
+              "__MONOTONIC_TIMESTAMP": "462822077",
+              "_TRANSPORT": "syslog",
+              "__REALTIME_TIMESTAMP": "1792200966049875",
+              "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+              "_SELINUX_CONTEXT": "unconfined\n",
+              "_UID": "989",
+              "_COMM": "polkitd",
+              "_PID": "716",
+              "PRIORITY": "5",
+              "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+              "_SYSTEMD_SLICE": "system.slice",
+              "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+              "_SYSTEMD_UNIT": "polkit.service",
+              "_CAP_EFFECTIVE": "0",
+              "SYSLOG_IDENTIFIER": "polkitd",
+              "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+              "_SOURCE_REALTIME_TIMESTAMP": "1792200966049683",
+              "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+              "__SEQNUM": "83337",
+              "_GID": "989",
+              "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+              "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=14589;b=5894ac063b3a47bca91331011af4743d;m=1b961abd;t=65dff4df29053;x=b824ed989330c97b",
+              "SYSLOG_PID": "716",
+              "_RUNTIME_SCOPE": "system",
+              "SYSLOG_FACILITY": "10",
+              "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug"
+            },
+            "reasons": [
+              "missing/malformed/mismatched MESSAGE",
+              "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+              "contradictory/malformed optional _EXE"
+            ],
+            "current_nonce": false
+          },
+          {
+            "row": {
+              "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+              "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+              "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+              "_SYSTEMD_UNIT": "polkit.service",
+              "_TRANSPORT": "syslog",
+              "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+              "_SELINUX_CONTEXT": "unconfined\n",
+              "_GID": "989",
+              "MESSAGE": "Loading rules from directory /etc/polkit-1/rules.d",
+              "_EXE": "/usr/lib/polkit-1/polkitd",
+              "SYSLOG_FACILITY": "10",
+              "_RUNTIME_SCOPE": "system",
+              "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+              "__SEQNUM": "83338",
+              "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+              "_COMM": "polkitd",
+              "__REALTIME_TIMESTAMP": "1792200966049902",
+              "SYSLOG_IDENTIFIER": "polkitd",
+              "_SYSTEMD_SLICE": "system.slice",
+              "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+              "PRIORITY": "5",
+              "SYSLOG_PID": "716",
+              "__MONOTONIC_TIMESTAMP": "462822105",
+              "_CAP_EFFECTIVE": "0",
+              "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug",
+              "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=1458a;b=5894ac063b3a47bca91331011af4743d;m=1b961ad9;t=65dff4df2906e;x=25db157da5cbf218",
+              "_PID": "716",
+              "_SOURCE_REALTIME_TIMESTAMP": "1792200966049688",
+              "_UID": "989"
+            },
+            "reasons": [
+              "missing/malformed/mismatched MESSAGE",
+              "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+              "contradictory/malformed optional _EXE"
+            ],
+            "current_nonce": false
+          },
+          {
+            "row": {
+              "SYSLOG_IDENTIFIER": "polkitd",
+              "SYSLOG_PID": "716",
+              "__SEQNUM": "83339",
+              "_RUNTIME_SCOPE": "system",
+              "MESSAGE": "Loading rules from directory /usr/share/polkit-1/rules.d",
+              "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+              "PRIORITY": "5",
+              "_SYSTEMD_SLICE": "system.slice",
+              "__MONOTONIC_TIMESTAMP": "462822197",
+              "_SOURCE_REALTIME_TIMESTAMP": "1792200966049711",
+              "__REALTIME_TIMESTAMP": "1792200966049995",
+              "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+              "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+              "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=1458b;b=5894ac063b3a47bca91331011af4743d;m=1b961b35;t=65dff4df290cb;x=48239a0329abb6de",
+              "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+              "_SELINUX_CONTEXT": "unconfined\n",
+              "_EXE": "/usr/lib/polkit-1/polkitd",
+              "SYSLOG_FACILITY": "10",
+              "_TRANSPORT": "syslog",
+              "_UID": "989",
+              "_CAP_EFFECTIVE": "0",
+              "_GID": "989",
+              "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+              "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+              "_SYSTEMD_UNIT": "polkit.service",
+              "_COMM": "polkitd",
+              "_PID": "716",
+              "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug",
+              "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67"
+            },
+            "reasons": [
+              "missing/malformed/mismatched MESSAGE",
+              "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+              "contradictory/malformed optional _EXE"
+            ],
+            "current_nonce": false
+          },
+          {
+            "row": {
+              "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+              "__REALTIME_TIMESTAMP": "1792200966055603",
+              "_EXE": "/usr/lib/polkit-1/polkitd",
+              "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+              "PRIORITY": "5",
+              "MESSAGE": "Finished loading, compiling and executing 9 rules",
+              "_SELINUX_CONTEXT": "unconfined\n",
+              "_GID": "989",
+              "SYSLOG_PID": "716",
+              "_RUNTIME_SCOPE": "system",
+              "_SYSTEMD_UNIT": "polkit.service",
+              "_PID": "716",
+              "_SOURCE_REALTIME_TIMESTAMP": "1792200966054381",
+              "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+              "SYSLOG_IDENTIFIER": "polkitd",
+              "__SEQNUM": "83341",
+              "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug",
+              "_SYSTEMD_SLICE": "system.slice",
+              "_UID": "989",
+              "__MONOTONIC_TIMESTAMP": "462827805",
+              "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+              "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+              "_COMM": "polkitd",
+              "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=1458d;b=5894ac063b3a47bca91331011af4743d;m=1b96311d;t=65dff4df2a6b3;x=971521ba3d777d9a",
+              "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+              "SYSLOG_FACILITY": "10",
+              "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+              "_CAP_EFFECTIVE": "0",
+              "_TRANSPORT": "syslog"
+            },
+            "reasons": [
+              "missing/malformed/mismatched MESSAGE",
+              "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+              "contradictory/malformed optional _EXE"
+            ],
+            "current_nonce": false
+          },
+          {
+            "row": {
+              "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+              "SYSLOG_PID": "716",
+              "_SELINUX_CONTEXT": "unconfined\n",
+              "_GID": "989",
+              "_UID": "989",
+              "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+              "PRIORITY": "5",
+              "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+              "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+              "_SYSTEMD_UNIT": "polkit.service",
+              "_TRANSPORT": "syslog",
+              "_PID": "716",
+              "_SOURCE_REALTIME_TIMESTAMP": "1792200966054493",
+              "_CAP_EFFECTIVE": "0",
+              "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+              "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug",
+              "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=1458e;b=5894ac063b3a47bca91331011af4743d;m=1b96316d;t=65dff4df2a702;x=afc70e57fa92481d",
+              "__SEQNUM": "83342",
+              "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+              "MESSAGE": "Reloading rules",
+              "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+              "_EXE": "/usr/lib/polkit-1/polkitd",
+              "__MONOTONIC_TIMESTAMP": "462827885",
+              "_COMM": "polkitd",
+              "SYSLOG_IDENTIFIER": "polkitd",
+              "_RUNTIME_SCOPE": "system",
+              "__REALTIME_TIMESTAMP": "1792200966055682",
+              "_SYSTEMD_SLICE": "system.slice",
+              "SYSLOG_FACILITY": "10"
+            },
+            "reasons": [
+              "missing/malformed/mismatched MESSAGE",
+              "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+              "contradictory/malformed optional _EXE"
+            ],
+            "current_nonce": false
+          },
+          {
+            "row": {
+              "__MONOTONIC_TIMESTAMP": "462827916",
+              "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+              "SYSLOG_FACILITY": "10",
+              "_GID": "989",
+              "MESSAGE": "Collecting garbage unconditionally...",
+              "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+              "SYSLOG_IDENTIFIER": "polkitd",
+              "_UID": "989",
+              "_SYSTEMD_SLICE": "system.slice",
+              "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+              "__SEQNUM": "83343",
+              "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+              "_TRANSPORT": "syslog",
+              "_SOURCE_REALTIME_TIMESTAMP": "1792200966054508",
+              "_CAP_EFFECTIVE": "0",
+              "_SELINUX_CONTEXT": "unconfined\n",
+              "_RUNTIME_SCOPE": "system",
+              "_COMM": "polkitd",
+              "PRIORITY": "5",
+              "_SYSTEMD_UNIT": "polkit.service",
+              "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+              "_PID": "716",
+              "__REALTIME_TIMESTAMP": "1792200966055714",
+              "SYSLOG_PID": "716",
+              "_EXE": "/usr/lib/polkit-1/polkitd",
+              "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+              "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=1458f;b=5894ac063b3a47bca91331011af4743d;m=1b96318c;t=65dff4df2a722;x=41c8842b883f1cec",
+              "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+              "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug"
+            },
+            "reasons": [
+              "missing/malformed/mismatched MESSAGE",
+              "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+              "contradictory/malformed optional _EXE"
+            ],
+            "current_nonce": false
+          },
+          {
+            "row": {
+              "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+              "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+              "_EXE": "/usr/lib/polkit-1/polkitd",
+              "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug",
+              "SYSLOG_FACILITY": "10",
+              "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+              "_SELINUX_CONTEXT": "unconfined\n",
+              "_CAP_EFFECTIVE": "0",
+              "_COMM": "polkitd",
+              "PRIORITY": "5",
+              "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+              "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+              "__SEQNUM": "83344",
+              "_SOURCE_REALTIME_TIMESTAMP": "1792200966054512",
+              "SYSLOG_IDENTIFIER": "polkitd",
+              "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+              "_RUNTIME_SCOPE": "system",
+              "_TRANSPORT": "syslog",
+              "_SYSTEMD_SLICE": "system.slice",
+              "SYSLOG_PID": "716",
+              "_UID": "989",
+              "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=14590;b=5894ac063b3a47bca91331011af4743d;m=1b96319d;t=65dff4df2a733;x=faebe0716ee1c92c",
+              "_SYSTEMD_UNIT": "polkit.service",
+              "MESSAGE": "Loading rules from directory /etc/polkit-1/rules.d",
+              "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+              "_GID": "989",
+              "__REALTIME_TIMESTAMP": "1792200966055731",
+              "_PID": "716",
+              "__MONOTONIC_TIMESTAMP": "462827933"
+            },
+            "reasons": [
+              "missing/malformed/mismatched MESSAGE",
+              "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+              "contradictory/malformed optional _EXE"
+            ],
+            "current_nonce": false
+          },
+          {
+            "row": {
+              "__MONOTONIC_TIMESTAMP": "462827943",
+              "_GID": "989",
+              "_COMM": "polkitd",
+              "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+              "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+              "_CAP_EFFECTIVE": "0",
+              "SYSLOG_FACILITY": "10",
+              "__REALTIME_TIMESTAMP": "1792200966055741",
+              "_PID": "716",
+              "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+              "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+              "_SYSTEMD_SLICE": "system.slice",
+              "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+              "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+              "_SOURCE_REALTIME_TIMESTAMP": "1792200966054529",
+              "PRIORITY": "5",
+              "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug",
+              "__SEQNUM": "83345",
+              "MESSAGE": "Loading rules from directory /usr/share/polkit-1/rules.d",
+              "_EXE": "/usr/lib/polkit-1/polkitd",
+              "_SELINUX_CONTEXT": "unconfined\n",
+              "SYSLOG_PID": "716",
+              "_RUNTIME_SCOPE": "system",
+              "_SYSTEMD_UNIT": "polkit.service",
+              "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=14591;b=5894ac063b3a47bca91331011af4743d;m=1b9631a7;t=65dff4df2a73d;x=4f35d82f252563e4",
+              "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+              "SYSLOG_IDENTIFIER": "polkitd",
+              "_UID": "989",
+              "_TRANSPORT": "syslog"
+            },
+            "reasons": [
+              "missing/malformed/mismatched MESSAGE",
+              "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+              "contradictory/malformed optional _EXE"
+            ],
+            "current_nonce": false
+          },
+          {
+            "row": {
+              "_TRANSPORT": "syslog",
+              "_PID": "716",
+              "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=14593;b=5894ac063b3a47bca91331011af4743d;m=1b9641d1;t=65dff4df2b766;x=1399f619251ec8c2",
+              "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+              "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+              "_RUNTIME_SCOPE": "system",
+              "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug",
+              "_GID": "989",
+              "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+              "SYSLOG_IDENTIFIER": "polkitd",
+              "_SOURCE_REALTIME_TIMESTAMP": "1792200966059786",
+              "PRIORITY": "5",
+              "_UID": "989",
+              "_SELINUX_CONTEXT": "unconfined\n",
+              "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+              "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+              "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+              "_CAP_EFFECTIVE": "0",
+              "__REALTIME_TIMESTAMP": "1792200966059878",
+              "__SEQNUM": "83347",
+              "SYSLOG_FACILITY": "10",
+              "_SYSTEMD_SLICE": "system.slice",
+              "_SYSTEMD_UNIT": "polkit.service",
+              "MESSAGE": "Finished loading, compiling and executing 9 rules",
+              "SYSLOG_PID": "716",
+              "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+              "_COMM": "polkitd",
+              "_EXE": "/usr/lib/polkit-1/polkitd",
+              "__MONOTONIC_TIMESTAMP": "462832081"
+            },
+            "reasons": [
+              "missing/malformed/mismatched MESSAGE",
+              "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+              "contradictory/malformed optional _EXE"
+            ],
+            "current_nonce": false
+          }
+        ],
+        "missing_optional_fields": [
+          {
+            "row_index": 0,
+            "fields": []
+          },
+          {
+            "row_index": 1,
+            "fields": []
+          },
+          {
+            "row_index": 2,
+            "fields": []
+          },
+          {
+            "row_index": 3,
+            "fields": []
+          },
+          {
+            "row_index": 4,
+            "fields": [
+              "_EXE",
+              "_SYSTEMD_UNIT"
+            ]
+          },
+          {
+            "row_index": 5,
+            "fields": []
+          },
+          {
+            "row_index": 6,
+            "fields": []
+          },
+          {
+            "row_index": 7,
+            "fields": []
+          },
+          {
+            "row_index": 8,
+            "fields": []
+          },
+          {
+            "row_index": 9,
+            "fields": []
+          },
+          {
+            "row_index": 10,
+            "fields": [
+              "_EXE"
+            ]
+          },
+          {
+            "row_index": 11,
+            "fields": []
+          },
+          {
+            "row_index": 12,
+            "fields": []
+          },
+          {
+            "row_index": 13,
+            "fields": []
+          },
+          {
+            "row_index": 14,
+            "fields": []
+          },
+          {
+            "row_index": 15,
+            "fields": []
+          },
+          {
+            "row_index": 16,
+            "fields": [
+              "_EXE",
+              "_SYSTEMD_UNIT"
+            ]
+          },
+          {
+            "row_index": 17,
+            "fields": []
+          }
+        ],
+        "anomalies": []
+      }
+    }
+  ],
+  "loaded_marker_evidence": {
+    "accepted": [
+      {
+        "SYSLOG_IDENTIFIER": "campus-updater-1057",
+        "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+        "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=14586;b=5894ac063b3a47bca91331011af4743d;m=1b960f8d;t=65dff4df28522;x=3276bb511a9e9a85",
+        "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+        "_TRANSPORT": "syslog",
+        "__REALTIME_TIMESTAMP": "1792200966047010",
+        "_UID": "989",
+        "PRIORITY": "5",
+        "MESSAGE": "campus1057-deny-loaded lease=1057-gated1329-startup5 nonce=10d81bceb64381d009952f758df93828",
+        "_SOURCE_REALTIME_TIMESTAMP": "1792200966046894",
+        "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+        "__SEQNUM": "83334",
+        "_RUNTIME_SCOPE": "system",
+        "SYSLOG_FACILITY": "1",
+        "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+        "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+        "_GID": "989",
+        "_PID": "5176",
+        "__MONOTONIC_TIMESTAMP": "462819213"
+      },
+      {
+        "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+        "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+        "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+        "SYSLOG_FACILITY": "1",
+        "_SOURCE_REALTIME_TIMESTAMP": "1792200966052061",
+        "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+        "_PID": "5187",
+        "__SEQNUM": "83340",
+        "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+        "SYSLOG_IDENTIFIER": "campus-updater-1057",
+        "_UID": "989",
+        "PRIORITY": "5",
+        "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+        "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=1458c;b=5894ac063b3a47bca91331011af4743d;m=1b9623c0;t=65dff4df29956;x=30433bf76a1f15b",
+        "_TRANSPORT": "syslog",
+        "_CAP_EFFECTIVE": "0",
+        "_COMM": "logger",
+        "_RUNTIME_SCOPE": "system",
+        "__MONOTONIC_TIMESTAMP": "462824384",
+        "_GID": "989",
+        "_SYSTEMD_SLICE": "system.slice",
+        "MESSAGE": "campus1057-deny-loaded lease=1057-gated1329-startup5 nonce=10d81bceb64381d009952f758df93828",
+        "_SELINUX_CONTEXT": "unconfined\n",
+        "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+        "__REALTIME_TIMESTAMP": "1792200966052182",
+        "_SYSTEMD_UNIT": "polkit.service"
+      },
+      {
+        "PRIORITY": "5",
+        "_UID": "989",
+        "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+        "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+        "_RUNTIME_SCOPE": "system",
+        "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+        "_GID": "989",
+        "_TRANSPORT": "syslog",
+        "_COMM": "logger",
+        "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+        "_SOURCE_REALTIME_TIMESTAMP": "1792200966057131",
+        "MESSAGE": "campus1057-deny-loaded lease=1057-gated1329-startup5 nonce=10d81bceb64381d009952f758df93828",
+        "SYSLOG_FACILITY": "1",
+        "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+        "SYSLOG_IDENTIFIER": "campus-updater-1057",
+        "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=14592;b=5894ac063b3a47bca91331011af4743d;m=1b963741;t=65dff4df2acd7;x=ffe6f1df56aa28f2",
+        "__SEQNUM": "83346",
+        "__MONOTONIC_TIMESTAMP": "462829377",
+        "__REALTIME_TIMESTAMP": "1792200966057175",
+        "_PID": "5197"
+      }
+    ],
+    "rejected": [
+      {
+        "row": {
+          "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+          "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+          "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+          "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+          "_SYSTEMD_SLICE": "system.slice",
+          "_EXE": "/usr/lib/polkit-1/polkitd",
+          "__MONOTONIC_TIMESTAMP": "462812711",
+          "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+          "_CAP_EFFECTIVE": "0",
+          "SYSLOG_PID": "716",
+          "_GID": "989",
+          "_TRANSPORT": "syslog",
+          "SYSLOG_FACILITY": "10",
+          "__REALTIME_TIMESTAMP": "1792200966040509",
+          "_UID": "989",
+          "_SYSTEMD_UNIT": "polkit.service",
+          "MESSAGE": "Reloading rules",
+          "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug",
+          "_SOURCE_REALTIME_TIMESTAMP": "1792200966040433",
+          "PRIORITY": "5",
+          "_SELINUX_CONTEXT": "unconfined\n",
+          "SYSLOG_IDENTIFIER": "polkitd",
+          "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+          "_RUNTIME_SCOPE": "system",
+          "_PID": "716",
+          "_COMM": "polkitd",
+          "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+          "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=14582;b=5894ac063b3a47bca91331011af4743d;m=1b95f627;t=65dff4df26bbd;x=cbcdbdc8ccf0ef37",
+          "__SEQNUM": "83330"
+        },
+        "reasons": [
+          "missing/malformed/mismatched MESSAGE",
+          "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+          "contradictory/malformed optional _EXE"
+        ],
+        "current_nonce": false
+      },
+      {
+        "row": {
+          "_SOURCE_REALTIME_TIMESTAMP": "1792200966042820",
+          "_SYSTEMD_UNIT": "polkit.service",
+          "__MONOTONIC_TIMESTAMP": "462815072",
+          "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+          "__REALTIME_TIMESTAMP": "1792200966042869",
+          "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+          "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug",
+          "SYSLOG_PID": "716",
+          "_GID": "989",
+          "_SELINUX_CONTEXT": "unconfined\n",
+          "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+          "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+          "_TRANSPORT": "syslog",
+          "_RUNTIME_SCOPE": "system",
+          "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=14583;b=5894ac063b3a47bca91331011af4743d;m=1b95ff60;t=65dff4df274f5;x=20999ce7f15ce1d1",
+          "PRIORITY": "5",
+          "SYSLOG_FACILITY": "10",
+          "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+          "SYSLOG_IDENTIFIER": "polkitd",
+          "_COMM": "polkitd",
+          "_PID": "716",
+          "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+          "MESSAGE": "Collecting garbage unconditionally...",
+          "__SEQNUM": "83331",
+          "_EXE": "/usr/lib/polkit-1/polkitd",
+          "_SYSTEMD_SLICE": "system.slice",
+          "_CAP_EFFECTIVE": "0",
+          "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+          "_UID": "989"
+        },
+        "reasons": [
+          "missing/malformed/mismatched MESSAGE",
+          "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+          "contradictory/malformed optional _EXE"
+        ],
+        "current_nonce": false
+      },
+      {
+        "row": {
+          "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+          "PRIORITY": "5",
+          "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+          "__REALTIME_TIMESTAMP": "1792200966042997",
+          "_CAP_EFFECTIVE": "0",
+          "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug",
+          "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+          "_SYSTEMD_SLICE": "system.slice",
+          "_COMM": "polkitd",
+          "SYSLOG_IDENTIFIER": "polkitd",
+          "_EXE": "/usr/lib/polkit-1/polkitd",
+          "_SYSTEMD_UNIT": "polkit.service",
+          "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+          "MESSAGE": "Loading rules from directory /etc/polkit-1/rules.d",
+          "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+          "_RUNTIME_SCOPE": "system",
+          "_SELINUX_CONTEXT": "unconfined\n",
+          "SYSLOG_PID": "716",
+          "SYSLOG_FACILITY": "10",
+          "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+          "_UID": "989",
+          "__MONOTONIC_TIMESTAMP": "462815199",
+          "__SEQNUM": "83332",
+          "_GID": "989",
+          "_TRANSPORT": "syslog",
+          "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=14584;b=5894ac063b3a47bca91331011af4743d;m=1b95ffdf;t=65dff4df27575;x=6b847b8503fd7b60",
+          "_PID": "716",
+          "_SOURCE_REALTIME_TIMESTAMP": "1792200966042848",
+          "_SYSTEMD_CGROUP": "/system.slice/polkit.service"
+        },
+        "reasons": [
+          "missing/malformed/mismatched MESSAGE",
+          "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+          "contradictory/malformed optional _EXE"
+        ],
+        "current_nonce": false
+      },
+      {
+        "row": {
+          "_RUNTIME_SCOPE": "system",
+          "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug",
+          "_COMM": "polkitd",
+          "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=14585;b=5894ac063b3a47bca91331011af4743d;m=1b960019;t=65dff4df275af;x=e3e64e898e7ee573",
+          "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+          "_UID": "989",
+          "_SELINUX_CONTEXT": "unconfined\n",
+          "SYSLOG_FACILITY": "10",
+          "SYSLOG_PID": "716",
+          "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+          "__REALTIME_TIMESTAMP": "1792200966043055",
+          "_EXE": "/usr/lib/polkit-1/polkitd",
+          "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+          "MESSAGE": "Loading rules from directory /usr/share/polkit-1/rules.d",
+          "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+          "_PID": "716",
+          "_TRANSPORT": "syslog",
+          "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+          "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+          "PRIORITY": "5",
+          "SYSLOG_IDENTIFIER": "polkitd",
+          "__SEQNUM": "83333",
+          "_GID": "989",
+          "_SOURCE_REALTIME_TIMESTAMP": "1792200966043051",
+          "_CAP_EFFECTIVE": "0",
+          "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+          "_SYSTEMD_SLICE": "system.slice",
+          "__MONOTONIC_TIMESTAMP": "462815257",
+          "_SYSTEMD_UNIT": "polkit.service"
+        },
+        "reasons": [
+          "missing/malformed/mismatched MESSAGE",
+          "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+          "contradictory/malformed optional _EXE"
+        ],
+        "current_nonce": false
+      },
+      {
+        "row": {
+          "_EXE": "/usr/lib/polkit-1/polkitd",
+          "_COMM": "polkitd",
+          "PRIORITY": "5",
+          "_UID": "989",
+          "SYSLOG_PID": "716",
+          "_SELINUX_CONTEXT": "unconfined\n",
+          "SYSLOG_FACILITY": "10",
+          "MESSAGE": "Finished loading, compiling and executing 9 rules",
+          "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+          "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=14587;b=5894ac063b3a47bca91331011af4743d;m=1b96199a;t=65dff4df28f2f;x=a709824dae5394e1",
+          "_GID": "989",
+          "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+          "__MONOTONIC_TIMESTAMP": "462821786",
+          "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+          "_RUNTIME_SCOPE": "system",
+          "__REALTIME_TIMESTAMP": "1792200966049583",
+          "__SEQNUM": "83335",
+          "SYSLOG_IDENTIFIER": "polkitd",
+          "_PID": "716",
+          "_TRANSPORT": "syslog",
+          "_SOURCE_REALTIME_TIMESTAMP": "1792200966049508",
+          "_CAP_EFFECTIVE": "0",
+          "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug",
+          "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+          "_SYSTEMD_SLICE": "system.slice",
+          "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+          "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+          "_SYSTEMD_UNIT": "polkit.service",
+          "_BOOT_ID": "5894ac063b3a47bca91331011af4743d"
+        },
+        "reasons": [
+          "missing/malformed/mismatched MESSAGE",
+          "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+          "contradictory/malformed optional _EXE"
+        ],
+        "current_nonce": false
+      },
+      {
+        "row": {
+          "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+          "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=14588;b=5894ac063b3a47bca91331011af4743d;m=1b961a5e;t=65dff4df28ff4;x=ae844cee05ac8fc5",
+          "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+          "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+          "_SYSTEMD_UNIT": "polkit.service",
+          "_CAP_EFFECTIVE": "0",
+          "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+          "_COMM": "polkitd",
+          "__MONOTONIC_TIMESTAMP": "462821982",
+          "_UID": "989",
+          "__SEQNUM": "83336",
+          "_RUNTIME_SCOPE": "system",
+          "__REALTIME_TIMESTAMP": "1792200966049780",
+          "_TRANSPORT": "syslog",
+          "_EXE": "/usr/lib/polkit-1/polkitd",
+          "_PID": "716",
+          "SYSLOG_IDENTIFIER": "polkitd",
+          "_SOURCE_REALTIME_TIMESTAMP": "1792200966049669",
+          "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+          "SYSLOG_PID": "716",
+          "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug",
+          "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+          "_GID": "989",
+          "_SYSTEMD_SLICE": "system.slice",
+          "PRIORITY": "5",
+          "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+          "MESSAGE": "Reloading rules",
+          "SYSLOG_FACILITY": "10",
+          "_SELINUX_CONTEXT": "unconfined\n"
+        },
+        "reasons": [
+          "missing/malformed/mismatched MESSAGE",
+          "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+          "contradictory/malformed optional _EXE"
+        ],
+        "current_nonce": false
+      },
+      {
+        "row": {
+          "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+          "_EXE": "/usr/lib/polkit-1/polkitd",
+          "MESSAGE": "Collecting garbage unconditionally...",
+          "__MONOTONIC_TIMESTAMP": "462822077",
+          "_TRANSPORT": "syslog",
+          "__REALTIME_TIMESTAMP": "1792200966049875",
+          "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+          "_SELINUX_CONTEXT": "unconfined\n",
+          "_UID": "989",
+          "_COMM": "polkitd",
+          "_PID": "716",
+          "PRIORITY": "5",
+          "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+          "_SYSTEMD_SLICE": "system.slice",
+          "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+          "_SYSTEMD_UNIT": "polkit.service",
+          "_CAP_EFFECTIVE": "0",
+          "SYSLOG_IDENTIFIER": "polkitd",
+          "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+          "_SOURCE_REALTIME_TIMESTAMP": "1792200966049683",
+          "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+          "__SEQNUM": "83337",
+          "_GID": "989",
+          "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+          "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=14589;b=5894ac063b3a47bca91331011af4743d;m=1b961abd;t=65dff4df29053;x=b824ed989330c97b",
+          "SYSLOG_PID": "716",
+          "_RUNTIME_SCOPE": "system",
+          "SYSLOG_FACILITY": "10",
+          "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug"
+        },
+        "reasons": [
+          "missing/malformed/mismatched MESSAGE",
+          "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+          "contradictory/malformed optional _EXE"
+        ],
+        "current_nonce": false
+      },
+      {
+        "row": {
+          "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+          "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+          "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+          "_SYSTEMD_UNIT": "polkit.service",
+          "_TRANSPORT": "syslog",
+          "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+          "_SELINUX_CONTEXT": "unconfined\n",
+          "_GID": "989",
+          "MESSAGE": "Loading rules from directory /etc/polkit-1/rules.d",
+          "_EXE": "/usr/lib/polkit-1/polkitd",
+          "SYSLOG_FACILITY": "10",
+          "_RUNTIME_SCOPE": "system",
+          "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+          "__SEQNUM": "83338",
+          "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+          "_COMM": "polkitd",
+          "__REALTIME_TIMESTAMP": "1792200966049902",
+          "SYSLOG_IDENTIFIER": "polkitd",
+          "_SYSTEMD_SLICE": "system.slice",
+          "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+          "PRIORITY": "5",
+          "SYSLOG_PID": "716",
+          "__MONOTONIC_TIMESTAMP": "462822105",
+          "_CAP_EFFECTIVE": "0",
+          "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug",
+          "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=1458a;b=5894ac063b3a47bca91331011af4743d;m=1b961ad9;t=65dff4df2906e;x=25db157da5cbf218",
+          "_PID": "716",
+          "_SOURCE_REALTIME_TIMESTAMP": "1792200966049688",
+          "_UID": "989"
+        },
+        "reasons": [
+          "missing/malformed/mismatched MESSAGE",
+          "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+          "contradictory/malformed optional _EXE"
+        ],
+        "current_nonce": false
+      },
+      {
+        "row": {
+          "SYSLOG_IDENTIFIER": "polkitd",
+          "SYSLOG_PID": "716",
+          "__SEQNUM": "83339",
+          "_RUNTIME_SCOPE": "system",
+          "MESSAGE": "Loading rules from directory /usr/share/polkit-1/rules.d",
+          "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+          "PRIORITY": "5",
+          "_SYSTEMD_SLICE": "system.slice",
+          "__MONOTONIC_TIMESTAMP": "462822197",
+          "_SOURCE_REALTIME_TIMESTAMP": "1792200966049711",
+          "__REALTIME_TIMESTAMP": "1792200966049995",
+          "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+          "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+          "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=1458b;b=5894ac063b3a47bca91331011af4743d;m=1b961b35;t=65dff4df290cb;x=48239a0329abb6de",
+          "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+          "_SELINUX_CONTEXT": "unconfined\n",
+          "_EXE": "/usr/lib/polkit-1/polkitd",
+          "SYSLOG_FACILITY": "10",
+          "_TRANSPORT": "syslog",
+          "_UID": "989",
+          "_CAP_EFFECTIVE": "0",
+          "_GID": "989",
+          "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+          "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+          "_SYSTEMD_UNIT": "polkit.service",
+          "_COMM": "polkitd",
+          "_PID": "716",
+          "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug",
+          "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67"
+        },
+        "reasons": [
+          "missing/malformed/mismatched MESSAGE",
+          "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+          "contradictory/malformed optional _EXE"
+        ],
+        "current_nonce": false
+      },
+      {
+        "row": {
+          "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+          "__REALTIME_TIMESTAMP": "1792200966055603",
+          "_EXE": "/usr/lib/polkit-1/polkitd",
+          "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+          "PRIORITY": "5",
+          "MESSAGE": "Finished loading, compiling and executing 9 rules",
+          "_SELINUX_CONTEXT": "unconfined\n",
+          "_GID": "989",
+          "SYSLOG_PID": "716",
+          "_RUNTIME_SCOPE": "system",
+          "_SYSTEMD_UNIT": "polkit.service",
+          "_PID": "716",
+          "_SOURCE_REALTIME_TIMESTAMP": "1792200966054381",
+          "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+          "SYSLOG_IDENTIFIER": "polkitd",
+          "__SEQNUM": "83341",
+          "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug",
+          "_SYSTEMD_SLICE": "system.slice",
+          "_UID": "989",
+          "__MONOTONIC_TIMESTAMP": "462827805",
+          "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+          "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+          "_COMM": "polkitd",
+          "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=1458d;b=5894ac063b3a47bca91331011af4743d;m=1b96311d;t=65dff4df2a6b3;x=971521ba3d777d9a",
+          "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+          "SYSLOG_FACILITY": "10",
+          "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+          "_CAP_EFFECTIVE": "0",
+          "_TRANSPORT": "syslog"
+        },
+        "reasons": [
+          "missing/malformed/mismatched MESSAGE",
+          "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+          "contradictory/malformed optional _EXE"
+        ],
+        "current_nonce": false
+      },
+      {
+        "row": {
+          "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+          "SYSLOG_PID": "716",
+          "_SELINUX_CONTEXT": "unconfined\n",
+          "_GID": "989",
+          "_UID": "989",
+          "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+          "PRIORITY": "5",
+          "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+          "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+          "_SYSTEMD_UNIT": "polkit.service",
+          "_TRANSPORT": "syslog",
+          "_PID": "716",
+          "_SOURCE_REALTIME_TIMESTAMP": "1792200966054493",
+          "_CAP_EFFECTIVE": "0",
+          "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+          "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug",
+          "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=1458e;b=5894ac063b3a47bca91331011af4743d;m=1b96316d;t=65dff4df2a702;x=afc70e57fa92481d",
+          "__SEQNUM": "83342",
+          "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+          "MESSAGE": "Reloading rules",
+          "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+          "_EXE": "/usr/lib/polkit-1/polkitd",
+          "__MONOTONIC_TIMESTAMP": "462827885",
+          "_COMM": "polkitd",
+          "SYSLOG_IDENTIFIER": "polkitd",
+          "_RUNTIME_SCOPE": "system",
+          "__REALTIME_TIMESTAMP": "1792200966055682",
+          "_SYSTEMD_SLICE": "system.slice",
+          "SYSLOG_FACILITY": "10"
+        },
+        "reasons": [
+          "missing/malformed/mismatched MESSAGE",
+          "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+          "contradictory/malformed optional _EXE"
+        ],
+        "current_nonce": false
+      },
+      {
+        "row": {
+          "__MONOTONIC_TIMESTAMP": "462827916",
+          "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+          "SYSLOG_FACILITY": "10",
+          "_GID": "989",
+          "MESSAGE": "Collecting garbage unconditionally...",
+          "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+          "SYSLOG_IDENTIFIER": "polkitd",
+          "_UID": "989",
+          "_SYSTEMD_SLICE": "system.slice",
+          "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+          "__SEQNUM": "83343",
+          "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+          "_TRANSPORT": "syslog",
+          "_SOURCE_REALTIME_TIMESTAMP": "1792200966054508",
+          "_CAP_EFFECTIVE": "0",
+          "_SELINUX_CONTEXT": "unconfined\n",
+          "_RUNTIME_SCOPE": "system",
+          "_COMM": "polkitd",
+          "PRIORITY": "5",
+          "_SYSTEMD_UNIT": "polkit.service",
+          "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+          "_PID": "716",
+          "__REALTIME_TIMESTAMP": "1792200966055714",
+          "SYSLOG_PID": "716",
+          "_EXE": "/usr/lib/polkit-1/polkitd",
+          "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+          "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=1458f;b=5894ac063b3a47bca91331011af4743d;m=1b96318c;t=65dff4df2a722;x=41c8842b883f1cec",
+          "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+          "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug"
+        },
+        "reasons": [
+          "missing/malformed/mismatched MESSAGE",
+          "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+          "contradictory/malformed optional _EXE"
+        ],
+        "current_nonce": false
+      },
+      {
+        "row": {
+          "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+          "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+          "_EXE": "/usr/lib/polkit-1/polkitd",
+          "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug",
+          "SYSLOG_FACILITY": "10",
+          "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+          "_SELINUX_CONTEXT": "unconfined\n",
+          "_CAP_EFFECTIVE": "0",
+          "_COMM": "polkitd",
+          "PRIORITY": "5",
+          "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+          "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+          "__SEQNUM": "83344",
+          "_SOURCE_REALTIME_TIMESTAMP": "1792200966054512",
+          "SYSLOG_IDENTIFIER": "polkitd",
+          "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+          "_RUNTIME_SCOPE": "system",
+          "_TRANSPORT": "syslog",
+          "_SYSTEMD_SLICE": "system.slice",
+          "SYSLOG_PID": "716",
+          "_UID": "989",
+          "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=14590;b=5894ac063b3a47bca91331011af4743d;m=1b96319d;t=65dff4df2a733;x=faebe0716ee1c92c",
+          "_SYSTEMD_UNIT": "polkit.service",
+          "MESSAGE": "Loading rules from directory /etc/polkit-1/rules.d",
+          "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+          "_GID": "989",
+          "__REALTIME_TIMESTAMP": "1792200966055731",
+          "_PID": "716",
+          "__MONOTONIC_TIMESTAMP": "462827933"
+        },
+        "reasons": [
+          "missing/malformed/mismatched MESSAGE",
+          "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+          "contradictory/malformed optional _EXE"
+        ],
+        "current_nonce": false
+      },
+      {
+        "row": {
+          "__MONOTONIC_TIMESTAMP": "462827943",
+          "_GID": "989",
+          "_COMM": "polkitd",
+          "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+          "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+          "_CAP_EFFECTIVE": "0",
+          "SYSLOG_FACILITY": "10",
+          "__REALTIME_TIMESTAMP": "1792200966055741",
+          "_PID": "716",
+          "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+          "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+          "_SYSTEMD_SLICE": "system.slice",
+          "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+          "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+          "_SOURCE_REALTIME_TIMESTAMP": "1792200966054529",
+          "PRIORITY": "5",
+          "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug",
+          "__SEQNUM": "83345",
+          "MESSAGE": "Loading rules from directory /usr/share/polkit-1/rules.d",
+          "_EXE": "/usr/lib/polkit-1/polkitd",
+          "_SELINUX_CONTEXT": "unconfined\n",
+          "SYSLOG_PID": "716",
+          "_RUNTIME_SCOPE": "system",
+          "_SYSTEMD_UNIT": "polkit.service",
+          "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=14591;b=5894ac063b3a47bca91331011af4743d;m=1b9631a7;t=65dff4df2a73d;x=4f35d82f252563e4",
+          "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+          "SYSLOG_IDENTIFIER": "polkitd",
+          "_UID": "989",
+          "_TRANSPORT": "syslog"
+        },
+        "reasons": [
+          "missing/malformed/mismatched MESSAGE",
+          "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+          "contradictory/malformed optional _EXE"
+        ],
+        "current_nonce": false
+      },
+      {
+        "row": {
+          "_TRANSPORT": "syslog",
+          "_PID": "716",
+          "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=14593;b=5894ac063b3a47bca91331011af4743d;m=1b9641d1;t=65dff4df2b766;x=1399f619251ec8c2",
+          "_SYSTEMD_CGROUP": "/system.slice/polkit.service",
+          "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+          "_RUNTIME_SCOPE": "system",
+          "_CMDLINE": "/usr/lib/polkit-1/polkitd --no-debug",
+          "_GID": "989",
+          "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+          "SYSLOG_IDENTIFIER": "polkitd",
+          "_SOURCE_REALTIME_TIMESTAMP": "1792200966059786",
+          "PRIORITY": "5",
+          "_UID": "989",
+          "_SELINUX_CONTEXT": "unconfined\n",
+          "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+          "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+          "_SYSTEMD_INVOCATION_ID": "9b66fa20e4c74bc08297ab87c97f5c67",
+          "_CAP_EFFECTIVE": "0",
+          "__REALTIME_TIMESTAMP": "1792200966059878",
+          "__SEQNUM": "83347",
+          "SYSLOG_FACILITY": "10",
+          "_SYSTEMD_SLICE": "system.slice",
+          "_SYSTEMD_UNIT": "polkit.service",
+          "MESSAGE": "Finished loading, compiling and executing 9 rules",
+          "SYSLOG_PID": "716",
+          "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+          "_COMM": "polkitd",
+          "_EXE": "/usr/lib/polkit-1/polkitd",
+          "__MONOTONIC_TIMESTAMP": "462832081"
+        },
+        "reasons": [
+          "missing/malformed/mismatched MESSAGE",
+          "missing/malformed/mismatched SYSLOG_IDENTIFIER",
+          "contradictory/malformed optional _EXE"
+        ],
+        "current_nonce": false
+      }
+    ],
+    "missing_optional_fields": [
+      {
+        "row_index": 0,
+        "fields": []
+      },
+      {
+        "row_index": 1,
+        "fields": []
+      },
+      {
+        "row_index": 2,
+        "fields": []
+      },
+      {
+        "row_index": 3,
+        "fields": []
+      },
+      {
+        "row_index": 4,
+        "fields": [
+          "_EXE",
+          "_SYSTEMD_UNIT"
+        ]
+      },
+      {
+        "row_index": 5,
+        "fields": []
+      },
+      {
+        "row_index": 6,
+        "fields": []
+      },
+      {
+        "row_index": 7,
+        "fields": []
+      },
+      {
+        "row_index": 8,
+        "fields": []
+      },
+      {
+        "row_index": 9,
+        "fields": []
+      },
+      {
+        "row_index": 10,
+        "fields": [
+          "_EXE"
+        ]
+      },
+      {
+        "row_index": 11,
+        "fields": []
+      },
+      {
+        "row_index": 12,
+        "fields": []
+      },
+      {
+        "row_index": 13,
+        "fields": []
+      },
+      {
+        "row_index": 14,
+        "fields": []
+      },
+      {
+        "row_index": 15,
+        "fields": []
+      },
+      {
+        "row_index": 16,
+        "fields": [
+          "_EXE",
+          "_SYSTEMD_UNIT"
+        ]
+      },
+      {
+        "row_index": 17,
+        "fields": []
+      }
+    ],
+    "anomalies": []
+  },
+  "loaded_marker": {
+    "SYSLOG_IDENTIFIER": "campus-updater-1057",
+    "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+    "__CURSOR": "s=205c6888ffac4a228ee35e49be1f5db2;i=14586;b=5894ac063b3a47bca91331011af4743d;m=1b960f8d;t=65dff4df28522;x=3276bb511a9e9a85",
+    "SYSLOG_TIMESTAMP": "Oct 16 18:36:06 ",
+    "_TRANSPORT": "syslog",
+    "__REALTIME_TIMESTAMP": "1792200966047010",
+    "_UID": "989",
+    "PRIORITY": "5",
+    "MESSAGE": "campus1057-deny-loaded lease=1057-gated1329-startup5 nonce=10d81bceb64381d009952f758df93828",
+    "_SOURCE_REALTIME_TIMESTAMP": "1792200966046894",
+    "_BOOT_ID": "5894ac063b3a47bca91331011af4743d",
+    "__SEQNUM": "83334",
+    "_RUNTIME_SCOPE": "system",
+    "SYSLOG_FACILITY": "1",
+    "__SEQNUM_ID": "205c6888ffac4a228ee35e49be1f5db2",
+    "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+    "_GID": "989",
+    "_PID": "5176",
+    "__MONOTONIC_TIMESTAMP": "462819213"
+  },
+  "loaded_marker_observed_unix_ns": 1792200966075530641,
+  "loaded_marker_observed_monotonic_ns": 462856583357,
+  "service_binding_before_ready": {
+    "uid": "989",
+    "gid": "989",
+    "account": "polkitd",
+    "account_primary_gid": 989,
+    "unit": "polkit.service",
+    "logger_exe": "/usr/bin/logger",
+    "account_groups": [
+      989
+    ],
+    "nss_users": [
+      "polkitd"
+    ],
+    "main_pid": 716,
+    "starttime": "589",
+    "exe": "/usr/lib/polkit-1/polkitd",
+    "cgroup": "0::/system.slice/polkit.service\n",
+    "process": {
+      "pid": 716,
+      "starttime": "589",
+      "exe": "/usr/lib/polkit-1/polkitd",
+      "cgroup": "0::/system.slice/polkit.service\n",
+      "uids": [
+        "989",
+        "989",
+        "989",
+        "989"
+      ],
+      "gids": [
+        "989",
+        "989",
+        "989",
+        "989"
+      ]
+    },
+    "same_uid_processes": [
+      {
+        "pid": 716,
+        "starttime": "589",
+        "exe": "/usr/lib/polkit-1/polkitd",
+        "cgroup": "0::/system.slice/polkit.service\n",
+        "uids": [
+          "989",
+          "989",
+          "989",
+          "989"
+        ],
+        "gids": [
+          "989",
+          "989",
+          "989",
+          "989"
+        ]
+      }
+    ],
+    "service_state": {
+      "MainPID": "716",
+      "ControlGroup": "/system.slice/polkit.service",
+      "Id": "polkit.service",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/polkit.service",
+      "DropInPaths": "",
+      "UnitFileState": "static"
+    },
+    "boot_id": "5894ac063b3a47bca91331011af4743d",
+    "executable": {
+      "path": "/usr/lib/polkit-1/polkitd",
+      "sha256": "3af05957118bbf6749d0dc88866b8705225c5935807d4bdb28c069711e90a93a",
+      "uid": 0,
+      "mode": 493
+    },
+    "logger": {
+      "path": "/usr/bin/logger",
+      "sha256": "613c4c47d05aee29ad4e3879377ca44bb1144308aec0cdf828dc39580eeae1f6",
+      "uid": 0,
+      "mode": 493
+    }
+  },
+  "ready_caveat": "Loaded marker verified; require exact rejecting subject/session logger marker for actual refusal evidence",
+  "ready_unix_ns": 1792200966107592163,
+  "gate_release": {
+    "schema": 1,
+    "lease": "1057-gated1329-startup5",
+    "nonce": "10d81bceb64381d009952f758df93828",
+    "boot_id": "5894ac063b3a47bca91331011af4743d",
+    "app_pid": 5156,
+    "app_starttime": "46237",
+    "binding_sha256": "a77902d8ed7dc1ed1ccc2dd68fe1422f5b4b7240db2290b27a6c538cf8a5a2bd",
+    "window_started_ns": 462767079201,
+    "loaded_ns": 462856583357,
+    "rechecked_ns": 462890223187,
+    "released_ns": 462890504305
+  },
+  "remaining_seconds": 34.87651413399999,
+  "lifetime_observations": [
+    {
+      "monotonic_ns": 462903922342,
+      "app": {
+        "pid": 5156,
+        "ppid": 5151,
+        "starttime": "46237",
+        "uids": [
+          "1000",
+          "1000",
+          "1000",
+          "1000"
+        ],
+        "gids": [
+          "1001",
+          "1001",
+          "1001",
+          "1001"
+        ],
+        "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-d73f7c2e-6c78-4362-9e8b-66c03031d201.scope\n",
+        "exe": "/usr/bin/campus-updater-1057",
+        "exe_identity": [
+          64769,
+          92397,
+          15087152,
+          1792160222000000000
+        ],
+        "state": "S"
+      }
+    },
+    {
+      "monotonic_ns": 463016910651,
+      "app": {
+        "pid": 5156,
+        "ppid": 5151,
+        "starttime": "46237",
+        "uids": [
+          "1000",
+          "1000",
+          "1000",
+          "1000"
+        ],
+        "gids": [
+          "1001",
+          "1001",
+          "1001",
+          "1001"
+        ],
+        "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-d73f7c2e-6c78-4362-9e8b-66c03031d201.scope\n",
+        "exe": "/usr/bin/campus-updater-1057",
+        "exe_identity": [
+          64769,
+          92397,
+          15087152,
+          1792160222000000000
+        ],
+        "state": "S"
+      }
+    },
+    {
+      "monotonic_ns": 463131513833,
+      "app": {
+        "pid": 5156,
+        "ppid": 5151,
+        "starttime": "46237",
+        "uids": [
+          "1000",
+          "1000",
+          "1000",
+          "1000"
+        ],
+        "gids": [
+          "1001",
+          "1001",
+          "1001",
+          "1001"
+        ],
+        "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-d73f7c2e-6c78-4362-9e8b-66c03031d201.scope\n",
+        "state": "Z"
+      }
+    }
+  ],
+  "gate_transport": {
+    "sha256": "bb6d1b37e0ace586b8aa62f06923eb2b2d557c90b822dbe67095ba336ddf9812",
+    "bytes": 2164,
+    "rows": [
+      {
+        "endpoint": "http://127.0.0.1:17857/stable/linux.json",
+        "event": "serving",
+        "index_sha256": "c41d30c6839eae2a542766d0dd3aea1b81a3925452631ed50b77878bcd34f546",
+        "manifest": {
+          "platforms": {
+            "linux-aarch64-deb": {
+              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRT0NVODFwMFV4WGNPM1pBZ3hSNS90NERpck5FaS9DSDdnOVdYbHArTklBRUFURkt3V3Bwa211WTNxTGRmbkxsQ3BWcnBndXFjM005dXFLUUdBYVJxUm1IK2haZG50REFrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMTYwMzgwCWZpbGU6Y2FtcHVzLXVwZGF0ZXItMTA1N18yLjAuMF9hcm02NC5kZWIJdmVyc2lvbjoyLjAuMApIOTRJT2IrMjZCRFNUTXdLWGphSUJrbjRxaldOcGxsdDUwMDZHWlA3ZncxenZIUXQ0SUZad3BpQzQveFB1Y2g0ODZNQTBnQXJaSGFGenJwc2w5aTBDZz09Cg==",
+              "url": "http://127.0.0.1:17857/packages/campus-updater-1057_2.0.0_arm64.deb"
+            }
+          },
+          "version": "2.0.0"
+        },
+        "scope": "only real indexed targets; absent architectures are not claimed",
+        "source_head": "113a53e4eea44b6d80a8ee3edb55d186d11f3ba6",
+        "time_ns": 1792200964492363336
+      },
+      {
+        "event": "manifest_waiting",
+        "lease": "1057-gated1329-startup5",
+        "nonce": "10d81bceb64381d009952f758df93828",
+        "time_ns": 1792200965951501262,
+        "waiting_ns": 462720885648,
+        "waiting_unix_ns": 1792200965948711924
+      },
+      {
+        "binding_sha256": "a77902d8ed7dc1ed1ccc2dd68fe1422f5b4b7240db2290b27a6c538cf8a5a2bd",
+        "event": "manifest_released",
+        "monotonic_ns": 462907728408,
+        "release": {
+          "app_pid": 5156,
+          "app_starttime": "46237",
+          "binding_sha256": "a77902d8ed7dc1ed1ccc2dd68fe1422f5b4b7240db2290b27a6c538cf8a5a2bd",
+          "boot_id": "5894ac063b3a47bca91331011af4743d",
+          "lease": "1057-gated1329-startup5",
+          "loaded_ns": 462856583357,
+          "nonce": "10d81bceb64381d009952f758df93828",
+          "rechecked_ns": 462890223187,
+          "released_ns": 462890504305,
+          "schema": 1,
+          "window_started_ns": 462767079201
+        },
+        "time_ns": 1792200966135560107
+      },
+      {
+        "bytes": 601,
+        "event": "request",
+        "path": "/stable/linux.json",
+        "status": 200,
+        "time_ns": 1792200966135645901
+      },
+      {
+        "event": "manifest_delivered",
+        "monotonic_ns": 462908088676,
+        "time_ns": 1792200966135887027
+      },
+      {
+        "bytes": 4706052,
+        "event": "request",
+        "path": "/packages/campus-updater-1057_2.0.0_arm64.deb",
+        "sha256": "3563aa9bb97785e0b8b0c4a57d7fd502fd0ef087bafa894c804e33c842cfd872",
+        "status": 200,
+        "time_ns": 1792200966141967865
+      }
+    ]
+  },
+  "restore_started_monotonic_ns": 463136556076,
+  "restore_started_unix_ns": 1792200966364355472,
+  "service_binding_before_restore": {
+    "uid": "989",
+    "gid": "989",
+    "account": "polkitd",
+    "account_primary_gid": 989,
+    "unit": "polkit.service",
+    "logger_exe": "/usr/bin/logger",
+    "account_groups": [
+      989
+    ],
+    "nss_users": [
+      "polkitd"
+    ],
+    "main_pid": 716,
+    "starttime": "589",
+    "exe": "/usr/lib/polkit-1/polkitd",
+    "cgroup": "0::/system.slice/polkit.service\n",
+    "process": {
+      "pid": 716,
+      "starttime": "589",
+      "exe": "/usr/lib/polkit-1/polkitd",
+      "cgroup": "0::/system.slice/polkit.service\n",
+      "uids": [
+        "989",
+        "989",
+        "989",
+        "989"
+      ],
+      "gids": [
+        "989",
+        "989",
+        "989",
+        "989"
+      ]
+    },
+    "same_uid_processes": [
+      {
+        "pid": 716,
+        "starttime": "589",
+        "exe": "/usr/lib/polkit-1/polkitd",
+        "cgroup": "0::/system.slice/polkit.service\n",
+        "uids": [
+          "989",
+          "989",
+          "989",
+          "989"
+        ],
+        "gids": [
+          "989",
+          "989",
+          "989",
+          "989"
+        ]
+      }
+    ],
+    "service_state": {
+      "MainPID": "716",
+      "ControlGroup": "/system.slice/polkit.service",
+      "Id": "polkit.service",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/polkit.service",
+      "DropInPaths": "",
+      "UnitFileState": "static"
+    },
+    "boot_id": "5894ac063b3a47bca91331011af4743d",
+    "executable": {
+      "path": "/usr/lib/polkit-1/polkitd",
+      "sha256": "3af05957118bbf6749d0dc88866b8705225c5935807d4bdb28c069711e90a93a",
+      "uid": 0,
+      "mode": 493
+    },
+    "logger": {
+      "path": "/usr/bin/logger",
+      "sha256": "613c4c47d05aee29ad4e3879377ca44bb1144308aec0cdf828dc39580eeae1f6",
+      "uid": 0,
+      "mode": 493
+    }
+  },
+  "service_binding_after_restore": {
+    "uid": "989",
+    "gid": "989",
+    "account": "polkitd",
+    "account_primary_gid": 989,
+    "unit": "polkit.service",
+    "logger_exe": "/usr/bin/logger",
+    "account_groups": [
+      989
+    ],
+    "nss_users": [
+      "polkitd"
+    ],
+    "main_pid": 716,
+    "starttime": "589",
+    "exe": "/usr/lib/polkit-1/polkitd",
+    "cgroup": "0::/system.slice/polkit.service\n",
+    "process": {
+      "pid": 716,
+      "starttime": "589",
+      "exe": "/usr/lib/polkit-1/polkitd",
+      "cgroup": "0::/system.slice/polkit.service\n",
+      "uids": [
+        "989",
+        "989",
+        "989",
+        "989"
+      ],
+      "gids": [
+        "989",
+        "989",
+        "989",
+        "989"
+      ]
+    },
+    "same_uid_processes": [
+      {
+        "pid": 716,
+        "starttime": "589",
+        "exe": "/usr/lib/polkit-1/polkitd",
+        "cgroup": "0::/system.slice/polkit.service\n",
+        "uids": [
+          "989",
+          "989",
+          "989",
+          "989"
+        ],
+        "gids": [
+          "989",
+          "989",
+          "989",
+          "989"
+        ]
+      }
+    ],
+    "service_state": {
+      "MainPID": "716",
+      "ControlGroup": "/system.slice/polkit.service",
+      "Id": "polkit.service",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/polkit.service",
+      "DropInPaths": "",
+      "UnitFileState": "static"
+    },
+    "boot_id": "5894ac063b3a47bca91331011af4743d",
+    "executable": {
+      "path": "/usr/lib/polkit-1/polkitd",
+      "sha256": "3af05957118bbf6749d0dc88866b8705225c5935807d4bdb28c069711e90a93a",
+      "uid": 0,
+      "mode": 493
+    },
+    "logger": {
+      "path": "/usr/bin/logger",
+      "sha256": "613c4c47d05aee29ad4e3879377ca44bb1144308aec0cdf828dc39580eeae1f6",
+      "uid": 0,
+      "mode": 493
+    }
+  },
+  "gate_restoration": {
+    "schema": 1,
+    "lease": "1057-gated1329-startup5",
+    "nonce": "10d81bceb64381d009952f758df93828",
+    "boot_id": "5894ac063b3a47bca91331011af4743d",
+    "rule_absent": true,
+    "restored_ns": 463183756779,
+    "status": "app_completed_pending_coordinator_review"
+  },
+  "window_finished_unix_ns": 1792200966411659771,
+  "elapsed_seconds_including_cleanup": 0.416783597999995,
+  "deadline_exceeded": false
+}
