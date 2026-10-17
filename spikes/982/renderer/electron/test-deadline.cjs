@@ -6,7 +6,7 @@ const vm=require('node:vm');
 const test=require('node:test');
 const candidate=fs.readFileSync(path.join(__dirname,'main.cjs'),'utf8');
 const flush=async()=>{for(let i=0;i<50;i++)await Promise.resolve();};
-async function harness(source,{point,mode='pending',native=true,threads=native,receiptKind='preflight',writeFailure=false,stderrFailure=false,navigationDependent=false,bootstrapURL='about:blank',gpuDiagnostic=false}={}){
+async function harness(source,{point,mode='pending',native=true,threads=native,receiptKind='preflight',writeFailure=false,stderrFailure=false,navigationDependent=false,bootstrapURL='about:blank',gpuDiagnostic=false,compatibility=false}={}){
  let now=0,next=0,window,releasePending,navigated=false,instrumented=false,currentURL='',blankCallback=false;
  const timers=new Map(),writes=[],exits=[],logs=[],calls=[],listeners={},ipc={};
  const guards={switches:[],appEvents:{}};
@@ -55,11 +55,11 @@ async function harness(source,{point,mode='pending',native=true,threads=native,r
   BrowserWindow:class{constructor(options){guards.preferences=options.webPreferences;calls.push('window');assert.equal(options.webPreferences.sandbox,true);assert.equal(options.width,1440);assert.equal(options.height,900);this.webContents=webContents;window=this;}removeMenu(){}setContentSize(){}on(){}show(){}focus(){}
    async loadURL(url){const blank=url==='about:blank';await operation(blank?'bootstrap':'load');navigated=true;currentURL=blank?bootstrapURL:url;if(!blank)assert.equal(instrumented,true,'producer scripts require prior instrumentation');if(listeners['did-finish-load']){if(blank)blankCallback=true;listeners['did-finish-load']();}}},
   protocol:{registerSchemesAsPrivileged(){}},
-  session:{fromPartition(){return {setPermissionRequestHandler(){},setPermissionCheckHandler(){},setProxy(){return operation('proxy');},webRequest:{onBeforeRequest(fn){guards.request=fn;}},protocol:{handle(){}}};}},
+  session:{fromPartition(){return {setPermissionRequestHandler(fn){guards.permissionRequest=fn;},setPermissionCheckHandler(fn){guards.permissionCheck=fn;},setProxy(){return operation('proxy');},webRequest:{onBeforeRequest(fn){guards.request=fn;}},protocol:{handle(){}}};}},
   ipcMain:{handle(name,fn){ipc[name]=fn;},on(name,fn){ipc[name]=fn;}},nativeTheme:{}
  };
  const context={require(name){if(name==='electron')return electron;if(name==='node:fs')return mockFs;if(name==='node:crypto')return {createHash(){return {update(){return this;},digest(){return 'H';}};}};return require(name);},
-  process:{argv:['electron','main','--preflight',...(gpuDiagnostic?['--gpu-diagnostic']:[]),'/export','ignored','/output.json'],platform:'linux',arch:'arm64',versions,env:{LIBGL_ALWAYS_SOFTWARE:'1'},execPath:'/electron',pid:10},
+  process:{argv:['electron','main','--preflight',...(gpuDiagnostic?['--gpu-diagnostic']:[]),...(compatibility?['--ignore-gpu-blocklist']:[]),'/export','ignored','/output.json'],platform:'linux',arch:'arm64',versions,env:{LIBGL_ALWAYS_SOFTWARE:'1'},execPath:'/electron',pid:10},
   __dirname:'/repo/electron',setTimeout,clearTimeout,console:{log(){}},URL,Response,Buffer,
   Date:class extends Date{constructor(...args){super(...(args.length?args:[now]));}static now(){return now;}}
  };
@@ -195,3 +195,63 @@ for(const [mode,flags] of [['timing',[]],['motion',['--motion-proof']]]){
   assert.deepEqual(effects,[]);
  });
 }
+
+
+test('compatibility arm adds only the whole-list switch and discloses it',async()=>{
+ const control=await harness(candidate,{gpuDiagnostic:true});
+ const arm=await harness(candidate,{gpuDiagnostic:true,compatibility:true});
+ assert.deepEqual(arm.guards.switches.filter(x=>x[0]!=='ignore-gpu-blocklist'),control.guards.switches);
+ assert.deepEqual(arm.guards.switches.filter(x=>x[0]==='ignore-gpu-blocklist'),[['ignore-gpu-blocklist']]);
+ await arm.advance(5000);const p=arm.writes[0].payload;
+ assert.equal(p.diagnostic_only,'gpu-compatibility');
+ assert.deepEqual(JSON.parse(JSON.stringify(p.gpu_compatibility)),{arm:'mesa-blocklist-override',switch:'ignore-gpu-blocklist',value:'',scope:'whole-gpu-feature-compatibility-list',timing_eligible:false});
+ assert.deepEqual(arm.exits,[0]);
+ assert.equal(control.guards.switches.some(x=>x[0]==='ignore-gpu-blocklist'),false);
+ const ordinary=await harness(candidate);await ordinary.advance(5000);
+ assert.equal(ordinary.writes[0].payload.gpu_compatibility,undefined);
+ assert.equal(ordinary.guards.switches.some(x=>x[0]==='ignore-gpu-blocklist'),false);
+});
+for(const flags of [[],['--preflight'],['--motion-proof'],['--lifecycle-proof'],['--preflight','--gpu-diagnostic','--motion-proof'],['--preflight','--gpu-diagnostic','--lifecycle-proof']]){
+ test('compatibility refuses non-diagnostic-preflight '+JSON.stringify(flags),()=>{
+  const effects=[];const electron={app:{on(){effects.push('hook');},commandLine:{appendSwitch(){effects.push('switch');}}}};
+  const context={__dirname:'/repo/electron',require(name){return name==='electron'?electron:require(name);},process:{argv:['electron','main','--ignore-gpu-blocklist',...flags,'/export','/freeze','/output']}};
+  assert.throws(()=>vm.runInNewContext(candidate,context),/GPU compatibility override requires diagnostic preflight only/);
+  assert.deepEqual(effects,[]);
+ });
+}
+for(const settings of [{native:false},{threads:false},{point:'gpu',mode:'reject'},{point:'gpu',mode:'pending'},{point:'readiness',mode:'pending'}]){
+ test('compatibility retains native/deadline failure '+JSON.stringify(settings),async()=>{
+  const h=await harness(candidate,{gpuDiagnostic:true,compatibility:true,...settings});await h.advance(115000);
+  assert.deepEqual(h.exits,[1]);assert.equal(h.writes.length,1);
+  assert.equal(h.writes[0].payload.kind,'preflight_failure');assert.equal(h.writes[0].payload.diagnostic_only,'gpu-compatibility');
+  assert.equal(h.writes[0].payload.gpu_compatibility.scope,'whole-gpu-feature-compatibility-list');
+ });
+}
+test('compatibility retains sandbox, isolation, IPC and network boundaries',async()=>{
+ const h=await harness(candidate,{gpuDiagnostic:true,compatibility:true});
+ for(const [key,value] of Object.entries({sandbox:true,nodeIntegration:false,contextIsolation:true,webSecurity:true,backgroundThrottling:true}))assert.equal(h.guards.preferences[key],value);
+ assert.equal(h.guards.open().action,'deny');
+ for(const url of ['https://example.invalid/','file:///tmp/example','data:text/html,test','about:blank']){
+  let prevented=false;h.guards['will-navigate']({preventDefault(){prevented=true;}},url);assert.equal(prevented,true);
+  let canceled;h.guards.request({url},r=>{canceled=r.cancel;});assert.equal(canceled,true);
+ }
+ const blank={sender:h.event.sender,senderFrame:{url:'about:blank'}};
+ assert.throws(()=>h.ipc['spike-presentation'](blank,{kind:'presentation'}),/Unexpected fixture/);
+ h.ipc['spike-receipt'](blank,JSON.stringify({kind:'preflight',errors:[]}));assert.equal(h.writes.length,0);
+ assert.ok(!h.guards.switches.some(x=>/swiftshader|sandbox|crash-limit|watchdog|disable-gpu|disable-hardware|disable-gpu-driver-bug-workarounds/.test(x[0])));
+ assert.ok(h.guards.switches.some(x=>x[0]==='use-gl'&&x[1]==='angle'));
+ assert.ok(h.guards.switches.some(x=>x[0]==='use-angle'&&x[1]==='gl'));
+});
+
+test('compatibility rejects alternate switch values rather than hiding their scope',()=>{
+ for(const flag of ['--ignore-gpu-blocklist=3','--ignore-gpu-blocklist=']){
+  const effects=[];const electron={app:{on(){effects.push('hook');},commandLine:{appendSwitch(){effects.push('switch');}}}};
+  const context={__dirname:'/repo/electron',require(name){return name==='electron'?electron:require(name);},process:{argv:['electron','main','--preflight','--gpu-diagnostic',flag,'/export','/freeze','/output']}};
+  assert.throws(()=>vm.runInNewContext(candidate,context),/exact valueless switch/);assert.deepEqual(effects,[]);
+ }
+});
+test('compatibility permission requests and checks remain denied',async()=>{
+ const h=await harness(candidate,{gpuDiagnostic:true,compatibility:true});
+ let allowed;h.guards.permissionRequest(null,'media',value=>{allowed=value;});
+ assert.equal(allowed,false);assert.equal(h.guards.permissionCheck(),false);
+});

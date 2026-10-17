@@ -92,6 +92,22 @@ class CaptureTest(unittest.TestCase):
             self.assertIn(b'not freeze or timing evidence', result.stderr)
             self.assertFalse((root/'out').exists())
 
+    def test_compatibility_receipt_cannot_freeze_even_without_diagnostic_marker(self):
+        import json
+        for marker in (True, False):
+            with self.subTest(marker=marker), tempfile.TemporaryDirectory() as folder:
+                root = pathlib.Path(folder)
+                raw = {'kind': 'preflight', 'gpu_compatibility': {'scope': 'whole-gpu-feature-compatibility-list'}}
+                if marker:
+                    raw['diagnostic_only'] = 'gpu-compatibility'
+                (root/'raw.json').write_text(json.dumps(raw))
+                result = subprocess.run([sys.executable, str(pathlib.Path(__file__).with_name('freeze.py')),
+                                         str(root/'raw.json'), str(root/'unused'), str(root/'out')],
+                                        capture_output=True, timeout=3)
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn(b'not freeze or timing evidence', result.stderr)
+                self.assertFalse((root/'out').exists())
+
     def test_signal_error_still_attempts_wait_and_preserves_original_failure(self):
         from types import SimpleNamespace
         child = SimpleNamespace(pid=123, returncode=None, stderr=io.BytesIO())

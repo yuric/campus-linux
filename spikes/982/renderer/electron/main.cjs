@@ -15,6 +15,9 @@ const preflight=options.has('--preflight');
 const gpuDiagnostic=options.has('--gpu-diagnostic');
 if(gpuDiagnostic&&!preflight)throw Error('GPU diagnostics require preflight; never timing evidence');
 const diagnostic=options.has('--motion-proof')||options.has('--lifecycle-proof');
+if([...options].some(option=>option.startsWith('--ignore-gpu-blocklist=')))throw Error('GPU compatibility override accepts only the exact valueless switch');
+const ignoreGPUBlocklist=options.has('--ignore-gpu-blocklist');
+if(ignoreGPUBlocklist&&(!preflight||!gpuDiagnostic||diagnostic))throw Error('GPU compatibility override requires diagnostic preflight only');
 const timeoutSeconds=diagnostic?180:115;
 const digest=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
 const freeze=preflight?{}:JSON.parse(fs.readFileSync(freezePath));
@@ -53,6 +56,7 @@ if(gpuDiagnostic){
   try{fs.writeSync(2,JSON.stringify(record)+'\n');}catch{}
  });
 }
+if(ignoreGPUBlocklist)app.commandLine.appendSwitch('ignore-gpu-blocklist');
 app.commandLine.appendSwitch('use-gl','angle');
 app.commandLine.appendSwitch('use-angle','gl');
 app.commandLine.appendSwitch('force-device-scale-factor','1');
@@ -114,6 +118,10 @@ function finish(payload){
  let status=1;
  try{
   if(gpuDiagnostic)payload.diagnostic_only='gpu-startup';
+  if(ignoreGPUBlocklist){
+   payload.diagnostic_only='gpu-compatibility';
+   payload.gpu_compatibility={arm:'mesa-blocklist-override',switch:'ignore-gpu-blocklist',value:'',scope:'whole-gpu-feature-compatibility-list',timing_eligible:false};
+  }
   payload.freeze=freeze;payload.input_hashes=hashes;payload.rendering_env=renderingEnv;
   // Never await GPU enrichment on any terminal path. Unknown stays unknown.
   payload.runtime=process.versions;payload.native_gpu=GPU??null;

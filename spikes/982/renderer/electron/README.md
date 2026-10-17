@@ -216,3 +216,33 @@ Offline commands:
 node --test spikes/982/renderer/electron/test-deadline.cjs
 python3 -B -m unittest discover -s spikes/982/renderer/electron -p 'test_bounded_stderr.py'
 ```
+
+
+### Opt-in Mesa compatibility preflight
+
+The `--ignore-gpu-blocklist` arm requires both `--preflight` and
+`--gpu-diagnostic`, and rejects motion/lifecycle/timing combinations before setup.
+Default launches do not add the switch. This is a conditional, recorded workaround
+under G8's existing requirement that workaround flags be tested and visible in
+diagnostics; it does not change D1/D5 or grant runtime authority.
+
+Electron44.8.0 pins Chromium152.0.7977.167. Its Linux compatibility list includes
+software/llvmpipe/softpipe renderer matches. The empty `ignore-gpu-blocklist` switch
+skips the **whole GPU feature compatibility list**, not only that entry. The separate
+GPU driver-bug workarounds remain active. The arm neither selects SwiftShader nor
+disables a sandbox, crash limit or watchdog. See the versioned
+[preference parser](https://raw.githubusercontent.com/chromium/chromium/152.0.7977.167/gpu/command_buffer/service/service_utils.cc)
+and [feature decision](https://raw.githubusercontent.com/chromium/chromium/152.0.7977.167/gpu/config/gpu_util.cc).
+
+Every terminal receipt for this arm includes `diagnostic_only: gpu-compatibility`
+and `gpu_compatibility` with the exact switch, empty value, whole-list scope and
+`timing_eligible: false`. Freeze rejects either marker. The same native llvmpipe,
+WebGL and own-descendant-thread checks still decide success; feature status alone
+cannot pass. Sandbox/context isolation/no Node, IPC/origin/network/permission
+restrictions, stderr/ownership bounds and all deadlines remain unchanged.
+
+A separately admitted wrapper must add only this switch to the existing diagnostic
+preflight, pin the exact changed source map, preserve its failed control and stop on
+any failure. No wrapper or guest activation is included here. Even a successful arm
+cannot seed motion/timing or relax the full30-second warmup/60-second measurement.
+The source tests are not evidence of successful backend initialization or performance.
