@@ -1,0 +1,32 @@
+{
+  "argv": [
+    "/opt/campus-linux-spike982/electron-44.8.0-730d44d5aefb6a969b209cf8ee3e843bd873a06c297bf2c409fbb1cebcb3e6bc-retry-1835/runtime/electron",
+    "/home/campusqa/spike982/g8-timing-1268/repo/spikes/982/renderer/electron/main.cjs",
+    "--preflight",
+    "/home/campusqa/spike982/g8-timing-1268/desktop-first",
+    "ignored",
+    "/home/campusqa/spike982/g8-electron-retry-1835/wayland-electron/preflight.json"
+  ],
+  "utc": "2026-10-17T02:55:00.406427+00:00",
+  "timeout_seconds": 125,
+  "launch": {
+    "pid": 5538,
+    "stat": "5538 (electron) R 5521 5538 5538 0 -1 4194304 21 0 0 0 0 0 0 0 20 0 1 0 80453 227336192 96 18446744073709551615 188186523664384 188186683759024 281474728438144 0 0 0 0 0 0 0 0 0 17 0 0 0 0 0 0 188186690256896 188186691502081 188187751038976 281474728439920 281474728440290 281474728440290 281474728443760 0\n",
+    "starttime": 80453,
+    "ppid": 5521,
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-f301e240-b312-4f1f-8dbc-b916c7ba10e7.scope\n",
+    "uid": 1000,
+    "comm": "electron",
+    "sd_pid_get_session": {
+      "returncode": -61,
+      "session": null
+    }
+  },
+  "timeout": true,
+  "returncode": -9,
+  "after": {
+    "pid": 5538,
+    "error": "[Errno 2] No such file or directory: '/proc/5538/stat'"
+  },
+  "finished_utc": "2026-10-17T02:57:05.424771+00:00"
+}

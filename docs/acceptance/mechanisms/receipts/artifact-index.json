@@ -1136,6 +1136,16 @@
       "sha256": "1fad6568371edd10dc0bbf8c80921a3571930d9dde27e178c4db7d9cf954cdc1"
     },
     {
+      "path": "docs/acceptance/mechanisms/receipts/g8-preflight-0240/preflight-command.json",
+      "bytes": 1384,
+      "sha256": "36f33ee2187b6ca49ed0cd97903b0c6ba3c4ec0f69ddc02b695c92853efad1c9"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-preflight-0240/preflight-launch.json",
+      "bytes": 10345,
+      "sha256": "4a79b962f91ee909ffe500deac2f2fec6e269aaf2f536d131e671a0292c35fd9"
+    },
+    {
       "path": "docs/acceptance/mechanisms/receipts/g8-sourceprep-1229/historical-source/electron/main.cjs",
       "bytes": 10198,
       "sha256": "c5d9bb3dda1b4c6045c5848cb5090ac000afd3cb78b2ff18cc137e0754f76aee"
@@ -3757,8 +3767,8 @@
     },
     {
       "path": "spikes/982/renderer/electron/README.md",
-      "bytes": 6315,
-      "sha256": "4391c2877052e54d6e81f7ed75d6626cbd72f2da1a50e1324ec5276f0a254a08"
+      "bytes": 9943,
+      "sha256": "6590d6d885bc85ec79c7f31046e4466f9dd5e024b1960004b7e214fd5da5d9d8"
     },
     {
       "path": "spikes/982/renderer/electron/freeze.py",
@@ -3767,8 +3777,8 @@
     },
     {
       "path": "spikes/982/renderer/electron/main.cjs",
-      "bytes": 10214,
-      "sha256": "70cd2f44e6dcf8f91c30a438ac829e2b26fa0fc32ad2e99a83eeb6fd8cd10d84"
+      "bytes": 11916,
+      "sha256": "7725df63d064728c3dffd131e52af8e87f76ac40983a6ea4574d4b59744b4d62"
     },
     {
       "path": "spikes/982/renderer/electron/preload.cjs",
@@ -3789,6 +3799,11 @@
       "path": "spikes/982/renderer/electron/source.json",
       "bytes": 1576,
       "sha256": "add54d17a7efe6d9714cb11d36f175fcd3988e24c0ef6c67d24a6544f92c10fc"
+    },
+    {
+      "path": "spikes/982/renderer/electron/test-deadline.cjs",
+      "bytes": 8436,
+      "sha256": "de337c58fede2e59db7e6123f2a783793e60aaecde071d2ab0163ec5e396cbe5"
     },
     {
       "path": "spikes/982/renderer/export-receipt.json",

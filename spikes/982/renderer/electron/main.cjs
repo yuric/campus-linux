@@ -50,6 +50,30 @@ protocol.registerSchemesAsPrivileged([{scheme:'campus-spike',privileges:{standar
 let win;
 let completed=false;
 let GPU;
+let lastPhase='initialization';
+let overallTimer;
+const gpuQueryTimeoutMs=10000;
+function phase(name){
+ lastPhase=name;
+ // Synchronous bounded records survive an outer kill after a stalled await.
+ try{fs.writeSync(2,JSON.stringify({kind:'phase',utc:new Date().toISOString(),phase:name})+'\n');}catch{}
+}
+async function runPhase(name,operation){
+ if(completed)throw Error('Capture already terminated');
+ phase(name);
+ const result=await operation();
+ if(completed)throw Error('Capture already terminated');
+ phase(name+'-complete');
+ return result;
+}
+async function nativeGPU(){
+ return runPhase('native-gpu',()=>new Promise((resolve,reject)=>{
+  const timer=setTimeout(()=>reject(Error('Native GPU query exceeded 10 seconds')),gpuQueryTimeoutMs);
+  Promise.resolve().then(()=>app.getGPUInfo('complete')).then(
+   value=>{clearTimeout(timer);resolve(value);},
+   error=>{clearTimeout(timer);reject(error);});
+ }));
+}
 const resources=[];
 const blocked=[];
 function processGraphics(){
@@ -68,29 +92,48 @@ function processGraphics(){
  }
  return found;
 }
-async function finish(payload){
+function finish(payload){
  if(completed)return;completed=true;
- payload.freeze=freeze;payload.input_hashes=hashes;payload.rendering_env=renderingEnv;
- payload.runtime=process.versions;payload.native_gpu=GPU??await app.getGPUInfo('complete');
- payload.gpu_feature_status=app.getGPUFeatureStatus();payload.process_graphics=processGraphics();
- payload.resources=resources;payload.blocked_requests=blocked;
- if(!JSON.stringify(payload.native_gpu).match(/llvmpipe/i)||!payload.process_graphics.some(p=>p.pid!==process.pid&&p.software_threads?.length)){
-  payload.kind='preflight_failure';payload.errors??=[];payload.errors.push('Actual candidate native llvmpipe evidence absent');
+ clearTimeout(overallTimer);
+ const terminalPhase=lastPhase;
+ phase('receipt');
+ let status=1;
+ try{
+  payload.freeze=freeze;payload.input_hashes=hashes;payload.rendering_env=renderingEnv;
+  // Never await GPU enrichment on any terminal path. Unknown stays unknown.
+  payload.runtime=process.versions;payload.native_gpu=GPU??null;
+  payload.gpu_feature_status=app.getGPUFeatureStatus();payload.process_graphics=processGraphics();
+  payload.resources=resources;payload.blocked_requests=blocked;
+  if(!JSON.stringify(payload.native_gpu).match(/llvmpipe/i)||!payload.process_graphics.some(p=>p.pid!==process.pid&&p.software_threads?.length)){
+   payload.kind='preflight_failure';payload.errors??=[];payload.errors.push('Actual candidate native llvmpipe evidence absent');
+  }
+  const validKind=['preflight','motion_proof','measurement','lifecycle_proof'].includes(payload.kind);
+  const validChecks=payload.kind!=='lifecycle_proof'||payload.checks&&Object.keys(payload.checks).length>0&&Object.values(payload.checks).every(Boolean);
+  status=validKind&&validChecks&&!payload.errors?.length&&!payload.invalid?.length?0:1;
+ }catch(error){
+  payload.kind='preflight_failure';payload.errors??=[];payload.errors.push(String(error));
  }
- fs.mkdirSync(path.dirname(outputPath),{recursive:true});fs.writeFileSync(outputPath,JSON.stringify(payload,null,2)+'\n');
- const validKind=['preflight','motion_proof','measurement','lifecycle_proof'].includes(payload.kind);
- const validChecks=payload.kind!=='lifecycle_proof'||payload.checks&&Object.keys(payload.checks).length>0&&Object.values(payload.checks).every(Boolean);
- const status=validKind&&validChecks&&!payload.errors?.length&&!payload.invalid?.length?0:1;
- try{fs.rmSync(temporary,{recursive:true,force:true});}catch{}
- app.exit(status);
+ if(status!==0)payload.diagnostics={last_phase:terminalPhase,utc:new Date().toISOString()};
+ try{
+  phase(status===0?'receipt-write':'failure-write');
+  fs.mkdirSync(path.dirname(outputPath),{recursive:true});fs.writeFileSync(outputPath,JSON.stringify(payload,null,2)+'\n');
+ }catch(error){
+  status=1;
+  phase('receipt-write-failed');
+ }finally{
+  try{fs.rmSync(temporary,{recursive:true,force:true});}catch{}
+  app.exit(status);
+ }
 }
 app.on('will-quit',()=>{try{fs.rmSync(temporary,{recursive:true,force:true});}catch{}});
-app.whenReady().then(async()=>{
+// Covers readiness and every later asynchronous startup stage, not only load.
+overallTimer=setTimeout(()=>finish({kind:'timeout',errors:[`No complete capture in ${timeoutSeconds} seconds`]}),timeoutSeconds*1000);
+runPhase('readiness',()=>app.whenReady()).then(async()=>{
  nativeTheme.themeSource='light';
  const ses=session.fromPartition('campus-982-disposable');
  ses.setPermissionRequestHandler((_web,_permission,callback)=>callback(false));
  ses.setPermissionCheckHandler(()=>false);
- await ses.setProxy({proxyRules:'http=127.0.0.1:9;https=127.0.0.1:9',proxyBypassRules:'<-loopback>'});
+ await runPhase('proxy',()=>ses.setProxy({proxyRules:'http=127.0.0.1:9;https=127.0.0.1:9',proxyBypassRules:'<-loopback>'}));
  ses.webRequest.onBeforeRequest((details,callback)=>{
   const requested=new URL(details.url);
   const allow=requested.protocol==='campus-spike:'&&requested.hostname==='renderer';
@@ -120,20 +163,21 @@ app.whenReady().then(async()=>{
  win.webContents.on('will-navigate',(event,url)=>{if(url!==islandURI)event.preventDefault();});
  win.webContents.on('render-process-gone',(_event,details)=>void finish({kind:'renderer_crash',errors:[details.reason]}));
  win.on('close',()=>void finish({kind:'window_closed',errors:['Window closed before capture']}));
+ phase('debugger-attach');
  win.webContents.debugger.attach('1.3');
- await win.webContents.debugger.sendCommand('Page.enable');
+ await runPhase('debugger-enable',()=>win.webContents.debugger.sendCommand('Page.enable'));
  const instrument='const SPIKE_DIAGNOSTICS='+JSON.stringify(diagnostic)+';const SPIKE_NATIVE_LLVMPIPE_PROVEN=false;const SPIKE_EXPECTED_RENDERER='+JSON.stringify(freeze.webgl_api_renderer??null)+';\n'+fs.readFileSync(path.join(base,'measure.js'),'utf8')+(options.has('--lifecycle-proof')?'\n'+fs.readFileSync(path.join(base,'lifecycle.js'),'utf8'):'');
- await win.webContents.debugger.sendCommand('Page.addScriptToEvaluateOnNewDocument',{source:instrument});
+ await runPhase('debugger-instrument',()=>win.webContents.debugger.sendCommand('Page.addScriptToEvaluateOnNewDocument',{source:instrument}));
  win.webContents.once('did-finish-load',()=>setTimeout(async()=>{
+  if(completed)return;
   try{
-   GPU=await app.getGPUInfo('complete');
+   GPU=await nativeGPU();
    if(!JSON.stringify(GPU).match(/llvmpipe/i)||!processGraphics().some(p=>p.pid!==process.pid&&p.software_threads?.length)){
     await finish({kind:'preflight_failure',errors:['Native Mesa llvmpipe not proven before warmup']});return;
    }
    const expression=preflight?'window.spikePreflight()':options.has('--lifecycle-proof')?'window.spikeLifecycleProof()':options.has('--motion-proof')?'void window.spikeStart(true)':'void window.spikeStart()';
-   await win.webContents.executeJavaScript(expression);
+   await runPhase('renderer-invocation',()=>win.webContents.executeJavaScript(expression));
   }catch(error){await finish({kind:'preflight_failure',errors:[String(error)]});}
  },5000));
- await win.loadURL(islandURI);win.show();win.focus();win.webContents.focus();
- setTimeout(()=>void finish({kind:'timeout',errors:[`No complete capture in ${timeoutSeconds} seconds`]}),timeoutSeconds*1000);
+ await runPhase('load-url',()=>win.loadURL(islandURI));win.show();win.focus();win.webContents.focus();
 }).catch(error=>void finish({kind:'preflight_failure',errors:[String(error)]}));

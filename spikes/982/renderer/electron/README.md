@@ -78,3 +78,61 @@ relative-zoom captures were invalid harness evidence: the unchanged producer sup
 absolute0.75/1/1.5 targets. The shared v3 driver corrects its initial condition and requires
 actual settled main projections. Do not claim the corrected guest path passes until those
 receipts exist. No protocol reinterpretation is authorized or needed.
+
+
+## Startup deadline repair after the 0240 preflight timeout
+
+The normal GDM Wayland attempt on 2026-10-17 started preflight at02:55:00 UTC and
+hit the unchanged125-second outer wrapper timeout at02:57:05. It returned-9;
+The absent `preflight.json` and empty stdout/stderr are retained operator
+observations, not measurements recorded in the two published receipts below. The preserved
+[command receipt](../../../../docs/acceptance/mechanisms/receipts/g8-preflight-0240/preflight-command.json)
+and [launch receipt](../../../../docs/acceptance/mechanisms/receipts/g8-preflight-0240/preflight-launch.json)
+bind the argv path, current boot and actual session observation, not the main.cjs
+source digest. Raw
+`sd_pid_get_session={returncode:-61,session:null}` remains qualified; it is not an
+exact logind session claim. No nativeGPU, environment publication, motion proof or
+performance timing passed in that attempt. No bare retry was made.
+
+That attempt used main.cjs SHA256
+`70cd2f44e6dcf8f91c30a438ac829e2b26fa0fc32ad2e99a83eeb6fd8cd10d84`.
+That digest comes from the retained operator receipt
+`environment/g8-retry1835-0240/accepted-source-export.json` in the coordinator
+evidence directory, not either published raw receipt linked above.
+The exact stalled operation remains unknown. Source review demonstrated that the
+internal timeout began only after awaited startup/loadURL, and terminal receipt
+writing could itself wait forever for GPU enrichment. These are repairable source
+defects, not proof of which operation stalled in the guest.
+
+The successor arms the existing115-second normal/180-second diagnostic deadline
+before asynchronous startup. The full fixed30-second warmup and60-second measurement
+must fit within that115-second total together with startup; a slow startup fails
+rather than shortening either measurement period. A proposed10-second nativeGPU
+query bound applies in all modes, including diagnostic; it is a new bound, not a
+threshold or sandbox relaxation. Terminal writing never
+awaits GPU: unknown stays null and fails the existing native evidence gates.
+For failures before GPU evidence exists, that fail-closed gate rewrites `kind` to
+`preflight_failure`; the original error text and phase diagnostics remain available.
+Timestamped fixed phase records go synchronously to stderr, and failures record the
+last phase. Successful receipt schema and native llvmpipe plus own-descendant-thread
+requirements are unchanged. Late startup completion cannot resume after termination.
+A blocked JavaScript event loop or synchronous native/file operation still requires
+the unchanged outer wrapper deadline; missing output is never a passing result.
+
+Portable offline regression command, using Node's built-in test runner only:
+
+```sh
+node --check spikes/982/renderer/electron/main.cjs
+node --test spikes/982/renderer/electron/test-deadline.cjs
+```
+
+The tests mock Electron, filesystem, processes and timers. They inject stalled and
+rejected readiness/proxy/debugger/load/GPU calls, check one nonzero terminal receipt,
+unknownGPU handling, late completion, successful schema, and native evidence failures.
+They do not launch Electron or prove guest performance. The bootstrap policy image
+has no Node runtime, so its existing policy checks do not run this supplemental suite;
+record this exact standalone command alongside source review before admission.
+
+The current artifact index binds the successor source and tests; historical receipt
+hashes remain unchanged. Any future guest must use a newly reviewed exact source map
+and fresh preflight. Source acceptance is not runtime permission or G8 completion.
