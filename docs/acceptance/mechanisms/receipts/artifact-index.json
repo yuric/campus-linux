@@ -1146,6 +1146,21 @@
       "sha256": "4a79b962f91ee909ffe500deac2f2fec6e269aaf2f536d131e671a0292c35fd9"
     },
     {
+      "path": "docs/acceptance/mechanisms/receipts/g8-preflight-deadline-r1/raw-preflight-command.json",
+      "bytes": 1366,
+      "sha256": "f50eb70b593aa2576d1201b50199b5d2fa1de9b05ef9c3933249d25f4bf3461a"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-preflight-deadline-r1/raw-preflight.json",
+      "bytes": 3953,
+      "sha256": "4807ae19bdc5c7fbf6f88236ff1a19f41956bc2db81766d0637545f067ff989e"
+    },
+    {
+      "path": "docs/acceptance/mechanisms/receipts/g8-preflight-deadline-r1/raw-preflight.stderr",
+      "bytes": 584,
+      "sha256": "63af3ce70b01f1c45153c1f37485f7728b685eaba4a5edc605e8b2e1d0542b13"
+    },
+    {
       "path": "docs/acceptance/mechanisms/receipts/g8-sourceprep-1229/historical-source/electron/main.cjs",
       "bytes": 10198,
       "sha256": "c5d9bb3dda1b4c6045c5848cb5090ac000afd3cb78b2ff18cc137e0754f76aee"
@@ -3767,8 +3782,8 @@
     },
     {
       "path": "spikes/982/renderer/electron/README.md",
-      "bytes": 9943,
-      "sha256": "6590d6d885bc85ec79c7f31046e4466f9dd5e024b1960004b7e214fd5da5d9d8"
+      "bytes": 12407,
+      "sha256": "d1f8a978930264f5bb877fc6ab7c36bff53276d37185a0d45c113cf139fc1af5"
     },
     {
       "path": "spikes/982/renderer/electron/freeze.py",
@@ -3777,8 +3792,8 @@
     },
     {
       "path": "spikes/982/renderer/electron/main.cjs",
-      "bytes": 11916,
-      "sha256": "7725df63d064728c3dffd131e52af8e87f76ac40983a6ea4574d4b59744b4d62"
+      "bytes": 12231,
+      "sha256": "b6725d77f0b2df6d86601d8958d833d8a899e46c21a52111f6967efc717498bf"
     },
     {
       "path": "spikes/982/renderer/electron/preload.cjs",
@@ -3802,8 +3817,8 @@
     },
     {
       "path": "spikes/982/renderer/electron/test-deadline.cjs",
-      "bytes": 8436,
-      "sha256": "de337c58fede2e59db7e6123f2a783793e60aaecde071d2ab0163ec5e396cbe5"
+      "bytes": 12794,
+      "sha256": "a4e1dc40753ac898ed6515aa38a839a44cf2fc907782df0538eb76385fca7b71"
     },
     {
       "path": "spikes/982/renderer/export-receipt.json",

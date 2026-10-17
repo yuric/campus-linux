@@ -1,0 +1,31 @@
+{
+  "argv": [
+    "/opt/campus-linux-spike982/electron-44.8.0-730d44d5aefb6a969b209cf8ee3e843bd873a06c297bf2c409fbb1cebcb3e6bc-deadline-r1/runtime/electron",
+    "/home/campusqa/spike982/g8-deadline-r1/repo/spikes/982/renderer/electron/main.cjs",
+    "--preflight",
+    "/home/campusqa/spike982/g8-timing-1268/desktop-first",
+    "ignored",
+    "/home/campusqa/spike982/g8-electron-deadline-r1/wayland-electron/preflight.json"
+  ],
+  "utc": "2026-10-17T04:09:15.684624+00:00",
+  "timeout_seconds": 125,
+  "launch": {
+    "pid": 5620,
+    "stat": "5620 (electron) R 5603 5620 5620 0 -1 4194304 17 0 0 0 0 0 0 0 20 0 1 0 39448 223092736 64 18446744073709551615 197336163549184 197336323643824 281474834803792 0 0 0 0 0 0 0 0 0 17 3 0 0 0 0 0 197336330141696 197336331386881 197336853135360 281474834804845 281474834805217 281474834805217 281474834808687 0\n",
+    "starttime": 39448,
+    "ppid": 5603,
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-f06ec524-5d13-4c81-b7ca-664395a55e30.scope\n",
+    "uid": 1000,
+    "comm": "electron",
+    "sd_pid_get_session": {
+      "returncode": -61,
+      "session": null
+    }
+  },
+  "returncode": 1,
+  "after": {
+    "pid": 5620,
+    "error": "[Errno 2] No such file or directory: '/proc/5620/stat'"
+  },
+  "finished_utc": "2026-10-17T04:11:11.055494+00:00"
+}

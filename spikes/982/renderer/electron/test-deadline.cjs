@@ -6,9 +6,10 @@ const vm=require('node:vm');
 const test=require('node:test');
 const candidate=fs.readFileSync(path.join(__dirname,'main.cjs'),'utf8');
 const flush=async()=>{for(let i=0;i<50;i++)await Promise.resolve();};
-async function harness(source,{point,mode='pending',native=true,threads=native,receiptKind='preflight',writeFailure=false,stderrFailure=false}={}){
- let now=0,next=0,window,releasePending;
+async function harness(source,{point,mode='pending',native=true,threads=native,receiptKind='preflight',writeFailure=false,stderrFailure=false,navigationDependent=false,bootstrapURL='about:blank'}={}){
+ let now=0,next=0,window,releasePending,navigated=false,instrumented=false,currentURL='',blankCallback=false;
  const timers=new Map(),writes=[],exits=[],logs=[],calls=[],listeners={},ipc={};
+ const guards={};
  const versions={electron:'44.8.0',node:'mock'};
  const event={sender:null,senderFrame:{url:'campus-spike://renderer/Island/island.html'}};
  const operation=(name)=>{
@@ -37,10 +38,10 @@ async function harness(source,{point,mode='pending',native=true,threads=native,r
   writeSync(fd,bytes){if(stderrFailure)throw Error('stderr unavailable');assert.equal(fd,2);logs.push(JSON.parse(bytes));}
  };
  const webContents={
-  mainFrame:event.senderFrame,
-  setZoomFactor(){},setWindowOpenHandler(){},on(){},focus(){},
+  mainFrame:event.senderFrame,getURL(){return currentURL;},
+  setZoomFactor(){},setWindowOpenHandler(fn){guards.open=fn;},on(name,fn){guards[name]=fn;},focus(){},
   once(name,fn){listeners[name]=fn;},
-  debugger:{attach(){calls.push('attach');},sendCommand(name){return operation(name);}},
+  debugger:{attach(){calls.push('attach');},sendCommand(name,params){if(name==='Page.addScriptToEvaluateOnNewDocument')guards.instrument=params.source;if(navigationDependent&&!navigated){calls.push(name);return new Promise(()=>{});}return operation(name).then(value=>{if(name==='Page.addScriptToEvaluateOnNewDocument')instrumented=true;return value;});}},
   executeJavaScript(){
    calls.push('renderer');
    ipc['spike-receipt'](event,JSON.stringify({kind:receiptKind,checks:{one:true},errors:[]}));
@@ -51,11 +52,11 @@ async function harness(source,{point,mode='pending',native=true,threads=native,r
  const electron={
   app:{setPath(){},commandLine:{appendSwitch(){}},on(){},whenReady(){return operation('readiness');},
    getGPUInfo(){return operation('gpu');},getGPUFeatureStatus(){return {gpu:'mock'};},exit(code){exits.push(code);}},
-  BrowserWindow:class{constructor(options){calls.push('window');assert.equal(options.webPreferences.sandbox,true);assert.equal(options.width,1440);assert.equal(options.height,900);this.webContents=webContents;window=this;}removeMenu(){}setContentSize(){}on(){}show(){}focus(){}
-   async loadURL(){await operation('load');listeners['did-finish-load']();}},
+  BrowserWindow:class{constructor(options){guards.preferences=options.webPreferences;calls.push('window');assert.equal(options.webPreferences.sandbox,true);assert.equal(options.width,1440);assert.equal(options.height,900);this.webContents=webContents;window=this;}removeMenu(){}setContentSize(){}on(){}show(){}focus(){}
+   async loadURL(url){const blank=url==='about:blank';await operation(blank?'bootstrap':'load');navigated=true;currentURL=blank?bootstrapURL:url;if(!blank)assert.equal(instrumented,true,'producer scripts require prior instrumentation');if(listeners['did-finish-load']){if(blank)blankCallback=true;listeners['did-finish-load']();}}},
   protocol:{registerSchemesAsPrivileged(){}},
-  session:{fromPartition(){return {setPermissionRequestHandler(){},setPermissionCheckHandler(){},setProxy(){return operation('proxy');},webRequest:{onBeforeRequest(){}},protocol:{handle(){}}};}},
-  ipcMain:{handle(){},on(name,fn){ipc[name]=fn;}},nativeTheme:{}
+  session:{fromPartition(){return {setPermissionRequestHandler(){},setPermissionCheckHandler(){},setProxy(){return operation('proxy');},webRequest:{onBeforeRequest(fn){guards.request=fn;}},protocol:{handle(){}}};}},
+  ipcMain:{handle(name,fn){ipc[name]=fn;},on(name,fn){ipc[name]=fn;}},nativeTheme:{}
  };
  const context={require(name){if(name==='electron')return electron;if(name==='node:fs')return mockFs;if(name==='node:crypto')return {createHash(){return {update(){return this;},digest(){return 'H';}};}};return require(name);},
   process:{argv:['electron','main','--preflight','/export','ignored','/output.json'],platform:'linux',arch:'arm64',versions,env:{LIBGL_ALWAYS_SOFTWARE:'1'},execPath:'/electron',pid:10},
@@ -68,7 +69,7 @@ async function harness(source,{point,mode='pending',native=true,threads=native,r
   for(;;){const due=[...timers].filter(([,t])=>t.at<=end).sort((a,b)=>a[1].at-b[1].at);if(!due.length)break;const[id,t]=due[0];timers.delete(id);now=t.at;t.fn();await flush();}
   now=end;await flush();
  }
- return {writes,exits,logs,calls,timers,advance,releasePending(){releasePending?.();},get now(){return now;},triggerReceipt(){ipc['spike-receipt'](event,JSON.stringify({kind:'preflight',errors:[]}));}};
+ return {guards,ipc,event,writes,exits,logs,calls,timers,advance,releasePending(){releasePending?.();},get blankCallback(){return blankCallback;},get now(){return now;},triggerReceipt(){ipc['spike-receipt'](event,JSON.stringify({kind:'preflight',errors:[]}));}};
 }
 for(const point of ['readiness','proxy','Page.enable','Page.addScriptToEvaluateOnNewDocument','load','gpu']){
  for(const mode of ['pending','reject'])test(`${point} ${mode}: bounded single failure`,async()=>{
@@ -109,4 +110,43 @@ test('late readiness cannot resume startup after deadline',async()=>{
 });
 test('llvmpipe text without own descendant threads remains rejected',async()=>{
  const h=await harness(candidate,{threads:false});await h.advance(5000);assert.deepEqual(h.exits,[1]);assert.match(h.writes[0].payload.errors.join(),/llvmpipe/);assert.equal(h.writes[0].payload.native_gpu.renderer,'llvmpipe (LLVM 20.1.2)');
+});
+
+// Model the documented target-not-navigated CDP wait, not a generic injected failure.
+test('prior ordering deadlocks while bootstrap orders instrumentation before producer',async()=>{
+ const old=candidate.replace(/ \/\/ Initialize an empty target[^]*? phase\('debugger-attach'\);/," phase('debugger-attach');");
+ assert.notEqual(old,candidate);
+ const before=await harness(old,{navigationDependent:true});await before.advance(115000);
+ assert.equal(before.writes[0].payload.diagnostics.last_phase,'debugger-enable');
+ assert.equal(before.calls.includes('load'),false);assert.deepEqual(before.exits,[1]);
+ const after=await harness(candidate,{navigationDependent:true});
+ assert.deepEqual(after.calls,['readiness','proxy','window','bootstrap','attach','Page.enable','Page.addScriptToEvaluateOnNewDocument','load']);
+ assert.equal(after.blankCallback,false);assert.equal(after.calls.includes('gpu'),false);assert.equal(after.calls.includes('renderer'),false);
+ await after.advance(5000);assert.deepEqual(after.exits,[0]);assert.equal(after.calls.filter(x=>x==='load').length,1);assert.equal(after.calls.filter(x=>x==='renderer').length,1);
+});
+for(const mode of ['pending','reject'])test(`bootstrap ${mode} fails once without debugger or producer`,async()=>{
+ const h=await harness(candidate,{point:'bootstrap',mode,navigationDependent:true});await h.advance(115000);
+ assert.deepEqual(h.exits,[1]);assert.equal(h.writes.length,1);assert.equal(h.writes[0].payload.diagnostics.last_phase,'bootstrap-load');
+ assert.equal(h.calls.includes('attach'),false);assert.equal(h.calls.includes('load'),false);assert.equal(h.calls.includes('gpu'),false);
+ h.releasePending();await flush();await h.advance(200000);assert.deepEqual(h.exits,[1]);assert.equal(h.writes.length,1);assert.equal(h.calls.includes('attach'),false);
+});
+test('bootstrap URL mismatch rejects before debugger and producer',async()=>{
+ const h=await harness(candidate,{bootstrapURL:'https://unexpected.invalid'});await h.advance(115000);
+ assert.deepEqual(h.exits,[1]);assert.match(h.writes[0].payload.errors.join(),/Unexpected bootstrap/);assert.equal(h.calls.includes('attach'),false);assert.equal(h.calls.includes('load'),false);
+});
+
+test('bootstrap retains navigation, network, IPC, sandbox and instrumentation boundaries',async()=>{
+ const h=await harness(candidate);
+ assert.equal(h.guards.preferences.nodeIntegration,false);assert.equal(h.guards.preferences.contextIsolation,true);
+ assert.equal(h.guards.preferences.sandbox,true);assert.equal(h.guards.preferences.webSecurity,true);assert.equal(h.guards.preferences.backgroundThrottling,true);
+ assert.equal(h.guards.open().action,'deny');
+ for(const url of ['https://example.invalid/','file:///tmp/example','data:text/html,test','about:blank']){
+  let prevented=false;h.guards['will-navigate']({preventDefault(){prevented=true;}},url);assert.equal(prevented,true);
+  let canceled;h.guards.request({url},r=>{canceled=r.cancel;});assert.equal(canceled,true);
+ }
+ const blank={sender:h.event.sender,senderFrame:{url:'about:blank'}};
+ assert.throws(()=>h.ipc['spike-presentation'](blank,{kind:'presentation'}),/Unexpected fixture/);
+ h.ipc['spike-receipt'](blank,JSON.stringify({kind:'preflight',errors:[]}));assert.equal(h.writes.length,0);
+ assert.equal(h.guards.instrument,'const SPIKE_DIAGNOSTICS=false;const SPIKE_NATIVE_LLVMPIPE_PROVEN=false;const SPIKE_EXPECTED_RENDERER=null;\nmock bytes');
+ assert.equal([...h.timers.values()].some(t=>t.at===115000),true);
 });

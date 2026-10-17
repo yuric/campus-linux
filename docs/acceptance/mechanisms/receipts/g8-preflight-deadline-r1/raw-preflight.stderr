@@ -1,0 +1,8 @@
+{"kind":"phase","utc":"2026-10-17T04:09:15.986Z","phase":"readiness"}
+{"kind":"phase","utc":"2026-10-17T04:09:16.024Z","phase":"readiness-complete"}
+{"kind":"phase","utc":"2026-10-17T04:09:16.033Z","phase":"proxy"}
+{"kind":"phase","utc":"2026-10-17T04:09:16.037Z","phase":"proxy-complete"}
+{"kind":"phase","utc":"2026-10-17T04:09:16.066Z","phase":"debugger-attach"}
+{"kind":"phase","utc":"2026-10-17T04:09:16.067Z","phase":"debugger-enable"}
+{"kind":"phase","utc":"2026-10-17T04:11:11.005Z","phase":"receipt"}
+{"kind":"phase","utc":"2026-10-17T04:11:11.008Z","phase":"failure-write"}

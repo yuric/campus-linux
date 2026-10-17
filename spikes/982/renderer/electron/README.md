@@ -136,3 +136,38 @@ record this exact standalone command alongside source review before admission.
 The current artifact index binds the successor source and tests; historical receipt
 hashes remain unchanged. Any future guest must use a newly reviewed exact source map
 and fresh preflight. Source acceptance is not runtime permission or G8 completion.
+
+
+## Empty-target bootstrap after the debugger-enable stall
+
+The next single preflight on 2026-10-17 returned1 after about115 seconds, with an
+internal failure receipt rather than another outer kill. The preserved
+[phase stderr](../../../../docs/acceptance/mechanisms/receipts/g8-preflight-deadline-r1/raw-preflight.stderr)
+ends startup at `debugger-enable`; the
+[native receipt](../../../../docs/acceptance/mechanisms/receipts/g8-preflight-deadline-r1/raw-preflight.json)
+binds main.cjs `7725df63d064728c3dffd131e52af8e87f76ac40983a6ea4574d4b59744b4d62`,
+records that last phase, null nativeGPU and no loaded resources. The
+[command receipt](../../../../docs/acceptance/mechanisms/receipts/g8-preflight-deadline-r1/raw-preflight-command.json)
+records start04:09:15.684624 UTC, finish04:11:11.055494 and return1. Its null
+`sd_pid_get_session` remains a null observation. This is failed preflight evidence,
+not native GPU, motion, timing, or G8 acceptance. Missing GPU data does not establish
+a GPU cause: that query was never reached.
+
+[Electron documents](https://www.electronjs.org/docs/latest/api/debugger#debuggersendcommandmethod-commandparams-sessionid)
+that a debugger command issued before navigation may remain unresolved until a
+navigation occurs. Awaiting Page.enable before the only loadURL creates that wait
+cycle. The successor first awaits a fixed empty `about:blank` navigation and checks
+its URL, then attaches/enables the debugger and registers the unchanged new-document
+instrumentation before the producer's first navigation. The benchmark load callback
+is installed only after the blank navigation completes. The blank page neither starts
+measurement nor supplies accepted renderer evidence; IPC still requires the exact
+producer frame. Network restrictions and sandbox settings are unchanged. A rejected
+blank navigation fails closed without an alternate URL or broader allowlist.
+
+The same115/180-second overall deadlines include bootstrap; the full30-second warmup,
+60-second measurement, 10-second GPU bound and all native evidence gates remain.
+Portable tests model commands waiting for navigation, reproduce the original stall,
+verify bootstrap/registration/producer ordering, and cover pending, rejected, late
+and unexpected-URL bootstrap outcomes. Existing19 regression cases remain. These
+mocks do not establish that the pinned Linux runtime now passes; a new reviewed
+source map and separately admitted preflight are still required.

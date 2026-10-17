@@ -163,6 +163,10 @@ runPhase('readiness',()=>app.whenReady()).then(async()=>{
  win.webContents.on('will-navigate',(event,url)=>{if(url!==islandURI)event.preventDefault();});
  win.webContents.on('render-process-gone',(_event,details)=>void finish({kind:'renderer_crash',errors:[details.reason]}));
  win.on('close',()=>void finish({kind:'window_closed',errors:['Window closed before capture']}));
+ // Initialize an empty target before awaiting renderer-dependent CDP commands.
+ // Producer instrumentation is still registered before its first navigation.
+ await runPhase('bootstrap-load',()=>win.loadURL('about:blank'));
+ if(win.webContents.getURL()!=='about:blank')throw Error('Unexpected bootstrap document');
  phase('debugger-attach');
  win.webContents.debugger.attach('1.3');
  await runPhase('debugger-enable',()=>win.webContents.debugger.sendCommand('Page.enable'));
