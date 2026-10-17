@@ -1,0 +1,10 @@
+ARG BASE=campus-1057-release-baseline
+FROM ${BASE}
+RUN apt-get update && apt-get install -y --no-install-recommends python3 zstd libfuse2 \
+    && dpkg-query -W > /usr/local/share/campus-1057-build-packages.tsv \
+    && rm -rf /var/lib/apt/lists/*
+COPY spikes/1057/installed-updater/toolchain /opt/fixture-toolchain
+COPY spikes/1057/installed-updater/hosted/install-tools.py /opt/install-tools.py
+RUN python3 /opt/install-tools.py
+ENV CARGO_HOME=/var/cache/campus-1057-cargo
+WORKDIR /work/spikes/1057/installed-updater

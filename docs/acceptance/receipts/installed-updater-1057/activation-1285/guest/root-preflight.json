@@ -1,0 +1,649 @@
+{
+  "schema": 1,
+  "kind": "campus1057-root-preflight",
+  "lease_reference": "1057-1285-60dc337b",
+  "observed_unix_ns": 1792170768641496045,
+  "graphical_uid": 1000,
+  "boot_id": "8438a956-305b-4cd0-ad36-77801d0c7d83",
+  "hosted_allow_rule": {
+    "path": "/etc/polkit-1/rules.d/49-campus-updater-1057-headless.rules",
+    "exists": false
+  },
+  "rules": [
+    {
+      "path": "/usr/share/polkit-1/rules.d/49-ubuntu-admin.rules",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o644",
+      "inode": 39049,
+      "device": 64769,
+      "bytes": 104,
+      "type": "file",
+      "sha256": "543995005caa05d096b9781b27a48e2369ef61e39a8a52234d2d271b6d0a9c1e"
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/50-default.rules",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o644",
+      "inode": 39050,
+      "device": 64769,
+      "bytes": 325,
+      "type": "file",
+      "sha256": "29f073ed9a8a6996b62f718e2bec962d5c84d311d23bb874830b4f9887eeabbf"
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/gnome-control-center.rules",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o644",
+      "inode": 90881,
+      "device": 64769,
+      "bytes": 556,
+      "type": "file",
+      "sha256": "e8006001eae0c8beefc6aeeed185d28a260d78e6beeceb3560da4707cbca778d"
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/org.freedesktop.GeoClue2.rules",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o644",
+      "inode": 90043,
+      "device": 64769,
+      "bytes": 287,
+      "type": "file",
+      "sha256": "392e205d6b993b8e629c35ddd2307ad8460bd41ff893801028c2e530fe816567"
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/org.freedesktop.bolt.rules",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o644",
+      "inode": 39047,
+      "device": 64769,
+      "bytes": 368,
+      "type": "file",
+      "sha256": "16da883b6ec384e0018b7e955efef1726e6470c2b4f72bfc23f9aadbec0709ca"
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/org.freedesktop.fwupd.rules",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o644",
+      "inode": 39048,
+      "device": 64769,
+      "bytes": 251,
+      "type": "file",
+      "sha256": "f78e67e4e002dfd135d5bd8cb8d7b66c174d795316a1cd7bf0f3e021b85ee3a0"
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/org.freedesktop.packagekit.rules",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o644",
+      "inode": 39051,
+      "device": 64769,
+      "bytes": 334,
+      "type": "file",
+      "sha256": "06c328a41876929d46dfc8c33cfd963ec5b26f0bbe0d0345ea407ba10b6bc9e5"
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d/systemd-networkd.rules",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o644",
+      "inode": 93103,
+      "device": 64769,
+      "bytes": 527,
+      "type": "file",
+      "sha256": "f199e386a9297858331b00df07ed0b0ee5fcf4bea67f6c0bccc8a92b7e310bbd"
+    }
+  ],
+  "rules_directories": [
+    {
+      "path": "/etc/polkit-1/rules.d",
+      "exists": true,
+      "uid": 0,
+      "gid": 989,
+      "mode": "0o750",
+      "inode": 1562,
+      "device": 64769,
+      "bytes": 4096,
+      "type": "dir",
+      "entries": [],
+      "empty": true
+    },
+    {
+      "path": "/usr/share/polkit-1/rules.d",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o755",
+      "inode": 39045,
+      "device": 64769,
+      "bytes": 4096,
+      "type": "dir",
+      "entries": [
+        {
+          "path": "/usr/share/polkit-1/rules.d/49-ubuntu-admin.rules",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644",
+          "inode": 39049,
+          "device": 64769,
+          "bytes": 104,
+          "type": "file",
+          "sha256": "543995005caa05d096b9781b27a48e2369ef61e39a8a52234d2d271b6d0a9c1e"
+        },
+        {
+          "path": "/usr/share/polkit-1/rules.d/50-default.rules",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644",
+          "inode": 39050,
+          "device": 64769,
+          "bytes": 325,
+          "type": "file",
+          "sha256": "29f073ed9a8a6996b62f718e2bec962d5c84d311d23bb874830b4f9887eeabbf"
+        },
+        {
+          "path": "/usr/share/polkit-1/rules.d/gnome-control-center.rules",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644",
+          "inode": 90881,
+          "device": 64769,
+          "bytes": 556,
+          "type": "file",
+          "sha256": "e8006001eae0c8beefc6aeeed185d28a260d78e6beeceb3560da4707cbca778d"
+        },
+        {
+          "path": "/usr/share/polkit-1/rules.d/org.freedesktop.GeoClue2.rules",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644",
+          "inode": 90043,
+          "device": 64769,
+          "bytes": 287,
+          "type": "file",
+          "sha256": "392e205d6b993b8e629c35ddd2307ad8460bd41ff893801028c2e530fe816567"
+        },
+        {
+          "path": "/usr/share/polkit-1/rules.d/org.freedesktop.bolt.rules",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644",
+          "inode": 39047,
+          "device": 64769,
+          "bytes": 368,
+          "type": "file",
+          "sha256": "16da883b6ec384e0018b7e955efef1726e6470c2b4f72bfc23f9aadbec0709ca"
+        },
+        {
+          "path": "/usr/share/polkit-1/rules.d/org.freedesktop.fwupd.rules",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644",
+          "inode": 39048,
+          "device": 64769,
+          "bytes": 251,
+          "type": "file",
+          "sha256": "f78e67e4e002dfd135d5bd8cb8d7b66c174d795316a1cd7bf0f3e021b85ee3a0"
+        },
+        {
+          "path": "/usr/share/polkit-1/rules.d/org.freedesktop.packagekit.rules",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644",
+          "inode": 39051,
+          "device": 64769,
+          "bytes": 334,
+          "type": "file",
+          "sha256": "06c328a41876929d46dfc8c33cfd963ec5b26f0bbe0d0345ea407ba10b6bc9e5"
+        },
+        {
+          "path": "/usr/share/polkit-1/rules.d/systemd-networkd.rules",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644",
+          "inode": 93103,
+          "device": 64769,
+          "bytes": 527,
+          "type": "file",
+          "sha256": "f199e386a9297858331b00df07ed0b0ee5fcf4bea67f6c0bccc8a92b7e310bbd"
+        }
+      ],
+      "empty": false
+    }
+  ],
+  "sessions": [
+    {
+      "Id": "4",
+      "User": "501",
+      "Name": "yuri",
+      "Timestamp": "Fri 2026-10-16 10:10:54 MST",
+      "TimestampMonotonic": "6066129",
+      "VTNr": "0",
+      "Remote": "yes",
+      "RemoteHost": "192.168.5.2",
+      "Service": "sshd",
+      "Scope": "session-4.scope",
+      "Leader": "1438",
+      "Audit": "4",
+      "Type": "tty",
+      "Class": "user",
+      "Active": "yes",
+      "State": "active",
+      "IdleHint": "no",
+      "IdleSinceHint": "0",
+      "IdleSinceHintMonotonic": "0",
+      "LockedHint": "no"
+    },
+    {
+      "Id": "6",
+      "User": "1000",
+      "Name": "campusqa",
+      "Timestamp": "Fri 2026-10-16 10:11:52 MST",
+      "TimestampMonotonic": "64366891",
+      "VTNr": "2",
+      "Seat": "seat0",
+      "TTY": "tty2",
+      "Remote": "no",
+      "Service": "gdm-password",
+      "Scope": "session-6.scope",
+      "Leader": "2283",
+      "Audit": "6",
+      "Type": "wayland",
+      "Class": "user",
+      "Active": "yes",
+      "State": "active",
+      "IdleHint": "no",
+      "IdleSinceHint": "0",
+      "IdleSinceHintMonotonic": "0",
+      "LockedHint": "no"
+    }
+  ],
+  "user": {
+    "UID": "1000",
+    "GID": "1001",
+    "Name": "campusqa",
+    "Timestamp": "Fri 2026-10-16 10:11:52 MST",
+    "TimestampMonotonic": "64357820",
+    "RuntimePath": "/run/user/1000",
+    "Service": "user@1000.service",
+    "Slice": "user-1000.slice",
+    "Display": "6",
+    "State": "active",
+    "Sessions": "6",
+    "IdleHint": "no",
+    "IdleSinceHint": "0",
+    "IdleSinceHintMonotonic": "0",
+    "Linger": "no"
+  },
+  "commands": [
+    {
+      "argv": [
+        "systemctl",
+        "show",
+        "polkit.service",
+        "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths"
+      ],
+      "returncode": 0,
+      "stdout": "Id=polkit.service\nLoadState=loaded\nActiveState=active\nSubState=running\nFragmentPath=/usr/lib/systemd/system/polkit.service\nDropInPaths=\nUnitFileState=static\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "systemctl",
+        "show",
+        "gdm3.service",
+        "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths"
+      ],
+      "returncode": 0,
+      "stdout": "Id=gdm.service\nLoadState=loaded\nActiveState=active\nSubState=running\nFragmentPath=/usr/lib/systemd/system/gdm.service\nDropInPaths=\nUnitFileState=static\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "busctl",
+        "--system",
+        "--timeout=3",
+        "call",
+        "org.freedesktop.DBus",
+        "/org/freedesktop/DBus",
+        "org.freedesktop.DBus",
+        "NameHasOwner",
+        "s",
+        "org.freedesktop.PolicyKit1"
+      ],
+      "returncode": 0,
+      "stdout": "b true\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "dpkg-query",
+        "-W",
+        "-f=${binary:Package}\t${Version}\t${db:Status-Status}\n",
+        "campus-updater-1057",
+        "polkitd",
+        "pkexec",
+        "gdm3"
+      ],
+      "returncode": 0,
+      "stdout": "campus-updater-1057\t1.0.0\tinstalled\ngdm3\t46.2-1ubuntu1~24.04.9\tinstalled\npkexec\t124-2ubuntu1.24.04.4\tinstalled\npolkitd\t124-2ubuntu1.24.04.4\tinstalled\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "df",
+        "-B1",
+        "/"
+      ],
+      "returncode": 0,
+      "stdout": "Filesystem       1B-blocks       Used   Available Use% Mounted on\n/dev/vda1      28003532800 8091009024 19895746560  29% /\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "uname",
+        "-a"
+      ],
+      "returncode": 0,
+      "stdout": "Linux lima-campus-linux-d5-noble-arm64 6.8.0-147-generic #147-Ubuntu SMP PREEMPT_DYNAMIC Thu Sep 24 11:39:52 UTC 2026 aarch64 aarch64 aarch64 GNU/Linux\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "dpkg-query",
+        "-W",
+        "-f=${binary:Package}\t${Version}\t${db:Status-Status}\n"
+      ],
+      "returncode": 0,
+      "stdout": "accountsservice\t23.13.9-2ubuntu6.1\tinstalled\nacl\t2.3.2-1build1.1\tinstalled\nadduser\t3.137ubuntu1\tinstalled\nadwaita-icon-theme\t46.0-1\tinstalled\nalsa-base\t1.0.25+dfsg-0ubuntu7\tinstalled\nalsa-utils\t1.2.9-1ubuntu5\tinstalled\nanacron\t2.3-39ubuntu2\tinstalled\napg\t2.2.3.dfsg.1-5build3\tinstalled\napparmor\t4.0.1really4.0.1-0ubuntu0.24.04.8\tinstalled\napport\t2.28.3-0ubuntu0.1\tinstalled\napport-core-dump-handler\t2.28.3-0ubuntu0.1\tinstalled\napport-symptoms\t0.25\tinstalled\nappstream\t1.0.2-1build6\tinstalled\napt\t2.8.3\tinstalled\napt-utils\t2.8.3\tinstalled\naptdaemon\t1.1.1+bzr982-0ubuntu44\tinstalled\naptdaemon-data\t1.1.1+bzr982-0ubuntu44\tinstalled\nat-spi2-common\t2.52.0-1build1\tinstalled\nat-spi2-core\t2.52.0-1build1\tinstalled\nbase-files\t13ubuntu10.5\tinstalled\nbase-passwd\t3.6.3build1\tinstalled\nbash\t5.2.21-2ubuntu4\tinstalled\nbash-completion\t1:2.11-8\tinstalled\nbc\t1.07.1-3ubuntu4\tinstalled\nbcache-tools\t1.0.8-5build1\tinstalled\nbind9-dnsutils\t1:9.18.39-0ubuntu0.24.04.8\tinstalled\nbind9-host\t1:9.18.39-0ubuntu0.24.04.8\tinstalled\nbind9-libs:arm64\t1:9.18.39-0ubuntu0.24.04.8\tinstalled\nbinutils\t2.42-4ubuntu2.10\tinstalled\nbinutils-aarch64-linux-gnu\t2.42-4ubuntu2.10\tinstalled\nbinutils-common:arm64\t2.42-4ubuntu2.10\tinstalled\nbolt\t0.9.7-1\tinstalled\nbpfcc-tools\t0.29.1+ds-1ubuntu7\tinstalled\nbpftrace\t0.20.2-1ubuntu4.3\tinstalled\nbsdextrautils\t2.39.3-9ubuntu6.6\tinstalled\nbsdutils\t1:2.39.3-9ubuntu6.6\tinstalled\nbtrfs-progs\t6.6.3-1.1build2\tinstalled\nbubblewrap\t0.9.0-1ubuntu0.3\tinstalled\nbusybox-initramfs\t1:1.36.1-6ubuntu3.1\tinstalled\nbusybox-static\t1:1.36.1-6ubuntu3.1\tinstalled\nbyobu\t6.11-0ubuntu1.1\tinstalled\nca-certificates\t20260601~24.04.1\tinstalled\ncampus-updater-1057\t1.0.0\tinstalled\ncloud-guest-utils\t0.33-1\tinstalled\ncloud-init\t26.1-0ubuntu1~24.04.1\tinstalled\ncloud-initramfs-copymods\t0.49~24.04.1\tinstalled\ncloud-initramfs-dyn-netconf\t0.49~24.04.1\tinstalled\ncmake\t3.28.3-1build7\tinstalled\ncmake-data\t3.28.3-1build7\tinstalled\ncolord\t1.4.7-1build2\tinstalled\ncolord-data\t1.4.7-1build2\tinstalled\ncommand-not-found\t23.04.0\tinstalled\nconsole-setup\t1.226ubuntu1.1\tinstalled\nconsole-setup-linux\t1.226ubuntu1.1\tinstalled\ncoreutils\t9.4-3ubuntu6.3\tinstalled\ncpio\t2.15+dfsg-1ubuntu2.1\tinstalled\ncpp\t4:13.2.0-7ubuntu1\tinstalled\ncpp-13\t13.3.0-6ubuntu2~24.04.1\tinstalled\ncpp-13-aarch64-linux-gnu\t13.3.0-6ubuntu2~24.04.1\tinstalled\ncpp-aarch64-linux-gnu\t4:13.2.0-7ubuntu1\tinstalled\ncron\t3.0pl1-184ubuntu2\tinstalled\ncron-daemon-common\t3.0pl1-184ubuntu2\tinstalled\ncryptsetup\t2:2.7.0-1ubuntu4.2\tinstalled\ncryptsetup-bin\t2:2.7.0-1ubuntu4.2\tinstalled\ncryptsetup-initramfs\t2:2.7.0-1ubuntu4.2\tinstalled\ncurl\t8.5.0-2ubuntu10.16\tinstalled\ndash\t0.5.12-6ubuntu5\tinstalled\ndbus\t1.14.10-4ubuntu4.1\tinstalled\ndbus-bin\t1.14.10-4ubuntu4.1\tinstalled\ndbus-daemon\t1.14.10-4ubuntu4.1\tinstalled\ndbus-session-bus-common\t1.14.10-4ubuntu4.1\tinstalled\ndbus-system-bus-common\t1.14.10-4ubuntu4.1\tinstalled\ndbus-user-session\t1.14.10-4ubuntu4.1\tinstalled\ndconf-cli\t0.40.0-4ubuntu0.1\tinstalled\ndconf-gsettings-backend:arm64\t0.40.0-4ubuntu0.1\tinstalled\ndconf-service\t0.40.0-4ubuntu0.1\tinstalled\ndebconf\t1.5.86ubuntu1\tinstalled\ndebconf-i18n\t1.5.86ubuntu1\tinstalled\ndebianutils\t5.17build1\tinstalled\ndesktop-file-utils\t0.27-2build1\tinstalled\ndevice-tree-compiler\t1.7.0-2build1\tinstalled\ndevio\t1.2-2build1\tinstalled\ndhcpcd-base\t1:10.0.6-1ubuntu3.2\tinstalled\ndictionaries-common\t1.29.7\tinstalled\ndiffutils\t1:3.10-1ubuntu0.1\tinstalled\ndirmngr\t2.4.4-2ubuntu17.6\tinstalled\ndistro-info\t1.7build1\tinstalled\ndistro-info-data\t0.72-0ubuntu0.24.04.1\tinstalled\ndmeventd\t2:1.02.185-3ubuntu3.2\tinstalled\ndmidecode\t3.5-3ubuntu0.2\tinstalled\ndmsetup\t2:1.02.185-3ubuntu3.2\tinstalled\ndmz-cursor-theme\t0.4.5ubuntu1\tinstalled\ndosfstools\t4.2-1.1build1\tinstalled\ndpkg\t1.22.6ubuntu6.6\tinstalled\ndracut-install\t060+5-1ubuntu3.4\tinstalled\ne2fsprogs\t1.47.0-2.4~exp1ubuntu4.1\tinstalled\ne2fsprogs-l10n\t1.47.0-2.4~exp1ubuntu4.1\tinstalled\neatmydata\t131-1ubuntu1\tinstalled\ned\t1.20.1-1\tinstalled\nefibootmgr\t18-1build2\tinstalled\neject\t2.39.3-9ubuntu6.6\tinstalled\nemacsen-common\t3.0.5\tinstalled\nespeak-ng-data:arm64\t1.51+dfsg-12build1\tinstalled\nethtool\t1:6.7-1build1\tinstalled\nevolution-data-server-common\t3.52.3-0ubuntu1.2\tinstalled\nfdisk\t2.39.3-9ubuntu6.6\tinstalled\nfile\t1:5.45-3build1\tinstalled\nfinalrd\t9build1\tinstalled\nfindutils\t4.9.0-5build1\tinstalled\nflash-kernel\t3.107ubuntu13~24.04.6\tinstalled\nfontconfig\t2.15.0-1.1ubuntu2\tinstalled\nfontconfig-config\t2.15.0-1.1ubuntu2\tinstalled\nfonts-dejavu-core\t2.37-8\tinstalled\nfonts-dejavu-mono\t2.37-8\tinstalled\nfonts-ubuntu-console\t0.869+git20240321-0ubuntu1\tinstalled\nfonts-urw-base35\t20200910-8\tinstalled\nfoomatic-db-compressed-ppds\t20230202-1\tinstalled\nfriendly-recovery\t0.2.42\tinstalled\nftp\t20230507-2build3\tinstalled\nfuse3\t3.14.0-5build1\tinstalled\nfwupd\t2.0.20-1ubuntu2~24.04.2\tinstalled\nfwupd-signed\t1.52+1.4-1\tinstalled\ng++\t4:13.2.0-7ubuntu1\tinstalled\ng++-13\t13.3.0-6ubuntu2~24.04.1\tinstalled\ng++-13-aarch64-linux-gnu\t13.3.0-6ubuntu2~24.04.1\tinstalled\ng++-aarch64-linux-gnu\t4:13.2.0-7ubuntu1\tinstalled\ngawk\t1:5.2.1-2ubuntu0.1\tinstalled\ngcc\t4:13.2.0-7ubuntu1\tinstalled\ngcc-13\t13.3.0-6ubuntu2~24.04.1\tinstalled\ngcc-13-aarch64-linux-gnu\t13.3.0-6ubuntu2~24.04.1\tinstalled\ngcc-13-base:arm64\t13.3.0-6ubuntu2~24.04.1\tinstalled\ngcc-14-base:arm64\t14.2.0-4ubuntu2~24.04.1\tinstalled\ngcc-aarch64-linux-gnu\t4:13.2.0-7ubuntu1\tinstalled\ngcr\t3.41.2-1build3\tinstalled\ngcr4\t4.2.0-5\tinstalled\ngdisk\t1.0.10-1build1\tinstalled\ngdm3\t46.2-1ubuntu1~24.04.9\tinstalled\ngeoclue-2.0\t2.7.0-3ubuntu7\tinstalled\ngeocode-glib-common\t3.26.3-6build3\tinstalled\ngettext-base\t0.21-14ubuntu2\tinstalled\nghostscript\t10.02.1~dfsg1-0ubuntu7.9\tinstalled\ngir1.2-accountsservice-1.0:arm64\t23.13.9-2ubuntu6.1\tinstalled\ngir1.2-adw-1:arm64\t1.5.0-1ubuntu2\tinstalled\ngir1.2-atk-1.0:arm64\t2.52.0-1build1\tinstalled\ngir1.2-atspi-2.0:arm64\t2.52.0-1build1\tinstalled\ngir1.2-freedesktop:arm64\t1.80.1-1\tinstalled\ngir1.2-gck-2:arm64\t4.2.0-5\tinstalled\ngir1.2-gcr-4:arm64\t4.2.0-5\tinstalled\ngir1.2-gdesktopenums-3.0:arm64\t46.1-0ubuntu1\tinstalled\ngir1.2-gdkpixbuf-2.0:arm64\t2.42.10+dfsg-3ubuntu3.3\tinstalled\ngir1.2-gdm-1.0\t46.2-1ubuntu1~24.04.9\tinstalled\ngir1.2-geoclue-2.0:arm64\t2.7.0-3ubuntu7\tinstalled\ngir1.2-girepository-2.0:arm64\t1.80.1-1\tinstalled\ngir1.2-glib-2.0:arm64\t2.80.0-6ubuntu3.9\tinstalled\ngir1.2-gnomeautoar-0.1:arm64\t0.4.4-2build4\tinstalled\ngir1.2-gnomebg-4.0:arm64\t44.0-5build2\tinstalled\ngir1.2-gnomebluetooth-3.0:arm64\t46.0-1ubuntu1\tinstalled\ngir1.2-gnomedesktop-3.0:arm64\t44.0-5build2\tinstalled\ngir1.2-gnomedesktop-4.0:arm64\t44.0-5build2\tinstalled\ngir1.2-graphene-1.0:arm64\t1.10.8-3build2\tinstalled\ngir1.2-gstreamer-1.0:arm64\t1.24.2-1ubuntu0.1\tinstalled\ngir1.2-gtk-3.0:arm64\t3.24.41-4ubuntu1.3\tinstalled\ngir1.2-gtk-4.0:arm64\t4.14.5+ds-0ubuntu0.10\tinstalled\ngir1.2-gweather-4.0:arm64\t4.4.2-1build1\tinstalled\ngir1.2-handy-1:arm64\t1.8.3-1build2\tinstalled\ngir1.2-harfbuzz-0.0:arm64\t8.3.0-2build2\tinstalled\ngir1.2-ibus-1.0:arm64\t1.5.29-2\tinstalled\ngir1.2-javascriptcoregtk-4.1:arm64\t2.52.6-0ubuntu0.24.04.1\tinstalled\ngir1.2-javascriptcoregtk-6.0:arm64\t2.52.6-0ubuntu0.24.04.1\tinstalled\ngir1.2-mutter-14:arm64\t46.2-1ubuntu0.24.04.18\tinstalled\ngir1.2-nm-1.0:arm64\t1.46.0-1ubuntu2.8\tinstalled\ngir1.2-nma4-1.0:arm64\t1.10.6-3build2\tinstalled\ngir1.2-packagekitglib-1.0\t1.2.8-2ubuntu1.5\tinstalled\ngir1.2-pango-1.0:arm64\t1.52.1+ds-1build1\tinstalled\ngir1.2-polkit-1.0\t124-2ubuntu1.24.04.4\tinstalled\ngir1.2-rsvg-2.0:arm64\t2.58.0+dfsg-1ubuntu0.1\tinstalled\ngir1.2-snapd-2:arm64\t1.64-0ubuntu5\tinstalled\ngir1.2-soup-3.0:arm64\t3.4.4-5ubuntu0.9\tinstalled\ngir1.2-upowerglib-1.0:arm64\t1.90.3-1\tinstalled\ngir1.2-vte-2.91:arm64\t0.76.0-1ubuntu0.1\tinstalled\ngir1.2-webkit-6.0:arm64\t2.52.6-0ubuntu0.24.04.1\tinstalled\ngir1.2-webkit2-4.1:arm64\t2.52.6-0ubuntu0.24.04.1\tinstalled\ngit\t1:2.43.0-1ubuntu7.3\tinstalled\ngit-man\t1:2.43.0-1ubuntu7.3\tinstalled\ngjs\t1.80.2-1build2\tinstalled\nglib-networking:arm64\t2.80.0-1build1\tinstalled\nglib-networking-common\t2.80.0-1build1\tinstalled\nglib-networking-services\t2.80.0-1build1\tinstalled\ngnome-bluetooth-3-common\t46.0-1ubuntu1\tinstalled\ngnome-control-center\t1:46.7-0ubuntu0.24.04.6\tinstalled\ngnome-control-center-data\t1:46.7-0ubuntu0.24.04.6\tinstalled\ngnome-desktop3-data\t44.0-5build2\tinstalled\ngnome-keyring\t46.1-2ubuntu0.2\tinstalled\ngnome-menus\t3.36.0-1.1ubuntu3\tinstalled\ngnome-session-bin\t46.0-1ubuntu4\tinstalled\ngnome-session-canberra\t0.30-10ubuntu10\tinstalled\ngnome-session-common\t46.0-1ubuntu4\tinstalled\ngnome-settings-daemon\t46.0-1ubuntu1.24.04.1\tinstalled\ngnome-settings-daemon-common\t46.0-1ubuntu1.24.04.1\tinstalled\ngnome-shell\t46.0-0ubuntu6~24.04.16\tinstalled\ngnome-shell-common\t46.0-0ubuntu6~24.04.16\tinstalled\ngnome-shell-extension-appindicator\t58-1ubuntu24.04.1\tinstalled\ngnome-shell-extension-desktop-icons-ng\t46+really47.0.9-1ubuntu5\tinstalled\ngnome-shell-extension-ubuntu-dock\t90ubuntu3\tinstalled\ngnome-shell-extension-ubuntu-tiling-assistant\t46-1ubuntu1.1\tinstalled\ngnome-terminal\t3.52.0-1ubuntu2\tinstalled\ngnome-terminal-data\t3.52.0-1ubuntu2\tinstalled\ngnupg\t2.4.4-2ubuntu17.6\tinstalled\ngnupg-l10n\t2.4.4-2ubuntu17.6\tinstalled\ngnupg-utils\t2.4.4-2ubuntu17.6\tinstalled\ngpg\t2.4.4-2ubuntu17.6\tinstalled\ngpg-agent\t2.4.4-2ubuntu17.6\tinstalled\ngpg-wks-client\t2.4.4-2ubuntu17.6\tinstalled\ngpgconf\t2.4.4-2ubuntu17.6\tinstalled\ngpgsm\t2.4.4-2ubuntu17.6\tinstalled\ngpgv\t2.4.4-2ubuntu17.6\tinstalled\ngrep\t3.11-4build1\tinstalled\ngroff-base\t1.23.0-3build2\tinstalled\ngrub-common\t2.12-1ubuntu7.3\tinstalled\ngrub-efi-arm64\t2.12-1ubuntu7.3\tinstalled\ngrub-efi-arm64-bin\t2.12-1ubuntu7.3\tinstalled\ngrub-efi-arm64-signed\t1.202.5+2.12-1ubuntu7.3\tinstalled\ngrub2-common\t2.12-1ubuntu7.3\tinstalled\ngsettings-desktop-schemas\t46.1-0ubuntu1\tinstalled\ngstreamer1.0-alsa:arm64\t1.24.2-1ubuntu0.5\tinstalled\ngstreamer1.0-packagekit\t1.2.8-2ubuntu1.5\tinstalled\ngstreamer1.0-pipewire:arm64\t1.0.5-1ubuntu3.3\tinstalled\ngstreamer1.0-plugins-base:arm64\t1.24.2-1ubuntu0.5\tinstalled\ngstreamer1.0-plugins-base-apps\t1.24.2-1ubuntu0.5\tinstalled\ngstreamer1.0-plugins-good:arm64\t1.24.2-1ubuntu1.8\tinstalled\ngstreamer1.0-tools\t1.24.2-1ubuntu0.1\tinstalled\ngtk-update-icon-cache\t3.24.41-4ubuntu1.3\tinstalled\ngvfs:arm64\t1.54.4-0ubuntu1~24.04.4\tinstalled\ngvfs-common\t1.54.4-0ubuntu1~24.04.4\tinstalled\ngvfs-daemons\t1.54.4-0ubuntu1~24.04.4\tinstalled\ngvfs-libs:arm64\t1.54.4-0ubuntu1~24.04.4\tinstalled\ngzip\t1.12-1ubuntu3.2\tinstalled\nhdparm\t9.65+ds-1build1\tinstalled\nheif-gdk-pixbuf:arm64\t1.17.6-1ubuntu4.9\tinstalled\nheif-thumbnailer\t1.17.6-1ubuntu4.9\tinstalled\nhicolor-icon-theme\t0.17-2\tinstalled\nhostname\t3.23+nmu2ubuntu2\tinstalled\nhtop\t3.3.0-4build1\tinstalled\nhumanity-icon-theme\t0.6.16\tinstalled\nhunspell-en-us\t1:2020.12.07-2\tinstalled\nhwdata\t0.379-1\tinstalled\nibverbs-providers:arm64\t50.0-2ubuntu0.2\tinstalled\nieee-data\t20220827.1\tinstalled\ninetutils-telnet\t2:2.5-3ubuntu4.2\tinstalled\ninfo\t7.1-3build2\tinstalled\ninit\t1.66ubuntu1\tinstalled\ninit-system-helpers\t1.66ubuntu1\tinstalled\ninitramfs-tools\t0.142ubuntu25.8\tinstalled\ninitramfs-tools-bin\t0.142ubuntu25.8\tinstalled\ninitramfs-tools-core\t0.142ubuntu25.8\tinstalled\ninputattach\t1:1.8.1-2build1\tinstalled\ninstall-info\t7.1-3build2\tinstalled\niproute2\t6.1.0-1ubuntu6.4\tinstalled\niptables\t1.8.10-3ubuntu2\tinstalled\niputils-ping\t3:20240117-1ubuntu0.1\tinstalled\niputils-tracepath\t3:20240117-1ubuntu0.1\tinstalled\niso-codes\t4.16.0-1\tinstalled\njq\t1.7.1-3ubuntu0.24.04.2\tinstalled\nkbd\t2.6.4-2ubuntu2\tinstalled\nkeyboard-configuration\t1.226ubuntu1.1\tinstalled\nkeyboxd\t2.4.4-2ubuntu17.6\tinstalled\nklibc-utils\t2.0.13-4ubuntu0.2\tinstalled\nkmod\t31+20240202-2ubuntu7.2\tinstalled\nkpartx\t0.9.4-5ubuntu8.2\tinstalled\nkrb5-locales\t1.20.1-6ubuntu2.10\tinstalled\nlandscape-common\t24.02-0ubuntu5.7\tinstalled\nlanguage-selector-common\t0.225\tinstalled\nlanguage-selector-gnome\t0.225\tinstalled\nless\t590-2ubuntu2.1\tinstalled\nlibaa1:arm64\t1.4p5-51.1\tinstalled\nlibaccountsservice0:arm64\t23.13.9-2ubuntu6.1\tinstalled\nlibacl1:arm64\t2.3.2-1build1.1\tinstalled\nlibadwaita-1-0:arm64\t1.5.0-1ubuntu2\tinstalled\nlibaio1t64:arm64\t0.3.113-6build1.1\tinstalled\nlibaom3:arm64\t3.8.2-2ubuntu0.2\tinstalled\nlibapparmor1:arm64\t4.0.1really4.0.1-0ubuntu0.24.04.8\tinstalled\nlibappstream5:arm64\t1.0.2-1build6\tinstalled\nlibapt-pkg6.0t64:arm64\t2.8.3\tinstalled\nlibarchive13t64:arm64\t3.7.2-2ubuntu0.9\tinstalled\nlibargon2-1:arm64\t0~20190702+dfsg-4build1\tinstalled\nlibasan8:arm64\t14.2.0-4ubuntu2~24.04.1\tinstalled\nlibasound2-data\t1.2.11-1ubuntu0.3\tinstalled\nlibasound2t64:arm64\t1.2.11-1ubuntu0.3\tinstalled\nlibaspell15:arm64\t0.60.8.1-1build1\tinstalled\nlibassuan0:arm64\t2.5.6-1build1\tinstalled\nlibasyncns0:arm64\t0.8-6build4\tinstalled\nlibatasmart4:arm64\t0.19-5build3\tinstalled\nlibatk-adaptor:arm64\t2.52.0-1build1\tinstalled\nlibatk-bridge2.0-0t64:arm64\t2.52.0-1build1\tinstalled\nlibatk1.0-0t64:arm64\t2.52.0-1build1\tinstalled\nlibatm1t64:arm64\t1:2.5.1-5.1build1\tinstalled\nlibatomic1:arm64\t14.2.0-4ubuntu2~24.04.1\tinstalled\nlibatopology2t64:arm64\t1.2.11-1ubuntu0.3\tinstalled\nlibatspi2.0-0t64:arm64\t2.52.0-1build1\tinstalled\nlibattr1:arm64\t1:2.5.2-1ubuntu0.1\tinstalled\nlibaudit-common\t1:3.1.2-2.1ubuntu0.1\tinstalled\nlibaudit1:arm64\t1:3.1.2-2.1ubuntu0.1\tinstalled\nlibavahi-client3:arm64\t0.8-13ubuntu6.2\tinstalled\nlibavahi-common-data:arm64\t0.8-13ubuntu6.2\tinstalled\nlibavahi-common3:arm64\t0.8-13ubuntu6.2\tinstalled\nlibavahi-glib1:arm64\t0.8-13ubuntu6.2\tinstalled\nlibavc1394-0:arm64\t0.5.4-5build3\tinstalled\nlibayatana-appindicator3-1\t0.5.93-1build3\tinstalled\nlibayatana-ido3-0.4-0:arm64\t0.10.1-1build2\tinstalled\nlibayatana-indicator3-7:arm64\t0.9.4-1build1\tinstalled\nlibbinutils:arm64\t2.42-4ubuntu2.10\tinstalled\nlibblkid1:arm64\t2.39.3-9ubuntu6.6\tinstalled\nlibblockdev-crypto3:arm64\t3.1.1-1ubuntu0.1\tinstalled\nlibblockdev-fs3:arm64\t3.1.1-1ubuntu0.1\tinstalled\nlibblockdev-loop3:arm64\t3.1.1-1ubuntu0.1\tinstalled\nlibblockdev-mdraid3:arm64\t3.1.1-1ubuntu0.1\tinstalled\nlibblockdev-nvme3:arm64\t3.1.1-1ubuntu0.1\tinstalled\nlibblockdev-part3:arm64\t3.1.1-1ubuntu0.1\tinstalled\nlibblockdev-swap3:arm64\t3.1.1-1ubuntu0.1\tinstalled\nlibblockdev-utils3:arm64\t3.1.1-1ubuntu0.1\tinstalled\nlibblockdev3:arm64\t3.1.1-1ubuntu0.1\tinstalled\nlibbluetooth3:arm64\t5.72-0ubuntu5.8\tinstalled\nlibbpf1:arm64\t1:1.3.0-2build2\tinstalled\nlibbpfcc:arm64\t0.29.1+ds-1ubuntu7\tinstalled\nlibbrotli1:arm64\t1.1.0-2build2\tinstalled\nlibbsd0:arm64\t0.12.1-1build1.1\tinstalled\nlibbytesize-common\t2.10-1ubuntu2\tinstalled\nlibbytesize1:arm64\t2.10-1ubuntu2\tinstalled\nlibbz2-1.0:arm64\t1.0.8-5.1ubuntu0.1\tinstalled\nlibc-bin\t2.39-0ubuntu8.9\tinstalled\nlibc-dev-bin\t2.39-0ubuntu8.9\tinstalled\nlibc-devtools\t2.39-0ubuntu8.9\tinstalled\nlibc6:arm64\t2.39-0ubuntu8.9\tinstalled\nlibc6-dev:arm64\t2.39-0ubuntu8.9\tinstalled\nlibcaca0:arm64\t0.99.beta20-4ubuntu0.2\tinstalled\nlibcairo-gobject-perl\t1.005-4build3\tinstalled\nlibcairo-gobject2:arm64\t1.18.0-3build1\tinstalled\nlibcairo-perl\t1.109-4build1\tinstalled\nlibcairo-script-interpreter2:arm64\t1.18.0-3build1\tinstalled\nlibcairo2:arm64\t1.18.0-3build1\tinstalled\nlibcamel-1.2-64t64:arm64\t3.52.3-0ubuntu1.2\tinstalled\nlibcanberra-gtk3-0t64:arm64\t0.30-10ubuntu10\tinstalled\nlibcanberra0t64:arm64\t0.30-10ubuntu10\tinstalled\nlibcap-ng0:arm64\t0.8.4-2build2\tinstalled\nlibcap2:arm64\t1:2.66-5ubuntu2.4\tinstalled\nlibcap2-bin\t1:2.66-5ubuntu2.4\tinstalled\nlibcbor0.10:arm64\t0.10.2-1.2ubuntu2\tinstalled\nlibcc1-0:arm64\t14.2.0-4ubuntu2~24.04.1\tinstalled\nlibcdparanoia0:arm64\t3.10.2+debian-14build3\tinstalled\nlibclang-cpp18\t1:18.1.3-1ubuntu1\tinstalled\nlibclang1-18\t1:18.1.3-1ubuntu1\tinstalled\nlibcolord-gtk4-1t64:arm64\t0.3.1-1build2\tinstalled\nlibcolord2:arm64\t1.4.7-1build2\tinstalled\nlibcolorhug2:arm64\t1.4.7-1build2\tinstalled\nlibcom-err2:arm64\t1.47.0-2.4~exp1ubuntu4.1\tinstalled\nlibcrack2:arm64\t2.9.6-5.1build2\tinstalled\nlibcrypt-dev:arm64\t1:4.4.36-4build1\tinstalled\nlibcrypt1:arm64\t1:4.4.36-4build1\tinstalled\nlibcryptsetup12:arm64\t2:2.7.0-1ubuntu4.2\tinstalled\nlibctf-nobfd0:arm64\t2.42-4ubuntu2.10\tinstalled\nlibctf0:arm64\t2.42-4ubuntu2.10\tinstalled\nlibcue2:arm64\t2.2.1-4.1build1\tinstalled\nlibcups2t64:arm64\t2.4.7-1.2ubuntu7.14\tinstalled\nlibcurl3t64-gnutls:arm64\t8.5.0-2ubuntu10.16\tinstalled\nlibcurl4t64:arm64\t8.5.0-2ubuntu10.16\tinstalled\nlibdatrie1:arm64\t0.2.13-3build1\tinstalled\nlibdb5.3t64:arm64\t5.3.28+dfsg2-7\tinstalled\nlibdbus-1-3:arm64\t1.14.10-4ubuntu4.1\tinstalled\nlibdbusmenu-glib4:arm64\t18.10.20180917~bzr492+repack1-3.1ubuntu5\tinstalled\nlibdbusmenu-gtk3-4:arm64\t18.10.20180917~bzr492+repack1-3.1ubuntu5\tinstalled\nlibdconf1:arm64\t0.40.0-4ubuntu0.1\tinstalled\nlibdebconfclient0:arm64\t0.271ubuntu3\tinstalled\nlibdecor-0-0:arm64\t0.2.2-1build2\tinstalled\nlibdee-1.0-4:arm64\t1.2.7+17.10.20170616-7build5\tinstalled\nlibdeflate0:arm64\t1.19-1build1.1\tinstalled\nlibdevmapper-event1.02.1:arm64\t2:1.02.185-3ubuntu3.2\tinstalled\nlibdevmapper1.02.1:arm64\t2:1.02.185-3ubuntu3.2\tinstalled\nlibdrm-amdgpu1:arm64\t2.4.125-1ubuntu0.1~24.04.2\tinstalled\nlibdrm-common\t2.4.125-1ubuntu0.1~24.04.2\tinstalled\nlibdrm2:arm64\t2.4.125-1ubuntu0.1~24.04.2\tinstalled\nlibduktape207:arm64\t2.7.0+tests-0ubuntu3\tinstalled\nlibdv4t64:arm64\t1.0.0-17.1build1\tinstalled\nlibdw1t64:arm64\t0.190-1.1ubuntu0.1\tinstalled\nlibeatmydata1:arm64\t131-1ubuntu1\tinstalled\nlibecal-2.0-3:arm64\t3.52.3-0ubuntu1.2\tinstalled\nlibedataserver-1.2-27t64:arm64\t3.52.3-0ubuntu1.2\tinstalled\nlibedit2:arm64\t3.1-20230828-1build1\tinstalled\nlibefiboot1t64:arm64\t38-3.1build1\tinstalled\nlibefivar1t64:arm64\t38-3.1build1\tinstalled\nlibegl-mesa0:arm64\t25.2.8-0ubuntu0.24.04.4\tinstalled\nlibegl1:arm64\t1.7.0-1build1\tinstalled\nlibeis1:arm64\t1.2.1-1\tinstalled\nlibelf1t64:arm64\t0.190-1.1ubuntu0.1\tinstalled\nlibenchant-2-2:arm64\t2.3.3-2build2\tinstalled\nlibepoxy0:arm64\t1.5.10-1build1\tinstalled\nliberror-perl\t0.17029-2\tinstalled\nlibespeak-ng1:arm64\t1.51+dfsg-12build1\tinstalled\nlibestr0:arm64\t0.1.11-1build1\tinstalled\nlibevdev2:arm64\t1.13.1+dfsg-1build1\tinstalled\nlibevent-core-2.1-7t64:arm64\t2.1.12-stable-9ubuntu2.2\tinstalled\nlibexempi8:arm64\t2.6.5-1build1\tinstalled\nlibexif12:arm64\t0.6.24-1ubuntu0.24.04.1\tinstalled\nlibexiv2-27:arm64\t0.27.6-1ubuntu0.3\tinstalled\nlibexpat1:arm64\t2.6.1-2ubuntu0.6\tinstalled\nlibext2fs2t64:arm64\t1.47.0-2.4~exp1ubuntu4.1\tinstalled\nlibextutils-depends-perl\t0.8001-2\tinstalled\nlibfastjson4:arm64\t1.2304.0-1build1\tinstalled\nlibfdisk1:arm64\t2.39.3-9ubuntu6.6\tinstalled\nlibfdt1:arm64\t1.7.0-2build1\tinstalled\nlibffi8:arm64\t3.4.6-1build1\tinstalled\nlibfftw3-single3:arm64\t3.3.10-1ubuntu3\tinstalled\nlibfido2-1:arm64\t1.14.0-1build3\tinstalled\nlibflac12t64:arm64\t1.4.3+ds-2.1ubuntu2\tinstalled\nlibflashrom1:arm64\t1.3.0-2.1ubuntu2\tinstalled\nlibfontconfig1:arm64\t2.15.0-1.1ubuntu2\tinstalled\nlibfontenc1:arm64\t1:1.1.8-1build1\tinstalled\nlibfreeaptx0:arm64\t0.1.1-2build1\tinstalled\nlibfreetype6:arm64\t2.13.2+dfsg-1ubuntu0.2\tinstalled\nlibfribidi0:arm64\t1.0.13-3build1\tinstalled\nlibftdi1-2:arm64\t1.5-6build5\tinstalled\nlibfuse3-3:arm64\t3.14.0-5build1\tinstalled\nlibfwupd3:arm64\t2.0.20-1ubuntu2~24.04.2\tinstalled\nlibgbm1:arm64\t25.2.8-0ubuntu0.24.04.4\tinstalled\nlibgcc-13-dev:arm64\t13.3.0-6ubuntu2~24.04.1\tinstalled\nlibgcc-s1:arm64\t14.2.0-4ubuntu2~24.04.1\tinstalled\nlibgck-1-0:arm64\t3.41.2-1build3\tinstalled\nlibgck-2-2:arm64\t4.2.0-5\tinstalled\nlibgcr-4-4:arm64\t4.2.0-5\tinstalled\nlibgcr-base-3-1:arm64\t3.41.2-1build3\tinstalled\nlibgcr-ui-3-1:arm64\t3.41.2-1build3\tinstalled\nlibgcrypt20:arm64\t1.10.3-2ubuntu0.2\tinstalled\nlibgd3:arm64\t2.3.3-9ubuntu5\tinstalled\nlibgdbm-compat4t64:arm64\t1.23-5.1build1\tinstalled\nlibgdbm6t64:arm64\t1.23-5.1build1\tinstalled\nlibgdk-pixbuf-2.0-0:arm64\t2.42.10+dfsg-3ubuntu3.3\tinstalled\nlibgdk-pixbuf2.0-common\t2.42.10+dfsg-3ubuntu3.3\tinstalled\nlibgdm1\t46.2-1ubuntu1~24.04.9\tinstalled\nlibgeoclue-2-0:arm64\t2.7.0-3ubuntu7\tinstalled\nlibgeocode-glib-2-0:arm64\t3.26.3-6build3\tinstalled\nlibgexiv2-2:arm64\t0.14.2-2build3\tinstalled\nlibgif7:arm64\t5.2.2-1ubuntu1.2\tinstalled\nlibgirepository-1.0-1:arm64\t1.80.1-1\tinstalled\nlibgjs0g:arm64\t1.80.2-1build2\tinstalled\nlibgl1:arm64\t1.7.0-1build1\tinstalled\nlibgl1-mesa-dri:arm64\t25.2.8-0ubuntu0.24.04.4\tinstalled\nlibgles2:arm64\t1.7.0-1build1\tinstalled\nlibglib-object-introspection-perl\t0.051-1build3\tinstalled\nlibglib-perl:arm64\t3:1.329.3-3build3\tinstalled\nlibglib2.0-0t64:arm64\t2.80.0-6ubuntu3.9\tinstalled\nlibglib2.0-bin\t2.80.0-6ubuntu3.9\tinstalled\nlibglib2.0-data\t2.80.0-6ubuntu3.9\tinstalled\nlibglu1-mesa:arm64\t9.0.2-1.1build1\tinstalled\nlibglvnd0:arm64\t1.7.0-1build1\tinstalled\nlibglx-mesa0:arm64\t25.2.8-0ubuntu0.24.04.4\tinstalled\nlibglx0:arm64\t1.7.0-1build1\tinstalled\nlibgmp10:arm64\t2:6.3.0+dfsg-2ubuntu6.1\tinstalled\nlibgnome-autoar-0-0:arm64\t0.4.4-2build4\tinstalled\nlibgnome-bg-4-2t64:arm64\t44.0-5build2\tinstalled\nlibgnome-bluetooth-3.0-13:arm64\t46.0-1ubuntu1\tinstalled\nlibgnome-bluetooth-ui-3.0-13:arm64\t46.0-1ubuntu1\tinstalled\nlibgnome-desktop-3-20t64:arm64\t44.0-5build2\tinstalled\nlibgnome-desktop-4-2t64:arm64\t44.0-5build2\tinstalled\nlibgnome-rr-4-2t64:arm64\t44.0-5build2\tinstalled\nlibgnutls30t64:arm64\t3.8.3-1.1ubuntu3.6\tinstalled\nlibgoa-1.0-0b:arm64\t3.50.4-0ubuntu2\tinstalled\nlibgoa-1.0-common\t3.50.4-0ubuntu2\tinstalled\nlibgoa-backend-1.0-2:arm64\t3.50.4-0ubuntu2\tinstalled\nlibgomp1:arm64\t14.2.0-4ubuntu2~24.04.1\tinstalled\nlibgpg-error-l10n\t1.47-3build2.1\tinstalled\nlibgpg-error0:arm64\t1.47-3build2.1\tinstalled\nlibgpgme11t64:arm64\t1.18.0-4.1ubuntu4\tinstalled\nlibgphoto2-6t64:arm64\t2.5.31-2.1ubuntu1.1\tinstalled\nlibgphoto2-port12t64:arm64\t2.5.31-2.1ubuntu1.1\tinstalled\nlibgpm2:arm64\t1.20.7-11\tinstalled\nlibgprofng0:arm64\t2.42-4ubuntu2.10\tinstalled\nlibgraphene-1.0-0:arm64\t1.10.8-3build2\tinstalled\nlibgraphite2-3:arm64\t1.3.14-2ubuntu0.24.04.1\tinstalled\nlibgs-common\t10.02.1~dfsg1-0ubuntu7.9\tinstalled\nlibgs10:arm64\t10.02.1~dfsg1-0ubuntu7.9\tinstalled\nlibgs10-common\t10.02.1~dfsg1-0ubuntu7.9\tinstalled\nlibgsf-1-114:arm64\t1.14.51-2ubuntu0.1\tinstalled\nlibgsf-1-common\t1.14.51-2ubuntu0.1\tinstalled\nlibgsound0t64:arm64\t1.0.3-3.2build2\tinstalled\nlibgssapi-krb5-2:arm64\t1.20.1-6ubuntu2.10\tinstalled\nlibgstreamer-gl1.0-0:arm64\t1.24.2-1ubuntu0.5\tinstalled\nlibgstreamer-plugins-base1.0-0:arm64\t1.24.2-1ubuntu0.5\tinstalled\nlibgstreamer-plugins-good1.0-0:arm64\t1.24.2-1ubuntu1.8\tinstalled\nlibgstreamer1.0-0:arm64\t1.24.2-1ubuntu0.1\tinstalled\nlibgtk-3-0t64:arm64\t3.24.41-4ubuntu1.3\tinstalled\nlibgtk-3-common\t3.24.41-4ubuntu1.3\tinstalled\nlibgtk-4-1:arm64\t4.14.5+ds-0ubuntu0.10\tinstalled\nlibgtk-4-common\t4.14.5+ds-0ubuntu0.10\tinstalled\nlibgtk-4-media-gstreamer\t4.14.5+ds-0ubuntu0.10\tinstalled\nlibgtk3-perl\t0.038-3\tinstalled\nlibgtop-2.0-11:arm64\t2.41.3-1ubuntu0.24.04.1\tinstalled\nlibgtop2-common\t2.41.3-1ubuntu0.24.04.1\tinstalled\nlibgudev-1.0-0:arm64\t1:238-5ubuntu1\tinstalled\nlibgusb2:arm64\t0.4.8-1build2\tinstalled\nlibgweather-4-0t64:arm64\t4.4.2-1build1\tinstalled\nlibgweather-4-common\t4.4.2-1build1\tinstalled\nlibgxps2t64:arm64\t0.3.2-4build3\tinstalled\nlibhandy-1-0:arm64\t1.8.3-1build2\tinstalled\nlibharfbuzz-gobject0:arm64\t8.3.0-2build2\tinstalled\nlibharfbuzz-icu0:arm64\t8.3.0-2build2\tinstalled\nlibharfbuzz0b:arm64\t8.3.0-2build2\tinstalled\nlibheif-plugin-aomdec:arm64\t1.17.6-1ubuntu4.9\tinstalled\nlibheif-plugin-aomenc:arm64\t1.17.6-1ubuntu4.9\tinstalled\nlibheif1:arm64\t1.17.6-1ubuntu4.9\tinstalled\nlibhogweed6t64:arm64\t3.9.1-2.2build1.1\tinstalled\nlibhunspell-1.7-0:arm64\t1.7.2+really1.7.2-10build3\tinstalled\nlibhwasan0:arm64\t14.2.0-4ubuntu2~24.04.1\tinstalled\nlibhyphen0:arm64\t2.8.8-7build3\tinstalled\nlibibus-1.0-5:arm64\t1.5.29-2\tinstalled\nlibibverbs1:arm64\t50.0-2ubuntu0.2\tinstalled\nlibical3t64:arm64\t3.0.17-1.1build3\tinstalled\nlibice6:arm64\t2:1.0.10-1build3\tinstalled\nlibicu74:arm64\t74.2-1ubuntu3.1\tinstalled\nlibidn12:arm64\t1.42-1ubuntu0.1\tinstalled\nlibidn2-0:arm64\t2.3.7-2build1.1\tinstalled\nlibiec61883-0:arm64\t1.2.0-6build1\tinstalled\nlibieee1284-3t64:arm64\t0.2.11-14.1build1\tinstalled\nlibijs-0.35:arm64\t0.35-15.1build1\tinstalled\nlibimobiledevice6:arm64\t1.3.0-8.1build3\tinstalled\nlibinih1:arm64\t55-1ubuntu2\tinstalled\nlibiniparser1:arm64\t4.1-7ubuntu0.1\tinstalled\nlibinput-bin\t1.25.0-1ubuntu3.7\tinstalled\nlibinput10:arm64\t1.25.0-1ubuntu3.7\tinstalled\nlibintl-perl\t1.33-1build3\tinstalled\nlibintl-xs-perl\t1.33-1build3\tinstalled\nlibip4tc2:arm64\t1.8.10-3ubuntu2\tinstalled\nlibip6tc2:arm64\t1.8.10-3ubuntu2\tinstalled\nlibisl23:arm64\t0.26-3build1.1\tinstalled\nlibisns0t64:arm64\t0.101-0.3ubuntu0.1\tinstalled\nlibitm1:arm64\t14.2.0-4ubuntu2~24.04.1\tinstalled\nlibiw30t64:arm64\t30~pre9-16.1ubuntu2\tinstalled\nlibjansson4:arm64\t2.14-2build2\tinstalled\nlibjavascriptcoregtk-4.1-0:arm64\t2.52.6-0ubuntu0.24.04.1\tinstalled\nlibjavascriptcoregtk-6.0-1:arm64\t2.52.6-0ubuntu0.24.04.1\tinstalled\nlibjbig0:arm64\t2.1-6.1ubuntu2\tinstalled\nlibjbig2dec0:arm64\t0.20-1ubuntu0.24.04.1\tinstalled\nlibjcat1:arm64\t0.2.3-1~ubuntu0.24.04.1\tinstalled\nlibjpeg-turbo8:arm64\t2.1.5-2ubuntu2\tinstalled\nlibjpeg8:arm64\t8c-2ubuntu11\tinstalled\nlibjq1:arm64\t1.7.1-3ubuntu0.24.04.2\tinstalled\nlibjson-c5:arm64\t0.17-1build1\tinstalled\nlibjson-glib-1.0-0:arm64\t1.8.0-2build2\tinstalled\nlibjson-glib-1.0-common\t1.8.0-2build2\tinstalled\nlibjsoncpp25:arm64\t1.9.5-6build1\tinstalled\nlibk5crypto3:arm64\t1.20.1-6ubuntu2.10\tinstalled\nlibkeyutils1:arm64\t1.6.3-3build1\tinstalled\nlibklibc:arm64\t2.0.13-4ubuntu0.2\tinstalled\nlibkmod2:arm64\t31+20240202-2ubuntu7.2\tinstalled\nlibkrb5-3:arm64\t1.20.1-6ubuntu2.10\tinstalled\nlibkrb5support0:arm64\t1.20.1-6ubuntu2.10\tinstalled\nlibksba8:arm64\t1.6.6-1build1\tinstalled\nliblc3-1:arm64\t1.0.4-3build1\tinstalled\nliblcms2-2:arm64\t2.14-2ubuntu0.1\tinstalled\nlibldacbt-abr2:arm64\t2.0.2.3+git20200429+ed310a0-4ubuntu2\tinstalled\nlibldacbt-enc2:arm64\t2.0.2.3+git20200429+ed310a0-4ubuntu2\tinstalled\nlibldap-common\t2.6.10+dfsg-0ubuntu0.24.04.1\tinstalled\nlibldap2:arm64\t2.6.10+dfsg-0ubuntu0.24.04.1\tinstalled\nlibldb2:arm64\t2:2.8.0+samba4.19.5+dfsg-4ubuntu9.8\tinstalled\nliblerc4:arm64\t4.0.0+ds-4ubuntu2\tinstalled\nlibllvm17t64:arm64\t1:17.0.6-9ubuntu1\tinstalled\nlibllvm18:arm64\t1:18.1.3-1ubuntu1\tinstalled\nlibllvm20:arm64\t1:20.1.2-0ubuntu1~24.04.3\tinstalled\nliblmdb0:arm64\t0.9.31-1build1\tinstalled\nliblocale-gettext-perl\t1.07-6ubuntu5\tinstalled\nliblsan0:arm64\t14.2.0-4ubuntu2~24.04.1\tinstalled\nlibltdl7:arm64\t2.4.7-7build1\tinstalled\nliblua5.4-0:arm64\t5.4.6-3build2\tinstalled\nliblvm2cmd2.03:arm64\t2.03.16-3ubuntu3.2\tinstalled\nliblz4-1:arm64\t1.9.4-1build1.1\tinstalled\nliblzma5:arm64\t5.6.1+really5.4.5-1ubuntu0.3\tinstalled\nliblzo2-2:arm64\t2.10-2build4\tinstalled\nlibmagic-mgc\t1:5.45-3build1\tinstalled\nlibmagic1t64:arm64\t1:5.45-3build1\tinstalled\nlibmalcontent-0-0:arm64\t0.11.1-1ubuntu1.3\tinstalled\nlibmanette-0.2-0:arm64\t0.2.7-1build2\tinstalled\nlibmaxminddb0:arm64\t1.9.1-1build1\tinstalled\nlibmbim-glib4:arm64\t1.31.2-0ubuntu3.1\tinstalled\nlibmbim-proxy\t1.31.2-0ubuntu3.1\tinstalled\nlibmbim-utils\t1.31.2-0ubuntu3.1\tinstalled\nlibmd0:arm64\t1.1.0-2build1.1\tinstalled\nlibmm-glib0:arm64\t1.23.4-0ubuntu2\tinstalled\nlibmnl0:arm64\t1.0.5-2build1\tinstalled\nlibmodule-find-perl\t0.16-2\tinstalled\nlibmodule-scandeps-perl\t1.35-1ubuntu0.24.04.1\tinstalled\nlibmount1:arm64\t2.39.3-9ubuntu6.6\tinstalled\nlibmozjs-115-0t64:arm64\t115.10.0-1\tinstalled\nlibmp3lame0:arm64\t3.100-6build1\tinstalled\nlibmpc3:arm64\t1.3.1-1build1.1\tinstalled\nlibmpfr6:arm64\t4.2.1-1build1.1\tinstalled\nlibmpg123-0t64:arm64\t1.32.5-1ubuntu1.1\tinstalled\nlibmspack0t64:arm64\t0.11-1.1build1\tinstalled\nlibmtdev1t64:arm64\t1.1.6-1.1build1\tinstalled\nlibmutter-14-0:arm64\t46.2-1ubuntu0.24.04.18\tinstalled\nlibnautilus-extension4:arm64\t1:46.4-0ubuntu0.2\tinstalled\nlibncurses6:arm64\t6.4+20240113-1ubuntu2.2\tinstalled\nlibncursesw6:arm64\t6.4+20240113-1ubuntu2.2\tinstalled\nlibnetfilter-conntrack3:arm64\t1.0.9-6build1\tinstalled\nlibnetplan1:arm64\t1.1.2-8ubuntu1~24.04.3\tinstalled\nlibnettle8t64:arm64\t3.9.1-2.2build1.1\tinstalled\nlibnewt0.52:arm64\t0.52.24-2ubuntu2\tinstalled\nlibnfnetlink0:arm64\t1.0.2-2build1\tinstalled\nlibnftables1:arm64\t1.0.9-1ubuntu0.1\tinstalled\nlibnftnl11:arm64\t1.2.6-2build1\tinstalled\nlibnghttp2-14:arm64\t1.59.0-1ubuntu0.4\tinstalled\nlibnl-3-200:arm64\t3.7.0-0.3build1.1\tinstalled\nlibnl-genl-3-200:arm64\t3.7.0-0.3build1.1\tinstalled\nlibnl-route-3-200:arm64\t3.7.0-0.3build1.1\tinstalled\nlibnm0:arm64\t1.46.0-1ubuntu2.8\tinstalled\nlibnma-common\t1.10.6-3build2\tinstalled\nlibnma-gtk4-0:arm64\t1.10.6-3build2\tinstalled\nlibnotify-bin\t0.8.3-1build2\tinstalled\nlibnotify4:arm64\t0.8.3-1build2\tinstalled\nlibnpth0t64:arm64\t1.6-3.1build1\tinstalled\nlibnspr4:arm64\t2:4.35-1.1build1\tinstalled\nlibnss-systemd:arm64\t255.4-1ubuntu8.18\tinstalled\nlibnss3:arm64\t2:3.98-1ubuntu0.2\tinstalled\nlibntfs-3g89t64:arm64\t1:2022.10.3-1.2ubuntu3.2\tinstalled\nlibnuma1:arm64\t2.0.18-1ubuntu0.24.04.1\tinstalled\nlibnvme1t64\t1.8-3ubuntu1\tinstalled\nlibogg0:arm64\t1.3.5-3build1\tinstalled\nlibonig5:arm64\t6.9.9-1build1\tinstalled\nlibopengl0:arm64\t1.7.0-1build1\tinstalled\nlibopeniscsiusr\t2.1.9-3ubuntu5.4\tinstalled\nlibopenjp2-7:arm64\t2.5.0-2ubuntu0.5\tinstalled\nlibopus0:arm64\t1.4-1build1\tinstalled\nliborc-0.4-0t64:arm64\t1:0.4.38-1ubuntu0.1\tinstalled\nlibp11-kit0:arm64\t0.25.3-4ubuntu2.2\tinstalled\nlibpackagekit-glib2-18:arm64\t1.2.8-2ubuntu1.5\tinstalled\nlibpam-cap:arm64\t1:2.66-5ubuntu2.4\tinstalled\nlibpam-gnome-keyring:arm64\t46.1-2ubuntu0.2\tinstalled\nlibpam-modules:arm64\t1.5.3-5ubuntu5.7\tinstalled\nlibpam-modules-bin\t1.5.3-5ubuntu5.7\tinstalled\nlibpam-runtime\t1.5.3-5ubuntu5.7\tinstalled\nlibpam-systemd:arm64\t255.4-1ubuntu8.18\tinstalled\nlibpam0g:arm64\t1.5.3-5ubuntu5.7\tinstalled\nlibpango-1.0-0:arm64\t1.52.1+ds-1build1\tinstalled\nlibpangocairo-1.0-0:arm64\t1.52.1+ds-1build1\tinstalled\nlibpangoft2-1.0-0:arm64\t1.52.1+ds-1build1\tinstalled\nlibpangoxft-1.0-0:arm64\t1.52.1+ds-1build1\tinstalled\nlibpaper1:arm64\t1.1.29build1\tinstalled\nlibparted2t64:arm64\t3.6-4build1\tinstalled\nlibpcap0.8t64:arm64\t1.10.4-4.1ubuntu3.1\tinstalled\nlibpcaudio0:arm64\t1.2-2build3\tinstalled\nlibpci3:arm64\t1:3.10.0-2build1\tinstalled\nlibpciaccess0:arm64\t0.17-3ubuntu0.24.04.3\tinstalled\nlibpcre2-8-0:arm64\t10.42-4ubuntu2.1\tinstalled\nlibpcsclite1:arm64\t2.0.3-1build1\tinstalled\nlibperl5.38t64:arm64\t5.38.2-3.2ubuntu0.6\tinstalled\nlibpipeline1:arm64\t1.5.7-2\tinstalled\nlibpipewire-0.3-0t64:arm64\t1.0.5-1ubuntu3.3\tinstalled\nlibpipewire-0.3-modules:arm64\t1.0.5-1ubuntu3.3\tinstalled\nlibpixman-1-0:arm64\t0.42.2-1build1\tinstalled\nlibplist-2.0-4:arm64\t2.3.0-1~exp2build2\tinstalled\nlibplymouth5:arm64\t24.004.60-1ubuntu7.2\tinstalled\nlibpng16-16t64:arm64\t1.6.43-5ubuntu0.7\tinstalled\nlibpolkit-agent-1-0:arm64\t124-2ubuntu1.24.04.4\tinstalled\nlibpolkit-gobject-1-0:arm64\t124-2ubuntu1.24.04.4\tinstalled\nlibpoppler-glib8t64:arm64\t24.02.0-1ubuntu9.10\tinstalled\nlibpoppler134:arm64\t24.02.0-1ubuntu9.10\tinstalled\nlibpopt0:arm64\t1.19+dfsg-1build1\tinstalled\nlibportal-gtk4-1:arm64\t0.7.1-5build5\tinstalled\nlibportal1:arm64\t0.7.1-5build5\tinstalled\nlibproc-processtable-perl:arm64\t0.636-1build3\tinstalled\nlibproc2-0:arm64\t2:4.0.4-4ubuntu3.3\tinstalled\nlibprotobuf-c1:arm64\t1.4.1-1ubuntu4\tinstalled\nlibproxy1v5:arm64\t0.5.4-4build1\tinstalled\nlibpsl5t64:arm64\t0.21.2-1.1build1\tinstalled\nlibpulse-mainloop-glib0:arm64\t1:16.1+dfsg1-2ubuntu10.1\tinstalled\nlibpulse0:arm64\t1:16.1+dfsg1-2ubuntu10.1\tinstalled\nlibpwquality-common\t1.4.5-3build1\tinstalled\nlibpwquality1:arm64\t1.4.5-3build1\tinstalled\nlibpython3-stdlib:arm64\t3.12.3-0ubuntu2.1\tinstalled\nlibpython3.12-minimal:arm64\t3.12.3-1ubuntu0.17\tinstalled\nlibpython3.12-stdlib:arm64\t3.12.3-1ubuntu0.17\tinstalled\nlibpython3.12t64:arm64\t3.12.3-1ubuntu0.17\tinstalled\nlibqmi-glib5:arm64\t1.35.2-0ubuntu2\tinstalled\nlibqmi-proxy\t1.35.2-0ubuntu2\tinstalled\nlibqmi-utils\t1.35.2-0ubuntu2\tinstalled\nlibqrtr-glib0:arm64\t1.2.2-1ubuntu4\tinstalled\nlibraw1394-11:arm64\t2.1.2-2build3\tinstalled\nlibreadline8t64:arm64\t8.2-4build1\tinstalled\nlibreiserfscore0t64\t1:3.6.27-7.1build1\tinstalled\nlibrest-1.0-0:arm64\t0.9.1-6build3\tinstalled\nlibrhash0:arm64\t1.4.3-3build1\tinstalled\nlibroc0.3:arm64\t0.3.0+dfsg-7ubuntu2\tinstalled\nlibrsvg2-2:arm64\t2.58.0+dfsg-1ubuntu0.1\tinstalled\nlibrsvg2-common:arm64\t2.58.0+dfsg-1ubuntu0.1\tinstalled\nlibrtmp1:arm64\t2.4+20151223.gitfa8646d.1-2build7\tinstalled\nlibsamplerate0:arm64\t0.2.2-4build1\tinstalled\nlibsane-common\t1.2.1-7build4\tinstalled\nlibsane1:arm64\t1.2.1-7build4\tinstalled\nlibsasl2-2:arm64\t2.1.28+dfsg1-5ubuntu3.1\tinstalled\nlibsasl2-modules:arm64\t2.1.28+dfsg1-5ubuntu3.1\tinstalled\nlibsasl2-modules-db:arm64\t2.1.28+dfsg1-5ubuntu3.1\tinstalled\nlibsbc1:arm64\t2.0-1build1\tinstalled\nlibseccomp2:arm64\t2.5.5-1ubuntu3.1\tinstalled\nlibsecret-1-0:arm64\t0.21.4-1build3\tinstalled\nlibsecret-common\t0.21.4-1build3\tinstalled\nlibsecret-tools\t0.21.4-1build3\tinstalled\nlibselinux1:arm64\t3.5-2ubuntu2.1\tinstalled\nlibsemanage-common\t3.5-1build5\tinstalled\nlibsemanage2:arm64\t3.5-1build5\tinstalled\nlibsensors-config\t1:3.6.0-9build1\tinstalled\nlibsensors5:arm64\t1:3.6.0-9build1\tinstalled\nlibsepol2:arm64\t3.5-2build1\tinstalled\nlibsframe1:arm64\t2.42-4ubuntu2.10\tinstalled\nlibsgutils2-1.46-2:arm64\t1.46-3ubuntu4.1\tinstalled\nlibsharpyuv0:arm64\t1.3.2-0.4build3\tinstalled\nlibshout3:arm64\t2.4.6-1build2\tinstalled\nlibsigsegv2:arm64\t2.14-1ubuntu2\tinstalled\nlibslang2:arm64\t2.3.3-3build2\tinstalled\nlibsm6:arm64\t2:1.2.3-1build3\tinstalled\nlibsmartcols1:arm64\t2.39.3-9ubuntu6.6\tinstalled\nlibsmbclient0:arm64\t2:4.19.5+dfsg-4ubuntu9.8\tinstalled\nlibsnapd-glib-2-1:arm64\t1.64-0ubuntu5\tinstalled\nlibsndfile1:arm64\t1.2.2-1ubuntu5.24.04.1\tinstalled\nlibsnmp-base\t5.9.4+dfsg-1.1ubuntu3.2\tinstalled\nlibsnmp40t64:arm64\t5.9.4+dfsg-1.1ubuntu3.2\tinstalled\nlibsodium23:arm64\t1.0.18-1ubuntu0.24.04.1\tinstalled\nlibsonic0:arm64\t0.2.0-13build1\tinstalled\nlibsort-naturally-perl\t1.03-4\tinstalled\nlibsoup-3.0-0:arm64\t3.4.4-5ubuntu0.9\tinstalled\nlibsoup-3.0-common\t3.4.4-5ubuntu0.9\tinstalled\nlibspa-0.2-bluetooth:arm64\t1.0.5-1ubuntu3.3\tinstalled\nlibspa-0.2-modules:arm64\t1.0.5-1ubuntu3.3\tinstalled\nlibspeex1:arm64\t1.2.1-2ubuntu2.24.04.1\tinstalled\nlibspeexdsp1:arm64\t1.2.1-1ubuntu3\tinstalled\nlibsqlite3-0:arm64\t3.45.1-1ubuntu2.8\tinstalled\nlibss2:arm64\t1.47.0-2.4~exp1ubuntu4.1\tinstalled\nlibssh-4:arm64\t0.10.6-2ubuntu0.5\tinstalled\nlibssl3t64:arm64\t3.0.13-0ubuntu3.16\tinstalled\nlibstartup-notification0:arm64\t0.12-6build3\tinstalled\nlibstd-rust-1.75:arm64\t1.75.0+dfsg0ubuntu1-0ubuntu7.4\tinstalled\nlibstd-rust-dev:arm64\t1.75.0+dfsg0ubuntu1-0ubuntu7.4\tinstalled\nlibstdc++-13-dev:arm64\t13.3.0-6ubuntu2~24.04.1\tinstalled\nlibstdc++6:arm64\t14.2.0-4ubuntu2~24.04.1\tinstalled\nlibstemmer0d:arm64\t2.2.0-4build1\tinstalled\nlibsystemd-shared:arm64\t255.4-1ubuntu8.18\tinstalled\nlibsystemd0:arm64\t255.4-1ubuntu8.18\tinstalled\nlibtag1v5:arm64\t1.13.1-1build1\tinstalled\nlibtag1v5-vanilla:arm64\t1.13.1-1build1\tinstalled\nlibtalloc2:arm64\t2.4.2-1build2\tinstalled\nlibtasn1-6:arm64\t4.19.0-3ubuntu0.24.04.2\tinstalled\nlibtcl8.6:arm64\t8.6.14+dfsg-1build1\tinstalled\nlibtdb1:arm64\t1.4.10-1build1\tinstalled\nlibterm-readkey-perl\t2.38-2build4\tinstalled\nlibtevent0t64:arm64\t0.16.1-2build1\tinstalled\nlibtext-charwidth-perl:arm64\t0.04-11build3\tinstalled\nlibtext-iconv-perl:arm64\t1.7-8build3\tinstalled\nlibtext-wrapi18n-perl\t0.06-10\tinstalled\nlibthai-data\t0.1.29-2build1\tinstalled\nlibthai0:arm64\t0.1.29-2build1\tinstalled\nlibtheora0:arm64\t1.1.1+dfsg.1-16.1build3\tinstalled\nlibtiff6:arm64\t4.5.1+git230720-4ubuntu2.5\tinstalled\nlibtinfo6:arm64\t6.4+20240113-1ubuntu2.2\tinstalled\nlibtirpc-common\t1.3.4+ds-1.1build1\tinstalled\nlibtirpc3t64:arm64\t1.3.4+ds-1.1build1\tinstalled\nlibtotem-plparser-common\t3.26.6-1build5\tinstalled\nlibtotem-plparser18:arm64\t3.26.6-1build5\tinstalled\nlibtraceevent1:arm64\t1:1.8.2-1ubuntu2.1\tinstalled\nlibtraceevent1-plugin:arm64\t1:1.8.2-1ubuntu2.1\tinstalled\nlibtracefs1:arm64\t1.8.0-1ubuntu1\tinstalled\nlibtracker-sparql-3.0-0:arm64\t3.7.1-1build1\tinstalled\nlibtsan2:arm64\t14.2.0-4ubuntu2~24.04.1\tinstalled\nlibtwolame0:arm64\t0.4.0-2build3\tinstalled\nlibu2f-udev\t1.1.10-3build3\tinstalled\nlibubootenv-tool\t0.3.5-0.1build1\tinstalled\nlibubootenv0.1:arm64\t0.3.5-0.1build1\tinstalled\nlibubsan1:arm64\t14.2.0-4ubuntu2~24.04.1\tinstalled\nlibuchardet0:arm64\t0.0.8-1build1\tinstalled\nlibudev1:arm64\t255.4-1ubuntu8.18\tinstalled\nlibudisks2-0:arm64\t2.10.1-6ubuntu1.5\tinstalled\nlibunistring5:arm64\t1.1-2build1.1\tinstalled\nlibunity-protocol-private0:arm64\t7.1.4+19.04.20190319-6build4\tinstalled\nlibunity-scopes-json-def-desktop\t7.1.4+19.04.20190319-6build4\tinstalled\nlibunity9:arm64\t7.1.4+19.04.20190319-6build4\tinstalled\nlibunwind8:arm64\t1.6.2-3build1.1\tinstalled\nlibupower-glib3:arm64\t1.90.3-1\tinstalled\nliburcu8t64:arm64\t0.14.0-3.1build1\tinstalled\nlibusb-1.0-0:arm64\t2:1.0.27-1\tinstalled\nlibusbmuxd6:arm64\t2.0.2-4build3\tinstalled\nlibutempter0:arm64\t1.2.1-3build1\tinstalled\nlibuuid1:arm64\t2.39.3-9ubuntu6.6\tinstalled\nlibuv1t64:arm64\t1.48.0-1.1build1\tinstalled\nlibv4l-0t64:arm64\t1.26.1-4build3\tinstalled\nlibv4lconvert0t64:arm64\t1.26.1-4build3\tinstalled\nlibvisual-0.4-0:arm64\t0.4.2-2build1\tinstalled\nlibvolume-key1:arm64\t0.3.12-7build2\tinstalled\nlibvorbis0a:arm64\t1.3.7-1build3\tinstalled\nlibvorbisenc2:arm64\t1.3.7-1build3\tinstalled\nlibvorbisfile3:arm64\t1.3.7-1build3\tinstalled\nlibvpx9:arm64\t1.14.0-1ubuntu2.3\tinstalled\nlibvte-2.91-0:arm64\t0.76.0-1ubuntu0.1\tinstalled\nlibvte-2.91-common\t0.76.0-1ubuntu0.1\tinstalled\nlibvulkan1:arm64\t1.3.275.0-1build1\tinstalled\nlibwacom-common\t2.10.0-2\tinstalled\nlibwacom9:arm64\t2.10.0-2\tinstalled\nlibwavpack1:arm64\t5.6.0-1build1\tinstalled\nlibwayland-client0:arm64\t1.22.0-2.1build1\tinstalled\nlibwayland-cursor0:arm64\t1.22.0-2.1build1\tinstalled\nlibwayland-egl1:arm64\t1.22.0-2.1build1\tinstalled\nlibwayland-server0:arm64\t1.22.0-2.1build1\tinstalled\nlibwbclient0:arm64\t2:4.19.5+dfsg-4ubuntu9.8\tinstalled\nlibwebkit2gtk-4.1-0:arm64\t2.52.6-0ubuntu0.24.04.1\tinstalled\nlibwebkitgtk-6.0-4:arm64\t2.52.6-0ubuntu0.24.04.1\tinstalled\nlibwebp7:arm64\t1.3.2-0.4build3\tinstalled\nlibwebpdemux2:arm64\t1.3.2-0.4build3\tinstalled\nlibwebpmux3:arm64\t1.3.2-0.4build3\tinstalled\nlibwebrtc-audio-processing1:arm64\t0.3.1-0ubuntu6\tinstalled\nlibwhoopsie-preferences0\t23build3\tinstalled\nlibwhoopsie0:arm64\t0.2.77ubuntu0.1\tinstalled\nlibwireplumber-0.4-0:arm64\t0.4.17-1ubuntu4.1\tinstalled\nlibwrap0:arm64\t7.6.q-33\tinstalled\nlibx11-6:arm64\t2:1.8.7-1ubuntu0.1\tinstalled\nlibx11-data\t2:1.8.7-1ubuntu0.1\tinstalled\nlibx11-xcb1:arm64\t2:1.8.7-1ubuntu0.1\tinstalled\nlibxau6:arm64\t1:1.0.9-1build6\tinstalled\nlibxaw7:arm64\t2:1.0.14-1build2\tinstalled\nlibxcb-damage0:arm64\t1.15-1ubuntu2\tinstalled\nlibxcb-dri3-0:arm64\t1.15-1ubuntu2\tinstalled\nlibxcb-glx0:arm64\t1.15-1ubuntu2\tinstalled\nlibxcb-present0:arm64\t1.15-1ubuntu2\tinstalled\nlibxcb-randr0:arm64\t1.15-1ubuntu2\tinstalled\nlibxcb-render0:arm64\t1.15-1ubuntu2\tinstalled\nlibxcb-res0:arm64\t1.15-1ubuntu2\tinstalled\nlibxcb-shape0:arm64\t1.15-1ubuntu2\tinstalled\nlibxcb-shm0:arm64\t1.15-1ubuntu2\tinstalled\nlibxcb-sync1:arm64\t1.15-1ubuntu2\tinstalled\nlibxcb-util1:arm64\t0.4.0-1build3\tinstalled\nlibxcb-xfixes0:arm64\t1.15-1ubuntu2\tinstalled\nlibxcb-xkb1:arm64\t1.15-1ubuntu2\tinstalled\nlibxcb1:arm64\t1.15-1ubuntu2\tinstalled\nlibxcomposite1:arm64\t1:0.4.5-1build3\tinstalled\nlibxcursor1:arm64\t1:1.2.1-1build1\tinstalled\nlibxcvt0:arm64\t0.1.2-1build1\tinstalled\nlibxdamage1:arm64\t1:1.1.6-1build1\tinstalled\nlibxdmcp6:arm64\t1:1.1.3-0ubuntu6\tinstalled\nlibxext6:arm64\t2:1.3.4-1build2\tinstalled\nlibxfixes3:arm64\t1:6.0.0-2build1\tinstalled\nlibxfont2:arm64\t1:2.0.6-1+deb13u1build0.24.04.2\tinstalled\nlibxft2:arm64\t2.3.6-1build1\tinstalled\nlibxi6:arm64\t2:1.8.1-1build1\tinstalled\nlibxinerama1:arm64\t2:1.1.4-3build1\tinstalled\nlibxkbcommon-x11-0:arm64\t1.6.0-1build1\tinstalled\nlibxkbcommon0:arm64\t1.6.0-1build1\tinstalled\nlibxkbfile1:arm64\t1:1.1.0-1build4\tinstalled\nlibxkbregistry0:arm64\t1.6.0-1build1\tinstalled\nlibxml2:arm64\t2.9.14+dfsg-1.3ubuntu3.10\tinstalled\nlibxmlb2:arm64\t0.3.24-1~ubuntu0.24.04.1\tinstalled\nlibxmlsec1t64:arm64\t1.2.39-5build2\tinstalled\nlibxmlsec1t64-openssl:arm64\t1.2.39-5build2\tinstalled\nlibxmu6:arm64\t2:1.1.3-3build2\tinstalled\nlibxmuu1:arm64\t2:1.1.3-3build2\tinstalled\nlibxpm4:arm64\t1:3.5.17-1ubuntu0.24.04.2\tinstalled\nlibxrandr2:arm64\t2:1.5.2-2build1\tinstalled\nlibxrender1:arm64\t1:0.9.10-1.1build1\tinstalled\nlibxshmfence1:arm64\t1.3-1build5\tinstalled\nlibxslt1.1:arm64\t1.1.39-0exp1ubuntu0.24.04.3\tinstalled\nlibxt6t64:arm64\t1:1.2.1-1.2build1\tinstalled\nlibxtables12:arm64\t1.8.10-3ubuntu2\tinstalled\nlibxtst6:arm64\t2:1.2.3-1.1build1\tinstalled\nlibxv1:arm64\t2:1.0.11-1.1build1\tinstalled\nlibxxf86dga1:arm64\t2:1.1.5-1build1\tinstalled\nlibxxf86vm1:arm64\t1:1.1.4-1build4\tinstalled\nlibxxhash0:arm64\t0.8.2-2build1\tinstalled\nlibyaml-0-2:arm64\t0.2.5-1build1\tinstalled\nlibyelp0:arm64\t42.2-1ubuntu0.24.04.2\tinstalled\nlibzstd1:arm64\t1.5.5+dfsg2-2build1.1\tinstalled\nlinux-base\t4.5ubuntu9+24.04.2\tinstalled\nlinux-headers-6.8.0-142\t6.8.0-142.142\tinstalled\nlinux-headers-6.8.0-142-generic\t6.8.0-142.142\tinstalled\nlinux-headers-6.8.0-147\t6.8.0-147.147\tinstalled\nlinux-headers-6.8.0-147-generic\t6.8.0-147.147\tinstalled\nlinux-headers-generic\t6.8.0-147.147\tinstalled\nlinux-headers-virtual\t6.8.0-147.147\tinstalled\nlinux-image-6.8.0-142-generic\t6.8.0-142.142\tinstalled\nlinux-image-6.8.0-147-generic\t6.8.0-147.147\tinstalled\nlinux-image-virtual\t6.8.0-147.147\tinstalled\nlinux-libc-dev:arm64\t6.8.0-147.147\tinstalled\nlinux-modules-6.8.0-142-generic\t6.8.0-142.142\tinstalled\nlinux-modules-6.8.0-147-generic\t6.8.0-147.147\tinstalled\nlinux-sound-base\t1.0.25+dfsg-0ubuntu7\tinstalled\nlinux-tools-6.8.0-142\t6.8.0-142.142\tinstalled\nlinux-tools-6.8.0-142-generic\t6.8.0-142.142\tinstalled\nlinux-tools-6.8.0-147\t6.8.0-147.147\tinstalled\nlinux-tools-6.8.0-147-generic\t6.8.0-147.147\tinstalled\nlinux-tools-common\t6.8.0-147.147\tinstalled\nlinux-virtual\t6.8.0-147.147\tinstalled\nlocales\t2.39-0ubuntu8.9\tinstalled\nlogin\t1:4.13+dfsg1-4ubuntu3.2\tinstalled\nlogrotate\t3.21.0-2build1\tinstalled\nlogsave\t1.47.0-2.4~exp1ubuntu4.1\tinstalled\nlsb-release\t12.0-2\tinstalled\nlshw\t02.19.git.2021.06.19.996aaad9c7-2ubuntu0.24.04.1\tinstalled\nlsof\t4.95.0-1build3\tinstalled\nlvm2\t2.03.16-3ubuntu3.2\tinstalled\nlxd-agent-loader\t0.7ubuntu0.1\tinstalled\nlxd-installer\t4ubuntu0.1\tinstalled\nmake\t4.3-4.1build2\tinstalled\nman-db\t2.12.0-4build2\tinstalled\nmanpages\t6.7-2\tinstalled\nmanpages-dev\t6.7-2\tinstalled\nmawk\t1.3.4.20240123-1build1\tinstalled\nmdadm\t4.3-1ubuntu2.1\tinstalled\nmedia-types\t10.1.0\tinstalled\nmesa-libgallium:arm64\t25.2.8-0ubuntu0.24.04.4\tinstalled\nmesa-utils\t9.0.0-2\tinstalled\nmesa-utils-bin:arm64\t9.0.0-2\tinstalled\nminisign\t0.11-1\tinstalled\nmodemmanager\t1.23.4-0ubuntu2\tinstalled\nmokutil\t0.6.0-2build3\tinstalled\nmotd-news-config\t13ubuntu10.5\tinstalled\nmount\t2.39.3-9ubuntu6.6\tinstalled\nmtd-utils\t1:2.2.0-1ubuntu2\tinstalled\nmtr-tiny\t0.95-1.1ubuntu0.1\tinstalled\nmultipath-tools\t0.9.4-5ubuntu8.2\tinstalled\nmutter-common\t46.2-1ubuntu0.24.04.18\tinstalled\nmutter-common-bin\t46.2-1ubuntu0.24.04.18\tinstalled\nnano\t7.2-2ubuntu0.2\tinstalled\nnautilus\t1:46.4-0ubuntu0.2\tinstalled\nnautilus-data\t1:46.4-0ubuntu0.2\tinstalled\nncurses-base\t6.4+20240113-1ubuntu2.2\tinstalled\nncurses-bin\t6.4+20240113-1ubuntu2.2\tinstalled\nncurses-term\t6.4+20240113-1ubuntu2.2\tinstalled\nneedrestart\t3.6-7ubuntu4.5\tinstalled\nnetbase\t6.4\tinstalled\nnetcat-openbsd\t1.226-1ubuntu2\tinstalled\nnetplan-generator\t1.1.2-8ubuntu1~24.04.3\tinstalled\nnetplan.io\t1.1.2-8ubuntu1~24.04.3\tinstalled\nnetworkd-dispatcher\t2.2.4-1\tinstalled\nnftables\t1.0.9-1ubuntu0.1\tinstalled\nntfs-3g\t1:2022.10.3-1.2ubuntu3.2\tinstalled\nnumactl\t2.0.18-1ubuntu0.24.04.1\tinstalled\nopen-iscsi\t2.1.9-3ubuntu5.4\tinstalled\nopen-vm-tools\t2:13.0.10-0ubuntu0.24.04.1\tinstalled\nopenprinting-ppds\t20230202-1\tinstalled\nopenssh-client\t1:9.6p1-3ubuntu13.20\tinstalled\nopenssh-server\t1:9.6p1-3ubuntu13.20\tinstalled\nopenssh-sftp-server\t1:9.6p1-3ubuntu13.20\tinstalled\nopenssl\t3.0.13-0ubuntu3.16\tinstalled\nos-prober\t1.81ubuntu4\tinstalled\noverlayroot\t0.49~24.04.1\tinstalled\np11-kit\t0.25.3-4ubuntu2.2\tinstalled\np11-kit-modules:arm64\t0.25.3-4ubuntu2.2\tinstalled\npackagekit\t1.2.8-2ubuntu1.5\tinstalled\npackagekit-tools\t1.2.8-2ubuntu1.5\tinstalled\nparted\t3.6-4build1\tinstalled\npasswd\t1:4.13+dfsg1-4ubuntu3.2\tinstalled\npastebinit\t1.6.2-1\tinstalled\npatch\t2.7.6-7build3\tinstalled\npci.ids\t0.0~2024.03.31-1ubuntu0.1\tinstalled\npciutils\t1:3.10.0-2build1\tinstalled\nperl\t5.38.2-3.2ubuntu0.6\tinstalled\nperl-base\t5.38.2-3.2ubuntu0.6\tinstalled\nperl-modules-5.38\t5.38.2-3.2ubuntu0.6\tinstalled\npinentry-curses\t1.2.1-3ubuntu5\tinstalled\npinentry-gnome3\t1.2.1-3ubuntu5\tinstalled\npipewire:arm64\t1.0.5-1ubuntu3.3\tinstalled\npipewire-alsa:arm64\t1.0.5-1ubuntu3.3\tinstalled\npipewire-audio\t1.0.5-1ubuntu3.3\tinstalled\npipewire-bin\t1.0.5-1ubuntu3.3\tinstalled\npipewire-pulse\t1.0.5-1ubuntu3.3\tinstalled\npkexec\t124-2ubuntu1.24.04.4\tinstalled\nplymouth\t24.004.60-1ubuntu7.2\tinstalled\nplymouth-theme-ubuntu-text\t24.004.60-1ubuntu7.2\tinstalled\npolicykit-1\t124-2ubuntu1.24.04.4\tinstalled\npolkitd\t124-2ubuntu1.24.04.4\tinstalled\npollinate\t4.33-3.1ubuntu1.3\tinstalled\npoppler-data\t0.4.12-1\tinstalled\npowermgmt-base\t1.37ubuntu0.1\tinstalled\nprinter-driver-pnm2ppa\t1.13+nondbs-0ubuntu10\tinstalled\nprocps\t2:4.0.4-4ubuntu3.3\tinstalled\npsmisc\t23.7-1build1\tinstalled\npublicsuffix\t20231001.0357-0.1\tinstalled\npulseaudio-utils\t1:16.1+dfsg1-2ubuntu10.1\tinstalled\npython-apt-common\t2.7.7ubuntu5.3\tinstalled\npython-babel-localedata\t2.10.3-3build1\tinstalled\npython3\t3.12.3-0ubuntu2.1\tinstalled\npython3-apport\t2.28.3-0ubuntu0.1\tinstalled\npython3-apt\t2.7.7ubuntu5.3\tinstalled\npython3-aptdaemon\t1.1.1+bzr982-0ubuntu44\tinstalled\npython3-aptdaemon.gtk3widgets\t1.1.1+bzr982-0ubuntu44\tinstalled\npython3-attr\t23.2.0-2\tinstalled\npython3-automat\t22.10.0-2\tinstalled\npython3-babel\t2.10.3-3build1\tinstalled\npython3-bcrypt\t3.2.2-1build1\tinstalled\npython3-blinker\t1.7.0-1\tinstalled\npython3-boto3\t1.34.46+dfsg-1ubuntu1\tinstalled\npython3-botocore\t1.34.46+repack-1ubuntu1\tinstalled\npython3-bpfcc\t0.29.1+ds-1ubuntu7\tinstalled\npython3-certifi\t2023.11.17-1\tinstalled\npython3-cffi-backend:arm64\t1.16.0-2build1\tinstalled\npython3-chardet\t5.2.0+dfsg-1\tinstalled\npython3-click\t8.1.6-2\tinstalled\npython3-colorama\t0.4.6-4\tinstalled\npython3-commandnotfound\t23.04.0\tinstalled\npython3-configobj\t5.0.8-3\tinstalled\npython3-constantly\t23.10.4-1\tinstalled\npython3-cryptography\t41.0.7-4ubuntu0.4\tinstalled\npython3-dateutil\t2.8.2-3ubuntu1\tinstalled\npython3-dbus\t1.3.2-5build3\tinstalled\npython3-debconf\t1.5.86ubuntu1\tinstalled\npython3-debian\t0.1.49ubuntu2\tinstalled\npython3-defer\t1.0.6-2.1ubuntu1\tinstalled\npython3-distro\t1.9.0-1\tinstalled\npython3-distro-info\t1.7build1\tinstalled\npython3-distupgrade\t1:24.04.29\tinstalled\npython3-gdbm:arm64\t3.12.3-0ubuntu1\tinstalled\npython3-gi\t3.48.2-1\tinstalled\npython3-hamcrest\t2.1.0-1\tinstalled\npython3-httplib2\t0.20.4-3ubuntu0.1\tinstalled\npython3-hyperlink\t21.0.0-5\tinstalled\npython3-idna\t3.6-2ubuntu0.2\tinstalled\npython3-incremental\t22.10.0-1\tinstalled\npython3-jinja2\t3.1.2-1ubuntu1.3\tinstalled\npython3-jmespath\t1.0.1-1\tinstalled\npython3-json-pointer\t2.0-0ubuntu1\tinstalled\npython3-jsonpatch\t1.32-3\tinstalled\npython3-jsonschema\t4.10.3-2ubuntu1\tinstalled\npython3-jwt\t2.7.0-1ubuntu0.3\tinstalled\npython3-launchpadlib\t1.11.0-6\tinstalled\npython3-lazr.restfulclient\t0.14.6-1\tinstalled\npython3-lazr.uri\t1.0.6-3\tinstalled\npython3-magic\t2:0.4.27-3\tinstalled\npython3-markdown-it\t3.0.0-2\tinstalled\npython3-markupsafe\t2.1.5-1build2\tinstalled\npython3-mdurl\t0.1.2-1\tinstalled\npython3-minimal\t3.12.3-0ubuntu2.1\tinstalled\npython3-netaddr\t0.8.0-2ubuntu1\tinstalled\npython3-netifaces:arm64\t0.11.0-2build3\tinstalled\npython3-netplan\t1.1.2-8ubuntu1~24.04.3\tinstalled\npython3-newt:arm64\t0.52.24-2ubuntu2\tinstalled\npython3-oauthlib\t3.2.2-1\tinstalled\npython3-openssl\t23.2.0-1ubuntu0.1\tinstalled\npython3-packaging\t24.0-1\tinstalled\npython3-pexpect\t4.9-2\tinstalled\npython3-pkg-resources\t68.1.2-2ubuntu1.2\tinstalled\npython3-problem-report\t2.28.3-0ubuntu0.1\tinstalled\npython3-ptyprocess\t0.7.0-5\tinstalled\npython3-pyasn1\t0.4.8-4ubuntu0.3\tinstalled\npython3-pyasn1-modules\t0.2.8-1\tinstalled\npython3-pygments\t2.17.2+dfsg-1\tinstalled\npython3-pyparsing\t3.1.1-1\tinstalled\npython3-pyrsistent:arm64\t0.20.0-1build2\tinstalled\npython3-requests\t2.31.0+dfsg-1ubuntu1.2\tinstalled\npython3-rich\t13.7.1-1\tinstalled\npython3-s3transfer\t0.10.1-1ubuntu2\tinstalled\npython3-serial\t3.5-2\tinstalled\npython3-service-identity\t24.1.0-1\tinstalled\npython3-setuptools\t68.1.2-2ubuntu1.2\tinstalled\npython3-six\t1.16.0-4\tinstalled\npython3-software-properties\t0.99.49.4\tinstalled\npython3-systemd\t235-1build4\tinstalled\npython3-twisted\t24.3.0-1ubuntu0.2\tinstalled\npython3-typing-extensions\t4.10.0-1\tinstalled\npython3-tz\t2024.1-2\tinstalled\npython3-update-manager\t1:24.04.12\tinstalled\npython3-urllib3\t2.0.7-1ubuntu0.8\tinstalled\npython3-wadllib\t1.3.6-5\tinstalled\npython3-xkit\t0.5.0ubuntu6\tinstalled\npython3-yaml\t6.0.1-2build2\tinstalled\npython3-zope.interface\t6.1-1build1\tinstalled\npython3.12\t3.12.3-1ubuntu0.17\tinstalled\npython3.12-minimal\t3.12.3-1ubuntu0.17\tinstalled\nreadline-common\t8.2-4build1\tinstalled\nrfkill\t2.39.3-9ubuntu6.6\tinstalled\nrpcsvc-proto\t1.4.2-0ubuntu7\tinstalled\nrsync\t3.2.7-1ubuntu1.5\tinstalled\nrsyslog\t8.2312.0-3ubuntu9.4\tinstalled\nrun-one\t1.17-0ubuntu2\tinstalled\nrustc\t1.75.0+dfsg0ubuntu1-0ubuntu7.4\tinstalled\nsamba-libs:arm64\t2:4.19.5+dfsg-4ubuntu9.8\tinstalled\nsbsigntool\t0.9.4-3.1ubuntu7\tinstalled\nscreen\t4.9.1-1ubuntu1\tinstalled\nseahorse\t43.0-3build2\tinstalled\nsecureboot-db\t1.9build1\tinstalled\nsed\t4.9-2ubuntu0.24.04.1\tinstalled\nsensible-utils\t0.0.22\tinstalled\nsession-migration\t0.3.9build1\tinstalled\nsg3-utils\t1.46-3ubuntu4.1\tinstalled\nsg3-utils-udev\t1.46-3ubuntu4.1\tinstalled\nsgml-base\t1.31\tinstalled\nshared-mime-info\t2.4-4\tinstalled\nshim-signed\t1.58+15.8-0ubuntu1\tinstalled\nsnapd\t2.76.3+ubuntu24.04\tinstalled\nsoftware-properties-common\t0.99.49.4\tinstalled\nsoftware-properties-gtk\t0.99.49.4\tinstalled\nsosreport\t4.10.2-0ubuntu0~24.04.1\tinstalled\nsound-theme-freedesktop\t0.8-2ubuntu1\tinstalled\nspice-vdagent\t0.22.1-4ubuntu0.1\tinstalled\nsquashfs-tools\t1:4.6.1-1build1\tinstalled\nssh-import-id\t5.11-0ubuntu2.24.04.1\tinstalled\nstrace\t6.8-0ubuntu2\tinstalled\nsudo\t1.9.15p5-3ubuntu5.24.04.4\tinstalled\nsysstat\t12.6.1-2\tinstalled\nsystemd\t255.4-1ubuntu8.18\tinstalled\nsystemd-dev\t255.4-1ubuntu8.18\tinstalled\nsystemd-hwe-hwdb\t255.1.7\tinstalled\nsystemd-resolved\t255.4-1ubuntu8.18\tinstalled\nsystemd-sysv\t255.4-1ubuntu8.18\tinstalled\nsystemd-timesyncd\t255.4-1ubuntu8.18\tinstalled\nsysvinit-utils\t3.08-6ubuntu3\tinstalled\ntar\t1.35+dfsg-3ubuntu0.4\tinstalled\ntcl\t8.6.14build1\tinstalled\ntcl8.6\t8.6.14+dfsg-1build1\tinstalled\ntcpdump\t4.99.4-3ubuntu4.24.04.1\tinstalled\ntecla\t46.0-1ubuntu0.1\tinstalled\ntelnet\t0.17+2.5-3ubuntu4.2\tinstalled\nthin-provisioning-tools\t0.9.0-2ubuntu5.1\tinstalled\ntime\t1.9-0.2build1\tinstalled\ntmux\t3.4-1ubuntu0.1\tinstalled\ntnftp\t20230507-2build3\tinstalled\ntrace-cmd\t3.2-1ubuntu2\tinstalled\ntracker\t3.7.1-1build1\tinstalled\ntracker-extract\t3.7.1-1ubuntu0.1\tinstalled\ntracker-miner-fs\t3.7.1-1ubuntu0.1\tinstalled\ntzdata\t2026c-0ubuntu0.24.04.1\tinstalled\nu-boot-tools\t2025.10-0ubuntu0.24.04.4\tinstalled\nubuntu-advantage-desktop-daemon\t1.11ubuntu0.1\tinstalled\nubuntu-desktop-minimal\t1.539.2\tinstalled\nubuntu-drivers-common\t1:0.9.7.6ubuntu3.7\tinstalled\nubuntu-kernel-accessories\t1.539.2\tinstalled\nubuntu-keyring\t2023.11.28.1\tinstalled\nubuntu-minimal\t1.539.2\tinstalled\nubuntu-mono\t24.04-0ubuntu1\tinstalled\nubuntu-pro-client\t37.2ubuntu~24.04.1\tinstalled\nubuntu-pro-client-l10n\t37.2ubuntu~24.04.1\tinstalled\nubuntu-release-upgrader-core\t1:24.04.29\tinstalled\nubuntu-release-upgrader-gtk\t1:24.04.29\tinstalled\nubuntu-server\t1.539.2\tinstalled\nubuntu-session\t46.0-1ubuntu4\tinstalled\nubuntu-settings\t24.04.6\tinstalled\nubuntu-standard\t1.539.2\tinstalled\nubuntu-wallpapers\t24.04.2\tinstalled\nubuntu-wallpapers-noble\t24.04.2\tinstalled\nucf\t3.0043+nmu1\tinstalled\nudev\t255.4-1ubuntu8.18\tinstalled\nudisks2\t2.10.1-6ubuntu1.5\tinstalled\nufw\t0.36.2-6\tinstalled\nunattended-upgrades\t2.9.1+nmu4ubuntu1\tinstalled\nunzip\t6.0-28ubuntu4.1\tinstalled\nupdate-manager\t1:24.04.12\tinstalled\nupdate-manager-core\t1:24.04.12\tinstalled\nupdate-notifier\t3.192.68.2\tinstalled\nupdate-notifier-common\t3.192.68.2\tinstalled\nupower\t1.90.3-1\tinstalled\nusb-modeswitch\t2.6.1-3ubuntu3\tinstalled\nusb-modeswitch-data\t20191128-6\tinstalled\nusb.ids\t2024.03.18-1\tinstalled\nusbutils\t1:017-3build1\tinstalled\nutil-linux\t2.39.3-9ubuntu6.6\tinstalled\nuuid-runtime\t2.39.3-9ubuntu6.6\tinstalled\nvim\t2:9.1.0016-1ubuntu7.20\tinstalled\nvim-common\t2:9.1.0016-1ubuntu7.20\tinstalled\nvim-runtime\t2:9.1.0016-1ubuntu7.20\tinstalled\nvim-tiny\t2:9.1.0016-1ubuntu7.20\tinstalled\nwebp-pixbuf-loader:arm64\t0.2.4-2build2\tinstalled\nwget\t1.21.4-1ubuntu4.5\tinstalled\nwhiptail\t0.52.24-2ubuntu2\tinstalled\nwhoopsie-preferences\t23build3\tinstalled\nwireless-tools\t30~pre9-16.1ubuntu2\tinstalled\nwireplumber\t0.4.17-1ubuntu4.1\tinstalled\nwpasupplicant\t2:2.10-21ubuntu0.4\tinstalled\nx11-apps\t7.7+11build3\tinstalled\nx11-common\t1:7.7+23ubuntu3\tinstalled\nx11-session-utils\t7.7+6build2\tinstalled\nx11-utils\t7.7+6build2\tinstalled\nx11-xkb-utils\t7.7+8build2\tinstalled\nx11-xserver-utils\t7.7+10build2\tinstalled\nxauth\t1:1.1.2-1build1\tinstalled\nxdg-dbus-proxy\t0.1.5-1ubuntu0.2\tinstalled\nxdg-desktop-portal\t1.18.4-1ubuntu2.24.04.3\tinstalled\nxdg-desktop-portal-gnome\t46.2-0ubuntu1\tinstalled\nxdg-desktop-portal-gtk\t1.15.1-1build2\tinstalled\nxdg-user-dirs\t0.18-1build1\tinstalled\nxdg-user-dirs-gtk\t0.11-1build2\tinstalled\nxdg-utils\t1.1.3-4.1ubuntu3\tinstalled\nxfonts-base\t1:1.0.5+nmu1\tinstalled\nxfonts-encodings\t1:1.0.5-0ubuntu2\tinstalled\nxfonts-utils\t1:7.7+6build3\tinstalled\nxfsprogs\t6.6.0-1ubuntu2.1\tinstalled\nxinit\t1.4.1-0ubuntu5\tinstalled\nxinput\t1.6.4-1build1\tinstalled\nxkb-data\t2.41-2ubuntu1.1\tinstalled\nxml-core\t0.19\tinstalled\nxorg\t1:7.7+23ubuntu3\tinstalled\nxorg-docs-core\t1:1.7.1-1.2\tinstalled\nxserver-common\t2:21.1.12-1ubuntu1.8\tinstalled\nxserver-xorg\t1:7.7+23ubuntu3\tinstalled\nxserver-xorg-core\t2:21.1.12-1ubuntu1.8\tinstalled\nxserver-xorg-input-all\t1:7.7+23ubuntu3\tinstalled\nxserver-xorg-input-libinput\t1.4.0-1ubuntu24.04.1\tinstalled\nxwayland\t2:23.2.6-1ubuntu0.8\tinstalled\nxxd\t2:9.1.0016-1ubuntu7.20\tinstalled\nxz-utils\t5.6.1+really5.4.5-1ubuntu0.3\tinstalled\nyaru-theme-gnome-shell\t24.04.2-0ubuntu1\tinstalled\nyelp\t42.2-1ubuntu0.24.04.2\tinstalled\nyelp-xsl\t42.1-2ubuntu0.24.04.1\tinstalled\nzenity\t4.0.1-1build3\tinstalled\nzenity-common\t4.0.1-1build3\tinstalled\nzerofree\t1.1.1-1build5\tinstalled\nzip\t3.0-13ubuntu0.2\tinstalled\nzlib1g:arm64\t1:1.3.dfsg-3.1ubuntu2.2\tinstalled\nzstd\t1.5.5+dfsg2-2build1.1\tinstalled\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "systemctl",
+        "show",
+        "polkit.service",
+        "--property=MainPID,ExecMainStartTimestamp,ExecMainStartTimestampMonotonic,User,Group"
+      ],
+      "returncode": 0,
+      "stdout": "MainPID=710\nExecMainStartTimestamp=Fri 2026-10-16 10:10:52 MST\nExecMainStartTimestampMonotonic=4048760\nUser=polkitd\nGroup=\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "busctl",
+        "--system",
+        "status",
+        "org.freedesktop.PolicyKit1"
+      ],
+      "returncode": 0,
+      "stdout": "PID=710\nPPID=1\nTTY=n/a\nUID=989\nEUID=989\nSUID=989\nFSUID=989\nGID=989\nEGID=989\nSGID=989\nFSGID=989\nSupplementaryGIDs=989\nComm=polkitd\nExe=/usr/lib/polkit-1/polkitd\nCommandLine=/usr/lib/polkit-1/polkitd --no-debug\nLabel=unconfined\nCGroup=/system.slice/polkit.service\nUnit=polkit.service\nSlice=system.slice\nUserUnit=n/a\nUserSlice=n/a\nSession=n/a\nAuditLoginUID=n/a\nAuditSessionID=n/a\nUniqueName=:1.7\nEffectiveCapabilities=\nPermittedCapabilities=\nInheritableCapabilities=\nBoundingCapabilities=cap_setgid cap_setuid\n",
+      "stderr": ""
+    }
+  ],
+  "paths": [
+    {
+      "path": "/root/campus1057-10643-5176b9d7",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o500",
+      "inode": 1066519,
+      "device": 64769,
+      "bytes": 4096,
+      "type": "dir"
+    },
+    {
+      "path": "/root/campus1057-10643-5176b9d7/bootstrap",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o500",
+      "inode": 1066520,
+      "device": 64769,
+      "bytes": 4096,
+      "type": "dir"
+    },
+    {
+      "path": "/root/campus1057-10643-5176b9d7/authority-window.py",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o400",
+      "inode": 1066566,
+      "device": 64769,
+      "bytes": 18944,
+      "type": "file",
+      "sha256": "77cf7bf5b94df6d829a58542a333b9f7143e4ca35922cf284626d3dab8b3b839"
+    },
+    {
+      "path": "/run/systemd/system/polkit.service",
+      "exists": false
+    },
+    {
+      "path": "/etc/systemd/system/polkit.service",
+      "exists": false
+    },
+    {
+      "path": "/etc/polkit-1/rules.d/00-campus-updater-1057-deny.rules",
+      "exists": false
+    },
+    {
+      "path": "/usr/share/polkit-1/actions/dev.projectcampus.updater1057.policy",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o644",
+      "inode": 92388,
+      "device": 64769,
+      "bytes": 793,
+      "type": "file",
+      "sha256": "f1269a55f3db681675c6aea8941423f9b355a1823ea3291799c347efaf0090b8"
+    },
+    {
+      "path": "/etc/gdm3/custom.conf",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o644",
+      "inode": 528259,
+      "device": 64769,
+      "bytes": 51,
+      "type": "file",
+      "sha256": "db0c06744a2c50e029f0220fdb1d9b8805e069ff080871003e02b52773c626d7"
+    },
+    {
+      "path": "/usr/bin/campus-updater-1057",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o755",
+      "inode": 92397,
+      "device": 64769,
+      "bytes": 15087152,
+      "type": "file",
+      "sha256": "b56a92b93f3c0fb72f01b40e03528d0e966595bc59a23168f184045e23210f1e"
+    },
+    {
+      "path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o644",
+      "inode": 1066580,
+      "device": 64769,
+      "bytes": 63,
+      "type": "file",
+      "sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2"
+    },
+    {
+      "path": "/usr/lib/campus-updater-1057/install-deb.py",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o755",
+      "inode": 1066573,
+      "device": 64769,
+      "bytes": 18130,
+      "type": "file",
+      "sha256": "5768ff450271e8cb9f7abdc92d27fbe087d0c0875f02c1a4a4b054ff141aed55"
+    },
+    {
+      "path": "/usr/lib/campus-updater-1057/verify-signature",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o755",
+      "inode": 1066574,
+      "device": 64769,
+      "bytes": 631672,
+      "type": "file",
+      "sha256": "2bb75240050538d0694c1ec8ccc7e10c993615e0148fb93eb21583d701b0b115"
+    },
+    {
+      "path": "/etc/campus-updater-1057/admission.json",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o644",
+      "inode": 1066576,
+      "device": 64769,
+      "bytes": 11578,
+      "type": "file",
+      "sha256": "45ab5ea669c24112b33136c3a98d614880b7eae532efd4d1ee340ca0146fc393"
+    },
+    {
+      "path": "/etc/campus-updater-1057/public-key.txt",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o644",
+      "inode": 1066575,
+      "device": 64769,
+      "bytes": 152,
+      "type": "file",
+      "sha256": "636581b7da28abfe17088a98dff2ab10f8aaa3817b7e7e95c6df22580e3179b7"
+    },
+    {
+      "path": "/root/campus1057-1285-60dc337b",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o500",
+      "inode": 1102035,
+      "device": 64769,
+      "bytes": 4096,
+      "type": "dir"
+    },
+    {
+      "path": "/root/campus1057-1285-60dc337b/authority-window.py",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o400",
+      "inode": 1102063,
+      "device": 64769,
+      "bytes": 39596,
+      "type": "file",
+      "sha256": "970a146124f1bc85a1651aa624c60853c9b5a97356f910c090828d22ac0a8c7a"
+    },
+    {
+      "path": "/usr/bin/logger",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o755",
+      "inode": 1720,
+      "device": 64769,
+      "bytes": 68320,
+      "type": "file",
+      "sha256": "613c4c47d05aee29ad4e3879377ca44bb1144308aec0cdf828dc39580eeae1f6"
+    },
+    {
+      "path": "/home/campusqa/campus1057-10643-5176b9d7/probe/desktop.py",
+      "exists": true,
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 1066567,
+      "device": 64769,
+      "bytes": 35532,
+      "type": "file",
+      "sha256": "5efe47170775ff9074768010ddfd6c3b105a5f09dc4a4709eeac23c37c333d32"
+    },
+    {
+      "path": "/root/campus1057-1285-60dc337b/desktop.py",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o400",
+      "inode": 1102065,
+      "device": 64769,
+      "bytes": 49447,
+      "type": "file",
+      "sha256": "b42d4f199efce7c24f956d8bc464b46db655306dd7ee736650d2466c66938b12"
+    },
+    {
+      "path": "/home/campusqa/campus1057-1285-60dc337b/probe/desktop.py",
+      "exists": true,
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o400",
+      "inode": 1102066,
+      "device": 64769,
+      "bytes": 49447,
+      "type": "file",
+      "sha256": "b42d4f199efce7c24f956d8bc464b46db655306dd7ee736650d2466c66938b12"
+    },
+    {
+      "path": "/home/campusqa/.local/share/keyrings",
+      "exists": true,
+      "uid": 1000,
+      "gid": 1001,
+      "mode": "0o700",
+      "inode": 533508,
+      "device": 64769,
+      "bytes": 4096,
+      "type": "dir"
+    }
+  ],
+  "keyring": {
+    "argv": [
+      "/usr/sbin/runuser",
+      "-u",
+      "campusqa",
+      "--",
+      "/usr/bin/busctl",
+      "--address=unix:path=/run/user/1000/bus",
+      "get-property",
+      "org.freedesktop.secrets",
+      "/org/freedesktop/secrets/collection/login",
+      "org.freedesktop.Secret.Collection",
+      "Locked"
+    ],
+    "returncode": 0,
+    "stdout": "b true\n",
+    "stderr": ""
+  }
+}

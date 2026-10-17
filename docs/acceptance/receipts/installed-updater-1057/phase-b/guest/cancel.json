@@ -1,0 +1,941 @@
+{
+  "schema": 1,
+  "status": "incomplete",
+  "acceptance": "pending_coordinator_review",
+  "case": "cancel",
+  "lease_reference": "Campus task1057 comment10643 Phase B direction1233 attempt5176b9d7-6e03-410a-99d8-eecc74880fb7",
+  "authority_reference": "ordinary restored polkit; no temporary fixture rule",
+  "source_head_claim": "113a53e4eea44b6d80a8ee3edb55d186d11f3ba6",
+  "recorder": {
+    "path": "/home/campusqa/campus1057-10643-5176b9d7/probe/desktop.py",
+    "bytes": 35532,
+    "sha256": "5efe47170775ff9074768010ddfd6c3b105a5f09dc4a4709eeac23c37c333d32",
+    "uid": 1000,
+    "mode": "0o600",
+    "mtime_ns": 1792163448298947906
+  },
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/loginctl",
+        "show-user",
+        "1000",
+        "--no-pager"
+      ],
+      "started_ns": 1792163656516846929,
+      "monotonic_started_ns": 323650347892,
+      "returncode": 0,
+      "finished_ns": 1792163656523072644,
+      "monotonic_finished_ns": 323656572357,
+      "stdout": "UID=1000\nGID=1001\nName=campusqa\nTimestamp=Fri 2026-10-16 08:12:31 MST\nTimestampMonotonic=218478512\nRuntimePath=/run/user/1000\nService=user@1000.service\nSlice=user-1000.slice\nDisplay=6\nState=active\nSessions=6\nIdleHint=no\nIdleSinceHint=0\nIdleSinceHintMonotonic=0\nLinger=no\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/loginctl",
+        "show-session",
+        "6",
+        "--no-pager"
+      ],
+      "started_ns": 1792163656525080902,
+      "monotonic_started_ns": 323658580740,
+      "returncode": 0,
+      "finished_ns": 1792163656532901240,
+      "monotonic_finished_ns": 323666400995,
+      "stdout": "Id=6\nUser=1000\nName=campusqa\nTimestamp=Fri 2026-10-16 08:12:31 MST\nTimestampMonotonic=218480219\nVTNr=2\nSeat=seat0\nTTY=tty2\nRemote=no\nService=gdm-password\nScope=session-6.scope\nLeader=2367\nAudit=6\nType=wayland\nClass=user\nActive=yes\nState=active\nIdleHint=no\nIdleSinceHint=0\nIdleSinceHintMonotonic=0\nLockedHint=no\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "started_ns": 1792163656548909013,
+      "monotonic_started_ns": 323682409435,
+      "returncode": 0,
+      "finished_ns": 1792163656735951567,
+      "monotonic_finished_ns": 323869451655,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"b56a92b93f3c0fb72f01b40e03528d0e966595bc59a23168f184045e23210f1e\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"install ok installed\\t1.0.0\\tarm64\"}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/campus-updater-1057",
+        "--update",
+        "http://127.0.0.1:17857/stable/linux.json"
+      ],
+      "started_ns": 1792163656752812272,
+      "monotonic_started_ns": 323886313319,
+      "process": {
+        "pid": 3085,
+        "ppid": 3080,
+        "name": "campus-updater-",
+        "uids": [
+          1000,
+          1000,
+          1000,
+          1000
+        ],
+        "starttime_ticks": 32389,
+        "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-67645ec0-5900-431a-a00b-96d52b850a04.scope\n",
+        "session": null,
+        "session_api_result": -61,
+        "logind_owner_uid": 1000,
+        "owner_api_result": 0
+      },
+      "child_process_observations": [
+        {
+          "pid": 3100,
+          "ppid": 3085,
+          "name": "pkexec",
+          "uids": [
+            1000,
+            0,
+            0,
+            0
+          ],
+          "starttime_ticks": 32409,
+          "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-67645ec0-5900-431a-a00b-96d52b850a04.scope\n",
+          "session": null,
+          "session_api_result": -61,
+          "logind_owner_uid": 1000,
+          "owner_api_result": 0,
+          "executable_unavailable": "PermissionError",
+          "observed_monotonic_ns": 324336027121
+        }
+      ],
+      "child_pids_sampled": [
+        3100
+      ],
+      "returncode": -15,
+      "finished_ns": 1792163676764674039,
+      "monotonic_finished_ns": 343898174419,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"b56a92b93f3c0fb72f01b40e03528d0e966595bc59a23168f184045e23210f1e\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"install ok installed\\t1.0.0\\tarm64\"}\n{\"event\":\"selected\",\"exact_target\":\"linux-aarch64-deb\",\"url\":\"http://127.0.0.1:17857/packages/campus-updater-1057_2.0.0_arm64.deb\",\"version\":\"2.0.0\"}\n{\"bytes\":4706052,\"event\":\"verified_download\",\"sha256\":\"3563aa9bb97785e0b8b0c4a57d7fd502fd0ef087bafa894c804e33c842cfd872\",\"version\":\"2.0.0\"}\n",
+      "stderr": "",
+      "pkexec_pid_observation": {
+        "executable_observed_pids": [],
+        "name_only_pids": [
+          3100
+        ],
+        "status": "not_verified_coordinator_review_required",
+        "limitation": "unprivileged /proc pkexec executable lookup may be denied after setuid; name-only is not executable verification; bounded sampling may miss quick refusals"
+      }
+    },
+    {
+      "argv": [
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "started_ns": 1792163676771471845,
+      "monotonic_started_ns": 343904972850,
+      "returncode": 0,
+      "finished_ns": 1792163676847036104,
+      "monotonic_finished_ns": 343980535900,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"b56a92b93f3c0fb72f01b40e03528d0e966595bc59a23168f184045e23210f1e\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"install ok installed\\t1.0.0\\tarm64\"}\n",
+      "stderr": ""
+    }
+  ],
+  "planned_scenario": {
+    "observer": "Campus Office377 via actual QEMU VNC compositor",
+    "description": "Observe real cancel through installed fixed pkexec adapter; no administrator authentication"
+  },
+  "observer_statement": {
+    "observer": "Campus Office377 via actual QEMU VNC compositor",
+    "observation": "Observed genuine fixture Authentication Required prompt with an empty password. Screenshot retained. Recorder reached its20-second timeout before cancellation completed; clicked Cancel afterward. This attempt is incomplete. No administrator credential entered.",
+    "recorded_unix_ns": 1792163930026923059,
+    "invocation_finished_ns": 1792163676764674039,
+    "review": "actual operator statement; independent coordinator review required"
+  },
+  "limits": {
+    "capture_bytes_per_command": 131072,
+    "update_timeout_seconds": 20
+  },
+  "gui_evidence": "not automatically certified; coordinator must inspect actual compositor capture",
+  "root_preflight": {
+    "file": {
+      "path": "/home/campusqa/campus1057-10643-5176b9d7/evidence/root-preflight.json",
+      "bytes": 13845,
+      "sha256": "50e378acb8ba1f3e0192d0c4992c6046097566e2f8a33f20fcd44c80f6a417ef",
+      "uid": 1000,
+      "mode": "0o600",
+      "mtime_ns": 1792163603495497754
+    },
+    "observation": {
+      "schema": 1,
+      "kind": "campus1057-root-preflight",
+      "lease_reference": "Campus task1057 comment10643 Phase B direction1233 attempt5176b9d7-6e03-410a-99d8-eecc74880fb7",
+      "observed_unix_ns": 1792163603239343354,
+      "graphical_uid": 1000,
+      "boot_id": "fa3b7740-a3be-49b5-8b6a-2e47e9d3b1b0",
+      "hosted_allow_rule": {
+        "path": "/etc/polkit-1/rules.d/49-campus-updater-1057-headless.rules",
+        "exists": false
+      },
+      "rules": [
+        {
+          "path": "/usr/share/polkit-1/rules.d/49-ubuntu-admin.rules",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644",
+          "inode": 39049,
+          "device": 64769,
+          "bytes": 104,
+          "type": "file",
+          "sha256": "543995005caa05d096b9781b27a48e2369ef61e39a8a52234d2d271b6d0a9c1e"
+        },
+        {
+          "path": "/usr/share/polkit-1/rules.d/50-default.rules",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644",
+          "inode": 39050,
+          "device": 64769,
+          "bytes": 325,
+          "type": "file",
+          "sha256": "29f073ed9a8a6996b62f718e2bec962d5c84d311d23bb874830b4f9887eeabbf"
+        },
+        {
+          "path": "/usr/share/polkit-1/rules.d/gnome-control-center.rules",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644",
+          "inode": 90881,
+          "device": 64769,
+          "bytes": 556,
+          "type": "file",
+          "sha256": "e8006001eae0c8beefc6aeeed185d28a260d78e6beeceb3560da4707cbca778d"
+        },
+        {
+          "path": "/usr/share/polkit-1/rules.d/org.freedesktop.GeoClue2.rules",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644",
+          "inode": 90043,
+          "device": 64769,
+          "bytes": 287,
+          "type": "file",
+          "sha256": "392e205d6b993b8e629c35ddd2307ad8460bd41ff893801028c2e530fe816567"
+        },
+        {
+          "path": "/usr/share/polkit-1/rules.d/org.freedesktop.bolt.rules",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644",
+          "inode": 39047,
+          "device": 64769,
+          "bytes": 368,
+          "type": "file",
+          "sha256": "16da883b6ec384e0018b7e955efef1726e6470c2b4f72bfc23f9aadbec0709ca"
+        },
+        {
+          "path": "/usr/share/polkit-1/rules.d/org.freedesktop.fwupd.rules",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644",
+          "inode": 39048,
+          "device": 64769,
+          "bytes": 251,
+          "type": "file",
+          "sha256": "f78e67e4e002dfd135d5bd8cb8d7b66c174d795316a1cd7bf0f3e021b85ee3a0"
+        },
+        {
+          "path": "/usr/share/polkit-1/rules.d/org.freedesktop.packagekit.rules",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644",
+          "inode": 39051,
+          "device": 64769,
+          "bytes": 334,
+          "type": "file",
+          "sha256": "06c328a41876929d46dfc8c33cfd963ec5b26f0bbe0d0345ea407ba10b6bc9e5"
+        },
+        {
+          "path": "/usr/share/polkit-1/rules.d/systemd-networkd.rules",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644",
+          "inode": 39046,
+          "device": 64769,
+          "bytes": 527,
+          "type": "file",
+          "sha256": "f199e386a9297858331b00df07ed0b0ee5fcf4bea67f6c0bccc8a92b7e310bbd"
+        }
+      ],
+      "rules_directories": [
+        {
+          "path": "/etc/polkit-1/rules.d",
+          "exists": true,
+          "uid": 0,
+          "gid": 989,
+          "mode": "0o750",
+          "inode": 1562,
+          "device": 64769,
+          "bytes": 4096,
+          "type": "dir",
+          "entries": [],
+          "empty": true
+        },
+        {
+          "path": "/usr/share/polkit-1/rules.d",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o755",
+          "inode": 39045,
+          "device": 64769,
+          "bytes": 4096,
+          "type": "dir",
+          "entries": [
+            {
+              "path": "/usr/share/polkit-1/rules.d/49-ubuntu-admin.rules",
+              "exists": true,
+              "uid": 0,
+              "gid": 0,
+              "mode": "0o644",
+              "inode": 39049,
+              "device": 64769,
+              "bytes": 104,
+              "type": "file",
+              "sha256": "543995005caa05d096b9781b27a48e2369ef61e39a8a52234d2d271b6d0a9c1e"
+            },
+            {
+              "path": "/usr/share/polkit-1/rules.d/50-default.rules",
+              "exists": true,
+              "uid": 0,
+              "gid": 0,
+              "mode": "0o644",
+              "inode": 39050,
+              "device": 64769,
+              "bytes": 325,
+              "type": "file",
+              "sha256": "29f073ed9a8a6996b62f718e2bec962d5c84d311d23bb874830b4f9887eeabbf"
+            },
+            {
+              "path": "/usr/share/polkit-1/rules.d/gnome-control-center.rules",
+              "exists": true,
+              "uid": 0,
+              "gid": 0,
+              "mode": "0o644",
+              "inode": 90881,
+              "device": 64769,
+              "bytes": 556,
+              "type": "file",
+              "sha256": "e8006001eae0c8beefc6aeeed185d28a260d78e6beeceb3560da4707cbca778d"
+            },
+            {
+              "path": "/usr/share/polkit-1/rules.d/org.freedesktop.GeoClue2.rules",
+              "exists": true,
+              "uid": 0,
+              "gid": 0,
+              "mode": "0o644",
+              "inode": 90043,
+              "device": 64769,
+              "bytes": 287,
+              "type": "file",
+              "sha256": "392e205d6b993b8e629c35ddd2307ad8460bd41ff893801028c2e530fe816567"
+            },
+            {
+              "path": "/usr/share/polkit-1/rules.d/org.freedesktop.bolt.rules",
+              "exists": true,
+              "uid": 0,
+              "gid": 0,
+              "mode": "0o644",
+              "inode": 39047,
+              "device": 64769,
+              "bytes": 368,
+              "type": "file",
+              "sha256": "16da883b6ec384e0018b7e955efef1726e6470c2b4f72bfc23f9aadbec0709ca"
+            },
+            {
+              "path": "/usr/share/polkit-1/rules.d/org.freedesktop.fwupd.rules",
+              "exists": true,
+              "uid": 0,
+              "gid": 0,
+              "mode": "0o644",
+              "inode": 39048,
+              "device": 64769,
+              "bytes": 251,
+              "type": "file",
+              "sha256": "f78e67e4e002dfd135d5bd8cb8d7b66c174d795316a1cd7bf0f3e021b85ee3a0"
+            },
+            {
+              "path": "/usr/share/polkit-1/rules.d/org.freedesktop.packagekit.rules",
+              "exists": true,
+              "uid": 0,
+              "gid": 0,
+              "mode": "0o644",
+              "inode": 39051,
+              "device": 64769,
+              "bytes": 334,
+              "type": "file",
+              "sha256": "06c328a41876929d46dfc8c33cfd963ec5b26f0bbe0d0345ea407ba10b6bc9e5"
+            },
+            {
+              "path": "/usr/share/polkit-1/rules.d/systemd-networkd.rules",
+              "exists": true,
+              "uid": 0,
+              "gid": 0,
+              "mode": "0o644",
+              "inode": 39046,
+              "device": 64769,
+              "bytes": 527,
+              "type": "file",
+              "sha256": "f199e386a9297858331b00df07ed0b0ee5fcf4bea67f6c0bccc8a92b7e310bbd"
+            }
+          ],
+          "empty": false
+        }
+      ],
+      "sessions": [
+        {
+          "Id": "4",
+          "User": "501",
+          "Name": "yuri",
+          "Timestamp": "Fri 2026-10-16 08:08:58 MST",
+          "TimestampMonotonic": "5673946",
+          "VTNr": "0",
+          "Remote": "yes",
+          "RemoteHost": "192.168.5.2",
+          "Service": "sshd",
+          "Scope": "session-4.scope",
+          "Leader": "1278",
+          "Audit": "4",
+          "Type": "tty",
+          "Class": "user",
+          "Active": "yes",
+          "State": "active",
+          "IdleHint": "no",
+          "IdleSinceHint": "0",
+          "IdleSinceHintMonotonic": "0",
+          "LockedHint": "no"
+        },
+        {
+          "Id": "6",
+          "User": "1000",
+          "Name": "campusqa",
+          "Timestamp": "Fri 2026-10-16 08:12:31 MST",
+          "TimestampMonotonic": "218480219",
+          "VTNr": "2",
+          "Seat": "seat0",
+          "TTY": "tty2",
+          "Remote": "no",
+          "Service": "gdm-password",
+          "Scope": "session-6.scope",
+          "Leader": "2367",
+          "Audit": "6",
+          "Type": "wayland",
+          "Class": "user",
+          "Active": "yes",
+          "State": "active",
+          "IdleHint": "no",
+          "IdleSinceHint": "0",
+          "IdleSinceHintMonotonic": "0",
+          "LockedHint": "no"
+        }
+      ],
+      "user": {
+        "UID": "1000",
+        "GID": "1001",
+        "Name": "campusqa",
+        "Timestamp": "Fri 2026-10-16 08:12:31 MST",
+        "TimestampMonotonic": "218478512",
+        "RuntimePath": "/run/user/1000",
+        "Service": "user@1000.service",
+        "Slice": "user-1000.slice",
+        "Display": "6",
+        "State": "active",
+        "Sessions": "6",
+        "IdleHint": "no",
+        "IdleSinceHint": "0",
+        "IdleSinceHintMonotonic": "0",
+        "Linger": "no"
+      },
+      "commands": [
+        {
+          "argv": [
+            "systemctl",
+            "show",
+            "polkit.service",
+            "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths"
+          ],
+          "returncode": 0,
+          "stdout": "Id=polkit.service\nLoadState=loaded\nActiveState=active\nSubState=running\nFragmentPath=/usr/lib/systemd/system/polkit.service\nDropInPaths=\nUnitFileState=static\n",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "systemctl",
+            "show",
+            "gdm3.service",
+            "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths"
+          ],
+          "returncode": 0,
+          "stdout": "Id=gdm.service\nLoadState=loaded\nActiveState=active\nSubState=running\nFragmentPath=/usr/lib/systemd/system/gdm.service\nDropInPaths=\nUnitFileState=static\n",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "busctl",
+            "--system",
+            "--timeout=3",
+            "call",
+            "org.freedesktop.DBus",
+            "/org/freedesktop/DBus",
+            "org.freedesktop.DBus",
+            "NameHasOwner",
+            "s",
+            "org.freedesktop.PolicyKit1"
+          ],
+          "returncode": 0,
+          "stdout": "b true\n",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "dpkg-query",
+            "-W",
+            "-f=${binary:Package}\t${Version}\t${db:Status-Status}\n",
+            "campus-updater-1057",
+            "polkitd",
+            "pkexec",
+            "gdm3"
+          ],
+          "returncode": 0,
+          "stdout": "campus-updater-1057\t1.0.0\tinstalled\ngdm3\t46.2-1ubuntu1~24.04.9\tinstalled\npkexec\t124-2ubuntu1.24.04.4\tinstalled\npolkitd\t124-2ubuntu1.24.04.4\tinstalled\n",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "df",
+            "-B1",
+            "/"
+          ],
+          "returncode": 0,
+          "stdout": "Filesystem       1B-blocks       Used   Available Use% Mounted on\n/dev/vda1      28003532800 7740080128 20246675456  28% /\n",
+          "stderr": ""
+        }
+      ],
+      "paths": [
+        {
+          "path": "/root/campus1057-10643-5176b9d7",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o500",
+          "inode": 1066519,
+          "device": 64769,
+          "bytes": 4096,
+          "type": "dir"
+        },
+        {
+          "path": "/root/campus1057-10643-5176b9d7/bootstrap",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o500",
+          "inode": 1066520,
+          "device": 64769,
+          "bytes": 4096,
+          "type": "dir"
+        },
+        {
+          "path": "/root/campus1057-10643-5176b9d7/authority-window.py",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o400",
+          "inode": 1066566,
+          "device": 64769,
+          "bytes": 18944,
+          "type": "file",
+          "sha256": "77cf7bf5b94df6d829a58542a333b9f7143e4ca35922cf284626d3dab8b3b839"
+        },
+        {
+          "path": "/run/systemd/system/polkit.service",
+          "exists": false
+        },
+        {
+          "path": "/etc/systemd/system/polkit.service",
+          "exists": false
+        },
+        {
+          "path": "/etc/polkit-1/rules.d/00-campus-updater-1057-deny.rules",
+          "exists": false
+        },
+        {
+          "path": "/usr/share/polkit-1/actions/dev.projectcampus.updater1057.policy",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644",
+          "inode": 92388,
+          "device": 64769,
+          "bytes": 793,
+          "type": "file",
+          "sha256": "f1269a55f3db681675c6aea8941423f9b355a1823ea3291799c347efaf0090b8"
+        },
+        {
+          "path": "/etc/gdm3/custom.conf",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644",
+          "inode": 528259,
+          "device": 64769,
+          "bytes": 51,
+          "type": "file",
+          "sha256": "db0c06744a2c50e029f0220fdb1d9b8805e069ff080871003e02b52773c626d7"
+        },
+        {
+          "path": "/usr/bin/campus-updater-1057",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o755",
+          "inode": 92397,
+          "device": 64769,
+          "bytes": 15087152,
+          "type": "file",
+          "sha256": "b56a92b93f3c0fb72f01b40e03528d0e966595bc59a23168f184045e23210f1e"
+        },
+        {
+          "path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644",
+          "inode": 1066580,
+          "device": 64769,
+          "bytes": 63,
+          "type": "file",
+          "sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2"
+        },
+        {
+          "path": "/usr/lib/campus-updater-1057/install-deb.py",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o755",
+          "inode": 1066573,
+          "device": 64769,
+          "bytes": 18130,
+          "type": "file",
+          "sha256": "5768ff450271e8cb9f7abdc92d27fbe087d0c0875f02c1a4a4b054ff141aed55"
+        },
+        {
+          "path": "/usr/lib/campus-updater-1057/verify-signature",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o755",
+          "inode": 1066574,
+          "device": 64769,
+          "bytes": 631672,
+          "type": "file",
+          "sha256": "2bb75240050538d0694c1ec8ccc7e10c993615e0148fb93eb21583d701b0b115"
+        },
+        {
+          "path": "/etc/campus-updater-1057/admission.json",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644",
+          "inode": 1066576,
+          "device": 64769,
+          "bytes": 11578,
+          "type": "file",
+          "sha256": "45ab5ea669c24112b33136c3a98d614880b7eae532efd4d1ee340ca0146fc393"
+        },
+        {
+          "path": "/etc/campus-updater-1057/public-key.txt",
+          "exists": true,
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644",
+          "inode": 1066575,
+          "device": 64769,
+          "bytes": 152,
+          "type": "file",
+          "sha256": "636581b7da28abfe17088a98dff2ab10f8aaa3817b7e7e95c6df22580e3179b7"
+        }
+      ]
+    },
+    "provenance": "coordinator-supplied digest binds exported root observation; independent review required",
+    "freshness": "refresh after fixture provisioning and before actual desktop cases"
+  },
+  "hosted_rule_observation": {
+    "path": "/etc/polkit-1/rules.d/49-campus-updater-1057-headless.rules",
+    "exists": null,
+    "unreadable": "PermissionError",
+    "absence_source": "root_preflight.observation.hosted_allow_rule"
+  },
+  "session_binding": "coordinator_review_required",
+  "session": {
+    "Id": "6",
+    "User": "1000",
+    "Name": "campusqa",
+    "Timestamp": "Fri 2026-10-16 08:12:31 MST",
+    "TimestampMonotonic": "218480219",
+    "VTNr": "2",
+    "Seat": "seat0",
+    "TTY": "tty2",
+    "Remote": "no",
+    "Service": "gdm-password",
+    "Scope": "session-6.scope",
+    "Leader": "2367",
+    "Audit": "6",
+    "Type": "wayland",
+    "Class": "user",
+    "Active": "yes",
+    "State": "active",
+    "IdleHint": "no",
+    "IdleSinceHint": "0",
+    "IdleSinceHintMonotonic": "0",
+    "LockedHint": "no"
+  },
+  "user": {
+    "UID": "1000",
+    "GID": "1001",
+    "Name": "campusqa",
+    "Timestamp": "Fri 2026-10-16 08:12:31 MST",
+    "TimestampMonotonic": "218478512",
+    "RuntimePath": "/run/user/1000",
+    "Service": "user@1000.service",
+    "Slice": "user-1000.slice",
+    "Display": "6",
+    "State": "active",
+    "Sessions": "6",
+    "IdleHint": "no",
+    "IdleSinceHint": "0",
+    "IdleSinceHintMonotonic": "0",
+    "Linger": "no"
+  },
+  "recorder_process": {
+    "pid": 3080,
+    "ppid": 3064,
+    "name": "python3",
+    "uids": [
+      1000,
+      1000,
+      1000,
+      1000
+    ],
+    "starttime_ticks": 32361,
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-67645ec0-5900-431a-a00b-96d52b850a04.scope\n",
+    "session": null,
+    "session_api_result": -61,
+    "logind_owner_uid": 1000,
+    "owner_api_result": 0
+  },
+  "session_leader": {
+    "pid": 2367,
+    "ppid": 961,
+    "name": "gdm-session-wor",
+    "uids": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "starttime_ticks": 21066,
+    "cgroup": "0::/user.slice/user-1000.slice/session-6.scope\n",
+    "session": "6",
+    "session_api_result": 0,
+    "logind_owner_uid": 1000,
+    "owner_api_result": 0
+  },
+  "environment_observations": {
+    "XDG_SESSION_ID": null,
+    "XDG_RUNTIME_DIR": "/run/user/1000",
+    "DISPLAY": ":0",
+    "WAYLAND_DISPLAY": "wayland-0",
+    "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/1000/bus"
+  },
+  "sockets": {
+    "user_bus": {
+      "path": "/run/user/1000/bus",
+      "uid": 1000
+    },
+    "compositor": {
+      "path": "/run/user/1000/wayland-0",
+      "uid": 1000
+    }
+  },
+  "authority_file_observations": {
+    "fixture_policy": {
+      "path": "/usr/share/polkit-1/actions/dev.projectcampus.updater1057.policy",
+      "bytes": 793,
+      "sha256": "f1269a55f3db681675c6aea8941423f9b355a1823ea3291799c347efaf0090b8",
+      "uid": 0,
+      "mode": "0o644",
+      "mtime_ns": 1792163468057091973
+    },
+    "rules": [
+      {
+        "path": "/etc/polkit-1/rules.d",
+        "unreadable": "[Errno 13] Permission denied: '/etc/polkit-1/rules.d'"
+      },
+      {
+        "path": "/usr/share/polkit-1/rules.d/49-ubuntu-admin.rules",
+        "bytes": 104,
+        "sha256": "543995005caa05d096b9781b27a48e2369ef61e39a8a52234d2d271b6d0a9c1e",
+        "uid": 0,
+        "mode": "0o644",
+        "mtime_ns": 1789149150000000000
+      },
+      {
+        "path": "/usr/share/polkit-1/rules.d/50-default.rules",
+        "bytes": 325,
+        "sha256": "29f073ed9a8a6996b62f718e2bec962d5c84d311d23bb874830b4f9887eeabbf",
+        "uid": 0,
+        "mode": "0o644",
+        "mtime_ns": 1789149150000000000
+      },
+      {
+        "path": "/usr/share/polkit-1/rules.d/gnome-control-center.rules",
+        "bytes": 556,
+        "sha256": "e8006001eae0c8beefc6aeeed185d28a260d78e6beeceb3560da4707cbca778d",
+        "uid": 0,
+        "mode": "0o644",
+        "mtime_ns": 1786667554000000000
+      },
+      {
+        "path": "/usr/share/polkit-1/rules.d/org.freedesktop.GeoClue2.rules",
+        "bytes": 287,
+        "sha256": "392e205d6b993b8e629c35ddd2307ad8460bd41ff893801028c2e530fe816567",
+        "uid": 0,
+        "mode": "0o644",
+        "mtime_ns": 1712587166000000000
+      },
+      {
+        "path": "/usr/share/polkit-1/rules.d/org.freedesktop.bolt.rules",
+        "bytes": 368,
+        "sha256": "16da883b6ec384e0018b7e955efef1726e6470c2b4f72bfc23f9aadbec0709ca",
+        "uid": 0,
+        "mode": "0o644",
+        "mtime_ns": 1711995207000000000
+      },
+      {
+        "path": "/usr/share/polkit-1/rules.d/org.freedesktop.fwupd.rules",
+        "bytes": 251,
+        "sha256": "f78e67e4e002dfd135d5bd8cb8d7b66c174d795316a1cd7bf0f3e021b85ee3a0",
+        "uid": 0,
+        "mode": "0o644",
+        "mtime_ns": 1781248380000000000
+      },
+      {
+        "path": "/usr/share/polkit-1/rules.d/org.freedesktop.packagekit.rules",
+        "bytes": 334,
+        "sha256": "06c328a41876929d46dfc8c33cfd963ec5b26f0bbe0d0345ea407ba10b6bc9e5",
+        "uid": 0,
+        "mode": "0o644",
+        "mtime_ns": 1776687657000000000
+      },
+      {
+        "path": "/usr/share/polkit-1/rules.d/systemd-networkd.rules",
+        "bytes": 527,
+        "sha256": "f199e386a9297858331b00df07ed0b0ee5fcf4bea67f6c0bccc8a92b7e310bbd",
+        "uid": 0,
+        "mode": "0o644",
+        "mtime_ns": 1709054764000000000
+      }
+    ],
+    "interpretation": "hash inventory only; coordinator must inspect effective authority"
+  },
+  "expected_artifact_evidence": {
+    "index": {
+      "path": "/home/campusqa/campus1057-10643-5176b9d7/receipts/package-index.json",
+      "bytes": 4816,
+      "sha256": "5e413aa34b552a3e9ca122da2495dac1a4c364e2906c8fc3057a7d46f96a8f47",
+      "uid": 1000,
+      "mode": "0o600",
+      "mtime_ns": 1792163448296947622
+    },
+    "inventory": {
+      "path": "/home/campusqa/campus1057-10643-5176b9d7/receipts/payload-inventory.json",
+      "bytes": 360171,
+      "sha256": "984a6a34f0a61b0b3caa690c9beaf086941a7c1918ce038afadb200f7e00011c",
+      "uid": 1000,
+      "mode": "0o600",
+      "mtime_ns": 1792163448297947764
+    },
+    "versions": {
+      "1.0.0": {
+        "identity": {
+          "app_sha256": "b56a92b93f3c0fb72f01b40e03528d0e966595bc59a23168f184045e23210f1e",
+          "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+          "version": "1.0.0",
+          "behavior": "v1-baseline",
+          "format": "deb",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-deb"
+        },
+        "package": {
+          "filename": "campus-updater-1057_1.0.0_arm64.deb",
+          "bytes": 4705600,
+          "sha256": "77fd0a12b6c9c092c2125d0ef34684431c81e4482042265f7b06804217ac10d8",
+          "target": "linux-aarch64-deb",
+          "version": "1.0.0"
+        }
+      },
+      "2.0.0": {
+        "identity": {
+          "app_sha256": "9d24b61c21fb75078c6926d104757c8ad35ec9e897c7b56b3a4458ed9ec79702",
+          "helper_sha256": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625",
+          "version": "2.0.0",
+          "behavior": "v2-changed",
+          "format": "deb",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-deb"
+        },
+        "package": {
+          "filename": "campus-updater-1057_2.0.0_arm64.deb",
+          "bytes": 4706052,
+          "sha256": "3563aa9bb97785e0b8b0c4a57d7fd502fd0ef087bafa894c804e33c842cfd872",
+          "target": "linux-aarch64-deb",
+          "version": "2.0.0"
+        }
+      }
+    },
+    "review": "coordinator must bind these public receipts to the exact hosted run"
+  },
+  "before": {
+    "event": "installed_identity",
+    "format": "deb",
+    "architecture": "aarch64",
+    "exact_target": "linux-aarch64-deb",
+    "version": "1.0.0",
+    "behavior": "v1-baseline",
+    "executable": "/usr/bin/campus-updater-1057",
+    "app_sha256": "b56a92b93f3c0fb72f01b40e03528d0e966595bc59a23168f184045e23210f1e",
+    "outer_artifact": null,
+    "outer_sha256": null,
+    "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+    "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+    "installation_evidence": "install ok installed\t1.0.0\tarm64"
+  },
+  "error": "command timeout; authority/install state needs coordinator inspection",
+  "after_incomplete_observation": {
+    "event": "installed_identity",
+    "format": "deb",
+    "architecture": "aarch64",
+    "exact_target": "linux-aarch64-deb",
+    "version": "1.0.0",
+    "behavior": "v1-baseline",
+    "executable": "/usr/bin/campus-updater-1057",
+    "app_sha256": "b56a92b93f3c0fb72f01b40e03528d0e966595bc59a23168f184045e23210f1e",
+    "outer_artifact": null,
+    "outer_sha256": null,
+    "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+    "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+    "installation_evidence": "install ok installed\t1.0.0\tarm64"
+  }
+}

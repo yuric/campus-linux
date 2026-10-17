@@ -1,0 +1,2678 @@
+{
+  "scope": "native installed hosted headless, not GDM",
+  "cases": [
+    {
+      "name": "bootstrap",
+      "outcome": "passed",
+      "evidence": {
+        "authority": "temporary exact-action exact-user allow rule",
+        "graphical_prompt": "not_run"
+      }
+    },
+    {
+      "name": "package-byte-inventory",
+      "outcome": "passed",
+      "evidence": [
+        {
+          "version": "1.0.0",
+          "format": "deb",
+          "app_sha256": "f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e",
+          "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2"
+        },
+        {
+          "version": "1.0.0",
+          "format": "appimage",
+          "app_sha256": "880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7",
+          "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2"
+        },
+        {
+          "version": "2.0.0",
+          "format": "deb",
+          "app_sha256": "71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623",
+          "helper_sha256": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625"
+        },
+        {
+          "version": "2.0.0",
+          "format": "appimage",
+          "app_sha256": "b517a4a45111c69ef53a1895af01db151a940f3f566d514d66228e8c4d711956",
+          "helper_sha256": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625"
+        },
+        {
+          "version": "3.0.0",
+          "format": "deb",
+          "app_sha256": "9f44e1dafec652815f33a74db0a1558efe9b2e1659496449171ffdc9891f468e",
+          "helper_sha256": "d9956334b2711f021df2bb5d79a8407c7b720fa1a15045dbf19e7f579824a2fc"
+        },
+        {
+          "version": "3.0.0",
+          "format": "appimage",
+          "app_sha256": "656f617218361facfa1a310ffc8bf02e8a2d6cb1981d6b2be3c3a54e304c9b48",
+          "helper_sha256": "d9956334b2711f021df2bb5d79a8407c7b720fa1a15045dbf19e7f579824a2fc"
+        }
+      ]
+    },
+    {
+      "name": "deb/installed-v1",
+      "outcome": "passed",
+      "evidence": {
+        "event": "installed_identity",
+        "format": "deb",
+        "architecture": "aarch64",
+        "exact_target": "linux-aarch64-deb",
+        "version": "1.0.0",
+        "behavior": "v1-baseline",
+        "executable": "/usr/bin/campus-updater-1057",
+        "app_sha256": "f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e",
+        "outer_artifact": null,
+        "outer_sha256": null,
+        "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+        "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+        "installation_evidence": "install ok installed\t1.0.0\tarm64"
+      }
+    },
+    {
+      "name": "deb/missing-exact-target",
+      "outcome": "passed",
+      "evidence": {
+        "before": {
+          "event": "installed_identity",
+          "format": "deb",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-deb",
+          "version": "1.0.0",
+          "behavior": "v1-baseline",
+          "executable": "/usr/bin/campus-updater-1057",
+          "app_sha256": "f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e",
+          "outer_artifact": null,
+          "outer_sha256": null,
+          "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+          "installation_evidence": "install ok installed\t1.0.0\tarm64"
+        },
+        "after": {
+          "event": "installed_identity",
+          "format": "deb",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-deb",
+          "version": "1.0.0",
+          "behavior": "v1-baseline",
+          "executable": "/usr/bin/campus-updater-1057",
+          "app_sha256": "f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e",
+          "outer_artifact": null,
+          "outer_sha256": null,
+          "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+          "installation_evidence": "install ok installed\t1.0.0\tarm64"
+        },
+        "manifest": {
+          "version": "2.0.0",
+          "platforms": {
+            "linux-aarch64-appimage": {
+              "url": "http://127.0.0.1:35867/packages/campus-updater-1057_2.0.0_aarch64.AppImage",
+              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRVHZHVFhOMFZZU0VCZ0tmcXVMNnpzKzdicWREdlI4R2oxTDRwbGg5NHp5UE53Ky9xUngwVlY4YkE0eGx4NE5YazVqYTE2WWt3MzA2YkVxb1huODhyRzRsS2xFU3RTSEFVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMTU5NjM2CWZpbGU6Y2FtcHVzLXVwZGF0ZXItMTA1N18yLjAuMF9hYXJjaDY0LkFwcEltYWdlCXZlcnNpb246Mi4wLjAKMURtSEZpNWhoZzBocURiMGdNc2wyWkNmNmdLTjZaQWlXaWpmR2ljYkdvQTY2eHZRM1YxcDA0b2pEK2MvcE5ETGlnNmZnWllaSC8vQlBlaUVVR1czRGc9PQo="
+            },
+            "linux-x86_64-deb": {
+              "url": "http://127.0.0.1:35867/unavailable/linux-x86_64-deb",
+              "signature": "deliberate-other-architecture-trap"
+            },
+            "linux-x86_64-appimage": {
+              "url": "http://127.0.0.1:35867/unavailable/linux-x86_64-appimage",
+              "signature": "deliberate-other-architecture-trap"
+            },
+            "linux-aarch64": {
+              "url": "http://127.0.0.1:35867/packages/campus-updater-1057_2.0.0_aarch64.AppImage",
+              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRVHZHVFhOMFZZU0VCZ0tmcXVMNnpzKzdicWREdlI4R2oxTDRwbGg5NHp5UE53Ky9xUngwVlY4YkE0eGx4NE5YazVqYTE2WWt3MzA2YkVxb1huODhyRzRsS2xFU3RTSEFVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMTU5NjM2CWZpbGU6Y2FtcHVzLXVwZGF0ZXItMTA1N18yLjAuMF9hYXJjaDY0LkFwcEltYWdlCXZlcnNpb246Mi4wLjAKMURtSEZpNWhoZzBocURiMGdNc2wyWkNmNmdLTjZaQWlXaWpmR2ljYkdvQTY2eHZRM1YxcDA0b2pEK2MvcE5ETGlnNmZnWllaSC8vQlBlaUVVR1czRGc9PQo="
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "deb/bad-signature",
+      "outcome": "passed",
+      "evidence": {
+        "before": {
+          "event": "installed_identity",
+          "format": "deb",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-deb",
+          "version": "1.0.0",
+          "behavior": "v1-baseline",
+          "executable": "/usr/bin/campus-updater-1057",
+          "app_sha256": "f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e",
+          "outer_artifact": null,
+          "outer_sha256": null,
+          "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+          "installation_evidence": "install ok installed\t1.0.0\tarm64"
+        },
+        "after": {
+          "event": "installed_identity",
+          "format": "deb",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-deb",
+          "version": "1.0.0",
+          "behavior": "v1-baseline",
+          "executable": "/usr/bin/campus-updater-1057",
+          "app_sha256": "f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e",
+          "outer_artifact": null,
+          "outer_sha256": null,
+          "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+          "installation_evidence": "install ok installed\t1.0.0\tarm64"
+        }
+      }
+    },
+    {
+      "name": "deb/signed-version-mismatch",
+      "outcome": "passed",
+      "evidence": {
+        "before": {
+          "event": "installed_identity",
+          "format": "deb",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-deb",
+          "version": "1.0.0",
+          "behavior": "v1-baseline",
+          "executable": "/usr/bin/campus-updater-1057",
+          "app_sha256": "f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e",
+          "outer_artifact": null,
+          "outer_sha256": null,
+          "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+          "installation_evidence": "install ok installed\t1.0.0\tarm64"
+        },
+        "after": {
+          "event": "installed_identity",
+          "format": "deb",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-deb",
+          "version": "1.0.0",
+          "behavior": "v1-baseline",
+          "executable": "/usr/bin/campus-updater-1057",
+          "app_sha256": "f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e",
+          "outer_artifact": null,
+          "outer_sha256": null,
+          "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+          "installation_evidence": "install ok installed\t1.0.0\tarm64"
+        }
+      }
+    },
+    {
+      "name": "deb/wrong-format",
+      "outcome": "passed",
+      "evidence": {
+        "before": {
+          "event": "installed_identity",
+          "format": "deb",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-deb",
+          "version": "1.0.0",
+          "behavior": "v1-baseline",
+          "executable": "/usr/bin/campus-updater-1057",
+          "app_sha256": "f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e",
+          "outer_artifact": null,
+          "outer_sha256": null,
+          "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+          "installation_evidence": "install ok installed\t1.0.0\tarm64"
+        },
+        "after": {
+          "event": "installed_identity",
+          "format": "deb",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-deb",
+          "version": "1.0.0",
+          "behavior": "v1-baseline",
+          "executable": "/usr/bin/campus-updater-1057",
+          "app_sha256": "f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e",
+          "outer_artifact": null,
+          "outer_sha256": null,
+          "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+          "installation_evidence": "install ok installed\t1.0.0\tarm64"
+        }
+      }
+    },
+    {
+      "name": "deb/v1-to-v2",
+      "outcome": "passed",
+      "evidence": {
+        "events": [
+          {
+            "event": "installed_identity",
+            "format": "deb",
+            "architecture": "aarch64",
+            "exact_target": "linux-aarch64-deb",
+            "version": "1.0.0",
+            "behavior": "v1-baseline",
+            "executable": "/usr/bin/campus-updater-1057",
+            "app_sha256": "f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e",
+            "outer_artifact": null,
+            "outer_sha256": null,
+            "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+            "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+            "installation_evidence": "install ok installed\t1.0.0\tarm64"
+          },
+          {
+            "event": "selected",
+            "exact_target": "linux-aarch64-deb",
+            "url": "http://127.0.0.1:35867/packages/campus-updater-1057_2.0.0_arm64.deb",
+            "version": "2.0.0"
+          },
+          {
+            "bytes": 4705892,
+            "event": "verified_download",
+            "sha256": "64ec6279c2f59ebb3f96fedea654de4978022d6676b95f85526c2ea25213153d",
+            "version": "2.0.0"
+          },
+          {
+            "event": "polkit_adapter_result",
+            "exit_status": 0,
+            "stderr": "",
+            "stdout": "{\"after\": {\"app\": \"71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623\", \"helper\": \"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\"}, \"app_helper_unchanged\": false, \"authenticated_version\": \"2.0.0\", \"before\": {\"app\": \"f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e\", \"helper\": \"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\"}, \"dpkg_exit\": 0, \"installed_version\": \"1.0.0\", \"package_bytes\": 4705892, \"package_sha256\": \"64ec6279c2f59ebb3f96fedea654de4978022d6676b95f85526c2ea25213153d\", \"phase\": \"complete\", \"status\": \"accepted\"}\n",
+            "success": true
+          },
+          {
+            "event": "deb_adapter_completed",
+            "requested_version": "2.0.0"
+          }
+        ],
+        "relaunch_identity": {
+          "event": "installed_identity",
+          "format": "deb",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-deb",
+          "version": "2.0.0",
+          "behavior": "v2-changed",
+          "executable": "/usr/bin/campus-updater-1057",
+          "app_sha256": "71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623",
+          "outer_artifact": null,
+          "outer_sha256": null,
+          "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625",
+          "installation_evidence": "install ok installed\t2.0.0\tarm64"
+        }
+      }
+    },
+    {
+      "name": "deb/privileged-replay-1.0.0",
+      "outcome": "passed",
+      "evidence": {
+        "before": {
+          "event": "installed_identity",
+          "format": "deb",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-deb",
+          "version": "2.0.0",
+          "behavior": "v2-changed",
+          "executable": "/usr/bin/campus-updater-1057",
+          "app_sha256": "71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623",
+          "outer_artifact": null,
+          "outer_sha256": null,
+          "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625",
+          "installation_evidence": "install ok installed\t2.0.0\tarm64"
+        },
+        "after": {
+          "event": "installed_identity",
+          "format": "deb",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-deb",
+          "version": "2.0.0",
+          "behavior": "v2-changed",
+          "executable": "/usr/bin/campus-updater-1057",
+          "app_sha256": "71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623",
+          "outer_artifact": null,
+          "outer_sha256": null,
+          "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625",
+          "installation_evidence": "install ok installed\t2.0.0\tarm64"
+        },
+        "adapter": {
+          "after": {
+            "app": "71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623",
+            "helper": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625"
+          },
+          "app_helper_unchanged": true,
+          "authenticated_version": "1.0.0",
+          "before": {
+            "app": "71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623",
+            "helper": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625"
+          },
+          "installed_version": "2.0.0",
+          "package_bytes": 4705156,
+          "package_sha256": "c996d05d2f80ec17a4d1f4464a110dc7ece860e5846957e6b7ddd3f1e11bafd2",
+          "phase": "forward_version",
+          "reason": "signed_same_or_lower_version",
+          "status": "refused"
+        }
+      }
+    },
+    {
+      "name": "deb/privileged-replay-2.0.0",
+      "outcome": "passed",
+      "evidence": {
+        "before": {
+          "event": "installed_identity",
+          "format": "deb",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-deb",
+          "version": "2.0.0",
+          "behavior": "v2-changed",
+          "executable": "/usr/bin/campus-updater-1057",
+          "app_sha256": "71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623",
+          "outer_artifact": null,
+          "outer_sha256": null,
+          "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625",
+          "installation_evidence": "install ok installed\t2.0.0\tarm64"
+        },
+        "after": {
+          "event": "installed_identity",
+          "format": "deb",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-deb",
+          "version": "2.0.0",
+          "behavior": "v2-changed",
+          "executable": "/usr/bin/campus-updater-1057",
+          "app_sha256": "71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623",
+          "outer_artifact": null,
+          "outer_sha256": null,
+          "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625",
+          "installation_evidence": "install ok installed\t2.0.0\tarm64"
+        },
+        "adapter": {
+          "after": {
+            "app": "71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623",
+            "helper": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625"
+          },
+          "app_helper_unchanged": true,
+          "authenticated_version": "2.0.0",
+          "before": {
+            "app": "71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623",
+            "helper": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625"
+          },
+          "installed_version": "2.0.0",
+          "package_bytes": 4705892,
+          "package_sha256": "64ec6279c2f59ebb3f96fedea654de4978022d6676b95f85526c2ea25213153d",
+          "phase": "forward_version",
+          "reason": "signed_same_or_lower_version",
+          "status": "refused"
+        }
+      }
+    },
+    {
+      "name": "deb/live-caller-substitution",
+      "outcome": "passed",
+      "evidence": {
+        "before": {
+          "event": "installed_identity",
+          "format": "deb",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-deb",
+          "version": "2.0.0",
+          "behavior": "v2-changed",
+          "executable": "/usr/bin/campus-updater-1057",
+          "app_sha256": "71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623",
+          "outer_artifact": null,
+          "outer_sha256": null,
+          "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625",
+          "installation_evidence": "install ok installed\t2.0.0\tarm64"
+        },
+        "after": {
+          "event": "installed_identity",
+          "format": "deb",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-deb",
+          "version": "2.0.0",
+          "behavior": "v2-changed",
+          "executable": "/usr/bin/campus-updater-1057",
+          "app_sha256": "71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623",
+          "outer_artifact": null,
+          "outer_sha256": null,
+          "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625",
+          "installation_evidence": "install ok installed\t2.0.0\tarm64"
+        },
+        "adapter": {
+          "after": {
+            "app": "71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623",
+            "helper": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625"
+          },
+          "app_helper_unchanged": true,
+          "authenticated_version": "1.0.0",
+          "before": {
+            "app": "71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623",
+            "helper": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625"
+          },
+          "installed_version": "2.0.0",
+          "package_bytes": 4705156,
+          "package_sha256": "c996d05d2f80ec17a4d1f4464a110dc7ece860e5846957e6b7ddd3f1e11bafd2",
+          "phase": "forward_version",
+          "reason": "signed_same_or_lower_version",
+          "status": "refused"
+        },
+        "watcher": {
+          "event": "caller_path_replaced",
+          "uid": 1057,
+          "events": [
+            {
+              "event": "original_open",
+              "monotonic_ns": 1079702891865
+            },
+            {
+              "event": "replacement_moved_to",
+              "monotonic_ns": 1079703066758
+            },
+            {
+              "event": "original_close",
+              "monotonic_ns": 1079714396933
+            }
+          ],
+          "original_inode": 6033945,
+          "replacement_inode": 6033949,
+          "replacement_sha256": "a741cf9fa7a2807d37f3e1675b2d448469411600c21bbdffea7292ce49a39609",
+          "replacement_before_original_reader_close": true
+        },
+        "invocation_started_ns": 1079644161137,
+        "invocation_finished_ns": 1079805386566,
+        "caller_before_sha256": "c996d05d2f80ec17a4d1f4464a110dc7ece860e5846957e6b7ddd3f1e11bafd2",
+        "caller_after_sha256": "a741cf9fa7a2807d37f3e1675b2d448469411600c21bbdffea7292ce49a39609"
+      }
+    },
+    {
+      "name": "deb/updater-replay-1.0.0",
+      "outcome": "passed",
+      "evidence": {
+        "before": {
+          "event": "installed_identity",
+          "format": "deb",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-deb",
+          "version": "2.0.0",
+          "behavior": "v2-changed",
+          "executable": "/usr/bin/campus-updater-1057",
+          "app_sha256": "71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623",
+          "outer_artifact": null,
+          "outer_sha256": null,
+          "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625",
+          "installation_evidence": "install ok installed\t2.0.0\tarm64"
+        },
+        "after": {
+          "event": "installed_identity",
+          "format": "deb",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-deb",
+          "version": "2.0.0",
+          "behavior": "v2-changed",
+          "executable": "/usr/bin/campus-updater-1057",
+          "app_sha256": "71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623",
+          "outer_artifact": null,
+          "outer_sha256": null,
+          "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625",
+          "installation_evidence": "install ok installed\t2.0.0\tarm64"
+        }
+      }
+    },
+    {
+      "name": "deb/updater-replay-2.0.0",
+      "outcome": "passed",
+      "evidence": {
+        "before": {
+          "event": "installed_identity",
+          "format": "deb",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-deb",
+          "version": "2.0.0",
+          "behavior": "v2-changed",
+          "executable": "/usr/bin/campus-updater-1057",
+          "app_sha256": "71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623",
+          "outer_artifact": null,
+          "outer_sha256": null,
+          "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625",
+          "installation_evidence": "install ok installed\t2.0.0\tarm64"
+        },
+        "after": {
+          "event": "installed_identity",
+          "format": "deb",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-deb",
+          "version": "2.0.0",
+          "behavior": "v2-changed",
+          "executable": "/usr/bin/campus-updater-1057",
+          "app_sha256": "71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623",
+          "outer_artifact": null,
+          "outer_sha256": null,
+          "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625",
+          "installation_evidence": "install ok installed\t2.0.0\tarm64"
+        }
+      }
+    },
+    {
+      "name": "deb/forward-version-rollback-v3",
+      "outcome": "passed",
+      "evidence": {
+        "events": [
+          {
+            "event": "installed_identity",
+            "format": "deb",
+            "architecture": "aarch64",
+            "exact_target": "linux-aarch64-deb",
+            "version": "2.0.0",
+            "behavior": "v2-changed",
+            "executable": "/usr/bin/campus-updater-1057",
+            "app_sha256": "71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623",
+            "outer_artifact": null,
+            "outer_sha256": null,
+            "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+            "helper_sha256": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625",
+            "installation_evidence": "install ok installed\t2.0.0\tarm64"
+          },
+          {
+            "event": "selected",
+            "exact_target": "linux-aarch64-deb",
+            "url": "http://127.0.0.1:35867/packages/campus-updater-1057_3.0.0_arm64.deb",
+            "version": "3.0.0"
+          },
+          {
+            "bytes": 4704414,
+            "event": "verified_download",
+            "sha256": "0c591f4a4088b7cdf0ec3ddaf8fdf34ee12d5575c53661ec13251bbe22c9a0f4",
+            "version": "3.0.0"
+          },
+          {
+            "event": "polkit_adapter_result",
+            "exit_status": 0,
+            "stderr": "",
+            "stdout": "{\"after\": {\"app\": \"9f44e1dafec652815f33a74db0a1558efe9b2e1659496449171ffdc9891f468e\", \"helper\": \"d9956334b2711f021df2bb5d79a8407c7b720fa1a15045dbf19e7f579824a2fc\"}, \"app_helper_unchanged\": false, \"authenticated_version\": \"3.0.0\", \"before\": {\"app\": \"71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623\", \"helper\": \"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\"}, \"dpkg_exit\": 0, \"installed_version\": \"2.0.0\", \"package_bytes\": 4704414, \"package_sha256\": \"0c591f4a4088b7cdf0ec3ddaf8fdf34ee12d5575c53661ec13251bbe22c9a0f4\", \"phase\": \"complete\", \"status\": \"accepted\"}\n",
+            "success": true
+          },
+          {
+            "event": "deb_adapter_completed",
+            "requested_version": "3.0.0"
+          }
+        ],
+        "relaunch_identity": {
+          "event": "installed_identity",
+          "format": "deb",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-deb",
+          "version": "3.0.0",
+          "behavior": "v1-baseline",
+          "executable": "/usr/bin/campus-updater-1057",
+          "app_sha256": "9f44e1dafec652815f33a74db0a1558efe9b2e1659496449171ffdc9891f468e",
+          "outer_artifact": null,
+          "outer_sha256": null,
+          "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "d9956334b2711f021df2bb5d79a8407c7b720fa1a15045dbf19e7f579824a2fc",
+          "installation_evidence": "install ok installed\t3.0.0\tarm64"
+        }
+      }
+    },
+    {
+      "name": "deb/integration",
+      "outcome": "passed",
+      "evidence": {
+        "format": "deb"
+      }
+    },
+    {
+      "name": "appimage/installed-v1",
+      "outcome": "passed",
+      "evidence": {
+        "event": "installed_identity",
+        "format": "appimage",
+        "architecture": "aarch64",
+        "exact_target": "linux-aarch64-appimage",
+        "version": "1.0.0",
+        "behavior": "v1-baseline",
+        "executable": "/tmp/.mount_instalhBchPb/usr/bin/campus-updater-1057",
+        "app_sha256": "880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7",
+        "outer_artifact": "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "outer_sha256": "7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c",
+        "helper_path": "/tmp/.mount_instalhBchPb/usr/lib/campus-updater-1057/inert-helper.txt",
+        "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+        "installation_evidence": "383 413 0:53 / /tmp/.mount_instalhBchPb ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057"
+      }
+    },
+    {
+      "name": "appimage/missing-exact-target",
+      "outcome": "passed",
+      "evidence": {
+        "before": {
+          "event": "installed_identity",
+          "format": "appimage",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-appimage",
+          "version": "1.0.0",
+          "behavior": "v1-baseline",
+          "executable": "/tmp/.mount_instaljoGhfp/usr/bin/campus-updater-1057",
+          "app_sha256": "880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7",
+          "outer_artifact": "/home/fixture1057/installed-updater-1057/installed.AppImage",
+          "outer_sha256": "7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c",
+          "helper_path": "/tmp/.mount_instaljoGhfp/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+          "installation_evidence": "383 413 0:53 / /tmp/.mount_instaljoGhfp ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057"
+        },
+        "after": {
+          "event": "installed_identity",
+          "format": "appimage",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-appimage",
+          "version": "1.0.0",
+          "behavior": "v1-baseline",
+          "executable": "/tmp/.mount_instalaOHHdl/usr/bin/campus-updater-1057",
+          "app_sha256": "880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7",
+          "outer_artifact": "/home/fixture1057/installed-updater-1057/installed.AppImage",
+          "outer_sha256": "7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c",
+          "helper_path": "/tmp/.mount_instalaOHHdl/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+          "installation_evidence": "383 413 0:53 / /tmp/.mount_instalaOHHdl ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057"
+        },
+        "manifest": {
+          "version": "2.0.0",
+          "platforms": {
+            "linux-aarch64-deb": {
+              "url": "http://127.0.0.1:35867/packages/campus-updater-1057_2.0.0_arm64.deb",
+              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRVHZHVFhOMFZZU0hyMGlOWEhNMDZPbFlpeW1MNHo2OTlrVlA1UkdjaGxWNGV0c2ZMREdxUlBXNWM5M21zUFFzSDJLNnZ0WFlJYUtLRnJMdTd5OUJZUjcvRmdtL3NPakFJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMTU5NjM2CWZpbGU6Y2FtcHVzLXVwZGF0ZXItMTA1N18yLjAuMF9hcm02NC5kZWIJdmVyc2lvbjoyLjAuMApvL09pZHZBRXMvelBTT284NG9kdk82NWFHM3l4TVRpMlZLaVpyMlowa1JUeENkalFYU3Q0cFp2OHhQa1RWeGVKU3MyaUlQYjdUeGIxNk54YjBIZk5DZz09Cg=="
+            },
+            "linux-x86_64-deb": {
+              "url": "http://127.0.0.1:35867/unavailable/linux-x86_64-deb",
+              "signature": "deliberate-other-architecture-trap"
+            },
+            "linux-x86_64-appimage": {
+              "url": "http://127.0.0.1:35867/unavailable/linux-x86_64-appimage",
+              "signature": "deliberate-other-architecture-trap"
+            },
+            "linux-aarch64": {
+              "url": "http://127.0.0.1:35867/packages/campus-updater-1057_2.0.0_arm64.deb",
+              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRVHZHVFhOMFZZU0hyMGlOWEhNMDZPbFlpeW1MNHo2OTlrVlA1UkdjaGxWNGV0c2ZMREdxUlBXNWM5M21zUFFzSDJLNnZ0WFlJYUtLRnJMdTd5OUJZUjcvRmdtL3NPakFJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMTU5NjM2CWZpbGU6Y2FtcHVzLXVwZGF0ZXItMTA1N18yLjAuMF9hcm02NC5kZWIJdmVyc2lvbjoyLjAuMApvL09pZHZBRXMvelBTT284NG9kdk82NWFHM3l4TVRpMlZLaVpyMlowa1JUeENkalFYU3Q0cFp2OHhQa1RWeGVKU3MyaUlQYjdUeGIxNk54YjBIZk5DZz09Cg=="
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "appimage/bad-signature",
+      "outcome": "passed",
+      "evidence": {
+        "before": {
+          "event": "installed_identity",
+          "format": "appimage",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-appimage",
+          "version": "1.0.0",
+          "behavior": "v1-baseline",
+          "executable": "/tmp/.mount_instalbnKgcH/usr/bin/campus-updater-1057",
+          "app_sha256": "880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7",
+          "outer_artifact": "/home/fixture1057/installed-updater-1057/installed.AppImage",
+          "outer_sha256": "7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c",
+          "helper_path": "/tmp/.mount_instalbnKgcH/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+          "installation_evidence": "383 413 0:53 / /tmp/.mount_instalbnKgcH ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057"
+        },
+        "after": {
+          "event": "installed_identity",
+          "format": "appimage",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-appimage",
+          "version": "1.0.0",
+          "behavior": "v1-baseline",
+          "executable": "/tmp/.mount_instalPIGeMG/usr/bin/campus-updater-1057",
+          "app_sha256": "880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7",
+          "outer_artifact": "/home/fixture1057/installed-updater-1057/installed.AppImage",
+          "outer_sha256": "7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c",
+          "helper_path": "/tmp/.mount_instalPIGeMG/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+          "installation_evidence": "383 413 0:53 / /tmp/.mount_instalPIGeMG ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057"
+        }
+      }
+    },
+    {
+      "name": "appimage/signed-version-mismatch",
+      "outcome": "passed",
+      "evidence": {
+        "before": {
+          "event": "installed_identity",
+          "format": "appimage",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-appimage",
+          "version": "1.0.0",
+          "behavior": "v1-baseline",
+          "executable": "/tmp/.mount_instalOabcOc/usr/bin/campus-updater-1057",
+          "app_sha256": "880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7",
+          "outer_artifact": "/home/fixture1057/installed-updater-1057/installed.AppImage",
+          "outer_sha256": "7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c",
+          "helper_path": "/tmp/.mount_instalOabcOc/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+          "installation_evidence": "383 413 0:53 / /tmp/.mount_instalOabcOc ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057"
+        },
+        "after": {
+          "event": "installed_identity",
+          "format": "appimage",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-appimage",
+          "version": "1.0.0",
+          "behavior": "v1-baseline",
+          "executable": "/tmp/.mount_instaloIoNld/usr/bin/campus-updater-1057",
+          "app_sha256": "880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7",
+          "outer_artifact": "/home/fixture1057/installed-updater-1057/installed.AppImage",
+          "outer_sha256": "7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c",
+          "helper_path": "/tmp/.mount_instaloIoNld/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+          "installation_evidence": "383 413 0:53 / /tmp/.mount_instaloIoNld ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057"
+        }
+      }
+    },
+    {
+      "name": "appimage/wrong-format",
+      "outcome": "passed",
+      "evidence": {
+        "before": {
+          "event": "installed_identity",
+          "format": "appimage",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-appimage",
+          "version": "1.0.0",
+          "behavior": "v1-baseline",
+          "executable": "/tmp/.mount_instalkiLbBC/usr/bin/campus-updater-1057",
+          "app_sha256": "880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7",
+          "outer_artifact": "/home/fixture1057/installed-updater-1057/installed.AppImage",
+          "outer_sha256": "7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c",
+          "helper_path": "/tmp/.mount_instalkiLbBC/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+          "installation_evidence": "383 413 0:53 / /tmp/.mount_instalkiLbBC ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057"
+        },
+        "after": {
+          "event": "installed_identity",
+          "format": "appimage",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-appimage",
+          "version": "1.0.0",
+          "behavior": "v1-baseline",
+          "executable": "/tmp/.mount_installldHho/usr/bin/campus-updater-1057",
+          "app_sha256": "880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7",
+          "outer_artifact": "/home/fixture1057/installed-updater-1057/installed.AppImage",
+          "outer_sha256": "7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c",
+          "helper_path": "/tmp/.mount_installldHho/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+          "installation_evidence": "383 413 0:53 / /tmp/.mount_installldHho ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057"
+        }
+      }
+    },
+    {
+      "name": "appimage/wrong-architecture",
+      "outcome": "passed",
+      "evidence": {
+        "before": {
+          "event": "installed_identity",
+          "format": "appimage",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-appimage",
+          "version": "1.0.0",
+          "behavior": "v1-baseline",
+          "executable": "/tmp/.mount_instalGlmHiK/usr/bin/campus-updater-1057",
+          "app_sha256": "880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7",
+          "outer_artifact": "/home/fixture1057/installed-updater-1057/installed.AppImage",
+          "outer_sha256": "7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c",
+          "helper_path": "/tmp/.mount_instalGlmHiK/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+          "installation_evidence": "383 413 0:53 / /tmp/.mount_instalGlmHiK ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057"
+        },
+        "after": {
+          "event": "installed_identity",
+          "format": "appimage",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-appimage",
+          "version": "1.0.0",
+          "behavior": "v1-baseline",
+          "executable": "/tmp/.mount_instalIPkOob/usr/bin/campus-updater-1057",
+          "app_sha256": "880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7",
+          "outer_artifact": "/home/fixture1057/installed-updater-1057/installed.AppImage",
+          "outer_sha256": "7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c",
+          "helper_path": "/tmp/.mount_instalIPkOob/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+          "installation_evidence": "383 413 0:53 / /tmp/.mount_instalIPkOob ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057"
+        }
+      }
+    },
+    {
+      "name": "appimage/v1-to-v2",
+      "outcome": "passed",
+      "evidence": {
+        "events": [
+          {
+            "event": "installed_identity",
+            "format": "appimage",
+            "architecture": "aarch64",
+            "exact_target": "linux-aarch64-appimage",
+            "version": "1.0.0",
+            "behavior": "v1-baseline",
+            "executable": "/tmp/.mount_instalCNelpl/usr/bin/campus-updater-1057",
+            "app_sha256": "880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7",
+            "outer_artifact": "/home/fixture1057/installed-updater-1057/installed.AppImage",
+            "outer_sha256": "7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c",
+            "helper_path": "/tmp/.mount_instalCNelpl/usr/lib/campus-updater-1057/inert-helper.txt",
+            "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+            "installation_evidence": "383 413 0:53 / /tmp/.mount_instalCNelpl ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057"
+          },
+          {
+            "event": "selected",
+            "exact_target": "linux-aarch64-appimage",
+            "url": "http://127.0.0.1:35867/packages/campus-updater-1057_2.0.0_aarch64.AppImage",
+            "version": "2.0.0"
+          },
+          {
+            "bytes": 80984584,
+            "event": "verified_download",
+            "sha256": "f66e9e44c6d5a2d81f0a0d3e18fdd8359239aa48bac4d3c99d1ff304466531f4",
+            "version": "2.0.0"
+          },
+          {
+            "event": "appimage_replaced",
+            "sha256": "f66e9e44c6d5a2d81f0a0d3e18fdd8359239aa48bac4d3c99d1ff304466531f4",
+            "version": "2.0.0"
+          },
+          {
+            "event": "appimage_relaunched",
+            "identity": {
+              "app_sha256": "b517a4a45111c69ef53a1895af01db151a940f3f566d514d66228e8c4d711956",
+              "architecture": "aarch64",
+              "behavior": "v2-changed",
+              "event": "installed_identity",
+              "exact_target": "linux-aarch64-appimage",
+              "executable": "/tmp/.mount_instaleMOfOp/usr/bin/campus-updater-1057",
+              "format": "appimage",
+              "helper_path": "/tmp/.mount_instaleMOfOp/usr/lib/campus-updater-1057/inert-helper.txt",
+              "helper_sha256": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625",
+              "installation_evidence": "384 413 0:54 / /tmp/.mount_instaleMOfOp ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057",
+              "outer_artifact": "/home/fixture1057/installed-updater-1057/installed.AppImage",
+              "outer_sha256": "f66e9e44c6d5a2d81f0a0d3e18fdd8359239aa48bac4d3c99d1ff304466531f4",
+              "version": "2.0.0"
+            }
+          }
+        ],
+        "relaunch_identity": {
+          "event": "installed_identity",
+          "format": "appimage",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-appimage",
+          "version": "2.0.0",
+          "behavior": "v2-changed",
+          "executable": "/tmp/.mount_instalkpkEpL/usr/bin/campus-updater-1057",
+          "app_sha256": "b517a4a45111c69ef53a1895af01db151a940f3f566d514d66228e8c4d711956",
+          "outer_artifact": "/home/fixture1057/installed-updater-1057/installed.AppImage",
+          "outer_sha256": "f66e9e44c6d5a2d81f0a0d3e18fdd8359239aa48bac4d3c99d1ff304466531f4",
+          "helper_path": "/tmp/.mount_instalkpkEpL/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625",
+          "installation_evidence": "383 413 0:53 / /tmp/.mount_instalkpkEpL ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057"
+        }
+      }
+    },
+    {
+      "name": "appimage/updater-replay-1.0.0",
+      "outcome": "passed",
+      "evidence": {
+        "before": {
+          "event": "installed_identity",
+          "format": "appimage",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-appimage",
+          "version": "2.0.0",
+          "behavior": "v2-changed",
+          "executable": "/tmp/.mount_instalaaJkGk/usr/bin/campus-updater-1057",
+          "app_sha256": "b517a4a45111c69ef53a1895af01db151a940f3f566d514d66228e8c4d711956",
+          "outer_artifact": "/home/fixture1057/installed-updater-1057/installed.AppImage",
+          "outer_sha256": "f66e9e44c6d5a2d81f0a0d3e18fdd8359239aa48bac4d3c99d1ff304466531f4",
+          "helper_path": "/tmp/.mount_instalaaJkGk/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625",
+          "installation_evidence": "383 413 0:53 / /tmp/.mount_instalaaJkGk ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057"
+        },
+        "after": {
+          "event": "installed_identity",
+          "format": "appimage",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-appimage",
+          "version": "2.0.0",
+          "behavior": "v2-changed",
+          "executable": "/tmp/.mount_instalOAnBjd/usr/bin/campus-updater-1057",
+          "app_sha256": "b517a4a45111c69ef53a1895af01db151a940f3f566d514d66228e8c4d711956",
+          "outer_artifact": "/home/fixture1057/installed-updater-1057/installed.AppImage",
+          "outer_sha256": "f66e9e44c6d5a2d81f0a0d3e18fdd8359239aa48bac4d3c99d1ff304466531f4",
+          "helper_path": "/tmp/.mount_instalOAnBjd/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625",
+          "installation_evidence": "384 413 0:54 / /tmp/.mount_instalOAnBjd ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057"
+        }
+      }
+    },
+    {
+      "name": "appimage/updater-replay-2.0.0",
+      "outcome": "passed",
+      "evidence": {
+        "before": {
+          "event": "installed_identity",
+          "format": "appimage",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-appimage",
+          "version": "2.0.0",
+          "behavior": "v2-changed",
+          "executable": "/tmp/.mount_instalBicCAC/usr/bin/campus-updater-1057",
+          "app_sha256": "b517a4a45111c69ef53a1895af01db151a940f3f566d514d66228e8c4d711956",
+          "outer_artifact": "/home/fixture1057/installed-updater-1057/installed.AppImage",
+          "outer_sha256": "f66e9e44c6d5a2d81f0a0d3e18fdd8359239aa48bac4d3c99d1ff304466531f4",
+          "helper_path": "/tmp/.mount_instalBicCAC/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625",
+          "installation_evidence": "383 413 0:53 / /tmp/.mount_instalBicCAC ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057"
+        },
+        "after": {
+          "event": "installed_identity",
+          "format": "appimage",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-appimage",
+          "version": "2.0.0",
+          "behavior": "v2-changed",
+          "executable": "/tmp/.mount_instalLGMFon/usr/bin/campus-updater-1057",
+          "app_sha256": "b517a4a45111c69ef53a1895af01db151a940f3f566d514d66228e8c4d711956",
+          "outer_artifact": "/home/fixture1057/installed-updater-1057/installed.AppImage",
+          "outer_sha256": "f66e9e44c6d5a2d81f0a0d3e18fdd8359239aa48bac4d3c99d1ff304466531f4",
+          "helper_path": "/tmp/.mount_instalLGMFon/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625",
+          "installation_evidence": "383 413 0:53 / /tmp/.mount_instalLGMFon ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057"
+        }
+      }
+    },
+    {
+      "name": "appimage/forward-version-rollback-v3",
+      "outcome": "passed",
+      "evidence": {
+        "events": [
+          {
+            "event": "installed_identity",
+            "format": "appimage",
+            "architecture": "aarch64",
+            "exact_target": "linux-aarch64-appimage",
+            "version": "2.0.0",
+            "behavior": "v2-changed",
+            "executable": "/tmp/.mount_instalkOmFlF/usr/bin/campus-updater-1057",
+            "app_sha256": "b517a4a45111c69ef53a1895af01db151a940f3f566d514d66228e8c4d711956",
+            "outer_artifact": "/home/fixture1057/installed-updater-1057/installed.AppImage",
+            "outer_sha256": "f66e9e44c6d5a2d81f0a0d3e18fdd8359239aa48bac4d3c99d1ff304466531f4",
+            "helper_path": "/tmp/.mount_instalkOmFlF/usr/lib/campus-updater-1057/inert-helper.txt",
+            "helper_sha256": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625",
+            "installation_evidence": "383 413 0:53 / /tmp/.mount_instalkOmFlF ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057"
+          },
+          {
+            "event": "selected",
+            "exact_target": "linux-aarch64-appimage",
+            "url": "http://127.0.0.1:35867/packages/campus-updater-1057_3.0.0_aarch64.AppImage",
+            "version": "3.0.0"
+          },
+          {
+            "bytes": 80984584,
+            "event": "verified_download",
+            "sha256": "8c0a59a09d98aa1d766a619432a1af06476870b5c1e91e8c3ac088a1aa672d93",
+            "version": "3.0.0"
+          },
+          {
+            "event": "appimage_replaced",
+            "sha256": "8c0a59a09d98aa1d766a619432a1af06476870b5c1e91e8c3ac088a1aa672d93",
+            "version": "3.0.0"
+          },
+          {
+            "event": "appimage_relaunched",
+            "identity": {
+              "app_sha256": "656f617218361facfa1a310ffc8bf02e8a2d6cb1981d6b2be3c3a54e304c9b48",
+              "architecture": "aarch64",
+              "behavior": "v1-baseline",
+              "event": "installed_identity",
+              "exact_target": "linux-aarch64-appimage",
+              "executable": "/tmp/.mount_instalhECnKJ/usr/bin/campus-updater-1057",
+              "format": "appimage",
+              "helper_path": "/tmp/.mount_instalhECnKJ/usr/lib/campus-updater-1057/inert-helper.txt",
+              "helper_sha256": "d9956334b2711f021df2bb5d79a8407c7b720fa1a15045dbf19e7f579824a2fc",
+              "installation_evidence": "384 413 0:54 / /tmp/.mount_instalhECnKJ ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057",
+              "outer_artifact": "/home/fixture1057/installed-updater-1057/installed.AppImage",
+              "outer_sha256": "8c0a59a09d98aa1d766a619432a1af06476870b5c1e91e8c3ac088a1aa672d93",
+              "version": "3.0.0"
+            }
+          }
+        ],
+        "relaunch_identity": {
+          "event": "installed_identity",
+          "format": "appimage",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-appimage",
+          "version": "3.0.0",
+          "behavior": "v1-baseline",
+          "executable": "/tmp/.mount_instalLOFFCi/usr/bin/campus-updater-1057",
+          "app_sha256": "656f617218361facfa1a310ffc8bf02e8a2d6cb1981d6b2be3c3a54e304c9b48",
+          "outer_artifact": "/home/fixture1057/installed-updater-1057/installed.AppImage",
+          "outer_sha256": "8c0a59a09d98aa1d766a619432a1af06476870b5c1e91e8c3ac088a1aa672d93",
+          "helper_path": "/tmp/.mount_instalLOFFCi/usr/lib/campus-updater-1057/inert-helper.txt",
+          "helper_sha256": "d9956334b2711f021df2bb5d79a8407c7b720fa1a15045dbf19e7f579824a2fc",
+          "installation_evidence": "383 413 0:53 / /tmp/.mount_instalLOFFCi ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057"
+        }
+      }
+    },
+    {
+      "name": "appimage/integration",
+      "outcome": "passed",
+      "evidence": {
+        "format": "appimage"
+      }
+    }
+  ],
+  "commands": [
+    {
+      "case": "bootstrap",
+      "argv": [
+        "python3",
+        "-B",
+        "/opt/fixture/adapter/bootstrap.py",
+        "--bundle",
+        "/input/bootstrap"
+      ],
+      "returncode": 0,
+      "stdout": "{\"architecture\": \"arm64\", \"files\": {\"/etc/campus-updater-1057/admission.json\": {\"mode\": \"0o644\", \"sha256\": \"626a71067459bbb0654c2dee57a95d27ff9f58582b447d44309ad1ab5e1c2f5b\", \"uid\": 0}, \"/etc/campus-updater-1057/public-key.txt\": {\"mode\": \"0o644\", \"sha256\": \"df79d6b8a6bdde50bbe0f95644381e4dabb324de8b8c35570b76988100d31096\", \"uid\": 0}, \"/usr/lib/campus-updater-1057/install-deb.py\": {\"mode\": \"0o755\", \"sha256\": \"5768ff450271e8cb9f7abdc92d27fbe087d0c0875f02c1a4a4b054ff141aed55\", \"uid\": 0}, \"/usr/lib/campus-updater-1057/verify-signature\": {\"mode\": \"0o755\", \"sha256\": \"2bb75240050538d0694c1ec8ccc7e10c993615e0148fb93eb21583d701b0b115\", \"uid\": 0}, \"/usr/share/polkit-1/actions/dev.projectcampus.updater1057.policy\": {\"mode\": \"0o644\", \"sha256\": \"f1269a55f3db681675c6aea8941423f9b355a1823ea3291799c347efaf0090b8\", \"uid\": 0}}, \"status\": \"trust_provisioned\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "bootstrap",
+      "argv": [
+        "dpkg",
+        "--install",
+        "/input/packages/campus-updater-1057_1.0.0_arm64.deb"
+      ],
+      "returncode": 0,
+      "stdout": "Selecting previously unselected package campus-updater-1057.\n(Reading database ... 24681 files and directories currently installed.)\nPreparing to unpack .../campus-updater-1057_1.0.0_arm64.deb ...\nUnpacking campus-updater-1057 (1.0.0) ...\nSetting up campus-updater-1057 (1.0.0) ...\nProcessing triggers for hicolor-icon-theme (0.17-2) ...\n",
+      "stderr": ""
+    },
+    {
+      "case": "bootstrap",
+      "argv": [
+        "dbus-daemon",
+        "--system",
+        "--fork"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "case": "bootstrap",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "dbus-daemon",
+        "--session",
+        "--address=unix:path=/run/user/1057/bus",
+        "--fork"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "case": "bootstrap",
+      "argv": [
+        "pkaction",
+        "--action-id",
+        "dev.campus.updater1057.install"
+      ],
+      "returncode": 0,
+      "stdout": "dev.campus.updater1057.install\n",
+      "stderr": ""
+    },
+    {
+      "case": "package-byte-inventory",
+      "argv": [
+        "dpkg-deb",
+        "--extract",
+        "/input/packages/campus-updater-1057_1.0.0_arm64.deb",
+        "/tmp/inventory-1.0.0-deb"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "case": "package-byte-inventory",
+      "argv": [
+        "/home/fixture1057/installed-updater-1057/inventory-1.0.0.AppImage",
+        "--appimage-extract",
+        "usr/bin/campus-updater-1057"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "case": "package-byte-inventory",
+      "argv": [
+        "/home/fixture1057/installed-updater-1057/inventory-1.0.0.AppImage",
+        "--appimage-extract",
+        "usr/lib/campus-updater-1057/inert-helper.txt"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "case": "package-byte-inventory",
+      "argv": [
+        "dpkg-deb",
+        "--extract",
+        "/input/packages/campus-updater-1057_2.0.0_arm64.deb",
+        "/tmp/inventory-2.0.0-deb"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "case": "package-byte-inventory",
+      "argv": [
+        "/home/fixture1057/installed-updater-1057/inventory-2.0.0.AppImage",
+        "--appimage-extract",
+        "usr/bin/campus-updater-1057"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "case": "package-byte-inventory",
+      "argv": [
+        "/home/fixture1057/installed-updater-1057/inventory-2.0.0.AppImage",
+        "--appimage-extract",
+        "usr/lib/campus-updater-1057/inert-helper.txt"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "case": "package-byte-inventory",
+      "argv": [
+        "dpkg-deb",
+        "--extract",
+        "/input/packages/campus-updater-1057_3.0.0_arm64.deb",
+        "/tmp/inventory-3.0.0-deb"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "case": "package-byte-inventory",
+      "argv": [
+        "/home/fixture1057/installed-updater-1057/inventory-3.0.0.AppImage",
+        "--appimage-extract",
+        "usr/bin/campus-updater-1057"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "case": "package-byte-inventory",
+      "argv": [
+        "/home/fixture1057/installed-updater-1057/inventory-3.0.0.AppImage",
+        "--appimage-extract",
+        "usr/lib/campus-updater-1057/inert-helper.txt"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "case": "deb/installed-v1",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"install ok installed\\t1.0.0\\tarm64\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "deb/missing-exact-target",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"install ok installed\\t1.0.0\\tarm64\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "deb/missing-exact-target",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--update",
+        "http://127.0.0.1:35867/stable/linux.json"
+      ],
+      "returncode": 1,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"install ok installed\\t1.0.0\\tarm64\"}\n{\"error\":\"the platform `linux-aarch64-deb` was not found in the response `platforms` object\",\"event\":\"refused\"}\n",
+      "stderr": "\n(campus-updater-1057:70): dbind-WARNING **: 14:09:50.440: AT-SPI: Error retrieving accessibility bus address: org.freedesktop.DBus.Error.ServiceUnknown: The name org.a11y.Bus was not provided by any .service files\n"
+    },
+    {
+      "case": "deb/missing-exact-target",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"install ok installed\\t1.0.0\\tarm64\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "deb/bad-signature",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"install ok installed\\t1.0.0\\tarm64\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "deb/bad-signature",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--update",
+        "http://127.0.0.1:35867/stable/linux.json"
+      ],
+      "returncode": 1,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"install ok installed\\t1.0.0\\tarm64\"}\n{\"event\":\"selected\",\"exact_target\":\"linux-aarch64-deb\",\"url\":\"http://127.0.0.1:35867/packages/campus-updater-1057_2.0.0_arm64.deb\",\"version\":\"2.0.0\"}\n{\"error\":\"Invalid encoding in minisign data\",\"event\":\"refused\"}\n",
+      "stderr": "\n(campus-updater-1057:90): dbind-WARNING **: 14:09:50.690: AT-SPI: Error retrieving accessibility bus address: org.freedesktop.DBus.Error.ServiceUnknown: The name org.a11y.Bus was not provided by any .service files\n"
+    },
+    {
+      "case": "deb/bad-signature",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"install ok installed\\t1.0.0\\tarm64\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "deb/signed-version-mismatch",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"install ok installed\\t1.0.0\\tarm64\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "deb/signed-version-mismatch",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--update",
+        "http://127.0.0.1:35867/stable/linux.json"
+      ],
+      "returncode": 1,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"install ok installed\\t1.0.0\\tarm64\"}\n{\"event\":\"selected\",\"exact_target\":\"linux-aarch64-deb\",\"url\":\"http://127.0.0.1:35867/packages/campus-updater-1057_1.0.0_arm64.deb\",\"version\":\"2.0.0\"}\n{\"error\":\"The update was signed for version 1.0.0 but the update endpoint announced version 2.0.0. The endpoint response may have been tampered with to force installing a different release.\",\"event\":\"refused\"}\n",
+      "stderr": "\n(campus-updater-1057:111): dbind-WARNING **: 14:09:50.947: AT-SPI: Error retrieving accessibility bus address: org.freedesktop.DBus.Error.ServiceUnknown: The name org.a11y.Bus was not provided by any .service files\n"
+    },
+    {
+      "case": "deb/signed-version-mismatch",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"install ok installed\\t1.0.0\\tarm64\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "deb/wrong-format",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"install ok installed\\t1.0.0\\tarm64\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "deb/wrong-format",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--update",
+        "http://127.0.0.1:35867/stable/linux.json"
+      ],
+      "returncode": 1,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"install ok installed\\t1.0.0\\tarm64\"}\n{\"event\":\"selected\",\"exact_target\":\"linux-aarch64-deb\",\"url\":\"http://127.0.0.1:35867/packages/campus-updater-1057_2.0.0_aarch64.AppImage\",\"version\":\"2.0.0\"}\n{\"bytes\":80984584,\"event\":\"verified_download\",\"sha256\":\"f66e9e44c6d5a2d81f0a0d3e18fdd8359239aa48bac4d3c99d1ff304466531f4\",\"version\":\"2.0.0\"}\n{\"event\":\"polkit_adapter_result\",\"exit_status\":1,\"stderr\":\"\",\"stdout\":\"{\\\"after\\\": {\\\"app\\\": \\\"f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e\\\", \\\"helper\\\": \\\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\\\"}, \\\"app_helper_unchanged\\\": true, \\\"before\\\": {\\\"app\\\": \\\"f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e\\\", \\\"helper\\\": \\\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\\\"}, \\\"installed_version\\\": \\\"1.0.0\\\", \\\"phase\\\": \\\"root_staging\\\", \\\"reason\\\": \\\"source_size_outside_measured_bound\\\", \\\"status\\\": \\\"refused\\\"}\\n\",\"success\":false}\n{\"app_unchanged\":true,\"event\":\"refusal_bytes\",\"helper_unchanged\":true}\n{\"error\":\"polkit adapter did not install the fixture; inspect its receipt\",\"event\":\"refused\"}\n",
+      "stderr": "\n(campus-updater-1057:132): dbind-WARNING **: 14:09:51.209: AT-SPI: Error retrieving accessibility bus address: org.freedesktop.DBus.Error.ServiceUnknown: The name org.a11y.Bus was not provided by any .service files\n"
+    },
+    {
+      "case": "deb/wrong-format",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"install ok installed\\t1.0.0\\tarm64\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "deb/v1-to-v2",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"install ok installed\\t1.0.0\\tarm64\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "deb/v1-to-v2",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--check",
+        "http://127.0.0.1:35867/stable/linux.json"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"install ok installed\\t1.0.0\\tarm64\"}\n{\"event\":\"selected\",\"exact_target\":\"linux-aarch64-deb\",\"url\":\"http://127.0.0.1:35867/packages/campus-updater-1057_2.0.0_arm64.deb\",\"version\":\"2.0.0\"}\n",
+      "stderr": "\n(campus-updater-1057:159): dbind-WARNING **: 14:09:52.208: AT-SPI: Error retrieving accessibility bus address: org.freedesktop.DBus.Error.ServiceUnknown: The name org.a11y.Bus was not provided by any .service files\n"
+    },
+    {
+      "case": "deb/v1-to-v2",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--update",
+        "http://127.0.0.1:35867/stable/linux.json"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"install ok installed\\t1.0.0\\tarm64\"}\n{\"event\":\"selected\",\"exact_target\":\"linux-aarch64-deb\",\"url\":\"http://127.0.0.1:35867/packages/campus-updater-1057_2.0.0_arm64.deb\",\"version\":\"2.0.0\"}\n{\"bytes\":4705892,\"event\":\"verified_download\",\"sha256\":\"64ec6279c2f59ebb3f96fedea654de4978022d6676b95f85526c2ea25213153d\",\"version\":\"2.0.0\"}\n{\"event\":\"polkit_adapter_result\",\"exit_status\":0,\"stderr\":\"\",\"stdout\":\"{\\\"after\\\": {\\\"app\\\": \\\"71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623\\\", \\\"helper\\\": \\\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\\\"}, \\\"app_helper_unchanged\\\": false, \\\"authenticated_version\\\": \\\"2.0.0\\\", \\\"before\\\": {\\\"app\\\": \\\"f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e\\\", \\\"helper\\\": \\\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\\\"}, \\\"dpkg_exit\\\": 0, \\\"installed_version\\\": \\\"1.0.0\\\", \\\"package_bytes\\\": 4705892, \\\"package_sha256\\\": \\\"64ec6279c2f59ebb3f96fedea654de4978022d6676b95f85526c2ea25213153d\\\", \\\"phase\\\": \\\"complete\\\", \\\"status\\\": \\\"accepted\\\"}\\n\",\"success\":true}\n{\"event\":\"deb_adapter_completed\",\"requested_version\":\"2.0.0\"}\n",
+      "stderr": "\n(campus-updater-1057:171): dbind-WARNING **: 14:09:52.319: AT-SPI: Error retrieving accessibility bus address: org.freedesktop.DBus.Error.ServiceUnknown: The name org.a11y.Bus was not provided by any .service files\n"
+    },
+    {
+      "case": "deb/v1-to-v2",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"2.0.0\",\"behavior\":\"v2-changed\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"install ok installed\\t2.0.0\\tarm64\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "deb/privileged-replay-1.0.0",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"2.0.0\",\"behavior\":\"v2-changed\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"install ok installed\\t2.0.0\\tarm64\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "deb/privileged-replay-1.0.0",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "pkexec",
+        "--disable-internal-agent",
+        "/usr/lib/campus-updater-1057/install-deb.py",
+        "/home/fixture1057/installed-updater-1057/replay-1.0.0.deb",
+        "/home/fixture1057/installed-updater-1057/replay-1.0.0.sig"
+      ],
+      "returncode": 1,
+      "stdout": "{\"after\": {\"app\": \"71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623\", \"helper\": \"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\"}, \"app_helper_unchanged\": true, \"authenticated_version\": \"1.0.0\", \"before\": {\"app\": \"71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623\", \"helper\": \"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\"}, \"installed_version\": \"2.0.0\", \"package_bytes\": 4705156, \"package_sha256\": \"c996d05d2f80ec17a4d1f4464a110dc7ece860e5846957e6b7ddd3f1e11bafd2\", \"phase\": \"forward_version\", \"reason\": \"signed_same_or_lower_version\", \"status\": \"refused\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "deb/privileged-replay-1.0.0",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"2.0.0\",\"behavior\":\"v2-changed\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"install ok installed\\t2.0.0\\tarm64\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "deb/privileged-replay-2.0.0",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"2.0.0\",\"behavior\":\"v2-changed\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"install ok installed\\t2.0.0\\tarm64\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "deb/privileged-replay-2.0.0",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "pkexec",
+        "--disable-internal-agent",
+        "/usr/lib/campus-updater-1057/install-deb.py",
+        "/home/fixture1057/installed-updater-1057/replay-2.0.0.deb",
+        "/home/fixture1057/installed-updater-1057/replay-2.0.0.sig"
+      ],
+      "returncode": 1,
+      "stdout": "{\"after\": {\"app\": \"71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623\", \"helper\": \"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\"}, \"app_helper_unchanged\": true, \"authenticated_version\": \"2.0.0\", \"before\": {\"app\": \"71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623\", \"helper\": \"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\"}, \"installed_version\": \"2.0.0\", \"package_bytes\": 4705892, \"package_sha256\": \"64ec6279c2f59ebb3f96fedea654de4978022d6676b95f85526c2ea25213153d\", \"phase\": \"forward_version\", \"reason\": \"signed_same_or_lower_version\", \"status\": \"refused\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "deb/privileged-replay-2.0.0",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"2.0.0\",\"behavior\":\"v2-changed\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"install ok installed\\t2.0.0\\tarm64\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "deb/live-caller-substitution",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"2.0.0\",\"behavior\":\"v2-changed\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"install ok installed\\t2.0.0\\tarm64\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "deb/live-caller-substitution",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "pkexec",
+        "--disable-internal-agent",
+        "/usr/lib/campus-updater-1057/install-deb.py",
+        "/home/fixture1057/installed-updater-1057/caller-substitution.deb",
+        "/home/fixture1057/installed-updater-1057/caller-substitution.sig"
+      ],
+      "returncode": 1,
+      "stdout": "{\"after\": {\"app\": \"71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623\", \"helper\": \"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\"}, \"app_helper_unchanged\": true, \"authenticated_version\": \"1.0.0\", \"before\": {\"app\": \"71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623\", \"helper\": \"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\"}, \"installed_version\": \"2.0.0\", \"package_bytes\": 4705156, \"package_sha256\": \"c996d05d2f80ec17a4d1f4464a110dc7ece860e5846957e6b7ddd3f1e11bafd2\", \"phase\": \"forward_version\", \"reason\": \"signed_same_or_lower_version\", \"status\": \"refused\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "deb/live-caller-substitution",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "python3",
+        "-B",
+        "/opt/fixture/probe/replace-on-open.py",
+        "--source",
+        "/home/fixture1057/installed-updater-1057/caller-substitution.deb",
+        "--replacement",
+        "/home/fixture1057/installed-updater-1057/caller-substitution-replacement.deb"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\": \"watch_ready\", \"uid\": 1057, \"monotonic_ns\": 1079644078639, \"original_inode\": 6033945}\n{\"event\": \"caller_path_replaced\", \"uid\": 1057, \"events\": [{\"event\": \"original_open\", \"monotonic_ns\": 1079702891865}, {\"event\": \"replacement_moved_to\", \"monotonic_ns\": 1079703066758}, {\"event\": \"original_close\", \"monotonic_ns\": 1079714396933}], \"original_inode\": 6033945, \"replacement_inode\": 6033949, \"replacement_sha256\": \"a741cf9fa7a2807d37f3e1675b2d448469411600c21bbdffea7292ce49a39609\", \"replacement_before_original_reader_close\": true}\n",
+      "stderr": ""
+    },
+    {
+      "case": "deb/live-caller-substitution",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"2.0.0\",\"behavior\":\"v2-changed\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"install ok installed\\t2.0.0\\tarm64\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "deb/updater-replay-1.0.0",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"2.0.0\",\"behavior\":\"v2-changed\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"install ok installed\\t2.0.0\\tarm64\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "deb/updater-replay-1.0.0",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--check",
+        "http://127.0.0.1:35867/stable/linux.json"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"2.0.0\",\"behavior\":\"v2-changed\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"install ok installed\\t2.0.0\\tarm64\"}\n{\"event\":\"no_newer_release\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"2.0.0\"}\n",
+      "stderr": "\n(campus-updater-1057:260): dbind-WARNING **: 14:09:53.832: AT-SPI: Error retrieving accessibility bus address: org.freedesktop.DBus.Error.ServiceUnknown: The name org.a11y.Bus was not provided by any .service files\n"
+    },
+    {
+      "case": "deb/updater-replay-1.0.0",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"2.0.0\",\"behavior\":\"v2-changed\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"install ok installed\\t2.0.0\\tarm64\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "deb/updater-replay-2.0.0",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"2.0.0\",\"behavior\":\"v2-changed\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"install ok installed\\t2.0.0\\tarm64\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "deb/updater-replay-2.0.0",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--check",
+        "http://127.0.0.1:35867/stable/linux.json"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"2.0.0\",\"behavior\":\"v2-changed\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"install ok installed\\t2.0.0\\tarm64\"}\n{\"event\":\"no_newer_release\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"2.0.0\"}\n",
+      "stderr": "\n(campus-updater-1057:280): dbind-WARNING **: 14:09:54.083: AT-SPI: Error retrieving accessibility bus address: org.freedesktop.DBus.Error.ServiceUnknown: The name org.a11y.Bus was not provided by any .service files\n"
+    },
+    {
+      "case": "deb/updater-replay-2.0.0",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"2.0.0\",\"behavior\":\"v2-changed\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"install ok installed\\t2.0.0\\tarm64\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "deb/forward-version-rollback-v3",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"2.0.0\",\"behavior\":\"v2-changed\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"install ok installed\\t2.0.0\\tarm64\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "deb/forward-version-rollback-v3",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--check",
+        "http://127.0.0.1:35867/stable/linux.json"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"2.0.0\",\"behavior\":\"v2-changed\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"install ok installed\\t2.0.0\\tarm64\"}\n{\"event\":\"selected\",\"exact_target\":\"linux-aarch64-deb\",\"url\":\"http://127.0.0.1:35867/packages/campus-updater-1057_3.0.0_arm64.deb\",\"version\":\"3.0.0\"}\n",
+      "stderr": "\n(campus-updater-1057:300): dbind-WARNING **: 14:09:54.333: AT-SPI: Error retrieving accessibility bus address: org.freedesktop.DBus.Error.ServiceUnknown: The name org.a11y.Bus was not provided by any .service files\n"
+    },
+    {
+      "case": "deb/forward-version-rollback-v3",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--update",
+        "http://127.0.0.1:35867/stable/linux.json"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"2.0.0\",\"behavior\":\"v2-changed\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"install ok installed\\t2.0.0\\tarm64\"}\n{\"event\":\"selected\",\"exact_target\":\"linux-aarch64-deb\",\"url\":\"http://127.0.0.1:35867/packages/campus-updater-1057_3.0.0_arm64.deb\",\"version\":\"3.0.0\"}\n{\"bytes\":4704414,\"event\":\"verified_download\",\"sha256\":\"0c591f4a4088b7cdf0ec3ddaf8fdf34ee12d5575c53661ec13251bbe22c9a0f4\",\"version\":\"3.0.0\"}\n{\"event\":\"polkit_adapter_result\",\"exit_status\":0,\"stderr\":\"\",\"stdout\":\"{\\\"after\\\": {\\\"app\\\": \\\"9f44e1dafec652815f33a74db0a1558efe9b2e1659496449171ffdc9891f468e\\\", \\\"helper\\\": \\\"d9956334b2711f021df2bb5d79a8407c7b720fa1a15045dbf19e7f579824a2fc\\\"}, \\\"app_helper_unchanged\\\": false, \\\"authenticated_version\\\": \\\"3.0.0\\\", \\\"before\\\": {\\\"app\\\": \\\"71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623\\\", \\\"helper\\\": \\\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\\\"}, \\\"dpkg_exit\\\": 0, \\\"installed_version\\\": \\\"2.0.0\\\", \\\"package_bytes\\\": 4704414, \\\"package_sha256\\\": \\\"0c591f4a4088b7cdf0ec3ddaf8fdf34ee12d5575c53661ec13251bbe22c9a0f4\\\", \\\"phase\\\": \\\"complete\\\", \\\"status\\\": \\\"accepted\\\"}\\n\",\"success\":true}\n{\"event\":\"deb_adapter_completed\",\"requested_version\":\"3.0.0\"}\n",
+      "stderr": "\n(campus-updater-1057:312): dbind-WARNING **: 14:09:54.445: AT-SPI: Error retrieving accessibility bus address: org.freedesktop.DBus.Error.ServiceUnknown: The name org.a11y.Bus was not provided by any .service files\n"
+    },
+    {
+      "case": "deb/forward-version-rollback-v3",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"3.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"9f44e1dafec652815f33a74db0a1558efe9b2e1659496449171ffdc9891f468e\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"d9956334b2711f021df2bb5d79a8407c7b720fa1a15045dbf19e7f579824a2fc\",\"installation_evidence\":\"install ok installed\\t3.0.0\\tarm64\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "appimage/installed-v1",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/tmp/.mount_instalhBchPb/usr/bin/campus-updater-1057\",\"app_sha256\":\"880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c\",\"helper_path\":\"/tmp/.mount_instalhBchPb/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"383 413 0:53 / /tmp/.mount_instalhBchPb ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "appimage/missing-exact-target",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/tmp/.mount_instaljoGhfp/usr/bin/campus-updater-1057\",\"app_sha256\":\"880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c\",\"helper_path\":\"/tmp/.mount_instaljoGhfp/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"383 413 0:53 / /tmp/.mount_instaljoGhfp ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "appimage/missing-exact-target",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--update",
+        "http://127.0.0.1:35867/stable/linux.json"
+      ],
+      "returncode": 1,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/tmp/.mount_instaljhPjdL/usr/bin/campus-updater-1057\",\"app_sha256\":\"880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c\",\"helper_path\":\"/tmp/.mount_instaljhPjdL/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"384 413 0:54 / /tmp/.mount_instaljhPjdL ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n{\"error\":\"the platform `linux-aarch64-appimage` was not found in the response `platforms` object\",\"event\":\"refused\"}\n",
+      "stderr": "\n(campus-updater-1057:385): dbind-WARNING **: 14:09:55.899: AT-SPI: Error retrieving accessibility bus address: org.freedesktop.DBus.Error.ServiceUnknown: The name org.a11y.Bus was not provided by any .service files\n"
+    },
+    {
+      "case": "appimage/missing-exact-target",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/tmp/.mount_instalaOHHdl/usr/bin/campus-updater-1057\",\"app_sha256\":\"880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c\",\"helper_path\":\"/tmp/.mount_instalaOHHdl/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"383 413 0:53 / /tmp/.mount_instalaOHHdl ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "appimage/bad-signature",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/tmp/.mount_instalbnKgcH/usr/bin/campus-updater-1057\",\"app_sha256\":\"880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c\",\"helper_path\":\"/tmp/.mount_instalbnKgcH/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"383 413 0:53 / /tmp/.mount_instalbnKgcH ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "appimage/bad-signature",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--update",
+        "http://127.0.0.1:35867/stable/linux.json"
+      ],
+      "returncode": 1,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/tmp/.mount_instalHbGAcd/usr/bin/campus-updater-1057\",\"app_sha256\":\"880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c\",\"helper_path\":\"/tmp/.mount_instalHbGAcd/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"384 413 0:54 / /tmp/.mount_instalHbGAcd ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n{\"event\":\"selected\",\"exact_target\":\"linux-aarch64-appimage\",\"url\":\"http://127.0.0.1:35867/packages/campus-updater-1057_2.0.0_aarch64.AppImage\",\"version\":\"2.0.0\"}\n{\"error\":\"Invalid encoding in minisign data\",\"event\":\"refused\"}\n",
+      "stderr": "\n(campus-updater-1057:446): dbind-WARNING **: 14:09:57.165: AT-SPI: Error retrieving accessibility bus address: org.freedesktop.DBus.Error.ServiceUnknown: The name org.a11y.Bus was not provided by any .service files\n"
+    },
+    {
+      "case": "appimage/bad-signature",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/tmp/.mount_instalPIGeMG/usr/bin/campus-updater-1057\",\"app_sha256\":\"880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c\",\"helper_path\":\"/tmp/.mount_instalPIGeMG/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"383 413 0:53 / /tmp/.mount_instalPIGeMG ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "appimage/signed-version-mismatch",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/tmp/.mount_instalOabcOc/usr/bin/campus-updater-1057\",\"app_sha256\":\"880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c\",\"helper_path\":\"/tmp/.mount_instalOabcOc/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"383 413 0:53 / /tmp/.mount_instalOabcOc ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "appimage/signed-version-mismatch",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--update",
+        "http://127.0.0.1:35867/stable/linux.json"
+      ],
+      "returncode": 1,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/tmp/.mount_instalOCpheA/usr/bin/campus-updater-1057\",\"app_sha256\":\"880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c\",\"helper_path\":\"/tmp/.mount_instalOCpheA/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"383 413 0:53 / /tmp/.mount_instalOCpheA ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n{\"event\":\"selected\",\"exact_target\":\"linux-aarch64-appimage\",\"url\":\"http://127.0.0.1:35867/packages/campus-updater-1057_1.0.0_aarch64.AppImage\",\"version\":\"2.0.0\"}\n{\"error\":\"The update was signed for version 1.0.0 but the update endpoint announced version 2.0.0. The endpoint response may have been tampered with to force installing a different release.\",\"event\":\"refused\"}\n",
+      "stderr": "\n(campus-updater-1057:508): dbind-WARNING **: 14:09:58.523: AT-SPI: Error retrieving accessibility bus address: org.freedesktop.DBus.Error.ServiceUnknown: The name org.a11y.Bus was not provided by any .service files\n"
+    },
+    {
+      "case": "appimage/signed-version-mismatch",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/tmp/.mount_instaloIoNld/usr/bin/campus-updater-1057\",\"app_sha256\":\"880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c\",\"helper_path\":\"/tmp/.mount_instaloIoNld/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"383 413 0:53 / /tmp/.mount_instaloIoNld ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "appimage/wrong-format",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/tmp/.mount_instalkiLbBC/usr/bin/campus-updater-1057\",\"app_sha256\":\"880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c\",\"helper_path\":\"/tmp/.mount_instalkiLbBC/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"383 413 0:53 / /tmp/.mount_instalkiLbBC ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "appimage/wrong-format",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--update",
+        "http://127.0.0.1:35867/stable/linux.json"
+      ],
+      "returncode": 1,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/tmp/.mount_instaledaJpN/usr/bin/campus-updater-1057\",\"app_sha256\":\"880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c\",\"helper_path\":\"/tmp/.mount_instaledaJpN/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"383 413 0:53 / /tmp/.mount_instaledaJpN ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n{\"event\":\"selected\",\"exact_target\":\"linux-aarch64-appimage\",\"url\":\"http://127.0.0.1:35867/packages/campus-updater-1057_2.0.0_arm64.deb\",\"version\":\"2.0.0\"}\n{\"bytes\":4705892,\"event\":\"verified_download\",\"sha256\":\"64ec6279c2f59ebb3f96fedea654de4978022d6676b95f85526c2ea25213153d\",\"version\":\"2.0.0\"}\n{\"error\":\"signed payload is not a native type-2 AppImage\",\"event\":\"refused\"}\n",
+      "stderr": "\n(campus-updater-1057:570): dbind-WARNING **: 14:09:59.966: AT-SPI: Error retrieving accessibility bus address: org.freedesktop.DBus.Error.ServiceUnknown: The name org.a11y.Bus was not provided by any .service files\n"
+    },
+    {
+      "case": "appimage/wrong-format",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/tmp/.mount_installldHho/usr/bin/campus-updater-1057\",\"app_sha256\":\"880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c\",\"helper_path\":\"/tmp/.mount_installldHho/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"383 413 0:53 / /tmp/.mount_installldHho ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "appimage/wrong-architecture",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/tmp/.mount_instalGlmHiK/usr/bin/campus-updater-1057\",\"app_sha256\":\"880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c\",\"helper_path\":\"/tmp/.mount_instalGlmHiK/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"383 413 0:53 / /tmp/.mount_instalGlmHiK ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "appimage/wrong-architecture",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--update",
+        "http://127.0.0.1:35867/stable/linux.json"
+      ],
+      "returncode": 1,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/tmp/.mount_instalCfLGoi/usr/bin/campus-updater-1057\",\"app_sha256\":\"880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c\",\"helper_path\":\"/tmp/.mount_instalCfLGoi/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"383 413 0:53 / /tmp/.mount_instalCfLGoi ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n{\"event\":\"selected\",\"exact_target\":\"linux-aarch64-appimage\",\"url\":\"http://127.0.0.1:35867/negative/wrong-architecture\",\"version\":\"2.0.0\"}\n{\"bytes\":80984584,\"event\":\"verified_download\",\"sha256\":\"31bdbf618ead20ff6936a7d6c2399a30c15fac2aa0d85eb2dba6b5e85cdb726d\",\"version\":\"2.0.0\"}\n{\"error\":\"signed payload is not a native type-2 AppImage\",\"event\":\"refused\"}\n",
+      "stderr": "\n(campus-updater-1057:632): dbind-WARNING **: 14:10:01.257: AT-SPI: Error retrieving accessibility bus address: org.freedesktop.DBus.Error.ServiceUnknown: The name org.a11y.Bus was not provided by any .service files\n"
+    },
+    {
+      "case": "appimage/wrong-architecture",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/tmp/.mount_instalIPkOob/usr/bin/campus-updater-1057\",\"app_sha256\":\"880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c\",\"helper_path\":\"/tmp/.mount_instalIPkOob/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"383 413 0:53 / /tmp/.mount_instalIPkOob ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "appimage/v1-to-v2",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/tmp/.mount_instalGbcCFA/usr/bin/campus-updater-1057\",\"app_sha256\":\"880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c\",\"helper_path\":\"/tmp/.mount_instalGbcCFA/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"383 413 0:53 / /tmp/.mount_instalGbcCFA ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "appimage/v1-to-v2",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--check",
+        "http://127.0.0.1:35867/stable/linux.json"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/tmp/.mount_instalFoBJCM/usr/bin/campus-updater-1057\",\"app_sha256\":\"880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c\",\"helper_path\":\"/tmp/.mount_instalFoBJCM/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"383 413 0:53 / /tmp/.mount_instalFoBJCM ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n{\"event\":\"selected\",\"exact_target\":\"linux-aarch64-appimage\",\"url\":\"http://127.0.0.1:35867/packages/campus-updater-1057_2.0.0_aarch64.AppImage\",\"version\":\"2.0.0\"}\n",
+      "stderr": "\n(campus-updater-1057:694): dbind-WARNING **: 14:10:02.892: AT-SPI: Error retrieving accessibility bus address: org.freedesktop.DBus.Error.ServiceUnknown: The name org.a11y.Bus was not provided by any .service files\n"
+    },
+    {
+      "case": "appimage/v1-to-v2",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--update",
+        "http://127.0.0.1:35867/stable/linux.json"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/tmp/.mount_instalCNelpl/usr/bin/campus-updater-1057\",\"app_sha256\":\"880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"7861f1dc06b240fd713a5cd56df05f455bdad1cacfab1c6b1665c297931c1e1c\",\"helper_path\":\"/tmp/.mount_instalCNelpl/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"383 413 0:53 / /tmp/.mount_instalCNelpl ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n{\"event\":\"selected\",\"exact_target\":\"linux-aarch64-appimage\",\"url\":\"http://127.0.0.1:35867/packages/campus-updater-1057_2.0.0_aarch64.AppImage\",\"version\":\"2.0.0\"}\n{\"bytes\":80984584,\"event\":\"verified_download\",\"sha256\":\"f66e9e44c6d5a2d81f0a0d3e18fdd8359239aa48bac4d3c99d1ff304466531f4\",\"version\":\"2.0.0\"}\n{\"event\":\"appimage_replaced\",\"sha256\":\"f66e9e44c6d5a2d81f0a0d3e18fdd8359239aa48bac4d3c99d1ff304466531f4\",\"version\":\"2.0.0\"}\n{\"event\":\"appimage_relaunched\",\"identity\":{\"app_sha256\":\"b517a4a45111c69ef53a1895af01db151a940f3f566d514d66228e8c4d711956\",\"architecture\":\"aarch64\",\"behavior\":\"v2-changed\",\"event\":\"installed_identity\",\"exact_target\":\"linux-aarch64-appimage\",\"executable\":\"/tmp/.mount_instaleMOfOp/usr/bin/campus-updater-1057\",\"format\":\"appimage\",\"helper_path\":\"/tmp/.mount_instaleMOfOp/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"384 413 0:54 / /tmp/.mount_instaleMOfOp ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"f66e9e44c6d5a2d81f0a0d3e18fdd8359239aa48bac4d3c99d1ff304466531f4\",\"version\":\"2.0.0\"}}\n",
+      "stderr": "\n(campus-updater-1057:719): dbind-WARNING **: 14:10:03.352: AT-SPI: Error retrieving accessibility bus address: org.freedesktop.DBus.Error.ServiceUnknown: The name org.a11y.Bus was not provided by any .service files\n"
+    },
+    {
+      "case": "appimage/v1-to-v2",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"2.0.0\",\"behavior\":\"v2-changed\",\"executable\":\"/tmp/.mount_instalkpkEpL/usr/bin/campus-updater-1057\",\"app_sha256\":\"b517a4a45111c69ef53a1895af01db151a940f3f566d514d66228e8c4d711956\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"f66e9e44c6d5a2d81f0a0d3e18fdd8359239aa48bac4d3c99d1ff304466531f4\",\"helper_path\":\"/tmp/.mount_instalkpkEpL/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"383 413 0:53 / /tmp/.mount_instalkpkEpL ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "appimage/updater-replay-1.0.0",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"2.0.0\",\"behavior\":\"v2-changed\",\"executable\":\"/tmp/.mount_instalaaJkGk/usr/bin/campus-updater-1057\",\"app_sha256\":\"b517a4a45111c69ef53a1895af01db151a940f3f566d514d66228e8c4d711956\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"f66e9e44c6d5a2d81f0a0d3e18fdd8359239aa48bac4d3c99d1ff304466531f4\",\"helper_path\":\"/tmp/.mount_instalaaJkGk/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"383 413 0:53 / /tmp/.mount_instalaaJkGk ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "appimage/updater-replay-1.0.0",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--check",
+        "http://127.0.0.1:35867/stable/linux.json"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"2.0.0\",\"behavior\":\"v2-changed\",\"executable\":\"/tmp/.mount_instalaAECFG/usr/bin/campus-updater-1057\",\"app_sha256\":\"b517a4a45111c69ef53a1895af01db151a940f3f566d514d66228e8c4d711956\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"f66e9e44c6d5a2d81f0a0d3e18fdd8359239aa48bac4d3c99d1ff304466531f4\",\"helper_path\":\"/tmp/.mount_instalaAECFG/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"383 413 0:53 / /tmp/.mount_instalaAECFG ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n{\"event\":\"no_newer_release\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"2.0.0\"}\n",
+      "stderr": "\n(campus-updater-1057:799): dbind-WARNING **: 14:10:05.684: AT-SPI: Error retrieving accessibility bus address: org.freedesktop.DBus.Error.ServiceUnknown: The name org.a11y.Bus was not provided by any .service files\n"
+    },
+    {
+      "case": "appimage/updater-replay-1.0.0",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"2.0.0\",\"behavior\":\"v2-changed\",\"executable\":\"/tmp/.mount_instalOAnBjd/usr/bin/campus-updater-1057\",\"app_sha256\":\"b517a4a45111c69ef53a1895af01db151a940f3f566d514d66228e8c4d711956\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"f66e9e44c6d5a2d81f0a0d3e18fdd8359239aa48bac4d3c99d1ff304466531f4\",\"helper_path\":\"/tmp/.mount_instalOAnBjd/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"384 413 0:54 / /tmp/.mount_instalOAnBjd ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "appimage/updater-replay-2.0.0",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"2.0.0\",\"behavior\":\"v2-changed\",\"executable\":\"/tmp/.mount_instalBicCAC/usr/bin/campus-updater-1057\",\"app_sha256\":\"b517a4a45111c69ef53a1895af01db151a940f3f566d514d66228e8c4d711956\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"f66e9e44c6d5a2d81f0a0d3e18fdd8359239aa48bac4d3c99d1ff304466531f4\",\"helper_path\":\"/tmp/.mount_instalBicCAC/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"383 413 0:53 / /tmp/.mount_instalBicCAC ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "appimage/updater-replay-2.0.0",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--check",
+        "http://127.0.0.1:35867/stable/linux.json"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"2.0.0\",\"behavior\":\"v2-changed\",\"executable\":\"/tmp/.mount_instaloacApN/usr/bin/campus-updater-1057\",\"app_sha256\":\"b517a4a45111c69ef53a1895af01db151a940f3f566d514d66228e8c4d711956\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"f66e9e44c6d5a2d81f0a0d3e18fdd8359239aa48bac4d3c99d1ff304466531f4\",\"helper_path\":\"/tmp/.mount_instaloacApN/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"384 413 0:54 / /tmp/.mount_instaloacApN ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n{\"event\":\"no_newer_release\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"2.0.0\"}\n",
+      "stderr": "\n(campus-updater-1057:860): dbind-WARNING **: 14:10:06.946: AT-SPI: Error retrieving accessibility bus address: org.freedesktop.DBus.Error.ServiceUnknown: The name org.a11y.Bus was not provided by any .service files\n"
+    },
+    {
+      "case": "appimage/updater-replay-2.0.0",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"2.0.0\",\"behavior\":\"v2-changed\",\"executable\":\"/tmp/.mount_instalLGMFon/usr/bin/campus-updater-1057\",\"app_sha256\":\"b517a4a45111c69ef53a1895af01db151a940f3f566d514d66228e8c4d711956\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"f66e9e44c6d5a2d81f0a0d3e18fdd8359239aa48bac4d3c99d1ff304466531f4\",\"helper_path\":\"/tmp/.mount_instalLGMFon/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"383 413 0:53 / /tmp/.mount_instalLGMFon ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "appimage/forward-version-rollback-v3",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"2.0.0\",\"behavior\":\"v2-changed\",\"executable\":\"/tmp/.mount_instalnpoaoJ/usr/bin/campus-updater-1057\",\"app_sha256\":\"b517a4a45111c69ef53a1895af01db151a940f3f566d514d66228e8c4d711956\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"f66e9e44c6d5a2d81f0a0d3e18fdd8359239aa48bac4d3c99d1ff304466531f4\",\"helper_path\":\"/tmp/.mount_instalnpoaoJ/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"383 413 0:53 / /tmp/.mount_instalnpoaoJ ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "appimage/forward-version-rollback-v3",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--check",
+        "http://127.0.0.1:35867/stable/linux.json"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"2.0.0\",\"behavior\":\"v2-changed\",\"executable\":\"/tmp/.mount_instalIeffDi/usr/bin/campus-updater-1057\",\"app_sha256\":\"b517a4a45111c69ef53a1895af01db151a940f3f566d514d66228e8c4d711956\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"f66e9e44c6d5a2d81f0a0d3e18fdd8359239aa48bac4d3c99d1ff304466531f4\",\"helper_path\":\"/tmp/.mount_instalIeffDi/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"383 413 0:53 / /tmp/.mount_instalIeffDi ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n{\"event\":\"selected\",\"exact_target\":\"linux-aarch64-appimage\",\"url\":\"http://127.0.0.1:35867/packages/campus-updater-1057_3.0.0_aarch64.AppImage\",\"version\":\"3.0.0\"}\n",
+      "stderr": "\n(campus-updater-1057:921): dbind-WARNING **: 14:10:08.209: AT-SPI: Error retrieving accessibility bus address: org.freedesktop.DBus.Error.ServiceUnknown: The name org.a11y.Bus was not provided by any .service files\n"
+    },
+    {
+      "case": "appimage/forward-version-rollback-v3",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--update",
+        "http://127.0.0.1:35867/stable/linux.json"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"2.0.0\",\"behavior\":\"v2-changed\",\"executable\":\"/tmp/.mount_instalkOmFlF/usr/bin/campus-updater-1057\",\"app_sha256\":\"b517a4a45111c69ef53a1895af01db151a940f3f566d514d66228e8c4d711956\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"f66e9e44c6d5a2d81f0a0d3e18fdd8359239aa48bac4d3c99d1ff304466531f4\",\"helper_path\":\"/tmp/.mount_instalkOmFlF/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625\",\"installation_evidence\":\"383 413 0:53 / /tmp/.mount_instalkOmFlF ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n{\"event\":\"selected\",\"exact_target\":\"linux-aarch64-appimage\",\"url\":\"http://127.0.0.1:35867/packages/campus-updater-1057_3.0.0_aarch64.AppImage\",\"version\":\"3.0.0\"}\n{\"bytes\":80984584,\"event\":\"verified_download\",\"sha256\":\"8c0a59a09d98aa1d766a619432a1af06476870b5c1e91e8c3ac088a1aa672d93\",\"version\":\"3.0.0\"}\n{\"event\":\"appimage_replaced\",\"sha256\":\"8c0a59a09d98aa1d766a619432a1af06476870b5c1e91e8c3ac088a1aa672d93\",\"version\":\"3.0.0\"}\n{\"event\":\"appimage_relaunched\",\"identity\":{\"app_sha256\":\"656f617218361facfa1a310ffc8bf02e8a2d6cb1981d6b2be3c3a54e304c9b48\",\"architecture\":\"aarch64\",\"behavior\":\"v1-baseline\",\"event\":\"installed_identity\",\"exact_target\":\"linux-aarch64-appimage\",\"executable\":\"/tmp/.mount_instalhECnKJ/usr/bin/campus-updater-1057\",\"format\":\"appimage\",\"helper_path\":\"/tmp/.mount_instalhECnKJ/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"d9956334b2711f021df2bb5d79a8407c7b720fa1a15045dbf19e7f579824a2fc\",\"installation_evidence\":\"384 413 0:54 / /tmp/.mount_instalhECnKJ ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"8c0a59a09d98aa1d766a619432a1af06476870b5c1e91e8c3ac088a1aa672d93\",\"version\":\"3.0.0\"}}\n",
+      "stderr": "\n(campus-updater-1057:946): dbind-WARNING **: 14:10:08.667: AT-SPI: Error retrieving accessibility bus address: org.freedesktop.DBus.Error.ServiceUnknown: The name org.a11y.Bus was not provided by any .service files\n"
+    },
+    {
+      "case": "appimage/forward-version-rollback-v3",
+      "argv": [
+        "runuser",
+        "-u",
+        "fixture1057",
+        "--",
+        "env",
+        "DISPLAY=:99",
+        "XDG_RUNTIME_DIR=/run/user/1057",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1057/bus",
+        "/home/fixture1057/installed-updater-1057/installed.AppImage",
+        "--diagnose"
+      ],
+      "returncode": 0,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"appimage\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-appimage\",\"version\":\"3.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/tmp/.mount_instalLOFFCi/usr/bin/campus-updater-1057\",\"app_sha256\":\"656f617218361facfa1a310ffc8bf02e8a2d6cb1981d6b2be3c3a54e304c9b48\",\"outer_artifact\":\"/home/fixture1057/installed-updater-1057/installed.AppImage\",\"outer_sha256\":\"8c0a59a09d98aa1d766a619432a1af06476870b5c1e91e8c3ac088a1aa672d93\",\"helper_path\":\"/tmp/.mount_instalLOFFCi/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"d9956334b2711f021df2bb5d79a8407c7b720fa1a15045dbf19e7f579824a2fc\",\"installation_evidence\":\"383 413 0:53 / /tmp/.mount_instalLOFFCi ro,nosuid,nodev,relatime - fuse.installed.AppImage installed.AppImage ro,user_id=1057,group_id=1057\"}\n",
+      "stderr": ""
+    }
+  ],
+  "requests": [
+    {
+      "case": "deb/missing-exact-target",
+      "path": "/stable/linux.json"
+    },
+    {
+      "case": "deb/bad-signature",
+      "path": "/stable/linux.json"
+    },
+    {
+      "case": "deb/bad-signature",
+      "path": "/packages/campus-updater-1057_2.0.0_arm64.deb"
+    },
+    {
+      "case": "deb/signed-version-mismatch",
+      "path": "/stable/linux.json"
+    },
+    {
+      "case": "deb/signed-version-mismatch",
+      "path": "/packages/campus-updater-1057_1.0.0_arm64.deb"
+    },
+    {
+      "case": "deb/wrong-format",
+      "path": "/stable/linux.json"
+    },
+    {
+      "case": "deb/wrong-format",
+      "path": "/packages/campus-updater-1057_2.0.0_aarch64.AppImage"
+    },
+    {
+      "case": "deb/v1-to-v2",
+      "path": "/stable/linux.json"
+    },
+    {
+      "case": "deb/v1-to-v2",
+      "path": "/stable/linux.json"
+    },
+    {
+      "case": "deb/v1-to-v2",
+      "path": "/packages/campus-updater-1057_2.0.0_arm64.deb"
+    },
+    {
+      "case": "deb/updater-replay-1.0.0",
+      "path": "/stable/linux.json"
+    },
+    {
+      "case": "deb/updater-replay-2.0.0",
+      "path": "/stable/linux.json"
+    },
+    {
+      "case": "deb/forward-version-rollback-v3",
+      "path": "/stable/linux.json"
+    },
+    {
+      "case": "deb/forward-version-rollback-v3",
+      "path": "/stable/linux.json"
+    },
+    {
+      "case": "deb/forward-version-rollback-v3",
+      "path": "/packages/campus-updater-1057_3.0.0_arm64.deb"
+    },
+    {
+      "case": "appimage/missing-exact-target",
+      "path": "/stable/linux.json"
+    },
+    {
+      "case": "appimage/bad-signature",
+      "path": "/stable/linux.json"
+    },
+    {
+      "case": "appimage/bad-signature",
+      "path": "/packages/campus-updater-1057_2.0.0_aarch64.AppImage"
+    },
+    {
+      "case": "appimage/signed-version-mismatch",
+      "path": "/stable/linux.json"
+    },
+    {
+      "case": "appimage/signed-version-mismatch",
+      "path": "/packages/campus-updater-1057_1.0.0_aarch64.AppImage"
+    },
+    {
+      "case": "appimage/wrong-format",
+      "path": "/stable/linux.json"
+    },
+    {
+      "case": "appimage/wrong-format",
+      "path": "/packages/campus-updater-1057_2.0.0_arm64.deb"
+    },
+    {
+      "case": "appimage/wrong-architecture",
+      "path": "/stable/linux.json"
+    },
+    {
+      "case": "appimage/wrong-architecture",
+      "path": "/negative/wrong-architecture"
+    },
+    {
+      "case": "appimage/v1-to-v2",
+      "path": "/stable/linux.json"
+    },
+    {
+      "case": "appimage/v1-to-v2",
+      "path": "/stable/linux.json"
+    },
+    {
+      "case": "appimage/v1-to-v2",
+      "path": "/packages/campus-updater-1057_2.0.0_aarch64.AppImage"
+    },
+    {
+      "case": "appimage/updater-replay-1.0.0",
+      "path": "/stable/linux.json"
+    },
+    {
+      "case": "appimage/updater-replay-2.0.0",
+      "path": "/stable/linux.json"
+    },
+    {
+      "case": "appimage/forward-version-rollback-v3",
+      "path": "/stable/linux.json"
+    },
+    {
+      "case": "appimage/forward-version-rollback-v3",
+      "path": "/stable/linux.json"
+    },
+    {
+      "case": "appimage/forward-version-rollback-v3",
+      "path": "/packages/campus-updater-1057_3.0.0_aarch64.AppImage"
+    }
+  ],
+  "desktop": {
+    "outcome": "not_run",
+    "reason": "actual GDM/polkit prompt requires explicit later coordinator VM lease"
+  },
+  "cross_architecture": "other architecture manifest entries are deliberate trap URLs; native jobs prove their own real targets",
+  "build_index_sha256": "e9a2d362695bc539c23628dc390edba3b8f8653bf121318c40686c6499b809e6",
+  "source_head": "3de5ab666a84f0a29bb80844219a0c4509ff2238",
+  "signed_wrong_architecture_negative": {
+    "version": "2.0.0",
+    "format": "appimage",
+    "filename": "campus-updater-1057_2.0.0_aarch64.AppImage",
+    "offset": 18,
+    "replacement_hex": "3e00",
+    "bytes": 80984584,
+    "sha256": "31bdbf618ead20ff6936a7d6c2399a30c15fac2aa0d85eb2dba6b5e85cdb726d",
+    "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRVHZHVFhOMFZZU1BhSmNzSUJaY0JEWXFUTW54MURmeDVnOEpUb1JRazlrUi92R1ZCK01ac2FtQ3BLNmVkNzFILzFBRU5TUGJpR2ZBeTFybmo0Z1ZhQStVblNHb3JyTnc4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMTU5NzM0CWZpbGU6d3JvbmctYXJjaGl0ZWN0dXJlLkFwcEltYWdlCXZlcnNpb246Mi4wLjAKNFRlT0gzayt1NURWd1lRR2c5Wkp6RWYxb3lNU1UzUTZINGp4ZHFQMy80M3lyZ0hjZTFPWGxWZVRvbSs0UlRPbUswLy80dXEzM2V3NHRCOXp3b2J0RGc9PQo="
+  },
+  "architecture": "arm64",
+  "uname": [
+    "Linux",
+    "5da92dd96db6",
+    "6.17.0-1022-azure",
+    "#22-Ubuntu SMP Mon Jul 27 17:12:01 UTC 2026",
+    "aarch64",
+    "aarch64"
+  ],
+  "os_release": "PRETTY_NAME=\"Ubuntu 24.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.5 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo\n",
+  "runtime_packages": "adduser\t3.137ubuntu1\nadwaita-icon-theme\t46.0-1\napt\t2.8.3\nat-spi2-common\t2.52.0-1build1\nbase-files\t13ubuntu10.5\nbase-passwd\t3.6.3build1\nbash\t5.2.21-2ubuntu4\nbinutils\t2.42-4ubuntu2.10\nbinutils-aarch64-linux-gnu\t2.42-4ubuntu2.10\nbinutils-common:arm64\t2.42-4ubuntu2.10\nbsdutils\t1:2.39.3-9ubuntu6.6\nbubblewrap\t0.9.0-1ubuntu0.3\nca-certificates\t20260601~24.04.1\ncoreutils\t9.4-3ubuntu6.3\ndash\t0.5.12-6ubuntu5\ndbus\t1.14.10-4ubuntu4.1\ndbus-bin\t1.14.10-4ubuntu4.1\ndbus-daemon\t1.14.10-4ubuntu4.1\ndbus-session-bus-common\t1.14.10-4ubuntu4.1\ndbus-system-bus-common\t1.14.10-4ubuntu4.1\ndbus-user-session\t1.14.10-4ubuntu4.1\ndconf-gsettings-backend:arm64\t0.40.0-4ubuntu0.1\ndconf-service\t0.40.0-4ubuntu0.1\ndebconf\t1.5.86ubuntu1\ndebianutils\t5.17build1\ndictionaries-common\t1.29.7\ndiffutils\t1:3.10-1ubuntu0.1\ndpkg\t1.22.6ubuntu6.6\ne2fsprogs\t1.47.0-2.4~exp1ubuntu4.1\nemacsen-common\t3.0.5\nfile\t1:5.45-3build1\nfindutils\t4.9.0-5build1\nfontconfig\t2.15.0-1.1ubuntu2\nfontconfig-config\t2.15.0-1.1ubuntu2\nfonts-dejavu-core\t2.37-8\nfonts-dejavu-mono\t2.37-8\nfuse3\t3.14.0-5build1\ngcc-14-base:arm64\t14.2.0-4ubuntu2~24.04.1\nglib-networking:arm64\t2.80.0-1build1\nglib-networking-common\t2.80.0-1build1\nglib-networking-services\t2.80.0-1build1\ngpgv\t2.4.4-2ubuntu17.6\ngrep\t3.11-4build1\ngsettings-desktop-schemas\t46.1-0ubuntu1\ngstreamer1.0-plugins-base:arm64\t1.24.2-1ubuntu0.5\ngstreamer1.0-plugins-good:arm64\t1.24.2-1ubuntu1.8\ngtk-update-icon-cache\t3.24.41-4ubuntu1.3\ngzip\t1.12-1ubuntu3.2\nhicolor-icon-theme\t0.17-2\nhostname\t3.23+nmu2ubuntu2\nhumanity-icon-theme\t0.6.16\nhunspell-en-us\t1:2020.12.07-2\ninit-system-helpers\t1.66ubuntu1\niso-codes\t4.16.0-1\nlibaa1:arm64\t1.4p5-51.1\nlibacl1:arm64\t2.3.2-1build1.1\nlibapparmor1:arm64\t4.0.1really4.0.1-0ubuntu0.24.04.9\nlibapt-pkg6.0t64:arm64\t2.8.3\nlibargon2-1:arm64\t0~20190702+dfsg-4build1\nlibaspell15:arm64\t0.60.8.1-1build1\nlibassuan0:arm64\t2.5.6-1build1\nlibasyncns0:arm64\t0.8-6build4\nlibatk-bridge2.0-0t64:arm64\t2.52.0-1build1\nlibatk1.0-0t64:arm64\t2.52.0-1build1\nlibatspi2.0-0t64:arm64\t2.52.0-1build1\nlibattr1:arm64\t1:2.5.2-1ubuntu0.1\nlibaudit-common\t1:3.1.2-2.1build1.1\nlibaudit1:arm64\t1:3.1.2-2.1build1.1\nlibavahi-client3:arm64\t0.8-13ubuntu6.2\nlibavahi-common-data:arm64\t0.8-13ubuntu6.2\nlibavahi-common3:arm64\t0.8-13ubuntu6.2\nlibavc1394-0:arm64\t0.5.4-5build3\nlibayatana-appindicator3-1\t0.5.93-1build3\nlibayatana-ido3-0.4-0:arm64\t0.10.1-1build2\nlibayatana-indicator3-7:arm64\t0.9.4-1build1\nlibbinutils:arm64\t2.42-4ubuntu2.10\nlibblkid1:arm64\t2.39.3-9ubuntu6.6\nlibbrotli1:arm64\t1.1.0-2build2\nlibbsd0:arm64\t0.12.1-1build1.1\nlibbz2-1.0:arm64\t1.0.8-5.1ubuntu0.1\nlibc-bin\t2.39-0ubuntu8.9\nlibc6:arm64\t2.39-0ubuntu8.9\nlibcaca0:arm64\t0.99.beta20-4ubuntu0.2\nlibcairo-gobject2:arm64\t1.18.0-3build1\nlibcairo2:arm64\t1.18.0-3build1\nlibcap-ng0:arm64\t0.8.4-2build2\nlibcap2:arm64\t1:2.66-5ubuntu2.4\nlibcap2-bin\t1:2.66-5ubuntu2.4\nlibcdparanoia0:arm64\t3.10.2+debian-14build3\nlibcolord2:arm64\t1.4.7-1build2\nlibcom-err2:arm64\t1.47.0-2.4~exp1ubuntu4.1\nlibcrypt1:arm64\t1:4.4.36-4build1\nlibcryptsetup12:arm64\t2:2.7.0-1ubuntu4.2\nlibctf-nobfd0:arm64\t2.42-4ubuntu2.10\nlibctf0:arm64\t2.42-4ubuntu2.10\nlibcups2t64:arm64\t2.4.7-1.2ubuntu7.14\nlibcurl3t64-gnutls:arm64\t8.5.0-2ubuntu10.16\nlibdatrie1:arm64\t0.2.13-3build1\nlibdb5.3t64:arm64\t5.3.28+dfsg2-7\nlibdbus-1-3:arm64\t1.14.10-4ubuntu4.1\nlibdbusmenu-glib4:arm64\t18.10.20180917~bzr492+repack1-3.1ubuntu5\nlibdbusmenu-gtk3-4:arm64\t18.10.20180917~bzr492+repack1-3.1ubuntu5\nlibdconf1:arm64\t0.40.0-4ubuntu0.1\nlibdebconfclient0:arm64\t0.271ubuntu3\nlibdeflate0:arm64\t1.19-1build1.1\nlibdevmapper1.02.1:arm64\t2:1.02.185-3ubuntu3.2\nlibdrm-amdgpu1:arm64\t2.4.125-1ubuntu0.1~24.04.2\nlibdrm-common\t2.4.125-1ubuntu0.1~24.04.2\nlibdrm2:arm64\t2.4.125-1ubuntu0.1~24.04.2\nlibduktape207:arm64\t2.7.0+tests-0ubuntu3\nlibdv4t64:arm64\t1.0.0-17.1build1\nlibdw1t64:arm64\t0.190-1.1ubuntu0.1\nlibedit2:arm64\t3.1-20230828-1build1\nlibegl-mesa0:arm64\t25.2.8-0ubuntu0.24.04.4\nlibegl1:arm64\t1.7.0-1build1\nlibelf1t64:arm64\t0.190-1.1ubuntu0.1\nlibenchant-2-2:arm64\t2.3.3-2build2\nlibepoxy0:arm64\t1.5.10-1build1\nlibevdev2:arm64\t1.13.1+dfsg-1build1\nlibexpat1:arm64\t2.6.1-2ubuntu0.6\nlibext2fs2t64:arm64\t1.47.0-2.4~exp1ubuntu4.1\nlibfdisk1:arm64\t2.39.3-9ubuntu6.6\nlibffi8:arm64\t3.4.6-1build1\nlibflac12t64:arm64\t1.4.3+ds-2.1ubuntu2\nlibfontconfig1:arm64\t2.15.0-1.1ubuntu2\nlibfontenc1:arm64\t1:1.1.8-1build1\nlibfreetype6:arm64\t2.13.2+dfsg-1ubuntu0.2\nlibfribidi0:arm64\t1.0.13-3build1\nlibfuse2t64:arm64\t2.9.9-8.1build1\nlibfuse3-3:arm64\t3.14.0-5build1\nlibgbm1:arm64\t25.2.8-0ubuntu0.24.04.4\nlibgcc-s1:arm64\t14.2.0-4ubuntu2~24.04.1\nlibgcrypt20:arm64\t1.10.3-2ubuntu0.2\nlibgdk-pixbuf-2.0-0:arm64\t2.42.10+dfsg-3ubuntu3.3\nlibgdk-pixbuf2.0-common\t2.42.10+dfsg-3ubuntu3.3\nlibgl1:arm64\t1.7.0-1build1\nlibgl1-mesa-dri:arm64\t25.2.8-0ubuntu0.24.04.4\nlibgles2:arm64\t1.7.0-1build1\nlibglib2.0-0t64:arm64\t2.80.0-6ubuntu3.9\nlibglvnd0:arm64\t1.7.0-1build1\nlibglx-mesa0:arm64\t25.2.8-0ubuntu0.24.04.4\nlibglx0:arm64\t1.7.0-1build1\nlibgmp10:arm64\t2:6.3.0+dfsg-2ubuntu6.1\nlibgnutls30t64:arm64\t3.8.3-1.1ubuntu3.6\nlibgpg-error0:arm64\t1.47-3build2.1\nlibgpm2:arm64\t1.20.7-11\nlibgprofng0:arm64\t2.42-4ubuntu2.10\nlibgraphite2-3:arm64\t1.3.14-2ubuntu0.24.04.1\nlibgssapi-krb5-2:arm64\t1.20.1-6ubuntu2.10\nlibgstreamer-gl1.0-0:arm64\t1.24.2-1ubuntu0.5\nlibgstreamer-plugins-base1.0-0:arm64\t1.24.2-1ubuntu0.5\nlibgstreamer-plugins-good1.0-0:arm64\t1.24.2-1ubuntu1.8\nlibgstreamer1.0-0:arm64\t1.24.2-1ubuntu0.1\nlibgtk-3-0t64:arm64\t3.24.41-4ubuntu1.3\nlibgtk-3-common\t3.24.41-4ubuntu1.3\nlibgudev-1.0-0:arm64\t1:238-5ubuntu1\nlibharfbuzz-icu0:arm64\t8.3.0-2build2\nlibharfbuzz0b:arm64\t8.3.0-2build2\nlibhogweed6t64:arm64\t3.9.1-2.2build1.1\nlibhunspell-1.7-0:arm64\t1.7.2+really1.7.2-10build3\nlibhyphen0:arm64\t2.8.8-7build3\nlibice6:arm64\t2:1.0.10-1build3\nlibicu74:arm64\t74.2-1ubuntu3.1\nlibidn2-0:arm64\t2.3.7-2build1.1\nlibiec61883-0:arm64\t1.2.0-6build1\nlibjansson4:arm64\t2.14-2build2\nlibjavascriptcoregtk-4.1-0:arm64\t2.52.6-0ubuntu0.24.04.1\nlibjbig0:arm64\t2.1-6.1ubuntu2\nlibjpeg-turbo8:arm64\t2.1.5-2ubuntu2\nlibjpeg8:arm64\t8c-2ubuntu11\nlibjson-c5:arm64\t0.17-1build1\nlibk5crypto3:arm64\t1.20.1-6ubuntu2.10\nlibkeyutils1:arm64\t1.6.3-3build1\nlibkmod2:arm64\t31+20240202-2ubuntu7.2\nlibkrb5-3:arm64\t1.20.1-6ubuntu2.10\nlibkrb5support0:arm64\t1.20.1-6ubuntu2.10\nliblcms2-2:arm64\t2.14-2ubuntu0.1\nlibldap2:arm64\t2.6.10+dfsg-0ubuntu0.24.04.1\nliblerc4:arm64\t4.0.0+ds-4ubuntu2\nlibllvm20:arm64\t1:20.1.2-0ubuntu1~24.04.3\nliblz4-1:arm64\t1.9.4-1build1.1\nliblzma5:arm64\t5.6.1+really5.4.5-1ubuntu0.3\nliblzo2-2:arm64\t2.10-2build4\nlibmagic-mgc\t1:5.45-3build1\nlibmagic1t64:arm64\t1:5.45-3build1\nlibmanette-0.2-0:arm64\t0.2.7-1build2\nlibmd0:arm64\t1.1.0-2build1.1\nlibmount1:arm64\t2.39.3-9ubuntu6.6\nlibmp3lame0:arm64\t3.100-6build1\nlibmpg123-0t64:arm64\t1.32.5-1ubuntu1.1\nlibncurses6:arm64\t6.4+20240113-1ubuntu2.2\nlibncursesw6:arm64\t6.4+20240113-1ubuntu2.2\nlibnettle8t64:arm64\t3.9.1-2.2build1.1\nlibnghttp2-14:arm64\t1.59.0-1ubuntu0.4\nlibnpth0t64:arm64\t1.6-3.1build1\nlibogg0:arm64\t1.3.5-3build1\nlibopus0:arm64\t1.4-1build1\nliborc-0.4-0t64:arm64\t1:0.4.38-1ubuntu0.1\nlibp11-kit0:arm64\t0.25.3-4ubuntu2.2\nlibpam-modules:arm64\t1.5.3-5ubuntu5.7\nlibpam-modules-bin\t1.5.3-5ubuntu5.7\nlibpam-runtime\t1.5.3-5ubuntu5.7\nlibpam-systemd:arm64\t255.4-1ubuntu8.18\nlibpam0g:arm64\t1.5.3-5ubuntu5.7\nlibpango-1.0-0:arm64\t1.52.1+ds-1build1\nlibpangocairo-1.0-0:arm64\t1.52.1+ds-1build1\nlibpangoft2-1.0-0:arm64\t1.52.1+ds-1build1\nlibpcre2-8-0:arm64\t10.42-4ubuntu2.1\nlibpixman-1-0:arm64\t0.42.2-1build1\nlibpng16-16t64:arm64\t1.6.43-5ubuntu0.7\nlibpolkit-agent-1-0:arm64\t124-2ubuntu1.24.04.4\nlibpolkit-gobject-1-0:arm64\t124-2ubuntu1.24.04.4\nlibproc2-0:arm64\t2:4.0.4-4ubuntu3.3\nlibproxy1v5:arm64\t0.5.4-4build1\nlibpsl5t64:arm64\t0.21.2-1.1build1\nlibpulse0:arm64\t1:16.1+dfsg1-2ubuntu10.1\nlibpython3-stdlib:arm64\t3.12.3-0ubuntu2.1\nlibpython3.12-minimal:arm64\t3.12.3-1ubuntu0.17\nlibpython3.12-stdlib:arm64\t3.12.3-1ubuntu0.17\nlibraw1394-11:arm64\t2.1.2-2build3\nlibreadline8t64:arm64\t8.2-4build1\nlibrtmp1:arm64\t2.4+20151223.gitfa8646d.1-2build7\nlibsasl2-2:arm64\t2.1.28+dfsg1-5ubuntu3.1\nlibsasl2-modules-db:arm64\t2.1.28+dfsg1-5ubuntu3.1\nlibseccomp2:arm64\t2.5.5-1ubuntu3.1\nlibsecret-1-0:arm64\t0.21.4-1build3\nlibsecret-common\t0.21.4-1build3\nlibselinux1:arm64\t3.5-2ubuntu2.1\nlibsemanage-common\t3.5-1build5\nlibsemanage2:arm64\t3.5-1build5\nlibsensors-config\t1:3.6.0-9build1\nlibsensors5:arm64\t1:3.6.0-9build1\nlibsepol2:arm64\t3.5-2build1\nlibsframe1:arm64\t2.42-4ubuntu2.10\nlibsharpyuv0:arm64\t1.3.2-0.4build3\nlibshout3:arm64\t2.4.6-1build2\nlibslang2:arm64\t2.3.3-3build2\nlibsm6:arm64\t2:1.2.3-1build3\nlibsmartcols1:arm64\t2.39.3-9ubuntu6.6\nlibsndfile1:arm64\t1.2.2-1ubuntu5.24.04.1\nlibsoup-3.0-0:arm64\t3.4.4-5ubuntu0.9\nlibsoup-3.0-common\t3.4.4-5ubuntu0.9\nlibspeex1:arm64\t1.2.1-2ubuntu2.24.04.1\nlibsqlite3-0:arm64\t3.45.1-1ubuntu2.8\nlibss2:arm64\t1.47.0-2.4~exp1ubuntu4.1\nlibssh-4:arm64\t0.10.6-2ubuntu0.5\nlibssl3t64:arm64\t3.0.13-0ubuntu3.16\nlibstdc++6:arm64\t14.2.0-4ubuntu2~24.04.1\nlibsystemd-shared:arm64\t255.4-1ubuntu8.18\nlibsystemd0:arm64\t255.4-1ubuntu8.18\nlibtag1v5:arm64\t1.13.1-1build1\nlibtag1v5-vanilla:arm64\t1.13.1-1build1\nlibtasn1-6:arm64\t4.19.0-3ubuntu0.24.04.2\nlibtext-iconv-perl:arm64\t1.7-8build3\nlibthai-data\t0.1.29-2build1\nlibthai0:arm64\t0.1.29-2build1\nlibtheora0:arm64\t1.1.1+dfsg.1-16.1build3\nlibtiff6:arm64\t4.5.1+git230720-4ubuntu2.5\nlibtinfo6:arm64\t6.4+20240113-1ubuntu2.2\nlibtwolame0:arm64\t0.4.0-2build3\nlibudev1:arm64\t255.4-1ubuntu8.18\nlibunistring5:arm64\t1.1-2build1.1\nlibunwind8:arm64\t1.6.2-3build1.1\nlibuuid1:arm64\t2.39.3-9ubuntu6.6\nlibv4l-0t64:arm64\t1.26.1-4build3\nlibv4lconvert0t64:arm64\t1.26.1-4build3\nlibvisual-0.4-0:arm64\t0.4.2-2build1\nlibvorbis0a:arm64\t1.3.7-1build3\nlibvorbisenc2:arm64\t1.3.7-1build3\nlibvpx9:arm64\t1.14.0-1ubuntu2.3\nlibvulkan1:arm64\t1.3.275.0-1build1\nlibwavpack1:arm64\t5.6.0-1build1\nlibwayland-client0:arm64\t1.22.0-2.1build1\nlibwayland-cursor0:arm64\t1.22.0-2.1build1\nlibwayland-egl1:arm64\t1.22.0-2.1build1\nlibwayland-server0:arm64\t1.22.0-2.1build1\nlibwebkit2gtk-4.1-0:arm64\t2.52.6-0ubuntu0.24.04.1\nlibwebp7:arm64\t1.3.2-0.4build3\nlibwebpdemux2:arm64\t1.3.2-0.4build3\nlibwebpmux3:arm64\t1.3.2-0.4build3\nlibx11-6:arm64\t2:1.8.7-1ubuntu0.1\nlibx11-data\t2:1.8.7-1ubuntu0.1\nlibx11-xcb1:arm64\t2:1.8.7-1ubuntu0.1\nlibxau6:arm64\t1:1.0.9-1build6\nlibxaw7:arm64\t2:1.0.14-1build2\nlibxcb-dri3-0:arm64\t1.15-1ubuntu2\nlibxcb-glx0:arm64\t1.15-1ubuntu2\nlibxcb-present0:arm64\t1.15-1ubuntu2\nlibxcb-randr0:arm64\t1.15-1ubuntu2\nlibxcb-render0:arm64\t1.15-1ubuntu2\nlibxcb-shm0:arm64\t1.15-1ubuntu2\nlibxcb-sync1:arm64\t1.15-1ubuntu2\nlibxcb-xfixes0:arm64\t1.15-1ubuntu2\nlibxcb1:arm64\t1.15-1ubuntu2\nlibxcomposite1:arm64\t1:0.4.5-1build3\nlibxcursor1:arm64\t1:1.2.1-1build1\nlibxdamage1:arm64\t1:1.1.6-1build1\nlibxdmcp6:arm64\t1:1.1.3-0ubuntu6\nlibxext6:arm64\t2:1.3.4-1build2\nlibxfixes3:arm64\t1:6.0.0-2build1\nlibxfont2:arm64\t1:2.0.6-1+deb13u1build0.24.04.2\nlibxi6:arm64\t2:1.8.1-1build1\nlibxinerama1:arm64\t2:1.1.4-3build1\nlibxkbcommon0:arm64\t1.6.0-1build1\nlibxkbfile1:arm64\t1:1.1.0-1build4\nlibxml2:arm64\t2.9.14+dfsg-1.3ubuntu3.10\nlibxmu6:arm64\t2:1.1.3-3build2\nlibxmuu1:arm64\t2:1.1.3-3build2\nlibxpm4:arm64\t1:3.5.17-1ubuntu0.24.04.2\nlibxrandr2:arm64\t2:1.5.2-2build1\nlibxrender1:arm64\t1:0.9.10-1.1build1\nlibxshmfence1:arm64\t1.3-1build5\nlibxslt1.1:arm64\t1.1.39-0exp1ubuntu0.24.04.3\nlibxt6t64:arm64\t1:1.2.1-1.2build1\nlibxtst6:arm64\t2:1.2.3-1.1build1\nlibxxf86vm1:arm64\t1:1.1.4-1build4\nlibxxhash0:arm64\t0.8.2-2build1\nlibzstd1:arm64\t1.5.5+dfsg2-2build1.1\nlogin\t1:4.13+dfsg1-4ubuntu3.2\nlogsave\t1.47.0-2.4~exp1ubuntu4.1\nmawk\t1.3.4.20240123-1build1\nmedia-types\t10.1.0\nmesa-libgallium:arm64\t25.2.8-0ubuntu0.24.04.4\nmount\t2.39.3-9ubuntu6.6\nncurses-base\t6.4+20240113-1ubuntu2.2\nncurses-bin\t6.4+20240113-1ubuntu2.2\nnetbase\t6.4\nopenssl\t3.0.13-0ubuntu3.16\npasswd\t1:4.13+dfsg1-4ubuntu3.2\nperl-base\t5.38.2-3.2ubuntu0.6\npkexec\t124-2ubuntu1.24.04.4\npolkitd\t124-2ubuntu1.24.04.4\nprocps\t2:4.0.4-4ubuntu3.3\npython3\t3.12.3-0ubuntu2.1\npython3-minimal\t3.12.3-0ubuntu2.1\npython3.12\t3.12.3-1ubuntu0.17\npython3.12-minimal\t3.12.3-1ubuntu0.17\nreadline-common\t8.2-4build1\nsed\t4.9-2ubuntu0.24.04.1\nsensible-utils\t0.0.22\nsession-migration\t0.3.9build1\nsgml-base\t1.31\nshared-mime-info\t2.4-4\nsquashfs-tools\t1:4.6.1-1build1\nsystemd\t255.4-1ubuntu8.18\nsystemd-dev\t255.4-1ubuntu8.18\nsystemd-sysv\t255.4-1ubuntu8.18\nsysvinit-utils\t3.08-6ubuntu3\ntar\t1.35+dfsg-3ubuntu0.4\ntzdata\t2026e-0ubuntu0.24.04.1\nubuntu-keyring\t2023.11.28.1\nubuntu-mono\t24.04-0ubuntu1\nunminimize\t0.2.1\nutil-linux\t2.39.3-9ubuntu6.6\nx11-common\t1:7.7+23ubuntu3\nx11-xkb-utils\t7.7+8build2\nxauth\t1:1.1.2-1build1\nxdg-dbus-proxy\t0.1.5-1ubuntu0.2\nxkb-data\t2.41-2ubuntu1.1\nxml-core\t0.19\nxserver-common\t2:21.1.12-1ubuntu1.8\nxvfb\t2:21.1.12-1ubuntu1.8\nzlib1g:arm64\t1:1.3.dfsg-3.1ubuntu2.2\n",
+  "admission_sha256": "626a71067459bbb0654c2dee57a95d27ff9f58582b447d44309ad1ab5e1c2f5b",
+  "headless_polkit_rule_sha256": "d91e28fa465ddce09bcbd6fdb37cf7b4374a4a03f5e7380f61bdaf86879f132e",
+  "expected_payloads": [
+    {
+      "version": "1.0.0",
+      "format": "deb",
+      "app_sha256": "f98a80a8ee1f5dbb3f2977c60dbc561b48354b46f74089b704e1fa7e453c9d1e",
+      "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2"
+    },
+    {
+      "version": "1.0.0",
+      "format": "appimage",
+      "app_sha256": "880066482c4c3d4a9c6be7e72108fec52c516dcb875d21b852c9b438ca3bcab7",
+      "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2"
+    },
+    {
+      "version": "2.0.0",
+      "format": "deb",
+      "app_sha256": "71b47f610939b385687af0a3933c96098e0bcd1854b8e3e4ada29c2295079623",
+      "helper_sha256": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625"
+    },
+    {
+      "version": "2.0.0",
+      "format": "appimage",
+      "app_sha256": "b517a4a45111c69ef53a1895af01db151a940f3f566d514d66228e8c4d711956",
+      "helper_sha256": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625"
+    },
+    {
+      "version": "3.0.0",
+      "format": "deb",
+      "app_sha256": "9f44e1dafec652815f33a74db0a1558efe9b2e1659496449171ffdc9891f468e",
+      "helper_sha256": "d9956334b2711f021df2bb5d79a8407c7b720fa1a15045dbf19e7f579824a2fc"
+    },
+    {
+      "version": "3.0.0",
+      "format": "appimage",
+      "app_sha256": "656f617218361facfa1a310ffc8bf02e8a2d6cb1981d6b2be3c3a54e304c9b48",
+      "helper_sha256": "d9956334b2711f021df2bb5d79a8407c7b720fa1a15045dbf19e7f579824a2fc"
+    }
+  ]
+}

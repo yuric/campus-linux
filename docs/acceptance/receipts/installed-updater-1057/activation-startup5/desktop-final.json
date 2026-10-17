@@ -1,0 +1,902 @@
+{
+  "schema": 1,
+  "status": "not_certified",
+  "acceptance": "pending_coordinator_review",
+  "case": "deny",
+  "lease_reference": "1057-gated1329-startup5",
+  "authority_reference": "/root/campus1057-gated1329-startup5/evidence/deny-window.json",
+  "source_head_claim": "113a53e4eea44b6d80a8ee3edb55d186d11f3ba6",
+  "recorder": {
+    "path": "/opt/campus1057-gated1329-startup5/source/desktop.py",
+    "bytes": 59368,
+    "sha256": "166f323caeba384b80aa5a49591c08ab77209787f5d65f5f6360e76b4e136c11",
+    "uid": 0,
+    "mode": "0o444",
+    "mtime_ns": 1792200680346088168
+  },
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/loginctl",
+        "show-user",
+        "1000",
+        "--no-pager"
+      ],
+      "started_ns": 1792200964546651560,
+      "monotonic_started_ns": 461318855300,
+      "returncode": 0,
+      "finished_ns": 1792200964553735917,
+      "monotonic_finished_ns": 461325938736,
+      "stdout": "UID=1000\nGID=1001\nName=campusqa\nTimestamp=Fri 2026-10-16 18:29:42 MST\nTimestampMonotonic=77213349\nRuntimePath=/run/user/1000\nService=user@1000.service\nSlice=user-1000.slice\nDisplay=6\nState=active\nSessions=6\nIdleHint=no\nIdleSinceHint=0\nIdleSinceHintMonotonic=0\nLinger=no\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/loginctl",
+        "show-session",
+        "6",
+        "--no-pager"
+      ],
+      "started_ns": 1792200964556093229,
+      "monotonic_started_ns": 461328296927,
+      "returncode": 0,
+      "finished_ns": 1792200964563049028,
+      "monotonic_finished_ns": 461335251890,
+      "stdout": "Id=6\nUser=1000\nName=campusqa\nTimestamp=Fri 2026-10-16 18:29:42 MST\nTimestampMonotonic=77228951\nVTNr=2\nSeat=seat0\nTTY=tty2\nRemote=no\nService=gdm-password\nScope=session-6.scope\nLeader=2345\nAudit=6\nType=wayland\nClass=user\nActive=yes\nState=active\nIdleHint=no\nIdleSinceHint=0\nIdleSinceHintMonotonic=0\nLockedHint=no\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "started_ns": 1792200964572911497,
+      "monotonic_started_ns": 461345114693,
+      "returncode": 0,
+      "finished_ns": 1792200965587020544,
+      "monotonic_finished_ns": 462359223321,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"b56a92b93f3c0fb72f01b40e03528d0e966595bc59a23168f184045e23210f1e\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"install ok installed\\t1.0.0\\tarm64\"}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/campus-updater-1057",
+        "--update",
+        "http://127.0.0.1:17857/stable/linux.json"
+      ],
+      "started_ns": 1792200965602002054,
+      "monotonic_started_ns": 462374204204,
+      "process": {
+        "pid": 5156,
+        "ppid": 5151,
+        "name": "campus-updater-",
+        "uids": [
+          1000,
+          1000,
+          1000,
+          1000
+        ],
+        "starttime_ticks": 46237,
+        "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-d73f7c2e-6c78-4362-9e8b-66c03031d201.scope\n",
+        "session": null,
+        "session_api_result": -61,
+        "logind_owner_uid": 1000,
+        "owner_api_result": 0
+      },
+      "child_process_observations": [
+        {
+          "pid": 5168,
+          "ppid": 5156,
+          "name": "dpkg-query",
+          "uids": [
+            1000,
+            1000,
+            1000,
+            1000
+          ],
+          "starttime_ticks": 46256,
+          "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-d73f7c2e-6c78-4362-9e8b-66c03031d201.scope\n",
+          "session": null,
+          "session_api_result": -61,
+          "logind_owner_uid": 1000,
+          "owner_api_result": 0,
+          "executable": "/usr/bin/dpkg-query",
+          "observed_monotonic_ns": 462587714233
+        },
+        {
+          "pid": 5218,
+          "ppid": 5156,
+          "name": "pkexec",
+          "uids": [
+            1000,
+            0,
+            0,
+            0
+          ],
+          "starttime_ticks": 46295,
+          "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-d73f7c2e-6c78-4362-9e8b-66c03031d201.scope\n",
+          "session": null,
+          "session_api_result": -61,
+          "logind_owner_uid": 1000,
+          "owner_api_result": 0,
+          "executable_unavailable": "PermissionError",
+          "observed_monotonic_ns": 462958456149
+        }
+      ],
+      "child_pids_sampled": [
+        5168,
+        5218
+      ],
+      "returncode": 1,
+      "finished_ns": 1792200966269285265,
+      "monotonic_finished_ns": 463041489045,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"b56a92b93f3c0fb72f01b40e03528d0e966595bc59a23168f184045e23210f1e\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"install ok installed\\t1.0.0\\tarm64\"}\n{\"event\":\"selected\",\"exact_target\":\"linux-aarch64-deb\",\"url\":\"http://127.0.0.1:17857/packages/campus-updater-1057_2.0.0_arm64.deb\",\"version\":\"2.0.0\"}\n{\"bytes\":4706052,\"event\":\"verified_download\",\"sha256\":\"3563aa9bb97785e0b8b0c4a57d7fd502fd0ef087bafa894c804e33c842cfd872\",\"version\":\"2.0.0\"}\n{\"event\":\"polkit_adapter_result\",\"exit_status\":127,\"stderr\":\"Error executing command as another user: Not authorized\\n\\nThis incident has been reported.\\n\",\"stdout\":\"\",\"success\":false}\n{\"app_unchanged\":true,\"event\":\"refusal_bytes\",\"helper_unchanged\":true}\n{\"error\":\"polkit adapter did not install the fixture; inspect its receipt\",\"event\":\"refused\"}\n",
+      "stderr": "",
+      "pkexec_pid_observation": {
+        "executable_observed_pids": [],
+        "name_only_pids": [
+          5218
+        ],
+        "status": "not_verified_coordinator_review_required",
+        "limitation": "unprivileged /proc pkexec executable lookup may be denied after setuid; name-only is not executable verification; bounded sampling may miss quick refusals"
+      },
+      "root_restoration": {
+        "boot_id": "5894ac063b3a47bca91331011af4743d",
+        "lease": "1057-gated1329-startup5",
+        "nonce": "10d81bceb64381d009952f758df93828",
+        "restored_ns": 463183756779,
+        "rule_absent": true,
+        "schema": 1,
+        "status": "app_completed_pending_coordinator_review"
+      },
+      "reaped_monotonic_ns": 463192400069
+    },
+    {
+      "argv": [
+        "/usr/bin/campus-updater-1057",
+        "--diagnose"
+      ],
+      "started_ns": 1792200966422944118,
+      "monotonic_started_ns": 463195146895,
+      "returncode": 0,
+      "finished_ns": 1792200966497673515,
+      "monotonic_finished_ns": 463269876502,
+      "stdout": "{\"event\":\"installed_identity\",\"format\":\"deb\",\"architecture\":\"aarch64\",\"exact_target\":\"linux-aarch64-deb\",\"version\":\"1.0.0\",\"behavior\":\"v1-baseline\",\"executable\":\"/usr/bin/campus-updater-1057\",\"app_sha256\":\"b56a92b93f3c0fb72f01b40e03528d0e966595bc59a23168f184045e23210f1e\",\"outer_artifact\":null,\"outer_sha256\":null,\"helper_path\":\"/usr/lib/campus-updater-1057/inert-helper.txt\",\"helper_sha256\":\"4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2\",\"installation_evidence\":\"install ok installed\\t1.0.0\\tarm64\"}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/loginctl",
+        "show-session",
+        "6",
+        "--no-pager"
+      ],
+      "started_ns": 1792200966514627658,
+      "monotonic_started_ns": 463286830519,
+      "returncode": 0,
+      "finished_ns": 1792200966523687422,
+      "monotonic_finished_ns": 463295890032,
+      "stdout": "Id=6\nUser=1000\nName=campusqa\nTimestamp=Fri 2026-10-16 18:29:42 MST\nTimestampMonotonic=77228951\nVTNr=2\nSeat=seat0\nTTY=tty2\nRemote=no\nService=gdm-password\nScope=session-6.scope\nLeader=2345\nAudit=6\nType=wayland\nClass=user\nActive=yes\nState=active\nIdleHint=no\nIdleSinceHint=0\nIdleSinceHintMonotonic=0\nLockedHint=no\n",
+      "stderr": ""
+    }
+  ],
+  "planned_scenario": {
+    "observer": "Codex Linux updater runtime operator actual normal GDM observation",
+    "description": "One root-correlated normal GUI null-session denial; no administrator input"
+  },
+  "observer_statement": {
+    "observer": "Codex Linux runtime operator",
+    "observation": "Driver waited then shell returned. Captured frames show no auth prompt. No credentials entered during attempt.",
+    "recorded_unix_ns": 1792201135534225288,
+    "invocation_finished_ns": 1792200966269285265,
+    "review": "actual operator statement; independent coordinator review required"
+  },
+  "limits": {
+    "capture_bytes_per_command": 131072,
+    "update_timeout_seconds": 20
+  },
+  "gui_evidence": "not automatically certified; coordinator must inspect actual compositor capture",
+  "boot_id": "5894ac063b3a47bca91331011af4743d",
+  "root_preflight": {
+    "file": {
+      "path": "/home/campusqa/campus1057-gated1329-startup5/evidence/root-preflight.json",
+      "bytes": 11076,
+      "sha256": "f263780ac3b290f02e39bbb26f23e40852524fa58ee56361cf2dda43ae9372c4",
+      "uid": 0,
+      "mode": "0o444",
+      "mtime_ns": 1792200725410136004
+    },
+    "observation": {
+      "all_command_statuses_zero": true,
+      "boot_id": "5894ac06-3b3a-47bc-a913-31011af4743d",
+      "commands": [
+        {
+          "argv": [
+            "/usr/bin/loginctl",
+            "list-sessions",
+            "--no-legend",
+            "--no-pager"
+          ],
+          "returncode": 0,
+          "stderr": "",
+          "stdout": "4  501 yuri     -     -    active no -\n6 1000 campusqa seat0 tty2 active no -\n"
+        },
+        {
+          "argv": [
+            "/usr/bin/loginctl",
+            "show-session",
+            "4",
+            "--no-pager"
+          ],
+          "returncode": 0,
+          "stderr": "",
+          "stdout": "Id=4\nUser=501\nName=yuri\nTimestamp=Fri 2026-10-16 18:28:36 MST\nTimestampMonotonic=10424266\nVTNr=0\nRemote=yes\nRemoteHost=192.168.5.2\nService=sshd\nScope=session-4.scope\nLeader=1332\nAudit=4\nType=tty\nClass=user\nActive=yes\nState=active\nIdleHint=no\nIdleSinceHint=0\nIdleSinceHintMonotonic=0\nLockedHint=no\n"
+        },
+        {
+          "argv": [
+            "/usr/bin/loginctl",
+            "show-session",
+            "6",
+            "--no-pager"
+          ],
+          "returncode": 0,
+          "stderr": "",
+          "stdout": "Id=6\nUser=1000\nName=campusqa\nTimestamp=Fri 2026-10-16 18:29:42 MST\nTimestampMonotonic=77228951\nVTNr=2\nSeat=seat0\nTTY=tty2\nRemote=no\nService=gdm-password\nScope=session-6.scope\nLeader=2345\nAudit=6\nType=wayland\nClass=user\nActive=yes\nState=active\nIdleHint=no\nIdleSinceHint=0\nIdleSinceHintMonotonic=0\nLockedHint=no\n"
+        },
+        {
+          "argv": [
+            "/usr/bin/loginctl",
+            "show-user",
+            "1000",
+            "--no-pager"
+          ],
+          "returncode": 0,
+          "stderr": "",
+          "stdout": "UID=1000\nGID=1001\nName=campusqa\nTimestamp=Fri 2026-10-16 18:29:42 MST\nTimestampMonotonic=77213349\nRuntimePath=/run/user/1000\nService=user@1000.service\nSlice=user-1000.slice\nDisplay=6\nState=active\nSessions=6\nIdleHint=no\nIdleSinceHint=0\nIdleSinceHintMonotonic=0\nLinger=no\n"
+        },
+        {
+          "argv": [
+            "/usr/bin/systemctl",
+            "show",
+            "polkit.service",
+            "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths,MainPID,ExecMainStartTimestampMonotonic,User,Group"
+          ],
+          "returncode": 0,
+          "stderr": "",
+          "stdout": "MainPID=716\nExecMainStartTimestampMonotonic=5926470\nUser=polkitd\nGroup=\nId=polkit.service\nLoadState=loaded\nActiveState=active\nSubState=running\nFragmentPath=/usr/lib/systemd/system/polkit.service\nDropInPaths=\nUnitFileState=static\n"
+        },
+        {
+          "argv": [
+            "/usr/bin/systemctl",
+            "show",
+            "gdm3.service",
+            "--property=Id,LoadState,ActiveState,SubState,FragmentPath,DropInPaths,MainPID"
+          ],
+          "returncode": 0,
+          "stderr": "",
+          "stdout": "MainPID=967\nId=gdm.service\nLoadState=loaded\nActiveState=active\nSubState=running\nFragmentPath=/usr/lib/systemd/system/gdm.service\nDropInPaths=\n"
+        },
+        {
+          "argv": [
+            "/usr/bin/busctl",
+            "--system",
+            "--timeout=1",
+            "status",
+            "org.freedesktop.PolicyKit1"
+          ],
+          "returncode": 0,
+          "stderr": "",
+          "stdout": "PID=716\nPPID=1\nTTY=n/a\nUID=989\nEUID=989\nSUID=989\nFSUID=989\nGID=989\nEGID=989\nSGID=989\nFSGID=989\nSupplementaryGIDs=989\nComm=polkitd\nExe=/usr/lib/polkit-1/polkitd\nCommandLine=/usr/lib/polkit-1/polkitd --no-debug\nLabel=unconfined\nCGroup=/system.slice/polkit.service\nUnit=polkit.service\nSlice=system.slice\nUserUnit=n/a\nUserSlice=n/a\nSession=n/a\nAuditLoginUID=n/a\nAuditSessionID=n/a\nUniqueName=:1.5\nEffectiveCapabilities=\nPermittedCapabilities=\nInheritableCapabilities=\nBoundingCapabilities=cap_setgid cap_setuid\n"
+        },
+        {
+          "argv": [
+            "/usr/bin/uname",
+            "-a"
+          ],
+          "returncode": 0,
+          "stderr": "",
+          "stdout": "Linux lima-campus-linux-d5-noble-arm64 6.8.0-147-generic #147-Ubuntu SMP PREEMPT_DYNAMIC Thu Sep 24 11:39:52 UTC 2026 aarch64 aarch64 aarch64 GNU/Linux\n"
+        }
+      ],
+      "complete": true,
+      "daemon": {
+        "cgroup": "0::/system.slice/polkit.service\n",
+        "exe": "/usr/lib/polkit-1/polkitd",
+        "pid": 716,
+        "stat": "716 (polkitd) S 1 716 716 0 -1 4194560 1727 0 10 0 9 11 0 0 20 0 4 0 589 398389248 2548 18446744073709551615 221791159320576 221791159429736 281474278221072 0 0 0 0 4096 2 0 0 0 17 3 0 0 0 0 0 221791159513208 221791159517440 221791626960896 281474278223472 281474278223509 281474278223509 281474278223838 0\n",
+        "status": "Name:\tpolkitd\nUmask:\t0077\nState:\tS (sleeping)\nTgid:\t716\nNgid:\t0\nPid:\t716\nPPid:\t1\nTracerPid:\t0\nUid:\t989\t989\t989\t989\nGid:\t989\t989\t989\t989\nFDSize:\t128\nGroups:\t989 \nNStgid:\t716\nNSpid:\t716\nNSpgid:\t716\nNSsid:\t716\nKthread:\t0\nVmPeak:\t  389052 kB\nVmSize:\t  389052 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t   10596 kB\nVmRSS:\t   10596 kB\nRssAnon:\t    3240 kB\nRssFile:\t    7356 kB\nRssShmem:\t       0 kB\nVmData:\t   44628 kB\nVmStk:\t     132 kB\nVmExe:\t     108 kB\nVmLib:\t   11344 kB\nVmPTE:\t     120 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffff\nThreads:\t4\nSigQ:\t0/23338\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000000001000\nSigCgt:\t0000000100000002\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t00000000000000c0\nCapAmb:\t0000000000000000\nNoNewPrivs:\t1\nSeccomp:\t2\nSeccomp_filters:\t22\nSpeculation_Store_Bypass:\tvulnerable\nSpeculationIndirectBranch:\tunknown\nCpus_allowed:\tf\nCpus_allowed_list:\t0-3\nMems_allowed:\t00000000,00000001\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t759\nnonvoluntary_ctxt_switches:\t353\n"
+      },
+      "daemon_nss": {
+        "gid": 989,
+        "name": "polkitd",
+        "uid": 989
+      },
+      "daemon_same_uid_processes": [
+        {
+          "cgroup": "0::/system.slice/polkit.service\n",
+          "exe": "/usr/lib/polkit-1/polkitd",
+          "pid": 716,
+          "stat": "716 (polkitd) S 1 716 716 0 -1 4194560 1727 0 10 0 9 11 0 0 20 0 4 0 589 398389248 2548 18446744073709551615 221791159320576 221791159429736 281474278221072 0 0 0 0 4096 2 0 0 0 17 3 0 0 0 0 0 221791159513208 221791159517440 221791626960896 281474278223472 281474278223509 281474278223509 281474278223838 0\n",
+          "status": "Name:\tpolkitd\nUmask:\t0077\nState:\tS (sleeping)\nTgid:\t716\nNgid:\t0\nPid:\t716\nPPid:\t1\nTracerPid:\t0\nUid:\t989\t989\t989\t989\nGid:\t989\t989\t989\t989\nFDSize:\t128\nGroups:\t989 \nNStgid:\t716\nNSpid:\t716\nNSpgid:\t716\nNSsid:\t716\nKthread:\t0\nVmPeak:\t  389052 kB\nVmSize:\t  389052 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t   10596 kB\nVmRSS:\t   10596 kB\nRssAnon:\t    3240 kB\nRssFile:\t    7356 kB\nRssShmem:\t       0 kB\nVmData:\t   44628 kB\nVmStk:\t     132 kB\nVmExe:\t     108 kB\nVmLib:\t   11344 kB\nVmPTE:\t     120 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffff\nThreads:\t4\nSigQ:\t0/23338\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000000001000\nSigCgt:\t0000000100000002\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t00000000000000c0\nCapAmb:\t0000000000000000\nNoNewPrivs:\t1\nSeccomp:\t2\nSeccomp_filters:\t22\nSpeculation_Store_Bypass:\tvulnerable\nSpeculationIndirectBranch:\tunknown\nCpus_allowed:\tf\nCpus_allowed_list:\t0-3\nMems_allowed:\t00000000,00000001\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t759\nnonvoluntary_ctxt_switches:\t353\n"
+        }
+      ],
+      "graphical_gid": 1001,
+      "graphical_uid": 1000,
+      "hosted_allow_rule": {
+        "exists": false,
+        "path": "/etc/polkit-1/rules.d/49-campus-updater-1057-headless.rules"
+      },
+      "keyring_lock_observation": "not_queried_no_selected_active_GDM_session",
+      "kind": "campus1057-root-preflight",
+      "lease_reference": "1057-gated1329-startup5",
+      "observed_monotonic_ns": 210932184837,
+      "observed_unix_ns": 1792200715745067558,
+      "phase": "preauthority",
+      "rules": [
+        {
+          "allocated": 4096,
+          "bytes": 104,
+          "device": 64769,
+          "exists": true,
+          "gid": 0,
+          "inode": 39049,
+          "mode": "0o644",
+          "nlink": 1,
+          "path": "/usr/share/polkit-1/rules.d/49-ubuntu-admin.rules",
+          "sha256": "543995005caa05d096b9781b27a48e2369ef61e39a8a52234d2d271b6d0a9c1e",
+          "type": "file",
+          "uid": 0
+        },
+        {
+          "allocated": 4096,
+          "bytes": 325,
+          "device": 64769,
+          "exists": true,
+          "gid": 0,
+          "inode": 39050,
+          "mode": "0o644",
+          "nlink": 1,
+          "path": "/usr/share/polkit-1/rules.d/50-default.rules",
+          "sha256": "29f073ed9a8a6996b62f718e2bec962d5c84d311d23bb874830b4f9887eeabbf",
+          "type": "file",
+          "uid": 0
+        },
+        {
+          "allocated": 4096,
+          "bytes": 556,
+          "device": 64769,
+          "exists": true,
+          "gid": 0,
+          "inode": 90881,
+          "mode": "0o644",
+          "nlink": 1,
+          "path": "/usr/share/polkit-1/rules.d/gnome-control-center.rules",
+          "sha256": "e8006001eae0c8beefc6aeeed185d28a260d78e6beeceb3560da4707cbca778d",
+          "type": "file",
+          "uid": 0
+        },
+        {
+          "allocated": 4096,
+          "bytes": 287,
+          "device": 64769,
+          "exists": true,
+          "gid": 0,
+          "inode": 90043,
+          "mode": "0o644",
+          "nlink": 1,
+          "path": "/usr/share/polkit-1/rules.d/org.freedesktop.GeoClue2.rules",
+          "sha256": "392e205d6b993b8e629c35ddd2307ad8460bd41ff893801028c2e530fe816567",
+          "type": "file",
+          "uid": 0
+        },
+        {
+          "allocated": 4096,
+          "bytes": 368,
+          "device": 64769,
+          "exists": true,
+          "gid": 0,
+          "inode": 39047,
+          "mode": "0o644",
+          "nlink": 1,
+          "path": "/usr/share/polkit-1/rules.d/org.freedesktop.bolt.rules",
+          "sha256": "16da883b6ec384e0018b7e955efef1726e6470c2b4f72bfc23f9aadbec0709ca",
+          "type": "file",
+          "uid": 0
+        },
+        {
+          "allocated": 4096,
+          "bytes": 251,
+          "device": 64769,
+          "exists": true,
+          "gid": 0,
+          "inode": 39048,
+          "mode": "0o644",
+          "nlink": 1,
+          "path": "/usr/share/polkit-1/rules.d/org.freedesktop.fwupd.rules",
+          "sha256": "f78e67e4e002dfd135d5bd8cb8d7b66c174d795316a1cd7bf0f3e021b85ee3a0",
+          "type": "file",
+          "uid": 0
+        },
+        {
+          "allocated": 4096,
+          "bytes": 334,
+          "device": 64769,
+          "exists": true,
+          "gid": 0,
+          "inode": 39051,
+          "mode": "0o644",
+          "nlink": 1,
+          "path": "/usr/share/polkit-1/rules.d/org.freedesktop.packagekit.rules",
+          "sha256": "06c328a41876929d46dfc8c33cfd963ec5b26f0bbe0d0345ea407ba10b6bc9e5",
+          "type": "file",
+          "uid": 0
+        },
+        {
+          "allocated": 4096,
+          "bytes": 527,
+          "device": 64769,
+          "exists": true,
+          "gid": 0,
+          "inode": 93103,
+          "mode": "0o644",
+          "nlink": 1,
+          "path": "/usr/share/polkit-1/rules.d/systemd-networkd.rules",
+          "sha256": "f199e386a9297858331b00df07ed0b0ee5fcf4bea67f6c0bccc8a92b7e310bbd",
+          "type": "file",
+          "uid": 0
+        }
+      ],
+      "rules_directories": [
+        {
+          "allocated": 4096,
+          "bytes": 4096,
+          "device": 64769,
+          "entries": [],
+          "exists": true,
+          "gid": 989,
+          "inode": 1562,
+          "mode": "0o750",
+          "nlink": 2,
+          "path": "/etc/polkit-1/rules.d",
+          "type": "directory",
+          "uid": 0
+        },
+        {
+          "allocated": 4096,
+          "bytes": 4096,
+          "device": 64769,
+          "entries": [
+            "49-ubuntu-admin.rules",
+            "50-default.rules",
+            "gnome-control-center.rules",
+            "org.freedesktop.GeoClue2.rules",
+            "org.freedesktop.bolt.rules",
+            "org.freedesktop.fwupd.rules",
+            "org.freedesktop.packagekit.rules",
+            "systemd-networkd.rules"
+          ],
+          "exists": true,
+          "gid": 0,
+          "inode": 39045,
+          "mode": "0o755",
+          "nlink": 2,
+          "path": "/usr/share/polkit-1/rules.d",
+          "type": "directory",
+          "uid": 0
+        }
+      ],
+      "schema": 1,
+      "selected_session": {
+        "Active": "yes",
+        "Audit": "6",
+        "Class": "user",
+        "Id": "6",
+        "IdleHint": "no",
+        "IdleSinceHint": "0",
+        "IdleSinceHintMonotonic": "0",
+        "Leader": "2345",
+        "LockedHint": "no",
+        "Name": "campusqa",
+        "Remote": "no",
+        "Scope": "session-6.scope",
+        "Seat": "seat0",
+        "Service": "gdm-password",
+        "State": "active",
+        "TTY": "tty2",
+        "Timestamp": "Fri 2026-10-16 18:29:42 MST",
+        "TimestampMonotonic": "77228951",
+        "Type": "wayland",
+        "User": "1000",
+        "VTNr": "2"
+      },
+      "sessions": [
+        {
+          "Active": "yes",
+          "Audit": "4",
+          "Class": "user",
+          "Id": "4",
+          "IdleHint": "no",
+          "IdleSinceHint": "0",
+          "IdleSinceHintMonotonic": "0",
+          "Leader": "1332",
+          "LockedHint": "no",
+          "Name": "yuri",
+          "Remote": "yes",
+          "RemoteHost": "192.168.5.2",
+          "Scope": "session-4.scope",
+          "Service": "sshd",
+          "State": "active",
+          "Timestamp": "Fri 2026-10-16 18:28:36 MST",
+          "TimestampMonotonic": "10424266",
+          "Type": "tty",
+          "User": "501",
+          "VTNr": "0"
+        },
+        {
+          "Active": "yes",
+          "Audit": "6",
+          "Class": "user",
+          "Id": "6",
+          "IdleHint": "no",
+          "IdleSinceHint": "0",
+          "IdleSinceHintMonotonic": "0",
+          "Leader": "2345",
+          "LockedHint": "no",
+          "Name": "campusqa",
+          "Remote": "no",
+          "Scope": "session-6.scope",
+          "Seat": "seat0",
+          "Service": "gdm-password",
+          "State": "active",
+          "TTY": "tty2",
+          "Timestamp": "Fri 2026-10-16 18:29:42 MST",
+          "TimestampMonotonic": "77228951",
+          "Type": "wayland",
+          "User": "1000",
+          "VTNr": "2"
+        }
+      ]
+    },
+    "provenance": "coordinator-supplied digest binds exported root observation; independent review required",
+    "freshness": "refresh after fixture provisioning and before actual desktop cases"
+  },
+  "hosted_rule_observation": {
+    "path": "/etc/polkit-1/rules.d/49-campus-updater-1057-headless.rules",
+    "exists": null,
+    "unreadable": "PermissionError",
+    "absence_source": "root_preflight.observation.hosted_allow_rule"
+  },
+  "session_binding": "coordinator_review_required",
+  "session": {
+    "Id": "6",
+    "User": "1000",
+    "Name": "campusqa",
+    "Timestamp": "Fri 2026-10-16 18:29:42 MST",
+    "TimestampMonotonic": "77228951",
+    "VTNr": "2",
+    "Seat": "seat0",
+    "TTY": "tty2",
+    "Remote": "no",
+    "Service": "gdm-password",
+    "Scope": "session-6.scope",
+    "Leader": "2345",
+    "Audit": "6",
+    "Type": "wayland",
+    "Class": "user",
+    "Active": "yes",
+    "State": "active",
+    "IdleHint": "no",
+    "IdleSinceHint": "0",
+    "IdleSinceHintMonotonic": "0",
+    "LockedHint": "no"
+  },
+  "user": {
+    "UID": "1000",
+    "GID": "1001",
+    "Name": "campusqa",
+    "Timestamp": "Fri 2026-10-16 18:29:42 MST",
+    "TimestampMonotonic": "77213349",
+    "RuntimePath": "/run/user/1000",
+    "Service": "user@1000.service",
+    "Slice": "user-1000.slice",
+    "Display": "6",
+    "State": "active",
+    "Sessions": "6",
+    "IdleHint": "no",
+    "IdleSinceHint": "0",
+    "IdleSinceHintMonotonic": "0",
+    "Linger": "no"
+  },
+  "recorder_process": {
+    "pid": 5151,
+    "ppid": 5116,
+    "name": "python3",
+    "uids": [
+      1000,
+      1000,
+      1000,
+      1000
+    ],
+    "starttime_ticks": 46127,
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-d73f7c2e-6c78-4362-9e8b-66c03031d201.scope\n",
+    "session": null,
+    "session_api_result": -61,
+    "logind_owner_uid": 1000,
+    "owner_api_result": 0
+  },
+  "session_leader": {
+    "pid": 2345,
+    "ppid": 967,
+    "name": "gdm-session-wor",
+    "uids": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "starttime_ticks": 6067,
+    "cgroup": "0::/user.slice/user-1000.slice/session-6.scope\n",
+    "session": "6",
+    "session_api_result": 0,
+    "logind_owner_uid": 1000,
+    "owner_api_result": 0
+  },
+  "environment_observations": {
+    "XDG_SESSION_ID": null,
+    "XDG_RUNTIME_DIR": "/run/user/1000",
+    "DISPLAY": ":0",
+    "WAYLAND_DISPLAY": "wayland-0",
+    "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/1000/bus"
+  },
+  "sockets": {
+    "user_bus": {
+      "path": "/run/user/1000/bus",
+      "uid": 1000
+    },
+    "compositor": {
+      "path": "/run/user/1000/wayland-0",
+      "uid": 1000
+    }
+  },
+  "authority_file_observations": {
+    "fixture_policy": {
+      "path": "/usr/share/polkit-1/actions/dev.projectcampus.updater1057.policy",
+      "bytes": 793,
+      "sha256": "f1269a55f3db681675c6aea8941423f9b355a1823ea3291799c347efaf0090b8",
+      "uid": 0,
+      "mode": "0o644",
+      "mtime_ns": 1792163468057091973
+    },
+    "rules": [
+      {
+        "path": "/etc/polkit-1/rules.d",
+        "unreadable": "[Errno 13] Permission denied: '/etc/polkit-1/rules.d'"
+      },
+      {
+        "path": "/usr/share/polkit-1/rules.d/49-ubuntu-admin.rules",
+        "bytes": 104,
+        "sha256": "543995005caa05d096b9781b27a48e2369ef61e39a8a52234d2d271b6d0a9c1e",
+        "uid": 0,
+        "mode": "0o644",
+        "mtime_ns": 1789149150000000000
+      },
+      {
+        "path": "/usr/share/polkit-1/rules.d/50-default.rules",
+        "bytes": 325,
+        "sha256": "29f073ed9a8a6996b62f718e2bec962d5c84d311d23bb874830b4f9887eeabbf",
+        "uid": 0,
+        "mode": "0o644",
+        "mtime_ns": 1789149150000000000
+      },
+      {
+        "path": "/usr/share/polkit-1/rules.d/gnome-control-center.rules",
+        "bytes": 556,
+        "sha256": "e8006001eae0c8beefc6aeeed185d28a260d78e6beeceb3560da4707cbca778d",
+        "uid": 0,
+        "mode": "0o644",
+        "mtime_ns": 1786667554000000000
+      },
+      {
+        "path": "/usr/share/polkit-1/rules.d/org.freedesktop.GeoClue2.rules",
+        "bytes": 287,
+        "sha256": "392e205d6b993b8e629c35ddd2307ad8460bd41ff893801028c2e530fe816567",
+        "uid": 0,
+        "mode": "0o644",
+        "mtime_ns": 1712587166000000000
+      },
+      {
+        "path": "/usr/share/polkit-1/rules.d/org.freedesktop.bolt.rules",
+        "bytes": 368,
+        "sha256": "16da883b6ec384e0018b7e955efef1726e6470c2b4f72bfc23f9aadbec0709ca",
+        "uid": 0,
+        "mode": "0o644",
+        "mtime_ns": 1711995207000000000
+      },
+      {
+        "path": "/usr/share/polkit-1/rules.d/org.freedesktop.fwupd.rules",
+        "bytes": 251,
+        "sha256": "f78e67e4e002dfd135d5bd8cb8d7b66c174d795316a1cd7bf0f3e021b85ee3a0",
+        "uid": 0,
+        "mode": "0o644",
+        "mtime_ns": 1781248380000000000
+      },
+      {
+        "path": "/usr/share/polkit-1/rules.d/org.freedesktop.packagekit.rules",
+        "bytes": 334,
+        "sha256": "06c328a41876929d46dfc8c33cfd963ec5b26f0bbe0d0345ea407ba10b6bc9e5",
+        "uid": 0,
+        "mode": "0o644",
+        "mtime_ns": 1776687657000000000
+      },
+      {
+        "path": "/usr/share/polkit-1/rules.d/systemd-networkd.rules",
+        "bytes": 527,
+        "sha256": "f199e386a9297858331b00df07ed0b0ee5fcf4bea67f6c0bccc8a92b7e310bbd",
+        "uid": 0,
+        "mode": "0o644",
+        "mtime_ns": 1709054764000000000
+      }
+    ],
+    "interpretation": "hash inventory only; coordinator must inspect effective authority"
+  },
+  "expected_artifact_evidence": {
+    "index": {
+      "path": "/home/campusqa/campus1057-10643-5176b9d7/receipts/serving-index.json",
+      "bytes": 2443,
+      "sha256": "c41d30c6839eae2a542766d0dd3aea1b81a3925452631ed50b77878bcd34f546",
+      "uid": 1000,
+      "mode": "0o600",
+      "mtime_ns": 1792163448298947906
+    },
+    "inventory": {
+      "path": "/home/campusqa/campus1057-10643-5176b9d7/receipts/payload-inventory.json",
+      "bytes": 360171,
+      "sha256": "984a6a34f0a61b0b3caa690c9beaf086941a7c1918ce038afadb200f7e00011c",
+      "uid": 1000,
+      "mode": "0o600",
+      "mtime_ns": 1792163448297947764
+    },
+    "versions": {
+      "1.0.0": {
+        "identity": {
+          "app_sha256": "b56a92b93f3c0fb72f01b40e03528d0e966595bc59a23168f184045e23210f1e",
+          "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+          "version": "1.0.0",
+          "behavior": "v1-baseline",
+          "format": "deb",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-deb"
+        },
+        "package": {
+          "filename": "campus-updater-1057_1.0.0_arm64.deb",
+          "bytes": 4705600,
+          "sha256": "77fd0a12b6c9c092c2125d0ef34684431c81e4482042265f7b06804217ac10d8",
+          "target": "linux-aarch64-deb",
+          "version": "1.0.0"
+        }
+      },
+      "2.0.0": {
+        "identity": {
+          "app_sha256": "9d24b61c21fb75078c6926d104757c8ad35ec9e897c7b56b3a4458ed9ec79702",
+          "helper_sha256": "785b75556b7038ef50f2f4c781fd54a3a6f84753f1fc21c669028f8a053ad625",
+          "version": "2.0.0",
+          "behavior": "v2-changed",
+          "format": "deb",
+          "architecture": "aarch64",
+          "exact_target": "linux-aarch64-deb"
+        },
+        "package": {
+          "filename": "campus-updater-1057_2.0.0_arm64.deb",
+          "bytes": 4706052,
+          "sha256": "3563aa9bb97785e0b8b0c4a57d7fd502fd0ef087bafa894c804e33c842cfd872",
+          "target": "linux-aarch64-deb",
+          "version": "2.0.0"
+        }
+      }
+    },
+    "review": "coordinator must bind these public receipts to the exact hosted run"
+  },
+  "before": {
+    "event": "installed_identity",
+    "format": "deb",
+    "architecture": "aarch64",
+    "exact_target": "linux-aarch64-deb",
+    "version": "1.0.0",
+    "behavior": "v1-baseline",
+    "executable": "/usr/bin/campus-updater-1057",
+    "app_sha256": "b56a92b93f3c0fb72f01b40e03528d0e966595bc59a23168f184045e23210f1e",
+    "outer_artifact": null,
+    "outer_sha256": null,
+    "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+    "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+    "installation_evidence": "install ok installed\t1.0.0\tarm64"
+  },
+  "gated_mode": "root-correlated-user-manager",
+  "boot_id_after": "5894ac063b3a47bca91331011af4743d",
+  "after": {
+    "event": "installed_identity",
+    "format": "deb",
+    "architecture": "aarch64",
+    "exact_target": "linux-aarch64-deb",
+    "version": "1.0.0",
+    "behavior": "v1-baseline",
+    "executable": "/usr/bin/campus-updater-1057",
+    "app_sha256": "b56a92b93f3c0fb72f01b40e03528d0e966595bc59a23168f184045e23210f1e",
+    "outer_artifact": null,
+    "outer_sha256": null,
+    "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+    "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+    "installation_evidence": "install ok installed\t1.0.0\tarm64"
+  },
+  "updater_events": [
+    {
+      "event": "installed_identity",
+      "format": "deb",
+      "architecture": "aarch64",
+      "exact_target": "linux-aarch64-deb",
+      "version": "1.0.0",
+      "behavior": "v1-baseline",
+      "executable": "/usr/bin/campus-updater-1057",
+      "app_sha256": "b56a92b93f3c0fb72f01b40e03528d0e966595bc59a23168f184045e23210f1e",
+      "outer_artifact": null,
+      "outer_sha256": null,
+      "helper_path": "/usr/lib/campus-updater-1057/inert-helper.txt",
+      "helper_sha256": "4c9b2c2251ef3a606e05cd706289fd13e3ff8bcc509cacbb95cfd315b40b26b2",
+      "installation_evidence": "install ok installed\t1.0.0\tarm64"
+    },
+    {
+      "event": "selected",
+      "exact_target": "linux-aarch64-deb",
+      "url": "http://127.0.0.1:17857/packages/campus-updater-1057_2.0.0_arm64.deb",
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 4706052,
+      "event": "verified_download",
+      "sha256": "3563aa9bb97785e0b8b0c4a57d7fd502fd0ef087bafa894c804e33c842cfd872",
+      "version": "2.0.0"
+    },
+    {
+      "event": "polkit_adapter_result",
+      "exit_status": 127,
+      "stderr": "Error executing command as another user: Not authorized\n\nThis incident has been reported.\n",
+      "stdout": "",
+      "success": false
+    },
+    {
+      "app_unchanged": true,
+      "event": "refusal_bytes",
+      "helper_unchanged": true
+    },
+    {
+      "error": "polkit adapter did not install the fixture; inspect its receipt",
+      "event": "refused"
+    }
+  ],
+  "session_after": {
+    "Id": "6",
+    "User": "1000",
+    "Name": "campusqa",
+    "Timestamp": "Fri 2026-10-16 18:29:42 MST",
+    "TimestampMonotonic": "77228951",
+    "VTNr": "2",
+    "Seat": "seat0",
+    "TTY": "tty2",
+    "Remote": "no",
+    "Service": "gdm-password",
+    "Scope": "session-6.scope",
+    "Leader": "2345",
+    "Audit": "6",
+    "Type": "wayland",
+    "Class": "user",
+    "Active": "yes",
+    "State": "active",
+    "IdleHint": "no",
+    "IdleSinceHint": "0",
+    "IdleSinceHintMonotonic": "0",
+    "LockedHint": "no"
+  },
+  "technical_observation": "polkit refusal; adapter did not emit an entry receipt; installed bytes unchanged",
+  "screenshot": null,
+  "case_distinction": "cancel/deny/missing-authority labels are operator observations plus authority-window evidence, not inferred from pkexec exit codes"
+}

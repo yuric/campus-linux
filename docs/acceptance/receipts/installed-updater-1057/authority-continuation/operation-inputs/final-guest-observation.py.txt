@@ -1,0 +1,6 @@
+import pathlib,json,subprocess,os,time
+p=pathlib.Path('/home/campusqa/campus1057-1263-ea7d6086/evidence');names=['driver-ready.json','driver-stopped.json','server.log','requests.jsonl'];r={'observed_unix_ns':time.time_ns(),'files':{},'guest_free_bytes':os.statvfs('/').f_bavail*os.statvfs('/').f_frsize,'process_absence':{str(x):not pathlib.Path('/proc/'+str(x)).exists() for x in [3228,3229]},'keyring':{}}
+for name in names:
+ q=p/name
+ if q.exists():assert q.stat().st_size<=32768;r['files'][name]=q.read_text()
+a=['/usr/sbin/runuser','-u','campusqa','--','/usr/bin/busctl','--address=unix:path=/run/user/1000/bus','get-property','org.freedesktop.secrets','/org/freedesktop/secrets/collection/login','org.freedesktop.Secret.Collection','Locked'];z=subprocess.run(a,capture_output=True,text=True,timeout=2);r['keyring']={'argv':a,'returncode':z.returncode,'stdout':z.stdout,'stderr':z.stderr};print(json.dumps(r,indent=2))

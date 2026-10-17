@@ -1,0 +1,10 @@
+import pathlib,json,os,time
+r={'time_ns':time.time_ns(),'processes':[]}
+for p in pathlib.Path('/proc').iterdir():
+ if not p.name.isdigit():continue
+ try:
+  name=(p/'comm').read_text().strip()
+  if name=='pkexec' or name.startswith('campus-updater'):
+   r['processes'].append({'pid':int(p.name),'name':name,'exe':os.readlink(p/'exe'),'status':(p/'status').read_text(),'stat':(p/'stat').read_text(),'cgroup':(p/'cgroup').read_text()})
+ except (FileNotFoundError,PermissionError):pass
+print(json.dumps(r,indent=2))

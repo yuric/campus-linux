@@ -1,0 +1,47 @@
+{
+  "observed_unix_ns": 1792174089672701224,
+  "guest_free_bytes": 19435331584,
+  "boot_id": "5d86c41f-8f02-4710-8749-adce58297cbb",
+  "state": {
+    "argv": [
+      "/usr/bin/systemctl",
+      "show",
+      "polkit.service",
+      "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths,MainPID,ControlGroup"
+    ],
+    "returncode": 0,
+    "stdout": "MainPID=709\nControlGroup=/system.slice/polkit.service\nId=polkit.service\nLoadState=loaded\nActiveState=active\nSubState=running\nFragmentPath=/usr/lib/systemd/system/polkit.service\nDropInPaths=\nUnitFileState=static\n",
+    "stderr": ""
+  },
+  "owner": {
+    "argv": [
+      "/usr/bin/busctl",
+      "--system",
+      "--timeout=2",
+      "call",
+      "org.freedesktop.DBus",
+      "/org/freedesktop/DBus",
+      "org.freedesktop.DBus",
+      "NameHasOwner",
+      "s",
+      "org.freedesktop.PolicyKit1"
+    ],
+    "returncode": 0,
+    "stdout": "b true\n",
+    "stderr": ""
+  },
+  "rule_exists": false,
+  "runtime_mask_exists": false,
+  "persistent_mask_exists": false,
+  "session": {
+    "argv": [
+      "/usr/bin/loginctl",
+      "show-session",
+      "6",
+      "--no-pager"
+    ],
+    "returncode": 0,
+    "stdout": "Id=6\nUser=1000\nName=campusqa\nTimestamp=Fri 2026-10-16 11:06:27 MST\nTimestampMonotonic=53394618\nVTNr=2\nSeat=seat0\nTTY=tty2\nRemote=no\nService=gdm-password\nScope=session-6.scope\nLeader=2281\nAudit=6\nType=wayland\nClass=user\nActive=yes\nState=active\nIdleHint=no\nIdleSinceHint=0\nIdleSinceHintMonotonic=0\nLockedHint=no\n",
+    "stderr": ""
+  }
+}

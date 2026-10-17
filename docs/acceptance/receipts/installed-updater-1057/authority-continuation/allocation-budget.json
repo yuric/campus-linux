@@ -1,0 +1,10 @@
+{
+  "observed_unix_ns": 1792167523339132000,
+  "whole_worktree_allocated_bytes_conservatively_counted_as_new": 9621504,
+  "own_host_temporary_files_allocated_bytes": 1470464,
+  "actual_stopped_guest_disk_growth_bytes": 14680064,
+  "remaining_publication_metadata_reserve_bytes": 4194304,
+  "conservative_total_including_reserve_bytes": 29966336,
+  "continuation_limit_bytes": 67108864,
+  "note": "Whole worktree includes preexisting source/receipts; counted in full to overbound continuation source allocation. Guest file/source allocation is already included in sparse disk growth. Original retained artifact ZIPs untouched."
+}

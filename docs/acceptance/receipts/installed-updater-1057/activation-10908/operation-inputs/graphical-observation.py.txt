@@ -1,0 +1,12 @@
+import pathlib,json,subprocess,os,time,socket,struct
+p=pathlib.Path('/home/campusqa/campus1057-10908-office391/evidence');r={'observed_unix_ns':time.time_ns(),'ready':json.loads((p/'driver-ready.json').read_text()),'processes':[],'commands':[]}
+for a in [['loginctl','show-session','6'],['/usr/sbin/runuser','-u','campusqa','--','busctl','--address=unix:path=/run/user/1000/bus','call','org.freedesktop.DBus','/org/freedesktop/DBus','org.freedesktop.DBus','GetConnectionUnixProcessID','s','org.gnome.Mutter.DisplayConfig']]:
+ z=subprocess.run(a,capture_output=True,text=True,timeout=3);r['commands'].append({'argv':a,'returncode':z.returncode,'stdout':z.stdout,'stderr':z.stderr})
+for f in pathlib.Path('/proc').iterdir():
+ if not f.name.isdigit():continue
+ try:
+  n=(f/'comm').read_text().strip()
+  if n in ['gnome-shell','gnome-terminal-','gdm-session-wor','gdm-wayland-ses','bash'] and f.stat().st_uid==1000 or int(f.name) in [r['ready']['pid'],r['ready']['server_pid'],2281]:r['processes'].append({'pid':int(f.name),'name':n,'uid':f.stat().st_uid,'stat':(f/'stat').read_text(),'cgroup':(f/'cgroup').read_text(),'exe':os.readlink(f/'exe')})
+ except FileNotFoundError:pass
+s=socket.socket(socket.AF_UNIX);s.connect('/run/user/1000/wayland-0');r['mutter_socket_peer']=dict(zip(['pid','uid','gid'],struct.unpack('3i',s.getsockopt(socket.SOL_SOCKET,socket.SO_PEERCRED,12))));s.close()
+print(json.dumps(r,indent=2))

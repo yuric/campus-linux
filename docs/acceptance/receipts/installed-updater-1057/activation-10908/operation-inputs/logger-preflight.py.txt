@@ -1,0 +1,29 @@
+import os,pathlib,stat,hashlib,json,subprocess,time,uuid
+assert os.geteuid()==0
+r={'schema':1,'lease':'1057-10908-office391','scope':'root management logger preflight only; no authority change','observed_unix_ns':time.time_ns(),'uid':os.getuid(),'gid':os.getgid(),'pid':os.getpid(),'boot_id':pathlib.Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'cgroup':pathlib.Path('/proc/self/cgroup').read_text(),'proc_stat':pathlib.Path('/proc/self/stat').read_text(),'guest_free_bytes':os.statvfs('/').f_bavail*os.statvfs('/').f_frsize,'paths':[],'commands':[]}
+def run(args,timeout=2):
+ p=subprocess.run(args,capture_output=True,text=True,timeout=timeout);x={'argv':args,'returncode':p.returncode,'stdout':p.stdout,'stderr':p.stderr};r['commands'].append(x);return p
+try:
+ assert r['guest_free_bytes']>=2*1024**3,'guest floor'
+ p=pathlib.Path('/usr/bin/logger')
+ for f in [p,*p.parents]:
+  s=f.lstat();x={'path':str(f),'canonical':str(f.resolve(strict=True)),'symlink':f.is_symlink(),'uid':s.st_uid,'gid':s.st_gid,'mode':oct(stat.S_IMODE(s.st_mode)),'regular':stat.S_ISREG(s.st_mode),'directory':stat.S_ISDIR(s.st_mode),'executable':os.access(f,os.X_OK)};r['paths'].append(x)
+  assert not x['symlink'] and str(f)==x['canonical'] and s.st_uid==0 and not s.st_mode&0o022,'untrusted path'
+  if f==p:assert x['regular'] and x['executable'] and not s.st_mode&0o6000
+ r['logger_sha256']=hashlib.sha256(p.read_bytes()).hexdigest()
+ assert run([str(p),'--version']).returncode==0
+ help=run([str(p),'--help']);assert help.returncode==0 and all(x in help.stdout for x in ['--socket-errors','--priority','--tag'])
+ marker='campus1057-preflight lease=1057-10908-office391 nonce='+uuid.uuid4().hex;r['marker']=marker
+ started=time.time_ns();q=run([str(p),'--socket-errors=on','--priority','user.notice','--tag','campus-updater-1057','--',marker]);r['logger_invoked_unix_ns']=started;r['logger_finished_unix_ns']=time.time_ns();assert q.returncode==0,'logger exit'
+ until=time.monotonic()+3;r['matching_records']=[]
+ while time.monotonic()<until:
+  q=run(['/usr/bin/journalctl','--no-pager','--output=json','--lines=32','--since=@'+str(started//10**9),'SYSLOG_IDENTIFIER=campus-updater-1057','_BOOT_ID='+r['boot_id'].replace('-','')]);assert q.returncode==0
+  rows=[json.loads(x) for x in q.stdout.splitlines()];r['matching_records']=[x for x in rows if x.get('MESSAGE')==marker]
+  if r['matching_records']:break
+  time.sleep(.1)
+ assert len(r['matching_records'])==1,'unique exact marker required'
+ for x in r['matching_records']:
+  assert x.get('_UID')=='0' and x.get('_BOOT_ID')==r['boot_id'].replace('-','') and int(x.get('__REALTIME_TIMESTAMP','0'))*1000>=started,'trusted metadata mismatch'
+ r['status']='observed';r['caveat']='Root management context only; daemon logger provenance is separately mandatory before readiness'
+except Exception as e:r['status']='failed';r['error']=str(e)
+print(json.dumps(r,indent=2))

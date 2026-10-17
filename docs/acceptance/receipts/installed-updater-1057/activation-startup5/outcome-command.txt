@@ -1,0 +1,1 @@
+/usr/bin/python3 -B /opt/campus1057-gated1329-startup5/source/desktop.py --record-outcome /home/campusqa/campus1057-gated1329-startup5/evidence/deny.json --observer 'Codex Linux runtime operator' --observation 'Driver waited then shell returned. Captured frames show no auth prompt. No credentials entered during attempt.'

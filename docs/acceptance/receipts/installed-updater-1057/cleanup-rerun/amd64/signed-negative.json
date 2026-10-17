@@ -1,0 +1,10 @@
+{
+  "version": "2.0.0",
+  "format": "appimage",
+  "filename": "campus-updater-1057_2.0.0_amd64.AppImage",
+  "offset": 18,
+  "replacement_hex": "b700",
+  "bytes": 82803192,
+  "sha256": "06f875119b0d9cf3c6cc3ec0de6fee418b5967d1cc40a52b6575337e399483ce",
+  "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRSVJ5YmhLdzY5VTd1elo2NFFmZXA0WVl4dndTRXU3ZElaSkUvNDAwMG11K1ZtZnJWbjBYNndLS0dwbmlWL2dOQVRxTGtMZDNYK3Q5RWJld1VRNTFReVl4anpPQXhBV3dFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMTU5NzI2CWZpbGU6d3JvbmctYXJjaGl0ZWN0dXJlLkFwcEltYWdlCXZlcnNpb246Mi4wLjAKVHRueUdrWG9aQ25UVDdaVWhQZGxSOUNibVZRczlyaTF3c2FzS0RIbXl5OG54ZVFrVnprMGpUNGVFZVkxVkdTditiMlZ5V0dxOFZidWlhaVh2TlF4Qmc9PQo="
+}

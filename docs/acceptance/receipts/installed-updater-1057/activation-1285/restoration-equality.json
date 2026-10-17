@@ -1,0 +1,136 @@
+{
+  "observed_unix_ns": 1792171060247059000,
+  "protected_equal": {
+    "paths": true,
+    "rules": true,
+    "rules_directories": true
+  },
+  "command_differences": [
+    {
+      "argv": [
+        "df",
+        "-B1",
+        "/"
+      ],
+      "before": {
+        "argv": [
+          "df",
+          "-B1",
+          "/"
+        ],
+        "returncode": 0,
+        "stdout": "Filesystem       1B-blocks       Used   Available Use% Mounted on\n/dev/vda1      28003532800 8091009024 19895746560  29% /\n",
+        "stderr": ""
+      },
+      "after": {
+        "argv": [
+          "df",
+          "-B1",
+          "/"
+        ],
+        "returncode": 0,
+        "stdout": "Filesystem       1B-blocks       Used   Available Use% Mounted on\n/dev/vda1      28003532800 8096399360 19890356224  29% /\n",
+        "stderr": ""
+      }
+    },
+    {
+      "argv": [
+        "systemctl",
+        "show",
+        "polkit.service",
+        "--property=MainPID,ExecMainStartTimestamp,ExecMainStartTimestampMonotonic,User,Group"
+      ],
+      "before": {
+        "argv": [
+          "systemctl",
+          "show",
+          "polkit.service",
+          "--property=MainPID,ExecMainStartTimestamp,ExecMainStartTimestampMonotonic,User,Group"
+        ],
+        "returncode": 0,
+        "stdout": "MainPID=710\nExecMainStartTimestamp=Fri 2026-10-16 10:10:52 MST\nExecMainStartTimestampMonotonic=4048760\nUser=polkitd\nGroup=\n",
+        "stderr": ""
+      },
+      "after": {
+        "argv": [
+          "systemctl",
+          "show",
+          "polkit.service",
+          "--property=MainPID,ExecMainStartTimestamp,ExecMainStartTimestampMonotonic,User,Group"
+        ],
+        "returncode": 0,
+        "stdout": "MainPID=3264\nExecMainStartTimestamp=Fri 2026-10-16 10:14:32 MST\nExecMainStartTimestampMonotonic=224129379\nUser=polkitd\nGroup=\n",
+        "stderr": ""
+      }
+    },
+    {
+      "argv": [
+        "busctl",
+        "--system",
+        "status",
+        "org.freedesktop.PolicyKit1"
+      ],
+      "before": {
+        "argv": [
+          "busctl",
+          "--system",
+          "status",
+          "org.freedesktop.PolicyKit1"
+        ],
+        "returncode": 0,
+        "stdout": "PID=710\nPPID=1\nTTY=n/a\nUID=989\nEUID=989\nSUID=989\nFSUID=989\nGID=989\nEGID=989\nSGID=989\nFSGID=989\nSupplementaryGIDs=989\nComm=polkitd\nExe=/usr/lib/polkit-1/polkitd\nCommandLine=/usr/lib/polkit-1/polkitd --no-debug\nLabel=unconfined\nCGroup=/system.slice/polkit.service\nUnit=polkit.service\nSlice=system.slice\nUserUnit=n/a\nUserSlice=n/a\nSession=n/a\nAuditLoginUID=n/a\nAuditSessionID=n/a\nUniqueName=:1.7\nEffectiveCapabilities=\nPermittedCapabilities=\nInheritableCapabilities=\nBoundingCapabilities=cap_setgid cap_setuid\n",
+        "stderr": ""
+      },
+      "after": {
+        "argv": [
+          "busctl",
+          "--system",
+          "status",
+          "org.freedesktop.PolicyKit1"
+        ],
+        "returncode": 0,
+        "stdout": "PID=3264\nPPID=1\nTTY=n/a\nUID=989\nEUID=989\nSUID=989\nFSUID=989\nGID=989\nEGID=989\nSGID=989\nFSGID=989\nSupplementaryGIDs=989\nComm=polkitd\nExe=/usr/lib/polkit-1/polkitd\nCommandLine=/usr/lib/polkit-1/polkitd --no-debug\nLabel=unconfined\nCGroup=/system.slice/polkit.service\nUnit=polkit.service\nSlice=system.slice\nUserUnit=n/a\nUserSlice=n/a\nSession=n/a\nAuditLoginUID=n/a\nAuditSessionID=n/a\nUniqueName=:1.117\nEffectiveCapabilities=\nPermittedCapabilities=\nInheritableCapabilities=\nBoundingCapabilities=cap_setgid cap_setuid\n",
+        "stderr": ""
+      }
+    }
+  ],
+  "before_sha256": "278932cb3aac695b100370ddd5b4c3346318658a4a6e5847f30d957fcaae84b5",
+  "after_sha256": "400ca879122a102a9a328a59d06a9ef605e23ac144edaa5ad625db4efe71c57a",
+  "keyring_before": {
+    "argv": [
+      "/usr/sbin/runuser",
+      "-u",
+      "campusqa",
+      "--",
+      "/usr/bin/busctl",
+      "--address=unix:path=/run/user/1000/bus",
+      "get-property",
+      "org.freedesktop.secrets",
+      "/org/freedesktop/secrets/collection/login",
+      "org.freedesktop.Secret.Collection",
+      "Locked"
+    ],
+    "returncode": 0,
+    "stdout": "b true\n",
+    "stderr": ""
+  },
+  "keyring_after": {
+    "argv": [
+      "/usr/sbin/runuser",
+      "-u",
+      "campusqa",
+      "--",
+      "/usr/bin/busctl",
+      "--address=unix:path=/run/user/1000/bus",
+      "get-property",
+      "org.freedesktop.secrets",
+      "/org/freedesktop/secrets/collection/login",
+      "org.freedesktop.Secret.Collection",
+      "Locked"
+    ],
+    "returncode": 0,
+    "stdout": "b true\n",
+    "stderr": ""
+  },
+  "all_differences_retained": "Complete original observations retained; expected polkit restart MainPID/starttime/bus credentials and free-space deltas are in command_differences."
+}

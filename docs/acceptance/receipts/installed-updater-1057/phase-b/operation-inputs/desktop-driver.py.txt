@@ -1,0 +1,19 @@
+import os,pathlib,json,subprocess,time,hashlib
+p=pathlib.Path('/home/campusqa/campus1057-10643-5176b9d7'); e=p/'evidence';assert os.getuid()==1000
+lease='Campus task1057 comment10643 Phase B direction1233 attempt5176b9d7-6e03-410a-99d8-eecc74880fb7'
+pre=e/'root-preflight.json';sha=hashlib.sha256(pre.read_bytes()).hexdigest()
+server=subprocess.Popen(['/usr/bin/python3','-B',str(p/'probe/serve.py'),'--index',str(p/'receipts/serving-index.json'),'--version','2','--port','17857','--log',str(e/'requests.jsonl')],stdout=open(e/'server.log','x'),stderr=subprocess.STDOUT,start_new_session=True)
+(e/'driver-ready.json').write_text(json.dumps({'pid':os.getpid(),'server_pid':server.pid,'boot_id':pathlib.Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'root_preflight_sha256':sha,'environment':{k:os.environ.get(k) for k in ['XDG_SESSION_ID','XDG_RUNTIME_DIR','DISPLAY','WAYLAND_DISPLAY','DBUS_SESSION_BUS_ADDRESS']}}))
+try:
+ for i in range(18000):
+  command=e/'command.json'
+  if not command.exists():time.sleep(.1);continue
+  c=json.loads(command.read_text());command.unlink()
+  if c['case']=='stop':break
+  case=c['case'];assert case in ['cancel','deny','missing-authority'];name=c['name'];assert name.replace('-','').isalnum()
+  args=['/usr/bin/python3','-B',str(p/'probe/desktop.py'),'--case',case,'--lease-reference',lease,'--authority-reference',c['authority'],'--source-head','113a53e4eea44b6d80a8ee3edb55d186d11f3ba6','--index',str(p/'receipts/package-index.json'),'--inventory',str(p/'receipts/payload-inventory.json'),'--root-preflight',str(pre),'--root-preflight-sha256',sha,'--observer','Campus Office377 via actual QEMU VNC compositor','--planned-observation',c['planned'],'--receipt',str(e/(name+'.json')),'--timeout','20']
+  if case=='cancel':args+=['--screenshot',str(e/(name+'.png'))]
+  with open(e/(name+'.log'),'x') as f:r=subprocess.run(args,stdout=f,stderr=subprocess.STDOUT)
+  (e/(name+'-finished.json')).write_text(json.dumps({'returncode':r.returncode,'finished_ns':time.time_ns()}))
+finally:
+ server.terminate();server.wait(timeout=5);(e/'driver-stopped.json').write_text(json.dumps({'time_ns':time.time_ns(),'server_returncode':server.returncode}))

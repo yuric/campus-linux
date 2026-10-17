@@ -1,0 +1,10 @@
+{
+  "version": "2.0.0",
+  "format": "appimage",
+  "filename": "campus-updater-1057_2.0.0_aarch64.AppImage",
+  "offset": 18,
+  "replacement_hex": "3e00",
+  "bytes": 80984584,
+  "sha256": "366f33a5affb795a3f541192548235a3261d878d0fe0e3583ea62c3225004371",
+  "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRT0NVODFwMFV4WFEvS0ZieDZodzJQYllkK01BdVBiMFhHQmxzamEvUVl4OHZVNi85Zk95VlJJM3pneHZVaVlvTVRwNm5pSjdtZU93R2VDcFNSK1J2aU01aUR2YTNvSHdrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMTYwNDgxCWZpbGU6d3JvbmctYXJjaGl0ZWN0dXJlLkFwcEltYWdlCXZlcnNpb246Mi4wLjAKU0hycjVaZ0hpZ2M4bm1Gd2FMRzRvbmt5dGlkQUVtQWRSUVZ0MkNnSjZhK3BxeFZEWnVQOWJFMEZ4SDJqL1U2N3B1NW5VY1o5dURLdGhIZlAxMncrRHc9PQo="
+}

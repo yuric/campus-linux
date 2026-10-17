@@ -1,0 +1,30 @@
+{
+  "observed_unix_ns": 1792167117075884116,
+  "paths": [
+    {
+      "path": "/root/campus1057-1263-ea7d6086",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o500",
+      "canonical": "/root/campus1057-1263-ea7d6086",
+      "symlink": false
+    },
+    {
+      "path": "/root/campus1057-1263-ea7d6086/evidence",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o700",
+      "canonical": "/root/campus1057-1263-ea7d6086/evidence",
+      "symlink": false
+    },
+    {
+      "path": "/root/campus1057-1263-ea7d6086/authority-window.py",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o400",
+      "canonical": "/root/campus1057-1263-ea7d6086/authority-window.py",
+      "symlink": false,
+      "sha256": "7ff5dc4b38311a792790f48f8266089bbd17aa94dfba979d8a8fc221c8e349fc"
+    }
+  ]
+}

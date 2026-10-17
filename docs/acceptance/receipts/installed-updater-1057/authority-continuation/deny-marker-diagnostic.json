@@ -1,0 +1,81 @@
+{
+  "scope": "diagnostic only; does not relax strict marker provenance",
+  "observed_unix_ns": 1792167309477544350,
+  "argv": [
+    "/usr/bin/journalctl",
+    "--no-pager",
+    "--output=json",
+    "--lines=64",
+    "--since=@1792167265",
+    "SYSLOG_IDENTIFIER=campus-updater-1057",
+    "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+  ],
+  "returncode": 0,
+  "stderr": "",
+  "records": [
+    {
+      "_GID": "989",
+      "_BOOT_ID": "b59b3d1f891447588d6bb5d334859490",
+      "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+      "_COMM": "logger",
+      "__MONOTONIC_TIMESTAMP": "245494570",
+      "__CURSOR": "s=b4cf9273502a45cda4fcef18d892b0be;i=bc27;b=b59b3d1f891447588d6bb5d334859490;m=ea1f32a;t=65df7753b1d1e;x=c21cbf4514e6c57",
+      "MESSAGE": "campus1057-deny-loaded lease=1057-1263-ea7d6086",
+      "SYSLOG_IDENTIFIER": "campus-updater-1057",
+      "_RUNTIME_SCOPE": "system",
+      "SYSLOG_FACILITY": "1",
+      "__REALTIME_TIMESTAMP": "1792167265377566",
+      "SYSLOG_TIMESTAMP": "Oct 16 09:14:25 ",
+      "_PID": "3263",
+      "PRIORITY": "5",
+      "_UID": "989",
+      "_TRANSPORT": "syslog",
+      "__SEQNUM_ID": "b4cf9273502a45cda4fcef18d892b0be",
+      "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+      "_SOURCE_REALTIME_TIMESTAMP": "1792167265377525",
+      "__SEQNUM": "48167"
+    },
+    {
+      "_GID": "989",
+      "_SOURCE_REALTIME_TIMESTAMP": "1792167265379874",
+      "_BOOT_ID": "b59b3d1f891447588d6bb5d334859490",
+      "__REALTIME_TIMESTAMP": "1792167265379901",
+      "_UID": "989",
+      "_SELINUX_CONTEXT": "unconfined\n",
+      "_MACHINE_ID": "107ca6093f7f4313ae45e0b20c4d493f",
+      "_TRANSPORT": "syslog",
+      "SYSLOG_TIMESTAMP": "Oct 16 09:14:25 ",
+      "SYSLOG_IDENTIFIER": "campus-updater-1057",
+      "_RUNTIME_SCOPE": "system",
+      "MESSAGE": "campus1057-deny-loaded lease=1057-1263-ea7d6086",
+      "__SEQNUM_ID": "b4cf9273502a45cda4fcef18d892b0be",
+      "__CURSOR": "s=b4cf9273502a45cda4fcef18d892b0be;i=bc2d;b=b59b3d1f891447588d6bb5d334859490;m=ea1fc49;t=65df7753b263d;x=8377f2c22bcc5978",
+      "_CAP_EFFECTIVE": "0",
+      "SYSLOG_FACILITY": "1",
+      "__SEQNUM": "48173",
+      "_COMM": "logger",
+      "_HOSTNAME": "lima-campus-linux-d5-noble-arm64",
+      "PRIORITY": "5",
+      "_PID": "3274",
+      "__MONOTONIC_TIMESTAMP": "245496905"
+    }
+  ],
+  "ancestors": [
+    {
+      "path": "/",
+      "canonical": "/",
+      "symlink": false,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o755"
+    },
+    {
+      "path": "/root",
+      "canonical": "/root",
+      "symlink": false,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o700"
+    }
+  ]
+}

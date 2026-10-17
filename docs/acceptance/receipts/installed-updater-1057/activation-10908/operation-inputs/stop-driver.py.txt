@@ -1,0 +1,1 @@
+import os,json,time; p='/home/campusqa/campus1057-10908-office391/evidence/command.json';fd=os.open(p,os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW,0o600);os.write(fd,json.dumps({'case':'stop'}).encode());os.fchown(fd,1000,1000);os.close(fd); print(json.dumps({'queued_stop_ns':time.time_ns()}))

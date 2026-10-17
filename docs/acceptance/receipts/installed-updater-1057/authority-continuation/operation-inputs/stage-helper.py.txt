@@ -1,0 +1,15 @@
+import pathlib,os,sys,hashlib,stat,json,time
+assert os.geteuid()==0
+root=pathlib.Path('/root/campus1057-1263-ea7d6086')
+for p in [root.parent,*root.parent.parents]:assert p.resolve()==p and p.stat().st_uid==0 and not p.stat().st_mode&0o022
+root.mkdir(mode=0o700);(root/'evidence').mkdir(mode=0o700)
+p=root/'authority-window.py';b=sys.stdin.buffer.read();assert hashlib.sha256(b).hexdigest()=='7ff5dc4b38311a792790f48f8266089bbd17aa94dfba979d8a8fc221c8e349fc'
+fd=os.open(p,os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW|os.O_WRONLY,0o400)
+with os.fdopen(fd,'wb') as f:f.write(b)
+os.chmod(root,0o500)
+rows=[]
+for p in [root,root/'evidence',p]:
+ s=p.lstat();row={'path':str(p),'uid':s.st_uid,'gid':s.st_gid,'mode':oct(stat.S_IMODE(s.st_mode)),'canonical':str(p.resolve()),'symlink':p.is_symlink()}
+ if p.is_file():row['sha256']=hashlib.sha256(p.read_bytes()).hexdigest()
+ rows.append(row)
+print(json.dumps({'observed_unix_ns':time.time_ns(),'paths':rows},indent=2))

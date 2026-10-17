@@ -1,0 +1,6 @@
+import pathlib,subprocess,json,os,time,stat
+root=pathlib.Path('/home/campusqa/campus1057-1263-ea7d6086/evidence');p=root/'command.json';fd=os.open(p,os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW|os.O_WRONLY,0o600);os.write(fd,b'{"case":"stop"}');os.close(fd);os.chown(p,1000,1000)
+end=time.monotonic()+5
+while not (root/'driver-stopped.json').exists() and time.monotonic()<end:time.sleep(.1)
+assert (root/'driver-stopped.json').exists(),'owned driver did not stop'
+print(json.dumps({'driver_stopped':json.loads((root/'driver-stopped.json').read_text()),'requests_bytes':(root/'requests.jsonl').stat().st_size if (root/'requests.jsonl').exists() else 0,'evidence_files':[x.name for x in root.iterdir()],'owned_process_absence':{str(x):not pathlib.Path('/proc/'+str(x)).exists() for x in [3228,3229]}},indent=2))

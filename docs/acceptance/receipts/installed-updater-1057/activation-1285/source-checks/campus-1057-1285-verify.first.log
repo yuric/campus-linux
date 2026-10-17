@@ -1,0 +1,45 @@
+RUN python3 -B -m unittest discover -s scripts/tests -v
+test_all_success_at_exact_head (test_acceptance.AdmissionTests.test_all_success_at_exact_head) ... ok
+test_reject_every_non_success_state (test_acceptance.AdmissionTests.test_reject_every_non_success_state) ... ok
+test_reject_missing_check (test_acceptance.AdmissionTests.test_reject_missing_check) ... ok
+test_reject_private_and_changed_head (test_acceptance.AdmissionTests.test_reject_private_and_changed_head) ... ok
+test_audit_rejects_missing_duplicate_and_foreign_case (test_acceptance.InventorySemanticsTests.test_audit_rejects_missing_duplicate_and_foreign_case) ... ok
+test_census_has_complete_noninvented_dispositions (test_acceptance.InventorySemanticsTests.test_census_has_complete_noninvented_dispositions) ... ok
+test_create_variants_are_independent_obligations (test_acceptance.InventorySemanticsTests.test_create_variants_are_independent_obligations) ... ok
+test_dictation_trailing_closure_controls_are_reconciled (test_acceptance.InventorySemanticsTests.test_dictation_trailing_closure_controls_are_reconciled) ... ok
+test_dictation_uses_capture_and_the_actual_stop_variants (test_acceptance.InventorySemanticsTests.test_dictation_uses_capture_and_the_actual_stop_variants) ... ok
+test_local_classification_cannot_hide_a_server_request (test_acceptance.InventorySemanticsTests.test_local_classification_cannot_hide_a_server_request) ... ok
+test_other_traced_boundaries (test_acceptance.InventorySemanticsTests.test_other_traced_boundaries) ... ok
+test_restore_is_start_not_archive (test_acceptance.InventorySemanticsTests.test_restore_is_start_not_archive) ... ok
+test_staged_files_never_require_saved_identifiers (test_acceptance.InventorySemanticsTests.test_staged_files_never_require_saved_identifiers) ... ok
+test_accept_bound_receipts (test_acceptance.ReceiptTests.test_accept_bound_receipts) ... ok
+test_actual_staged_archive_is_readable_without_owner_privileges (test_acceptance.ReceiptTests.test_actual_staged_archive_is_readable_without_owner_privileges) ... ok
+test_reject_checkout_different_from_expected_head (test_acceptance.ReceiptTests.test_reject_checkout_different_from_expected_head) ... ok
+test_reject_identically_wrong_archives (test_acceptance.ReceiptTests.test_reject_identically_wrong_archives) ... ok
+test_reject_missing_receipt (test_acceptance.ReceiptTests.test_reject_missing_receipt) ... ok
+test_reject_skipped_failed_cancelled_missing_jobs (test_acceptance.ReceiptTests.test_reject_skipped_failed_cancelled_missing_jobs) ... ok
+test_reject_tampered_log (test_acceptance.ReceiptTests.test_reject_tampered_log) ... ok
+test_reject_wrong_head_arch_base_image_source_and_command (test_acceptance.ReceiptTests.test_reject_wrong_head_arch_base_image_source_and_command) ... ok
+test_api_fields_and_comments_are_not_domain_decisions (test_client_boundary.BoundaryGateTests.test_api_fields_and_comments_are_not_domain_decisions) ... ok
+test_common_transition_tables_and_multiline_error_inference (test_client_boundary.BoundaryGateTests.test_common_transition_tables_and_multiline_error_inference) ... ok
+test_empty_repository_does_not_claim_app_verification (test_client_boundary.BoundaryGateTests.test_empty_repository_does_not_claim_app_verification) ... ok
+test_generated_contracts_and_adapters_require_exact_review_receipts (test_client_boundary.BoundaryGateTests.test_generated_contracts_and_adapters_require_exact_review_receipts) ... ok
+test_invalid_review_metadata_fails_closed (test_client_boundary.BoundaryGateTests.test_invalid_review_metadata_fails_closed) ... ok
+test_literals_across_quotes_languages_and_source_locations (test_client_boundary.BoundaryGateTests.test_literals_across_quotes_languages_and_source_locations) ... ok
+test_missing_or_malformed_policy_fails_closed (test_client_boundary.BoundaryGateTests.test_missing_or_malformed_policy_fails_closed) ... ok
+test_only_fixture_comments_with_same_line_reasons_are_allowed (test_client_boundary.BoundaryGateTests.test_only_fixture_comments_with_same_line_reasons_are_allowed) ... ok
+test_source_symlinks_cannot_hide_unscanned_code (test_client_boundary.BoundaryGateTests.test_source_symlinks_cannot_hide_unscanned_code) ... ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 2.562s
+
+OK
+Control audit: 590 census locations dispositioned; semantic review still required
+PASS exact-head architecture receipts; product/desktop evidence remains separate
+RUN scripts/check-client-boundary.sh
+Checked 3 source files (0 reviewed exceptions); 0 findings.
+RUN python3 -B scripts/check_acceptance.py
+Control audit: 590 census locations dispositioned; semantic review still required
+Inventory: 523 explicit unimplemented action cases; no product passes
+Legacy snapshot parses: 132 paths; NOT current-contract compatibility
+PASS repository policy/docs only; product runtime and desktop acceptance NOT RUN

@@ -1,0 +1,1 @@
+{"text": "# Campus_1057 /opt/a-b.py --key=ab12 'quoted' :[]{}", "returncode": 0, "stdout": "{\"events\": 0, \"input_requests\": 102, \"key_requests\": 51, \"mode\": \"canary\", \"payload_sha256\": \"f05fbece95c0cad812140d25f4d60779cc36563779349bb77d7a34fbab5b0a37\", \"received_bytes\": 3078, \"release_status\": \"acknowledged\"}\n", "stderr": ""}

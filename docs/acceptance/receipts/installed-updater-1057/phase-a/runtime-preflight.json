@@ -1,0 +1,51 @@
+{
+  "lease_reference": "Campus task1057 comment10619 phase A",
+  "observed_unix_ns": 1792162398704797757,
+  "files": [
+    {
+      "path": "/usr/bin/pkexec",
+      "bytes": 67640,
+      "sha256": "173619587c48366295afe1037b0e3f6dff63fc38bb2acba730986506a6c89bcf",
+      "uid": 0,
+      "mode": "0o4755"
+    },
+    {
+      "path": "/usr/share/dbus-1/system-services/org.freedesktop.PolicyKit1.service",
+      "bytes": 130,
+      "sha256": "baed12288339ed4b1df90f017beb8af07b56eba1b2edc4a60914880c13617af1",
+      "uid": 0,
+      "mode": "0o644"
+    },
+    {
+      "path": "/usr/lib/systemd/system/polkit.service",
+      "bytes": 748,
+      "sha256": "91ff4555bc6c94a6adc8dfb425bb3d4ba1e05decb815d3476dd6a9b5401430dc",
+      "uid": 0,
+      "mode": "0o644"
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "/sbin/ldconfig",
+        "-p"
+      ],
+      "returncode": 0,
+      "stdout": "\tlibwebkit2gtk-4.1.so.0 (libc6,AArch64) => /lib/aarch64-linux-gnu/libwebkit2gtk-4.1.so.0\n\tlibfuse3.so.3 (libc6,AArch64) => /lib/aarch64-linux-gnu/libfuse3.so.3",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/dpkg-query",
+        "-W",
+        "-f=${binary:Package}\t${Version}\t${db:Status-Status}\n",
+        "libfuse2",
+        "libfuse2t64",
+        "libfuse3-3"
+      ],
+      "returncode": 1,
+      "stdout": "libfuse3-3:arm64\t3.14.0-5build1\tinstalled\n",
+      "stderr": "dpkg-query: no packages found matching libfuse2\ndpkg-query: no packages found matching libfuse2t64\n"
+    }
+  ]
+}

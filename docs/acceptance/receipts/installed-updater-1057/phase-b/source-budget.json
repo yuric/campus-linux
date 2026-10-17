@@ -1,0 +1,8 @@
+{
+  "measurement_scope": "Conservative upper bound: entire worktree plus private Phase B operational files, including existing source and evidence; excludes preexisting approved ZIPs. Not an attribution of all tree bytes to this run.",
+  "worktree_file_bytes": 8047510,
+  "worktree_allocated_bytes": 8699904,
+  "private_phase_b_file_bytes": 1094396,
+  "source_limit_bytes": 134217728,
+  "conservative_total_file_bytes": 9141906
+}

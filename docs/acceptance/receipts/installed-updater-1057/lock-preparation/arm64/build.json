@@ -1,0 +1,20 @@
+{
+  "source_head": "164d7d0dd92fd76dae9abb73a2a34b11af898d5f",
+  "source_archive_sha256": "081beb93d47ee452c4f3353d547081a6237ff04529d15cb970e4c3e94931c693",
+  "architecture": "arm64",
+  "runner": "GitHub Actions 1000020337",
+  "run_id": "38909633029",
+  "run_attempt": "1",
+  "baseline": "ubuntu:22.04@sha256:5ec03bb3441e8b0bf3b4f9cd4629a1ae763010dc3035bb8da3ae6cf026486401",
+  "recipe_sha256": {
+    "ci/Dockerfile.release-baseline": "79371f245a85a0c4f2967cb91e6e6d1696eadf5765f1559c000efda216bce63f",
+    "ci/toolchain-lock.json": "9dce3bf74ff4532716ab5a9570fcdb0d021b410f99f76861b589e87c2188ebca",
+    "spikes/1057/installed-updater/hosted/Dockerfile.build": "75f5d80457275f97206dbda9949cf35cc3e434916a7561a45c532e4e843068ef"
+  },
+  "commands": [
+    "docker build ci/Dockerfile.release-baseline",
+    "docker build hosted/Dockerfile.build",
+    "hosted/prepare-or-build.sh"
+  ],
+  "result": "started"
+}

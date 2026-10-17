@@ -1,0 +1,11 @@
+{
+  "compared": 1155,
+  "failures": [],
+  "kind": "source-only-original-vs-candidate-native-javascript",
+  "observed_unix_ns": 1792171831466413000,
+  "original_git_head": "9baaaa8e4df6f208679c0571b6e9482e0ae8f755",
+  "original_helper_sha256": "970a146124f1bc85a1651aa624c60853c9b5a97356f910c090828d22ac0a8c7a",
+  "new_helper_sha256": "3631d41b52eb72099edf3c0e3a8878968ba1620f3593f3088e9efc7756918331",
+  "non_deny_rule_ast_unchanged": true,
+  "no_vm_or_authority_invocation": true
+}

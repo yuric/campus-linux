@@ -1,0 +1,46 @@
+{
+  "same": {
+    "paths": true,
+    "rules": true,
+    "rules_directories": true
+  },
+  "keyring_before": {
+    "argv": [
+      "/usr/sbin/runuser",
+      "-u",
+      "campusqa",
+      "--",
+      "/usr/bin/busctl",
+      "--address=unix:path=/run/user/1000/bus",
+      "get-property",
+      "org.freedesktop.secrets",
+      "/org/freedesktop/secrets/collection/login",
+      "org.freedesktop.Secret.Collection",
+      "Locked"
+    ],
+    "returncode": 0,
+    "stdout": "b true\n",
+    "stderr": ""
+  },
+  "keyring_after": {
+    "argv": [
+      "/usr/sbin/runuser",
+      "-u",
+      "campusqa",
+      "--",
+      "/usr/bin/busctl",
+      "--address=unix:path=/run/user/1000/bus",
+      "get-property",
+      "org.freedesktop.secrets",
+      "/org/freedesktop/secrets/collection/login",
+      "org.freedesktop.Secret.Collection",
+      "Locked"
+    ],
+    "returncode": 0,
+    "stdout": "b true\n",
+    "stderr": ""
+  },
+  "before_sha256": "278932cb3aac695b100370ddd5b4c3346318658a4a6e5847f30d957fcaae84b5",
+  "after_sha256": "f79231c70f41f929d1e4aefa09a7b42c4e75cb4e70c1ddf6ec0cb5e79eff75a1",
+  "note": "Full fresh baseline compared; normal polkit restart PID/starttime difference captured in commands, not denied context equality."
+}

@@ -1,0 +1,13 @@
+# Hosted disposable integration only. Never run on the constrained workstation.
+FROM ubuntu:24.04@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates python3 dbus polkitd pkexec xvfb xauth libfuse2t64 fuse3 \
+    libwebkit2gtk-4.1-0 libgtk-3-0t64 libayatana-appindicator3-1 \
+    file binutils squashfs-tools util-linux \
+    && useradd --create-home --uid 1057 fixture1057 \
+    && dpkg-query -W > /usr/local/share/campus-updater-1057-smoke-packages.tsv \
+    && rm -rf /var/lib/apt/lists/*
+COPY spikes/1057/installed-updater/adapter /opt/fixture/adapter
+COPY spikes/1057/installed-updater/probe /opt/fixture/probe
+ENTRYPOINT ["python3", "-B", "/opt/fixture/probe/smoke.py", "--input", "/input", "--output", "/receipts"]

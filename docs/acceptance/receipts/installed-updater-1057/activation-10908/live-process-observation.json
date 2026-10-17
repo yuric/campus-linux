@@ -1,0 +1,21 @@
+{
+  "time_ns": 1792174064612605755,
+  "processes": [
+    {
+      "pid": 3072,
+      "name": "campus-updater-",
+      "exe": "/usr/bin/campus-updater-1057",
+      "status": "Name:\tcampus-updater-\nUmask:\t0002\nState:\tS (sleeping)\nTgid:\t3072\nNgid:\t0\nPid:\t3072\nPPid:\t3067\nTracerPid:\t0\nUid:\t1000\t1000\t1000\t1000\nGid:\t1001\t1001\t1001\t1001\nFDSize:\t64\nGroups:\t27 1001 \nNStgid:\t3072\nNSpid:\t3072\nNSpgid:\t3072\nNSsid:\t3072\nKthread:\t0\nVmPeak:\t 1017016 kB\nVmSize:\t  959500 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t   55460 kB\nVmRSS:\t   55460 kB\nRssAnon:\t   16496 kB\nRssFile:\t   38776 kB\nRssShmem:\t     188 kB\nVmData:\t   67488 kB\nVmStk:\t     132 kB\nVmExe:\t    8876 kB\nVmLib:\t  209624 kB\nVmPTE:\t     392 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffff\nThreads:\t11\nSigQ:\t0/23338\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000000001000\nSigCgt:\t0000000100000440\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t000001ffffffffff\nCapAmb:\t0000000000000000\nNoNewPrivs:\t0\nSeccomp:\t0\nSeccomp_filters:\t0\nSpeculation_Store_Bypass:\tvulnerable\nSpeculationIndirectBranch:\tunknown\nCpus_allowed:\tf\nCpus_allowed_list:\t0-3\nMems_allowed:\t00000000,00000001\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t40\nnonvoluntary_ctxt_switches:\t7\n",
+      "stat": "3072 (campus-updater-) S 3067 3072 3072 0 -1 4194304 5447 1567 0 0 10 5 1 0 20 0 11 0 12145 982528000 13799 18446744073709551615 214788535877632 214788544965496 281473992009360 0 0 0 0 4096 1088 0 0 0 17 1 0 0 0 0 0 214788545032296 214788545245472 214789559549952 281473992012319 281473992012398 281473992012398 281473992015835 0\n",
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-46b0a965-44e1-4e3a-b346-9d2078538b14.scope\n"
+    },
+    {
+      "pid": 3087,
+      "name": "pkexec",
+      "exe": "/usr/bin/pkexec",
+      "status": "Name:\tpkexec\nUmask:\t0002\nState:\tS (sleeping)\nTgid:\t3087\nNgid:\t0\nPid:\t3087\nPPid:\t3072\nTracerPid:\t0\nUid:\t1000\t0\t0\t0\nGid:\t1001\t1001\t1001\t1001\nFDSize:\t64\nGroups:\t27 1001 \nNStgid:\t3087\nNSpid:\t3087\nNSpgid:\t3072\nNSsid:\t3072\nKthread:\t0\nVmPeak:\t  235184 kB\nVmSize:\t  235184 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t    7124 kB\nVmRSS:\t    7124 kB\nRssAnon:\t    1376 kB\nRssFile:\t    5748 kB\nRssShmem:\t       0 kB\nVmData:\t   26112 kB\nVmStk:\t     132 kB\nVmExe:\t      20 kB\nVmLib:\t   10760 kB\nVmPTE:\t     100 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffff\nThreads:\t4\nSigQ:\t0/23338\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000000001000\nSigCgt:\t0000000100000000\nCapInh:\t0000000000000000\nCapPrm:\t000001ffffffffff\nCapEff:\t000001ffffffffff\nCapBnd:\t000001ffffffffff\nCapAmb:\t0000000000000000\nNoNewPrivs:\t0\nSeccomp:\t0\nSeccomp_filters:\t0\nSpeculation_Store_Bypass:\tvulnerable\nSpeculationIndirectBranch:\tunknown\nCpus_allowed:\tf\nCpus_allowed_list:\t0-3\nMems_allowed:\t00000000,00000001\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t10\nnonvoluntary_ctxt_switches:\t0\n",
+      "stat": "3087 (pkexec) S 3072 3072 3072 0 -1 4194560 472 0 0 0 0 0 0 0 20 0 4 0 12182 240828416 1696 18446744073709551615 191950648967168 191950648986704 281474735103392 0 0 0 0 4096 0 0 0 0 17 3 0 0 0 0 0 191950649096800 191950649098384 191951071866880 281474735104462 281474735104635 281474735104635 281474735108072 0\n",
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-46b0a965-44e1-4e3a-b346-9d2078538b14.scope\n"
+    }
+  ]
+}

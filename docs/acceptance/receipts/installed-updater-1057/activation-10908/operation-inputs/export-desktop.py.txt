@@ -1,0 +1,1 @@
+import pathlib,json,base64; p=pathlib.Path('/home/campusqa/campus1057-10908-office391/evidence');print(json.dumps({f.name:base64.b64encode(f.read_bytes()).decode() for f in p.iterdir() if f.is_file()}))

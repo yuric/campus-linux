@@ -1,0 +1,254 @@
+#!/usr/bin/env python3
+"""Private, bounded RFB control for the existing local #1057 VNC channel.
+
+No connections occur at import. Passwords are read only from private files into
+memory, never printed, logged, serialized, or accepted as command arguments.
+"""
+import argparse
+import os
+from pathlib import Path
+import socket
+import stat
+import struct
+import sys
+import time
+import warnings
+from PIL import Image
+from cryptography.hazmat.primitives.ciphers import Cipher, modes
+try:
+    from cryptography.hazmat.decrepit.ciphers.algorithms import TripleDES
+except ImportError:
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        from cryptography.hazmat.primitives.ciphers.algorithms import TripleDES
+
+LIMIT = 10.0
+MAX_PIXELS = 4096 * 4096
+KEYS = {
+    'Enter': 0xff0d, 'Return': 0xff0d, 'Tab': 0xff09,
+    'Escape': 0xff1b, 'Esc': 0xff1b, 'BackSpace': 0xff08,
+    'Backspace': 0xff08, 'Delete': 0xffff, 'Space': 0x20,
+    'Up': 0xff52, 'Down': 0xff54, 'Left': 0xff51, 'Right': 0xff53,
+    'Home': 0xff50, 'End': 0xff57, 'PageUp': 0xff55, 'PageDown': 0xff56,
+    'Ctrl': 0xffe3, 'Control': 0xffe3, 'Alt': 0xffe9,
+    'Shift': 0xffe1, 'Super': 0xffeb, 'Meta': 0xffe7,
+    **{'F' + str(i): 0xffbd + i for i in range(1, 13)},
+}
+
+
+def require(value, message):
+    if not value:
+        raise RuntimeError(message)
+
+
+def private_bytes(path, maximum=1024):
+    fd = os.open(Path(path).expanduser(), os.O_RDONLY | os.O_NOFOLLOW)
+    try:
+        info = os.fstat(fd)
+        require(stat.S_ISREG(info.st_mode) and info.st_uid == os.getuid()
+                and not stat.S_IMODE(info.st_mode) & 0o077,
+                'credential file must be an owned private regular file')
+        value = os.read(fd, maximum + 1)
+        require(0 < len(value) <= maximum, 'credential file has invalid size')
+        return value.rstrip(b'\r\n')
+    finally:
+        os.close(fd)
+
+
+def symbol(value):
+    if value in KEYS:
+        return KEYS[value]
+    require(len(value) == 1, 'unsupported key name')
+    number = ord(value)
+    return number if number <= 255 else 0x01000000 | number
+
+
+class RFB:
+    def __init__(self, password_file, port=5915):
+        self.deadline = time.monotonic() + LIMIT
+        self.sock = socket.create_connection(('127.0.0.1', port), timeout=LIMIT)
+        self.held = []
+        try:
+            version = self.read(12)
+            require(version[:8] == b'RFB 003.' and version[11:] == b'\n', 'unsupported RFB greeting')
+            minor = int(version[8:11])
+            require(minor >= 3, 'unsupported RFB protocol')
+            self.send(b'RFB 003.008\n' if minor >= 8 else (b'RFB 003.007\n' if minor >= 7 else b'RFB 003.003\n'))
+            if minor >= 7:
+                count = self.read(1)[0]
+                require(count > 0, 'VNC server rejected handshake')
+                types = self.read(count)
+                require(2 in types, 'existing VNC password authentication unavailable')
+                self.send(b'\x02')
+            else:
+                require(struct.unpack('!I', self.read(4))[0] == 2, 'existing VNC password authentication unavailable')
+            challenge = self.read(16)
+            secret = private_bytes(password_file)
+            key = bytes(int(f'{byte:08b}'[::-1], 2) for byte in secret[:8].ljust(8, b'\0'))
+            encryptor = Cipher(TripleDES(key * 3), modes.ECB()).encryptor()
+            response = encryptor.update(challenge) + encryptor.finalize()
+            self.send(response)
+            del secret, key, response, encryptor
+            require(struct.unpack('!I', self.read(4))[0] == 0, 'VNC authentication failed')
+            self.send(b'\x01')  # shared client; never disconnect another controller
+            header = self.read(24)
+            self.width, self.height = struct.unpack('!HH', header[:4])
+            require(0 < self.width * self.height <= MAX_PIXELS, 'framebuffer dimensions exceed bound')
+            name_length = struct.unpack('!I', header[20:24])[0]
+            require(name_length <= 65536, 'server name exceeds bound')
+            self.read(name_length)  # Do not print remote display names.
+        except BaseException:
+            self.sock.close()
+            raise
+
+    def remaining(self):
+        remaining = self.deadline - time.monotonic()
+        require(remaining > 0, '10 second VNC operation deadline reached')
+        self.sock.settimeout(remaining)
+
+    def read(self, count):
+        chunks = bytearray()
+        while len(chunks) < count:
+            self.remaining()
+            value = self.sock.recv(count - len(chunks))
+            require(value, 'VNC channel closed')
+            chunks.extend(value)
+        return bytes(chunks)
+
+    def send(self, value):
+        self.remaining()
+        self.sock.sendall(value)
+
+    def key_event(self, key, down):
+        self.send(struct.pack('!BBHI', 4, int(down), 0, key))
+
+    def key(self, chord):
+        names = chord.split('+') if len(chord) > 1 else [chord]
+        codes = [symbol(value) for value in names]
+        require(1 <= len(codes) <= 4, 'key chord exceeds bound')
+        for code in codes:
+            self.key_event(code, True)
+            self.held.append(code)
+        for code in reversed(codes):
+            self.key_event(code, False)
+            self.held.remove(code)
+
+    def type_text(self, value):
+        require(len(value) <= 8192, 'typed input exceeds bound')
+        for char in value:
+            code = {'\n': KEYS['Enter'], '\r': KEYS['Enter'], '\t': KEYS['Tab']}.get(char)
+            code = symbol(char) if code is None else code
+            self.key_event(code, True)
+            self.held.append(code)
+            self.key_event(code, False)
+            self.held.remove(code)
+
+    def click(self, x, y):
+        require(0 <= x < self.width and 0 <= y < self.height, 'pointer position outside framebuffer')
+        self.send(struct.pack('!BBHH', 5, 0, x, y))
+        self.send(struct.pack('!BBHH', 5, 1, x, y))
+        self.send(struct.pack('!BBHH', 5, 0, x, y))
+
+    def screenshot(self, destination):
+        path = Path(destination).expanduser()
+        require(path.parent.is_dir(), 'screenshot directory must already exist')
+        require(not os.path.lexists(path), 'screenshot destination must be new')
+        # 32 bpp, 24 bit RGB, little endian, true colour. Wire pixels are BGRX.
+        pixel_format = struct.pack('!BBBBHHHBBB3x', 32, 24, 0, 1, 255, 255, 255, 16, 8, 0)
+        self.send(b'\x00\x00\x00\x00' + pixel_format)
+        self.send(struct.pack('!BBHi', 2, 0, 1, 0))  # request raw rectangles only
+        self.send(struct.pack('!BBHHHH', 3, 0, 0, 0, self.width, self.height))
+        canvas = Image.new('RGB', (self.width, self.height))
+        while True:
+            message = self.read(1)[0]
+            if message == 2:  # bell
+                continue
+            if message == 3:  # clipboard; consume without displaying its contents
+                header = self.read(7)
+                length = struct.unpack('!I', header[3:])[0]
+                require(length <= 65536, 'server clipboard exceeds bound')
+                self.read(length)
+                continue
+            require(message == 0, 'unexpected framebuffer message type')
+            header = self.read(3)
+            rectangles = struct.unpack('!H', header[1:])[0]
+            require(0 < rectangles <= 4096, 'framebuffer rectangle count exceeds bound')
+            total_pixels = 0
+            for _ in range(rectangles):
+                x, y, width, height, encoding = struct.unpack('!HHHHi', self.read(12))
+                require(encoding == 0 and width > 0 and height > 0,
+                        'server did not supply requested raw framebuffer')
+                require(x + width <= self.width and y + height <= self.height,
+                        'framebuffer rectangle exceeds display')
+                total_pixels += width * height
+                require(total_pixels <= MAX_PIXELS, 'framebuffer payload exceeds bound')
+                raw = self.read(width * height * 4)
+                rectangle = Image.frombytes('RGB', (width, height), raw, 'raw', 'BGRX')
+                canvas.paste(rectangle, (x, y))
+            self.remaining()
+            fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600)
+            with os.fdopen(fd, 'wb') as stream:
+                canvas.save(stream, format='PNG')
+            self.remaining()
+            return self.width, self.height
+
+    def close(self):
+        for code in reversed(self.held):
+            try:
+                self.key_event(code, False)
+            except Exception:
+                break
+        self.sock.close()
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--vnc-password-file', default='~/.lima/campus-linux-d5-noble-arm64/vncpassword')
+    parser.add_argument('--port', type=int, default=5915)
+    actions = parser.add_subparsers(dest='action', required=True)
+    screenshot = actions.add_parser('screenshot')
+    screenshot.add_argument('path')
+    keys = actions.add_parser('key')
+    keys.add_argument('keys', nargs='+', help='sequential key names or chords, e.g. Ctrl+Alt+t Enter')
+    typed = actions.add_parser('type', help='ordinary nonsecret command text only')
+    typed.add_argument('text')
+    private = actions.add_parser('login-password', help='type approved existing ordinary-login password from a private file')
+    private.add_argument('--file', required=True, help='credential pathname only; never pass secret bytes')
+    click = actions.add_parser('click')
+    click.add_argument('x', type=int)
+    click.add_argument('y', type=int)
+    args = parser.parse_args()
+    require(args.port == 5915, 'only the existing approved localhost:5915 channel is permitted')
+    client = RFB(args.vnc_password_file, args.port)
+    try:
+        if args.action == 'screenshot':
+            width, height = client.screenshot(args.path)
+            print(f'screenshot_saved width={width} height={height}')
+        elif args.action == 'key':
+            require(len(args.keys) <= 32, 'key operation exceeds bound')
+            for key in args.keys:
+                client.key(key)
+            print('key_operation_sent')
+        elif args.action == 'type':
+            client.type_text(args.text)
+            print('ordinary_text_sent')
+        elif args.action == 'login-password':
+            value = private_bytes(args.file, maximum=256).decode('utf-8')
+            require(value and '\n' not in value and '\r' not in value, 'ordinary-login credential has invalid shape')
+            client.type_text(value)
+            del value
+            print('private_login_input_sent')
+        else:
+            client.click(args.x, args.y)
+            print('pointer_operation_sent')
+    finally:
+        client.close()
+
+
+if __name__ == '__main__':
+    try:
+        main()
+    except Exception:
+        # Do not echo an exception containing parser input or any credential bytes.
+        print('VNC operation failed; no credential material emitted', file=sys.stderr)
+        raise SystemExit(1)

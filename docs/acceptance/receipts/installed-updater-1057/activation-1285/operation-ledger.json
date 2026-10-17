@@ -1,0 +1,80 @@
+{
+  "recorded_unix_ns": 1792171156350394000,
+  "scope": "Executed operation paths; helper/invocation and root observation receipts carry actual timestamps. This ledger is assembled afterward and does not invent per-command start times.",
+  "lease": "1057-1285-60dc337b",
+  "vnc_helper": "/Users/yuri/.campus/coordinate/linux-20261016/environment/1057-gdm-lease/phase-b/vnc_control.py",
+  "vnc_helper_sha256": "7dac04af9fa8b2b7b57473429856f8580615ae5010e28abf2f2b0cca7a1eff54",
+  "gui_sequence": [
+    "screenshot gdm-prelogin.png",
+    "key Enter",
+    "screenshot gdm-password-empty.png",
+    "login-password from existing private file (no secret bytes in argv/log)",
+    "key Enter",
+    "screenshot gdm-after-login.png",
+    "key Ctrl+Alt+t",
+    "screenshot terminal-empty.png",
+    "type /usr/bin/python3 -I -B /home/campusqa/campus1057-1285-60dc337b/desktop-driver.py",
+    "key Enter",
+    "screenshot graphical-driver-launch.png",
+    "screenshot missing-after.png",
+    "screenshot deny-observation.png"
+  ],
+  "screenshot_records": {
+    "gdm-prelogin.png": {
+      "sha256": "bb6b575dda0d905c4a54384c0bb8b1905b4f948caa6c9d116d2a0d3b48e13a33",
+      "host_mtime_ns": 1792170685017099587
+    },
+    "terminal-empty.png": {
+      "sha256": "dfcbc5f103ae5074159869846e194fd773016f4ae36e6732bc3afe3762ef8098",
+      "host_mtime_ns": 1792170781394608437
+    },
+    "deny-observation.png": {
+      "sha256": "863a4084a447d93b9c1bb696bea64c1be2541fd260f77bd9551f27166d6c97b4",
+      "host_mtime_ns": 1792170939152822876
+    },
+    "gdm-after-login.png": {
+      "sha256": "3815704c07fb5008b71dedf78909dfe837ce08e758fd0d931d2e10a8c45b9466",
+      "host_mtime_ns": 1792170769064119112
+    },
+    "graphical-driver-launch.png": {
+      "sha256": "0266c5c28e7e9cc3f34873a6f69d27251f86b14b3495e16aa98444f06f00ca12",
+      "host_mtime_ns": 1792170818083212855
+    },
+    "gdm-password-empty.png": {
+      "sha256": "6d4a4f7fdb11ceb41e581f1a680edb49a07ae45c6374b45e33e733a32977b801",
+      "host_mtime_ns": 1792170702023163947
+    },
+    "missing-after.png": {
+      "sha256": "730c2c6f41190c8a077de051c7b205d04838b7d857606b69302074aea3fdeacd",
+      "host_mtime_ns": 1792170895888150436
+    }
+  },
+  "retained_failure": {
+    "file": "root-preflight.stderr",
+    "operation": "limactl shell ... sudo -n /usr/bin/python3 -I -B -c <exact operation-inputs/root-preflight.py.txt>",
+    "returncode": 255,
+    "reason": "SSH multiplexing Message too long before Python execution",
+    "followup": "Same read-only source via Python stdin succeeded; original empty output/stderr retained."
+  },
+  "guest_floor_before_boot": "Prior retained observation20,208,312,320bytes used; first fresh online boot observation19,905,277,952bytes. No stopped-filesystem free-space measurement claimed.",
+  "utM": "Not accessed; coordinator17:08 native UI stopped observation is independent evidence.",
+  "changed_source": false,
+  "source_sha": "1666bd8ea3ded8aa47fd9d30eac42be10f28073c",
+  "controller_source_versions": {
+    "missing-authority": {
+      "path": "operation-inputs/window-control-missing.py.txt",
+      "sha256": "4e2946036e9574009bae23900d8ca0c331eead2f5718a931f54ebdec8914af3a",
+      "preservation": "Exact executed version reconstructed from the one subsequent insertion of preflight command field; authority helper and recorder unchanged."
+    },
+    "deny": {
+      "path": "operation-inputs/window-control.py.txt",
+      "sha256": "4b69ea8cb634179a2ce24045ac304e147566492ff4422e5b73037dc7cc03ef37",
+      "preservation": "Current executed version; added field points denial recorder at refreshed post-missing root preflight."
+    }
+  },
+  "precommit_source_check_wrapper_failure": {
+    "operation": "initial shell checks used zsh variable status",
+    "failure": "read-only variable: status after test command passed",
+    "disposition": "Raw initial outputs retained in source-checks; actual test returncodes subsequently observed through Python subprocess; exact committed-head checks recorded on task."
+  }
+}

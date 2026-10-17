@@ -1,0 +1,25 @@
+import json,os,pathlib,select,subprocess,sys,time,shutil,hashlib
+P=pathlib.Path.cwd()/'docs/acceptance/receipts/installed-updater-1057/authority-continuation';ROOT='/root/campus1057-1263-ea7d6086';GUEST='/home/campusqa/campus1057-1263-ea7d6086';LEASE='1057-1263-ea7d6086';VM=['/opt/homebrew/bin/limactl','shell','campus-linux-d5-noble-arm64','--','sudo','-n'];case=sys.argv[1];assert case in ['deny','missing-authority'];mode='deny' if case=='deny' else 'missing'
+def rootpy(code):
+ r=subprocess.run(VM+['/usr/bin/python3','-I','-B','-c',code],capture_output=True,text=True,timeout=8);assert r.returncode==0,r.stderr;return r.stdout
+capacity={'observed_unix_ns':time.time_ns(),'host_free_bytes':shutil.disk_usage('/Users/yuri').free,'disk_allocated_bytes':os.stat('/Users/yuri/.lima/campus-linux-d5-noble-arm64/disk').st_blocks*512}
+assert capacity['host_free_bytes']>=20*1024**3 and capacity['disk_allocated_bytes']-6890979328<56*1024**2
+state=json.loads(rootpy("import subprocess,json,pathlib,hashlib,os,time; print(json.dumps({'observed_unix_ns':time.time_ns(),'guest_free_bytes':os.statvfs('/').f_bavail*os.statvfs('/').f_frsize,'state':subprocess.check_output(['systemctl','show','polkit.service','--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths']).decode(),'owner':subprocess.check_output(['busctl','--system','call','org.freedesktop.DBus','/org/freedesktop/DBus','org.freedesktop.DBus','NameHasOwner','s','org.freedesktop.PolicyKit1']).decode(),'rule':os.path.lexists('/etc/polkit-1/rules.d/00-campus-updater-1057-deny.rules'),'mask':os.path.lexists('/run/systemd/system/polkit.service'),'logger_sha256':hashlib.sha256(pathlib.Path('/usr/bin/logger').read_bytes()).hexdigest(),'session':subprocess.check_output(['loginctl','show-session','6']).decode()}))"));(P/(case+'-state-before.json')).write_text(json.dumps({'capacity':capacity,**state},indent=2));assert state['guest_free_bytes']>=2*1024**3 and 'ActiveState=active' in state['state'] and state['owner']=='b true\n' and not state['rule'] and not state['mask'];assert state['logger_sha256']=='613c4c47d05aee29ad4e3879377ca44bb1144308aec0cdf828dc39580eeae1f6';assert all(x in state['session'].splitlines() for x in ['User=1000','Name=campusqa','Remote=no','Service=gdm-password','Active=yes','Seat=seat0'])
+args=VM+['/usr/bin/python3','-I','-B',ROOT+'/authority-window.py',mode,'--lease',LEASE,'--uid','1000','--session-id','6','--duration-seconds','45','--source-sha256','7ff5dc4b38311a792790f48f8266089bbd17aa94dfba979d8a8fc221c8e349fc','--receipt',ROOT+'/evidence/'+case+'-window.json']
+if mode=='missing':args+=['--allow-shared-authority-window']
+(P/(case+'-invocation.json')).write_text(json.dumps({'argv':args,'started_unix_ns':time.time_ns(),'limits':{'total_seconds':45,'recorder_seconds':20,'restore_reserve_seconds':10}},indent=2))
+proc=subprocess.Popen(args,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True);lines=[];control_error=None;queued=False
+try:
+ assert select.select([proc.stdout],[],[],10)[0],'no readiness in10seconds'
+ line=proc.stdout.readline();lines.append(line);r=json.loads(line);assert r['event']=='authority_window_ready',r
+ command=json.dumps({'case':case,'name':case,'authority':ROOT+'/evidence/'+case+'-window.json','planned':'Observe actual '+case+' in reviewed bounded authority window; no administrator authentication'})
+ rootpy('import os; p='+repr(GUEST+'/evidence/command.json')+'; f=os.open(p,os.O_CREAT|os.O_EXCL|os.O_WRONLY|os.O_NOFOLLOW,0o600);os.write(f,'+repr(command.encode())+');os.close(f);os.chown(p,1000,1000)');queued=True;print('Invocation queued after exact helper ready',flush=True)
+except Exception as e:
+ control_error=str(e);print('Control stopped without app invocation' if not queued else 'Control failed after queue',control_error,flush=True)
+finally:
+ # Do not kill the independently bounded helper; its restoration must finish.
+ rest,err=proc.communicate(timeout=50);lines.append(rest);(P/(case+'-window.stdout')).write_text(''.join(lines));(P/(case+'-window.stderr')).write_text(err)
+ receipt=rootpy('import pathlib; print(pathlib.Path('+repr(ROOT+'/evidence/'+case+'-window.json')+').read_text())');(P/(case+'-window.json')).write_text(receipt);w=json.loads(receipt)
+ (P/(case+'-control.json')).write_text(json.dumps({'returncode':proc.returncode,'queued':queued,'control_error':control_error,'finished_unix_ns':time.time_ns()},indent=2));print(json.dumps({k:w.get(k) for k in ['status','cleanup','error','cleanup_error','ready_unix_ns','restore_started_unix_ns','elapsed_seconds_including_cleanup','deadline_exceeded']}),flush=True)
+ assert w['cleanup']=='restored','MANUAL RECOVERY REQUIRED'
+ if proc.returncode!=0 or control_error:raise SystemExit(1)

@@ -1,0 +1,18 @@
+import pathlib,os,sys,json,base64,hashlib,stat,time
+assert os.geteuid()==0
+x=json.load(sys.stdin);root=pathlib.Path('/root/campus1057-1285-60dc337b');guest=pathlib.Path('/home/campusqa/campus1057-1285-60dc337b')
+for a in [pathlib.Path('/'),pathlib.Path('/root')]:assert a.resolve()==a and a.stat().st_uid==0 and not a.stat().st_mode&0o022
+root.mkdir(mode=0o700);(root/'evidence').mkdir(mode=0o700);guest.mkdir(mode=0o700);os.chown(guest,1000,1000)
+for a in [guest/'probe',guest/'evidence']:a.mkdir(mode=0o700);os.chown(a,1000,1000)
+rows=[]
+for n,b in x['files'].items():
+ b=base64.b64decode(b);assert hashlib.sha256(b).hexdigest()==x['sha256'][n]
+ paths=[(root/n,0,0o400),(guest/'probe'/n,1000,0o400)] if n!='desktop-driver.py' else [(guest/n,1000,0o400)]
+ for f,uid,mode in paths:
+  fd=os.open(f,os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW|os.O_WRONLY,mode)
+  with os.fdopen(fd,'wb') as w:w.write(b)
+  os.chown(f,uid,uid);s=f.lstat();rows.append({'path':str(f),'uid':s.st_uid,'gid':s.st_gid,'mode':oct(stat.S_IMODE(s.st_mode)),'sha256':hashlib.sha256(f.read_bytes()).hexdigest(),'canonical':str(f.resolve()),'symlink':f.is_symlink()})
+os.chmod(root,0o500)
+for a in [pathlib.Path('/'),pathlib.Path('/root'),root,root/'evidence']:
+ s=a.lstat();rows.append({'path':str(a),'uid':s.st_uid,'gid':s.st_gid,'mode':oct(stat.S_IMODE(s.st_mode)),'canonical':str(a.resolve()),'symlink':a.is_symlink()})
+print(json.dumps({'observed_unix_ns':time.time_ns(),'paths':rows},indent=2))

@@ -1,0 +1,25 @@
+import pathlib,os,stat,json,subprocess,hashlib,time
+LEASE='1057-1285-60dc337b'
+def run(args):
+ p=subprocess.run(args,capture_output=True,text=True,timeout=5);return {'argv':args,'returncode':p.returncode,'stdout':p.stdout,'stderr':p.stderr}
+def props(kind,name):
+ r=run(['loginctl','show-'+kind,name,'--no-pager']);return dict(x.split('=',1) for x in r['stdout'].splitlines() if '=' in x)
+def info(p):
+ p=pathlib.Path(p);r={'path':str(p),'exists':p.exists() or p.is_symlink()}
+ if r['exists']:
+  s=p.lstat();r.update(uid=s.st_uid,gid=s.st_gid,mode=oct(stat.S_IMODE(s.st_mode)),inode=s.st_ino,device=s.st_dev,bytes=s.st_size,type='symlink' if p.is_symlink() else 'dir' if p.is_dir() else 'file')
+  if p.is_symlink():r['target']=os.readlink(p)
+  elif p.is_file():r['sha256']=hashlib.sha256(p.read_bytes()).hexdigest()
+ return r
+assert os.geteuid()==0
+r={'schema':1,'kind':'campus1057-root-preflight','lease_reference':LEASE,'observed_unix_ns':time.time_ns(),'graphical_uid':1000,'boot_id':pathlib.Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'hosted_allow_rule':{'path':'/etc/polkit-1/rules.d/49-campus-updater-1057-headless.rules','exists':pathlib.Path('/etc/polkit-1/rules.d/49-campus-updater-1057-headless.rules').exists()},'rules':[],'rules_directories':[]}
+for d in ['/etc/polkit-1/rules.d','/usr/share/polkit-1/rules.d']:
+ entries=[info(p) for p in sorted(pathlib.Path(d).iterdir())];r['rules_directories'].append({**info(d),'entries':entries,'empty':not entries});r['rules']+=entries
+r['sessions']=[props('session',line.split()[0]) for line in run(['loginctl','list-sessions','--no-legend','--no-pager'])['stdout'].splitlines()];r['user']=props('user','1000')
+r['commands']=[run(a) for a in [['systemctl','show','polkit.service','--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths'],['systemctl','show','gdm3.service','--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths'],['busctl','--system','--timeout=3','call','org.freedesktop.DBus','/org/freedesktop/DBus','org.freedesktop.DBus','NameHasOwner','s','org.freedesktop.PolicyKit1'],['dpkg-query','-W','-f=${binary:Package}\t${Version}\t${db:Status-Status}\n','campus-updater-1057','polkitd','pkexec','gdm3'],['df','-B1','/']]]
+r['paths']=[info(p) for p in ['/root/campus1057-10643-5176b9d7','/root/campus1057-10643-5176b9d7/bootstrap','/root/campus1057-10643-5176b9d7/authority-window.py','/run/systemd/system/polkit.service','/etc/systemd/system/polkit.service','/etc/polkit-1/rules.d/00-campus-updater-1057-deny.rules','/usr/share/polkit-1/actions/dev.projectcampus.updater1057.policy','/etc/gdm3/custom.conf','/usr/bin/campus-updater-1057','/usr/lib/campus-updater-1057/inert-helper.txt','/usr/lib/campus-updater-1057/install-deb.py','/usr/lib/campus-updater-1057/verify-signature','/etc/campus-updater-1057/admission.json','/etc/campus-updater-1057/public-key.txt']]
+r['paths'] += [info(p) for p in ['/root/campus1057-1285-60dc337b','/root/campus1057-1285-60dc337b/authority-window.py','/usr/bin/logger','/home/campusqa/campus1057-10643-5176b9d7/probe/desktop.py']]
+r['commands'] += [run(a) for a in [['uname','-a'],['dpkg-query','-W','-f=${binary:Package}\t${Version}\t${db:Status-Status}\n'],['systemctl','show','polkit.service','--property=MainPID,ExecMainStartTimestamp,ExecMainStartTimestampMonotonic,User,Group'],['busctl','--system','status','org.freedesktop.PolicyKit1']]]
+r['keyring']=run(['/usr/sbin/runuser','-u','campusqa','--','/usr/bin/busctl','--address=unix:path=/run/user/1000/bus','get-property','org.freedesktop.secrets','/org/freedesktop/secrets/collection/login','org.freedesktop.Secret.Collection','Locked'])
+r['paths'] += [info(p) for p in ['/root/campus1057-1285-60dc337b/desktop.py','/home/campusqa/campus1057-1285-60dc337b/probe/desktop.py','/home/campusqa/.local/share/keyrings']]
+print(json.dumps(r,indent=2))

@@ -1,0 +1,24 @@
+{
+  "phase": "stopped_after_phase_a",
+  "observed_unix_ns": 1792162479055824000,
+  "vm": {
+    "name": "campus-linux-d5-noble-arm64",
+    "status": "Stopped",
+    "cpus": 4,
+    "memory": 6442450944,
+    "disk": 30064771072,
+    "arch": "aarch64"
+  },
+  "disk": {
+    "path": "/Users/yuri/.lima/campus-linux-d5-noble-arm64/disk",
+    "logical_bytes": 6976241664,
+    "allocated_bytes": 6819020800
+  },
+  "host_available_bytes": 29213704192,
+  "mac_staging_file_bytes": 257900431,
+  "guest_artifact_bytes_written": 0,
+  "limitations": [
+    "Preboot sparse allocation omitted by incorrect filename probe; stopped value is the next-lease baseline, not a retroactive preboot measurement.",
+    "Host-wide free-space deltas include unrelated workloads; no attribution to this task."
+  ]
+}

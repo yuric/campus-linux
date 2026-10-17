@@ -1,0 +1,82 @@
+{
+  "packages/campus-updater-1057_1.0.0_arm64.deb": {
+    "sha256": "77fd0a12b6c9c092c2125d0ef34684431c81e4482042265f7b06804217ac10d8",
+    "bytes": 4705600
+  },
+  "packages/campus-updater-1057_1.0.0_arm64.deb.sig": {
+    "sha256": "1efbdc4b1001bb11788938d3ee1f1b21298abcc5bca38c552d6a7e74a2f621e1",
+    "bytes": 448
+  },
+  "packages/campus-updater-1057_2.0.0_arm64.deb": {
+    "sha256": "3563aa9bb97785e0b8b0c4a57d7fd502fd0ef087bafa894c804e33c842cfd872",
+    "bytes": 4706052
+  },
+  "packages/campus-updater-1057_2.0.0_arm64.deb.sig": {
+    "sha256": "55aacf98994d8a95dc68dddcb7038230b55e5511f86304c58ffd03965b449907",
+    "bytes": 448
+  },
+  "packages/campus-updater-1057_3.0.0_arm64.deb": {
+    "sha256": "478e5d3547760202c1e937f0bd435fe6d46d9789c49f2501f9ebba3cd0017e1f",
+    "bytes": 4704504
+  },
+  "packages/campus-updater-1057_3.0.0_arm64.deb.sig": {
+    "sha256": "cbbb59e6440e4e5230224d6684fa61e7c20a516fa787a0fc84274d60ed4aa26c",
+    "bytes": 448
+  },
+  "bootstrap/admission.json": {
+    "sha256": "45ab5ea669c24112b33136c3a98d614880b7eae532efd4d1ee340ca0146fc393",
+    "bytes": 11578
+  },
+  "bootstrap/bootstrap.py": {
+    "sha256": "4c5007c60f2c52d486e88171a42417c38f0de5d900d7544416db9c69f0ed342a",
+    "bytes": 3244
+  },
+  "bootstrap/dev.projectcampus.updater1057.policy": {
+    "sha256": "f1269a55f3db681675c6aea8941423f9b355a1823ea3291799c347efaf0090b8",
+    "bytes": 793
+  },
+  "bootstrap/install-deb.py": {
+    "sha256": "5768ff450271e8cb9f7abdc92d27fbe087d0c0875f02c1a4a4b054ff141aed55",
+    "bytes": 18130
+  },
+  "bootstrap/public-key.txt": {
+    "sha256": "636581b7da28abfe17088a98dff2ab10f8aaa3817b7e7e95c6df22580e3179b7",
+    "bytes": 152
+  },
+  "bootstrap/verify-signature": {
+    "sha256": "2bb75240050538d0694c1ec8ccc7e10c993615e0148fb93eb21583d701b0b115",
+    "bytes": 631672
+  },
+  "receipts/package-index.json": {
+    "sha256": "5e413aa34b552a3e9ca122da2495dac1a4c364e2906c8fc3057a7d46f96a8f47",
+    "bytes": 4816
+  },
+  "receipts/payload-inventory.json": {
+    "sha256": "984a6a34f0a61b0b3caa690c9beaf086941a7c1918ce038afadb200f7e00011c",
+    "bytes": 360171
+  },
+  "receipts/fixture-inputs.json": {
+    "sha256": "66f082cfb2e8c04d1d11e5e6dbfe5ebbddf7f9948f96604e48c65c685d7545f1",
+    "bytes": 3935
+  },
+  "receipts/installed-smoke.json": {
+    "sha256": "ca81aa82e3c915331731b1917f522a896ca42434e849d1173b08e1d54c54db5e",
+    "bytes": 176006
+  },
+  "probe/authority-window.py": {
+    "sha256": "77cf7bf5b94df6d829a58542a333b9f7143e4ca35922cf284626d3dab8b3b839",
+    "bytes": 18944
+  },
+  "probe/desktop.py": {
+    "sha256": "5efe47170775ff9074768010ddfd6c3b105a5f09dc4a4709eeac23c37c333d32",
+    "bytes": 35532
+  },
+  "probe/serve.py": {
+    "sha256": "a34e41df3537a329cc1b4797c7420ce0c661b33ce45f3875a496912f87df3af2",
+    "bytes": 6242
+  },
+  "receipts/serving-index.json": {
+    "sha256": "c41d30c6839eae2a542766d0dd3aea1b81a3925452631ed50b77878bcd34f546",
+    "bytes": 2443
+  }
+}

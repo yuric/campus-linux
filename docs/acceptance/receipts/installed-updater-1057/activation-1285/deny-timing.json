@@ -1,0 +1,50 @@
+{
+  "raw_desktop_status": "incomplete",
+  "raw_desktop_error": "command timeout; authority/install state needs coordinator inspection",
+  "raw_authority_status": "window_elapsed",
+  "cleanup": "restored",
+  "ready_unix_ns": 1792170913550256230,
+  "update_started_unix_ns": 1792170913715644912,
+  "update_finished_unix_ns": 1792170933734875123,
+  "restore_started_unix_ns": 1792170948512324476,
+  "invocation_fully_inside_effective_window": true,
+  "actual_update_elapsed_seconds": 20.019231627,
+  "authority_total_including_cleanup_seconds": 35.052979530000016,
+  "deadline_exceeded": false,
+  "remaining_seconds_at_readiness": 34.956525494999994,
+  "app_process": {
+    "pid": 3397,
+    "ppid": 3392,
+    "name": "campus-updater-",
+    "uids": [
+      1000,
+      1000,
+      1000,
+      1000
+    ],
+    "starttime_ticks": 26519,
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-11718c4b-6085-46b2-a487-d24f85a104da.scope\n",
+    "session": null,
+    "session_api_result": -61,
+    "logind_owner_uid": 1000,
+    "owner_api_result": 0
+  },
+  "recorder_process": {
+    "pid": 3392,
+    "ppid": 2973,
+    "name": "python3",
+    "uids": [
+      1000,
+      1000,
+      1000,
+      1000
+    ],
+    "starttime_ticks": 26509,
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-11718c4b-6085-46b2-a487-d24f85a104da.scope\n",
+    "session": null,
+    "session_api_result": -61,
+    "logind_owner_uid": 1000,
+    "owner_api_result": 0
+  },
+  "updater_returncode": -15
+}

@@ -1,0 +1,2 @@
+{"event": "authority_window_ready", "mode": "deny", "receipt": "/root/campus1057-1285-60dc337b/evidence/deny-window.json", "remaining_seconds": 34.956525494999994}
+{"event": "authority_window_finished", "status": "window_elapsed", "cleanup": "restored", "receipt": "/root/campus1057-1285-60dc337b/evidence/deny-window.json"}

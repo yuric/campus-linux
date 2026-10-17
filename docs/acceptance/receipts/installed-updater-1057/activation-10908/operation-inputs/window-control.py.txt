@@ -1,0 +1,186 @@
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import select
+import shutil
+import subprocess
+import sys
+import time
+
+WORKTREE = Path.cwd()
+OUTPUT = WORKTREE / 'docs/acceptance/receipts/installed-updater-1057/activation-10908'
+ROOT = '/root/campus1057-10908-office391'
+GUEST = '/home/campusqa/campus1057-10908-office391'
+LEASE = '1057-10908-office391'
+HELPER_SHA = '3631d41b52eb72099edf3c0e3a8878968ba1620f3593f3088e9efc7756918331'
+DISK = '/Users/yuri/.lima/campus-linux-d5-noble-arm64/disk'
+BASELINE = 7851278336
+LIMIT = 64 * 1024**2
+RESERVE = 8 * 1024**2
+VM = ['/opt/homebrew/bin/limactl', 'shell', 'campus-linux-d5-noble-arm64', '--', 'sudo', '-n']
+case, session = sys.argv[1:]
+assert case == 'deny'
+assert re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.:-]{0,63}', session)
+mode = 'missing' if case == 'missing-authority' else 'deny'
+
+
+def save(name, value):
+    destination = OUTPUT / name
+    with destination.open('x') as stream:
+        json.dump(value, stream, indent=2)
+        stream.write('\n')
+
+
+def rootpy(code):
+    argv = VM + ['/usr/bin/python3', '-I', '-B', '-c', code]
+    result = subprocess.run(argv, capture_output=True, text=True, timeout=8)
+    if result.returncode:
+        raise RuntimeError(json.dumps({'argv': argv, 'returncode': result.returncode,
+                                      'stdout': result.stdout, 'stderr': result.stderr}))
+    return result.stdout
+
+
+def capacity():
+    allocated = 0
+    for directory, directories, files in os.walk(WORKTREE, followlinks=False):
+        allocated += os.lstat(directory).st_blocks * 512
+        for name in files:
+            allocated += os.lstat(Path(directory) / name).st_blocks * 512
+        for name in directories:
+            path = Path(directory) / name
+            if path.is_symlink():
+                allocated += path.lstat().st_blocks * 512
+    disk = os.stat(DISK)
+    growth = max(0, disk.st_blocks * 512 - BASELINE)
+    return {'observed_unix_ns': time.time_ns(), 'host_free_bytes': shutil.disk_usage('/Users/yuri').free,
+            'disk_inode': disk.st_ino, 'disk_allocated_bytes': disk.st_blocks * 512,
+            'stopped_baseline_allocated_bytes': BASELINE, 'new_disk_allocated_bytes': growth,
+            'worktree_allocated_bytes': allocated, 'unallocated_receipt_reserve_bytes': RESERVE,
+            'new_allocation_with_reserve_bytes': growth + allocated + RESERVE,
+            'new_allocation_limit_bytes': LIMIT,
+            'method': 'new allocated guest disk plus entire current worktree allocation plus 8 MiB reserve; original 1057 aggregate reported separately'}
+
+
+def inspect():
+    code = '''import os,pathlib,subprocess,json,time
+def run(argv):
+ p=subprocess.run(argv,capture_output=True,text=True,timeout=2)
+ return {'argv':argv,'returncode':p.returncode,'stdout':p.stdout,'stderr':p.stderr}
+print(json.dumps({'observed_unix_ns':time.time_ns(),'guest_free_bytes':os.statvfs('/').f_bavail*os.statvfs('/').f_frsize,
+ 'boot_id':pathlib.Path('/proc/sys/kernel/random/boot_id').read_text().strip(),
+ 'state':run(['/usr/bin/systemctl','show','polkit.service','--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths,MainPID,ControlGroup']),
+ 'owner':run(['/usr/bin/busctl','--system','--timeout=2','call','org.freedesktop.DBus','/org/freedesktop/DBus','org.freedesktop.DBus','NameHasOwner','s','org.freedesktop.PolicyKit1']),
+ 'rule_exists':os.path.lexists('/etc/polkit-1/rules.d/00-campus-updater-1057-deny.rules'),
+ 'runtime_mask_exists':os.path.lexists('/run/systemd/system/polkit.service'),
+ 'persistent_mask_exists':os.path.lexists('/etc/systemd/system/polkit.service'),
+ 'session':run(['/usr/bin/loginctl','show-session',SESSION,'--no-pager'])}))
+'''.replace('SESSION', repr(session))
+    return json.loads(rootpy(code))
+
+
+def restored(state):
+    properties = dict(line.split('=', 1) for line in state['state']['stdout'].splitlines() if '=' in line)
+    return (state['state']['returncode'] == 0 and properties.get('LoadState') == 'loaded'
+            and properties.get('ActiveState') == 'active' and properties.get('SubState') == 'running'
+            and not properties.get('DropInPaths') and state['owner']['returncode'] == 0
+            and state['owner']['stdout'].strip() == 'b true'
+            and not any(state[key] for key in ('rule_exists', 'runtime_mask_exists', 'persistent_mask_exists')))
+
+
+before_capacity = capacity()
+save(case + '-capacity-before.json', before_capacity)
+assert before_capacity['host_free_bytes'] - max(0, LIMIT - before_capacity['new_allocation_with_reserve_bytes']) >= 20 * 1024**3, 'host floor breached; no case'
+assert before_capacity['new_allocation_with_reserve_bytes'] <= LIMIT, 'new allocation exceeded; no case'
+before = inspect()
+save(case + '-state-before.json', before)
+assert before['guest_free_bytes'] >= 2 * 1024**3 and restored(before), 'independent authority/floor precondition failed'
+assert before['session']['returncode'] == 0
+assert all(value in before['session']['stdout'].splitlines() for value in
+           ['Id=' + session, 'User=1000', 'Name=campusqa', 'Remote=no', 'Service=gdm-password', 'Active=yes', 'Seat=seat0'])
+argv = VM + ['/usr/bin/python3', '-I', '-B', ROOT + '/authority-window.py', mode,
+             '--lease', LEASE, '--uid', '1000', '--session-id', session, '--duration-seconds', '45',
+             '--source-sha256', HELPER_SHA, '--receipt', ROOT + '/evidence/' + case + '-window.json']
+if mode == 'missing':
+    argv.append('--allow-shared-authority-window')
+save(case + '-invocation.json', {'argv': argv, 'started_unix_ns': time.time_ns(),
+                               'limits': {'total_seconds': 45, 'recorder_seconds': 20,
+                                          'restore_reserve_seconds': 10, 'ready_remaining_minimum_seconds': 23}})
+proc = subprocess.Popen(argv, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+lines, control_error, queued = [], None, False
+try:
+    assert select.select([proc.stdout], [], [], 10)[0], 'no readiness in 10 seconds'
+    line = proc.stdout.readline()
+    lines.append(line)
+    ready = json.loads(line)
+    assert ready.get('event') == 'authority_window_ready' and ready.get('mode') == mode, ready
+    assert ready.get('remaining_seconds', 0) >= 23, 'insufficient reported time for bounded recorder'
+    command = {'case': case, 'name': case, 'lease': LEASE,
+               'authority': ROOT + '/evidence/' + case + '-window.json',
+               'planned': 'Observe actual ' + case + ' within reviewed authority window; no administrator authentication',
+               'preflight': 'root-preflight.json',
+               'max_recorder_seconds': 20, 'minimum_start_remaining_seconds': 22}
+    queue_code = '''import os,json,time,pathlib
+w=json.loads(pathlib.Path(WINDOW).read_text())
+assert w['status']=='ready' and w['lease']==LEASE
+deadline=w['ready_unix_ns']+int(w['remaining_seconds']*1000000000)
+assert deadline-time.time_ns()>=23000000000,'insufficient actual queue-time authority budget'
+c=COMMAND
+c['observation_deadline_unix_ns']=deadline
+c['queued_unix_ns']=time.time_ns()
+p=GUEST+'/evidence/command.json'
+f=os.open(p,os.O_CREAT|os.O_EXCL|os.O_WRONLY|os.O_NOFOLLOW,0o600)
+try:
+ os.write(f,json.dumps(c).encode());os.fchown(f,1000,1000);os.fsync(f)
+finally:os.close(f)
+print(json.dumps({'queued_unix_ns':c['queued_unix_ns'],'observation_deadline_unix_ns':deadline}))
+'''.replace('WINDOW', repr(command['authority'])).replace('LEASE', repr(LEASE)).replace('COMMAND', repr(command)).replace('GUEST', repr(GUEST))
+    queue = json.loads(rootpy(queue_code))
+    queued = True
+    save(case + '-queue.json', queue)
+    print('Invocation queued after exact helper readiness and guest-time budget checks', flush=True)
+except Exception as error:
+    control_error = str(error)
+    print('Controller failure; preserving bounded helper restoration: ' + control_error, flush=True)
+finally:
+    # Do not kill the independently bounded helper or change its timeout.
+    try:
+        rest, stderr = proc.communicate(timeout=50)
+        lines.append(rest)
+    except subprocess.TimeoutExpired as error:
+        partial_stdout = error.stdout or ''
+        partial_stderr = error.stderr or ''
+        lines.append(partial_stdout.decode(errors='replace') if isinstance(partial_stdout, bytes) else partial_stdout)
+        stderr = partial_stderr.decode(errors='replace') if isinstance(partial_stderr, bytes) else partial_stderr
+        control_error = control_error or 'Controller wait expired; independent root recovery inspection required: ' + str(error)
+    (OUTPUT / (case + '-window.stdout')).write_text(''.join(lines))
+    (OUTPUT / (case + '-window.stderr')).write_text(stderr)
+    final = {'returncode': proc.poll(), 'queued': queued, 'control_error': control_error,
+             'finished_unix_ns': time.time_ns()}
+    try:
+        raw = rootpy('import pathlib,sys;sys.stdout.write(pathlib.Path(' + repr(command['authority'] if queued else ROOT + '/evidence/' + case + '-window.json') + ').read_text())')
+        (OUTPUT / (case + '-window.json')).write_text(raw)
+        window = json.loads(raw)
+        final['authority_receipt_sha256'] = hashlib.sha256(raw.encode()).hexdigest()
+        final['authority_summary'] = {key: window.get(key) for key in
+            ('status', 'cleanup', 'error', 'cleanup_error', 'ready_unix_ns', 'restore_started_unix_ns',
+             'window_finished_unix_ns', 'elapsed_seconds_including_cleanup', 'deadline_exceeded')}
+        after = inspect()
+        save(case + '-state-after.json', after)
+        final['independently_restored'] = restored(after)
+        final['guest_floor_after'] = after['guest_free_bytes'] >= 2 * 1024**3
+        after_capacity = capacity()
+        save(case + '-capacity-after.json', after_capacity)
+        final['host_floor_after'] = after_capacity['host_free_bytes'] >= 20 * 1024**3
+        final['allocation_after_within_limit'] = after_capacity['new_allocation_with_reserve_bytes'] <= LIMIT
+    except Exception as error:
+        final['export_or_restoration_inspection_error'] = str(error)
+    save(case + '-control.json', final)
+    print(json.dumps(final), flush=True)
+    if (final.get('returncode') != 0 or control_error or not queued
+            or final.get('authority_summary', {}).get('cleanup') != 'restored'
+            or final.get('authority_summary', {}).get('deadline_exceeded') is not False
+            or not all(final.get(key) for key in ('independently_restored', 'guest_floor_after',
+                                                'host_floor_after', 'allocation_after_within_limit'))):
+        raise SystemExit(1)

@@ -1,0 +1,5 @@
+import subprocess,json,pathlib,os,stat,time
+args=['/usr/bin/journalctl','--no-pager','--output=json','--lines=64','--since=@1792167265','SYSLOG_IDENTIFIER=campus-updater-1057','_BOOT_ID=b59b3d1f891447588d6bb5d334859490'];p=subprocess.run(args,capture_output=True,text=True,timeout=2);rows=[json.loads(x) for x in p.stdout.splitlines()];r={'scope':'diagnostic only; does not relax strict marker provenance','observed_unix_ns':time.time_ns(),'argv':args,'returncode':p.returncode,'stderr':p.stderr,'records':[x for x in rows if 'lease=1057-1263-ea7d6086' in x.get('MESSAGE','')],'ancestors':[]}
+for q in [pathlib.Path('/'),pathlib.Path('/root')]:
+ s=q.lstat();r['ancestors'].append({'path':str(q),'canonical':str(q.resolve()),'symlink':q.is_symlink(),'uid':s.st_uid,'gid':s.st_gid,'mode':oct(stat.S_IMODE(s.st_mode))})
+print(json.dumps(r,indent=2))

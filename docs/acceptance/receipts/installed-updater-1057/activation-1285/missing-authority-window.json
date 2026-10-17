@@ -1,0 +1,234 @@
+{
+  "scope": "leased GDM negative preparation only",
+  "mode": "missing",
+  "lease": "1057-1285-60dc337b",
+  "uid": 1000,
+  "authority_helper": {
+    "path": "/root/campus1057-1285-60dc337b/authority-window.py",
+    "sha256": "970a146124f1bc85a1651aa624c60853c9b5a97356f910c090828d22ac0a8c7a",
+    "uid": 0,
+    "mode": "0o400",
+    "isolated_python": true,
+    "bytecode_disabled": true
+  },
+  "shared_authority_window_acknowledged": true,
+  "requested_seconds": 45,
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/systemctl",
+        "show",
+        "polkit.service",
+        "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths"
+      ],
+      "exit": 0,
+      "stdout": "Id=polkit.service\nLoadState=loaded\nActiveState=active\nSubState=running\nFragmentPath=/usr/lib/systemd/system/polkit.service\nDropInPaths=\nUnitFileState=static\n",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/busctl",
+        "--system",
+        "--timeout=3",
+        "call",
+        "org.freedesktop.DBus",
+        "/org/freedesktop/DBus",
+        "org.freedesktop.DBus",
+        "NameHasOwner",
+        "s",
+        "org.freedesktop.PolicyKit1"
+      ],
+      "exit": 0,
+      "stdout": "b true\n",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/busctl",
+        "--system",
+        "--timeout=3",
+        "get-property",
+        "org.freedesktop.DBus",
+        "/org/freedesktop/DBus",
+        "org.freedesktop.DBus",
+        "Features"
+      ],
+      "exit": 0,
+      "stdout": "as 4 \"ActivatableServicesChanged\" \"AppArmor\" \"HeaderFiltering\" \"SystemdActivation\"\n",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/systemctl",
+        "--runtime",
+        "--now",
+        "mask",
+        "polkit.service"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "Created symlink /run/systemd/system/polkit.service -> /dev/null.\n",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/systemctl",
+        "show",
+        "polkit.service",
+        "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths"
+      ],
+      "exit": 0,
+      "stdout": "Id=polkit.service\nLoadState=masked\nActiveState=inactive\nSubState=dead\nFragmentPath=/run/systemd/system/polkit.service\nDropInPaths=\nUnitFileState=masked-runtime\n",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/busctl",
+        "--system",
+        "--timeout=3",
+        "call",
+        "org.freedesktop.DBus",
+        "/org/freedesktop/DBus",
+        "org.freedesktop.DBus",
+        "NameHasOwner",
+        "s",
+        "org.freedesktop.PolicyKit1"
+      ],
+      "exit": 0,
+      "stdout": "b false\n",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/busctl",
+        "--system",
+        "--timeout=3",
+        "call",
+        "org.freedesktop.DBus",
+        "/org/freedesktop/DBus",
+        "org.freedesktop.DBus",
+        "StartServiceByName",
+        "su",
+        "org.freedesktop.PolicyKit1",
+        "0"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "Call failed: Unit polkit.service is masked.\n",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/busctl",
+        "--system",
+        "--timeout=3",
+        "call",
+        "org.freedesktop.DBus",
+        "/org/freedesktop/DBus",
+        "org.freedesktop.DBus",
+        "NameHasOwner",
+        "s",
+        "org.freedesktop.PolicyKit1"
+      ],
+      "exit": 0,
+      "stdout": "b false\n",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/systemctl",
+        "--runtime",
+        "unmask",
+        "polkit.service"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "Removed \"/run/systemd/system/polkit.service\".\n",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/systemctl",
+        "start",
+        "polkit.service"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/systemctl",
+        "show",
+        "polkit.service",
+        "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths"
+      ],
+      "exit": 0,
+      "stdout": "Id=polkit.service\nLoadState=loaded\nActiveState=active\nSubState=running\nFragmentPath=/usr/lib/systemd/system/polkit.service\nDropInPaths=\nUnitFileState=static\n",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/busctl",
+        "--system",
+        "--timeout=3",
+        "call",
+        "org.freedesktop.DBus",
+        "/org/freedesktop/DBus",
+        "org.freedesktop.DBus",
+        "NameHasOwner",
+        "s",
+        "org.freedesktop.PolicyKit1"
+      ],
+      "exit": 0,
+      "stdout": "b true\n",
+      "stderr": "",
+      "output_truncated": false
+    }
+  ],
+  "status": "window_elapsed",
+  "cleanup": "restored",
+  "user": "campusqa",
+  "subject_session": "6",
+  "initial_state": {
+    "Id": "polkit.service",
+    "LoadState": "loaded",
+    "ActiveState": "active",
+    "SubState": "running",
+    "FragmentPath": "/usr/lib/systemd/system/polkit.service",
+    "DropInPaths": "",
+    "UnitFileState": "static"
+  },
+  "activation_file": "/usr/share/dbus-1/system-services/org.freedesktop.PolicyKit1.service",
+  "activation_sha256": "baed12288339ed4b1df90f017beb8af07b56eba1b2edc4a60914880c13617af1",
+  "cleanup_reserve_seconds": 10,
+  "window_started_unix_ns": 1792170837465868096,
+  "owned_device_inode": [
+    27,
+    1948
+  ],
+  "owned_path": "/run/systemd/system/polkit.service",
+  "ready_unix_ns": 1792170837631775380,
+  "remaining_seconds": 34.83408913299999,
+  "restore_started_unix_ns": 1792170872466435249,
+  "restored_state": {
+    "Id": "polkit.service",
+    "LoadState": "loaded",
+    "ActiveState": "active",
+    "SubState": "running",
+    "FragmentPath": "/usr/lib/systemd/system/polkit.service",
+    "DropInPaths": "",
+    "UnitFileState": "static"
+  },
+  "elapsed_seconds_including_cleanup": 35.21507912199999,
+  "window_finished_unix_ns": 1792170872680946510,
+  "deadline_exceeded": false
+}

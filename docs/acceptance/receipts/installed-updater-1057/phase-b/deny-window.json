@@ -1,0 +1,36 @@
+{
+  "scope": "leased GDM negative preparation only",
+  "mode": "deny",
+  "lease": "1057-10643-5176b9d7",
+  "uid": 1000,
+  "authority_helper": {
+    "path": "/root/campus1057-10643-5176b9d7/authority-window.py",
+    "sha256": "77cf7bf5b94df6d829a58542a333b9f7143e4ca35922cf284626d3dab8b3b839",
+    "uid": 0,
+    "mode": "0o400",
+    "isolated_python": true,
+    "bytecode_disabled": true
+  },
+  "shared_authority_window_acknowledged": false,
+  "requested_seconds": 45,
+  "commands": [],
+  "status": "window_elapsed",
+  "cleanup": "restored",
+  "user": "campusqa",
+  "subject_session": "6",
+  "cleanup_reserve_seconds": 10,
+  "window_started_unix_ns": 1792163764499647167,
+  "owned_device_inode": [
+    64769,
+    91875
+  ],
+  "owned_path": "/etc/polkit-1/rules.d/00-campus-updater-1057-deny.rules",
+  "rule_sha256": "7081e14e0c05c03891f03dcadf4bdf1083d7bb580b19a60914cc4ea755128caa",
+  "ready_caveat": "Wait for matching deny-loaded journal marker before launching; require deny marker for actual refusal evidence",
+  "ready_unix_ns": 1792163764503365509,
+  "remaining_seconds": 34.99627744899999,
+  "restore_started_unix_ns": 1792163799501051499,
+  "elapsed_seconds_including_cleanup": 35.004407689000004,
+  "window_finished_unix_ns": 1792163799504056105,
+  "deadline_exceeded": false
+}

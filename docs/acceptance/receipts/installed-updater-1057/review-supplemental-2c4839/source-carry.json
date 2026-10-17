@@ -1,0 +1,1095 @@
+{
+  "head": "2c4839e9883725d47ba47ced51a9b97d0f637fa9",
+  "notice": "Prior packet paths name retained local review records, not public source URLs. Public immutable source links and byte digests identify the reviewed bytes. A match proves delivery, not universal approval; findings and scope must be read separately.",
+  "files": [
+    {
+      "path": ".github/workflows/l0-installed-updater.yml",
+      "bytes": 2073,
+      "sha256": "842ab7b3829a5e6c5fffe7a9592393d8d269f05be448573f02221cab30551942",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/.github/workflows/l0-installed-updater.yml",
+      "prior_packet_matches": [
+        {
+          "manifest": "reviews/linux-pr13-evidence/head3de5ab6/claude-manifest.json",
+          "source_head": "3de5ab666a84f0a29bb80844219a0c4509ff2238",
+          "source_url": "https://github.com/yuric/campus-linux/blob/3de5ab666a84f0a29bb80844219a0c4509ff2238/.github/workflows/l0-installed-updater.yml",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head113a53e/claude-manifest.json",
+          "source_head": "113a53e4eea44b6d80a8ee3edb55d186d11f3ba6",
+          "source_url": "https://github.com/yuric/campus-linux/blob/113a53e4eea44b6d80a8ee3edb55d186d11f3ba6/.github/workflows/l0-installed-updater.yml",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    },
+    {
+      "path": "docs/acceptance/installed-updater-1057.md",
+      "bytes": 84242,
+      "sha256": "793d53b5fbfb4b1ee30646912e71dc2844471f6cb83bd4353db291347d60a81b",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/docs/acceptance/installed-updater-1057.md",
+      "prior_packet_matches": []
+    },
+    {
+      "path": "spikes/1057/installed-updater/adapter/README.md",
+      "bytes": 5241,
+      "sha256": "e2293748f80624f7b5194ae64c765c0c1b6347ad3c5580c4d254f588761ad5cd",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/adapter/README.md",
+      "prior_packet_matches": [
+        {
+          "packet": "reviews/linux-pr13-evidence/head4001fb63/claude-packet.txt",
+          "packet_sha256": "41532332be587a9a231255fb8a587e52638b440c1886580997746bab16893787",
+          "completed_status": "completed",
+          "session_id": "63539e6a-2320-4465-a11d-2ad8f2f70010",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/adapter/bootstrap.py",
+      "bytes": 3244,
+      "sha256": "4c5007c60f2c52d486e88171a42417c38f0de5d900d7544416db9c69f0ed342a",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/adapter/bootstrap.py",
+      "prior_packet_matches": [
+        {
+          "packet": "reviews/linux-pr13-evidence/head164d7d0/claude-prompt.txt",
+          "packet_sha256": "513d170dc86b0b0ad55e924a2f81431a71db33a8bed8b10bf8be0905302f457d",
+          "completed_status": "completed",
+          "session_id": "e2961912-7ffd-44a7-8fda-29b0184acbc6",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "packet": "reviews/linux-pr13-evidence/head333d59b/claude-packet.txt",
+          "packet_sha256": "ed99b4186e25ca0616a0c7f2a0c1f6d53899f260a1a0109f308ca3830d281770",
+          "completed_status": "completed",
+          "session_id": "7c81c097-5140-4a9d-8a7a-d4c584c98cc8",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "packet": "reviews/linux-pr13-evidence/head4001fb63/claude-packet.txt",
+          "packet_sha256": "41532332be587a9a231255fb8a587e52638b440c1886580997746bab16893787",
+          "completed_status": "completed",
+          "session_id": "63539e6a-2320-4465-a11d-2ad8f2f70010",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "packet": "reviews/linux-pr13-evidence/head1666bd8/claude-packet.txt",
+          "packet_sha256": "571c440c3c61a2450dea66e9eec34676dccbaed7542c163f5476a23812625b60",
+          "completed_status": "completed",
+          "session_id": "a5d4b13b-35ac-4fb2-9e34-e552e6fd752c",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head164d7d0/claude-manifest.json",
+          "source_head": "164d7d0dd92fd76dae9abb73a2a34b11af898d5f",
+          "source_url": "https://github.com/yuric/campus-linux/blob/164d7d0dd92fd76dae9abb73a2a34b11af898d5f/spikes/1057/installed-updater/adapter/bootstrap.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head3de5ab6/claude-manifest.json",
+          "source_head": "3de5ab666a84f0a29bb80844219a0c4509ff2238",
+          "source_url": "https://github.com/yuric/campus-linux/blob/3de5ab666a84f0a29bb80844219a0c4509ff2238/spikes/1057/installed-updater/adapter/bootstrap.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head113a53e/claude-manifest.json",
+          "source_head": "113a53e4eea44b6d80a8ee3edb55d186d11f3ba6",
+          "source_url": "https://github.com/yuric/campus-linux/blob/113a53e4eea44b6d80a8ee3edb55d186d11f3ba6/spikes/1057/installed-updater/adapter/bootstrap.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head67ef112/claude-manifest.json",
+          "source_head": "67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2",
+          "source_url": "https://github.com/yuric/campus-linux/blob/67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2/spikes/1057/installed-updater/adapter/bootstrap.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head368809e/claude-manifest.json",
+          "source_head": "368809e8ad0cdde047de44c8c2657fc7ca4893bc",
+          "source_url": "https://github.com/yuric/campus-linux/blob/368809e8ad0cdde047de44c8c2657fc7ca4893bc/spikes/1057/installed-updater/adapter/bootstrap.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head1d878c0/claude-manifest.json",
+          "source_head": "1d878c08fa450c2b6a5fe8f35b394ed27498ed41",
+          "source_url": "https://github.com/yuric/campus-linux/blob/1d878c08fa450c2b6a5fe8f35b394ed27498ed41/spikes/1057/installed-updater/adapter/bootstrap.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/adapter/dev.projectcampus.updater1057.policy",
+      "bytes": 793,
+      "sha256": "f1269a55f3db681675c6aea8941423f9b355a1823ea3291799c347efaf0090b8",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/adapter/dev.projectcampus.updater1057.policy",
+      "prior_packet_matches": [
+        {
+          "packet": "reviews/linux-pr13-evidence/head164d7d0/claude-prompt.txt",
+          "packet_sha256": "513d170dc86b0b0ad55e924a2f81431a71db33a8bed8b10bf8be0905302f457d",
+          "completed_status": "completed",
+          "session_id": "e2961912-7ffd-44a7-8fda-29b0184acbc6",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head164d7d0/claude-manifest.json",
+          "source_head": "164d7d0dd92fd76dae9abb73a2a34b11af898d5f",
+          "source_url": "https://github.com/yuric/campus-linux/blob/164d7d0dd92fd76dae9abb73a2a34b11af898d5f/spikes/1057/installed-updater/adapter/dev.projectcampus.updater1057.policy",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head3de5ab6/claude-manifest.json",
+          "source_head": "3de5ab666a84f0a29bb80844219a0c4509ff2238",
+          "source_url": "https://github.com/yuric/campus-linux/blob/3de5ab666a84f0a29bb80844219a0c4509ff2238/spikes/1057/installed-updater/adapter/dev.projectcampus.updater1057.policy",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head67ef112/claude-manifest.json",
+          "source_head": "67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2",
+          "source_url": "https://github.com/yuric/campus-linux/blob/67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2/spikes/1057/installed-updater/adapter/dev.projectcampus.updater1057.policy",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head368809e/claude-manifest.json",
+          "source_head": "368809e8ad0cdde047de44c8c2657fc7ca4893bc",
+          "source_url": "https://github.com/yuric/campus-linux/blob/368809e8ad0cdde047de44c8c2657fc7ca4893bc/spikes/1057/installed-updater/adapter/dev.projectcampus.updater1057.policy",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head1d878c0/claude-manifest.json",
+          "source_head": "1d878c08fa450c2b6a5fe8f35b394ed27498ed41",
+          "source_url": "https://github.com/yuric/campus-linux/blob/1d878c08fa450c2b6a5fe8f35b394ed27498ed41/spikes/1057/installed-updater/adapter/dev.projectcampus.updater1057.policy",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/adapter/install-deb.py",
+      "bytes": 18130,
+      "sha256": "5768ff450271e8cb9f7abdc92d27fbe087d0c0875f02c1a4a4b054ff141aed55",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/adapter/install-deb.py",
+      "prior_packet_matches": [
+        {
+          "packet": "reviews/linux-pr13-evidence/head4001fb63/claude-packet.txt",
+          "packet_sha256": "41532332be587a9a231255fb8a587e52638b440c1886580997746bab16893787",
+          "completed_status": "completed",
+          "session_id": "63539e6a-2320-4465-a11d-2ad8f2f70010",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "packet": "reviews/linux-pr13-evidence/head1666bd8/claude-packet.txt",
+          "packet_sha256": "571c440c3c61a2450dea66e9eec34676dccbaed7542c163f5476a23812625b60",
+          "completed_status": "completed",
+          "session_id": "a5d4b13b-35ac-4fb2-9e34-e552e6fd752c",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head3de5ab6/claude-manifest.json",
+          "source_head": "3de5ab666a84f0a29bb80844219a0c4509ff2238",
+          "source_url": "https://github.com/yuric/campus-linux/blob/3de5ab666a84f0a29bb80844219a0c4509ff2238/spikes/1057/installed-updater/adapter/install-deb.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head113a53e/claude-manifest.json",
+          "source_head": "113a53e4eea44b6d80a8ee3edb55d186d11f3ba6",
+          "source_url": "https://github.com/yuric/campus-linux/blob/113a53e4eea44b6d80a8ee3edb55d186d11f3ba6/spikes/1057/installed-updater/adapter/install-deb.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head67ef112/claude-manifest.json",
+          "source_head": "67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2",
+          "source_url": "https://github.com/yuric/campus-linux/blob/67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2/spikes/1057/installed-updater/adapter/install-deb.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head368809e/claude-manifest.json",
+          "source_head": "368809e8ad0cdde047de44c8c2657fc7ca4893bc",
+          "source_url": "https://github.com/yuric/campus-linux/blob/368809e8ad0cdde047de44c8c2657fc7ca4893bc/spikes/1057/installed-updater/adapter/install-deb.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head1d878c0/claude-manifest.json",
+          "source_head": "1d878c08fa450c2b6a5fe8f35b394ed27498ed41",
+          "source_url": "https://github.com/yuric/campus-linux/blob/1d878c08fa450c2b6a5fe8f35b394ed27498ed41/spikes/1057/installed-updater/adapter/install-deb.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/adapter/make-admission.py",
+      "bytes": 1508,
+      "sha256": "2eaccba0c35655eb39edaee866c220aeaf43483d852833dbbd4d4ef63fb1c6d7",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/adapter/make-admission.py",
+      "prior_packet_matches": [
+        {
+          "packet": "reviews/linux-pr13-evidence/head164d7d0/claude-prompt.txt",
+          "packet_sha256": "513d170dc86b0b0ad55e924a2f81431a71db33a8bed8b10bf8be0905302f457d",
+          "completed_status": "completed",
+          "session_id": "e2961912-7ffd-44a7-8fda-29b0184acbc6",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head164d7d0/claude-manifest.json",
+          "source_head": "164d7d0dd92fd76dae9abb73a2a34b11af898d5f",
+          "source_url": "https://github.com/yuric/campus-linux/blob/164d7d0dd92fd76dae9abb73a2a34b11af898d5f/spikes/1057/installed-updater/adapter/make-admission.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head3de5ab6/claude-manifest.json",
+          "source_head": "3de5ab666a84f0a29bb80844219a0c4509ff2238",
+          "source_url": "https://github.com/yuric/campus-linux/blob/3de5ab666a84f0a29bb80844219a0c4509ff2238/spikes/1057/installed-updater/adapter/make-admission.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head113a53e/claude-manifest.json",
+          "source_head": "113a53e4eea44b6d80a8ee3edb55d186d11f3ba6",
+          "source_url": "https://github.com/yuric/campus-linux/blob/113a53e4eea44b6d80a8ee3edb55d186d11f3ba6/spikes/1057/installed-updater/adapter/make-admission.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head67ef112/claude-manifest.json",
+          "source_head": "67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2",
+          "source_url": "https://github.com/yuric/campus-linux/blob/67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2/spikes/1057/installed-updater/adapter/make-admission.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/adapter/test_adapter.py",
+      "bytes": 7691,
+      "sha256": "31d98c01eac3443e25df1d5afe083104f5f3e932f76e81f6f0d62b93772379a1",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/adapter/test_adapter.py",
+      "prior_packet_matches": [
+        {
+          "manifest": "reviews/linux-pr13-evidence/head3de5ab6/claude-manifest.json",
+          "source_head": "3de5ab666a84f0a29bb80844219a0c4509ff2238",
+          "source_url": "https://github.com/yuric/campus-linux/blob/3de5ab666a84f0a29bb80844219a0c4509ff2238/spikes/1057/installed-updater/adapter/test_adapter.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head67ef112/claude-manifest.json",
+          "source_head": "67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2",
+          "source_url": "https://github.com/yuric/campus-linux/blob/67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2/spikes/1057/installed-updater/adapter/test_adapter.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/hosted/Dockerfile.build",
+      "bytes": 519,
+      "sha256": "75f5d80457275f97206dbda9949cf35cc3e434916a7561a45c532e4e843068ef",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/hosted/Dockerfile.build",
+      "prior_packet_matches": [
+        {
+          "packet": "reviews/linux-pr13-evidence/head164d7d0/claude-prompt.txt",
+          "packet_sha256": "513d170dc86b0b0ad55e924a2f81431a71db33a8bed8b10bf8be0905302f457d",
+          "completed_status": "completed",
+          "session_id": "e2961912-7ffd-44a7-8fda-29b0184acbc6",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head164d7d0/claude-manifest.json",
+          "source_head": "164d7d0dd92fd76dae9abb73a2a34b11af898d5f",
+          "source_url": "https://github.com/yuric/campus-linux/blob/164d7d0dd92fd76dae9abb73a2a34b11af898d5f/spikes/1057/installed-updater/hosted/Dockerfile.build",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head3de5ab6/claude-manifest.json",
+          "source_head": "3de5ab666a84f0a29bb80844219a0c4509ff2238",
+          "source_url": "https://github.com/yuric/campus-linux/blob/3de5ab666a84f0a29bb80844219a0c4509ff2238/spikes/1057/installed-updater/hosted/Dockerfile.build",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head67ef112/claude-manifest.json",
+          "source_head": "67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2",
+          "source_url": "https://github.com/yuric/campus-linux/blob/67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2/spikes/1057/installed-updater/hosted/Dockerfile.build",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/hosted/Dockerfile.smoke",
+      "bytes": 864,
+      "sha256": "485cbaa47e7c1588ab11dc955d9908b39ddb8c7b8608854e3a4a5f2813ce50fb",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/hosted/Dockerfile.smoke",
+      "prior_packet_matches": [
+        {
+          "manifest": "reviews/linux-pr13-evidence/head3de5ab6/claude-manifest.json",
+          "source_head": "3de5ab666a84f0a29bb80844219a0c4509ff2238",
+          "source_url": "https://github.com/yuric/campus-linux/blob/3de5ab666a84f0a29bb80844219a0c4509ff2238/spikes/1057/installed-updater/hosted/Dockerfile.smoke",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head67ef112/claude-manifest.json",
+          "source_head": "67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2",
+          "source_url": "https://github.com/yuric/campus-linux/blob/67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2/spikes/1057/installed-updater/hosted/Dockerfile.smoke",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/hosted/collect-packages.py",
+      "bytes": 913,
+      "sha256": "ed202ff5c6a77c88154c78b763d6e5c2a74e602eeb867978508fbfe9c40b376d",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/hosted/collect-packages.py",
+      "prior_packet_matches": [
+        {
+          "manifest": "reviews/linux-pr13-evidence/head3de5ab6/claude-manifest.json",
+          "source_head": "3de5ab666a84f0a29bb80844219a0c4509ff2238",
+          "source_url": "https://github.com/yuric/campus-linux/blob/3de5ab666a84f0a29bb80844219a0c4509ff2238/spikes/1057/installed-updater/hosted/collect-packages.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head67ef112/claude-manifest.json",
+          "source_head": "67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2",
+          "source_url": "https://github.com/yuric/campus-linux/blob/67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2/spikes/1057/installed-updater/hosted/collect-packages.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/hosted/install-tools.py",
+      "bytes": 1296,
+      "sha256": "4a5da0f4a191df211b7e7b8117e84fa3b74698e71921f6e44aace7ed275487a7",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/hosted/install-tools.py",
+      "prior_packet_matches": [
+        {
+          "packet": "reviews/linux-pr13-evidence/head164d7d0/claude-prompt.txt",
+          "packet_sha256": "513d170dc86b0b0ad55e924a2f81431a71db33a8bed8b10bf8be0905302f457d",
+          "completed_status": "completed",
+          "session_id": "e2961912-7ffd-44a7-8fda-29b0184acbc6",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head164d7d0/claude-manifest.json",
+          "source_head": "164d7d0dd92fd76dae9abb73a2a34b11af898d5f",
+          "source_url": "https://github.com/yuric/campus-linux/blob/164d7d0dd92fd76dae9abb73a2a34b11af898d5f/spikes/1057/installed-updater/hosted/install-tools.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head3de5ab6/claude-manifest.json",
+          "source_head": "3de5ab666a84f0a29bb80844219a0c4509ff2238",
+          "source_url": "https://github.com/yuric/campus-linux/blob/3de5ab666a84f0a29bb80844219a0c4509ff2238/spikes/1057/installed-updater/hosted/install-tools.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head67ef112/claude-manifest.json",
+          "source_head": "67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2",
+          "source_url": "https://github.com/yuric/campus-linux/blob/67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2/spikes/1057/installed-updater/hosted/install-tools.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/hosted/inventory.py",
+      "bytes": 4484,
+      "sha256": "8fe9bd4fbdc142a7b48f71cedc1372eafccc715811d2a11c6e1362a336c86dc9",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/hosted/inventory.py",
+      "prior_packet_matches": [
+        {
+          "packet": "reviews/linux-pr13-evidence/head164d7d0/claude-prompt.txt",
+          "packet_sha256": "513d170dc86b0b0ad55e924a2f81431a71db33a8bed8b10bf8be0905302f457d",
+          "completed_status": "completed",
+          "session_id": "e2961912-7ffd-44a7-8fda-29b0184acbc6",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head164d7d0/claude-manifest.json",
+          "source_head": "164d7d0dd92fd76dae9abb73a2a34b11af898d5f",
+          "source_url": "https://github.com/yuric/campus-linux/blob/164d7d0dd92fd76dae9abb73a2a34b11af898d5f/spikes/1057/installed-updater/hosted/inventory.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head3de5ab6/claude-manifest.json",
+          "source_head": "3de5ab666a84f0a29bb80844219a0c4509ff2238",
+          "source_url": "https://github.com/yuric/campus-linux/blob/3de5ab666a84f0a29bb80844219a0c4509ff2238/spikes/1057/installed-updater/hosted/inventory.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head67ef112/claude-manifest.json",
+          "source_head": "67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2",
+          "source_url": "https://github.com/yuric/campus-linux/blob/67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2/spikes/1057/installed-updater/hosted/inventory.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/hosted/prepare-or-build.sh",
+      "bytes": 2785,
+      "sha256": "8403521a33807610fff6bbc6f28b507d31ede70ec1300179ab14caa4366710ee",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/hosted/prepare-or-build.sh",
+      "prior_packet_matches": [
+        {
+          "manifest": "reviews/linux-pr13-evidence/head113a53e/claude-manifest.json",
+          "source_head": "113a53e4eea44b6d80a8ee3edb55d186d11f3ba6",
+          "source_url": "https://github.com/yuric/campus-linux/blob/113a53e4eea44b6d80a8ee3edb55d186d11f3ba6/spikes/1057/installed-updater/hosted/prepare-or-build.sh",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/hosted/run.sh",
+      "bytes": 3600,
+      "sha256": "81f763b7ea5e2a4f82c3f25d379f5b34c0173b3b1d7ea028645d20c33aecc8e0",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/hosted/run.sh",
+      "prior_packet_matches": []
+    },
+    {
+      "path": "spikes/1057/installed-updater/hosted/set-fixture-version.py",
+      "bytes": 1415,
+      "sha256": "100daa8f95718fadf51bf564fc20b4760199bff7479df317323211cbf5c58856",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/hosted/set-fixture-version.py",
+      "prior_packet_matches": [
+        {
+          "manifest": "reviews/linux-pr13-evidence/head3de5ab6/claude-manifest.json",
+          "source_head": "3de5ab666a84f0a29bb80844219a0c4509ff2238",
+          "source_url": "https://github.com/yuric/campus-linux/blob/3de5ab666a84f0a29bb80844219a0c4509ff2238/spikes/1057/installed-updater/hosted/set-fixture-version.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head67ef112/claude-manifest.json",
+          "source_head": "67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2",
+          "source_url": "https://github.com/yuric/campus-linux/blob/67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2/spikes/1057/installed-updater/hosted/set-fixture-version.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/hosted/sign-negative.py",
+      "bytes": 1654,
+      "sha256": "823d4292ef308abe994e453d012845979931b5ea40be8d8641a3615b7427eadc",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/hosted/sign-negative.py",
+      "prior_packet_matches": [
+        {
+          "manifest": "reviews/linux-pr13-evidence/head3de5ab6/claude-manifest.json",
+          "source_head": "3de5ab666a84f0a29bb80844219a0c4509ff2238",
+          "source_url": "https://github.com/yuric/campus-linux/blob/3de5ab666a84f0a29bb80844219a0c4509ff2238/spikes/1057/installed-updater/hosted/sign-negative.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head113a53e/claude-manifest.json",
+          "source_head": "113a53e4eea44b6d80a8ee3edb55d186d11f3ba6",
+          "source_url": "https://github.com/yuric/campus-linux/blob/113a53e4eea44b6d80a8ee3edb55d186d11f3ba6/spikes/1057/installed-updater/hosted/sign-negative.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/probe/DESKTOP.md",
+      "bytes": 37530,
+      "sha256": "145d98402a013ed916f9511801bf6e58f35dce3c8ab2c156d7e802db7f434fb5",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/probe/DESKTOP.md",
+      "prior_packet_matches": [
+        {
+          "packet": "reviews/linux-pr13-evidence/head29287296/claude-packet.txt",
+          "packet_sha256": "03c48157ca199a52e6d444448f8c1f6e47340c18c89278183db5f702db5fc2f2",
+          "completed_status": "completed",
+          "session_id": "3d258195-0abb-4948-b947-6791153f7b44",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "packet": "reviews/linux-pr13-evidence/head1329e154/claude-packet.txt",
+          "packet_sha256": "fb53c3e3588d814589b9838629173e3228108eeffb475440efc4163bb1392cdf",
+          "completed_status": "completed",
+          "session_id": "47c3bbae-bf1a-4de5-8637-dee3dfae360e",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/probe/authority-window.py",
+      "bytes": 49262,
+      "sha256": "a6901ad047245612b4f9d1a570825085f7e254db5a394643b7a10db1d03b644d",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/probe/authority-window.py",
+      "prior_packet_matches": [
+        {
+          "packet": "reviews/linux-pr13-evidence/head29287296/claude-packet.txt",
+          "packet_sha256": "03c48157ca199a52e6d444448f8c1f6e47340c18c89278183db5f702db5fc2f2",
+          "completed_status": "completed",
+          "session_id": "3d258195-0abb-4948-b947-6791153f7b44",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "packet": "reviews/linux-pr13-evidence/head1329e154/claude-packet.txt",
+          "packet_sha256": "fb53c3e3588d814589b9838629173e3228108eeffb475440efc4163bb1392cdf",
+          "completed_status": "completed",
+          "session_id": "47c3bbae-bf1a-4de5-8637-dee3dfae360e",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/probe/desktop.py",
+      "bytes": 59368,
+      "sha256": "166f323caeba384b80aa5a49591c08ab77209787f5d65f5f6360e76b4e136c11",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/probe/desktop.py",
+      "prior_packet_matches": [
+        {
+          "packet": "reviews/linux-pr13-evidence/head1329e154/claude-packet.txt",
+          "packet_sha256": "fb53c3e3588d814589b9838629173e3228108eeffb475440efc4163bb1392cdf",
+          "completed_status": "completed",
+          "session_id": "47c3bbae-bf1a-4de5-8637-dee3dfae360e",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/probe/gated-control.py",
+      "bytes": 9690,
+      "sha256": "4dfb8039e62633172b663a2076870dc7f674846c6c3795a257c59d39da815110",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/probe/gated-control.py",
+      "prior_packet_matches": [
+        {
+          "packet": "reviews/linux-pr13-evidence/head29287296/claude-packet.txt",
+          "packet_sha256": "03c48157ca199a52e6d444448f8c1f6e47340c18c89278183db5f702db5fc2f2",
+          "completed_status": "completed",
+          "session_id": "3d258195-0abb-4948-b947-6791153f7b44",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "packet": "reviews/linux-pr13-evidence/head1329e154/claude-packet.txt",
+          "packet_sha256": "fb53c3e3588d814589b9838629173e3228108eeffb475440efc4163bb1392cdf",
+          "completed_status": "completed",
+          "session_id": "47c3bbae-bf1a-4de5-8637-dee3dfae360e",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/probe/gated-driver.py",
+      "bytes": 4857,
+      "sha256": "fb027cdfc7fc706577dc2e0cb82e2f71e5e6b257e685c9e11b88361170895755",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/probe/gated-driver.py",
+      "prior_packet_matches": [
+        {
+          "packet": "reviews/linux-pr13-evidence/head29287296/claude-packet.txt",
+          "packet_sha256": "03c48157ca199a52e6d444448f8c1f6e47340c18c89278183db5f702db5fc2f2",
+          "completed_status": "completed",
+          "session_id": "3d258195-0abb-4948-b947-6791153f7b44",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "packet": "reviews/linux-pr13-evidence/head1329e154/claude-packet.txt",
+          "packet_sha256": "fb53c3e3588d814589b9838629173e3228108eeffb475440efc4163bb1392cdf",
+          "completed_status": "completed",
+          "session_id": "47c3bbae-bf1a-4de5-8637-dee3dfae360e",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/probe/gated.py",
+      "bytes": 34172,
+      "sha256": "bf630dfc35dc577dcac52d60f58c6d53fd3ddbbc745d19417c27a9c361c3e5b5",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/probe/gated.py",
+      "prior_packet_matches": [
+        {
+          "packet": "reviews/linux-pr13-evidence/head29287296/claude-packet.txt",
+          "packet_sha256": "03c48157ca199a52e6d444448f8c1f6e47340c18c89278183db5f702db5fc2f2",
+          "completed_status": "completed",
+          "session_id": "3d258195-0abb-4948-b947-6791153f7b44",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "packet": "reviews/linux-pr13-evidence/head1329e154/claude-packet.txt",
+          "packet_sha256": "fb53c3e3588d814589b9838629173e3228108eeffb475440efc4163bb1392cdf",
+          "completed_status": "completed",
+          "session_id": "47c3bbae-bf1a-4de5-8637-dee3dfae360e",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/probe/replace-on-open.py",
+      "bytes": 5222,
+      "sha256": "51cb94cec18ae2e7fb3cbfd45892c9ba5e15a428724cdb56f90d66cff1889c88",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/probe/replace-on-open.py",
+      "prior_packet_matches": [
+        {
+          "manifest": "reviews/linux-pr13-evidence/head3de5ab6/claude-manifest.json",
+          "source_head": "3de5ab666a84f0a29bb80844219a0c4509ff2238",
+          "source_url": "https://github.com/yuric/campus-linux/blob/3de5ab666a84f0a29bb80844219a0c4509ff2238/spikes/1057/installed-updater/probe/replace-on-open.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head113a53e/claude-manifest.json",
+          "source_head": "113a53e4eea44b6d80a8ee3edb55d186d11f3ba6",
+          "source_url": "https://github.com/yuric/campus-linux/blob/113a53e4eea44b6d80a8ee3edb55d186d11f3ba6/spikes/1057/installed-updater/probe/replace-on-open.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/probe/serve.py",
+      "bytes": 7554,
+      "sha256": "a4deeb4d9d13cf5388421645c4b6281e44f19ff268fb1e0e9be863b3c694c3a3",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/probe/serve.py",
+      "prior_packet_matches": [
+        {
+          "packet": "reviews/linux-pr13-evidence/head29287296/claude-packet.txt",
+          "packet_sha256": "03c48157ca199a52e6d444448f8c1f6e47340c18c89278183db5f702db5fc2f2",
+          "completed_status": "completed",
+          "session_id": "3d258195-0abb-4948-b947-6791153f7b44",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "packet": "reviews/linux-pr13-evidence/head1329e154/claude-packet.txt",
+          "packet_sha256": "fb53c3e3588d814589b9838629173e3228108eeffb475440efc4163bb1392cdf",
+          "completed_status": "completed",
+          "session_id": "47c3bbae-bf1a-4de5-8637-dee3dfae360e",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/probe/smoke.py",
+      "bytes": 36090,
+      "sha256": "a7855060dd5b12090155a5b528327d2365617b7f51f4971ceb116774f8697d0d",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/probe/smoke.py",
+      "prior_packet_matches": [
+        {
+          "manifest": "reviews/linux-pr13-evidence/head113a53e/claude-manifest.json",
+          "source_head": "113a53e4eea44b6d80a8ee3edb55d186d11f3ba6",
+          "source_url": "https://github.com/yuric/campus-linux/blob/113a53e4eea44b6d80a8ee3edb55d186d11f3ba6/spikes/1057/installed-updater/probe/smoke.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head1d878c0/claude-manifest.json",
+          "source_head": "1d878c08fa450c2b6a5fe8f35b394ed27498ed41",
+          "source_url": "https://github.com/yuric/campus-linux/blob/1d878c08fa450c2b6a5fe8f35b394ed27498ed41/spikes/1057/installed-updater/probe/smoke.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/probe/test_authority_window.py",
+      "bytes": 31075,
+      "sha256": "36fd7020b1f3892b806505d93b3c70a80575b3e150d1ba37b2299bbd1a95cef1",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/probe/test_authority_window.py",
+      "prior_packet_matches": [
+        {
+          "packet": "reviews/linux-pr13-evidence/head7ecfc687/claude-packet.txt",
+          "packet_sha256": "cf337d57b0d1deeb3cd72711ef718c1cfe71f0ec74e992731b47966b09dccaed",
+          "completed_status": "completed",
+          "session_id": "4a4ded4f-f7dc-482b-96a1-027fad1d8e53",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "packet": "reviews/linux-pr13-evidence/head4001fb63/claude-packet.txt",
+          "packet_sha256": "41532332be587a9a231255fb8a587e52638b440c1886580997746bab16893787",
+          "completed_status": "completed",
+          "session_id": "63539e6a-2320-4465-a11d-2ad8f2f70010",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "packet": "reviews/linux-pr13-evidence/head29287296/claude-packet.txt",
+          "packet_sha256": "03c48157ca199a52e6d444448f8c1f6e47340c18c89278183db5f702db5fc2f2",
+          "completed_status": "completed",
+          "session_id": "3d258195-0abb-4948-b947-6791153f7b44",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/probe/test_desktop.py",
+      "bytes": 21970,
+      "sha256": "009bd23e5389d161a1b04b19cd678967bcd1cf91b7c994e1ef57f0e599cb6f32",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/probe/test_desktop.py",
+      "prior_packet_matches": [
+        {
+          "packet": "reviews/linux-pr13-evidence/head7ecfc687/claude-packet.txt",
+          "packet_sha256": "cf337d57b0d1deeb3cd72711ef718c1cfe71f0ec74e992731b47966b09dccaed",
+          "completed_status": "completed",
+          "session_id": "4a4ded4f-f7dc-482b-96a1-027fad1d8e53",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "packet": "reviews/linux-pr13-evidence/head4001fb63/claude-packet.txt",
+          "packet_sha256": "41532332be587a9a231255fb8a587e52638b440c1886580997746bab16893787",
+          "completed_status": "completed",
+          "session_id": "63539e6a-2320-4465-a11d-2ad8f2f70010",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "packet": "reviews/linux-pr13-evidence/head29287296/claude-packet.txt",
+          "packet_sha256": "03c48157ca199a52e6d444448f8c1f6e47340c18c89278183db5f702db5fc2f2",
+          "completed_status": "completed",
+          "session_id": "3d258195-0abb-4948-b947-6791153f7b44",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "packet": "reviews/linux-pr13-evidence/head1666bd8/claude-packet.txt",
+          "packet_sha256": "571c440c3c61a2450dea66e9eec34676dccbaed7542c163f5476a23812625b60",
+          "completed_status": "completed",
+          "session_id": "a5d4b13b-35ac-4fb2-9e34-e552e6fd752c",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/probe/test_gated.py",
+      "bytes": 26781,
+      "sha256": "c6d67d892b4566b724296f33df6d6cdc074885efdce76ee443dd51ec83ed0d1f",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/probe/test_gated.py",
+      "prior_packet_matches": [
+        {
+          "packet": "reviews/linux-pr13-evidence/head29287296/claude-packet.txt",
+          "packet_sha256": "03c48157ca199a52e6d444448f8c1f6e47340c18c89278183db5f702db5fc2f2",
+          "completed_status": "completed",
+          "session_id": "3d258195-0abb-4948-b947-6791153f7b44",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "packet": "reviews/linux-pr13-evidence/head1329e154/claude-packet.txt",
+          "packet_sha256": "fb53c3e3588d814589b9838629173e3228108eeffb475440efc4163bb1392cdf",
+          "completed_status": "completed",
+          "session_id": "47c3bbae-bf1a-4de5-8637-dee3dfae360e",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/probe/test_gated_repair.py",
+      "bytes": 33439,
+      "sha256": "36bd8b898245cd27a396ad417478bc4c2e8949136a6888480602ca71e771558a",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/probe/test_gated_repair.py",
+      "prior_packet_matches": [
+        {
+          "packet": "reviews/linux-pr13-evidence/head1329e154/claude-packet.txt",
+          "packet_sha256": "fb53c3e3588d814589b9838629173e3228108eeffb475440efc4163bb1392cdf",
+          "completed_status": "completed",
+          "session_id": "47c3bbae-bf1a-4de5-8637-dee3dfae360e",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/probe/test_marker_bridge.py",
+      "bytes": 18191,
+      "sha256": "79a9e36b581a59df51fc83852a7e6e6951d1fb81bafe2a7c6d243e6e350b12c0",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/probe/test_marker_bridge.py",
+      "prior_packet_matches": [
+        {
+          "packet": "reviews/linux-pr13-evidence/head7ecfc687/claude-packet.txt",
+          "packet_sha256": "cf337d57b0d1deeb3cd72711ef718c1cfe71f0ec74e992731b47966b09dccaed",
+          "completed_status": "completed",
+          "session_id": "4a4ded4f-f7dc-482b-96a1-027fad1d8e53",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "packet": "reviews/linux-pr13-evidence/head4001fb63/claude-packet.txt",
+          "packet_sha256": "41532332be587a9a231255fb8a587e52638b440c1886580997746bab16893787",
+          "completed_status": "completed",
+          "session_id": "63539e6a-2320-4465-a11d-2ad8f2f70010",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/probe/test_smoke.py",
+      "bytes": 6236,
+      "sha256": "fc1f262f5c15721ca971f01d4fb889ddf64f8ece6892f756e563d9350954a8a5",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/probe/test_smoke.py",
+      "prior_packet_matches": [
+        {
+          "manifest": "reviews/linux-pr13-evidence/head113a53e/claude-manifest.json",
+          "source_head": "113a53e4eea44b6d80a8ee3edb55d186d11f3ba6",
+          "source_url": "https://github.com/yuric/campus-linux/blob/113a53e4eea44b6d80a8ee3edb55d186d11f3ba6/spikes/1057/installed-updater/probe/test_smoke.py",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/src-tauri/Cargo.lock",
+      "bytes": 116119,
+      "sha256": "36ce58e103553e14de36c041d245922935d5c59528f325cff2f83cda331d3b34",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/src-tauri/Cargo.lock",
+      "prior_packet_matches": [
+        {
+          "manifest": "reviews/linux-pr13-evidence/head67ef112/claude-manifest.json",
+          "source_head": "67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2",
+          "source_url": "https://github.com/yuric/campus-linux/blob/67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2/spikes/1057/installed-updater/src-tauri/Cargo.lock",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/src-tauri/Cargo.toml",
+      "bytes": 989,
+      "sha256": "346f0a17fdeb8067343134e57ace6c32258ca7bc51d808596cb604597121d8d7",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/src-tauri/Cargo.toml",
+      "prior_packet_matches": [
+        {
+          "manifest": "reviews/linux-pr13-evidence/head3de5ab6/claude-manifest.json",
+          "source_head": "3de5ab666a84f0a29bb80844219a0c4509ff2238",
+          "source_url": "https://github.com/yuric/campus-linux/blob/3de5ab666a84f0a29bb80844219a0c4509ff2238/spikes/1057/installed-updater/src-tauri/Cargo.toml",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head67ef112/claude-manifest.json",
+          "source_head": "67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2",
+          "source_url": "https://github.com/yuric/campus-linux/blob/67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2/spikes/1057/installed-updater/src-tauri/Cargo.toml",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/src-tauri/build.rs",
+      "bytes": 595,
+      "sha256": "4f45fa1e723cb43c0a9dfcd675d35adf9217574a0dd280dc23d483af06d95937",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/src-tauri/build.rs",
+      "prior_packet_matches": [
+        {
+          "packet": "reviews/linux-pr13-evidence/head164d7d0/claude-prompt.txt",
+          "packet_sha256": "513d170dc86b0b0ad55e924a2f81431a71db33a8bed8b10bf8be0905302f457d",
+          "completed_status": "completed",
+          "session_id": "e2961912-7ffd-44a7-8fda-29b0184acbc6",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head164d7d0/claude-manifest.json",
+          "source_head": "164d7d0dd92fd76dae9abb73a2a34b11af898d5f",
+          "source_url": "https://github.com/yuric/campus-linux/blob/164d7d0dd92fd76dae9abb73a2a34b11af898d5f/spikes/1057/installed-updater/src-tauri/build.rs",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head3de5ab6/claude-manifest.json",
+          "source_head": "3de5ab666a84f0a29bb80844219a0c4509ff2238",
+          "source_url": "https://github.com/yuric/campus-linux/blob/3de5ab666a84f0a29bb80844219a0c4509ff2238/spikes/1057/installed-updater/src-tauri/build.rs",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head67ef112/claude-manifest.json",
+          "source_head": "67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2",
+          "source_url": "https://github.com/yuric/campus-linux/blob/67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2/spikes/1057/installed-updater/src-tauri/build.rs",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/src-tauri/icons/32x32.png",
+      "bytes": 105,
+      "sha256": "09d03970ec2390dcaece2d0018f36b4c59271f2a1306e829c753751c49f664c7",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/src-tauri/icons/32x32.png",
+      "prior_packet_matches": []
+    },
+    {
+      "path": "spikes/1057/installed-updater/src-tauri/resources/inert-helper.txt",
+      "bytes": 89,
+      "sha256": "6871f11fe6d233ed17ed9b7b5f37bc31c593ca66d8c9b89182ee3e26925d7c93",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/src-tauri/resources/inert-helper.txt",
+      "prior_packet_matches": [
+        {
+          "packet": "reviews/linux-pr13-evidence/head164d7d0/claude-prompt.txt",
+          "packet_sha256": "513d170dc86b0b0ad55e924a2f81431a71db33a8bed8b10bf8be0905302f457d",
+          "completed_status": "completed",
+          "session_id": "e2961912-7ffd-44a7-8fda-29b0184acbc6",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "packet": "reviews/linux-pr13-evidence/head3de5ab6/claude-prompt.txt",
+          "packet_sha256": "55fdfe41aec45dba4da994d24add68578dd36bd87a91eb224b09c19c76542e90",
+          "completed_status": "completed",
+          "session_id": "cc8ad5e0-ab36-4457-81ce-5a8d33ffe4a6",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head164d7d0/claude-manifest.json",
+          "source_head": "164d7d0dd92fd76dae9abb73a2a34b11af898d5f",
+          "source_url": "https://github.com/yuric/campus-linux/blob/164d7d0dd92fd76dae9abb73a2a34b11af898d5f/spikes/1057/installed-updater/src-tauri/resources/inert-helper.txt",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head3de5ab6/claude-manifest.json",
+          "source_head": "3de5ab666a84f0a29bb80844219a0c4509ff2238",
+          "source_url": "https://github.com/yuric/campus-linux/blob/3de5ab666a84f0a29bb80844219a0c4509ff2238/spikes/1057/installed-updater/src-tauri/resources/inert-helper.txt",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/src-tauri/src/bin/verify-signature.rs",
+      "bytes": 2020,
+      "sha256": "646c5be9f97cee64118600bce61652b54719a1a610802166ee776c3b141b6ad7",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/src-tauri/src/bin/verify-signature.rs",
+      "prior_packet_matches": [
+        {
+          "packet": "reviews/linux-pr13-evidence/head164d7d0/claude-prompt.txt",
+          "packet_sha256": "513d170dc86b0b0ad55e924a2f81431a71db33a8bed8b10bf8be0905302f457d",
+          "completed_status": "completed",
+          "session_id": "e2961912-7ffd-44a7-8fda-29b0184acbc6",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head164d7d0/claude-manifest.json",
+          "source_head": "164d7d0dd92fd76dae9abb73a2a34b11af898d5f",
+          "source_url": "https://github.com/yuric/campus-linux/blob/164d7d0dd92fd76dae9abb73a2a34b11af898d5f/spikes/1057/installed-updater/src-tauri/src/bin/verify-signature.rs",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head3de5ab6/claude-manifest.json",
+          "source_head": "3de5ab666a84f0a29bb80844219a0c4509ff2238",
+          "source_url": "https://github.com/yuric/campus-linux/blob/3de5ab666a84f0a29bb80844219a0c4509ff2238/spikes/1057/installed-updater/src-tauri/src/bin/verify-signature.rs",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head113a53e/claude-manifest.json",
+          "source_head": "113a53e4eea44b6d80a8ee3edb55d186d11f3ba6",
+          "source_url": "https://github.com/yuric/campus-linux/blob/113a53e4eea44b6d80a8ee3edb55d186d11f3ba6/spikes/1057/installed-updater/src-tauri/src/bin/verify-signature.rs",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head67ef112/claude-manifest.json",
+          "source_head": "67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2",
+          "source_url": "https://github.com/yuric/campus-linux/blob/67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2/spikes/1057/installed-updater/src-tauri/src/bin/verify-signature.rs",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/src-tauri/src/main.rs",
+      "bytes": 14226,
+      "sha256": "ed25f88d4bc7582d25dea4d5a3c9068e67efe89257b2e5b1b6a92022a886ce4a",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/src-tauri/src/main.rs",
+      "prior_packet_matches": [
+        {
+          "packet": "reviews/linux-pr13-evidence/head164d7d0/claude-prompt.txt",
+          "packet_sha256": "513d170dc86b0b0ad55e924a2f81431a71db33a8bed8b10bf8be0905302f457d",
+          "completed_status": "completed",
+          "session_id": "e2961912-7ffd-44a7-8fda-29b0184acbc6",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "packet": "reviews/linux-pr13-evidence/head7ecfc687/claude-packet.txt",
+          "packet_sha256": "cf337d57b0d1deeb3cd72711ef718c1cfe71f0ec74e992731b47966b09dccaed",
+          "completed_status": "completed",
+          "session_id": "4a4ded4f-f7dc-482b-96a1-027fad1d8e53",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "packet": "reviews/linux-pr13-evidence/head4001fb63/claude-packet.txt",
+          "packet_sha256": "41532332be587a9a231255fb8a587e52638b440c1886580997746bab16893787",
+          "completed_status": "completed",
+          "session_id": "63539e6a-2320-4465-a11d-2ad8f2f70010",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head164d7d0/claude-manifest.json",
+          "source_head": "164d7d0dd92fd76dae9abb73a2a34b11af898d5f",
+          "source_url": "https://github.com/yuric/campus-linux/blob/164d7d0dd92fd76dae9abb73a2a34b11af898d5f/spikes/1057/installed-updater/src-tauri/src/main.rs",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head3de5ab6/claude-manifest.json",
+          "source_head": "3de5ab666a84f0a29bb80844219a0c4509ff2238",
+          "source_url": "https://github.com/yuric/campus-linux/blob/3de5ab666a84f0a29bb80844219a0c4509ff2238/spikes/1057/installed-updater/src-tauri/src/main.rs",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head113a53e/claude-manifest.json",
+          "source_head": "113a53e4eea44b6d80a8ee3edb55d186d11f3ba6",
+          "source_url": "https://github.com/yuric/campus-linux/blob/113a53e4eea44b6d80a8ee3edb55d186d11f3ba6/spikes/1057/installed-updater/src-tauri/src/main.rs",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head67ef112/claude-manifest.json",
+          "source_head": "67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2",
+          "source_url": "https://github.com/yuric/campus-linux/blob/67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2/spikes/1057/installed-updater/src-tauri/src/main.rs",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head368809e/claude-manifest.json",
+          "source_head": "368809e8ad0cdde047de44c8c2657fc7ca4893bc",
+          "source_url": "https://github.com/yuric/campus-linux/blob/368809e8ad0cdde047de44c8c2657fc7ca4893bc/spikes/1057/installed-updater/src-tauri/src/main.rs",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head1d878c0/claude-manifest.json",
+          "source_head": "1d878c08fa450c2b6a5fe8f35b394ed27498ed41",
+          "source_url": "https://github.com/yuric/campus-linux/blob/1d878c08fa450c2b6a5fe8f35b394ed27498ed41/spikes/1057/installed-updater/src-tauri/src/main.rs",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/src-tauri/tauri.conf.json",
+      "bytes": 1146,
+      "sha256": "a282ee75ddb1671fb160898c6e965ea410f7ad590a71d9d3c101fd532ad9a089",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/src-tauri/tauri.conf.json",
+      "prior_packet_matches": [
+        {
+          "manifest": "reviews/linux-pr13-evidence/head3de5ab6/claude-manifest.json",
+          "source_head": "3de5ab666a84f0a29bb80844219a0c4509ff2238",
+          "source_url": "https://github.com/yuric/campus-linux/blob/3de5ab666a84f0a29bb80844219a0c4509ff2238/spikes/1057/installed-updater/src-tauri/tauri.conf.json",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head67ef112/claude-manifest.json",
+          "source_head": "67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2",
+          "source_url": "https://github.com/yuric/campus-linux/blob/67ef1123738f7b6c9bde0ec581cb2c5d4747a2b2/spikes/1057/installed-updater/src-tauri/tauri.conf.json",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/toolchain/downloads.json",
+      "bytes": 1485,
+      "sha256": "bc5c901c219ff174fd06861080fa143a2bea8a25f880e67cb28b6a8ddae24a1c",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/toolchain/downloads.json",
+      "prior_packet_matches": [
+        {
+          "manifest": "reviews/linux-pr13-evidence/head3de5ab6/claude-manifest.json",
+          "source_head": "3de5ab666a84f0a29bb80844219a0c4509ff2238",
+          "source_url": "https://github.com/yuric/campus-linux/blob/3de5ab666a84f0a29bb80844219a0c4509ff2238/spikes/1057/installed-updater/toolchain/downloads.json",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/toolchain/tauri-cli.Cargo.lock",
+      "bytes": 266285,
+      "sha256": "db5f3ed9cb6652de457a1c643f467acb715850eb23008ebc5581c3faa2b295e9",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/toolchain/tauri-cli.Cargo.lock",
+      "prior_packet_matches": [
+        {
+          "packet": "reviews/linux-pr13-evidence/head164d7d0/claude-prompt.txt",
+          "packet_sha256": "513d170dc86b0b0ad55e924a2f81431a71db33a8bed8b10bf8be0905302f457d",
+          "completed_status": "completed",
+          "session_id": "e2961912-7ffd-44a7-8fda-29b0184acbc6",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head164d7d0/claude-manifest.json",
+          "source_head": "164d7d0dd92fd76dae9abb73a2a34b11af898d5f",
+          "source_url": "https://github.com/yuric/campus-linux/blob/164d7d0dd92fd76dae9abb73a2a34b11af898d5f/spikes/1057/installed-updater/toolchain/tauri-cli.Cargo.lock",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    },
+    {
+      "path": "spikes/1057/installed-updater/ui/index.html",
+      "bytes": 778,
+      "sha256": "93f3968632db02ecb334d04de1385b3c1aec9cfc89378533f198117c64de4473",
+      "current_source_url": "https://github.com/yuric/campus-linux/blob/2c4839e9883725d47ba47ced51a9b97d0f637fa9/spikes/1057/installed-updater/ui/index.html",
+      "prior_packet_matches": [
+        {
+          "packet": "reviews/linux-pr13-evidence/head164d7d0/claude-prompt.txt",
+          "packet_sha256": "513d170dc86b0b0ad55e924a2f81431a71db33a8bed8b10bf8be0905302f457d",
+          "completed_status": "completed",
+          "session_id": "e2961912-7ffd-44a7-8fda-29b0184acbc6",
+          "matching_method": "exact full bytes found in actual retained prompt"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head164d7d0/claude-manifest.json",
+          "source_head": "164d7d0dd92fd76dae9abb73a2a34b11af898d5f",
+          "source_url": "https://github.com/yuric/campus-linux/blob/164d7d0dd92fd76dae9abb73a2a34b11af898d5f/spikes/1057/installed-updater/ui/index.html",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        },
+        {
+          "manifest": "reviews/linux-pr13-evidence/head3de5ab6/claude-manifest.json",
+          "source_head": "3de5ab666a84f0a29bb80844219a0c4509ff2238",
+          "source_url": "https://github.com/yuric/campus-linux/blob/3de5ab666a84f0a29bb80844219a0c4509ff2238/spikes/1057/installed-updater/ui/index.html",
+          "matching_method": "packet digest verified; exact full source after removing line-number prefixes"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,844 @@
+{
+  "scope": "leased GDM negative preparation only",
+  "mode": "deny",
+  "lease": "1057-1263-ea7d6086",
+  "uid": 1000,
+  "authority_helper": {
+    "path": "/root/campus1057-1263-ea7d6086/authority-window.py",
+    "sha256": "7ff5dc4b38311a792790f48f8266089bbd17aa94dfba979d8a8fc221c8e349fc",
+    "uid": 0,
+    "mode": "0o400",
+    "isolated_python": true,
+    "bytecode_disabled": true
+  },
+  "shared_authority_window_acknowledged": false,
+  "requested_seconds": 45,
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    },
+    {
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "--output=json",
+        "--lines=64",
+        "--since=@1792167265",
+        "SYSLOG_IDENTIFIER=campus-updater-1057",
+        "_EXE=/usr/bin/logger",
+        "_SYSTEMD_UNIT=polkit.service",
+        "_UID=989",
+        "_BOOT_ID=b59b3d1f891447588d6bb5d334859490"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false
+    }
+  ],
+  "status": "failed",
+  "cleanup": "restored",
+  "user": "campusqa",
+  "subject_session": "6",
+  "cleanup_reserve_seconds": 10,
+  "window_started_unix_ns": 1792167265374517941,
+  "owned_device_inode": [
+    64769,
+    92382
+  ],
+  "owned_path": "/etc/polkit-1/rules.d/00-campus-updater-1057-deny.rules",
+  "rule_sha256": "f9f6ffa880590a13eb37007dcbf5075cdb43fab8952c00e1f3d8485f22baa254",
+  "marker_bridge": {
+    "argv_prefix": [
+      "/usr/bin/logger",
+      "--socket-errors=on",
+      "--priority",
+      "user.notice",
+      "--tag",
+      "campus-updater-1057",
+      "--"
+    ],
+    "expected_loaded_message": "campus1057-deny-loaded lease=1057-1263-ea7d6086",
+    "daemon_uid": "989",
+    "boot_id": "b59b3d1f891447588d6bb5d334859490",
+    "systemd_unit": "polkit.service",
+    "loaded_wait_max_seconds": 5,
+    "rejecting_marker_required_for_case_acceptance": true
+  },
+  "error": "required exact loaded logger marker absent; logging/registration prerequisite failed",
+  "restore_started_unix_ns": 1792167270386257067,
+  "elapsed_seconds_including_cleanup": 5.0184679890000155,
+  "window_finished_unix_ns": 1792167270392986972,
+  "deadline_exceeded": false
+}

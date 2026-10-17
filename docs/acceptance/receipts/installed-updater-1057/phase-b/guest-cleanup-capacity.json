@@ -1,0 +1,8 @@
+{
+  "observed_unix_ns": 1792163998949311899,
+  "owned_driver_alive": false,
+  "owned_server_alive": false,
+  "pkexec": "",
+  "free_bytes": 20241424384,
+  "allocation": "15220736\t/home/campusqa/campus1057-10643-5176b9d7\n716800\t/root/campus1057-10643-5176b9d7\n20480\t/etc/campus-updater-1057\n663552\t/usr/lib/campus-updater-1057\n4096\t/var/lib/campus-updater-1057\n15089664\t/usr/bin/campus-updater-1057\n"
+}

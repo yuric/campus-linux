@@ -1,0 +1,38 @@
+from pathlib import Path
+import json,subprocess,time,shutil,os,base64,hashlib,sys
+OUT=Path.cwd()/'docs/acceptance/receipts/installed-updater-1057/activation-10908'
+OPS=OUT/'operation-inputs'
+VM=['/opt/homebrew/bin/limactl','shell','campus-linux-d5-noble-arm64','--','sudo','-n']
+GUEST='/home/campusqa/campus1057-10908-office391'
+ROOT='/root/campus1057-10908-office391'
+def capacity():
+ s=Path('/Users/yuri/.lima/campus-linux-d5-noble-arm64/disk').stat()
+ growth=max(0,s.st_blocks*512-7851278336)
+ local=sum(p.stat().st_blocks*512 for p in OUT.rglob('*') if p.is_file())
+ return dict(observed_unix_ns=time.time_ns(),host_free_bytes=shutil.disk_usage('/Users/yuri').free,disk_inode=s.st_ino,disk_allocated_bytes=s.st_blocks*512,new_guest_allocated_bytes=growth,local_receipt_bytes=local,with_reserve_bytes=growth+local+8*1024**2)
+def guard():
+ c=capacity(); assert c['with_reserve_bytes']<=64*1024**2,c
+ assert c['host_free_bytes']-max(0,64*1024**2-c['with_reserve_bytes'])>=20*1024**3,c
+ return c
+def root(code, data=None, timeout=30):
+ argv=VM+['/usr/bin/python3','-I','-B']
+ if data is None: inp=code.encode()
+ else: argv+=['-c',code];inp=data
+ return subprocess.run(argv,input=inp,capture_output=True,timeout=timeout)
+def record(name,result):
+ (OUT/(name+'.json')).write_bytes(result.stdout)
+ (OUT/(name+'.stderr')).write_bytes(result.stderr)
+ print(name,'exit',result.returncode,'bytes',len(result.stdout))
+ assert result.returncode==0,result.stderr.decode()
+ return json.loads(result.stdout)
+def operation(name):
+ guard();return record(name,root((OPS/(name+'.py.txt')).read_text()))
+if __name__=='__main__':
+ name=sys.argv[1]
+ if name=='capacity':print(json.dumps(guard()))
+ elif name=='stage':
+  guard();files={n:subprocess.check_output(['git','show','HEAD:spikes/1057/installed-updater/probe/'+n]) for n in ['authority-window.py','desktop.py']}
+  files['desktop-driver.py']=(OPS/'desktop-driver.py.txt').read_bytes()
+  payload={'files':{n:base64.b64encode(b).decode() for n,b in files.items()},'sha256':{n:hashlib.sha256(b).hexdigest() for n,b in files.items()}}
+  print(json.dumps(record('source-staging',root((OPS/'stage-source.py.txt').read_text(),json.dumps(payload).encode()))))
+ else:print(json.dumps(operation(name)))

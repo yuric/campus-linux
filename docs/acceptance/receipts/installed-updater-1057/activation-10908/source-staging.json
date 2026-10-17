@@ -1,0 +1,82 @@
+{
+  "observed_unix_ns": 1792173965595079134,
+  "paths": [
+    {
+      "path": "/root/campus1057-10908-office391/authority-window.py",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o400",
+      "sha256": "3631d41b52eb72099edf3c0e3a8878968ba1620f3593f3088e9efc7756918331",
+      "canonical": "/root/campus1057-10908-office391/authority-window.py",
+      "symlink": false
+    },
+    {
+      "path": "/home/campusqa/campus1057-10908-office391/probe/authority-window.py",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o400",
+      "sha256": "3631d41b52eb72099edf3c0e3a8878968ba1620f3593f3088e9efc7756918331",
+      "canonical": "/home/campusqa/campus1057-10908-office391/probe/authority-window.py",
+      "symlink": false
+    },
+    {
+      "path": "/root/campus1057-10908-office391/desktop.py",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o400",
+      "sha256": "b42d4f199efce7c24f956d8bc464b46db655306dd7ee736650d2466c66938b12",
+      "canonical": "/root/campus1057-10908-office391/desktop.py",
+      "symlink": false
+    },
+    {
+      "path": "/home/campusqa/campus1057-10908-office391/probe/desktop.py",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o400",
+      "sha256": "b42d4f199efce7c24f956d8bc464b46db655306dd7ee736650d2466c66938b12",
+      "canonical": "/home/campusqa/campus1057-10908-office391/probe/desktop.py",
+      "symlink": false
+    },
+    {
+      "path": "/home/campusqa/campus1057-10908-office391/desktop-driver.py",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o400",
+      "sha256": "ca4a6e23c8ed50153a97f13b2772803857281c200d26efc232691fa8e65eeb8f",
+      "canonical": "/home/campusqa/campus1057-10908-office391/desktop-driver.py",
+      "symlink": false
+    },
+    {
+      "path": "/",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o755",
+      "canonical": "/",
+      "symlink": false
+    },
+    {
+      "path": "/root",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o700",
+      "canonical": "/root",
+      "symlink": false
+    },
+    {
+      "path": "/root/campus1057-10908-office391",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o500",
+      "canonical": "/root/campus1057-10908-office391",
+      "symlink": false
+    },
+    {
+      "path": "/root/campus1057-10908-office391/evidence",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o700",
+      "canonical": "/root/campus1057-10908-office391/evidence",
+      "symlink": false
+    }
+  ]
+}

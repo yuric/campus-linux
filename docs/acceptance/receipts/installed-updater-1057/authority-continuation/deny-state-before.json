@@ -1,0 +1,15 @@
+{
+  "capacity": {
+    "observed_unix_ns": 1792167265194885000,
+    "host_free_bytes": 28585328640,
+    "disk_allocated_bytes": 6905593856
+  },
+  "observed_unix_ns": 1792167265278662351,
+  "guest_free_bytes": 20208349184,
+  "state": "Id=polkit.service\nLoadState=loaded\nActiveState=active\nSubState=running\nFragmentPath=/usr/lib/systemd/system/polkit.service\nDropInPaths=\nUnitFileState=static\n",
+  "owner": "b true\n",
+  "rule": false,
+  "mask": false,
+  "logger_sha256": "613c4c47d05aee29ad4e3879377ca44bb1144308aec0cdf828dc39580eeae1f6",
+  "session": "Id=6\nUser=1000\nName=campusqa\nTimestamp=Fri 2026-10-16 09:11:57 MST\nTimestampMonotonic=97635834\nVTNr=2\nSeat=seat0\nTTY=tty2\nRemote=no\nService=gdm-password\nScope=session-6.scope\nLeader=2291\nAudit=6\nType=x11\nClass=user\nActive=yes\nState=active\nIdleHint=no\nIdleSinceHint=0\nIdleSinceHintMonotonic=0\nLockedHint=no\n"
+}

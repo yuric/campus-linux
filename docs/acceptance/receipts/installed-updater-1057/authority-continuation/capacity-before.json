@@ -1,0 +1,25 @@
+{
+  "observed_unix_ns": 1792167017285257000,
+  "vm": {
+    "name": "campus-linux-d5-noble-arm64",
+    "status": "Stopped",
+    "cpus": 4,
+    "memory": 6442450944,
+    "disk": 30064771072,
+    "arch": "aarch64"
+  },
+  "disk_path": "/Users/yuri/.lima/campus-linux-d5-noble-arm64/disk",
+  "disk_allocated_bytes": 6890979328,
+  "disk_logical_bytes": 7017725952,
+  "host_free_bytes": 28313853952,
+  "worktree_allocated_before_receipts": 8744960,
+  "guest_free_last_recorded_bytes": 20241424384,
+  "guest_free_provenance": "phase-b/capacity-stopped.json historical; fresh online reading required immediately after normal boot",
+  "coordinator_stopped_baseline_allocated_bytes": 6890979328,
+  "limits": {
+    "new_allocated_bytes": 67108864,
+    "host_free_bytes": 21474836480,
+    "guest_free_bytes": 2147483648
+  },
+  "utm": "Coordinator10715 native UI stopped observation; no UTM operation by worker"
+}

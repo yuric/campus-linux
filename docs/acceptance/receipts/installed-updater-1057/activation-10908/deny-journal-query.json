@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "/usr/bin/journalctl",
+    "--no-pager",
+    "--output=json",
+    "--lines=65",
+    "--since=@1792174054",
+    "--until=@1792174090",
+    "_UID=989",
+    "_GID=989",
+    "_TRANSPORT=syslog",
+    "_BOOT_ID=5d86c41f8f0247108749adce58297cbb",
+    "+",
+    "SYSLOG_IDENTIFIER=campus-updater-1057"
+  ],
+  "returncode": 0,
+  "row_count": 24,
+  "sentinel": 65,
+  "complete_below_sentinel": true,
+  "journal_sha256": "226673a712ba4147d790470410acdc6b1772c449ba2e318c4572f5dc1abc7921",
+  "observed_unix_ns": 1792174122547285000
+}

@@ -1,0 +1,14 @@
+{
+  "observed_unix_ns": 1792162424973660000,
+  "phase": "after_read_only_preflight_before_stop",
+  "host_available_bytes": 29369925632,
+  "disk": {
+    "path": "/Users/yuri/.lima/campus-linux-d5-noble-arm64/disk",
+    "logical_bytes": 6976241664,
+    "allocated_bytes": 6818824192
+  },
+  "mac_staging_file_bytes": 257898780,
+  "mac_zip_bytes": 257873625,
+  "guest_artifact_bytes_written": 0,
+  "preboot_limitation": "Initial capacity probe incorrectly expected basedisk/diffdisk; actual disk allocation was first observed after boot. No measured boot growth or attribution is claimed."
+}

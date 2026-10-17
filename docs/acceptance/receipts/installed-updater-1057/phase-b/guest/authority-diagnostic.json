@@ -1,0 +1,58 @@
+{
+  "observed_unix_ns": 1792163930090223821,
+  "unit": "# /usr/lib/systemd/system/polkit.service\n[Unit]\nDescription=Authorization Manager\nDocumentation=man:polkit(8)\n\n[Service]\nType=dbus\nBusName=org.freedesktop.PolicyKit1\nCapabilityBoundingSet=CAP_SETUID CAP_SETGID\nDeviceAllow=/dev/null rw\nDevicePolicy=strict\nExecStart=/usr/lib/polkit-1/polkitd --no-debug\nUser=polkitd\nLimitMEMLOCK=0\nLockPersonality=yes\nMemoryDenyWriteExecute=yes\nNoNewPrivileges=yes\nPrivateDevices=yes\nPrivateTmp=yes\nProtectControlGroups=yes\nProtectHome=yes\nProtectKernelModules=yes\nProtectKernelLogs=yes\nProtectKernelTunables=yes\nProtectSystem=strict\nProtectClock=yes\nProtectHostname=yes\nRemoveIPC=yes\nRestrictAddressFamilies=AF_UNIX\nRestrictNamespaces=yes\nRestrictRealtime=yes\nRestrictSUIDSGID=yes\nSystemCallArchitectures=native\nSystemCallFilter=@system-service\nUMask=0077\n",
+  "main_pid": 712,
+  "executable": "/usr/lib/polkit-1/polkitd",
+  "argv": [
+    "/usr/lib/polkit-1/polkitd",
+    "--no-debug",
+    ""
+  ],
+  "stdout_target": "/dev/null",
+  "stderr_target": "/dev/null",
+  "linkage": "\tlinux-vdso.so.1 (0x0000e19a2220e000)\n\tlibpolkit-gobject-1.so.0 => /lib/aarch64-linux-gnu/libpolkit-gobject-1.so.0 (0x0000e19a22140000)\n\tlibgio-2.0.so.0 => /lib/aarch64-linux-gnu/libgio-2.0.so.0 (0x0000e19a21f30000)\n\tlibgobject-2.0.so.0 => /lib/aarch64-linux-gnu/libgobject-2.0.so.0 (0x0000e19a21ea0000)\n\tlibglib-2.0.so.0 => /lib/aarch64-linux-gnu/libglib-2.0.so.0 (0x0000e19a21d20000)\n\tlibexpat.so.1 => /lib/aarch64-linux-gnu/libexpat.so.1 (0x0000e19a21cd0000)\n\tlibduktape.so.207 => /lib/aarch64-linux-gnu/libduktape.so.207 (0x0000e19a21c60000)\n\tlibsystemd.so.0 => /lib/aarch64-linux-gnu/libsystemd.so.0 (0x0000e19a21b60000)\n\tlibc.so.6 => /lib/aarch64-linux-gnu/libc.so.6 (0x0000e19a219a0000)\n\t/lib/ld-linux-aarch64.so.1 (0x0000e19a221c0000)\n\tlibgmodule-2.0.so.0 => /lib/aarch64-linux-gnu/libgmodule-2.0.so.0 (0x0000e19a21970000)\n\tlibz.so.1 => /lib/aarch64-linux-gnu/libz.so.1 (0x0000e19a21930000)\n\tlibmount.so.1 => /lib/aarch64-linux-gnu/libmount.so.1 (0x0000e19a218c0000)\n\tlibselinux.so.1 => /lib/aarch64-linux-gnu/libselinux.so.1 (0x0000e19a21870000)\n\tlibffi.so.8 => /lib/aarch64-linux-gnu/libffi.so.8 (0x0000e19a21840000)\n\tlibm.so.6 => /lib/aarch64-linux-gnu/libm.so.6 (0x0000e19a21790000)\n\tlibpcre2-8.so.0 => /lib/aarch64-linux-gnu/libpcre2-8.so.0 (0x0000e19a216e0000)\n\tlibcap.so.2 => /lib/aarch64-linux-gnu/libcap.so.2 (0x0000e19a216b0000)\n\tlibgcrypt.so.20 => /lib/aarch64-linux-gnu/libgcrypt.so.20 (0x0000e19a215a0000)\n\tliblz4.so.1 => /lib/aarch64-linux-gnu/liblz4.so.1 (0x0000e19a21560000)\n\tliblzma.so.5 => /lib/aarch64-linux-gnu/liblzma.so.5 (0x0000e19a21510000)\n\tlibzstd.so.1 => /lib/aarch64-linux-gnu/libzstd.so.1 (0x0000e19a21450000)\n\tlibblkid.so.1 => /lib/aarch64-linux-gnu/libblkid.so.1 (0x0000e19a213f0000)\n\tlibgpg-error.so.0 => /lib/aarch64-linux-gnu/libgpg-error.so.0 (0x0000e19a213a0000)\n",
+  "deny_window": {
+    "scope": "leased GDM negative preparation only",
+    "mode": "deny",
+    "lease": "1057-10643-5176b9d7",
+    "uid": 1000,
+    "authority_helper": {
+      "path": "/root/campus1057-10643-5176b9d7/authority-window.py",
+      "sha256": "77cf7bf5b94df6d829a58542a333b9f7143e4ca35922cf284626d3dab8b3b839",
+      "uid": 0,
+      "mode": "0o400",
+      "isolated_python": true,
+      "bytecode_disabled": true
+    },
+    "shared_authority_window_acknowledged": false,
+    "requested_seconds": 45,
+    "commands": [],
+    "status": "window_elapsed",
+    "cleanup": "restored",
+    "user": "campusqa",
+    "subject_session": "6",
+    "cleanup_reserve_seconds": 10,
+    "window_started_unix_ns": 1792163764499647167,
+    "owned_device_inode": [
+      64769,
+      91875
+    ],
+    "owned_path": "/etc/polkit-1/rules.d/00-campus-updater-1057-deny.rules",
+    "rule_sha256": "7081e14e0c05c03891f03dcadf4bdf1083d7bb580b19a60914cc4ea755128caa",
+    "ready_caveat": "Wait for matching deny-loaded journal marker before launching; require deny marker for actual refusal evidence",
+    "ready_unix_ns": 1792163764503365509,
+    "remaining_seconds": 34.99627744899999,
+    "restore_started_unix_ns": 1792163799501051499,
+    "elapsed_seconds_including_cleanup": 35.004407689000004,
+    "window_finished_unix_ns": 1792163799504056105,
+    "deadline_exceeded": false
+  },
+  "deny_marker_records": [],
+  "deny_case": "not_invoked_required_loaded_marker_absent",
+  "missing_authority_case": "not_run_stop_on_unexpected_authority_state",
+  "keyring_locked": "b true\n",
+  "driver_stopped": {
+    "time_ns": 1792163881794004813,
+    "server_returncode": -15
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "scope": "Diagnostic observation only; no denial acceptance or validator repair",
+  "lease": "1057-10908-office391",
+  "app_pid": 3072,
+  "app_starttime_ticks": 12145,
+  "sampled_pkexec_pid": 3087,
+  "root_sample_executable": "/usr/bin/pkexec",
+  "unprivileged_raw_child_classification": {
+    "executable_observed_pids": [],
+    "name_only_pids": [
+      3087
+    ],
+    "status": "not_verified_coordinator_review_required",
+    "limitation": "unprivileged /proc pkexec executable lookup may be denied after setuid; name-only is not executable verification; bounded sampling may miss quick refusals"
+  },
+  "raw_session_binding": null,
+  "session_api_result": -61,
+  "candidate_payload": {
+    "action_id": {
+      "present": true,
+      "type": "string",
+      "value": "dev.campus.updater1057.install"
+    },
+    "program": {
+      "present": true,
+      "type": "string",
+      "value": "/usr/lib/campus-updater-1057/install-deb.py"
+    },
+    "target_user": {
+      "present": true,
+      "type": "string",
+      "value": "root"
+    },
+    "subject_pid": {
+      "present": true,
+      "type": "number",
+      "value": 3072
+    },
+    "subject_user": {
+      "present": true,
+      "type": "string",
+      "value": "campusqa"
+    },
+    "subject_local": {
+      "present": true,
+      "type": "boolean",
+      "value": true
+    },
+    "subject_active": {
+      "present": true,
+      "type": "boolean",
+      "value": true
+    },
+    "subject_session": {
+      "present": true,
+      "type": "null"
+    },
+    "expected_session": {
+      "present": true,
+      "type": "string",
+      "value": "6"
+    },
+    "expected_pid": {
+      "present": false,
+      "type": "undefined"
+    },
+    "status": "observed"
+  },
+  "candidate_message_utf8_bytes": 777,
+  "candidate_journal_row_index": 17,
+  "candidate_sender_pid": "3092",
+  "missing_optional_candidate_fields": [
+    "_EXE"
+  ],
+  "account_attribution_limit": "Dedicated polkit account and owned-rule correlation; absent _EXE is not direct sender-executable proof. Root/same-account trust assumption retained.",
+  "journal_rows": 24,
+  "recorder_elapsed_monotonic_seconds": 20.023557044,
+  "recorder_elapsed_wall_seconds": 19.804820004,
+  "invocation_inside_ready_restore": true,
+  "authority_total_seconds": 35.04614234200001,
+  "before_equals_after_incomplete": true,
+  "denial_status": "incomplete",
+  "validator_exit": 1,
+  "validator_status": "incomplete",
+  "explanation": "Observed callback null does not equal the unchanged required string6. Candidate alone never proves denial. No rejecting marker or completed adapter result exists."
+}
